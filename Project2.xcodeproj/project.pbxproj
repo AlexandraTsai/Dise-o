@@ -22,6 +22,8 @@
 		A8D2C47822522A410085AD24 /* SelectorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C47622522A410085AD24 /* SelectorCollectionViewCell.swift */; };
 		A8D2C47922522A410085AD24 /* SelectorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D2C47722522A410085AD24 /* SelectorCollectionViewCell.xib */; };
 		A8D2C47B22522A8F0085AD24 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C47A22522A8F0085AD24 /* UICollectionView+Extension.swift */; };
+		A8D2C47E22523A480085AD24 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C47C22523A480085AD24 /* PhotoCollectionViewCell.swift */; };
+		A8D2C47F22523A490085AD24 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D2C47D22523A480085AD24 /* PhotoCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		A8D2C47622522A410085AD24 /* SelectorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorCollectionViewCell.swift; sourceTree = "<group>"; };
 		A8D2C47722522A410085AD24 /* SelectorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectorCollectionViewCell.xib; sourceTree = "<group>"; };
 		A8D2C47A22522A8F0085AD24 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		A8D2C47C22523A480085AD24 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		A8D2C47D22523A480085AD24 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,8 @@
 				A8D2C453225219030085AD24 /* Main.storyboard */,
 				A8D2C46D2252236D0085AD24 /* PhotoTableViewCell.swift */,
 				A8D2C46E2252236D0085AD24 /* PhotoTableViewCell.xib */,
+				A8D2C47C22523A480085AD24 /* PhotoCollectionViewCell.swift */,
+				A8D2C47D22523A480085AD24 /* PhotoCollectionViewCell.xib */,
 				A8D2C469225222DF0085AD24 /* SelectionTableViewCell.swift */,
 				A8D2C46A225222DF0085AD24 /* SelectionTableViewCell.xib */,
 				A8D2C47622522A410085AD24 /* SelectorCollectionViewCell.swift */,
@@ -188,6 +194,7 @@
 				A8D2C45D225219080085AD24 /* LaunchScreen.storyboard in Resources */,
 				A8D2C4702252236D0085AD24 /* PhotoTableViewCell.xib in Resources */,
 				A8D2C45A225219080085AD24 /* Assets.xcassets in Resources */,
+				A8D2C47F22523A490085AD24 /* PhotoCollectionViewCell.xib in Resources */,
 				A8D2C455225219030085AD24 /* Main.storyboard in Resources */,
 				A8D2C47922522A410085AD24 /* SelectorCollectionViewCell.xib in Resources */,
 			);
@@ -201,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8D2C47B22522A8F0085AD24 /* UICollectionView+Extension.swift in Sources */,
+				A8D2C47E22523A480085AD24 /* PhotoCollectionViewCell.swift in Sources */,
 				A8D2C46F2252236D0085AD24 /* PhotoTableViewCell.swift in Sources */,
 				A8D2C46B225222DF0085AD24 /* SelectionTableViewCell.swift in Sources */,
 				A8D2C475225228130085AD24 /* UITableView+Extension.swift in Sources */,

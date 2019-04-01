@@ -15,6 +15,7 @@ class SelectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColle
         didSet {
             collectionView.delegate = self
             collectionView.dataSource = self
+            
         }
     }
     
@@ -46,9 +47,7 @@ class SelectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColle
         switch indexPath.item {
         case 0:
             selectorCell.label.text = "Camera Roll"
-            print("item0 width: \(cell.frame.width)")
-            print("UIScreen width/2: \(UIScreen.main.bounds.width/2)")
-            
+           
         default:
              selectorCell.label.text = "Colors item"
         }
@@ -63,6 +62,5 @@ class SelectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColle
         
         return CGSize(width: width, height: height)
     }
-    
 
 }
