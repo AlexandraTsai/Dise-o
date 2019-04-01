@@ -48,7 +48,11 @@ class PhotoTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         guard let photoCell = cell as? PhotoCollectionViewCell else {
             return cell
         }
+       
         photoCell.photoImage.image = imageArray[indexPath.item]
+        print("---------*******---------")
+        print("array count = \(imageArray.count)")
+        print("indexPath.item \(indexPath.item)")
         
         return photoCell
     }
@@ -113,6 +117,7 @@ extension PhotoTableViewCell {
                         guard let image = image else { return }
                         
                         self.imageArray.append(image)
+                        print(self.imageArray.count)
                         
                     }
                 }

@@ -49,7 +49,7 @@ class SelectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColle
             selectorCell.label.text = "Camera Roll"
            
         default:
-             selectorCell.label.text = "Colors item"
+             selectorCell.label.text = "Colors"
         }
        
         return selectorCell

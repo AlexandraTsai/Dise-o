@@ -41,9 +41,14 @@ extension ViewController {
     }
     
     @objc func viewClicked(_ sender: UITapGestureRecognizer) {
-        print("image tap working.")
+       
+        if designView.image == nil {
+            containerView.isHidden = false
+        } else {
+            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageEditViewController") as? ImageEditViewController else { return }
+            self.present(vc, animated: true, completion: nil)
+        }
         
-        containerView.isHidden = false
       
     }
     

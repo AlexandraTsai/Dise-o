@@ -24,6 +24,7 @@
 		A8D2C47B22522A8F0085AD24 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C47A22522A8F0085AD24 /* UICollectionView+Extension.swift */; };
 		A8D2C47E22523A480085AD24 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C47C22523A480085AD24 /* PhotoCollectionViewCell.swift */; };
 		A8D2C47F22523A490085AD24 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D2C47D22523A480085AD24 /* PhotoCollectionViewCell.xib */; };
+		A8D2C481225268000085AD24 /* ImageEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C480225268000085AD24 /* ImageEditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		A8D2C47A22522A8F0085AD24 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		A8D2C47C22523A480085AD24 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A8D2C47D22523A480085AD24 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		A8D2C480225268000085AD24 /* ImageEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			children = (
 				A8D2C451225219020085AD24 /* ViewController.swift */,
 				A8D2C4712252270C0085AD24 /* ContainerViewController.swift */,
+				A8D2C480225268000085AD24 /* ImageEditViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				A8D2C47E22523A480085AD24 /* PhotoCollectionViewCell.swift in Sources */,
 				A8D2C46F2252236D0085AD24 /* PhotoTableViewCell.swift in Sources */,
 				A8D2C46B225222DF0085AD24 /* SelectionTableViewCell.swift in Sources */,
+				A8D2C481225268000085AD24 /* ImageEditViewController.swift in Sources */,
 				A8D2C475225228130085AD24 /* UITableView+Extension.swift in Sources */,
 				A8D2C452225219020085AD24 /* ViewController.swift in Sources */,
 				A8D2C450225219020085AD24 /* AppDelegate.swift in Sources */,
