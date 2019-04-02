@@ -24,7 +24,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         containerView.isHidden = true
-        addGesture()
+        addGesture(to: designView, action: #selector(designViewClicked(_:)))
+//        addGesture(to: self.view, action:  #selector(viewClicked(_:)))
         
         createNotification()
     }
@@ -33,14 +34,14 @@ class ViewController: UIViewController {
 
 extension ViewController {
     
-    func addGesture() {
+    func addGesture(to view: UIView, action: Selector) {
         
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(viewClicked(_:)))
-        designView.addGestureRecognizer(gesture)
+        let gesture = UITapGestureRecognizer(target: self, action: action)
+        view.addGestureRecognizer(gesture)
         
     }
     
-    @objc func viewClicked(_ sender: UITapGestureRecognizer) {
+    @objc func designViewClicked(_ sender: UITapGestureRecognizer) {
        
         if designView.image == nil {
             containerView.isHidden = false
@@ -49,7 +50,14 @@ extension ViewController {
             self.present(vc, animated: true, completion: nil)
         }
         
-      
+    }
+    
+    @objc func viewClicked(_ sender: UITapGestureRecognizer){
+        print("I'm clicked")
+        
+//        if containerView.isHidden == false {
+//            containerView.isHidden = true
+//        }
     }
     
     //Notification for image picked
