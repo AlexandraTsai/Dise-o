@@ -30,6 +30,33 @@ class ViewController: UIViewController {
         createNotification()
     }
 
+    @IBAction func addLabelBtnTapped(_ sender: Any) {
+        
+        let txtLabel = UILabel()
+        
+        txtLabel.backgroundColor = UIColor.clear
+        txtLabel.textAlignment = .center
+        txtLabel.textColor = UIColor.white
+        txtLabel.text = "I'm a new label"
+        
+        designView.addSubview(txtLabel)
+        
+        UIGraphicsBeginImageContextWithOptions(txtLabel.bounds.size, false, 0)
+        
+        guard let currentContent = UIGraphicsGetCurrentContext() else {
+            return
+        }
+        designView.layer.render(in: currentContent)
+//        designView.layer.render(in: currentContent)
+        
+        let imageWithLabel = UIGraphicsGetImageFromCurrentImageContext() // here is final image
+        UIGraphicsEndImageContext()
+    }
+    
+    @IBAction func saveBtnTapped(_ sender: Any) {
+        
+      
+    }
 }
 
 extension ViewController {
@@ -47,7 +74,7 @@ extension ViewController {
             containerView.isHidden = false
         } else {
             guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageEditViewController") as? ImageEditViewController else { return }
-            self.present(vc, animated: true, completion: nil)
+            self.show(vc, sender: nil)
         }
         
     }

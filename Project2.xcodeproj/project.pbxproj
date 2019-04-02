@@ -25,6 +25,7 @@
 		A8D2C47E22523A480085AD24 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C47C22523A480085AD24 /* PhotoCollectionViewCell.swift */; };
 		A8D2C47F22523A490085AD24 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D2C47D22523A480085AD24 /* PhotoCollectionViewCell.xib */; };
 		A8D2C481225268000085AD24 /* ImageEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C480225268000085AD24 /* ImageEditViewController.swift */; };
+		A8D2C4842252F9FF0085AD24 /* ImageContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C4832252F9FF0085AD24 /* ImageContainerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		A8D2C47C22523A480085AD24 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A8D2C47D22523A480085AD24 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		A8D2C480225268000085AD24 /* ImageEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditViewController.swift; sourceTree = "<group>"; };
+		A8D2C4832252F9FF0085AD24 /* ImageContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +98,7 @@
 		A8D2C464225222790085AD24 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A8D2C453225219030085AD24 /* Main.storyboard */,
+				A8D2C4822252F7420085AD24 /* Storyboard */,
 				A8D2C46D2252236D0085AD24 /* PhotoTableViewCell.swift */,
 				A8D2C46E2252236D0085AD24 /* PhotoTableViewCell.xib */,
 				A8D2C47C22523A480085AD24 /* PhotoCollectionViewCell.swift */,
@@ -115,6 +117,7 @@
 				A8D2C451225219020085AD24 /* ViewController.swift */,
 				A8D2C4712252270C0085AD24 /* ContainerViewController.swift */,
 				A8D2C480225268000085AD24 /* ImageEditViewController.swift */,
+				A8D2C4832252F9FF0085AD24 /* ImageContainerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -133,6 +136,14 @@
 				A8D2C47A22522A8F0085AD24 /* UICollectionView+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		A8D2C4822252F7420085AD24 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				A8D2C453225219030085AD24 /* Main.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +223,7 @@
 			files = (
 				A8D2C47B22522A8F0085AD24 /* UICollectionView+Extension.swift in Sources */,
 				A8D2C47E22523A480085AD24 /* PhotoCollectionViewCell.swift in Sources */,
+				A8D2C4842252F9FF0085AD24 /* ImageContainerViewController.swift in Sources */,
 				A8D2C46F2252236D0085AD24 /* PhotoTableViewCell.swift in Sources */,
 				A8D2C46B225222DF0085AD24 /* SelectionTableViewCell.swift in Sources */,
 				A8D2C481225268000085AD24 /* ImageEditViewController.swift in Sources */,
