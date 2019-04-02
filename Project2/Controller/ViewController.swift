@@ -32,11 +32,11 @@ class ViewController: UIViewController {
 
     @IBAction func addLabelBtnTapped(_ sender: Any) {
         
-        let txtLabel = UILabel()
+        let txtLabel = UILabel(frame: CGRect(x: designView.frame.origin.x, y:designView.frame.origin.y, width: 20, height: 10))
         
         txtLabel.backgroundColor = UIColor.clear
         txtLabel.textAlignment = .center
-        txtLabel.textColor = UIColor.white
+        txtLabel.textColor = UIColor.red
         txtLabel.text = "I'm a new label"
         
         designView.addSubview(txtLabel)
@@ -47,15 +47,19 @@ class ViewController: UIViewController {
             return
         }
         designView.layer.render(in: currentContent)
-//        designView.layer.render(in: currentContent)
+        txtLabel.layer.render(in: currentContent)
         
+        print(currentContent)
         // here is final image
         guard let imageWithLabel = UIGraphicsGetImageFromCurrentImageContext() else {
             return
         }
+        designView.image = imageWithLabel
         UIGraphicsEndImageContext()
+        print("-------subviews-------")
+        print(designView.subviews)
         
-        UIImageWriteToSavedPhotosAlbum(imageWithLabel, self, #selector(image(_: didFinishSavingWithError:contextInfo:)), nil)
+        UIImageWriteToSavedPhotosAlbum(designView.image!, self, #selector(image(_: didFinishSavingWithError:contextInfo:)), nil)
     }
     
     //MARK: - Add image to Library
