@@ -31,6 +31,20 @@ class ViewController: UIViewController {
     }
 
     @IBAction func saveBtnTapped(_ sender: Any) {
+        
+        UIGraphicsBeginImageContextWithOptions(designView.bounds.size, false, 0)
+        
+        guard let currentContent = UIGraphicsGetCurrentContext() else {
+            return
+        }
+        designView.layer.render(in: currentContent)
+        
+        // here is final image
+        guard let imageWithLabel = UIGraphicsGetImageFromCurrentImageContext() else {
+            return
+        }
+        designView.image = imageWithLabel
+        UIGraphicsEndImageContext()
 
         UIImageWriteToSavedPhotosAlbum(designView.image!, self, #selector(image(_: didFinishSavingWithError:contextInfo:)), nil)
     }
@@ -61,26 +75,13 @@ class ViewController: UIViewController {
         txtLabel.font.withSize(100)
         
         designView.addSubview(txtLabel)
-        
-        UIGraphicsBeginImageContextWithOptions(designView.bounds.size, false, 0)
-        
-        guard let currentContent = UIGraphicsGetCurrentContext() else {
-            return
-        }
-        designView.layer.render(in: currentContent)
-        //        txtLabel.layer.render(in: currentContent)
-        
-        // here is final image
-        guard let imageWithLabel = UIGraphicsGetImageFromCurrentImageContext() else {
-            return
-        }
-        designView.image = imageWithLabel
-        UIGraphicsEndImageContext()
       
         //Enable label to rotate
         let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
         txtLabel.addGestureRecognizer(rotate)
+        
         txtLabel.isUserInteractionEnabled = true
+        
          //Enable to move label
 //        let move = UITapGestureRecognizer(target: self, action: #selector(moveLabel(sender:)))
 //        txtLabel.addGestureRecognizer(move)
@@ -95,8 +96,20 @@ class ViewController: UIViewController {
         }
         
         if sender.state == .began || sender.state == .changed {
-            sender.view?.transform = (sender.view?.transform.rotated(by: sender.rotation))!
+            
+            guard let rotateValue = sender.view?.transform.rotated(by: sender.rotation) else {
+                return
+            }
+            
+            sender.view?.transform = rotateValue
             sender.rotation = 0
+            
+            print("================================")
+            print("---------Sender's view frame = \(sender.view?.frame)---------")
+            
+           
+            print("-------Design view frame =\(designView.frame)---------")
+            
         }
     }
     
