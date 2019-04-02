@@ -21,6 +21,9 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dI0-mD-VQQ">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="dI0-mD-VQQ" secondAttribute="height" multiplier="1:1" id="9SZ-Mo-2va"/>
+                        </constraints>
                     </imageView>
                 </subviews>
             </view>

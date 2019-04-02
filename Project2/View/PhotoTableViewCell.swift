@@ -27,8 +27,7 @@ class PhotoTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         collectionView.al_registerCellWithNib(identifier: String(describing: PhotoCollectionViewCell.self), bundle: nil)
         setupCollectionViewLayout()
         
-//        grabPhoto()
-        
+        grabPhoto()
         
     }
 
@@ -114,7 +113,7 @@ extension PhotoTableViewCell {
                         guard let image = image else { return }
                         
                         self.imageArray.append(image)
-                        
+                        print( self.imageArray)
                     }
                 }
             } else {

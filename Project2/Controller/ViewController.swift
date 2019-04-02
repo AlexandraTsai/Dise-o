@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AssetsLibrary
+import Photos
 
 struct NotificationInfo {
     
@@ -25,7 +27,6 @@ class ViewController: UIViewController {
         
         containerView.isHidden = true
         addGesture(to: designView, action: #selector(designViewClicked(_:)))
-//        addGesture(to: self.view, action:  #selector(viewClicked(_:)))
         
         createNotification()
     }
@@ -43,10 +44,11 @@ class ViewController: UIViewController {
         guard let imageWithLabel = UIGraphicsGetImageFromCurrentImageContext() else {
             return
         }
-        designView.image = imageWithLabel
+        
         UIGraphicsEndImageContext()
-
-        UIImageWriteToSavedPhotosAlbum(designView.image!, self, #selector(image(_: didFinishSavingWithError:contextInfo:)), nil)
+        
+        UIImageWriteToSavedPhotosAlbum(imageWithLabel, self, #selector(image(_: didFinishSavingWithError:contextInfo:)), nil)
+        
     }
     
     //MARK: - Add image to Library
@@ -60,6 +62,12 @@ class ViewController: UIViewController {
             let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             present(ac, animated: true)
+           
+            let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
+            let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
+            let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
+
+           print("\(paths.first)")
         }
     }
     
@@ -83,44 +91,43 @@ class ViewController: UIViewController {
         txtLabel.isUserInteractionEnabled = true
         
          //Enable to move label
-//        let move = UITapGestureRecognizer(target: self, action: #selector(moveLabel(sender:)))
-//        txtLabel.addGestureRecognizer(move)
-    
+        let move = UIPanGestureRecognizer(target: self, action: #selector(labelWasDragged(_ :)))
+        txtLabel.addGestureRecognizer(move)
+        
+         //Enable to pinch/change size of label
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
+        txtLabel.addGestureRecognizer(pinch)
     }
     
-    @objc func handleRotation(sender: UIRotationGestureRecognizer) {
+    @objc func labelWasDragged( _ gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: self.view)
+        let label = gesture.view
+      
+        label?.center = CGPoint(x: (label?.center.x)!+translation.x, y: (label?.center.y)!+translation.y)
+        gesture.setTranslation(CGPoint.zero, in: view)
         
-        guard  sender.view != nil else {
-            return
-            
-        }
+    }
+
+    @IBAction func addImageButtonTapped(_ sender: Any) {
         
-        if sender.state == .began || sender.state == .changed {
-            
-            guard let rotateValue = sender.view?.transform.rotated(by: sender.rotation) else {
-                return
-            }
-            
-            sender.view?.transform = rotateValue
-            sender.rotation = 0
-            
-            print("================================")
-            print("---------Sender's view frame = \(sender.view?.frame)---------")
-            
-           
-            print("-------Design view frame =\(designView.frame)---------")
-            
-        }
+        let newImage = UIImageView(frame: CGRect(x: designView.center.x-100, y:designView.center.y-100, width: 200, height: 200))
+        newImage.image = UIImage(named: "IMG_4670")
+        newImage.isUserInteractionEnabled = true
+        
+        designView.addSubview(newImage)
+        
+        //Enable label to rotate
+        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
+        newImage.addGestureRecognizer(rotate)
+        
+        //Enable to move label
+        let move = UIPanGestureRecognizer(target: self, action: #selector(labelWasDragged(_ :)))
+        newImage.addGestureRecognizer(move)
+        
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
+        newImage.addGestureRecognizer(pinch)
     }
     
-    @objc func move(view: UIView, sender: UITapGestureRecognizer) {
-        
-//        view.animate(withDuration: 2.0) {
-//            self.centerHorizontalConstraint.constant -= 50
-//            self.view.layoutIfNeeded()
-//        }
-        
-    }
 }
 
 extension ViewController {
@@ -142,15 +149,7 @@ extension ViewController {
         }
         
     }
-    
-    @objc func viewClicked(_ sender: UITapGestureRecognizer){
-        print("I'm clicked")
-        
-//        if containerView.isHidden == false {
-//            containerView.isHidden = true
-//        }
-    }
-    
+  
     //Notification for image picked
     func createNotification() {
         
@@ -166,6 +165,55 @@ extension ViewController {
         if let userInfo = noti.userInfo,
             let newImage = userInfo[NotificationInfo.newImage] as? UIImage {
             designView.image = newImage
+        }
+    }
+}
+
+extension ViewController {
+    
+    @objc func handleRotation(sender: UIRotationGestureRecognizer) {
+        
+        guard  sender.view != nil else {
+            return
+            
+        }
+        
+        if sender.state == .began || sender.state == .changed {
+            
+            guard let rotateValue = sender.view?.transform.rotated(by: sender.rotation) else {
+                return
+            }
+            
+            sender.view?.transform = rotateValue
+            sender.rotation = 0
+            
+            print("================================")
+            print("---------Sender's view frame = \(sender.view?.frame)---------")
+            
+            print("-------Design view frame =\(designView.frame)---------")
+            
+        }
+    }
+    
+    @objc func handlePinch(sender: UIPinchGestureRecognizer) {
+        
+        guard  sender.view != nil else {
+            return
+            
+        }
+        
+        if sender.state == .began || sender.state == .changed {
+            
+            guard let transform = sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale) else { return }
+            
+            sender.view?.transform = transform
+           sender.scale = 1.0
+            
+            print("================================")
+            print("---------Sender's view frame = \(sender.view?.frame)---------")
+            
+            print("-------Design view frame =\(designView.frame)---------")
+            
         }
     }
 }

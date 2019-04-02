@@ -27,6 +27,7 @@
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DZf-mM-usS">
                                 <rect key="frame" x="20" y="64" width="335" height="335"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DZf-mM-usS" secondAttribute="height" multiplier="1:1" id="XqY-bP-zBK"/>
                                 </constraints>
@@ -55,6 +56,13 @@
                                     <action selector="addLabelBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xea-79-2Ip"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJu-6V-Fph">
+                                <rect key="frame" x="180" y="411" width="74" height="30"/>
+                                <state key="normal" title="Add Image"/>
+                                <connections>
+                                    <action selector="addImageButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8e8-d3-Dq0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.87450980392156863" green="0.85882352941176465" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -63,6 +71,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ic4-BR-cwQ" secondAttribute="bottom" constant="16" id="Ass-xM-9Rv"/>
                             <constraint firstItem="DZf-mM-usS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EOD-Bq-wnu"/>
                             <constraint firstItem="k2Y-E1-iHA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GRS-Ul-4od"/>
+                            <constraint firstItem="NWN-nd-HD5" firstAttribute="leading" secondItem="gJu-6V-Fph" secondAttribute="trailing" constant="32" id="GU5-Nt-yNq"/>
                             <constraint firstItem="NWN-nd-HD5" firstAttribute="trailing" secondItem="DZf-mM-usS" secondAttribute="trailing" id="HBP-dW-04k"/>
                             <constraint firstItem="k2Y-E1-iHA" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="KhU-Kl-S9f"/>
                             <constraint firstItem="NWN-nd-HD5" firstAttribute="top" secondItem="DZf-mM-usS" secondAttribute="bottom" constant="12" id="Osi-BG-GPd"/>
@@ -72,6 +81,7 @@
                             <constraint firstItem="k2Y-E1-iHA" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Whc-J1-e2J"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ic4-BR-cwQ" secondAttribute="trailing" constant="16" id="aCz-bw-aE9"/>
                             <constraint firstItem="gXg-sg-bNp" firstAttribute="top" secondItem="DZf-mM-usS" secondAttribute="bottom" constant="12" id="bne-ch-Uwj"/>
+                            <constraint firstItem="gJu-6V-Fph" firstAttribute="centerY" secondItem="NWN-nd-HD5" secondAttribute="centerY" id="mw9-LU-Gil"/>
                             <constraint firstItem="DZf-mM-usS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="wa0-V2-l3L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
