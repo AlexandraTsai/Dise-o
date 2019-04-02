@@ -42,17 +42,17 @@
                                 <state key="normal" image="plus"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXg-sg-bNp">
-                                <rect key="frame" x="20" y="411" width="69" height="30"/>
-                                <state key="normal" title="Add Label"/>
+                                <rect key="frame" x="20" y="411" width="99" height="30"/>
+                                <state key="normal" title="Save to Album"/>
                                 <connections>
-                                    <action selector="addLabelBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jBO-88-jhf"/>
+                                    <action selector="saveBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jBO-88-jhf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWN-nd-HD5">
-                                <rect key="frame" x="276" y="411" width="79" height="30"/>
-                                <state key="normal" title="Save Image"/>
+                                <rect key="frame" x="286" y="411" width="69" height="30"/>
+                                <state key="normal" title="Add Label"/>
                                 <connections>
-                                    <action selector="saveBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R92-fe-jol"/>
+                                    <action selector="addLabelBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xea-79-2Ip"/>
                                 </connections>
                             </button>
                         </subviews>

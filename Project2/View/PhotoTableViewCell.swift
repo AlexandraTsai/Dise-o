@@ -27,7 +27,7 @@ class PhotoTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         collectionView.al_registerCellWithNib(identifier: String(describing: PhotoCollectionViewCell.self), bundle: nil)
         setupCollectionViewLayout()
         
-        grabPhoto()
+//        grabPhoto()
         
         
     }
@@ -50,9 +50,6 @@ class PhotoTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         }
        
         photoCell.photoImage.image = imageArray[indexPath.item]
-        print("---------*******---------")
-        print("array count = \(imageArray.count)")
-        print("indexPath.item \(indexPath.item)")
         
         return photoCell
     }
@@ -117,7 +114,6 @@ extension PhotoTableViewCell {
                         guard let image = image else { return }
                         
                         self.imageArray.append(image)
-                        print(self.imageArray.count)
                         
                     }
                 }

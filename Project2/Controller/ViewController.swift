@@ -30,35 +30,8 @@ class ViewController: UIViewController {
         createNotification()
     }
 
-    @IBAction func addLabelBtnTapped(_ sender: Any) {
-        
-        let txtLabel = UILabel(frame: CGRect(x: designView.frame.origin.x, y:designView.frame.origin.y, width: 20, height: 10))
-        
-        txtLabel.backgroundColor = UIColor.clear
-        txtLabel.textAlignment = .center
-        txtLabel.textColor = UIColor.red
-        txtLabel.text = "I'm a new label"
-        
-        designView.addSubview(txtLabel)
-        
-        UIGraphicsBeginImageContextWithOptions(designView.bounds.size, false, 0)
-        
-        guard let currentContent = UIGraphicsGetCurrentContext() else {
-            return
-        }
-        designView.layer.render(in: currentContent)
-        txtLabel.layer.render(in: currentContent)
-        
-        print(currentContent)
-        // here is final image
-        guard let imageWithLabel = UIGraphicsGetImageFromCurrentImageContext() else {
-            return
-        }
-        designView.image = imageWithLabel
-        UIGraphicsEndImageContext()
-        print("-------subviews-------")
-        print(designView.subviews)
-        
+    @IBAction func saveBtnTapped(_ sender: Any) {
+
         UIImageWriteToSavedPhotosAlbum(designView.image!, self, #selector(image(_: didFinishSavingWithError:contextInfo:)), nil)
     }
     
@@ -76,9 +49,64 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func saveBtnTapped(_ sender: Any) {
+    @IBAction func addLabelBtnTapped(_ sender: Any) {
         
+        let txtLabel = UILabel(frame: CGRect(x: designView.frame.origin.x, y:designView.frame.origin.y, width: 200, height: 100))
+        
+        txtLabel.backgroundColor = UIColor.blue
+        txtLabel.textAlignment = .center
+        txtLabel.textColor = UIColor.red
+    
+        txtLabel.text = "I'm a new label"
+        txtLabel.font.withSize(100)
+        
+        designView.addSubview(txtLabel)
+        
+        UIGraphicsBeginImageContextWithOptions(designView.bounds.size, false, 0)
+        
+        guard let currentContent = UIGraphicsGetCurrentContext() else {
+            return
+        }
+        designView.layer.render(in: currentContent)
+        //        txtLabel.layer.render(in: currentContent)
+        
+        // here is final image
+        guard let imageWithLabel = UIGraphicsGetImageFromCurrentImageContext() else {
+            return
+        }
+        designView.image = imageWithLabel
+        UIGraphicsEndImageContext()
       
+        //Enable label to rotate
+        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
+        txtLabel.addGestureRecognizer(rotate)
+        txtLabel.isUserInteractionEnabled = true
+         //Enable to move label
+//        let move = UITapGestureRecognizer(target: self, action: #selector(moveLabel(sender:)))
+//        txtLabel.addGestureRecognizer(move)
+    
+    }
+    
+    @objc func handleRotation(sender: UIRotationGestureRecognizer) {
+        
+        guard  sender.view != nil else {
+            return
+            
+        }
+        
+        if sender.state == .began || sender.state == .changed {
+            sender.view?.transform = (sender.view?.transform.rotated(by: sender.rotation))!
+            sender.rotation = 0
+        }
+    }
+    
+    @objc func move(view: UIView, sender: UITapGestureRecognizer) {
+        
+//        view.animate(withDuration: 2.0) {
+//            self.centerHorizontalConstraint.constant -= 50
+//            self.view.layoutIfNeeded()
+//        }
+        
     }
 }
 

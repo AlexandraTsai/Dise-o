@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2/View/PhotoTableViewCell.swift"
-            timestampString = "575877065.083089"
+            timestampString = "575881035.597321"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2/Controller/ImageContainerViewController.swift"
-            timestampString = "575877065.083174"
+            timestampString = "575881035.597399"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2/Controller/ViewController.swift"
-            timestampString = "575877065.083259"
+            timestampString = "575881035.5974489"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "changeImage(noti:)"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "saveBtnTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2/Controller/ViewController.swift"
-            timestampString = "575877065.0839469"
+            timestampString = "575881035.59808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "addLabelBtnTapped(_:)"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "handleRotation(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
