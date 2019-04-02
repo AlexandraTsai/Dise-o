@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         
         designView.addSubview(txtLabel)
         
-        UIGraphicsBeginImageContextWithOptions(txtLabel.bounds.size, false, 0)
+        UIGraphicsBeginImageContextWithOptions(designView.bounds.size, false, 0)
         
         guard let currentContent = UIGraphicsGetCurrentContext() else {
             return
@@ -49,8 +49,27 @@ class ViewController: UIViewController {
         designView.layer.render(in: currentContent)
 //        designView.layer.render(in: currentContent)
         
-        let imageWithLabel = UIGraphicsGetImageFromCurrentImageContext() // here is final image
+        // here is final image
+        guard let imageWithLabel = UIGraphicsGetImageFromCurrentImageContext() else {
+            return
+        }
         UIGraphicsEndImageContext()
+        
+        UIImageWriteToSavedPhotosAlbum(imageWithLabel, self, #selector(image(_: didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    //MARK: - Add image to Library
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // we got back an error!
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
     }
     
     @IBAction func saveBtnTapped(_ sender: Any) {
