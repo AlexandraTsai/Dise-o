@@ -21,10 +21,12 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var designView: UIImageView!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        scrollView.isHidden = true
         containerView.isHidden = true
         addGesture(to: designView, action: #selector(designViewClicked(_:)))
         
@@ -126,6 +128,10 @@ class ViewController: UIViewController {
         
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
         newImage.addGestureRecognizer(pinch)
+    }
+    @IBAction func addBtnTapped(_ sender: Any) {
+        
+        scrollView.isHidden = !scrollView.isHidden
     }
     
 }
