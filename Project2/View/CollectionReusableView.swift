@@ -9,10 +9,43 @@
 import UIKit
 
 class CollectionReusableView: UICollectionReusableView {
-
+    
+    @IBOutlet weak var cameraRollBtn: UIButton!
+    
+    @IBOutlet weak var colorsBtn: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        cameraRollBtn.isSelected = true
+        changeBtnHighlight()
     }
     
+    @IBAction func cameraRollBtnTapped(_ sender: Any) {
+
+        cameraRollBtn.isSelected = true
+        changeBtnHighlight()
+        
+    }
+    
+    @IBAction func colorsBtnTapped(_ sender: Any) {
+        
+        colorsBtn.isSelected = true
+        changeBtnHighlight()
+    }
+    
+    func changeBtnHighlight(){
+        
+        if cameraRollBtn.isSelected {
+            
+            cameraRollBtn.isSelected = false
+            cameraRollBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+            colorsBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        } else {
+            
+            colorsBtn.isSelected = false
+            cameraRollBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+            colorsBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        }
+    }
 }

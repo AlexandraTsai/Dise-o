@@ -33,28 +33,10 @@ class ViewController: UIViewController {
         addGesture(to: designView, action: #selector(designViewClicked(_:)))
         
         createNotification()
+        
+        setupNavigationBar()
     }
 
-    @IBAction func saveBtnTapped(_ sender: Any) {
-        
-        UIGraphicsBeginImageContextWithOptions(designView.bounds.size, false, 0)
-        
-        guard let currentContent = UIGraphicsGetCurrentContext() else {
-            return
-        }
-        designView.layer.render(in: currentContent)
-        
-        // here is final image
-        guard let imageWithLabel = UIGraphicsGetImageFromCurrentImageContext() else {
-            return
-        }
-        
-        UIGraphicsEndImageContext()
-        
-        UIImageWriteToSavedPhotosAlbum(imageWithLabel, self, #selector(image(_: didFinishSavingWithError:contextInfo:)), nil)
-        
-    }
-    
     //MARK: - Add image to Library
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error = error {
@@ -268,6 +250,52 @@ extension ViewController {
         view?.center = CGPoint(x: (view?.center.x)!+translation.x, y: (view?.center.y)!+translation.y)
         gesture.setTranslation(CGPoint.zero, in: view)
         
+    }
+   
+}
+
+extension ViewController {
+    
+    func setupNavigationBar() {
+        
+        //Right Buttons
+        let button1 = UIBarButtonItem(image: UIImage(named: ImageAsset.Icon_Share.rawValue), style: .plain, target: self, action: #selector(didTapShareButton(sender:)))
+        
+        let button2 = UIBarButtonItem(image: UIImage(named: ImageAsset.Icon_Download.rawValue), style: .plain, target: self, action: #selector(didTapDownloadButton(sender:)))
+        
+        self.navigationItem.rightBarButtonItems  = [button1, button2]
+        
+        //Left Buttons
+        let leftButton = UIBarButtonItem(image: UIImage(named: ImageAsset.Icon_profile.rawValue), style: .plain, target: self, action: #selector(didTapProfileButton(sender:)))
+         self.navigationItem.leftBarButtonItem  = leftButton
+    }
+    
+    @objc func didTapProfileButton(sender: AnyObject) {
+       print("profile btn tapped")
+        
+    }
+    
+    @objc func didTapDownloadButton(sender: AnyObject) {
+        UIGraphicsBeginImageContextWithOptions(designView.bounds.size, false, 0)
+        
+        guard let currentContent = UIGraphicsGetCurrentContext() else {
+            return
+        }
+        designView.layer.render(in: currentContent)
+        
+        // here is final image
+        guard let imageWithLabel = UIGraphicsGetImageFromCurrentImageContext() else {
+            return
+        }
+        
+        UIGraphicsEndImageContext()
+        
+        UIImageWriteToSavedPhotosAlbum(imageWithLabel, self, #selector(image(_: didFinishSavingWithError:contextInfo:)), nil)
+        
+    }
+    
+    @objc func didTapShareButton(sender: AnyObject) {
        
+        
     }
 }
