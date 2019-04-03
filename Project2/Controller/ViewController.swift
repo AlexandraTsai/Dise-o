@@ -14,6 +14,7 @@ struct NotificationInfo {
     
     static let newText = ""
     static let newImage = UIImage()
+    static let addImage = UIImage()
     
 }
 
@@ -185,6 +186,11 @@ extension ViewController {
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(changeImage(noti:)), name: notificationName, object: nil)
+        
+        let notificationName2 = Notification.Name("addImage")
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(addImage(noti:)), name: notificationName2, object: nil)
     }
     
     // 收到通知後要執行的動作
@@ -193,6 +199,35 @@ extension ViewController {
             let newImage = userInfo[NotificationInfo.newImage] as? UIImage {
             designView.image = newImage
         }
+    }
+    
+    @objc func addImage(noti: Notification) {
+        guard let userInfo = noti.userInfo,
+            let addImage = userInfo[NotificationInfo.addImage] as? UIImage else { return }
+        
+        let newImage = UIImageView(frame: CGRect(x: designView.center.x-100, y:designView.center.y-100, width: 200, height: 200))
+        newImage.image = addImage
+        
+        designView.addSubview(newImage)
+        
+        newImage.isUserInteractionEnabled = true
+        
+        //Handle label to tapped
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        tap.numberOfTapsRequired = 1
+        tap.numberOfTouchesRequired = 1
+        newImage.addGestureRecognizer(tap)
+        
+        //Enable label to rotate
+        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
+        newImage.addGestureRecognizer(rotate)
+        
+        //Enable to move label
+        let move = UIPanGestureRecognizer(target: self, action: #selector(handleDragged(_ :)))
+        newImage.addGestureRecognizer(move)
+        
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
+        newImage.addGestureRecognizer(pinch)
     }
 }
 
