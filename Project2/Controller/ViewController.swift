@@ -23,6 +23,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    var editingView: UIView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -85,45 +87,49 @@ class ViewController: UIViewController {
         txtLabel.font.withSize(100)
         
         designView.addSubview(txtLabel)
+        
+        txtLabel.isUserInteractionEnabled = true
+        
+        //Handle label to tapped
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        tap.numberOfTapsRequired = 1
+        tap.numberOfTouchesRequired = 1
+        txtLabel.addGestureRecognizer(tap)
       
         //Enable label to rotate
         let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
         txtLabel.addGestureRecognizer(rotate)
         
-        txtLabel.isUserInteractionEnabled = true
-        
          //Enable to move label
-        let move = UIPanGestureRecognizer(target: self, action: #selector(labelWasDragged(_ :)))
+        let move = UIPanGestureRecognizer(target: self, action: #selector(handleDragged(_ :)))
         txtLabel.addGestureRecognizer(move)
         
          //Enable to pinch/change size of label
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
         txtLabel.addGestureRecognizer(pinch)
     }
-    
-    @objc func labelWasDragged( _ gesture: UIPanGestureRecognizer) {
-        let translation = gesture.translation(in: self.view)
-        let label = gesture.view
-      
-        label?.center = CGPoint(x: (label?.center.x)!+translation.x, y: (label?.center.y)!+translation.y)
-        gesture.setTranslation(CGPoint.zero, in: view)
-        
-    }
 
     @IBAction func addImageButtonTapped(_ sender: Any) {
         
         let newImage = UIImageView(frame: CGRect(x: designView.center.x-100, y:designView.center.y-100, width: 200, height: 200))
         newImage.image = UIImage(named: "IMG_4670")
-        newImage.isUserInteractionEnabled = true
         
         designView.addSubview(newImage)
+        
+        newImage.isUserInteractionEnabled = true
+        
+        //Handle label to tapped
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        tap.numberOfTapsRequired = 1
+        tap.numberOfTouchesRequired = 1
+        newImage.addGestureRecognizer(tap)
         
         //Enable label to rotate
         let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
         newImage.addGestureRecognizer(rotate)
         
         //Enable to move label
-        let move = UIPanGestureRecognizer(target: self, action: #selector(labelWasDragged(_ :)))
+        let move = UIPanGestureRecognizer(target: self, action: #selector(handleDragged(_ :)))
         newImage.addGestureRecognizer(move)
         
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
@@ -134,6 +140,25 @@ class ViewController: UIViewController {
         scrollView.isHidden = !scrollView.isHidden
     }
     
+    @IBAction func downBtnTapped(_ sender: Any) {
+        
+//        guard let subView = designView.subviews.last else { return }
+//        designView.sendSubviewToBack(subView)
+        
+        guard let subView = editingView, let editingView = editingView  else{ return }
+        designView.sendSubviewToBack(editingView)
+      
+    }
+    
+    @IBAction func upBtnTapped(_ sender: Any) {
+        
+//        guard let subView = designView.subviews.first else { return }
+//        designView.bringSubviewToFront(subView)
+        
+        guard let subView = editingView, let editingView = editingView  else{ return }
+        designView.bringSubviewToFront(editingView)
+      
+    }
 }
 
 extension ViewController {
@@ -177,6 +202,19 @@ extension ViewController {
 
 extension ViewController {
     
+    @objc func handleTap(sender: UITapGestureRecognizer) {
+        
+        guard  sender.view != nil else {
+            return
+            
+        }
+        
+        editingView = sender.view
+        editingView?.layer.borderColor = UIColor.white.cgColor
+        editingView?.layer.borderWidth = 1
+    }
+    
+    
     @objc func handleRotation(sender: UIRotationGestureRecognizer) {
         
         guard  sender.view != nil else {
@@ -213,7 +251,7 @@ extension ViewController {
             guard let transform = sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale) else { return }
             
             sender.view?.transform = transform
-           sender.scale = 1.0
+            sender.scale = 1.0
             
             print("================================")
             print("---------Sender's view frame = \(sender.view?.frame)---------")
@@ -221,5 +259,15 @@ extension ViewController {
             print("-------Design view frame =\(designView.frame)---------")
             
         }
+    }
+ 
+    @objc func handleDragged( _ gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: self.view)
+        let view = gesture.view
+        
+        view?.center = CGPoint(x: (view?.center.x)!+translation.x, y: (view?.center.y)!+translation.y)
+        gesture.setTranslation(CGPoint.zero, in: view)
+        
+       
     }
 }

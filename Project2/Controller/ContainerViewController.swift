@@ -17,6 +17,7 @@ class ContainerViewController: UIViewController {
             tableView.delegate = self
             
             tableView.dataSource = self
+         
         }
     }
     
@@ -44,16 +45,19 @@ extension ContainerViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SelectionTableViewCell.self), for: indexPath)
             
             guard let selectionCell = cell as? SelectionTableViewCell else {
+                
                 return cell
             }
-            
+          
             return selectionCell
             
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PhotoTableViewCell.self), for: indexPath)
             
             guard let photoCell = cell as? PhotoTableViewCell else {
+                
                 return cell
+                
             }
             
             return photoCell
@@ -67,7 +71,7 @@ extension ContainerViewController: UITableViewDelegate, UITableViewDataSource {
            return  50
             
         } else {
-            return UIScreen.main.bounds.width/3
+            return tableView.frame.height - 50
         }
     }
     

@@ -16,6 +16,7 @@ class PhotoTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         didSet {
             collectionView.delegate = self
             collectionView.dataSource = self
+            
         }
     }
     
@@ -113,7 +114,7 @@ extension PhotoTableViewCell {
                         guard let image = image else { return }
                         
                         self.imageArray.append(image)
-                        print( self.imageArray)
+                    
                     }
                 }
             } else {
