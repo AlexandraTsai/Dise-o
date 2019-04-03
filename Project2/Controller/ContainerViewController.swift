@@ -26,7 +26,10 @@ class ContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         collectionView.al_registerCellWithNib(identifier: String(describing: PhotoCollectionViewCell.self), bundle: nil)
+        collectionView.al_registerHeaderViewWithNib(identifier:  String(describing: CollectionReusableView.self), bundle: nil)
+        
         setupCollectionViewLayout()
         
         grabPhoto()
@@ -61,22 +64,14 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
         
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-     
-        switch kind {
-        case UICollectionView.elementKindSectionHeader:
-            let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier:
-                String(describing: CollectionReusableView.self), for: indexPath)
-            
-            guard let header = reusableView as? CollectionReusableView else { return reusableView }
-            
-            return header
-        default:
-             assert(false, "Invalid element type")
-        }
         
-       
+        let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: CollectionReusableView.self), for: indexPath)
+        
+        guard let header = reusableView as? CollectionReusableView else { return reusableView }
+        
+        return header
+        
     }
 }
 
@@ -116,51 +111,8 @@ extension ContainerViewController {
     }
 }
 
-extension ContainerViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 2
-        
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.row == 0 {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SelectionTableViewCell.self), for: indexPath)
-            
-            guard let selectionCell = cell as? SelectionTableViewCell else {
-                
-                return cell
-            }
-          
-            return selectionCell
-            
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PhotoTableViewCell.self), for: indexPath)
-            
-            guard let photoCell = cell as? PhotoTableViewCell else {
-                
-                return cell
-                
-            }
-            
-            return photoCell
-        }
-        
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        if indexPath.row == 0 {
-           return  50
-            
-        } else {
-            return tableView.frame.height - 50
-        }
-    }
-    
+extension ContainerViewController {
+  
     private func setupCollectionViewLayout() {
         
         let flowLayout = UICollectionViewFlowLayout()
@@ -175,6 +127,8 @@ extension ContainerViewController: UITableViewDelegate, UITableViewDataSource {
         flowLayout.minimumInteritemSpacing = 0
         
         flowLayout.minimumLineSpacing = 0
+        
+        flowLayout.headerReferenceSize = CGSize(width: collectionView.frame.width, height: 40) // header zone
         
         collectionView.collectionViewLayout = flowLayout
     }
