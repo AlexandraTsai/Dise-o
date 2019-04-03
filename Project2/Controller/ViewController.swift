@@ -191,6 +191,11 @@ extension ViewController {
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(addImage(noti:)), name: notificationName2, object: nil)
+        
+        let notificationName3 = Notification.Name("showImageEditPage")
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(showImageEditPage(noti:)), name: notificationName3, object: nil)
     }
     
     // 收到通知後要執行的動作
@@ -228,9 +233,23 @@ extension ViewController {
         
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
         newImage.addGestureRecognizer(pinch)
+        
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageEditViewController") as? ImageEditViewController else { return }
+        show(vc, sender: nil)
+    }
+    
+    @objc func showImageEditPage(noti: Notification) {
+//        if let userInfo = noti.userInfo,
+//            let newImage = userInfo[NotificationInfo.newImage] as? UIImage {
+//            designView.image = newImage
+//        }
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageEditViewController") as? ImageEditViewController else { return }
+        show(vc, sender: nil)
+        
     }
 }
 
+//Handle Gesture
 extension ViewController {
     
     @objc func handleTap(sender: UITapGestureRecognizer) {
@@ -305,6 +324,7 @@ extension ViewController {
    
 }
 
+//Setup Navigation Bar
 extension ViewController {
     
     func setupNavigationBar() {
