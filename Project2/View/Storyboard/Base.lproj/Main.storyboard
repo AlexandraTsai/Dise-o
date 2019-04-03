@@ -175,22 +175,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3AB-Kh-odN">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G2c-KZ-Yq1">
                                 <rect key="frame" x="20" y="64" width="335" height="335"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.71649145989999996" blue="0.120028148" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="3AB-Kh-odN" secondAttribute="height" multiplier="1:1" id="tRD-L6-ny2"/>
+                                    <constraint firstAttribute="width" secondItem="G2c-KZ-Yq1" secondAttribute="height" multiplier="1:1" id="Ukk-3A-yfw"/>
+                                    <constraint firstAttribute="width" constant="335" id="j4N-Y5-YtX"/>
                                 </constraints>
-                            </view>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="3AB-Kh-odN" firstAttribute="centerX" secondItem="5m0-ak-QCl" secondAttribute="centerX" id="Y70-75-eYb"/>
-                            <constraint firstItem="3AB-Kh-odN" firstAttribute="top" secondItem="Va0-bd-i16" secondAttribute="top" id="dzn-iM-rAY"/>
-                            <constraint firstItem="3AB-Kh-odN" firstAttribute="leading" secondItem="Va0-bd-i16" secondAttribute="leading" constant="20" id="vII-ic-oEG"/>
+                            <constraint firstItem="G2c-KZ-Yq1" firstAttribute="leading" secondItem="Va0-bd-i16" secondAttribute="leading" constant="20" id="5xP-X9-eiw"/>
+                            <constraint firstItem="G2c-KZ-Yq1" firstAttribute="top" secondItem="Va0-bd-i16" secondAttribute="top" id="kaV-SG-wd6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Va0-bd-i16"/>
                     </view>
+                    <connections>
+                        <outlet property="designView" destination="G2c-KZ-Yq1" id="Bz7-jI-hKY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o7i-A8-mCb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

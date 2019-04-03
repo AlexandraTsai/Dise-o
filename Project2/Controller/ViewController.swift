@@ -57,8 +57,6 @@ class ViewController: UIViewController {
             let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
             let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
             let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
-
-           print("\(paths.first)")
         }
     }
     
@@ -191,11 +189,7 @@ extension ViewController {
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(addImage(noti:)), name: notificationName2, object: nil)
-        
-        let notificationName3 = Notification.Name("showImageEditPage")
-        
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(showImageEditPage(noti:)), name: notificationName3, object: nil)
+
     }
     
     // 收到通知後要執行的動作
@@ -207,6 +201,7 @@ extension ViewController {
     }
     
     @objc func addImage(noti: Notification) {
+        
         guard let userInfo = noti.userInfo,
             let addImage = userInfo[NotificationInfo.addImage] as? UIImage else { return }
         
@@ -235,18 +230,20 @@ extension ViewController {
         newImage.addGestureRecognizer(pinch)
         
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageEditViewController") as? ImageEditViewController else { return }
-        show(vc, sender: nil)
-    }
-    
-    @objc func showImageEditPage(noti: Notification) {
-//        if let userInfo = noti.userInfo,
-//            let newImage = userInfo[NotificationInfo.newImage] as? UIImage {
-//            designView.image = newImage
-//        }
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageEditViewController") as? ImageEditViewController else { return }
-        show(vc, sender: nil)
         
+        vc.loadViewIfNeeded()
+        
+        vc.designView.image = designView.image
+        let count = designView.subviews.count
+        
+        for _ in 0...count-1 {
+            
+            vc.designView.addSubview(designView.subviews.first!)
+        }
+     
+        show(vc, sender: nil)
     }
+  
 }
 
 //Handle Gesture
@@ -281,11 +278,6 @@ extension ViewController {
             sender.view?.transform = rotateValue
             sender.rotation = 0
             
-            print("================================")
-            print("---------Sender's view frame = \(sender.view?.frame)---------")
-            
-            print("-------Design view frame =\(designView.frame)---------")
-            
         }
     }
     
@@ -302,11 +294,6 @@ extension ViewController {
             
             sender.view?.transform = transform
             sender.scale = 1.0
-            
-            print("================================")
-            print("---------Sender's view frame = \(sender.view?.frame)---------")
-            
-            print("-------Design view frame =\(designView.frame)---------")
             
         }
     }

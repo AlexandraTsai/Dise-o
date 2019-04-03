@@ -10,6 +10,8 @@ import UIKit
 
 class ImageEditViewController: UIViewController {
 
+    @IBOutlet weak var designView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
