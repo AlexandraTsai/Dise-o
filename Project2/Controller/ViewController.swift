@@ -23,6 +23,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var addImageContainerView: UIView!
+    
     var editingView: UIView?
     
     override func viewDidLoad() {
@@ -30,6 +32,8 @@ class ViewController: UIViewController {
         
         scrollView.isHidden = true
         containerView.isHidden = true
+        addImageContainerView.isHidden = true
+        
         addGesture(to: designView, action: #selector(designViewClicked(_:)))
         
         createNotification()
@@ -117,6 +121,7 @@ class ViewController: UIViewController {
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
         newImage.addGestureRecognizer(pinch)
     }
+    
     @IBAction func addBtnTapped(_ sender: Any) {
         
         scrollView.isHidden = !scrollView.isHidden
@@ -141,6 +146,14 @@ class ViewController: UIViewController {
         designView.bringSubviewToFront(editingView)
       
     }
+    @IBAction func addImageBtnTapped(_ sender: Any) {
+        
+        addImageContainerView.isHidden = false
+        containerView.isHidden = true
+        
+        scrollView.isHidden = !scrollView.isHidden
+        
+    }
 }
 
 extension ViewController {
@@ -156,6 +169,7 @@ extension ViewController {
        
         if designView.image == nil {
             containerView.isHidden = false
+            scrollView.isHidden = true
         } else {
             guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageEditViewController") as? ImageEditViewController else { return }
             self.show(vc, sender: nil)
@@ -247,7 +261,9 @@ extension ViewController {
         let translation = gesture.translation(in: self.view)
         let view = gesture.view
         
-        view?.center = CGPoint(x: (view?.center.x)!+translation.x, y: (view?.center.y)!+translation.y)
+        guard let xCenter = view?.center.x, let yCenter = view?.center.y else { return }
+        
+        view?.center = CGPoint(x: xCenter+translation.x, y: yCenter+translation.y)
         gesture.setTranslation(CGPoint.zero, in: view)
         
     }
