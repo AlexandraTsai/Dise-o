@@ -119,9 +119,33 @@ extension ImageEditViewController {
     }
     
     @objc func didTapCopyButton(sender: AnyObject) {
-        print("profile btn tapped")
         
-        navigationBarForText()
+        guard let tappedView = (editingView as? UITextView) else {
+            
+            guard let tappedView = (editingView as? UIImageView)else { return }
+            
+            let newView = UIImageView()
+            newView.frame = tappedView.frame
+            newView.image = tappedView.image
+            
+            addAllGesture(to: newView)
+            editingView = newView
+            
+            designView.addSubview(newView)
+            
+            
+            return
+        }
+        
+        let newView = UITextView()
+        newView.makeACopy(from: tappedView)
+        
+        addAllGesture(to: newView)
+        editingView = newView
+        
+        designView.addSubview(newView)
+        
+        editingView = newView
     }
 }
 

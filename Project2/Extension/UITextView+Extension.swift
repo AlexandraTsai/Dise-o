@@ -39,4 +39,15 @@ extension UITextView{
     @objc func doneButtonAction() {
         self.resignFirstResponder()
     }
+    
+    func makeACopy(from oldView: UITextView) {
+        
+        self.frame = oldView.frame
+        self.backgroundColor = oldView.backgroundColor
+        
+        self.text = oldView.text
+        self.font = oldView.font
+        self.tintColor = oldView.tintColor
+        self.textAlignment = oldView.textAlignment
+    }
 }
