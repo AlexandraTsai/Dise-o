@@ -59,7 +59,7 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let notificationName = Notification.Name(NotiName.changeImage.rawValue)
+        let notificationName = Notification.Name(NotiName.changeBackgroundImage.rawValue)
         NotificationCenter.default.post(name: notificationName, object: nil, userInfo: [NotificationInfo.newImage: imageArray[indexPath.item]])
         
     }

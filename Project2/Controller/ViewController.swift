@@ -24,6 +24,7 @@ class ViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var designView: UIImageView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var hintLabel: UILabel!
     
     @IBOutlet weak var addImageContainerView: UIView!
 
@@ -87,19 +88,6 @@ class ViewController: UIViewController, UITextViewDelegate {
         addAllGesture(to: txtLabel)
 
     }
-
-    @IBAction func addImageButtonTapped(_ sender: Any) {
-        
-        let newImage = UIImageView(frame: CGRect(x: designView.center.x-100, y:designView.center.y-100, width: 200, height: 200))
-        newImage.image = UIImage(named: "IMG_4670")
-        
-        designView.addSubview(newImage)
-        
-        newImage.isUserInteractionEnabled = true
-        
-        addAllGesture(to: newImage)
- 
-    }
     
     @IBAction func addBtnTapped(_ sender: Any) {
         
@@ -108,23 +96,11 @@ class ViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func downBtnTapped(_ sender: Any) {
         
-//        guard let subView = designView.subviews.last else { return }
-//        designView.sendSubviewToBack(subView)
-        
-        guard let subView = editingView, let editingView = editingView  else{ return }
+        guard let editingView = editingView  else{ return }
         designView.sendSubviewToBack(editingView)
       
     }
-    
-    @IBAction func upBtnTapped(_ sender: Any) {
-        
-//        guard let subView = designView.subviews.first else { return }
-//        designView.bringSubviewToFront(subView)
-        
-        guard let subView = editingView, let editingView = editingView  else{ return }
-        designView.bringSubviewToFront(editingView)
-      
-    }
+
     @IBAction func addImageBtnTapped(_ sender: Any) {
         
         addImageContainerView.isHidden = false
@@ -152,21 +128,16 @@ extension ViewController {
     
     @objc func designViewClicked(_ sender: UITapGestureRecognizer) {
        
-        if designView.image == nil {
-            containerView.isHidden = false
-            scrollView.isHidden = true
-        } else {
-            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageEditViewController") as? ImageEditViewController else { return }
-            self.show(vc, sender: nil)
-        }
-        
+        containerView.isHidden = false
+        scrollView.isHidden = true
+       
     }
   
     //Notification for image picked
     func createNotification() {
         
         // 註冊addObserver
-        let notificationName = Notification.Name(NotiName.changeImage.rawValue)
+        let notificationName = Notification.Name(NotiName.changeBackgroundImage.rawValue)
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(changeImage(noti:)), name: notificationName, object: nil)
@@ -202,11 +173,13 @@ extension ViewController {
         designView.addSubview(newImage)
    
         
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageEditViewController") as? ImageEditViewController else { return }
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: ImageEditViewController.self)) as? ImageEditViewController else { return }
         
         vc.loadViewIfNeeded()
         
         vc.designView.image = designView.image
+        
+        vc.editingView = newImage
         
         let count = designView.subviews.count
         
@@ -228,11 +201,10 @@ extension ViewController {
             for i in 0...newImage.count-1 {
 
                 designView.addSubview(newImage[i])
-                print(designView.subviews.count)
+                addAllGesture(to: newImage[i])
                 
             }
-             print(newImage.count)
-            print(designView.subviews)
+            
         }
     }
   
@@ -255,17 +227,27 @@ extension ViewController {
     
     @objc func handleTap(sender: UITapGestureRecognizer) {
         
-        guard  sender.view != nil else {
-            return
+        guard let tappedView = sender.view else { return }
+
+        designView.bringSubviewToFront(tappedView)
+        
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: ImageEditViewController.self)) as? ImageEditViewController else { return }
+        
+        vc.loadViewIfNeeded()
+        
+        vc.designView.image = designView.image
+        
+        let count = designView.subviews.count
+        
+        for _ in 0...count-1 {
+            
+            vc.designView.addSubview(designView.subviews.first!)
             
         }
         
-        editingView = sender.view
-        editingView?.layer.borderColor = UIColor.white.cgColor
-        editingView?.layer.borderWidth = 1
+        self.show(vc, sender: nil)
     }
-    
-    
+        
     @objc func handleRotation(sender: UIRotationGestureRecognizer) {
         
         guard  sender.view != nil else {
@@ -358,7 +340,6 @@ extension ViewController {
     }
     
     @objc func didTapShareButton(sender: AnyObject) {
-       
         
     }
 }
@@ -405,6 +386,5 @@ extension ViewController {
         designView.addSubview(newText)
         
     }
-    
 
 }

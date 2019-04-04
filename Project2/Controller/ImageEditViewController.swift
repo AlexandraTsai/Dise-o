@@ -10,7 +10,20 @@ import UIKit
 
 class ImageEditViewController: UIViewController {
     
-    var editingView: UIView?
+    var editingView: UIView? {
+        
+        didSet {
+            
+            print("------Old Value-----")
+            oldValue?.layer.borderWidth = 0
+            print(oldValue)
+            
+            editingView?.layer.borderColor = UIColor.white.cgColor
+            editingView?.layer.borderWidth = 1
+            print("------New Value-----")
+            print(editingView)
+        }
+    }
 
     @IBOutlet weak var designView: UIImageView!
     
@@ -22,6 +35,8 @@ class ImageEditViewController: UIViewController {
     }
   
     override func viewWillAppear(_ animated: Bool) {
+        
+        guard designView.subviews.count > 0 else { return }
         
         for i in 0...designView.subviews.count-1 {
             addAllGesture(to: designView.subviews[i])
@@ -54,6 +69,8 @@ extension ImageEditViewController {
     
     @objc func didTapDoneButton(sender: AnyObject) {
         
+        editingView?.layer.borderWidth = 0
+        
         /*Notification*/
         let notificationName = Notification.Name(NotiName.updateImage.rawValue)
         NotificationCenter.default.post(name: notificationName, object: nil, userInfo: [NotificationInfo.editedImage: designView.subviews])
@@ -69,16 +86,22 @@ extension ImageEditViewController {
     
     @objc func didTapDeleteButton(sender: AnyObject) {
         
+        guard let editingView = editingView else{ return }
+        editingView.removeFromSuperview()
         
     }
     
     @objc func didTapDownButton(sender: AnyObject) {
-        print("profile btn tapped")
+        
+        guard let editingView = editingView else{ return }
+        designView.sendSubviewToBack(editingView)
         
     }
     
     @objc func didTapUpButton(sender: AnyObject) {
-        print("profile btn tapped")
+        
+        guard let editingView = editingView else{ return }
+        designView.bringSubviewToFront(editingView)
         
     }
     
@@ -86,16 +109,12 @@ extension ImageEditViewController {
         print("profile btn tapped")
         
     }
-
 }
 
 //Setup Gesture
 extension ImageEditViewController {
     
     func addAllGesture(to newView: UIView){
-        
-    
-//        for i in 0...newView.count-1 {
         
             newView.isUserInteractionEnabled = true
             
@@ -116,26 +135,16 @@ extension ImageEditViewController {
             let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
             newView.addGestureRecognizer(pinch)
         
-            print("--------*********----------")
-            print(self)
-            print(newView.gestureRecognizers)
-            
-//        }
-        
     }
     
     @objc func handleTap(sender: UITapGestureRecognizer) {
         
-        guard  sender.view != nil else {
-            return
-            
-        }
-        
         editingView = sender.view
-        editingView?.layer.borderColor = UIColor.white.cgColor
-        editingView?.layer.borderWidth = 1
+        
+//        editingView?.layer.borderColor = UIColor.white.cgColor
+//        editingView?.layer.borderWidth = 1
+        
     }
-    
     
     @objc func handleRotation(sender: UIRotationGestureRecognizer) {
         
