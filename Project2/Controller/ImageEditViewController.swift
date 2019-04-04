@@ -13,15 +13,11 @@ class ImageEditViewController: UIViewController {
     var editingView: UIView? {
         
         didSet {
-            
-            print("------Old Value-----")
+           
             oldValue?.layer.borderWidth = 0
-            print(oldValue)
             
             editingView?.layer.borderColor = UIColor.white.cgColor
             editingView?.layer.borderWidth = 1
-            print("------New Value-----")
-            print(editingView)
         }
     }
 
