@@ -15,6 +15,7 @@ struct NotificationInfo {
     static let newText = ""
     static let newImage = UIImage()
     static let addImage = UIImage()
+    static let editedImage = [UIView]()
     
 }
 
@@ -25,15 +26,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var addImageContainerView: UIView!
+    @IBOutlet weak var textField: UITextField!
     
     var editingView: UIView?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
+        notEditingMode()
         scrollView.isHidden = true
         containerView.isHidden = true
         addImageContainerView.isHidden = true
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         addGesture(to: designView, action: #selector(designViewClicked(_:)))
         
@@ -153,6 +160,12 @@ class ViewController: UIViewController {
         scrollView.isHidden = !scrollView.isHidden
         
     }
+    
+    @IBAction func addTextBtnTapped(_ sender: Any) {
+        
+        addTextMode()
+        
+    }
 }
 
 extension ViewController {
@@ -189,6 +202,11 @@ extension ViewController {
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(addImage(noti:)), name: notificationName2, object: nil)
+        
+        let notificationName3 = Notification.Name("updateImage")
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(updateImage(noti:)), name: notificationName3, object: nil)
 
     }
     
@@ -212,22 +230,7 @@ extension ViewController {
         
         newImage.isUserInteractionEnabled = true
         
-        //Handle label to tapped
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
-        tap.numberOfTapsRequired = 1
-        tap.numberOfTouchesRequired = 1
-        newImage.addGestureRecognizer(tap)
-        
-        //Enable label to rotate
-        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
-        newImage.addGestureRecognizer(rotate)
-        
-        //Enable to move label
-        let move = UIPanGestureRecognizer(target: self, action: #selector(handleDragged(_ :)))
-        newImage.addGestureRecognizer(move)
-        
-        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
-        newImage.addGestureRecognizer(pinch)
+        addAllGesture(to: newImage)
         
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageEditViewController") as? ImageEditViewController else { return }
         
@@ -243,11 +246,53 @@ extension ViewController {
      
         show(vc, sender: nil)
     }
+    
+    @objc func updateImage(noti: Notification) {
+        if let userInfo = noti.userInfo,
+            let newImage = userInfo[NotificationInfo.editedImage] as? [UIView]{
+            
+            print("##################")
+            print(newImage.count)
+            print(newImage)
+            
+            for _ in 0...newImage.count-1 {
+                
+                guard let updateImage = newImage.first else { return }
+            
+                print(newImage.count)
+                designView.addSubview(newImage.first!)
+                designView.addSubview(newImage.last!)
+            }
+             print(newImage.count)
+            print(designView.subviews)
+        }
+    }
   
 }
 
 //Handle Gesture
 extension ViewController {
+    
+    func addAllGesture(to newView: UIView){
+        
+        //Handle label to tapped
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        tap.numberOfTapsRequired = 1
+        tap.numberOfTouchesRequired = 1
+        newView.addGestureRecognizer(tap)
+        
+        //Enable label to rotate
+        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
+        newView.addGestureRecognizer(rotate)
+        
+        //Enable to move label
+        let move = UIPanGestureRecognizer(target: self, action: #selector(handleDragged(_ :)))
+        newView.addGestureRecognizer(move)
+        
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
+        newView.addGestureRecognizer(pinch)
+        
+    }
     
     @objc func handleTap(sender: UITapGestureRecognizer) {
         
@@ -355,5 +400,20 @@ extension ViewController {
     @objc func didTapShareButton(sender: AnyObject) {
        
         
+    }
+}
+
+extension ViewController {
+    
+    func addTextMode() {
+        navigationController?.navigationBar.isHidden = true
+        textField.isHidden = false
+        textField.becomeFirstResponder()
+        
+    }
+    
+    func notEditingMode() {
+        navigationController?.navigationBar.isHidden = false
+        textField.isHidden = true
     }
 }
