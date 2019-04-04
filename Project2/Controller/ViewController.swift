@@ -189,6 +189,8 @@ extension ViewController {
 
         }
        
+        vc.navigationBarForImage()
+        
         show(vc, sender: nil)
     }
     
@@ -376,7 +378,7 @@ extension ViewController {
         
         newText.text = textView.text
         newText.font = textView.font
-        newText.backgroundColor = UIColor.red
+        newText.backgroundColor = UIColor.clear
         newText.textAlignment = textView.textAlignment
         
         newText.addDoneButtonOnKeyboard()

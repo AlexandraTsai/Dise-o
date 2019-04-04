@@ -18,6 +18,7 @@ class ImageEditViewController: UIViewController {
             
             editingView?.layer.borderColor = UIColor.white.cgColor
             editingView?.layer.borderWidth = 1
+    
         }
     }
 
@@ -25,8 +26,6 @@ class ImageEditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupNavigationBar()
         
     }
   
@@ -44,7 +43,25 @@ class ImageEditViewController: UIViewController {
 //Setup Navigation Bar
 extension ImageEditViewController {
     
-    func setupNavigationBar() {
+    func navigationBarForText() {
+        
+        let button1 = UIBarButtonItem(image: UIImage(named: ImageAsset.Icon_TrashCan.rawValue), style: .plain, target: self, action: #selector(didTapDeleteButton(sender:)))
+        
+        let button2 = UIBarButtonItem(image: UIImage(named: ImageAsset.Icon_down.rawValue), style: .plain, target: self, action: #selector(didTapDownButton(sender:)))
+        
+        let button3 = UIBarButtonItem(image: UIImage(named: ImageAsset.Icon_up.rawValue), style: .plain, target: self, action: #selector(didTapUpButton(sender:)))
+        
+        let button4 = UIBarButtonItem(image: UIImage(named: ImageAsset.Icon_Copy.rawValue), style: .plain, target: self, action: #selector(didTapCopyButton(sender:)))
+        
+        self.navigationItem.rightBarButtonItems  = [button1, button2, button3, button4]
+        
+        //Left Buttons
+        let leftButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDoneButton(sender:)))
+        self.navigationItem.leftBarButtonItem  = leftButton
+        
+    }
+    
+    func navigationBarForImage() {
         let button1 = UIBarButtonItem(image: UIImage(named: ImageAsset.Icon_Crop.rawValue), style: .plain, target: self, action: #selector(didTapCropButton(sender:)))
         
         let button2 = UIBarButtonItem(image: UIImage(named: ImageAsset.Icon_TrashCan.rawValue), style: .plain, target: self, action: #selector(didTapDeleteButton(sender:)))
@@ -104,6 +121,7 @@ extension ImageEditViewController {
     @objc func didTapCopyButton(sender: AnyObject) {
         print("profile btn tapped")
         
+        navigationBarForText()
     }
 }
 
@@ -134,11 +152,19 @@ extension ImageEditViewController {
     }
     
     @objc func handleTap(sender: UITapGestureRecognizer) {
-        
+    
         editingView = sender.view
         
-//        editingView?.layer.borderColor = UIColor.white.cgColor
-//        editingView?.layer.borderWidth = 1
+        guard (sender.view as? UITextView) != nil else {
+            
+            guard (sender.view as? UIImageView) != nil else { return }
+            
+            navigationBarForImage()
+            
+            return
+        }
+        
+        navigationBarForText()
         
     }
     

@@ -115,7 +115,7 @@
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VJC-L0-vuv">
                                 <rect key="frame" x="112.5" y="177.5" width="150" height="128"/>
-                                <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="l5e-4Q-loU"/>
                                     <constraint firstAttribute="height" constant="128" id="qcv-pL-1rn"/>
@@ -180,7 +180,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G2c-KZ-Yq1">
                                 <rect key="frame" x="20" y="74" width="335" height="335"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="G2c-KZ-Yq1" secondAttribute="height" multiplier="1:1" id="Ukk-3A-yfw"/>
                                     <constraint firstAttribute="width" constant="335" id="j4N-Y5-YtX"/>
@@ -305,6 +305,7 @@
                             <constraint firstItem="yV7-ZI-bQi" firstAttribute="leading" secondItem="JBS-XR-fXH" secondAttribute="leading" id="JpJ-Me-gVz"/>
                             <constraint firstAttribute="bottom" secondItem="yV7-ZI-bQi" secondAttribute="bottom" id="zQg-GB-z00"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="dqo-Bk-Kh3"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="yV7-ZI-bQi" id="s38-jy-INR"/>
