@@ -65,6 +65,7 @@ class ViewController: UIViewController, UITextViewDelegate {
             let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
             let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
             let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
+            print(paths)
         }
     }
     
@@ -82,24 +83,9 @@ class ViewController: UIViewController, UITextViewDelegate {
         designView.addSubview(txtLabel)
         
         txtLabel.isUserInteractionEnabled = true
-        
-        //Handle label to tapped
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
-        tap.numberOfTapsRequired = 1
-        tap.numberOfTouchesRequired = 1
-        txtLabel.addGestureRecognizer(tap)
-      
-        //Enable label to rotate
-        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
-        txtLabel.addGestureRecognizer(rotate)
-        
-         //Enable to move label
-        let move = UIPanGestureRecognizer(target: self, action: #selector(handleDragged(_ :)))
-        txtLabel.addGestureRecognizer(move)
-        
-         //Enable to pinch/change size of label
-        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
-        txtLabel.addGestureRecognizer(pinch)
+
+        addAllGesture(to: txtLabel)
+
     }
 
     @IBAction func addImageButtonTapped(_ sender: Any) {
@@ -111,22 +97,8 @@ class ViewController: UIViewController, UITextViewDelegate {
         
         newImage.isUserInteractionEnabled = true
         
-        //Handle label to tapped
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
-        tap.numberOfTapsRequired = 1
-        tap.numberOfTouchesRequired = 1
-        newImage.addGestureRecognizer(tap)
-        
-        //Enable label to rotate
-        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
-        newImage.addGestureRecognizer(rotate)
-        
-        //Enable to move label
-        let move = UIPanGestureRecognizer(target: self, action: #selector(handleDragged(_ :)))
-        newImage.addGestureRecognizer(move)
-        
-        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
-        newImage.addGestureRecognizer(pinch)
+        addAllGesture(to: newImage)
+ 
     }
     
     @IBAction func addBtnTapped(_ sender: Any) {
@@ -228,21 +200,22 @@ extension ViewController {
         newImage.image = addImage
         
         designView.addSubview(newImage)
-        
-        addAllGesture(to: newImage)
+   
         
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageEditViewController") as? ImageEditViewController else { return }
         
         vc.loadViewIfNeeded()
         
         vc.designView.image = designView.image
+        
         let count = designView.subviews.count
         
         for _ in 0...count-1 {
             
             vc.designView.addSubview(designView.subviews.first!)
+
         }
-     
+       
         show(vc, sender: nil)
     }
     
@@ -277,18 +250,7 @@ extension ViewController {
         tap.numberOfTapsRequired = 1
         tap.numberOfTouchesRequired = 1
         newView.addGestureRecognizer(tap)
-        
-        //Enable label to rotate
-        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
-        newView.addGestureRecognizer(rotate)
-        
-        //Enable to move label
-        let move = UIPanGestureRecognizer(target: self, action: #selector(handleDragged(_ :)))
-        newView.addGestureRecognizer(move)
-        
-        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
-        newView.addGestureRecognizer(pinch)
-        
+
     }
     
     @objc func handleTap(sender: UITapGestureRecognizer) {
