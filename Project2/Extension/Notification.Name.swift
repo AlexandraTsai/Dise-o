@@ -10,7 +10,7 @@ import Foundation
 
 enum NotiName: String {
     
-    case updateImage
+    case updateImage //After editing
     case addImage
-    case changeImage
+    case changeImage //Selected from album
 }

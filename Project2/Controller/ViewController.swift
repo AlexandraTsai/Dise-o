@@ -249,18 +249,14 @@ extension ViewController {
     @objc func updateImage(noti: Notification) {
         if let userInfo = noti.userInfo,
             let newImage = userInfo[NotificationInfo.editedImage] as? [UIView]{
+          
+            guard newImage.count != 0 else { return }
             
-            print("##################")
-            print(newImage.count)
-            print(newImage)
-            
-            for _ in 0...newImage.count-1 {
+            for i in 0...newImage.count-1 {
+
+                designView.addSubview(newImage[i])
+                print(designView.subviews.count)
                 
-                guard let updateImage = newImage.first else { return }
-            
-                print(newImage.count)
-                designView.addSubview(newImage.first!)
-                designView.addSubview(newImage.last!)
             }
              print(newImage.count)
             print(designView.subviews)
