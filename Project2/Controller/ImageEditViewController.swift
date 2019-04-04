@@ -44,9 +44,8 @@ extension ImageEditViewController {
     @objc func didTapDoneButton(sender: AnyObject) {
         
         /*Notification*/
-        let notificationName = Notification.Name("updateImage")
+        let notificationName = Notification.Name(NotiName.updateImage.rawValue)
         NotificationCenter.default.post(name: notificationName, object: nil, userInfo: [NotificationInfo.editedImage: designView.subviews])
-
 
         self.navigationController?.popViewController(animated: true)
         

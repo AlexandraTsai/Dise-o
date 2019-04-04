@@ -60,7 +60,7 @@ extension AddImageContainerViewController: UICollectionViewDelegate, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let notificationName = Notification.Name("addImage")
+        let notificationName = Notification.Name(NotiName.addImage.rawValue)
         NotificationCenter.default.post(name: notificationName, object: nil, userInfo: [NotificationInfo.addImage: imageArray[indexPath.item]])
         
     }

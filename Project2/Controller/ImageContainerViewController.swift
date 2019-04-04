@@ -22,7 +22,7 @@ class ImageContainerViewController: UIViewController {
     func createNotification() {
         
         // 註冊addObserver
-        let notificationName = Notification.Name("changeImage")
+        let notificationName = Notification.Name(NotiName.changeImage.rawValue)
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(changeImage(noti:)), name: notificationName, object: nil)

@@ -194,17 +194,17 @@ extension ViewController {
     func createNotification() {
         
         // 註冊addObserver
-        let notificationName = Notification.Name("changeImage")
+        let notificationName = Notification.Name(NotiName.changeImage.rawValue)
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(changeImage(noti:)), name: notificationName, object: nil)
         
-        let notificationName2 = Notification.Name("addImage")
+        let notificationName2 = Notification.Name(NotiName.addImage.rawValue)
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(addImage(noti:)), name: notificationName2, object: nil)
         
-        let notificationName3 = Notification.Name("updateImage")
+        let notificationName3 = Notification.Name(NotiName.updateImage.rawValue)
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(updateImage(noti:)), name: notificationName3, object: nil)
@@ -228,8 +228,6 @@ extension ViewController {
         newImage.image = addImage
         
         designView.addSubview(newImage)
-        
-        newImage.isUserInteractionEnabled = true
         
         addAllGesture(to: newImage)
         
@@ -275,6 +273,8 @@ extension ViewController {
 extension ViewController {
     
     func addAllGesture(to newView: UIView){
+        
+        newView.isUserInteractionEnabled = true
         
         //Handle label to tapped
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
@@ -380,6 +380,7 @@ extension ViewController {
     }
     
     @objc func didTapDownloadButton(sender: AnyObject) {
+        
         UIGraphicsBeginImageContextWithOptions(designView.bounds.size, false, 0)
         
         guard let currentContent = UIGraphicsGetCurrentContext() else {
@@ -439,6 +440,13 @@ extension ViewController {
         newText.backgroundColor = UIColor.red
         newText.textAlignment = textView.textAlignment
         
+        newText.addDoneButtonOnKeyboard()
+        
+        addAllGesture(to: newText)
+        
         designView.addSubview(newText)
+        
     }
+    
+
 }
