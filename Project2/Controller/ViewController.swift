@@ -19,14 +19,15 @@ struct NotificationInfo {
     
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var designView: UIImageView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var addImageContainerView: UIView!
-    @IBOutlet weak var textField: UITextField!
+
+    @IBOutlet weak var textView: UITextView!
     
     var editingView: UIView?
     
@@ -163,7 +164,7 @@ class ViewController: UIViewController {
     
     @IBAction func addTextBtnTapped(_ sender: Any) {
         
-        addTextMode()
+        addingTextMode()
         
     }
 }
@@ -405,15 +406,39 @@ extension ViewController {
 
 extension ViewController {
     
-    func addTextMode() {
+    func addingTextMode() {
         navigationController?.navigationBar.isHidden = true
-        textField.isHidden = false
-        textField.becomeFirstResponder()
+        textView.isHidden = false
+        textView.becomeFirstResponder()
         
+        textView.text = "Enter your text"
+        textView.delegate = self
+        
+        textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.endOfDocument)
     }
     
     func notEditingMode() {
+        
         navigationController?.navigationBar.isHidden = false
-        textField.isHidden = true
+        textView.isHidden = true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        addTextView()
+
+        notEditingMode()
+    }
+    
+    func addTextView(){
+        
+        let newText = UITextView(frame: CGRect(x:textView.frame.origin.x-designView.frame.origin.x, y: textView.frame.origin.y-designView.frame.origin.y, width: textView.frame.width, height: textView.frame.height))
+        
+        newText.text = textView.text
+        newText.font = textView.font
+        newText.backgroundColor = UIColor.red
+        newText.textAlignment = textView.textAlignment
+        
+        designView.addSubview(newText)
     }
 }

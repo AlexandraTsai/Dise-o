@@ -127,17 +127,24 @@
                                     <action selector="addImageButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8e8-d3-Dq0"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your text" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qVx-eK-Xua">
-                                <rect key="frame" x="139" y="226" width="97" height="30"/>
-                                <nil key="textColor"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VJC-L0-vuv">
+                                <rect key="frame" x="112.5" y="177.5" width="150" height="128"/>
+                                <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="l5e-4Q-loU"/>
+                                    <constraint firstAttribute="height" constant="128" id="qcv-pL-1rn"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.87450980389999999" green="0.85882352939999995" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="DZf-mM-usS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="0S2-aV-HPz"/>
-                            <constraint firstItem="qVx-eK-Xua" firstAttribute="centerY" secondItem="DZf-mM-usS" secondAttribute="centerY" id="2YR-cT-Ydr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ic4-BR-cwQ" secondAttribute="bottom" constant="16" id="Ass-xM-9Rv"/>
                             <constraint firstItem="MPz-Hy-TZc" firstAttribute="height" secondItem="k2Y-E1-iHA" secondAttribute="height" id="BAi-V1-QDz"/>
                             <constraint firstItem="zg0-Kt-1Ej" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BXC-mn-8V9"/>
@@ -145,7 +152,6 @@
                             <constraint firstItem="k2Y-E1-iHA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GRS-Ul-4od"/>
                             <constraint firstItem="NWN-nd-HD5" firstAttribute="leading" secondItem="gJu-6V-Fph" secondAttribute="trailing" constant="32" id="GU5-Nt-yNq"/>
                             <constraint firstItem="NWN-nd-HD5" firstAttribute="trailing" secondItem="DZf-mM-usS" secondAttribute="trailing" id="HBP-dW-04k"/>
-                            <constraint firstItem="qVx-eK-Xua" firstAttribute="centerX" secondItem="DZf-mM-usS" secondAttribute="centerX" id="J4j-Kv-3zb"/>
                             <constraint firstItem="k2Y-E1-iHA" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="KhU-Kl-S9f"/>
                             <constraint firstItem="MPz-Hy-TZc" firstAttribute="top" secondItem="k2Y-E1-iHA" secondAttribute="top" id="Oei-FE-KEo"/>
                             <constraint firstItem="NWN-nd-HD5" firstAttribute="top" secondItem="DZf-mM-usS" secondAttribute="bottom" constant="12" id="Osi-BG-GPd"/>
@@ -155,9 +161,11 @@
                             <constraint firstItem="k2Y-E1-iHA" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Whc-J1-e2J"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ic4-BR-cwQ" secondAttribute="trailing" constant="16" id="aCz-bw-aE9"/>
                             <constraint firstItem="ic4-BR-cwQ" firstAttribute="leading" secondItem="jHo-S0-vsR" secondAttribute="trailing" constant="165" id="bSk-09-WSu"/>
+                            <constraint firstItem="VJC-L0-vuv" firstAttribute="centerY" secondItem="DZf-mM-usS" secondAttribute="centerY" id="exj-SI-Mra"/>
                             <constraint firstItem="MPz-Hy-TZc" firstAttribute="leading" secondItem="k2Y-E1-iHA" secondAttribute="leading" id="igR-WI-yET"/>
                             <constraint firstItem="gJu-6V-Fph" firstAttribute="centerY" secondItem="NWN-nd-HD5" secondAttribute="centerY" id="mw9-LU-Gil"/>
                             <constraint firstItem="zg0-Kt-1Ej" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="s4e-vF-w2d"/>
+                            <constraint firstItem="VJC-L0-vuv" firstAttribute="centerX" secondItem="DZf-mM-usS" secondAttribute="centerX" id="wAc-gS-irl"/>
                             <constraint firstItem="DZf-mM-usS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="wa0-V2-l3L"/>
                             <constraint firstItem="MPz-Hy-TZc" firstAttribute="width" secondItem="k2Y-E1-iHA" secondAttribute="width" id="x64-Zv-p2M"/>
                             <constraint firstItem="zg0-Kt-1Ej" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="zOB-g9-GQN"/>
@@ -170,7 +178,7 @@
                         <outlet property="containerView" destination="k2Y-E1-iHA" id="Hfj-l4-4cr"/>
                         <outlet property="designView" destination="DZf-mM-usS" id="aa8-a9-AGQ"/>
                         <outlet property="scrollView" destination="zg0-Kt-1Ej" id="r3B-mW-Dza"/>
-                        <outlet property="textField" destination="qVx-eK-Xua" id="H1d-d6-0JQ"/>
+                        <outlet property="textView" destination="VJC-L0-vuv" id="ja5-hr-iWR"/>
                         <segue destination="mFr-ri-311" kind="show" identifier="imageEditSwgue" id="h0P-ds-aVT"/>
                         <segue destination="yOG-yq-5Gn" kind="show" identifier="textEditSegue" id="dE9-Tv-trn"/>
                     </connections>
