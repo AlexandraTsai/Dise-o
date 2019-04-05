@@ -20,6 +20,11 @@ enum ImageAsset: String {
     case Icon_Rotate
     case Icon_Copy
     
+    //Text Edit
+    case Icon_AlignCenter
+    case Icon_AlignLeft
+    case Icon_AlignRight
+    
     //Home Page
     case Icon_image
     case Icon_text

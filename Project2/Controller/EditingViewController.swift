@@ -10,6 +10,9 @@ import UIKit
 
 class EditingViewController: UIViewController {
     
+    @IBOutlet weak var alignmentButton: UIButton!
+    @IBOutlet weak var letterCaseButton: UIButton!
+    
     var editingView: UIView? {
         
         didSet {
@@ -18,9 +21,17 @@ class EditingViewController: UIViewController {
             
             editingView?.layer.borderColor = UIColor.white.cgColor
             editingView?.layer.borderWidth = 1
+            
+            guard let view = editingView as? UITextView else { return }
+            
+            view.delegate = self
+            
+            originalText = view.text
     
         }
     }
+    
+    var originalText = ""
 
     @IBOutlet weak var designView: UIImageView!
     
@@ -28,7 +39,63 @@ class EditingViewController: UIViewController {
         super.viewDidLoad()
         
     }
-  
+    
+    @IBAction func fontButtonTapped(_ sender: Any) {
+        
+    }
+    
+    @IBAction func colorButtonTapped(_ sender: Any) {
+    }
+    @IBAction func fontSizeButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func alignmentButtonTapped(_ sender: Any) {
+        
+        guard let view =  editingView as? UITextView else { return }
+        
+        switch view.textAlignment {
+        case .center:
+            view.textAlignment = .right
+            alignmentButton.setImage(UIImage(named: ImageAsset.Icon_AlignRight.rawValue), for: .normal)
+        case .right:
+            view.textAlignment = .left
+             alignmentButton.setImage(UIImage(named: ImageAsset.Icon_AlignLeft.rawValue), for: .normal)
+        default:
+            view.textAlignment = .center
+            alignmentButton.setImage(UIImage(named: ImageAsset.Icon_AlignCenter.rawValue), for: .normal)
+        }
+        
+    
+    }
+    
+    @IBAction func boldButtonTapped(_ sender: Any) {
+    
+    }
+    
+    @IBAction func italicButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func letterCaseBtnTapped(_ sender: Any) {
+        
+        guard let view =  editingView as? UITextView else { return }
+        
+        switch letterCaseButton.titleLabel?.text {
+        
+        case "Aa":
+            view.text = view.text.uppercased()
+            letterCaseButton.setTitle("AA", for: .normal)
+            
+        default:
+            letterCaseButton.setTitle("Aa", for: .normal)
+            view.text = originalText
+            
+        }
+        
+    }
+    @IBAction func spacingBtnTapped(_ sender: Any) {
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         
         guard designView.subviews.count > 0 else { return }
@@ -258,5 +325,23 @@ extension EditingViewController {
         view?.center = CGPoint(x: xCenter+translation.x, y: yCenter+translation.y)
         gesture.setTranslation(CGPoint.zero, in: view)
         
+    }
+}
+
+extension EditingViewController: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        switch letterCaseButton.titleLabel?.text {
+        case "AA":
+            textView.autocapitalizationType = .allCharacters
+            print("---------------")
+            print(textView.text)
+            textView.text = textView.text.uppercased()
+            print(textView.text)
+            
+        default:
+//            textView.autocapitalizationType = .none
+            print("not upper case")
+        }
     }
 }

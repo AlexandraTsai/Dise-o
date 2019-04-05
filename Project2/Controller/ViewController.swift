@@ -400,6 +400,7 @@ extension ViewController {
             vc.navigationBarForImage()
         default:
             vc.navigationBarForText()
+           
         }
 
         show(vc, sender: nil)
