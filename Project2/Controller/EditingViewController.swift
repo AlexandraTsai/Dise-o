@@ -25,8 +25,6 @@ class EditingViewController: UIViewController {
             guard let view = editingView as? UITextView else { return }
             
             view.delegate = self
-            
-            originalText = view.text
     
         }
     }
@@ -82,10 +80,26 @@ class EditingViewController: UIViewController {
         switch letterCaseButton.titleLabel?.text {
         
         case "Aa":
+            
+            originalText = view.text
             view.text = view.text.uppercased()
             letterCaseButton.setTitle("AA", for: .normal)
+            print(originalText)
+            print("-----original text saved-----")
             
         default:
+            
+           
+//            var newText = view.text
+//            
+//            for _ in 0...originalText.count-1 {
+//                newText?.removeFirst()
+//            }
+//  
+//            print(newText)
+//            
+//            originalText.append(newText!)
+            
             letterCaseButton.setTitle("Aa", for: .normal)
             view.text = originalText
             
@@ -294,8 +308,6 @@ extension EditingViewController {
             
             sender.view?.transform = transform
             
-          
-            
             sender.scale = 1.0
             
             print(sender.scale)
@@ -309,8 +321,6 @@ extension EditingViewController {
             let formattedText = NSMutableAttributedString.init(attributedString: textView.attributedText)
             formattedText.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: pointSize!), range: NSRange(location: 0, length: formattedText.length))
             textView.attributedText = formattedText
-            
-            
             
             return
         }
@@ -333,14 +343,27 @@ extension EditingViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         switch letterCaseButton.titleLabel?.text {
         case "AA":
-            textView.autocapitalizationType = .allCharacters
-            print("---------------")
-            print(textView.text)
-            textView.text = textView.text.uppercased()
-            print(textView.text)
             
+            print("Show--- \(textView.text)")
+            print("Original--- \(originalText)")
+            
+            var newText = ""
+            newText.append(textView.text)
+            
+            for _ in 1...originalText.count {
+                newText.removeFirst()
+                 print("Original--- \(originalText)")
+            }
+            
+//            guard newText != nil else { return }
+            
+            print("I'm new text \(newText)")
+            originalText.append(newText)
+            
+            textView.text = textView.text.uppercased()
+          
         default:
-//            textView.autocapitalizationType = .none
+
             print("not upper case")
         }
     }
