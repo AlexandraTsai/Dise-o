@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageEditViewController: UIViewController {
+class EditingViewController: UIViewController {
     
     var editingView: UIView? {
         
@@ -41,7 +41,7 @@ class ImageEditViewController: UIViewController {
 }
 
 //Setup Navigation Bar
-extension ImageEditViewController {
+extension EditingViewController {
     
     func navigationBarForText() {
         
@@ -127,6 +127,7 @@ extension ImageEditViewController {
             print("---------tapped view---------")
             print(tappedView.frame)
             
+            
             let newView = UIImageView()
             
             newView.makeACopy(from: tappedView)
@@ -138,21 +139,21 @@ extension ImageEditViewController {
             
             return
         }
-        
-        let newView = UITextView()
-        newView.makeACopy(from: tappedView)
-        
+  
+        let newView = UITextView(frame: tappedView.frame, textContainer: tappedView.textContainer)
+        newView.font?.withSize(100)
+  
         addAllGesture(to: newView)
         editingView = newView
         
         designView.addSubview(newView)
-        
+  
         editingView = newView
     }
 }
 
 //Setup Gesture
-extension ImageEditViewController {
+extension EditingViewController {
     
     func addAllGesture(to newView: UIView){
         
@@ -225,8 +226,26 @@ extension ImageEditViewController {
             guard let transform = sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale) else { return }
             
             sender.view?.transform = transform
+            
+          
+            
             sender.scale = 1.0
             
+            print(sender.scale)
+            
+            guard let textView = sender.view as? UITextView else { return }
+            
+            var pointSize = textView.font?.pointSize
+            pointSize = ((sender.velocity > 0) ? 1 : -1) * 0.5 + pointSize!
+            textView.font = UIFont( name: "arial", size: (pointSize)!)
+            
+            let formattedText = NSMutableAttributedString.init(attributedString: textView.attributedText)
+            formattedText.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: pointSize!), range: NSRange(location: 0, length: formattedText.length))
+            textView.attributedText = formattedText
+            
+            
+            
+            return
         }
     }
     

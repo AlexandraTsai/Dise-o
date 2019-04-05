@@ -28,6 +28,13 @@ class ViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var addImageContainerView: UIView!
 
+    @IBOutlet weak var addButton: UIButton! {
+        
+        didSet {
+            addButton.layer.cornerRadius = addButton.frame.width/2
+            addButton.clipsToBounds = true
+        }
+    }
     @IBOutlet weak var textView: UITextView!
     
     var editingView: UIView?
@@ -171,28 +178,9 @@ extension ViewController {
         newImage.image = addImage
         
         designView.addSubview(newImage)
+        
+        goToEditingVC(with: newImage, navigationBarForImage: true)
    
-        
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: ImageEditViewController.self)) as? ImageEditViewController else { return }
-        
-        vc.loadViewIfNeeded()
-        
-        vc.designView.image = designView.image
-        
-        vc.editingView = newImage
-        
-        let count = designView.subviews.count
-        
-        for _ in 0...count-1 {
-            
-            guard let subViewToAdd = designView.subviews.first else { return }
-            
-            vc.designView.addSubview(subViewToAdd)
-        }
-       
-        vc.navigationBarForImage()
-        
-        show(vc, sender: nil)
     }
     
     @objc func updateImage(noti: Notification) {
@@ -234,23 +222,14 @@ extension ViewController {
 
         designView.bringSubviewToFront(tappedView)
         
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: ImageEditViewController.self)) as? ImageEditViewController else { return }
-        
-        vc.loadViewIfNeeded()
-        
-        vc.designView.image = designView.image
-        
-        let count = designView.subviews.count
-        
-        for _ in 0...count-1 {
+        guard ((tappedView as? UIImageView) != nil) else {
             
-            guard let subViewToAdd = designView.subviews.first else { return }
-            
-            vc.designView.addSubview(subViewToAdd)
-            
+            goToEditingVC(with: tappedView, navigationBarForImage: false)
+            return
         }
         
-        self.show(vc, sender: nil)
+        goToEditingVC(with: tappedView, navigationBarForImage: true)
+        
     }
         
     @objc func handleRotation(sender: UIRotationGestureRecognizer) {
@@ -351,6 +330,7 @@ extension ViewController {
 
 extension ViewController {
     
+    //NavigationBar
     func addingTextMode() {
         navigationController?.navigationBar.isHidden = true
         textView.isHidden = false
@@ -369,30 +349,12 @@ extension ViewController {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: ImageEditViewController.self)) as? ImageEditViewController else { return }
-        
-        vc.loadViewIfNeeded()
-        
+ 
         let newText = addTextView()
         
-        vc.designView.image = designView.image
-        
-        vc.editingView = newText
-        
-        for _ in 0...designView.subviews.count-1 {
-            
-            guard let subViewToAdd = designView.subviews.first else { return }
-            
-            vc.designView.addSubview(subViewToAdd)
-            
-        }
         notEditingMode()
         
-        vc.navigationBarForText()
-        
-        self.show(vc, sender: nil)
-
+        goToEditingVC(with: newText, navigationBarForImage: false)
         
     }
     
@@ -414,9 +376,9 @@ extension ViewController {
         return newText
     }
     
-    func goToEditingVC(with viewToBeEdit: UIView) {
+    func goToEditingVC(with viewToBeEdit: UIView, navigationBarForImage: Bool) {
         
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: ImageEditViewController.self)) as? ImageEditViewController else { return }
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: EditingViewController.self)) as? EditingViewController else { return }
         
         vc.loadViewIfNeeded()
         
@@ -433,8 +395,13 @@ extension ViewController {
             vc.designView.addSubview(subViewToAdd)
         }
         
-        vc.navigationBarForImage()
-        
+        switch navigationBarForImage {
+        case true:
+            vc.navigationBarForImage()
+        default:
+            vc.navigationBarForText()
+        }
+
         show(vc, sender: nil)
     }
 
