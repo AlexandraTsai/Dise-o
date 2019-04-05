@@ -128,21 +128,8 @@ extension ImageEditViewController {
             print(tappedView.frame)
             
             let newView = UIImageView()
-
-            //Record the rotaion of the original image view
-            let originRotation =  tappedView.transform
-          
-            //Transform the origin image view
-            tappedView.transform = CGAffineTransform(rotationAngle: 0)
-          
-            newView.frame = tappedView.frame
             
-            newView.transform = originRotation
-            newView.image = tappedView.image
-            
-            newView.transform = originRotation
-            
-            tappedView.transform = originRotation
+            newView.makeACopy(from: tappedView)
             
             addAllGesture(to: newView)
             editingView = newView

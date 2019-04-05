@@ -185,8 +185,9 @@ extension ViewController {
         
         for _ in 0...count-1 {
             
-            vc.designView.addSubview(designView.subviews.first!)
-
+            guard let subViewToAdd = designView.subviews.first else { return }
+            
+            vc.designView.addSubview(subViewToAdd)
         }
        
         vc.navigationBarForImage()
@@ -243,7 +244,9 @@ extension ViewController {
         
         for _ in 0...count-1 {
             
-            vc.designView.addSubview(designView.subviews.first!)
+            guard let subViewToAdd = designView.subviews.first else { return }
+            
+            vc.designView.addSubview(subViewToAdd)
             
         }
         
@@ -367,12 +370,33 @@ extension ViewController {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         
-        addTextView()
-
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: ImageEditViewController.self)) as? ImageEditViewController else { return }
+        
+        vc.loadViewIfNeeded()
+        
+        let newText = addTextView()
+        
+        vc.designView.image = designView.image
+        
+        vc.editingView = newText
+        
+        for _ in 0...designView.subviews.count-1 {
+            
+            guard let subViewToAdd = designView.subviews.first else { return }
+            
+            vc.designView.addSubview(subViewToAdd)
+            
+        }
         notEditingMode()
+        
+        vc.navigationBarForText()
+        
+        self.show(vc, sender: nil)
+
+        
     }
     
-    func addTextView(){
+    func addTextView() -> UITextView {
         
         let newText = UITextView(frame: CGRect(x:textView.frame.origin.x-designView.frame.origin.x, y: textView.frame.origin.y-designView.frame.origin.y, width: textView.frame.width, height: textView.frame.height))
         
@@ -387,6 +411,33 @@ extension ViewController {
         
         designView.addSubview(newText)
         
+        return newText
+    }
+    
+    func goToEditingVC(with viewToBeEdit: UIView) {
+        
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: ImageEditViewController.self)) as? ImageEditViewController else { return }
+        
+        vc.loadViewIfNeeded()
+        
+        vc.designView.image = designView.image
+        
+        vc.editingView = viewToBeEdit
+        
+        let count = designView.subviews.count
+        
+        for _ in 0...count-1 {
+            
+            guard let subViewToAdd = designView.subviews.first else { return }
+            
+            vc.designView.addSubview(subViewToAdd)
+        }
+        
+        vc.navigationBarForImage()
+        
+        show(vc, sender: nil)
     }
 
 }
+
+
