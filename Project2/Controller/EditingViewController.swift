@@ -23,6 +23,9 @@ class EditingViewController: UIViewController {
     @IBOutlet weak var fontSize: UIButton!
     @IBOutlet weak var textEditView: UIView!
     
+    var lineHeight: Float = 0
+    var letterSpacing: Float = 0
+    
     var editingView: UIView? {
         
         didSet {
@@ -49,6 +52,7 @@ class EditingViewController: UIViewController {
         
         fontTableView.al_registerCellWithNib(identifier: String(describing: FontTableViewCell.self), bundle: nil)
         fontTableView.al_registerCellWithNib(identifier: String(describing: SpacingTableViewCell.self), bundle: nil)
+        fontTableView.al_registerCellWithNib(identifier: String(describing: FontSizeTableViewCell.self), bundle: nil)
         
     }
     
@@ -78,8 +82,11 @@ class EditingViewController: UIViewController {
         textEditView.isHidden = true
     }
     @IBAction func fontSizeButtonTapped(_ sender: Any) {
+        
+        tableViewIndex = 2
         fontTableView.reloadData()
         textEditView.isHidden = true
+        
     }
     
     @IBAction func alignmentButtonTapped(_ sender: Any) {
@@ -376,8 +383,9 @@ extension EditingViewController {
 }
 
 extension EditingViewController: UITextViewDelegate{
-
+   
     func textViewDidChange(_ textView: UITextView) {
+        
         switch letterCaseButton.titleLabel?.text {
         case "AA":
          
@@ -411,13 +419,15 @@ extension EditingViewController: UITextViewDelegate{
             textView.text = textView.text.uppercased()
           
         default:
-
+            
             originalText = textView.text
+            
         }
+        
     }
 }
 
-extension EditingViewController: UITableViewDelegate, UITableViewDataSource, SpacingTableViewCellDelegate  {
+extension EditingViewController: UITableViewDelegate, UITableViewDataSource, SpacingTableViewCellDelegate, FontSizeTableViewCellDelegate  {
    
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -445,8 +455,7 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource, Spa
             fontCell.fontLabel.font = UIFont(name: FontName.allCases[indexPath.row].rawValue, size: 18)
             
             return fontCell
-        default:
-            
+        case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SpacingTableViewCell.self), for: indexPath)
             
             guard let spacingCell = cell as? SpacingTableViewCell else { return cell }
@@ -454,6 +463,15 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource, Spa
             spacingCell.delegate = self
             
             return spacingCell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FontSizeTableViewCell.self), for: indexPath)
+            
+            guard let fontSizeCell = cell as? FontSizeTableViewCell else { return cell }
+            
+            fontSizeCell.delegate = self
+            
+            return fontSizeCell
+            
         }
      
     }
@@ -477,6 +495,10 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource, Spa
     }
   
     func changeTextAttributeWith(lineHeight: Float, letterSpacing: Float) {
+        
+        self.lineHeight = lineHeight
+        self.letterSpacing = letterSpacing
+        
         guard let view = editingView as? UITextView else { return }
         
         let align = view.textAlignment
@@ -499,5 +521,12 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource, Spa
         view.attributedText = attributedString
         
         view.textAlignment = align
+    }
+    
+    func changeFontSize(to size: Int) {
+        
+        guard let view = editingView as? UITextView else { return }
+        view.font = UIFont(name: (view.font?.fontName)!, size: CGFloat(size))
+        print(size)
     }
 }

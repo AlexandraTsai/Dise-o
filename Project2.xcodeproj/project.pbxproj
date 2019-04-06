@@ -12,6 +12,8 @@
 		A8BFF76F22586E5C0010E56B /* FontTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */; };
 		A8BFF77322588EA90010E56B /* SpacingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF77122588EA90010E56B /* SpacingTableViewCell.swift */; };
 		A8BFF77422588EA90010E56B /* SpacingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BFF77222588EA90010E56B /* SpacingTableViewCell.xib */; };
+		A8BFF7772258D1970010E56B /* FontSizeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF7752258D1970010E56B /* FontSizeTableViewCell.swift */; };
+		A8BFF7782258D1970010E56B /* FontSizeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BFF7762258D1970010E56B /* FontSizeTableViewCell.xib */; };
 		A8D2C450225219020085AD24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C44F225219020085AD24 /* AppDelegate.swift */; };
 		A8D2C452225219020085AD24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C451225219020085AD24 /* ViewController.swift */; };
 		A8D2C455225219030085AD24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8D2C453225219030085AD24 /* Main.storyboard */; };
@@ -46,6 +48,8 @@
 		A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FontTableViewCell.xib; sourceTree = "<group>"; };
 		A8BFF77122588EA90010E56B /* SpacingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacingTableViewCell.swift; sourceTree = "<group>"; };
 		A8BFF77222588EA90010E56B /* SpacingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpacingTableViewCell.xib; sourceTree = "<group>"; };
+		A8BFF7752258D1970010E56B /* FontSizeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeTableViewCell.swift; sourceTree = "<group>"; };
+		A8BFF7762258D1970010E56B /* FontSizeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FontSizeTableViewCell.xib; sourceTree = "<group>"; };
 		A8D2C44C225219020085AD24 /* Project2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D2C44F225219020085AD24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8D2C451225219020085AD24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 				A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */,
 				A8BFF77122588EA90010E56B /* SpacingTableViewCell.swift */,
 				A8BFF77222588EA90010E56B /* SpacingTableViewCell.xib */,
+				A8BFF7752258D1970010E56B /* FontSizeTableViewCell.swift */,
+				A8BFF7762258D1970010E56B /* FontSizeTableViewCell.xib */,
 			);
 			path = Text;
 			sourceTree = "<group>";
@@ -249,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8BFF76F22586E5C0010E56B /* FontTableViewCell.xib in Resources */,
+				A8BFF7782258D1970010E56B /* FontSizeTableViewCell.xib in Resources */,
 				A8D2C45D225219080085AD24 /* LaunchScreen.storyboard in Resources */,
 				A8D2C47F22523A490085AD24 /* PhotoCollectionViewCell.xib in Resources */,
 				A8DEBBB0225621B30081A694 /* PaletteCollectionViewCell.xib in Resources */,
@@ -283,6 +290,7 @@
 				A8DEBBAF225621B30081A694 /* PaletteCollectionViewCell.swift in Sources */,
 				A8D2C452225219020085AD24 /* ViewController.swift in Sources */,
 				A8D2C450225219020085AD24 /* AppDelegate.swift in Sources */,
+				A8BFF7772258D1970010E56B /* FontSizeTableViewCell.swift in Sources */,
 				A8D2C4722252270C0085AD24 /* ContainerViewController.swift in Sources */,
 				A8DEBBB2225638070081A694 /* UIImageView+Extension.swift in Sources */,
 				A8D2C458225219030085AD24 /* Project2.xcdatamodeld in Sources */,
