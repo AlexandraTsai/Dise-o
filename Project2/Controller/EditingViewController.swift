@@ -12,6 +12,13 @@ class EditingViewController: UIViewController {
     
     @IBOutlet weak var alignmentButton: UIButton!
     @IBOutlet weak var letterCaseButton: UIButton!
+    @IBOutlet weak var fontTableView: UITableView! {
+        
+        didSet {
+            fontTableView.delegate = self
+            fontTableView.dataSource = self
+        }
+    }
     
     var editingView: UIView? {
         
@@ -36,7 +43,7 @@ class EditingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let view = editingView as? UITextView else { return }
+        fontTableView.al_registerCellWithNib(identifier: String(describing: FontTableViewCell.self), bundle: nil)
         
     }
     
@@ -98,8 +105,8 @@ class EditingViewController: UIViewController {
         
     }
     @IBAction func spacingBtnTapped(_ sender: Any) {
+        
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -296,10 +303,8 @@ extension EditingViewController {
             
             sender.view?.transform = transform
             
-            
            // sender.scale = 1
           
-            
             guard let textView = sender.view as? UITextView else { return }
             
            // var pointSize = textView.font?.pointSize
@@ -311,7 +316,6 @@ extension EditingViewController {
             textView.updateTextFont()
        
             sender.scale = 1
-            
             
          //   let formattedText = NSMutableAttributedString.init(attributedString: textView.attributedText)
          //   formattedText.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: pointSize!), range: NSRange(location: 0, length: formattedText.length))
@@ -341,9 +345,6 @@ extension EditingViewController: UITextViewDelegate {
          
             var newText = ""
             newText.append(textView.text)
-            
-            print(newText)
-            print(textView.text)
         
             guard newText.count > 0  else { return }
 
@@ -364,8 +365,7 @@ extension EditingViewController: UITextViewDelegate {
             for _ in 1...originalText.count {
                 
                 newText.removeFirst()
-                print("---------Original Text----------")
-                 print(originalText)
+            
             }
 
             originalText.append(newText)
@@ -377,4 +377,39 @@ extension EditingViewController: UITextViewDelegate {
             originalText = textView.text
         }
     }
+}
+
+extension EditingViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return FontName.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FontTableViewCell.self), for: indexPath)
+        
+        guard let fontCell = cell as? FontTableViewCell else { return cell }
+        
+        fontCell.fontLabel.text = FontName.allCases[indexPath.row].rawValue
+        fontCell.fontLabel.font = UIFont(name: FontName.allCases[indexPath.row].rawValue, size: 14)
+    
+        return fontCell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let view = editingView as? UITextView,
+            let fontSize = view.font?.pointSize else { return }
+        
+        let fontName = FontName.allCases[indexPath.row].rawValue
+
+        guard let newFont = UIFont(name: fontName, size: fontSize) else {
+           return
+        }
+        
+        view.font = newFont
+       
+    }
+
 }

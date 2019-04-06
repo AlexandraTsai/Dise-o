@@ -332,11 +332,13 @@ extension ViewController {
     
     //NavigationBar
     func addingTextMode() {
+        
         navigationController?.navigationBar.isHidden = true
         textView.isHidden = false
         textView.becomeFirstResponder()
         
         textView.text = "Enter your text"
+        
         textView.delegate = self
         
         textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.endOfDocument)

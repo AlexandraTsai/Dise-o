@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A8BFF76B22586E3D0010E56B /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */; };
+		A8BFF76E22586E5C0010E56B /* FontTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */; };
+		A8BFF76F22586E5C0010E56B /* FontTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */; };
 		A8D2C450225219020085AD24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C44F225219020085AD24 /* AppDelegate.swift */; };
 		A8D2C452225219020085AD24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C451225219020085AD24 /* ViewController.swift */; };
 		A8D2C455225219030085AD24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8D2C453225219030085AD24 /* Main.storyboard */; };
@@ -36,6 +39,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableViewCell.swift; sourceTree = "<group>"; };
+		A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FontTableViewCell.xib; sourceTree = "<group>"; };
 		A8D2C44C225219020085AD24 /* Project2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D2C44F225219020085AD24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8D2C451225219020085AD24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +127,8 @@
 				A8DEBBA422549DC30081A694 /* ImageCollectionReusableView.xib */,
 				A8DEBBAD225621B30081A694 /* PaletteCollectionViewCell.swift */,
 				A8DEBBAE225621B30081A694 /* PaletteCollectionViewCell.xib */,
+				A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */,
+				A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -155,6 +163,7 @@
 				A8DEBBA92255A8A50081A694 /* ALCustomView.swift */,
 				A8DEBBAB2255CB980081A694 /* Notification.Name.swift */,
 				A8DEBBB1225638070081A694 /* UIImageView+Extension.swift */,
+				A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -225,6 +234,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8BFF76F22586E5C0010E56B /* FontTableViewCell.xib in Resources */,
 				A8D2C45D225219080085AD24 /* LaunchScreen.storyboard in Resources */,
 				A8D2C47F22523A490085AD24 /* PhotoCollectionViewCell.xib in Resources */,
 				A8DEBBB0225621B30081A694 /* PaletteCollectionViewCell.xib in Resources */,
@@ -260,6 +270,8 @@
 				A8D2C4722252270C0085AD24 /* ContainerViewController.swift in Sources */,
 				A8DEBBB2225638070081A694 /* UIImageView+Extension.swift in Sources */,
 				A8D2C458225219030085AD24 /* Project2.xcdatamodeld in Sources */,
+				A8BFF76E22586E5C0010E56B /* FontTableViewCell.swift in Sources */,
+				A8BFF76B22586E3D0010E56B /* UIFont+Extension.swift in Sources */,
 				A8DEBBAC2255CB980081A694 /* Notification.Name.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
