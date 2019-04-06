@@ -36,6 +36,8 @@ class EditingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let view = editingView as? UITextView else { return }
+        
     }
     
     @IBAction func fontButtonTapped(_ sender: Any) {
@@ -82,24 +84,13 @@ class EditingViewController: UIViewController {
         case "Aa":
             
             originalText = view.text
+            
             view.text = view.text.uppercased()
+            
             letterCaseButton.setTitle("AA", for: .normal)
-            print(originalText)
-            print("-----original text saved-----")
-            
+        
         default:
-            
-           
-//            var newText = view.text
-//            
-//            for _ in 0...originalText.count-1 {
-//                newText?.removeFirst()
-//            }
-//  
-//            print(newText)
-//            
-//            originalText.append(newText!)
-            
+
             letterCaseButton.setTitle("Aa", for: .normal)
             view.text = originalText
             
@@ -204,11 +195,7 @@ extension EditingViewController {
         guard let tappedView = (editingView as? UITextView) else {
             
             guard let tappedView = (editingView as? UIImageView)else { return }
-            
-            print("---------tapped view---------")
-            print(tappedView.frame)
-            
-            
+
             let newView = UIImageView()
             
             newView.makeACopy(from: tappedView)
@@ -221,8 +208,9 @@ extension EditingViewController {
             return
         }
   
-        let newView = UITextView(frame: tappedView.frame, textContainer: tappedView.textContainer)
-        newView.font?.withSize(100)
+        let newView = UITextView()
+   
+        newView.makeACopy(from: tappedView)
   
         addAllGesture(to: newView)
         editingView = newView
@@ -308,19 +296,26 @@ extension EditingViewController {
             
             sender.view?.transform = transform
             
-            sender.scale = 1.0
             
-            print(sender.scale)
+           // sender.scale = 1
+          
             
             guard let textView = sender.view as? UITextView else { return }
             
-            var pointSize = textView.font?.pointSize
-            pointSize = ((sender.velocity > 0) ? 1 : -1) * 0.5 + pointSize!
-            textView.font = UIFont( name: "arial", size: (pointSize)!)
+           // var pointSize = textView.font?.pointSize
+            //pointSize = ((sender.velocity > 0) ? 1 : -1) * 0.5 + pointSize!
+           // textView.font = UIFont( name: "arial", size:
+//            textView.textInputView.transform  = transform
             
-            let formattedText = NSMutableAttributedString.init(attributedString: textView.attributedText)
-            formattedText.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: pointSize!), range: NSRange(location: 0, length: formattedText.length))
-            textView.attributedText = formattedText
+//            textView.font = UIFont(name: (textView.font?.fontName)!, size: (textView.font?.pointSize)!*sender.scale)
+            textView.updateTextFont()
+       
+            sender.scale = 1
+            
+            
+         //   let formattedText = NSMutableAttributedString.init(attributedString: textView.attributedText)
+         //   formattedText.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: pointSize!), range: NSRange(location: 0, length: formattedText.length))
+          //  textView.attributedText = formattedText
             
             return
         }
@@ -343,28 +338,43 @@ extension EditingViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         switch letterCaseButton.titleLabel?.text {
         case "AA":
-            
-            print("Show--- \(textView.text)")
-            print("Original--- \(originalText)")
-            
+         
             var newText = ""
             newText.append(textView.text)
             
-            for _ in 1...originalText.count {
-                newText.removeFirst()
-                 print("Original--- \(originalText)")
+            print(newText)
+            print(textView.text)
+        
+            guard newText.count > 0  else { return }
+
+            guard newText.count > originalText.count else {
+                
+                let count = originalText.count - newText.count
+                
+                for _ in  1...count {
+                    
+                    originalText.removeLast()
+                }
+                
+                return
+                
             }
             
-//            guard newText != nil else { return }
-            
-            print("I'm new text \(newText)")
+            //Remove the text that original text already has
+            for _ in 1...originalText.count {
+                
+                newText.removeFirst()
+                print("---------Original Text----------")
+                 print(originalText)
+            }
+
             originalText.append(newText)
-            
+
             textView.text = textView.text.uppercased()
           
         default:
 
-            print("not upper case")
+            originalText = textView.text
         }
     }
 }
