@@ -9,13 +9,36 @@
 import UIKit
 
 enum FontName: String, CaseIterable {
-    case AcademyEngravedLet
+    case AcademyEngravedLet = "Academy Engraved LET"
     case Arial
     case Avenir
-    case Avenitnextcondensed
-    case ChalkboardSE
+    case AvenirNextCondensed = "Avenir Next Condensed"
+    case ChalkboardSE = "Chalkboard SE"
     case Chalkduster
+    case Charter
+    case Cochin
     case Copperplate
-    
+    case Courier
+    case Damascus
+    case Didot
+    case DINAlternate = "DIN Alternate"
+    case DINCondensed = "DIN Condensed"
+    case Farah
+    case Futura
+    case Georgia
+    case GillSans = "Gill Sans"
+    case GurmukhiMN = "Gurmukhi MN"
+    case HelveticaNeue = "Helvetica Neue"
+    case HoeflerText = "Hoefler Text"
+    case Kailasa = "Kailasa"
+    case Kefa
+    case MarkerFelt = "Marker Felt"
+    case Noteworthy
+    case OriyaSangamMN = "Oriya Sangam MN"
+    case Palatino
+    case Papyrus
+    case PartyLET = "Party LET"
+    case Rockwell
+    case SavoyeLet = "Savoye LET"
     
 }

@@ -19,6 +19,7 @@ class EditingViewController: UIViewController {
             fontTableView.dataSource = self
         }
     }
+    @IBOutlet weak var textEditView: UIView!
     
     var editingView: UIView? {
         
@@ -48,12 +49,15 @@ class EditingViewController: UIViewController {
     }
     
     @IBAction func fontButtonTapped(_ sender: Any) {
+        textEditView.isHidden = true
         
     }
     
     @IBAction func colorButtonTapped(_ sender: Any) {
+        textEditView.isHidden = true
     }
     @IBAction func fontSizeButtonTapped(_ sender: Any) {
+        textEditView.isHidden = true
     }
     
     @IBAction func alignmentButtonTapped(_ sender: Any) {
@@ -73,6 +77,11 @@ class EditingViewController: UIViewController {
         }
         
     
+    }
+    
+    @IBAction func finishEdit(_ sender: Any) {
+        textEditView.isHidden = false
+        
     }
     
     @IBAction func boldButtonTapped(_ sender: Any) {
@@ -105,6 +114,7 @@ class EditingViewController: UIViewController {
         
     }
     @IBAction func spacingBtnTapped(_ sender: Any) {
+        textEditView.isHidden = true
         
     }
     
