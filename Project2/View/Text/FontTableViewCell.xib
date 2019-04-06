@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUA-kC-iKU">
-                        <rect key="frame" x="25" y="10" width="270" height="21"/>
+                        <rect key="frame" x="25" y="10" width="270" height="33.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -29,6 +29,7 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="IUA-kC-iKU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="A74-AH-1CR"/>
+                    <constraint firstAttribute="bottom" secondItem="IUA-kC-iKU" secondAttribute="bottom" id="Edr-s9-2Dq"/>
                     <constraint firstAttribute="trailing" secondItem="IUA-kC-iKU" secondAttribute="trailing" constant="25" id="ZA0-Kr-ybt"/>
                     <constraint firstItem="IUA-kC-iKU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="cyF-GS-wj7"/>
                 </constraints>

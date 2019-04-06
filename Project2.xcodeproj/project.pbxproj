@@ -10,6 +10,8 @@
 		A8BFF76B22586E3D0010E56B /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */; };
 		A8BFF76E22586E5C0010E56B /* FontTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */; };
 		A8BFF76F22586E5C0010E56B /* FontTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */; };
+		A8BFF77322588EA90010E56B /* SpacingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF77122588EA90010E56B /* SpacingTableViewCell.swift */; };
+		A8BFF77422588EA90010E56B /* SpacingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BFF77222588EA90010E56B /* SpacingTableViewCell.xib */; };
 		A8D2C450225219020085AD24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C44F225219020085AD24 /* AppDelegate.swift */; };
 		A8D2C452225219020085AD24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C451225219020085AD24 /* ViewController.swift */; };
 		A8D2C455225219030085AD24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8D2C453225219030085AD24 /* Main.storyboard */; };
@@ -42,6 +44,8 @@
 		A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableViewCell.swift; sourceTree = "<group>"; };
 		A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FontTableViewCell.xib; sourceTree = "<group>"; };
+		A8BFF77122588EA90010E56B /* SpacingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacingTableViewCell.swift; sourceTree = "<group>"; };
+		A8BFF77222588EA90010E56B /* SpacingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpacingTableViewCell.xib; sourceTree = "<group>"; };
 		A8D2C44C225219020085AD24 /* Project2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D2C44F225219020085AD24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8D2C451225219020085AD24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +87,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A8BFF77022588E890010E56B /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */,
+				A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */,
+				A8BFF77122588EA90010E56B /* SpacingTableViewCell.swift */,
+				A8BFF77222588EA90010E56B /* SpacingTableViewCell.xib */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
 		A8D2C443225219020085AD24 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +133,7 @@
 		A8D2C464225222790085AD24 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A8BFF77022588E890010E56B /* Text */,
 				A8D2C4822252F7420085AD24 /* Storyboard */,
 				A8D2C47C22523A480085AD24 /* PhotoCollectionViewCell.swift */,
 				A8D2C47D22523A480085AD24 /* PhotoCollectionViewCell.xib */,
@@ -127,8 +143,6 @@
 				A8DEBBA422549DC30081A694 /* ImageCollectionReusableView.xib */,
 				A8DEBBAD225621B30081A694 /* PaletteCollectionViewCell.swift */,
 				A8DEBBAE225621B30081A694 /* PaletteCollectionViewCell.xib */,
-				A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */,
-				A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -238,6 +252,7 @@
 				A8D2C45D225219080085AD24 /* LaunchScreen.storyboard in Resources */,
 				A8D2C47F22523A490085AD24 /* PhotoCollectionViewCell.xib in Resources */,
 				A8DEBBB0225621B30081A694 /* PaletteCollectionViewCell.xib in Resources */,
+				A8BFF77422588EA90010E56B /* SpacingTableViewCell.xib in Resources */,
 				A8DEBBA622549DC30081A694 /* ImageCollectionReusableView.xib in Resources */,
 				A8DEBBB4225713770081A694 /* Assets.xcassets in Resources */,
 				A8DEBB9C22545B8F0081A694 /* CollectionReusableView.xib in Resources */,
@@ -257,6 +272,7 @@
 				A8D2C47B22522A8F0085AD24 /* UICollectionView+Extension.swift in Sources */,
 				A8DEBB9822543DBF0081A694 /* border.swift in Sources */,
 				A8DEBBA82255A5A90081A694 /* UITextView+Extension.swift in Sources */,
+				A8BFF77322588EA90010E56B /* SpacingTableViewCell.swift in Sources */,
 				A8D2C47E22523A480085AD24 /* PhotoCollectionViewCell.swift in Sources */,
 				A8DEBB9E2254803B0081A694 /* UIImage+Extension.swift in Sources */,
 				A8DEBBA522549DC30081A694 /* ImageCollectionReusableView.swift in Sources */,

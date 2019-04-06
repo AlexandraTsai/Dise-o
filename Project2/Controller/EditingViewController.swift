@@ -10,6 +10,7 @@ import UIKit
 
 class EditingViewController: UIViewController {
     
+    @IBOutlet weak var currentFontBtn: UIButton!
     @IBOutlet weak var alignmentButton: UIButton!
     @IBOutlet weak var letterCaseButton: UIButton!
     @IBOutlet weak var fontTableView: UITableView! {
@@ -19,6 +20,7 @@ class EditingViewController: UIViewController {
             fontTableView.dataSource = self
         }
     }
+    @IBOutlet weak var fontSize: UIButton!
     @IBOutlet weak var textEditView: UIView!
     
     var editingView: UIView? {
@@ -33,10 +35,11 @@ class EditingViewController: UIViewController {
             guard let view = editingView as? UITextView else { return }
             
             view.delegate = self
-    
+            self.changeTextAttributeWith(lineHeight: 1.4, letterSpacing: 0.0)
         }
     }
     
+    var tableViewIndex: Int = 0
     var originalText = ""
 
     @IBOutlet weak var designView: UIImageView!
@@ -45,18 +48,37 @@ class EditingViewController: UIViewController {
         super.viewDidLoad()
         
         fontTableView.al_registerCellWithNib(identifier: String(describing: FontTableViewCell.self), bundle: nil)
+        fontTableView.al_registerCellWithNib(identifier: String(describing: SpacingTableViewCell.self), bundle: nil)
         
     }
     
+    @IBAction func addBtnTapped(_ sender: Any) {
+        
+        editingView?.layer.borderWidth = 0
+        
+        /*Notification*/
+        let notificationName = Notification.Name(NotiName.addingMode.rawValue)
+        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: [NotificationInfo.addingMode: true])
+        
+        self.navigationController?.popViewController(animated: true)
+        
+        
+    }
     @IBAction func fontButtonTapped(_ sender: Any) {
+        
+        tableViewIndex = 0
+        fontTableView.isScrollEnabled = true
+        fontTableView.reloadData()
         textEditView.isHidden = true
         
     }
     
     @IBAction func colorButtonTapped(_ sender: Any) {
+        fontTableView.reloadData()
         textEditView.isHidden = true
     }
     @IBAction func fontSizeButtonTapped(_ sender: Any) {
+        fontTableView.reloadData()
         textEditView.isHidden = true
     }
     
@@ -114,8 +136,13 @@ class EditingViewController: UIViewController {
         
     }
     @IBAction func spacingBtnTapped(_ sender: Any) {
-        textEditView.isHidden = true
         
+        tableViewIndex = 1
+        
+        fontTableView.isScrollEnabled = false
+        fontTableView.reloadData()
+        
+        textEditView.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -317,12 +344,13 @@ extension EditingViewController {
           
             guard let textView = sender.view as? UITextView else { return }
             
-           // var pointSize = textView.font?.pointSize
+//            var pointSize = textView.font?.pointSize
             //pointSize = ((sender.velocity > 0) ? 1 : -1) * 0.5 + pointSize!
            // textView.font = UIFont( name: "arial", size:
 //            textView.textInputView.transform  = transform
             
 //            textView.font = UIFont(name: (textView.font?.fontName)!, size: (textView.font?.pointSize)!*sender.scale)
+            
             textView.updateTextFont()
        
             sender.scale = 1
@@ -347,8 +375,8 @@ extension EditingViewController {
     }
 }
 
-extension EditingViewController: UITextViewDelegate {
-    
+extension EditingViewController: UITextViewDelegate{
+
     func textViewDidChange(_ textView: UITextView) {
         switch letterCaseButton.titleLabel?.text {
         case "AA":
@@ -389,22 +417,45 @@ extension EditingViewController: UITextViewDelegate {
     }
 }
 
-extension EditingViewController: UITableViewDelegate, UITableViewDataSource {
-    
+extension EditingViewController: UITableViewDelegate, UITableViewDataSource, SpacingTableViewCellDelegate  {
+   
+   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return FontName.allCases.count
+        switch tableViewIndex {
+        case 0:
+            
+            return FontName.allCases.count
+        default:
+            
+            return 1
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FontTableViewCell.self), for: indexPath)
         
-        guard let fontCell = cell as? FontTableViewCell else { return cell }
-        
-        fontCell.fontLabel.text = FontName.allCases[indexPath.row].rawValue
-        fontCell.fontLabel.font = UIFont(name: FontName.allCases[indexPath.row].rawValue, size: 14)
-    
-        return fontCell
+        switch tableViewIndex {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FontTableViewCell.self), for: indexPath)
+            
+            guard let fontCell = cell as? FontTableViewCell else { return cell }
+            
+            fontCell.fontLabel.text = FontName.allCases[indexPath.row].rawValue
+            fontCell.fontLabel.font = UIFont(name: FontName.allCases[indexPath.row].rawValue, size: 18)
+            
+            return fontCell
+        default:
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SpacingTableViewCell.self), for: indexPath)
+            
+            guard let spacingCell = cell as? SpacingTableViewCell else { return cell }
+            
+            spacingCell.delegate = self
+            
+            return spacingCell
+        }
+     
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -419,7 +470,34 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         view.font = newFont
+    
+        currentFontBtn.setTitle(fontName, for: .normal)
+        currentFontBtn.titleLabel?.font = UIFont(name: fontName, size: 20)
        
     }
-
+  
+    func changeTextAttributeWith(lineHeight: Float, letterSpacing: Float) {
+        guard let view = editingView as? UITextView else { return }
+        
+        let align = view.textAlignment
+        
+        //Line Height
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = CGFloat(lineHeight)
+       
+        let attributedString = NSMutableAttributedString(string: view.text)
+        
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+        
+        let range = NSRange(location: 0, length: attributedString.length)
+        //Letter Spacing
+        attributedString.addAttribute(NSAttributedString.Key.kern, value: letterSpacing, range: range)
+        
+        //Font
+        attributedString.addAttribute(NSAttributedString.Key.font, value: view.font as Any, range: NSRange(location: 0, length: attributedString.length))
+        
+        view.attributedText = attributedString
+        
+        view.textAlignment = align
+    }
 }

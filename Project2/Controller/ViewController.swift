@@ -16,6 +16,7 @@ struct NotificationInfo {
     static let newImage = UIImage()
     static let addImage = UIImage()
     static let editedImage = [UIView]()
+    static let addingMode = true
     
 }
 
@@ -158,6 +159,11 @@ extension ViewController {
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(updateImage(noti:)), name: notificationName3, object: nil)
+        
+        let notificationName4 = Notification.Name(NotiName.addingMode.rawValue)
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(switchToAddingMode(noti:)), name: notificationName4, object: nil)
 
     }
     
@@ -166,6 +172,14 @@ extension ViewController {
         if let userInfo = noti.userInfo,
             let newImage = userInfo[NotificationInfo.newImage] as? UIImage {
             designView.image = newImage
+        }
+    }
+    @objc func switchToAddingMode(noti: Notification) {
+        if let userInfo = noti.userInfo,
+            let mode = userInfo[NotificationInfo.addingMode] as? Bool {
+            if mode == true {
+                scrollView.isHidden = false
+            }
         }
     }
     

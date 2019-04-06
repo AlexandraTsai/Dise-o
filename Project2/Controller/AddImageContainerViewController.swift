@@ -33,7 +33,7 @@ class AddImageContainerViewController: UIViewController {
         
         setupCollectionViewLayout()
         
-        grabPhoto()
+//        grabPhoto()
     }
     
 }
