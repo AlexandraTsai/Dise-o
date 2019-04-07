@@ -215,6 +215,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="QRY-6u-QQf" firstAttribute="height" secondItem="xm2-GP-7kp" secondAttribute="height" id="50f-eK-zbw"/>
                                     <constraint firstItem="xm2-GP-7kp" firstAttribute="leading" secondItem="sHk-BO-mXn" secondAttribute="leading" constant="20" id="GfR-c7-H2q"/>
                                     <constraint firstAttribute="trailing" secondItem="hlx-JU-8Ak" secondAttribute="trailing" id="Ha0-DJ-iL3"/>
                                     <constraint firstItem="hlx-JU-8Ak" firstAttribute="top" secondItem="sHk-BO-mXn" secondAttribute="top" id="IlF-rf-G3Z"/>
@@ -223,9 +224,9 @@
                                     <constraint firstItem="xm2-GP-7kp" firstAttribute="top" secondItem="hlx-JU-8Ak" secondAttribute="bottom" constant="8" id="VDI-aI-fKM"/>
                                     <constraint firstItem="hlx-JU-8Ak" firstAttribute="leading" secondItem="sHk-BO-mXn" secondAttribute="leading" id="YuK-lM-7ez"/>
                                     <constraint firstItem="QRY-6u-QQf" firstAttribute="top" secondItem="hlx-JU-8Ak" secondAttribute="bottom" constant="8" id="bEi-RX-kIM"/>
+                                    <constraint firstItem="QRY-6u-QQf" firstAttribute="leading" secondItem="xm2-GP-7kp" secondAttribute="trailing" constant="275" id="bhp-a4-XIv"/>
                                     <constraint firstAttribute="trailing" secondItem="QRY-6u-QQf" secondAttribute="trailing" constant="20" id="egG-xf-xQl"/>
                                     <constraint firstAttribute="bottom" secondItem="xm2-GP-7kp" secondAttribute="bottom" constant="8" id="rRQ-Vm-3SE"/>
-                                    <constraint firstItem="QRY-6u-QQf" firstAttribute="width" secondItem="xm2-GP-7kp" secondAttribute="height" multiplier="1:1" id="t9T-uC-dUG"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yke-94-yj6">

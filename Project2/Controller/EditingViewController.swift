@@ -74,6 +74,7 @@ class EditingViewController: UIViewController {
     @IBAction func fontButtonTapped(_ sender: Any) {
         
         tableViewIndex = 0
+        
         fontTableView.isScrollEnabled = true
         fontTableView.reloadData()
         textEditView.isHidden = true
@@ -149,9 +150,7 @@ class EditingViewController: UIViewController {
             }
            
             boldbutton.setTitleColor(UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1), for: .normal)
-            
-            print("-----change to bold-----")
-            print(view.font)
+     
         }
     
     }
@@ -192,10 +191,7 @@ class EditingViewController: UIViewController {
             }
             
             italicButton.setTitleColor(UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1), for: .normal)
-            
-            print("-----change to italic-----")
-            print(view.font)
-            
+         
         }
         
     }
@@ -225,7 +221,7 @@ class EditingViewController: UIViewController {
     @IBAction func spacingBtnTapped(_ sender: Any) {
         
         tableViewIndex = 1
-        
+       
         fontTableView.isScrollEnabled = false
         fontTableView.reloadData()
         
@@ -574,10 +570,7 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource, Spa
             }
            
             view.font = newFont
-         
-            print("--------*****------")
-            print(view.font)
-            
+                     
             currentFontName = FontName.allCases[indexPath.row]
             
             currentFontBtn.setTitle(fontName, for: .normal)

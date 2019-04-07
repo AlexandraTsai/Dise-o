@@ -99,9 +99,7 @@ extension UITextView{
         //Font
         guard let font = UIFont(name: fontName, size: fontSize) else { return }
         attributedString.addAttribute(NSAttributedString.Key.font, value: font, range: NSRange(location: 0, length: attributedString.length))
-        
-        print(self.font)
-    
+      
         self.attributedText = attributedString
         
 //        print(self.attributedText.font)
