@@ -15,8 +15,9 @@ enum FontName: String, CaseIterable {
     case arialMT = "ArialMT"
     case avenir
     case avenirNextCondensed = "Avenir Next Condensed"
+    case baskerville = "Baskerville"
     case chalkboardSE = "Chalkboard SE"
-    case chalkduster
+    case chalkduster = "ChalkboardSE-Regular"
     case charter
     case cochin
     case copperplate
@@ -25,8 +26,10 @@ enum FontName: String, CaseIterable {
     case didot
     case dINAlternate = "DIN Alternate"
     case dINCondensed = "DIN Condensed"
+    case euphemiaUCAS = "EuphemiaUCAS"
     case farah
     case futura
+    case geezaPro = "GeezaPro"
     case georgia
     case gillSans = "Gill Sans"
     case gurmukhiMN = "Gurmukhi MN"
@@ -35,6 +38,7 @@ enum FontName: String, CaseIterable {
     case kailasa = "Kailasa"
     case kefa
     case markerFelt = "Marker Felt"
+    case menloRegular = "Menlo-Regular"
     case noteworthy
     case oriyaSangamMN = "Oriya Sangam MN"
     case palatino
@@ -48,15 +52,19 @@ enum FontName: String, CaseIterable {
         switch self {
             
         //bold
-        case .alNile, .copperplate:
+        case .alNile, .copperplate, .chalkboardSE, .damascus, .geezaPro, .gurmukhiMN, .kailasa:
             return 1
         
         //italic
         case .hoeflerText:
             return 2
-            
+          
+        //bold, italic
+        case .didot, .euphemiaUCAS:
+            return 3
+        
         //bold, italic, boldItalic
-        case .arialMT, .cochin:
+        case .arialMT, .cochin, .baskerville, .georgia, .gillSans, .helveticaNeue, .menloRegular, .palatino:
             return 4
         default:
             return 0
@@ -66,34 +74,58 @@ enum FontName: String, CaseIterable {
     func boldStyle() -> String {
       
         switch self {
-        case .alNile:
-            return "AlNile-Bold"
-        case .arialMT:
-            return "Arial-BoldMT"
-        default:
-            return "Copperplate-Bold"
+        case .alNile: return "AlNile-Bold"
+        case .arialMT: return "Arial-BoldMT"
+        case .baskerville: return "Baskerville-Bold"
+        case .damascus: return "DamascusBold"
+        case .didot: return "Didot-Bold"
+        case .copperplate: return "Copperplate-Bold"
+        case .chalkboardSE: return "ChalkboardSE-Bold"
+        case .cochin: return  "Cochin-Bold"
+        case .euphemiaUCAS: return "EuphemiaUCAS-Bold"
+        case .geezaPro: return "GeezaPro-Bold"
+        case .georgia: return "Georgia-Bold"
+        case .gillSans: return "GillSans-Bold"
+        case .gurmukhiMN: return "GurmukhiMN-Bold"
+        case .helveticaNeue: return "HelveticaNeue-Bold"
+        case .kailasa: return "Kailasa-Bold"
+        case .menloRegular: return "Menlo-Bold"
+        case .palatino: return  "Palatino-Bold"
+        default: return self.rawValue
         }
     }
     
-}
-
-enum FontNameForBold: String {
-    
-    case alNil = "AlNile-Bold"
-    case arialMT = "Arial-BoldMT"
-    case copperplate = "Copperplate-Bold"
-}
-
-enum FontNameForItalic: String {
-    
-    case arialMT = "Arial-ItalicMT"
-    case hoeflerText = "HoeflerText-Italic"
-}
-
-enum FontNameForBoldItalic: String {
-    
-    case arialMT = "Arial-BoldItalicMT"
-    case cochin = "Cochin-BoldItalic"
+    func italicStyle() -> String {
+        
+        switch self {
+        case .arialMT: return "Arial-ItalicMT"
+        case .baskerville: return "Baskerville-Italic"
+        case .cochin: return  "Cochin-Italic"
+        case .didot: return "Didot-Italic"
+        case .euphemiaUCAS: return "EuphemiaUCAS-Italic"
+        case .georgia: return "Georgia-Italic"
+        case .gillSans: return "GillSans-Italic"
+        case .helveticaNeue: return "HelveticaNeue-Italic"
+        case .hoeflerText: return "HoeflerText-Italic"
+        case .menloRegular: return "Menlo-Italic"
+        case .palatino: return  "Palatino-Italic"
+        default: return self.rawValue
+        }
+    }
+    func boldItalicStyle() -> String {
+        
+        switch self {
+        case .arialMT: return "Arial-BoldItalicMT"
+        case .baskerville: return "Baskerville-BoldItalic"
+        case .cochin: return  "Cochin-BoldItalic"
+        case .georgia: return "Georgia-BoldItalic"
+        case .gillSans: return "GillSans-BoldItalic"
+        case .helveticaNeue: return "HelveticaNeue-BoldItalic"
+        case .menloRegular: return "Menlo-BoldItalic"
+        case .palatino: return  "Palatino-BoldItalic"
+        default: return self.rawValue
+        }
+    }
 }
 
 extension UIFont {

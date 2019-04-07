@@ -27,7 +27,7 @@ class EditingViewController: UIViewController {
     
     var lineHeight: Float = 0
     var letterSpacing: Float = 0
-    var currentFontName: FontName = FontName.alNile
+    var currentFontName: FontName = FontName.helveticaNeue
     
     var editingView: UIView? {
         
@@ -124,18 +124,34 @@ class EditingViewController: UIViewController {
      
         switch boldbutton.currentTitleColor {
             
-        case UIColor.red:
-            
-            view.font = UIFont(name: currentFontName.rawValue, size: (view.font?.pointSize)!)
+        case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
+        
+            switch italicButton.currentTitleColor {
+            case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
+                
+                view.font = UIFont(name: currentFontName.italicStyle(), size: (view.font?.pointSize)!)
+                
+            default:
+                view.font = UIFont(name: currentFontName.rawValue, size: (view.font?.pointSize)!)
+              
+            }
             
             boldbutton.setTitleColor(UIColor.white, for: .normal)
-            
         default:
-           
-            view.font = UIFont(name: currentFontName.boldStyle(), size: (view.font?.pointSize)!)
             
-            boldbutton.setTitleColor(UIColor.red, for: .normal)
-
+            switch italicButton.currentTitleColor {
+            case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
+                
+                view.font = UIFont(name: currentFontName.boldItalicStyle(), size: (view.font?.pointSize)!)
+             
+            default:
+                view.font = UIFont(name: currentFontName.boldStyle(), size: (view.font?.pointSize)!)
+            }
+           
+            boldbutton.setTitleColor(UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1), for: .normal)
+            
+            print("-----change to bold-----")
+            print(view.font)
         }
     
     }
@@ -144,10 +160,43 @@ class EditingViewController: UIViewController {
         
         guard let view =  editingView as? UITextView else { return }
         
-        view.font = UIFont.preferredFont(forTextStyle: .body).italic()
-        view.adjustsFontForContentSizeCategory = true
-        
-//        boldbutton.setTitleColor(UIColor.red, for: .normal)
+//        view.font = UIFont.preferredFont(forTextStyle: .body).italic()
+//        view.adjustsFontForContentSizeCategory = true
+//
+        switch italicButton.currentTitleColor {
+            
+        case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
+            
+            switch boldbutton.currentTitleColor {
+            case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
+                
+                view.font = UIFont(name: currentFontName.boldStyle(), size: (view.font?.pointSize)!)
+               
+            default:
+                
+                view.font = UIFont(name: currentFontName.rawValue, size: (view.font?.pointSize)!)
+                
+            }
+            
+            italicButton.setTitleColor(UIColor.white, for: .normal)
+            
+        default:
+            
+            switch boldbutton.currentTitleColor {
+            case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
+                
+                view.font = UIFont(name: currentFontName.boldItalicStyle(), size: (view.font?.pointSize)!)
+            default:
+                
+                view.font = UIFont(name: currentFontName.italicStyle(), size: (view.font?.pointSize)!)
+            }
+            
+            italicButton.setTitleColor(UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1), for: .normal)
+            
+            print("-----change to italic-----")
+            print(view.font)
+            
+        }
         
     }
     
@@ -523,8 +572,12 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource, Spa
             guard let newFont = UIFont(name: fontName, size: fontSize) else {
                 return
             }
-            
+           
             view.font = newFont
+         
+            print("--------*****------")
+            print(view.font)
+            
             currentFontName = FontName.allCases[indexPath.row]
             
             currentFontBtn.setTitle(fontName, for: .normal)

@@ -209,10 +209,8 @@ extension ViewController {
                 addAllGesture(to: newImage[i])
                 
             }
-            
         }
     }
-  
 }
 
 //Handle Gesture
