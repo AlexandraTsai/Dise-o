@@ -7,51 +7,109 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		586D7DE3943BB7AFD2948C340F0C64C4 /* Pods-Project2-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CC2193D472C83827ACC57FD6994E7B /* Pods-Project2-dummy.m */; };
-		7F736A075A5C94097273DFCE785ED38E /* Pods-Project2-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 244D7706CB51C435B506898BEBF29432 /* Pods-Project2-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC436B89A6BF4F2A46D32464794B8F08 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		09ABC0299AD2580117549C87A5BB251C /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508B66AD3B594F2C5B8129AED01AC929 /* UIFont+Extension.swift */; };
+		15820A341C7CD1A2ADE6602AB3876357 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		22D4A784963B7E40EF291DED6CCCDB21 /* UIFontComplete-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E49E0806D789478843EFC154A0A076A /* UIFontComplete-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3517F5F592BD7DAB36E5DBD8B982CB23 /* FontRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F096C68EBB5F740C1A3A902CC465F413 /* FontRepresentable.swift */; };
+		56522D1030CB01F8331FFBF2437279AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		8F6979168079FB67C265576DA99B9C12 /* UIFontComplete-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F9365E09CCF46B12D8A9525C7A3D3 /* UIFontComplete-dummy.m */; };
+		9A932FC01AA3670AAA7359007A8304F0 /* Pods-Project2-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A1D6F9C2058EF5C2AD918A6F73527C /* Pods-Project2-dummy.m */; };
+		DADCEB4785842C68347A419D2A192AB8 /* Pods-Project2-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F22E0BC2A3216BC410CD52D446D119DB /* Pods-Project2-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EB5D5FAC33828CA4DF0ACCDA28E93D8F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE290CB6FC742A60A70626E5EB3A37AB /* Font.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3F78FD6F4A07A758C1CD3097CE4E49D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94C29B2392B4C45179CA469CD007C7A2;
+			remoteInfo = UIFontComplete;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		16E6BB4630A03383BC53299C1D00A3EB /* Pods_Project2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Project2.framework; path = "Pods-Project2.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2119D54573D204268F39594F01577F61 /* Pods-Project2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Project2.release.xcconfig"; sourceTree = "<group>"; };
-		244D7706CB51C435B506898BEBF29432 /* Pods-Project2-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Project2-umbrella.h"; sourceTree = "<group>"; };
-		3CDE185D4965B93439A19EF3E8E14CBC /* Pods-Project2-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Project2-acknowledgements.markdown"; sourceTree = "<group>"; };
+		0E8F9365E09CCF46B12D8A9525C7A3D3 /* UIFontComplete-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIFontComplete-dummy.m"; sourceTree = "<group>"; };
+		2E49E0806D789478843EFC154A0A076A /* UIFontComplete-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIFontComplete-umbrella.h"; sourceTree = "<group>"; };
+		36CD7967581323FD35D0DC21E1A20402 /* Pods-Project2-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Project2-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3E2E6112245DD01571FF0136F2648455 /* Pods_Project2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Project2.framework; path = "Pods-Project2.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		508B66AD3B594F2C5B8129AED01AC929 /* UIFont+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIFont+Extension.swift"; path = "Sources/UIFont+Extension.swift"; sourceTree = "<group>"; };
+		59D92C44CB35B3381FB1F2F4C9C01872 /* Pods-Project2-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Project2-frameworks.sh"; sourceTree = "<group>"; };
+		5C15BDD3EC25D4F401BF705CCF34B9F2 /* Pods-Project2-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Project2-Info.plist"; sourceTree = "<group>"; };
+		6A2420ADC78F719EEB6F1B7847893730 /* UIFontComplete-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "UIFontComplete-Info.plist"; sourceTree = "<group>"; };
+		6C40AF14D757806F0366912E323D19DE /* UIFontComplete.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = UIFontComplete.framework; path = UIFontComplete.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		909A5380BAF209EECD6F18DA69D60B43 /* Pods-Project2-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Project2-acknowledgements.plist"; sourceTree = "<group>"; };
+		9CBDE3D5A1C6F63F3DE2284A0F22E32C /* UIFontComplete.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UIFontComplete.xcconfig; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		B84163493336EBAF6C7ED04860BEA1E3 /* Pods-Project2-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Project2-acknowledgements.plist"; sourceTree = "<group>"; };
-		BFD344AEFC27401DAD32822BE1C95615 /* Pods-Project2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Project2.debug.xcconfig"; sourceTree = "<group>"; };
-		C1CC2193D472C83827ACC57FD6994E7B /* Pods-Project2-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Project2-dummy.m"; sourceTree = "<group>"; };
+		A3A1D6F9C2058EF5C2AD918A6F73527C /* Pods-Project2-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Project2-dummy.m"; sourceTree = "<group>"; };
+		C3E98055C9CC1D0105949F24E89C2B9D /* Pods-Project2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Project2.modulemap"; sourceTree = "<group>"; };
+		CAEC27B293FE99F779A12F2420BB982B /* Pods-Project2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Project2.release.xcconfig"; sourceTree = "<group>"; };
 		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D06EACDCACC7AD836D419A46534502EA /* Pods-Project2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Project2.modulemap"; sourceTree = "<group>"; };
-		E84705889F39C2B461F813752B882607 /* Pods-Project2-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Project2-Info.plist"; sourceTree = "<group>"; };
+		CE290CB6FC742A60A70626E5EB3A37AB /* Font.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Font.swift; path = Sources/Font.swift; sourceTree = "<group>"; };
+		D5D703DE711279FF82B2FCBC09C7F3F1 /* UIFontComplete-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIFontComplete-prefix.pch"; sourceTree = "<group>"; };
+		DD830DB94E7E10B1AD6677B3AF681DD6 /* UIFontComplete.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = UIFontComplete.modulemap; sourceTree = "<group>"; };
+		F096C68EBB5F740C1A3A902CC465F413 /* FontRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontRepresentable.swift; path = Sources/FontRepresentable.swift; sourceTree = "<group>"; };
+		F22E0BC2A3216BC410CD52D446D119DB /* Pods-Project2-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Project2-umbrella.h"; sourceTree = "<group>"; };
+		F3BB0F7CF4FCE9F03301D6E03F674B3A /* Pods-Project2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Project2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		ACFEDB483EA814FCE810FFBB845DD3C9 /* Frameworks */ = {
+		1AFCA7411783099DBCFD925281EDEDEC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC436B89A6BF4F2A46D32464794B8F08 /* Foundation.framework in Frameworks */,
+				56522D1030CB01F8331FFBF2437279AB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C08EA2EEC1E85D1352037E0BE0F86E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15820A341C7CD1A2ADE6602AB3876357 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2F7713F8AE6711EF93B12BCC001EEB67 /* Pods-Project2 */ = {
+		1CDD15429C1813C5D760D05A2C079F1F /* Pods-Project2 */ = {
 			isa = PBXGroup;
 			children = (
-				D06EACDCACC7AD836D419A46534502EA /* Pods-Project2.modulemap */,
-				3CDE185D4965B93439A19EF3E8E14CBC /* Pods-Project2-acknowledgements.markdown */,
-				B84163493336EBAF6C7ED04860BEA1E3 /* Pods-Project2-acknowledgements.plist */,
-				C1CC2193D472C83827ACC57FD6994E7B /* Pods-Project2-dummy.m */,
-				E84705889F39C2B461F813752B882607 /* Pods-Project2-Info.plist */,
-				244D7706CB51C435B506898BEBF29432 /* Pods-Project2-umbrella.h */,
-				BFD344AEFC27401DAD32822BE1C95615 /* Pods-Project2.debug.xcconfig */,
-				2119D54573D204268F39594F01577F61 /* Pods-Project2.release.xcconfig */,
+				C3E98055C9CC1D0105949F24E89C2B9D /* Pods-Project2.modulemap */,
+				36CD7967581323FD35D0DC21E1A20402 /* Pods-Project2-acknowledgements.markdown */,
+				909A5380BAF209EECD6F18DA69D60B43 /* Pods-Project2-acknowledgements.plist */,
+				A3A1D6F9C2058EF5C2AD918A6F73527C /* Pods-Project2-dummy.m */,
+				59D92C44CB35B3381FB1F2F4C9C01872 /* Pods-Project2-frameworks.sh */,
+				5C15BDD3EC25D4F401BF705CCF34B9F2 /* Pods-Project2-Info.plist */,
+				F22E0BC2A3216BC410CD52D446D119DB /* Pods-Project2-umbrella.h */,
+				F3BB0F7CF4FCE9F03301D6E03F674B3A /* Pods-Project2.debug.xcconfig */,
+				CAEC27B293FE99F779A12F2420BB982B /* Pods-Project2.release.xcconfig */,
 			);
 			name = "Pods-Project2";
 			path = "Target Support Files/Pods-Project2";
+			sourceTree = "<group>";
+		};
+		807018BAE2D23928006FF73648CE3017 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F2610F24DE5159C39AA6546340E47C9A /* UIFontComplete */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		84BCC2E852712DFA4D0F0E2018CDF9FD /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				DD830DB94E7E10B1AD6677B3AF681DD6 /* UIFontComplete.modulemap */,
+				9CBDE3D5A1C6F63F3DE2284A0F22E32C /* UIFontComplete.xcconfig */,
+				0E8F9365E09CCF46B12D8A9525C7A3D3 /* UIFontComplete-dummy.m */,
+				6A2420ADC78F719EEB6F1B7847893730 /* UIFontComplete-Info.plist */,
+				D5D703DE711279FF82B2FCBC09C7F3F1 /* UIFontComplete-prefix.pch */,
+				2E49E0806D789478843EFC154A0A076A /* UIFontComplete-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/UIFontComplete";
 			sourceTree = "<group>";
 		};
 		9B055D0CFEA43187E72B03DED11F5662 /* iOS */ = {
@@ -62,20 +120,12 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		9E3E3AA906A3997675CA82EBF09A99BB /* Targets Support Files */ = {
+		B5CCF87B3DC42376FDC7A8366C15ABD8 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				2F7713F8AE6711EF93B12BCC001EEB67 /* Pods-Project2 */,
+				1CDD15429C1813C5D760D05A2C079F1F /* Pods-Project2 */,
 			);
 			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		B1D3C5C8FF0091E3145E9ABF7F6BC256 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				16E6BB4630A03383BC53299C1D00A3EB /* Pods_Project2.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -83,8 +133,9 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				B1D3C5C8FF0091E3145E9ABF7F6BC256 /* Products */,
-				9E3E3AA906A3997675CA82EBF09A99BB /* Targets Support Files */,
+				807018BAE2D23928006FF73648CE3017 /* Pods */,
+				E276F7B85DFD05F42BCBBC20A8705FBC /* Products */,
+				B5CCF87B3DC42376FDC7A8366C15ABD8 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,36 +147,84 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E276F7B85DFD05F42BCBBC20A8705FBC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3E2E6112245DD01571FF0136F2648455 /* Pods_Project2.framework */,
+				6C40AF14D757806F0366912E323D19DE /* UIFontComplete.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F2610F24DE5159C39AA6546340E47C9A /* UIFontComplete */ = {
+			isa = PBXGroup;
+			children = (
+				CE290CB6FC742A60A70626E5EB3A37AB /* Font.swift */,
+				F096C68EBB5F740C1A3A902CC465F413 /* FontRepresentable.swift */,
+				508B66AD3B594F2C5B8129AED01AC929 /* UIFont+Extension.swift */,
+				84BCC2E852712DFA4D0F0E2018CDF9FD /* Support Files */,
+			);
+			name = UIFontComplete;
+			path = UIFontComplete;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		9868995A3776E59F097D2073220A94BC /* Headers */ = {
+		62CC92F609543B6A2ECBEDAD5B4E8D60 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F736A075A5C94097273DFCE785ED38E /* Pods-Project2-umbrella.h in Headers */,
+				22D4A784963B7E40EF291DED6CCCDB21 /* UIFontComplete-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		818D5DB238F3C16A0F63A20C19F481C6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DADCEB4785842C68347A419D2A192AB8 /* Pods-Project2-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		141EF8EC5E60AE3E8E9637F105E23FEB /* Pods-Project2 */ = {
+		853B603E0CFA0F915176D502E960AE5E /* Pods-Project2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 51773E466402518CA54D5DB2B3AEE5D1 /* Build configuration list for PBXNativeTarget "Pods-Project2" */;
+			buildConfigurationList = 4A88D7B984CAF9A6968747428F223751 /* Build configuration list for PBXNativeTarget "Pods-Project2" */;
 			buildPhases = (
-				9868995A3776E59F097D2073220A94BC /* Headers */,
-				E38049DC906B9F57D89533A8D1DBA2F3 /* Sources */,
-				ACFEDB483EA814FCE810FFBB845DD3C9 /* Frameworks */,
-				3C52CF74C806D6CA50B3F79C1E61394C /* Resources */,
+				818D5DB238F3C16A0F63A20C19F481C6 /* Headers */,
+				33F09772D285E5EF2932044837323A7C /* Sources */,
+				1AFCA7411783099DBCFD925281EDEDEC /* Frameworks */,
+				376C1CC2B9EDA584F9EE18A2EA191845 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				827AB347EF2B17900727CB85DC60B195 /* PBXTargetDependency */,
+			);
+			name = "Pods-Project2";
+			productName = "Pods-Project2";
+			productReference = 3E2E6112245DD01571FF0136F2648455 /* Pods_Project2.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		94C29B2392B4C45179CA469CD007C7A2 /* UIFontComplete */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53B275DE8BEF1BAE8FF36F9015A77023 /* Build configuration list for PBXNativeTarget "UIFontComplete" */;
+			buildPhases = (
+				62CC92F609543B6A2ECBEDAD5B4E8D60 /* Headers */,
+				8D18E593A07D02B72A591444723B3ACB /* Sources */,
+				6C08EA2EEC1E85D1352037E0BE0F86E4 /* Frameworks */,
+				DA66AF543453D5C2F0416B069AA00A6F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Pods-Project2";
-			productName = "Pods-Project2";
-			productReference = 16E6BB4630A03383BC53299C1D00A3EB /* Pods_Project2.framework */;
+			name = UIFontComplete;
+			productName = UIFontComplete;
+			productReference = 6C40AF14D757806F0366912E323D19DE /* UIFontComplete.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -145,17 +244,25 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = B1D3C5C8FF0091E3145E9ABF7F6BC256 /* Products */;
+			productRefGroup = E276F7B85DFD05F42BCBBC20A8705FBC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				141EF8EC5E60AE3E8E9637F105E23FEB /* Pods-Project2 */,
+				853B603E0CFA0F915176D502E960AE5E /* Pods-Project2 */,
+				94C29B2392B4C45179CA469CD007C7A2 /* UIFontComplete */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		3C52CF74C806D6CA50B3F79C1E61394C /* Resources */ = {
+		376C1CC2B9EDA584F9EE18A2EA191845 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA66AF543453D5C2F0416B069AA00A6F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -165,20 +272,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E38049DC906B9F57D89533A8D1DBA2F3 /* Sources */ = {
+		33F09772D285E5EF2932044837323A7C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				586D7DE3943BB7AFD2948C340F0C64C4 /* Pods-Project2-dummy.m in Sources */,
+				9A932FC01AA3670AAA7359007A8304F0 /* Pods-Project2-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D18E593A07D02B72A591444723B3ACB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB5D5FAC33828CA4DF0ACCDA28E93D8F /* Font.swift in Sources */,
+				3517F5F592BD7DAB36E5DBD8B982CB23 /* FontRepresentable.swift in Sources */,
+				09ABC0299AD2580117549C87A5BB251C /* UIFont+Extension.swift in Sources */,
+				8F6979168079FB67C265576DA99B9C12 /* UIFontComplete-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		827AB347EF2B17900727CB85DC60B195 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = UIFontComplete;
+			target = 94C29B2392B4C45179CA469CD007C7A2 /* UIFontComplete */;
+			targetProxy = 3F78FD6F4A07A758C1CD3097CE4E49D6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		641C8FCAA9B89AE74DAE8D8E7000175D /* Debug */ = {
+		090475A6FBFC50280DB71020E83E3975 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BFD344AEFC27401DAD32822BE1C95615 /* Pods-Project2.debug.xcconfig */;
+			baseConfigurationReference = CAEC27B293FE99F779A12F2420BB982B /* Pods-Project2.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -209,10 +336,47 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
+		};
+		4D926B2910D25BE89351BE4CC170321B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9CBDE3D5A1C6F63F3DE2284A0F22E32C /* UIFontComplete.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/UIFontComplete/UIFontComplete-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/UIFontComplete/UIFontComplete-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/UIFontComplete/UIFontComplete.modulemap";
+				PRODUCT_MODULE_NAME = UIFontComplete;
+				PRODUCT_NAME = UIFontComplete;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		7C7D9FC81F470AE33FF86230A663FBDD /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -274,12 +438,10 @@
 			};
 			name = Release;
 		};
-		86DC7B4EBA0C878A1E4C91B8768F0CEE /* Release */ = {
+		881B19F673E8658D2749BE2BF9A8A68B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2119D54573D204268F39594F01577F61 /* Pods-Project2.release.xcconfig */;
+			baseConfigurationReference = 9CBDE3D5A1C6F63F3DE2284A0F22E32C /* UIFontComplete.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -289,29 +451,27 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Project2/Pods-Project2-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/UIFontComplete/UIFontComplete-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/UIFontComplete/UIFontComplete-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Project2/Pods-Project2.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/UIFontComplete/UIFontComplete.modulemap";
+				PRODUCT_MODULE_NAME = UIFontComplete;
+				PRODUCT_NAME = UIFontComplete;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		95CDB1BD3AAEFAFB16FDBEBBACC13B2E /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -377,6 +537,44 @@
 			};
 			name = Debug;
 		};
+		C3F4C075104F8B004F3906AD3658F116 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3BB0F7CF4FCE9F03301D6E03F674B3A /* Pods-Project2.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Project2/Pods-Project2-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Project2/Pods-Project2.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -389,11 +587,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		51773E466402518CA54D5DB2B3AEE5D1 /* Build configuration list for PBXNativeTarget "Pods-Project2" */ = {
+		4A88D7B984CAF9A6968747428F223751 /* Build configuration list for PBXNativeTarget "Pods-Project2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				641C8FCAA9B89AE74DAE8D8E7000175D /* Debug */,
-				86DC7B4EBA0C878A1E4C91B8768F0CEE /* Release */,
+				C3F4C075104F8B004F3906AD3658F116 /* Debug */,
+				090475A6FBFC50280DB71020E83E3975 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		53B275DE8BEF1BAE8FF36F9015A77023 /* Build configuration list for PBXNativeTarget "UIFontComplete" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				881B19F673E8658D2749BE2BF9A8A68B /* Debug */,
+				4D926B2910D25BE89351BE4CC170321B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -6,5 +6,6 @@ target 'Project2' do
   use_frameworks!
 
   # Pods for Project2
+  pod 'UIFontComplete'
 
 end

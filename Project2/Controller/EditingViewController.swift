@@ -27,6 +27,7 @@ class EditingViewController: UIViewController {
     
     var lineHeight: Float = 0
     var letterSpacing: Float = 0
+    var currentFontName: FontName = FontName.alNile
     
     var editingView: UIView? {
         
@@ -117,11 +118,25 @@ class EditingViewController: UIViewController {
     @IBAction func boldButtonTapped(_ sender: Any) {
         
         guard let view =  editingView as? UITextView else { return }
-        
-        view.font = UIFont.preferredFont(forTextStyle: .body).bold()
-        view.adjustsFontForContentSizeCategory = true
-        
-        boldbutton.setTitleColor(UIColor.red, for: .normal)
+
+//        view.font = UIFont.preferredFont(forTextStyle: .body).bold()
+//        view.adjustsFontForContentSizeCategory = true
+     
+        switch boldbutton.currentTitleColor {
+            
+        case UIColor.red:
+            
+            view.font = UIFont(name: currentFontName.rawValue, size: (view.font?.pointSize)!)
+            
+            boldbutton.setTitleColor(UIColor.white, for: .normal)
+            
+        default:
+           
+            view.font = UIFont(name: currentFontName.boldStyle(), size: (view.font?.pointSize)!)
+            
+            boldbutton.setTitleColor(UIColor.red, for: .normal)
+
+        }
     
     }
     
@@ -510,9 +525,30 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource, Spa
             }
             
             view.font = newFont
+            currentFontName = FontName.allCases[indexPath.row]
             
             currentFontBtn.setTitle(fontName, for: .normal)
             currentFontBtn.titleLabel?.font = UIFont(name: fontName, size: 20)
+            
+            //Setup rBold and Italic Buttons
+            switch FontName.allCases[indexPath.row].fontStyle() {
+            case 0:
+                boldbutton.disableMode()
+                italicButton.disableMode()
+            case 1:
+                boldbutton.enableMode()
+                italicButton.disableMode()
+            case 2:
+                boldbutton.disableMode()
+                italicButton.enableMode()
+            case 3, 4:
+                boldbutton.enableMode()
+                italicButton.enableMode()
+                
+            default:
+                break
+            }
+          
         default:
             break
         }
@@ -535,7 +571,7 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource, Spa
         view.keepAttributeWith(lineHeight: self.lineHeight, letterSpacing: self.letterSpacing, fontName: fontName, fontSize: CGFloat(size))
         
         view.font = UIFont(name: fontName, size: CGFloat(size))
-        
+
         fontSizeBtn.setTitle(String(size), for: .normal)
     }
 }

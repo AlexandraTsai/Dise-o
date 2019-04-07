@@ -1,3 +1,16 @@
-PODFILE CHECKSUM: 3d64210fcd23ff2f34a69a0722be23ee3a14c816
+PODS:
+  - UIFontComplete (3.0.0)
+
+DEPENDENCIES:
+  - UIFontComplete
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - UIFontComplete
+
+SPEC CHECKSUMS:
+  UIFontComplete: 5b0f59a83308816c610164b79a2540b3520f9b72
+
+PODFILE CHECKSUM: 51e8070142b5c7a5f6acad61103ec74cb765ef9c
 
 COCOAPODS: 1.6.0
