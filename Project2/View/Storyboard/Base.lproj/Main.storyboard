@@ -413,10 +413,12 @@
                     </view>
                     <connections>
                         <outlet property="alignmentButton" destination="YEZ-w7-1D9" id="wCA-YW-Usw"/>
+                        <outlet property="boldbutton" destination="64J-AB-AX5" id="lfi-A0-iYM"/>
                         <outlet property="currentFontBtn" destination="oKA-Vq-X5A" id="BPh-zg-PJS"/>
                         <outlet property="designView" destination="G2c-KZ-Yq1" id="Bz7-jI-hKY"/>
                         <outlet property="fontSizeBtn" destination="vtx-GG-yF4" id="mME-33-hhP"/>
                         <outlet property="fontTableView" destination="hlx-JU-8Ak" id="gXA-I8-eLn"/>
+                        <outlet property="italicButton" destination="Oyb-zP-bPa" id="E5H-ac-N6M"/>
                         <outlet property="letterCaseButton" destination="w0y-2d-Q2k" id="iXK-ov-pAx"/>
                         <outlet property="textEditView" destination="Yke-94-yj6" id="6x1-h4-UMb"/>
                     </connections>

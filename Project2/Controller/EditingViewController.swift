@@ -20,6 +20,8 @@ class EditingViewController: UIViewController {
             fontTableView.dataSource = self
         }
     }
+    @IBOutlet weak var italicButton: UIButton!
+    @IBOutlet weak var boldbutton: UIButton!
     @IBOutlet weak var fontSizeBtn: UIButton!
     @IBOutlet weak var textEditView: UIView!
     
@@ -105,7 +107,6 @@ class EditingViewController: UIViewController {
             alignmentButton.setImage(UIImage(named: ImageAsset.Icon_AlignCenter.rawValue), for: .normal)
         }
         
-    
     }
     
     @IBAction func finishEdit(_ sender: Any) {
@@ -114,10 +115,25 @@ class EditingViewController: UIViewController {
     }
     
     @IBAction func boldButtonTapped(_ sender: Any) {
+        
+        guard let view =  editingView as? UITextView else { return }
+        
+        view.font = UIFont.preferredFont(forTextStyle: .body).bold()
+        view.adjustsFontForContentSizeCategory = true
+        
+        boldbutton.setTitleColor(UIColor.red, for: .normal)
     
     }
     
     @IBAction func italicButtonTapped(_ sender: Any) {
+        
+        guard let view =  editingView as? UITextView else { return }
+        
+        view.font = UIFont.preferredFont(forTextStyle: .body).italic()
+        view.adjustsFontForContentSizeCategory = true
+        
+//        boldbutton.setTitleColor(UIColor.red, for: .normal)
+        
     }
     
     @IBAction func letterCaseBtnTapped(_ sender: Any) {

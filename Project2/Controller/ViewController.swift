@@ -36,7 +36,7 @@ class ViewController: UIViewController, UITextViewDelegate {
             addButton.clipsToBounds = true
         }
     }
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textView: UITextView! 
     
     var editingView: UIView?
     
