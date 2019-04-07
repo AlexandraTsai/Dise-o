@@ -403,7 +403,7 @@ extension EditingViewController {
             guard let rotateValue = sender.view?.transform.rotated(by: sender.rotation) else {
                 return
             }
-            
+            print(sender.rotation)
             sender.view?.transform = rotateValue
             sender.rotation = 0
             

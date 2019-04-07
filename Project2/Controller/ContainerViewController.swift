@@ -9,8 +9,13 @@
 import UIKit
 import Photos
 
-class ContainerViewController: UIViewController {
+class ContainerViewController: UIViewController, PhotoManagerDelegate {
     
+    func showImage(_ images: [UIImage]) {
+        print("hey")
+    }
+    
+   
     @IBOutlet weak var collectionView: UICollectionView! {
         
         didSet {
@@ -22,6 +27,8 @@ class ContainerViewController: UIViewController {
         }
     }
     
+//    var imageArray = [UIImage]()
+    let photoManager = PhotoManager()
     var imageArray = [UIImage]()
     
     override func viewDidLoad() {
@@ -32,9 +39,10 @@ class ContainerViewController: UIViewController {
         
         setupCollectionViewLayout()
         
-//        grabPhoto()
+        photoManager.delegate = self
+        photoManager.grabPhoto()
     }
-    
+   
 }
 
 extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -72,42 +80,6 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
         
         return header
         
-    }
-}
-
-extension ContainerViewController {
-    
-    func grabPhoto() {
-        
-        let imgManager = PHImageManager.default()
-        
-        let requestOptions = PHImageRequestOptions()
-        requestOptions.isSynchronous = true
-        requestOptions.deliveryMode = .highQualityFormat
-        
-        let fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        
-        if let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions) {
-            
-            if fetchResult.count > 0 {
-                for i in 0..<fetchResult.count {
-                    
-                    guard let asset = fetchResult.object(at: i) as? PHAsset else { return }
-                    
-                    imgManager.requestImage(for: asset, targetSize: CGSize(width: 300, height: 300), contentMode: .aspectFill, options: requestOptions) { (image, error) in
-                        
-                        guard let image = image else { return }
-                        
-                        self.imageArray.append(image)
-                        
-                    }
-                }
-            } else {
-                print("You got no photos!")
-                self.collectionView.reloadData()
-            }
-        }
     }
 }
 
