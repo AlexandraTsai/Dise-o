@@ -8,25 +8,67 @@
 
 import UIKit
 
-class ImageEditContainerViewController: UIViewController {
+class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
 
-    @IBOutlet weak var imageCollectionView: UICollectionView!
+    @IBOutlet weak var imageCollectionView: UICollectionView! {
+        
+        didSet {
+            imageCollectionView.delegate = self
+            imageCollectionView.dataSource = self
+        }
+    }
+    
+    let photoManager = PhotoManager()
+    var imageArray = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        photoManager.delegate = self
+        photoManager.grabPhoto()
+        
+        imageCollectionView.al_registerCellWithNib(identifier: String(describing: PhotoCollectionViewCell.self), bundle: nil)
+        
+        setupCollectionViewLayout()
+    }
+}
+
+extension ImageEditContainerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageArray.count
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PhotoCollectionViewCell.self), for: indexPath)
+        guard let photoCell = cell as? PhotoCollectionViewCell else { return cell }
+        photoCell.photoImage.image = imageArray[indexPath.item]
+        
+        return photoCell
     }
-    */
 
+}
+
+extension ImageEditContainerViewController {
+    
+    private func setupCollectionViewLayout() {
+        
+        let flowLayout = UICollectionViewFlowLayout()
+        
+        flowLayout.itemSize = CGSize(
+            width: UIScreen.main.bounds.width/4,
+            height: UIScreen.main.bounds.width/4
+        )
+        
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        flowLayout.minimumInteritemSpacing = 0
+        
+        flowLayout.minimumLineSpacing = 0
+        
+        flowLayout.headerReferenceSize = CGSize(width: imageCollectionView.frame.width, height: 40) // header zone
+        
+        imageCollectionView.collectionViewLayout = flowLayout
+    }
 }
