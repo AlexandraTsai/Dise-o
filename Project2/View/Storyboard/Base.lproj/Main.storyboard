@@ -347,7 +347,7 @@
                                             <constraint firstAttribute="width" secondItem="vtx-GG-yF4" secondAttribute="height" multiplier="1:1" id="3yk-NC-2zl"/>
                                             <constraint firstAttribute="height" constant="40" id="EQ7-Ny-kHD"/>
                                         </constraints>
-                                        <state key="normal" title="30">
+                                        <state key="normal" title="17">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -415,7 +415,7 @@
                         <outlet property="alignmentButton" destination="YEZ-w7-1D9" id="wCA-YW-Usw"/>
                         <outlet property="currentFontBtn" destination="oKA-Vq-X5A" id="BPh-zg-PJS"/>
                         <outlet property="designView" destination="G2c-KZ-Yq1" id="Bz7-jI-hKY"/>
-                        <outlet property="fontSize" destination="vtx-GG-yF4" id="mME-33-hhP"/>
+                        <outlet property="fontSizeBtn" destination="vtx-GG-yF4" id="mME-33-hhP"/>
                         <outlet property="fontTableView" destination="hlx-JU-8Ak" id="gXA-I8-eLn"/>
                         <outlet property="letterCaseButton" destination="w0y-2d-Q2k" id="iXK-ov-pAx"/>
                         <outlet property="textEditView" destination="Yke-94-yj6" id="6x1-h4-UMb"/>

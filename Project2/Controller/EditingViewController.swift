@@ -20,7 +20,7 @@ class EditingViewController: UIViewController {
             fontTableView.dataSource = self
         }
     }
-    @IBOutlet weak var fontSize: UIButton!
+    @IBOutlet weak var fontSizeBtn: UIButton!
     @IBOutlet weak var textEditView: UIView!
     
     var lineHeight: Float = 0
@@ -468,8 +468,12 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource, Spa
             
             guard let fontSizeCell = cell as? FontSizeTableViewCell else { return cell }
             
+            guard let view = editingView as? UITextView else { return cell }
+            guard let fontSize = view.font?.pointSize else {return cell}
+            
             fontSizeCell.delegate = self
             
+            fontSizeCell.fontSizeLabel.text = "\(Int(fontSize))"
             return fontSizeCell
             
         }
@@ -478,19 +482,24 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource, Spa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let view = editingView as? UITextView,
-            let fontSize = view.font?.pointSize else { return }
-        
-        let fontName = FontName.allCases[indexPath.row].rawValue
-
-        guard let newFont = UIFont(name: fontName, size: fontSize) else {
-           return
+        switch tableViewIndex {
+        case 0:
+            guard let view = editingView as? UITextView,
+                let fontSize = view.font?.pointSize else { return }
+            
+            let fontName = FontName.allCases[indexPath.row].rawValue
+            
+            guard let newFont = UIFont(name: fontName, size: fontSize) else {
+                return
+            }
+            
+            view.font = newFont
+            
+            currentFontBtn.setTitle(fontName, for: .normal)
+            currentFontBtn.titleLabel?.font = UIFont(name: fontName, size: 20)
+        default:
+            break
         }
-        
-        view.font = newFont
-    
-        currentFontBtn.setTitle(fontName, for: .normal)
-        currentFontBtn.titleLabel?.font = UIFont(name: fontName, size: 20)
        
     }
   
@@ -498,35 +507,19 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource, Spa
         
         self.lineHeight = lineHeight
         self.letterSpacing = letterSpacing
-        
-        guard let view = editingView as? UITextView else { return }
-        
-        let align = view.textAlignment
-        
-        //Line Height
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = CGFloat(lineHeight)
-       
-        let attributedString = NSMutableAttributedString(string: view.text)
-        
-        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
-        
-        let range = NSRange(location: 0, length: attributedString.length)
-        //Letter Spacing
-        attributedString.addAttribute(NSAttributedString.Key.kern, value: letterSpacing, range: range)
-        
-        //Font
-        attributedString.addAttribute(NSAttributedString.Key.font, value: view.font as Any, range: NSRange(location: 0, length: attributedString.length))
-        
-        view.attributedText = attributedString
-        
-        view.textAlignment = align
+
+        guard let view = editingView as? UITextView, let fontName = view.font?.fontName, let fontSize = view.font?.pointSize  else { return }
+        view.keepAttributeWith(lineHeight: lineHeight, letterSpacing: letterSpacing, fontName: fontName, fontSize: fontSize)
     }
     
     func changeFontSize(to size: Int) {
         
-        guard let view = editingView as? UITextView else { return }
-        view.font = UIFont(name: (view.font?.fontName)!, size: CGFloat(size))
-        print(size)
+        guard let view = editingView as? UITextView, let fontName = view.font?.fontName  else { return }
+       
+        view.keepAttributeWith(lineHeight: self.lineHeight, letterSpacing: self.letterSpacing, fontName: fontName, fontSize: CGFloat(size))
+        
+        view.font = UIFont(name: fontName, size: CGFloat(size))
+        
+        fontSizeBtn.setTitle(String(size), for: .normal)
     }
 }

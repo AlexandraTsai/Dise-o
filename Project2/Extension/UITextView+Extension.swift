@@ -79,4 +79,34 @@ extension UITextView{
             self.font = expectFont
         }
     }
+    
+    func keepAttributeWith(lineHeight: Float, letterSpacing: Float, fontName: String, fontSize: CGFloat) {
+       
+        let align = self.textAlignment
+        
+        //Line Height
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = CGFloat(lineHeight)
+        
+        let attributedString = NSMutableAttributedString(string: self.text)
+        
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+        
+        let range = NSRange(location: 0, length: attributedString.length)
+        //Letter Spacing
+        attributedString.addAttribute(NSAttributedString.Key.kern, value: letterSpacing, range: range)
+        
+        //Font
+        guard let font = UIFont(name: fontName, size: fontSize) else { return }
+        attributedString.addAttribute(NSAttributedString.Key.font, value: font, range: NSRange(location: 0, length: attributedString.length))
+        
+        print(self.font)
+    
+        self.attributedText = attributedString
+        
+//        print(self.attributedText.font)
+        
+        self.textAlignment = align
+        
+    }
 }
