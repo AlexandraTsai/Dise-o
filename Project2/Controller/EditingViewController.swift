@@ -24,6 +24,7 @@ class EditingViewController: UIViewController {
     @IBOutlet weak var boldbutton: UIButton!
     @IBOutlet weak var fontSizeBtn: UIButton!
     @IBOutlet weak var textEditView: UIView!
+    @IBOutlet weak var imageEditContainerView: UIView!
     
     var lineHeight: Float = 0
     var letterSpacing: Float = 0
@@ -38,10 +39,19 @@ class EditingViewController: UIViewController {
             editingView?.layer.borderColor = UIColor.white.cgColor
             editingView?.layer.borderWidth = 1
             
-            guard let view = editingView as? UITextView else { return }
+            guard let view = editingView as? UITextView else {
+               
+               textEditView.isHidden = true
+               imageEditContainerView.isHidden = false
+               return
+                
+            }
             
             view.delegate = self
             self.changeTextAttributeWith(lineHeight: 1.4, letterSpacing: 0.0)
+            
+            textEditView.isHidden = false
+            imageEditContainerView.isHidden = true
         }
     }
     
@@ -224,6 +234,8 @@ class EditingViewController: UIViewController {
        
         fontTableView.isScrollEnabled = false
         fontTableView.reloadData()
+        fontTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top
+            , animated: false)
         
         textEditView.isHidden = true
     }
@@ -419,13 +431,24 @@ extension EditingViewController {
         
         if sender.state == .began || sender.state == .changed {
             
-            guard let transform = sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale) else { return }
+            guard let transform = sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale) else {
+                
+                return
+                
+            }
             
             sender.view?.transform = transform
+
+//            sender.view?.frame.size = sender.view!.frame.size.applying(transform)
+            
             
            // sender.scale = 1
           
-            guard let textView = sender.view as? UITextView else { return }
+            guard let textView = sender.view as? UITextView else {
+                
+                return
+                
+            }
             
 //            var pointSize = textView.font?.pointSize
             //pointSize = ((sender.velocity > 0) ? 1 : -1) * 0.5 + pointSize!
@@ -433,8 +456,10 @@ extension EditingViewController {
 //            textView.textInputView.transform  = transform
             
 //            textView.font = UIFont(name: (textView.font?.fontName)!, size: (textView.font?.pointSize)!*sender.scale)
-            
-            textView.updateTextFont()
+            textView.backgroundColor = UIColor.red
+//            textView.font? = textView.font!.withSize(textView.font!.pointSize * sender.scale)
+            print(sender.scale)
+//            textView.updateTextFont()
        
             sender.scale = 1
             
@@ -565,35 +590,35 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource, Spa
             
             let fontName = FontName.allCases[indexPath.row].rawValue
             
-            guard let newFont = UIFont(name: fontName, size: fontSize) else {
-                return
-            }
-           
-            view.font = newFont
-                     
-            currentFontName = FontName.allCases[indexPath.row]
-            
-            currentFontBtn.setTitle(fontName, for: .normal)
-            currentFontBtn.titleLabel?.font = UIFont(name: fontName, size: 20)
-            
-            //Setup rBold and Italic Buttons
-            switch FontName.allCases[indexPath.row].fontStyle() {
-            case 0:
-                boldbutton.disableMode()
-                italicButton.disableMode()
-            case 1:
-                boldbutton.enableMode()
-                italicButton.disableMode()
-            case 2:
-                boldbutton.disableMode()
-                italicButton.enableMode()
-            case 3, 4:
-                boldbutton.enableMode()
-                italicButton.enableMode()
-                
-            default:
-                break
-            }
+//            guard let newFont = UIFont(name: fontName, size: fontSize) else {
+//                return
+//            }
+//
+//            view.font = newFont
+//
+//            currentFontName = FontName.allCases[indexPath.row]
+//
+//            currentFontBtn.setTitle(fontName, for: .normal)
+//            currentFontBtn.titleLabel?.font = UIFont(name: fontName, size: 20)
+//
+//            //Setup rBold and Italic Buttons
+//            switch FontName.allCases[indexPath.row].fontStyle() {
+//            case 0:
+//                boldbutton.disableMode()
+//                italicButton.disableMode()
+//            case 1:
+//                boldbutton.enableMode()
+//                italicButton.disableMode()
+//            case 2:
+//                boldbutton.disableMode()
+//                italicButton.enableMode()
+//            case 3, 4:
+//                boldbutton.enableMode()
+//                italicButton.enableMode()
+//
+//            default:
+//                break
+//            }
           
         default:
             break

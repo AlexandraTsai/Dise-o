@@ -1,16 +1,20 @@
 PODS:
+  - Kingfisher (5.2.0)
   - UIFontComplete (3.0.0)
 
 DEPENDENCIES:
+  - Kingfisher (~> 5.0)
   - UIFontComplete
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Kingfisher
     - UIFontComplete
 
 SPEC CHECKSUMS:
+  Kingfisher: 07067cfacf371117330dceb4b4b8f5c4b691ab42
   UIFontComplete: 5b0f59a83308816c610164b79a2540b3520f9b72
 
-PODFILE CHECKSUM: 51e8070142b5c7a5f6acad61103ec74cb765ef9c
+PODFILE CHECKSUM: 1d0703f8c9167eebe3690a0d4865fc556181c7db
 
 COCOAPODS: 1.6.0

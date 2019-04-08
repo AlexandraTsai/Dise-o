@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project2/Controller/EditingViewController.swift"
-            timestampString = "576346372.0385129"
+            timestampString = "576409700.163133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "328"
-            endingLineNumber = "328"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
             landmarkName = "didTapCopyButton(sender:)"
             landmarkType = "7">
          </BreakpointContent>

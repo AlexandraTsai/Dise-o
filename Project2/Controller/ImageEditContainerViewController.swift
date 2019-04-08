@@ -20,6 +20,8 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
     
     let photoManager = PhotoManager()
     var imageArray = [UIImage]()
+    var imageURL = [URL]()
+    var cache = NSCache<NSString, UIImage>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,9 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         imageCollectionView.al_registerCellWithNib(identifier: String(describing: PhotoCollectionViewCell.self), bundle: nil)
         
         setupCollectionViewLayout()
+    }
+    func setupImage() {
+        imageCollectionView.reloadData()
     }
 }
 

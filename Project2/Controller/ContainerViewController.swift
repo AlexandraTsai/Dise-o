@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import Kingfisher
 
 class ContainerViewController: UIViewController, PhotoManagerDelegate {
     
@@ -29,7 +30,11 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
     
 //    var imageArray = [UIImage]()
     let photoManager = PhotoManager()
-    var imageArray = [UIImage]()
+    var imageArray:[UIImage] = []
+    
+    var imageURL:[URL] = [] 
+    
+    var cache = NSCache<NSString, UIImage>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +47,10 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
         photoManager.delegate = self
         photoManager.grabPhoto()
     }
+    
+    func setupImage() {
+        collectionView.reloadData()
+    }
    
 }
 
@@ -50,6 +59,9 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return imageArray.count
+        
+//        return imageURL.count
+        
     }
     
     
@@ -60,15 +72,39 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
             return cell
         }
         
+       
+            
+
         photoCell.photoImage.image = imageArray[indexPath.item]
+  
+//        photoCell.photoImage.kf.setImage(with: URL(string: "//var/mobile/Media/DCIM/134APPLE/IMG_4696.JPG"))
         
+//        photoCell.photoImage.kf.setImage(with: URL(string: "/Users/alexandra/Library/Developer/CoreSimulator/Devices/8C65DCDA-94F8-471F-A95B-EA18EE6A39A2/data/Media/DCIM/100APPLE/IMG_0001.JPG"))
+        
+//        print(imageURL[0])
+//
+//        let fileURL: URL = imageURL[indexPath.item]
+//        let provider = LocalFileImageDataProvider(fileURL: fileURL)
+//
+//        photoCell.photoImage.backgroundColor = UIColor.orange
+        
+        
+        
+        
+//        photoCell.photoImage.kf.setImage(with: provider)
+//        photoCell.photoImage.kf.setImage(with: imageURL[indexPath.item])
+        
+//        print(photoCell.photoImage.image)
         return photoCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let notificationName = Notification.Name(NotiName.changeBackgroundImage.rawValue)
-        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: [NotificationInfo.newImage: imageArray[indexPath.item]])
+//        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: [NotificationInfo.newImage: imageArray[indexPath.item]])
+        
+        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: [NotificationInfo.newImage: imageURL[indexPath.item]])
+        
         
     }
     

@@ -45,6 +45,7 @@ extension UITextView{
         self.inputView = oldView.inputView
         self.textContainer.size = oldView.textContainer.size
         self.frame = oldView.frame
+        self.transform = oldView.transform
 
         self.backgroundColor = oldView.backgroundColor
 

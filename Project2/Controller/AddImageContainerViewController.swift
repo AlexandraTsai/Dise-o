@@ -25,6 +25,8 @@ class AddImageContainerViewController: UIViewController, PhotoManagerDelegate {
     
     let photoManager = PhotoManager()
     var imageArray = [UIImage]()
+    var imageURL = [URL]()
+    var cache = NSCache<NSString, UIImage>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,9 @@ class AddImageContainerViewController: UIViewController, PhotoManagerDelegate {
         photoManager.delegate = self
         photoManager.grabPhoto()
 
+    }
+    func setupImage() {
+        collectionView.reloadData()
     }
     
 }

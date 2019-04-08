@@ -91,6 +91,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         
         designView.addSubview(txtLabel)
         
+        
         txtLabel.isUserInteractionEnabled = true
 
         addAllGesture(to: txtLabel)
