@@ -14,4 +14,5 @@ enum NotiName: String {
     case addImage
     case changeBackgroundImage //Selected from album
     case addingMode //Add new element
+    case pickingPhotoMode
 }

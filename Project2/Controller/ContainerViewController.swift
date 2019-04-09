@@ -9,7 +9,6 @@
 import UIKit
 import Photos
 import Kingfisher
-import Fusuma
 
 class ContainerViewController: UIViewController, PhotoManagerDelegate {
     
@@ -29,20 +28,26 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
     
     var imageURL:[URL] = [] 
     
-    var cache = NSCache<NSString, UIImage>()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.al_registerCellWithNib(identifier: String(describing: PhotoCollectionViewCell.self), bundle: nil)
-        collectionView.al_registerHeaderViewWithNib(identifier:  String(describing: CollectionReusableView.self), bundle: nil)
+//        collectionView.al_registerCellWithNib(identifier: String(describing: PhotoCollectionViewCell.self), bundle: nil)
+//        collectionView.al_registerHeaderViewWithNib(identifier:  String(describing: CollectionReusableView.self), bundle: nil)
 
-        setupCollectionViewLayout()
+//        setupCollectionViewLayout()
         
 //        photoManager.delegate = self
 //        photoManager.grabPhoto()
         
     }
+    
+    @IBAction func CameraRollBtnTapped(_ sender: Any) {
+        
+        let notificationName = Notification.Name(NotiName.pickingPhotoMode.rawValue)
+        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: [NotificationInfo.pickingPhotoMode: true])
+        
+    }
+    
     
     func setupImage() {
         collectionView.reloadData()
@@ -80,10 +85,7 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
 //        let provider = LocalFileImageDataProvider(fileURL: fileURL)
 //
 //        photoCell.photoImage.backgroundColor = UIColor.orange
-        
-        
-        
-        
+     
 //        photoCell.photoImage.kf.setImage(with: provider)
 //        photoCell.photoImage.kf.setImage(with: imageURL[indexPath.item])
         

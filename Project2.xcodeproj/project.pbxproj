@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		732E4A17C4EE4240C0412462 /* Pods_Project2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF328FB228DDA472B389400 /* Pods_Project2.framework */; };
-		A8924C6D225C32480030FBEC /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8924C6C225C32480030FBEC /* TestViewController.swift */; };
 		A8BFF76B22586E3D0010E56B /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */; };
 		A8BFF76E22586E5C0010E56B /* FontTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */; };
 		A8BFF76F22586E5C0010E56B /* FontTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */; };
@@ -50,7 +49,6 @@
 /* Begin PBXFileReference section */
 		8BF328FB228DDA472B389400 /* Pods_Project2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97709A67B679D68A1DBDCC55 /* Pods-Project2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.debug.xcconfig"; path = "Target Support Files/Pods-Project2/Pods-Project2.debug.xcconfig"; sourceTree = "<group>"; };
-		A8924C6C225C32480030FBEC /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableViewCell.swift; sourceTree = "<group>"; };
 		A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FontTableViewCell.xib; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 				A8D2C4832252F9FF0085AD24 /* ImageContainerViewController.swift */,
 				A8DEBBA1225496D20081A694 /* AddImageContainerViewController.swift */,
 				A8BFF77F225A4AC00010E56B /* ImageEditContainerViewController.swift */,
-				A8924C6C225C32480030FBEC /* TestViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -395,7 +392,6 @@
 				A8DEBB9B22545B8F0081A694 /* CollectionReusableView.swift in Sources */,
 				A8D2C475225228130085AD24 /* UITableView+Extension.swift in Sources */,
 				A8DEBBAF225621B30081A694 /* PaletteCollectionViewCell.swift in Sources */,
-				A8924C6D225C32480030FBEC /* TestViewController.swift in Sources */,
 				A8D2C452225219020085AD24 /* ViewController.swift in Sources */,
 				A8D2C450225219020085AD24 /* AppDelegate.swift in Sources */,
 				A8BFF7772258D1970010E56B /* FontSizeTableViewCell.swift in Sources */,

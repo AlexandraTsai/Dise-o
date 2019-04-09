@@ -18,6 +18,7 @@ struct NotificationInfo {
     static let addImage = UIImage()
     static let editedImage = [UIView]()
     static let addingMode = true
+    static let pickingPhotoMode = true
     
 }
 
@@ -41,6 +42,8 @@ class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
     
     var editingView: UIView?
     
+    let fusuma = FusumaViewController()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
@@ -58,6 +61,8 @@ class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
         createNotification()
         
         setupNavigationBar()
+        
+        setupImagePicker()
     }
 
     //MARK: - Add image to Library
@@ -138,12 +143,14 @@ extension ViewController {
     
     @objc func designViewClicked(_ sender: UITapGestureRecognizer) {
  
-        let fusuma = FusumaViewController()
-        fusuma.delegate = self
-        fusuma.availableModes = [FusumaMode.library, FusumaMode.camera] // Add .video capturing mode to the default .library and .camera modes
-        fusuma.cropHeightRatio = 1 // Height-to-width ratio. The default value is 1, which means a squared-size photo.
-        fusuma.allowMultipleSelection = false // You can select multiple photos from the camera roll. The default value is false.
-        self.present(fusuma, animated: true, completion: nil)
+//        if designView.image == nil {
+//             self.present(fusuma, animated: true, completion: nil)
+//        } else {
+//            goToEditingVC(with: designView, navigationBarForImage: true)
+//        }
+        
+        containerView.isHidden = false
+        scrollView.isHidden = true
         
     }
    
@@ -170,10 +177,24 @@ extension ViewController {
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(switchToAddingMode(noti:)), name: notificationName4, object: nil)
+        
+        let notificationName5 = Notification.Name(NotiName.pickingPhotoMode.rawValue)
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(showPickPhotoVC(noti:)), name: notificationName5, object: nil)
 
     }
     
     // 收到通知後要執行的動作
+    @objc func showPickPhotoVC(noti: Notification) {
+        if let userInfo = noti.userInfo,
+            let mode = userInfo[NotificationInfo.pickingPhotoMode] as? Bool {
+            if mode == true {
+                self.present(fusuma, animated: true, completion: nil)
+            }
+        }
+    }
+    
     @objc func changeImage(noti: Notification) {
         if let userInfo = noti.userInfo,
             let newImage = userInfo[NotificationInfo.newImage] as? UIImage {
@@ -463,6 +484,28 @@ extension ViewController {
     // Return an image and the detailed information.
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode, metaData: ImageMetadata) {
         
+    }
+    
+    func setupImagePicker() {
+        
+        fusuma.delegate = self
+        fusuma.availableModes = [FusumaMode.library, FusumaMode.camera] // Add .video capturing mode to the default .library and .camera modes
+        fusuma.cropHeightRatio = 1 // Height-to-width ratio. The default value is 1, which means a squared-size photo.
+        fusuma.allowMultipleSelection = false // You can select multiple photos from the camera roll. The default value is false.
+        
+        fusumaSavesImage = true
+        
+        
+        fusumaTitleFont = UIFont(name: FontName.copperplate.boldStyle(), size: 18)
+        
+        fusumaBackgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
+        
+        fusumaCameraRollTitle = "Camera Roll"
+        
+        fusumaTintColor = UIColor(red: 244/255, green: 200/255, blue: 88/255, alpha: 1)
+        
+        fusumaCameraTitle = "Camera"
+        fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
     }
     
 }

@@ -13,8 +13,7 @@ protocol PhotoManagerDelegate: AnyObject {
     
     var imageArray: [UIImage] { get set }
     var imageURL: [URL]  { get set }
-    var cache: NSCache<NSString, UIImage> { get set }
-    
+
     func setupImage()
  
 }

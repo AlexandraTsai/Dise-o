@@ -564,8 +564,12 @@ private extension FusumaViewController {
 
     func dishighlightButtons() {
         cameraButton.setTitleColor(fusumaBaseTintColor, for: .normal)
+//        cameraButton.titleLabel?.font = fusumaTintFont
+        
         if let libraryButton = libraryButton {
             libraryButton.setTitleColor(fusumaBaseTintColor, for: .normal)
+//            libraryButton.titleLabel?.font = fusumaTintFont
+            
         }
 
         if let videoButton = videoButton {
