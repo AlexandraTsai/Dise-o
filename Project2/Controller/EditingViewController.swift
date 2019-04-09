@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Fusuma
 
 class EditingViewController: UIViewController {
 
@@ -55,6 +56,7 @@ class EditingViewController: UIViewController {
         }
     }
 
+    let fusuma = FusumaViewController()
     var tableViewIndex: Int = 0
     var originalText = ""
 
@@ -66,6 +68,9 @@ class EditingViewController: UIViewController {
         fontTableView.al_registerCellWithNib(identifier: String(describing: FontTableViewCell.self), bundle: nil)
         fontTableView.al_registerCellWithNib(identifier: String(describing: SpacingTableViewCell.self), bundle: nil)
         fontTableView.al_registerCellWithNib(identifier: String(describing: FontSizeTableViewCell.self), bundle: nil)
+        
+        setupImagePicker()
+        createNotification()
 
     }
 
@@ -131,9 +136,6 @@ class EditingViewController: UIViewController {
     @IBAction func boldButtonTapped(_ sender: Any) {
 
         guard let view =  editingView as? UITextView else { return }
-
-//        view.font = UIFont.preferredFont(forTextStyle: .body).bold()
-//        view.adjustsFontForContentSizeCategory = true
 
         switch boldbutton.currentTitleColor {
 
@@ -462,7 +464,7 @@ extension EditingViewController {
             guard let rotateValue = sender.view?.transform.rotated(by: sender.rotation) else {
                 return
             }
-            print(sender.rotation)
+          
             sender.view?.transform = rotateValue
             sender.rotation = 0
 
@@ -481,20 +483,17 @@ extension EditingViewController {
             guard let transform = sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale) else {
 
                 return
-
             }
 
             sender.view?.transform = transform
+             sender.scale = 1
 
 //            sender.view?.frame.size = sender.view!.frame.size.applying(transform)
 
-           // sender.scale = 1
-
-            guard let textView = sender.view as? UITextView else {
-
-                return
-
-            }
+//            guard let textView = sender.view as? UITextView else {
+//
+//                return
+//            }
 
 //            var pointSize = textView.font?.pointSize
             //pointSize = ((sender.velocity > 0) ? 1 : -1) * 0.5 + pointSize!
@@ -502,12 +501,11 @@ extension EditingViewController {
 //            textView.textInputView.transform  = transform
 
 //            textView.font = UIFont(name: (textView.font?.fontName)!, size: (textView.font?.pointSize)!*sender.scale)
-            textView.backgroundColor = UIColor.red
+            
 //            textView.font? = textView.font!.withSize(textView.font!.pointSize * sender.scale)
-            print(sender.scale)
 //            textView.updateTextFont()
 
-            sender.scale = 1
+//            sender.scale = 1
 
          //   let formattedText = NSMutableAttributedString.init(attributedString: textView.attributedText)
          //   formattedText.addAttribute(NSAttributedString.Key.font,
@@ -639,40 +637,40 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
 
         switch tableViewIndex {
         case 0:
-//            guard let view = editingView as? UITextView,
-//                let fontSize = view.font?.pointSize else { return }
-//
-//            let fontName = FontName.allCases[indexPath.row].rawValue
+            guard let view = editingView as? UITextView,
+                let fontSize = view.font?.pointSize else { return }
 
-//            guard let newFont = UIFont(name: fontName, size: fontSize) else {
-//                return
-//            }
-//
-//            view.font = newFont
-//
-//            currentFontName = FontName.allCases[indexPath.row]
-//
-//            currentFontBtn.setTitle(fontName, for: .normal)
-//            currentFontBtn.titleLabel?.font = UIFont(name: fontName, size: 20)
-//
-//            //Setup rBold and Italic Buttons
-//            switch FontName.allCases[indexPath.row].fontStyle() {
-//            case 0:
-//                boldbutton.disableMode()
-//                italicButton.disableMode()
-//            case 1:
-//                boldbutton.enableMode()
-//                italicButton.disableMode()
-//            case 2:
-//                boldbutton.disableMode()
-//                italicButton.enableMode()
-//            case 3, 4:
-//                boldbutton.enableMode()
-//                italicButton.enableMode()
-//
-//            default:
+            let fontName = FontName.allCases[indexPath.row].rawValue
+
+            guard let newFont = UIFont(name: fontName, size: fontSize) else {
+                return
+            }
+
+            view.font = newFont
+
+            currentFontName = FontName.allCases[indexPath.row]
+
+            currentFontBtn.setTitle(fontName, for: .normal)
+            currentFontBtn.titleLabel?.font = UIFont(name: fontName, size: 20)
+
+            //Setup rBold and Italic Buttons
+            switch FontName.allCases[indexPath.row].fontStyle() {
+            case 0:
+                boldbutton.disableMode()
+                italicButton.disableMode()
+            case 1:
+                boldbutton.enableMode()
+                italicButton.disableMode()
+            case 2:
+                boldbutton.disableMode()
+                italicButton.enableMode()
+            case 3, 4:
+                boldbutton.enableMode()
+                italicButton.enableMode()
+
+            default:
                 break
-//            }
+            }
 
         default:
             break
@@ -707,5 +705,98 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
         view.font = UIFont(name: fontName, size: CGFloat(size))
 
         fontSizeBtn.setTitle(String(size), for: .normal)
+    }
+}
+
+extension EditingViewController: FusumaDelegate {
+    
+    //Notification for image picked
+    func createNotification() {
+        
+        // 註冊addObserver
+        let notificationName = Notification.Name(NotiName.changeImage.rawValue)
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(changeImage(noti:)), name: notificationName, object: nil)
+    }
+    
+    // 收到通知後要執行的動作
+    @objc func changeImage(noti: Notification) {
+        if let userInfo = noti.userInfo,
+            let mode = userInfo[NotificationInfo.changeImage] as? Bool {
+            
+            if mode == true {
+                self.present(fusuma, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func setupImagePicker() {
+        
+        fusuma.delegate = self
+        fusuma.availableModes = [FusumaMode.library, FusumaMode.camera]
+        // Add .video capturing mode to the default .library and .camera modes
+        fusuma.cropHeightRatio = 1
+        // Height-to-width ratio. The default value is 1, which means a squared-size photo.
+        fusuma.allowMultipleSelection = false
+        // You can select multiple photos from the camera roll. The default value is false.
+        
+        fusumaSavesImage = true
+        
+        fusumaTitleFont = UIFont(name: FontName.copperplate.boldStyle(), size: 18)
+        
+        fusumaBackgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
+        
+        fusumaCameraRollTitle = "Camera Roll"
+        
+        fusumaTintColor = UIColor(red: 244/255, green: 200/255, blue: 88/255, alpha: 1)
+        
+        fusumaCameraTitle = "Camera"
+        fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        
+        self.present(fusuma, animated: true, completion: nil)
+    }
+    
+    func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
+        
+        guard let imageView = editingView as? UIImageView else {
+            return
+        }
+        
+        imageView.image = image
+ 
+        let notificationName = Notification.Name(NotiName.didChangeImage.rawValue)
+        NotificationCenter.default.post(
+            name: notificationName,
+            object: nil,
+            userInfo: [NotificationInfo.didChangeImage: true])
+    }
+
+    // Return the image but called after is dismissed.
+    func fusumaDismissedWithImage(image: UIImage, source: FusumaMode) {
+       
+        print("dismiss")
+    }
+    
+    func fusumaVideoCompleted(withFileURL fileURL: URL) {
+        
+        print("Called just after a video has been selected.")
+    }
+    
+    // When camera roll is not authorized, this method is called.
+    func fusumaCameraRollUnauthorized() {
+        
+        print("Camera roll unauthorized")
+    }
+    
+    // Return selected images when you allow to select multiple photos.
+    func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {
+        
+        print("Multiple images are selected.")
+    }
+    
+    // Return an image and the detailed information.
+    func fusumaImageSelected(_ image: UIImage, source: FusumaMode, metaData: ImageMetadata) {
+        
     }
 }

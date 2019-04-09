@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		732E4A17C4EE4240C0412462 /* Pods_Project2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF328FB228DDA472B389400 /* Pods_Project2.framework */; };
+		A86824C2225CCF4000BDCCD8 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86824C1225CCF4000BDCCD8 /* Notification.swift */; };
 		A8BFF76B22586E3D0010E56B /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */; };
 		A8BFF76E22586E5C0010E56B /* FontTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */; };
 		A8BFF76F22586E5C0010E56B /* FontTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */; };
@@ -39,7 +40,6 @@
 		A8DEBBA622549DC30081A694 /* ImageCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DEBBA422549DC30081A694 /* ImageCollectionReusableView.xib */; };
 		A8DEBBA82255A5A90081A694 /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DEBBA72255A5A90081A694 /* UITextView+Extension.swift */; };
 		A8DEBBAA2255A8A50081A694 /* ALCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DEBBA92255A8A50081A694 /* ALCustomView.swift */; };
-		A8DEBBAC2255CB980081A694 /* Notification.Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DEBBAB2255CB980081A694 /* Notification.Name.swift */; };
 		A8DEBBAF225621B30081A694 /* PaletteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DEBBAD225621B30081A694 /* PaletteCollectionViewCell.swift */; };
 		A8DEBBB0225621B30081A694 /* PaletteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DEBBAE225621B30081A694 /* PaletteCollectionViewCell.xib */; };
 		A8DEBBB2225638070081A694 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DEBBB1225638070081A694 /* UIImageView+Extension.swift */; };
@@ -49,6 +49,7 @@
 /* Begin PBXFileReference section */
 		8BF328FB228DDA472B389400 /* Pods_Project2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97709A67B679D68A1DBDCC55 /* Pods-Project2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.debug.xcconfig"; path = "Target Support Files/Pods-Project2/Pods-Project2.debug.xcconfig"; sourceTree = "<group>"; };
+		A86824C1225CCF4000BDCCD8 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableViewCell.swift; sourceTree = "<group>"; };
 		A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FontTableViewCell.xib; sourceTree = "<group>"; };
@@ -82,7 +83,6 @@
 		A8DEBBA422549DC30081A694 /* ImageCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionReusableView.xib; sourceTree = "<group>"; };
 		A8DEBBA72255A5A90081A694 /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
 		A8DEBBA92255A8A50081A694 /* ALCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALCustomView.swift; sourceTree = "<group>"; };
-		A8DEBBAB2255CB980081A694 /* Notification.Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.Name.swift; sourceTree = "<group>"; };
 		A8DEBBAD225621B30081A694 /* PaletteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteCollectionViewCell.swift; sourceTree = "<group>"; };
 		A8DEBBAE225621B30081A694 /* PaletteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaletteCollectionViewCell.xib; sourceTree = "<group>"; };
 		A8DEBBB1225638070081A694 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
@@ -216,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				A8BFF781225A4B6B0010E56B /* PhotoManager.swift */,
+				A86824C1225CCF4000BDCCD8 /* Notification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,7 +230,6 @@
 				A8DEBB9722543DBF0081A694 /* border.swift */,
 				A8DEBBA72255A5A90081A694 /* UITextView+Extension.swift */,
 				A8DEBBA92255A8A50081A694 /* ALCustomView.swift */,
-				A8DEBBAB2255CB980081A694 /* Notification.Name.swift */,
 				A8DEBBB1225638070081A694 /* UIImageView+Extension.swift */,
 				A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */,
 				A8BFF7792259E1960010E56B /* UIButton+Extenstion.swift */,
@@ -414,13 +414,13 @@
 				A8D2C452225219020085AD24 /* ViewController.swift in Sources */,
 				A8D2C450225219020085AD24 /* AppDelegate.swift in Sources */,
 				A8BFF7772258D1970010E56B /* FontSizeTableViewCell.swift in Sources */,
+				A86824C2225CCF4000BDCCD8 /* Notification.swift in Sources */,
 				A8D2C4722252270C0085AD24 /* ContainerViewController.swift in Sources */,
 				A8BFF77A2259E1960010E56B /* UIButton+Extenstion.swift in Sources */,
 				A8DEBBB2225638070081A694 /* UIImageView+Extension.swift in Sources */,
 				A8D2C458225219030085AD24 /* Project2.xcdatamodeld in Sources */,
 				A8BFF76E22586E5C0010E56B /* FontTableViewCell.swift in Sources */,
 				A8BFF76B22586E3D0010E56B /* UIFont+Extension.swift in Sources */,
-				A8DEBBAC2255CB980081A694 /* Notification.Name.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

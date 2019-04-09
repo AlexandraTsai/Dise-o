@@ -9,7 +9,12 @@
 import UIKit
 
 class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
-
+    
+    @IBOutlet weak var cameraRollBtn: UIButton!
+    @IBOutlet weak var colorBtn: UIButton!
+    @IBOutlet weak var filterBtn: UIButton!
+    @IBOutlet weak var transparencyBtn: UIButton!
+    
     @IBOutlet weak var imageCollectionView: UICollectionView! {
 
         didSet {
@@ -24,6 +29,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
     var cache = NSCache<NSString, UIImage>()
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
 //        photoManager.delegate = self
@@ -34,9 +40,50 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
             bundle: nil)
 
         setupCollectionViewLayout()
+        createNotification()
+        
+        filterBtn.isSelected = true
     }
+    
     func setupImage() {
         imageCollectionView.reloadData()
+    }
+    
+    @IBAction func cameraRollBtnTapped(_ sender: Any) {
+        
+        cameraRollBtn.isSelected = true
+        colorBtn.isSelected = false
+        filterBtn.isSelected = false
+        transparencyBtn.isSelected = false
+        
+        let notificationName = Notification.Name(NotiName.changeImage.rawValue)
+        NotificationCenter.default.post(
+            name: notificationName,
+            object: nil,
+            userInfo: [NotificationInfo.changeImage: true])
+        
+    }
+    @IBAction func colorsBtnTapped(_ sender: Any) {
+        
+        cameraRollBtn.isSelected = false
+        colorBtn.isSelected = true
+        filterBtn.isSelected = false
+        transparencyBtn.isSelected = false
+    }
+    
+    @IBAction func filterBtnTapped(_ sender: Any) {
+        cameraRollBtn.isSelected = false
+        colorBtn.isSelected = false
+        filterBtn.isSelected = true
+        transparencyBtn.isSelected = false
+    }
+    
+    @IBAction func transparencyBtnTapped(_ sender: Any) {
+        
+        cameraRollBtn.isSelected = false
+        colorBtn.isSelected = false
+        filterBtn.isSelected = false
+        transparencyBtn.isSelected = true
     }
 }
 
@@ -82,5 +129,30 @@ extension ImageEditContainerViewController {
         flowLayout.headerReferenceSize = CGSize(width: imageCollectionView.frame.width, height: 40) // header zone
 
         imageCollectionView.collectionViewLayout = flowLayout
+    }
+}
+
+extension ImageEditContainerViewController {
+    
+    //Notification for image picked
+    func createNotification() {
+        
+        // 註冊addObserver
+        let notificationName = Notification.Name(NotiName.didChangeImage.rawValue)
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(changeImage(noti:)), name: notificationName, object: nil)
+    }
+    
+    // 收到通知後要執行的動作
+    @objc func changeImage(noti: Notification) {
+        if let userInfo = noti.userInfo,
+            let mode = userInfo[NotificationInfo.didChangeImage] as? Bool {
+            
+            if mode == true {
+               filterBtn.isSelected = true
+               cameraRollBtn.isSelected = false
+            }
+        }
     }
 }

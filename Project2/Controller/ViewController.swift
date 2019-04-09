@@ -11,18 +11,6 @@ import AssetsLibrary
 import Photos
 import Fusuma
 
-struct NotificationInfo {
-
-    static let newText = ""
-    static let newImage = UIImage()
-    static let addImage = UIImage()
-    static let editedImage = [UIView]()
-    static let addingMode = true
-    static let pickingPhotoMode = true
-    static let backgroundIsImage = true
-
-}
-
 class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
 
     @IBOutlet weak var designView: UIImageView!
@@ -49,8 +37,6 @@ class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-
-        hintView.isHidden = true
 
         notEditingMode()
         scrollView.isHidden = true
@@ -131,9 +117,11 @@ class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
     @IBAction func addImageBtnTapped(_ sender: Any) {
 
         addImageContainerView.isHidden = false
+        
 //        scrollView.isHidden = !scrollView.isHidden
 
-//        self.present(fusuma, animated: true, completion: nil)
+        addingNewImage = true
+        self.present(fusuma, animated: true, completion: nil)
 
     }
 
@@ -341,7 +329,8 @@ extension ViewController {
 
         if sender.state == .began || sender.state == .changed {
 
-            guard let transform = sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale) else { return }
+            guard let transform = sender.view?.transform.scaledBy(x: sender.scale*0/5,
+                                                                  y: sender.scale*0/5) else { return }
 
             sender.view?.transform = transform
             sender.scale = 1.0
@@ -458,12 +447,14 @@ extension ViewController {
 
     func addTextView() -> UITextView {
 
+        let contentSize = self.textView.sizeThatFits(self.textView.bounds.size)
+        
         let newText = UITextView(
             frame: CGRect(x: textView.frame.origin.x-designView.frame.origin.x,
                           y: textView.frame.origin.y-designView.frame.origin.y,
                           width: textView.frame.width,
-                          height: textView.frame.height))
-
+                          height: contentSize.height))
+        
         newText.text = textView.text
         newText.font = textView.font
         newText.backgroundColor = UIColor.clear
@@ -518,14 +509,31 @@ extension ViewController {
 
     // Return the image which is selected from camera roll or is taken via the camera.
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
-
-        designView.image = image
-
-        let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
-
-        NotificationCenter.default.post(name: notificationName,
-                                        object: nil,
-                                        userInfo: [NotificationInfo.backgroundIsImage: true])
+        
+        if addingNewImage == true {
+            
+            let newImage = UIImageView(frame: CGRect(x: designView.center.x-100,
+                                                     y: designView.center.y-100,
+                                                     width: 200,
+                                                     height: 200))
+            newImage.image = image
+            
+            designView.addSubview(newImage)
+            
+            goToEditingVC(with: newImage, navigationBarForImage: true)
+            
+            addingNewImage = false
+            
+        } else {
+            designView.image = image
+            
+            let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
+            
+            NotificationCenter.default.post(name: notificationName,
+                                            object: nil,
+                                            userInfo: [NotificationInfo.backgroundIsImage: true])
+        }
+    
     }
 
     // Return the image but called after is dismissed.
