@@ -19,15 +19,17 @@ struct NotificationInfo {
     static let editedImage = [UIView]()
     static let addingMode = true
     static let pickingPhotoMode = true
+    static let backgroundIsImage = true
     
 }
 
 class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
 
     @IBOutlet weak var designView: UIImageView!
-    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var containerView: ContainerViewController!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var hintLabel: UILabel!
+    @IBOutlet weak var hintView: UIView!
     
     @IBOutlet weak var addImageContainerView: UIView!
 
@@ -49,7 +51,7 @@ class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
         
         notEditingMode()
         scrollView.isHidden = true
-        containerView.isHidden = true
+//        containerView.isHidden = true
         addImageContainerView.isHidden = true
     }
     
@@ -119,7 +121,7 @@ class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
     @IBAction func addImageBtnTapped(_ sender: Any) {
         
         addImageContainerView.isHidden = false
-        containerView.isHidden = true
+//        containerView.isHidden = true
         
         scrollView.isHidden = !scrollView.isHidden
         
@@ -142,23 +144,40 @@ extension ViewController {
     }
     
     @objc func designViewClicked(_ sender: UITapGestureRecognizer) {
- 
-//        if designView.image == nil {
-//             self.present(fusuma, animated: true, completion: nil)
-//        } else {
-//            goToEditingVC(with: designView, navigationBarForImage: true)
-//        }
-        
-        containerView.isHidden = false
+     
         scrollView.isHidden = true
         
+        let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
+ 
+        if designView.image == nil {
+            
+            //只顯示 Camera Roll, Colors(Default)
+            hintView.isHidden = true
+            
+            NotificationCenter.default.post(name: notificationName, object: nil, userInfo: [NotificationInfo.backgroundIsImage: false])
+           
+        } else {
+            
+            //只顯示 Camera Roll, Filter(Default), Colors
+            NotificationCenter.default.post(name: notificationName, object: nil, userInfo: [NotificationInfo.backgroundIsImage: true])
+        }
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "backgroundSegue" {
+            
+            guard let vc: ContainerViewController = segue.destination as? ContainerViewController else { return }
+            vc.loadViewIfNeeded()
+            vc.colorButton.isSelected = true
+        }
     }
    
     //Notification for image picked
     func createNotification() {
         
         // 註冊addObserver
-        let notificationName = Notification.Name(NotiName.changeBackgroundImage.rawValue)
+        let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(changeImage(noti:)), name: notificationName, object: nil)
@@ -456,6 +475,10 @@ extension ViewController {
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
         
         designView.image = image
+        
+        let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
+     
+        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: [NotificationInfo.backgroundIsImage: true])
     }
     
     // Return the image but called after is dismissed.

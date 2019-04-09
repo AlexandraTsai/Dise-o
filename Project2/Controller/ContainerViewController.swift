@@ -12,6 +12,10 @@ import Kingfisher
 
 class ContainerViewController: UIViewController, PhotoManagerDelegate {
     
+    @IBOutlet weak var cameraRollButton: UIButton!
+    @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var colorButton: UIButton!
+    
     @IBOutlet weak var collectionView: UICollectionView! {
         
         didSet {
@@ -31,6 +35,10 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        colorButton.isSelected = true
+        
+        createNotification()
+        
 //        collectionView.al_registerCellWithNib(identifier: String(describing: PhotoCollectionViewCell.self), bundle: nil)
 //        collectionView.al_registerHeaderViewWithNib(identifier:  String(describing: CollectionReusableView.self), bundle: nil)
 
@@ -41,14 +49,24 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
         
     }
     
-    @IBAction func CameraRollBtnTapped(_ sender: Any) {
+    @IBAction func cameraRollBtnTapped(_ sender: Any) {
         
         let notificationName = Notification.Name(NotiName.pickingPhotoMode.rawValue)
         NotificationCenter.default.post(name: notificationName, object: nil, userInfo: [NotificationInfo.pickingPhotoMode: true])
         
     }
     
+    @IBAction func filterBtnTapped(_ sender: Any) {
+        
+        filterButton.isSelected = true
+        colorButton.isSelected = false
+    }
     
+    @IBAction func colorBtnTapped(_ sender: Any) {
+        
+        filterButton.isSelected = false
+        colorButton.isSelected = true
+    }
     func setupImage() {
         collectionView.reloadData()
     }
@@ -95,7 +113,7 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let notificationName = Notification.Name(NotiName.changeBackgroundImage.rawValue)
+        let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
 //        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: [NotificationInfo.newImage: imageArray[indexPath.item]])
         
         NotificationCenter.default.post(name: notificationName, object: nil, userInfo: [NotificationInfo.newImage: imageURL[indexPath.item]])
@@ -133,5 +151,32 @@ extension ContainerViewController {
         flowLayout.headerReferenceSize = CGSize(width: collectionView.frame.width, height: 40) // header zone
         
         collectionView.collectionViewLayout = flowLayout
+    }
+}
+
+extension ContainerViewController {
+    
+    func createNotification() {
+        
+        // 註冊addObserver
+        let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(changeBackground(noti:)), name: notificationName, object: nil)
+    }
+    
+    @objc func changeBackground(noti: Notification) {
+    
+        if let userInfo = noti.userInfo,
+            let mode = userInfo[NotificationInfo.backgroundIsImage] as? Bool {
+            if mode == true {
+                filterButton.isHidden = false
+                filterButton.isSelected = true
+                colorButton.isSelected = false
+            } else {
+                filterButton.isHidden = true
+                colorButton.isSelected = true
+            }
+        }
     }
 }
