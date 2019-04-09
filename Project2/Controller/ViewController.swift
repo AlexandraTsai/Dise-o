@@ -43,15 +43,18 @@ class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
     @IBOutlet weak var textView: UITextView! 
     
     var editingView: UIView?
+    var addingNewImage = false
     
     let fusuma = FusumaViewController()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        hintView.isHidden = true
+        
         notEditingMode()
         scrollView.isHidden = true
-//        containerView.isHidden = true
+        
         addImageContainerView.isHidden = true
     }
     
@@ -121,9 +124,9 @@ class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
     @IBAction func addImageBtnTapped(_ sender: Any) {
         
         addImageContainerView.isHidden = false
-//        containerView.isHidden = true
+//        scrollView.isHidden = !scrollView.isHidden
         
-        scrollView.isHidden = !scrollView.isHidden
+//        self.present(fusuma, animated: true, completion: nil)
         
     }
     
@@ -146,13 +149,13 @@ extension ViewController {
     @objc func designViewClicked(_ sender: UITapGestureRecognizer) {
      
         scrollView.isHidden = true
+        hintView.isHidden = true
         
         let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
  
         if designView.image == nil {
             
             //只顯示 Camera Roll, Colors(Default)
-            hintView.isHidden = true
             
             NotificationCenter.default.post(name: notificationName, object: nil, userInfo: [NotificationInfo.backgroundIsImage: false])
            
@@ -469,8 +472,7 @@ extension ViewController {
 }
 
 extension ViewController {
-    
-    
+  
     // Return the image which is selected from camera roll or is taken via the camera.
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
         
@@ -483,7 +485,7 @@ extension ViewController {
     
     // Return the image but called after is dismissed.
     func fusumaDismissedWithImage(image: UIImage, source: FusumaMode) {
-        
+      
         print("Called just after FusumaViewController is dismissed.")
     }
     

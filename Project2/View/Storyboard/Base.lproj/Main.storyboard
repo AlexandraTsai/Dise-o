@@ -50,7 +50,7 @@
                                 </constraints>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MPz-Hy-TZc">
-                                <rect key="frame" x="0.0" y="459" width="375" height="208"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <connections>
                                     <segue destination="AHI-tQ-ej5" kind="embed" id="eV2-Yo-FQM"/>
                                 </connections>
@@ -144,25 +144,25 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="DZf-mM-usS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="0S2-aV-HPz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MPz-Hy-TZc" secondAttribute="bottom" id="0cR-1U-udo"/>
                             <constraint firstItem="qfP-Fw-Eth" firstAttribute="bottom" secondItem="k2Y-E1-iHA" secondAttribute="bottom" id="Am6-S6-wth"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ic4-BR-cwQ" secondAttribute="bottom" constant="20" id="Ass-xM-9Rv"/>
-                            <constraint firstItem="MPz-Hy-TZc" firstAttribute="height" secondItem="k2Y-E1-iHA" secondAttribute="height" id="BAi-V1-QDz"/>
                             <constraint firstItem="zg0-Kt-1Ej" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BXC-mn-8V9"/>
                             <constraint firstItem="DZf-mM-usS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EOD-Bq-wnu"/>
                             <constraint firstItem="k2Y-E1-iHA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GRS-Ul-4od"/>
                             <constraint firstItem="k2Y-E1-iHA" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="KhU-Kl-S9f"/>
                             <constraint firstItem="qfP-Fw-Eth" firstAttribute="trailing" secondItem="k2Y-E1-iHA" secondAttribute="trailing" id="LHa-8d-qoM"/>
-                            <constraint firstItem="MPz-Hy-TZc" firstAttribute="top" secondItem="k2Y-E1-iHA" secondAttribute="top" id="Oei-FE-KEo"/>
+                            <constraint firstItem="MPz-Hy-TZc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MPh-xs-G33"/>
                             <constraint firstItem="k2Y-E1-iHA" firstAttribute="top" secondItem="DZf-mM-usS" secondAttribute="bottom" constant="50" id="RCg-BY-US3"/>
                             <constraint firstItem="k2Y-E1-iHA" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Whc-J1-e2J"/>
+                            <constraint firstItem="MPz-Hy-TZc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="YRK-qD-Vff"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ic4-BR-cwQ" secondAttribute="trailing" constant="20" id="aCz-bw-aE9"/>
                             <constraint firstItem="VJC-L0-vuv" firstAttribute="centerY" secondItem="DZf-mM-usS" secondAttribute="centerY" id="exj-SI-Mra"/>
                             <constraint firstItem="qfP-Fw-Eth" firstAttribute="leading" secondItem="k2Y-E1-iHA" secondAttribute="leading" id="hWU-Gq-sDC"/>
-                            <constraint firstItem="MPz-Hy-TZc" firstAttribute="leading" secondItem="k2Y-E1-iHA" secondAttribute="leading" id="igR-WI-yET"/>
+                            <constraint firstItem="MPz-Hy-TZc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="p0A-vS-vN0"/>
                             <constraint firstItem="zg0-Kt-1Ej" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="s4e-vF-w2d"/>
                             <constraint firstItem="VJC-L0-vuv" firstAttribute="centerX" secondItem="DZf-mM-usS" secondAttribute="centerX" id="wAc-gS-irl"/>
                             <constraint firstItem="DZf-mM-usS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="wa0-V2-l3L"/>
-                            <constraint firstItem="MPz-Hy-TZc" firstAttribute="width" secondItem="k2Y-E1-iHA" secondAttribute="width" id="x64-Zv-p2M"/>
                             <constraint firstItem="qfP-Fw-Eth" firstAttribute="top" secondItem="k2Y-E1-iHA" secondAttribute="top" id="xnx-Hv-ssj"/>
                             <constraint firstItem="zg0-Kt-1Ej" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="zOB-g9-GQN"/>
                         </constraints>
@@ -589,11 +589,11 @@
             <objects>
                 <viewController id="AHI-tQ-ej5" customClass="AddImageContainerViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JBS-XR-fXH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="208"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yV7-ZI-bQi">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="208"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QtY-uW-YFN">
                                     <size key="itemSize" width="50" height="50"/>
