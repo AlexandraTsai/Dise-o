@@ -11,22 +11,21 @@ import UIKit
 import QuartzCore
 
 @IBDesignable open class ALCustomView: UIView {
-    
-    
+
     @IBInspectable var cornerRadius: Double {
         get {
             return Double(self.layer.cornerRadius)
-            
+
         }
         set {
             self.layer.cornerRadius = CGFloat(newValue)
         }
     }
-    
+
     @IBInspectable var borderWidth: Double {
         get {
             return Double(self.layer.borderWidth)
-            
+
         }
         set {
             self.layer.borderWidth = CGFloat(newValue)

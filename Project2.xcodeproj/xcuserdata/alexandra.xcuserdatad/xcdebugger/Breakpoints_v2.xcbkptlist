@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "340"
             endingLineNumber = "340"
-            landmarkName = "didTapCopyButton(sender:)"
+            landmarkName = "didTapDoneButton(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -11,23 +11,23 @@ import UIKit
 class ImageContainerViewController: UIViewController {
 
     @IBOutlet weak var imageToBeEdit: UIImageView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         createNotification()
     }
-    
+
     //Notification for image picked
     func createNotification() {
-        
+
         // 註冊addObserver
         let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
-        
+
         NotificationCenter.default.addObserver(self, selector:
             #selector(changeImage(noti:)), name: notificationName, object: nil)
     }
-    
+
     // 收到通知後要執行的動作
     @objc func changeImage(noti: Notification) {
         if let userInfo = noti.userInfo,

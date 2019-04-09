@@ -9,5 +9,6 @@ target 'Project2' do
   pod 'UIFontComplete'
   pod 'Kingfisher', '~> 5.0'
   pod 'Fusuma'
+  pod 'SwiftLint'
 
 end

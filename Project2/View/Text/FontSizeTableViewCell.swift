@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FontSizeTableViewCellDelegate: AnyObject {
-    
+
     func changeFontSize(to size: Int)
 }
 
@@ -17,9 +17,9 @@ class FontSizeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var fontSizeLabel: UILabel!
-    
+
     weak var delegate: FontSizeTableViewCellDelegate?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,11 +30,11 @@ class FontSizeTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
     @IBAction func sliderDidSlide(_ sender: UISlider) {
-        
+
         let fontSize = Int(sender.value)
-        
+
         fontSizeLabel.text = String(fontSize)
         delegate?.changeFontSize(to: fontSize)
     }

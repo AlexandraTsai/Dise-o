@@ -9,15 +9,15 @@
 import UIKit
 
 extension UIButton {
-    
+
     func disableMode() {
-        
+
         self.isEnabled = false
         self.setTitleColor(UIColor.gray, for: .normal)
     }
-    
+
     func enableMode() {
-        
+
         self.isEnabled = true
         self.setTitleColor(UIColor.white, for: .normal)
     }

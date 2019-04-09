@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+private func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
     switch (lhs, rhs) {
     case let (l?, r?):
         return l < r
@@ -20,7 +20,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     }
 }
 
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+private func > <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
     switch (lhs, rhs) {
     case let (l?, r?):
         return l > r
@@ -132,7 +132,7 @@ public struct ImageMetadata {
         return PHPhotoLibrary.authorizationStatus() == .authorized
     }
 
-    public weak var delegate: FusumaDelegate? = nil
+    public weak var delegate: FusumaDelegate?
 
     override public func loadView() {
         if let view = UINib(nibName: "FusumaViewController", bundle: Bundle(for: self.classForCoder)).instantiate(withOwner: self, options: nil).first as? UIView {
@@ -202,35 +202,35 @@ public struct ImageMetadata {
 
             if i == 0 {
                 view.addConstraint(NSLayoutConstraint(
-                    item:       button,
-                    attribute:  .leading,
-                    relatedBy:  .equal,
-                    toItem:     self.view,
-                    attribute:  .leading,
+                    item: button,
+                    attribute: .leading,
+                    relatedBy: .equal,
+                    toItem: self.view,
+                    attribute: .leading,
                     multiplier: 1.0,
-                    constant:   0.0
+                    constant: 0.0
                 ))
             } else {
                 view.addConstraint(NSLayoutConstraint(
-                    item:       button,
-                    attribute:  .leading,
-                    relatedBy:  .equal,
-                    toItem:     sortedButtons[i - 1],
-                    attribute:  .trailing,
+                    item: button,
+                    attribute: .leading,
+                    relatedBy: .equal,
+                    toItem: sortedButtons[i - 1],
+                    attribute: .trailing,
                     multiplier: 1.0,
-                    constant:   0.0
+                    constant: 0.0
                 ))
             }
 
             if i == sortedButtons.count - 1 {
                 view.addConstraint(NSLayoutConstraint(
-                    item:       button,
-                    attribute:  .trailing,
-                    relatedBy:  .equal,
-                    toItem:     button,
-                    attribute:  .trailing,
+                    item: button,
+                    attribute: .trailing,
+                    relatedBy: .equal,
+                    toItem: button,
+                    attribute: .trailing,
                     multiplier: 1.0,
-                    constant:   0.0
+                    constant: 0.0
                 ))
 
             }
@@ -258,7 +258,7 @@ public struct ImageMetadata {
             cameraButton.removeFromSuperview()
             videoButton.removeFromSuperview()
         }
-        
+
         if availableModes.contains(.camera) {
             if fusumaCropImage {
                 let heightRatio = getCropHeightRatio()
@@ -270,10 +270,10 @@ public struct ImageMetadata {
                     attribute: NSLayoutConstraint.Attribute.width,
                     multiplier: heightRatio,
                     constant: 0)
-                
+
                 cameraView.fullAspectRatioConstraint.isActive     = false
                 cameraView.croppedAspectRatioConstraint?.isActive = true
-                
+
             } else {
                 cameraView.fullAspectRatioConstraint.isActive     = true
                 cameraView.croppedAspectRatioConstraint?.isActive = false
@@ -319,7 +319,7 @@ public struct ImageMetadata {
         return .portrait
     }
 
-    override public var prefersStatusBarHidden : Bool {
+    override public var prefersStatusBarHidden: Bool {
         return true
     }
 
@@ -404,7 +404,7 @@ public struct ImageMetadata {
 
             let targetSize   = CGSize(width: dimensionW, height: dimensionH)
 
-            PHImageManager.default().requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFill, options: options) { result, info in
+            PHImageManager.default().requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFill, options: options) { result, _ in
                 guard let result = result else { return }
 
                 DispatchQueue.main.async(execute: {
@@ -565,11 +565,11 @@ private extension FusumaViewController {
     func dishighlightButtons() {
         cameraButton.setTitleColor(fusumaBaseTintColor, for: .normal)
 //        cameraButton.titleLabel?.font = fusumaTintFont
-        
+
         if let libraryButton = libraryButton {
             libraryButton.setTitleColor(fusumaBaseTintColor, for: .normal)
 //            libraryButton.titleLabel?.font = fusumaTintFont
-            
+
         }
 
         if let videoButton = videoButton {

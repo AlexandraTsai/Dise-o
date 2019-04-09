@@ -24,7 +24,7 @@ final class FSCameraView: UIView, UIGestureRecognizerDelegate {
     var croppedAspectRatioConstraint: NSLayoutConstraint?
     var initialCaptureDevicePosition: AVCaptureDevice.Position = .back
 
-    weak var delegate: FSCameraViewDelegate? = nil
+    weak var delegate: FSCameraViewDelegate?
 
     private var session: AVCaptureSession?
     private var device: AVCaptureDevice?
@@ -102,7 +102,7 @@ final class FSCameraView: UIView, UIGestureRecognizerDelegate {
 
             // Focus View
             focusView = UIView(frame: CGRect(x: 0, y: 0, width: 90, height: 90))
-            let tapRecognizer = UITapGestureRecognizer(target: self, action:#selector(FSCameraView.focus(_:)))
+            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(FSCameraView.focus(_:)))
             tapRecognizer.delegate = self
             previewViewContainer.addGestureRecognizer(tapRecognizer)
         }
@@ -161,7 +161,7 @@ final class FSCameraView: UIView, UIGestureRecognizerDelegate {
         DispatchQueue.global(qos: .default).async(execute: { () -> Void in
             guard let videoConnection = imageOutput.connection(with: AVMediaType.video) else { return }
 
-            imageOutput.captureStillImageAsynchronously(from: videoConnection) { (buffer, error) -> Void in
+            imageOutput.captureStillImageAsynchronously(from: videoConnection) { (buffer, _) -> Void in
                 self.stopCamera()
 
                 guard let buffer = buffer,
@@ -343,10 +343,10 @@ fileprivate extension FSCameraView {
                        usingSpringWithDamping: 0.8,
                        initialSpringVelocity: 3.0,
                        options: UIView.AnimationOptions.curveEaseIn,
-                       animations:{
+                       animations: {
                         focusView.alpha = 1.0
                         focusView.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
-        }, completion: {(finished) in
+        }, completion: {(_) in
             focusView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             focusView.removeFromSuperview()
         })

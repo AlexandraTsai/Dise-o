@@ -14,5 +14,5 @@ class ImageCollectionReusableView: UICollectionReusableView {
         super.awakeFromNib()
         // Initialization code
     }
-    
+
 }

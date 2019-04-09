@@ -9,23 +9,23 @@
 import UIKit
 
 extension UIImageView {
-    
+
     func makeACopy(from originView: UIImageView) {
-        
+
         //Record the rotaion of the original image view
         let originRotation =  originView.transform
-        
+
         //Transform the origin image view
         originView.transform = CGAffineTransform(rotationAngle: 0)
-        
+
         self.frame = originView.frame
-        
+
         self.transform = originRotation
         self.image = originView.image
-        
+
         self.transform = originRotation
-        
+
         originView.transform = originRotation
-        
+
     }
 }

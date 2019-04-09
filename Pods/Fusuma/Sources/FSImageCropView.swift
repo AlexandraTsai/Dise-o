@@ -81,7 +81,6 @@ final class FSImageCropView: UIScrollView, UIScrollViewDelegate {
         delegate = self
     }
 
-
     func changeScrollable(_ isScrollable: Bool) {
         isScrollEnabled = isScrollable
     }

@@ -27,7 +27,7 @@ final class FSAlbumView: UIView, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet weak var collectionViewConstraintHeight: NSLayoutConstraint!
     @IBOutlet weak var imageCropViewConstraintTop: NSLayoutConstraint!
 
-    weak var delegate: FSAlbumViewDelegate? = nil
+    weak var delegate: FSAlbumViewDelegate?
     var allowMultipleSelection = false
     var photoSelectionLimit = 1
     var autoSelectFirstImage = false
@@ -239,7 +239,7 @@ final class FSAlbumView: UIView, UICollectionViewDataSource, UICollectionViewDel
         imageManager?.requestImage(for: asset,
                                         targetSize: cellSize,
                                         contentMode: .aspectFill,
-                                        options: nil) { (result, info) in
+                                        options: nil) { (result, _) in
                                             if cell.tag == currentTag {
                                                 cell.image = result
                                             }
@@ -308,7 +308,6 @@ final class FSAlbumView: UIView, UICollectionViewDataSource, UICollectionViewDel
         return true
     }
 
-
     // MARK: - ScrollViewDelegate
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -317,7 +316,7 @@ final class FSAlbumView: UIView, UICollectionViewDataSource, UICollectionViewDel
         }
     }
 
-    //MARK: - PHPhotoLibraryChangeObserver
+    // MARK: - PHPhotoLibraryChangeObserver
 
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         DispatchQueue.main.async {
@@ -378,7 +377,7 @@ internal extension IndexSet {
         var indexPaths: [IndexPath] = []
         indexPaths.reserveCapacity(self.count)
 
-        (self as NSIndexSet).enumerate({idx, stop in
+        (self as NSIndexSet).enumerate({idx, _ in
             indexPaths.append(IndexPath(item: idx, section: section))
         })
 
@@ -399,7 +398,7 @@ private extension FSAlbumView {
                                             targetSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight),
                                             contentMode: .aspectFill,
                                             options: options) {
-                                                result, info in
+                                                result, _ in
 
                                                 DispatchQueue.main.async(execute: {
 
@@ -425,7 +424,7 @@ private extension FSAlbumView {
             let options = PHImageRequestOptions()
             options.isNetworkAccessAllowed = true
 
-            self.imageManager?.requestImage(for: asset, targetSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight), contentMode: .aspectFill, options: options) { result, info in
+            self.imageManager?.requestImage(for: asset, targetSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight), contentMode: .aspectFill, options: options) { result, _ in
                 DispatchQueue.main.async(execute: {
                     self.imageCropView.imageSize = CGSize(width: asset.pixelWidth, height: asset.pixelHeight)
                     self.imageCropView.image = result

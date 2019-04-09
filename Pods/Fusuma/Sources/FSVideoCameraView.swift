@@ -19,7 +19,7 @@ final class FSVideoCameraView: UIView {
     @IBOutlet weak var flashButton: UIButton!
     @IBOutlet weak var flipButton: UIButton!
 
-    weak var delegate: FSVideoCameraViewDelegate? = nil
+    weak var delegate: FSVideoCameraViewDelegate?
 
     var session: AVCaptureSession?
     var device: AVCaptureDevice?
@@ -318,7 +318,7 @@ fileprivate extension FSVideoCameraView {
             animations: {
                 focusView.alpha = 1.0
                 focusView.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
-        }, completion: { finished in
+        }, completion: { _ in
             focusView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             focusView.removeFromSuperview()
         })

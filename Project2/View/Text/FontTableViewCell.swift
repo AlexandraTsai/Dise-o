@@ -11,7 +11,7 @@ import UIKit
 class FontTableViewCell: UITableViewCell {
 
     @IBOutlet weak var fontLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,5 +22,5 @@ class FontTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

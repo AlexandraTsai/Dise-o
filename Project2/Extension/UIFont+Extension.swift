@@ -9,7 +9,7 @@
 import UIKit
 
 enum FontName: String, CaseIterable {
-    
+
     case academyEngravedLet = "Academy Engraved LET"
     case alNile = "AlNile"
     case arialMT = "ArialMT"
@@ -46,23 +46,23 @@ enum FontName: String, CaseIterable {
     case partyLET = "Party LET"
     case rockwell
     case savoyeLet = "Savoye LET"
-    
+
     func fontStyle() -> Int {
-        
+
         switch self {
-            
+
         //bold
         case .alNile, .copperplate, .chalkboardSE, .damascus, .geezaPro, .gurmukhiMN, .kailasa:
             return 1
-        
+
         //italic
         case .hoeflerText:
             return 2
-          
+
         //bold, italic
         case .didot, .euphemiaUCAS:
             return 3
-        
+
         //bold, italic, boldItalic
         case .arialMT, .cochin, .baskerville, .georgia, .gillSans, .helveticaNeue, .menloRegular, .palatino:
             return 4
@@ -70,33 +70,51 @@ enum FontName: String, CaseIterable {
             return 0
         }
     }
-    
+    // swiftlint:disable cyclomatic_complexity
     func boldStyle() -> String {
-      
+
         switch self {
-        case .alNile: return "AlNile-Bold"
-        case .arialMT: return "Arial-BoldMT"
-        case .baskerville: return "Baskerville-Bold"
-        case .damascus: return "DamascusBold"
-        case .didot: return "Didot-Bold"
-        case .copperplate: return "Copperplate-Bold"
-        case .chalkboardSE: return "ChalkboardSE-Bold"
-        case .cochin: return  "Cochin-Bold"
-        case .euphemiaUCAS: return "EuphemiaUCAS-Bold"
-        case .geezaPro: return "GeezaPro-Bold"
-        case .georgia: return "Georgia-Bold"
-        case .gillSans: return "GillSans-Bold"
-        case .gurmukhiMN: return "GurmukhiMN-Bold"
-        case .helveticaNeue: return "HelveticaNeue-Bold"
-        case .kailasa: return "Kailasa-Bold"
-        case .menloRegular: return "Menlo-Bold"
-        case .palatino: return  "Palatino-Bold"
-        default: return self.rawValue
+        case .alNile:
+            return "AlNile-Bold"
+        case .arialMT:
+            return "Arial-BoldMT"
+        case .baskerville:
+            return "Baskerville-Bold"
+        case .damascus:
+            return "DamascusBold"
+        case .didot:
+            return "Didot-Bold"
+        case .copperplate:
+            return "Copperplate-Bold"
+        case .chalkboardSE:
+            return "ChalkboardSE-Bold"
+        case .cochin:
+            return  "Cochin-Bold"
+        case .euphemiaUCAS:
+            return "EuphemiaUCAS-Bold"
+        case .geezaPro:
+            return "GeezaPro-Bold"
+        case .georgia:
+            return "Georgia-Bold"
+        case .gillSans:
+            return "GillSans-Bold"
+        case .gurmukhiMN:
+            return "GurmukhiMN-Bold"
+        case .helveticaNeue:
+            return "HelveticaNeue-Bold"
+        case .kailasa:
+            return "Kailasa-Bold"
+        case .menloRegular:
+            return "Menlo-Bold"
+        case .palatino:
+            return  "Palatino-Bold"
+        default:
+            return self.rawValue
         }
     }
-    
+
     func italicStyle() -> String {
-        
+
         switch self {
         case .arialMT: return "Arial-ItalicMT"
         case .baskerville: return "Baskerville-Italic"
@@ -113,7 +131,7 @@ enum FontName: String, CaseIterable {
         }
     }
     func boldItalicStyle() -> String {
-        
+
         switch self {
         case .arialMT: return "Arial-BoldItalicMT"
         case .baskerville: return "Baskerville-BoldItalic"
@@ -126,19 +144,21 @@ enum FontName: String, CaseIterable {
         default: return self.rawValue
         }
     }
+    
+     // swiftlint:enable cyclomatic_complexity
 }
 
 extension UIFont {
-    
+
     func withTraits(traits: UIFontDescriptor.SymbolicTraits) -> UIFont {
         let descriptor = fontDescriptor.withSymbolicTraits(traits)
         return UIFont(descriptor: descriptor!, size: 0) //size 0 means keep the size as it is
     }
-    
+
     func bold() -> UIFont {
         return withTraits(traits: .traitBold)
     }
-    
+
     func italic() -> UIFont {
         return withTraits(traits: .traitItalic)
     }

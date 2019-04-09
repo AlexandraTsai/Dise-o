@@ -32,7 +32,7 @@ final class FSAlbumViewCell: UICollectionViewCell {
         selectedLayer.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5).cgColor
     }
 
-    override var isSelected : Bool {
+    override var isSelected: Bool {
         didSet {
             if selectedLayer.superlayer == self.layer {
                 selectedLayer.removeFromSuperlayer()

@@ -10,62 +10,63 @@ import Foundation
 import Photos
 
 protocol PhotoManagerDelegate: AnyObject {
-    
+
     var imageArray: [UIImage] { get set }
-    var imageURL: [URL]  { get set }
+    var imageURL: [URL] { get set }
 
     func setupImage()
- 
+
 }
 
 class PhotoManager {
-    
+
     weak var delegate: PhotoManagerDelegate?
-    
+
     func grabPhoto() {
-        
+
         let requestOptions = PHImageRequestOptions()
         requestOptions.isSynchronous = true
         requestOptions.deliveryMode = .highQualityFormat
-        
+
         let fetchOptions = PHFetchOptions()
         fetchOptions.fetchLimit = 100
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        
+
         let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions)
-        
-        
-        
+
             if fetchResult.count > 0 {
-                
+
                 DispatchQueue.global().async {
-                    
-                    
-                    for i in 0..<fetchResult.count {
-                        
-                        guard let asset = fetchResult.object(at: i) as? PHAsset else { return }
+
+                    for count in 0..<fetchResult.count {
+
+                       let asset = fetchResult.object(at: count) as PHAsset
                         ////
                         //      //              存 URL >> 在用 kinfisher 去顯示在 collection view cell 上面
                         //
-                                    PHImageManager.default().requestImage(for: asset, targetSize: CGSize(width: 300, height: 300), contentMode: .aspectFill, options: requestOptions) { (image, error) in
-                        
+                                    PHImageManager.default().requestImage(for: asset,
+                                                                          targetSize: CGSize(width: 300, height: 300),
+                                                                          contentMode: .aspectFill,
+                                                                          options: requestOptions) { (image, _) in
+
                                         guard let image = image else { return }
-                        
+
                                         self.delegate?.imageArray.append(image)
                                             }
-                        if i == fetchResult.count - 1 {
+                        if count == fetchResult.count - 1 {
                                 DispatchQueue.main.async {
                                     self.delegate?.setupImage()
                                 }
                                                                     }
                     }
-                    
-                    
+
 //                    for i in 0..<fetchResult.count {
 //
 //                        let asset = fetchResult.object(at: i) as PHAsset
 //
-//                        PHImageManager.default().requestImageData(for: asset, options: PHImageRequestOptions(), resultHandler: { (imagedata, dataUTI, orientation, info) in
+//                        PHImageManager.default().requestImageData(for: asset,
+//                    options: PHImageRequestOptions(),
+//                    resultHandler: { (imagedata, dataUTI, orientation, info) in
 //
 //                            if let info = info {
 //
@@ -84,15 +85,11 @@ class PhotoManager {
 //                              }
 //                        })
 //                    }
-                    
-                    
+
                 }
-                
-                
-                
-        
+
             }
-         
+
 //            if fetchResult.count > 0 {
 //                for i in 0..<fetchResult.count {
 //
@@ -100,7 +97,10 @@ class PhotoManager {
 ////
 //      //              存 URL >> 在用 kinfisher 去顯示在 collection view cell 上面
 //
-////                    imgManager.requestImage(for: asset, targetSize: CGSize(width: 300, height: 300), contentMode: .aspectFill, options: requestOptions) { (image, error) in
+////                    imgManager.requestImage(for: asset,
+//        targetSize: CGSize(width: 300, height: 300),
+//        contentMode: .aspectFill,
+//        options: requestOptions) { (image, error) in
 ////
 ////                        guard let image = image else { return }
 ////
@@ -112,6 +112,6 @@ class PhotoManager {
 //                print("You got no photos!")
 //
 //            }
-        
+
     }
 }

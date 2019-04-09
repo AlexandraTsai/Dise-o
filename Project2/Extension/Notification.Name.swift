@@ -9,7 +9,7 @@
 import Foundation
 
 enum NotiName: String {
-    
+
     case updateImage //After editing
     case addImage
     case changeBackground //Selected from album
