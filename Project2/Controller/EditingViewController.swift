@@ -26,7 +26,8 @@ class EditingViewController: UIViewController {
     @IBOutlet weak var fontSizeBtn: UIButton!
     @IBOutlet weak var textEditView: UIView!
     @IBOutlet weak var imageEditContainerView: UIView!
-
+    @IBOutlet weak var selectFontView: UIView!
+    
     var lineHeight: Float = 0
     var letterSpacing: Float = 0
     var currentFontName: FontName = FontName.helveticaNeue
@@ -49,7 +50,7 @@ class EditingViewController: UIViewController {
             }
 
             view.delegate = self
-            self.changeTextAttributeWith(lineHeight: 1.4, letterSpacing: 0.0)
+//            self.changeTextAttributeWith(lineHeight: 1.4, letterSpacing: 0.0)
 
             textEditView.isHidden = false
             imageEditContainerView.isHidden = true
@@ -71,6 +72,7 @@ class EditingViewController: UIViewController {
         
         setupImagePicker()
         createNotification()
+        selectFontView.isHidden = true
 
     }
 
@@ -94,19 +96,19 @@ class EditingViewController: UIViewController {
 
         fontTableView.isScrollEnabled = true
         fontTableView.reloadData()
-        textEditView.isHidden = true
+        selectFontView.isHidden = false
 
     }
 
     @IBAction func colorButtonTapped(_ sender: Any) {
         fontTableView.reloadData()
-        textEditView.isHidden = true
+        selectFontView.isHidden = false
     }
     @IBAction func fontSizeButtonTapped(_ sender: Any) {
 
         tableViewIndex = 2
         fontTableView.reloadData()
-        textEditView.isHidden = true
+        selectFontView.isHidden = false
 
     }
 
@@ -129,7 +131,7 @@ class EditingViewController: UIViewController {
     }
 
     @IBAction func finishEdit(_ sender: Any) {
-        textEditView.isHidden = false
+        selectFontView.isHidden = true
 
     }
 
@@ -240,7 +242,7 @@ class EditingViewController: UIViewController {
         fontTableView.reloadData()
         fontTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
 
-        textEditView.isHidden = true
+        selectFontView.isHidden = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -532,6 +534,9 @@ extension EditingViewController {
 extension EditingViewController: UITextViewDelegate {
 
     func textViewDidChange(_ textView: UITextView) {
+        
+        let contentSize = textView.sizeThatFits(textView.bounds.size)
+        textView.frame.size.height = contentSize.height
 
         switch letterCaseButton.titleLabel?.text {
         case "AA":
@@ -687,6 +692,9 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
             let fontName = view.font?.fontName,
             let fontSize = view.font?.pointSize  else { return }
         
+        let contentSize = view.sizeThatFits(self.view.bounds.size)
+        view.frame.size.height = contentSize.height
+        
         view.keepAttributeWith(lineHeight: lineHeight,
                                letterSpacing: letterSpacing,
                                fontName: fontName,
@@ -697,6 +705,8 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
 
         guard let view = editingView as? UITextView, let fontName = view.font?.fontName  else { return }
 
+        let contentSize = view.sizeThatFits(self.view.bounds.size)
+        
         view.keepAttributeWith(lineHeight: self.lineHeight,
                                letterSpacing: self.letterSpacing,
                                fontName: fontName,
@@ -704,6 +714,8 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
 
         view.font = UIFont(name: fontName, size: CGFloat(size))
 
+        view.frame.size.height = contentSize.height
+        
         fontSizeBtn.setTitle(String(size), for: .normal)
     }
 }
