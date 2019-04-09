@@ -26,8 +26,8 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        photoManager.delegate = self
-        photoManager.grabPhoto()
+//        photoManager.delegate = self
+//        photoManager.grabPhoto()
         
         imageCollectionView.al_registerCellWithNib(identifier: String(describing: PhotoCollectionViewCell.self), bundle: nil)
         

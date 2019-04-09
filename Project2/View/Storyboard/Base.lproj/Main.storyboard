@@ -656,6 +656,7 @@
                             <constraint firstAttribute="bottom" secondItem="MYN-oB-uRr" secondAttribute="bottom" id="okP-cY-Vb5"/>
                             <constraint firstItem="MYN-oB-uRr" firstAttribute="leading" secondItem="5Vu-MO-3I2" secondAttribute="leading" id="w5F-BH-0pn"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="BVZ-XK-vg7"/>
                     </view>
                     <connections>
                         <outlet property="imageCollectionView" destination="MYN-oB-uRr" id="NW4-OI-yyn"/>

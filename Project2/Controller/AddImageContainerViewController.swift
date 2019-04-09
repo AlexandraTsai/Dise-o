@@ -36,8 +36,8 @@ class AddImageContainerViewController: UIViewController, PhotoManagerDelegate {
         
         setupCollectionViewLayout()
         
-        photoManager.delegate = self
-        photoManager.grabPhoto()
+//        photoManager.delegate = self
+//        photoManager.grabPhoto()
 
     }
     func setupImage() {

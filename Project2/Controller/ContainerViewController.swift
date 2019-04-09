@@ -9,14 +9,10 @@
 import UIKit
 import Photos
 import Kingfisher
+import Fusuma
 
 class ContainerViewController: UIViewController, PhotoManagerDelegate {
     
-    func showImage(_ images: [UIImage]) {
-        print("hey")
-    }
-    
-   
     @IBOutlet weak var collectionView: UICollectionView! {
         
         didSet {
@@ -27,8 +23,7 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
             
         }
     }
-    
-//    var imageArray = [UIImage]()
+
     let photoManager = PhotoManager()
     var imageArray:[UIImage] = []
     
@@ -41,17 +36,18 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
         
         collectionView.al_registerCellWithNib(identifier: String(describing: PhotoCollectionViewCell.self), bundle: nil)
         collectionView.al_registerHeaderViewWithNib(identifier:  String(describing: CollectionReusableView.self), bundle: nil)
-        
+
         setupCollectionViewLayout()
         
-        photoManager.delegate = self
-        photoManager.grabPhoto()
+//        photoManager.delegate = self
+//        photoManager.grabPhoto()
+        
     }
     
     func setupImage() {
         collectionView.reloadData()
     }
-   
+  
 }
 
 extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -71,10 +67,7 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
         guard let photoCell = cell as? PhotoCollectionViewCell else {
             return cell
         }
-        
-       
-            
-
+  
         photoCell.photoImage.image = imageArray[indexPath.item]
   
 //        photoCell.photoImage.kf.setImage(with: URL(string: "//var/mobile/Media/DCIM/134APPLE/IMG_4696.JPG"))
@@ -104,7 +97,6 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
 //        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: [NotificationInfo.newImage: imageArray[indexPath.item]])
         
         NotificationCenter.default.post(name: notificationName, object: nil, userInfo: [NotificationInfo.newImage: imageURL[indexPath.item]])
-        
         
     }
     
