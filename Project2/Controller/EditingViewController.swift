@@ -31,16 +31,14 @@ class EditingViewController: UIViewController {
     var lineHeight: Float = 0
     var letterSpacing: Float = 0
     var currentFontName: FontName = FontName.helveticaNeue
+    let helperView = UIView()
 
     var editingView: UIView? {
 
         didSet {
 
-            oldValue?.layer.borderWidth = 0
-
-            editingView?.layer.borderColor = UIColor.white.cgColor
-            editingView?.layer.borderWidth = 1
-
+            createEditingHelper(for: editingView!)
+            
             guard let view = editingView as? UITextView else {
 
                textEditView.isHidden = true
@@ -50,6 +48,7 @@ class EditingViewController: UIViewController {
             }
 
             view.delegate = self
+            
 //            self.changeTextAttributeWith(lineHeight: 1.4, letterSpacing: 0.0)
 
             textEditView.isHidden = false
@@ -78,8 +77,11 @@ class EditingViewController: UIViewController {
 
     @IBAction func addBtnTapped(_ sender: Any) {
 
-        editingView?.layer.borderWidth = 0
-
+//        editingView?.layer.borderWidth = 0
+        
+        let oldHelperView =  designView.subviews.first
+        oldHelperView?.removeFromSuperview()
+        
         /*Notification*/
         let notificationName = Notification.Name(NotiName.addingMode.rawValue)
         NotificationCenter.default.post(
@@ -250,7 +252,11 @@ class EditingViewController: UIViewController {
         guard designView.subviews.count > 0 else { return }
 
         for count in 0...designView.subviews.count-1 {
-            addAllGesture(to: designView.subviews[count])
+            
+            if designView.subviews[count] != helperView {
+                addTapGesture(to: designView.subviews[count])
+            }
+            
         }
 
     }
@@ -342,8 +348,10 @@ extension EditingViewController {
 
     @objc func didTapDoneButton(sender: AnyObject) {
 
-        editingView?.layer.borderWidth = 0
-
+//        editingView?.layer.borderWidth = 0
+        
+        helperView.removeFromSuperview()
+        
         /*Notification*/
         let notificationName = Notification.Name(NotiName.updateImage.rawValue)
         NotificationCenter.default.post(
@@ -363,6 +371,17 @@ extension EditingViewController {
 
         guard let editingView = editingView else { return }
         editingView.removeFromSuperview()
+        
+        helperView.removeFromSuperview()
+        
+        /*Notification*/
+        let notificationName = Notification.Name(NotiName.updateImage.rawValue)
+        NotificationCenter.default.post(
+            name: notificationName,
+            object: nil,
+            userInfo: [NotificationInfo.editedImage: designView.subviews])
+        
+        self.navigationController?.popViewController(animated: true)
 
     }
 
@@ -390,7 +409,7 @@ extension EditingViewController {
 
             newView.makeACopy(from: tappedView)
 
-            addAllGesture(to: newView)
+            addTapGesture(to: newView)
             editingView = newView
 
             designView.addSubview(newView)
@@ -402,7 +421,7 @@ extension EditingViewController {
 
         newView.makeACopy(from: tappedView)
 
-        addAllGesture(to: newView)
+        addTapGesture(to: newView)
         editingView = newView
 
         designView.addSubview(newView)
@@ -413,28 +432,30 @@ extension EditingViewController {
 
 //Setup Gesture
 extension EditingViewController {
+    
+    func addAllGesture(to helperView: UIView) {
+        
+        //Enable label to rotate
+        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
+        helperView.addGestureRecognizer(rotate)
+        
+        //Enable to move label
+        let move = UIPanGestureRecognizer(target: self, action: #selector(handleDragged(_ :)))
+        helperView.addGestureRecognizer(move)
+        
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
+        helperView.addGestureRecognizer(pinch)
+    }
 
-    func addAllGesture(to newView: UIView) {
+    func addTapGesture(to newView: UIView) {
 
             newView.isUserInteractionEnabled = true
 
-            //Handle label to tapped
+            //Handle to tapped
             let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
             tap.numberOfTapsRequired = 1
             tap.numberOfTouchesRequired = 1
             newView.addGestureRecognizer(tap)
-
-            //Enable label to rotate
-            let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
-            newView.addGestureRecognizer(rotate)
-
-            //Enable to move label
-            let move = UIPanGestureRecognizer(target: self, action: #selector(handleDragged(_ :)))
-            newView.addGestureRecognizer(move)
-
-            let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
-            newView.addGestureRecognizer(pinch)
-
     }
 
     @objc func handleTap(sender: UITapGestureRecognizer) {
@@ -467,6 +488,7 @@ extension EditingViewController {
                 return
             }
           
+            editingView?.transform = rotateValue
             sender.view?.transform = rotateValue
             sender.rotation = 0
 
@@ -487,6 +509,7 @@ extension EditingViewController {
                 return
             }
 
+            editingView?.transform = transform
             sender.view?.transform = transform
              sender.scale = 1
 
@@ -520,12 +543,18 @@ extension EditingViewController {
     }
 
     @objc func handleDragged( _ gesture: UIPanGestureRecognizer) {
+        
         let translation = gesture.translation(in: self.view)
+
+        guard let xCenter = editingView?.center.x, let yCenter = editingView?.center.y else { return }
+
+        editingView?.center = CGPoint(x: xCenter+translation.x, y: yCenter+translation.y)
+        gesture.setTranslation(CGPoint.zero, in: editingView)
+        
         let view = gesture.view
-
-        guard let xCenter = view?.center.x, let yCenter = view?.center.y else { return }
-
-        view?.center = CGPoint(x: xCenter+translation.x, y: yCenter+translation.y)
+        guard let xCenter2 = view?.center.x, let yCenter2 = view?.center.y else { return }
+        
+        view?.center = CGPoint(x: xCenter2+translation.x, y: yCenter2+translation.y)
         gesture.setTranslation(CGPoint.zero, in: view)
 
     }
@@ -809,6 +838,26 @@ extension EditingViewController: FusumaDelegate {
     
     // Return an image and the detailed information.
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode, metaData: ImageMetadata) {
+        
+    }
+}
+
+extension EditingViewController {
+    
+    func createEditingHelper(for view: UIView) {
+        
+        helperView.frame = CGRect(x: view.frame.origin.x,
+                                              y: view.frame.origin.y,
+                                              width: view.frame.width+50,
+                                              height: view.frame.height+50)
+        
+        helperView.backgroundColor = UIColor.clear
+        helperView.layer.borderWidth = 2
+        helperView.layer.borderColor = UIColor.red.cgColor
+        addAllGesture(to: helperView)
+        
+        designView.addSubview(helperView)
+        print(designView.subviews.first)
         
     }
 }

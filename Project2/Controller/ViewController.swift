@@ -288,8 +288,8 @@ extension ViewController {
     @objc func handleTap(sender: UITapGestureRecognizer) {
 
         guard let tappedView = sender.view else { return }
-
-        designView.bringSubviewToFront(tappedView)
+//
+//        designView.bringSubviewToFront(tappedView)
 
         guard (tappedView as? UIImageView) != nil else {
 
@@ -481,8 +481,6 @@ extension ViewController {
 
         editingVC.designView.image = designView.image
 
-        editingVC.editingView = viewToBeEdit
-
         let count = designView.subviews.count
 
         for _ in 0...count-1 {
@@ -500,6 +498,8 @@ extension ViewController {
 
         }
 
+        editingVC.editingView = viewToBeEdit
+        
         show(editingVC, sender: nil)
     }
 
@@ -512,8 +512,12 @@ extension ViewController {
         
         if addingNewImage == true {
             
-            let newImage = UIImageView(frame: CGRect(x: designView.center.x-100,
-                                                     y: designView.center.y-100,
+            print(designView.center.x)
+            print(designView.center.y)
+            print(designView.frame)
+            
+            let newImage = UIImageView(frame: CGRect(x: designView.frame.width/2-100,
+                                                     y: designView.frame.height/2-100,
                                                      width: 200,
                                                      height: 200))
             newImage.image = image
