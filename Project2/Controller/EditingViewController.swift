@@ -50,6 +50,7 @@ class EditingViewController: UIViewController {
 
                textEditView.isHidden = true
                imageEditContainerView.isHidden = false
+                
                return
 
             }
@@ -466,6 +467,8 @@ extension EditingViewController {
     }
 
     @objc func handleTap(sender: UITapGestureRecognizer) {
+        
+        helperView.removeFromSuperview()
 
         editingView = sender.view
 
@@ -870,17 +873,14 @@ extension EditingViewController {
         editingFrame.layer.borderWidth = 2
         editingFrame.layer.borderColor = UIColor.white.cgColor
 
-        positionHelper.image = #imageLiteral(resourceName: "Icon_Crop")
+        positionHelper.image = #imageLiteral(resourceName: "noun_navigate")
         rotateHelper.image = #imageLiteral(resourceName: "Icon_Rotate")
 
-//        helperView.addSubview(editingFrame)
         helperView.addSubview(rotateHelper)
         helperView.addSubview(positionHelper)
+        helperView.addSubview(editingFrame)
         
         designView.addSubview(helperView)
-        
-        helperView.layer.borderColor = UIColor.blue.cgColor
-        helperView.layer.borderWidth = 2
     
         let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
         rotateHelper.addGestureRecognizer(rotate)
@@ -890,6 +890,7 @@ extension EditingViewController {
         helperView.translatesAutoresizingMaskIntoConstraints = false
         rotateHelper.translatesAutoresizingMaskIntoConstraints = false
         positionHelper.translatesAutoresizingMaskIntoConstraints = false
+        editingFrame.translatesAutoresizingMaskIntoConstraints = false
         
         helperView.topAnchor.constraint(equalTo: (editingView?.topAnchor)!).isActive = true
         helperView.leadingAnchor.constraint(equalTo: (editingView?.leadingAnchor)!).isActive = true
@@ -897,8 +898,6 @@ extension EditingViewController {
         helperView.trailingAnchor.constraint(equalTo: (editingView?.trailingAnchor)!, constant: 50).isActive = true
         helperView.widthAnchor.constraint(equalToConstant: (editingView?.frame.width)!+50)
 
-//        helperView.layoutIfNeeded()
-        
         rotateHelper.centerXAnchor.constraint(equalTo: (editingView?.centerXAnchor)!).isActive = true
         rotateHelper.topAnchor.constraint(equalTo: (editingView?.bottomAnchor)!, constant: 10).isActive = true
         rotateHelper.widthAnchor.constraint(equalToConstant: 20)
@@ -908,6 +907,16 @@ extension EditingViewController {
         positionHelper.leadingAnchor.constraint(equalTo: (editingView?.trailingAnchor)!, constant: 10).isActive = true
         positionHelper.widthAnchor.constraint(equalToConstant: 20)
         positionHelper.heightAnchor.constraint(equalToConstant: 20)
+        
+        editingFrame.leadingAnchor.constraint(equalTo: (editingView?.leadingAnchor)!).isActive = true
+        editingFrame.trailingAnchor.constraint(equalTo: (editingView?.trailingAnchor)!).isActive = true
+        editingFrame.bottomAnchor.constraint(equalTo: (editingView?.bottomAnchor)!).isActive = true
+       editingFrame.topAnchor.constraint(equalTo: (editingView?.topAnchor)!).isActive = true
+        
+        helperView.layoutIfNeeded()
+        editingView?.layoutIfNeeded()
+        rotateHelper.layoutIfNeeded()
+        positionHelper.layoutIfNeeded()
         
         print(helperView.frame)
      
