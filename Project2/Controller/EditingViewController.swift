@@ -31,13 +31,20 @@ class EditingViewController: UIViewController {
     var lineHeight: Float = 0
     var letterSpacing: Float = 0
     var currentFontName: FontName = FontName.helveticaNeue
-    let helperView = UIView()
-
+    var helperView = UIView()
+    
+    let rotateHelper = UIImageView()
+    let positionHelper = UIImageView()
+    let editingFrame = UIView()
+ 
     var editingView: UIView? {
 
         didSet {
 
-            createEditingHelper(for: editingView!)
+            guard let editingView = editingView else {
+                return
+            }
+            createEditingHelper(for: editingView)
             
             guard let view = editingView as? UITextView else {
 
@@ -490,9 +497,21 @@ extension EditingViewController {
           
             editingView?.transform = rotateValue
             sender.view?.transform = rotateValue
+            
+            editingFrame.frame = CGRect(x: helperView.bounds.origin.x,
+                                        y: helperView.bounds.origin.y,
+                                        width: view.frame.width,
+                                        height: view.frame.height)
+         
             sender.rotation = 0
-
+            
         }
+//        print("------------DID Edit-------------")
+//
+//        print(editingView?.frame)
+//        print(helperView.frame)
+//        print(editingFrame.frame)
+        
     }
 
     @objc func handlePinch(sender: UIPinchGestureRecognizer) {
@@ -841,23 +860,57 @@ extension EditingViewController: FusumaDelegate {
         
     }
 }
-
+// MARK: EditingVC extension
 extension EditingViewController {
     
     func createEditingHelper(for view: UIView) {
         
-        helperView.frame = CGRect(x: view.frame.origin.x,
-                                              y: view.frame.origin.y,
-                                              width: view.frame.width+50,
-                                              height: view.frame.height+50)
-        
         helperView.backgroundColor = UIColor.clear
-        helperView.layer.borderWidth = 2
-        helperView.layer.borderColor = UIColor.red.cgColor
-        addAllGesture(to: helperView)
+
+        editingFrame.layer.borderWidth = 2
+        editingFrame.layer.borderColor = UIColor.white.cgColor
+
+        positionHelper.image = #imageLiteral(resourceName: "Icon_Crop")
+        rotateHelper.image = #imageLiteral(resourceName: "Icon_Rotate")
+
+//        helperView.addSubview(editingFrame)
+        helperView.addSubview(rotateHelper)
+        helperView.addSubview(positionHelper)
         
         designView.addSubview(helperView)
-        print(designView.subviews.first)
         
+        helperView.layer.borderColor = UIColor.blue.cgColor
+        helperView.layer.borderWidth = 2
+    
+        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
+        rotateHelper.addGestureRecognizer(rotate)
+        
+        addAllGesture(to: helperView)
+        
+        helperView.translatesAutoresizingMaskIntoConstraints = false
+        rotateHelper.translatesAutoresizingMaskIntoConstraints = false
+        positionHelper.translatesAutoresizingMaskIntoConstraints = false
+        
+        helperView.topAnchor.constraint(equalTo: (editingView?.topAnchor)!).isActive = true
+        helperView.leadingAnchor.constraint(equalTo: (editingView?.leadingAnchor)!).isActive = true
+        helperView.bottomAnchor.constraint(equalTo: (editingView?.bottomAnchor)!, constant: 50).isActive = true
+        helperView.trailingAnchor.constraint(equalTo: (editingView?.trailingAnchor)!, constant: 50).isActive = true
+        helperView.widthAnchor.constraint(equalToConstant: (editingView?.frame.width)!+50)
+
+//        helperView.layoutIfNeeded()
+        
+        rotateHelper.centerXAnchor.constraint(equalTo: (editingView?.centerXAnchor)!).isActive = true
+        rotateHelper.topAnchor.constraint(equalTo: (editingView?.bottomAnchor)!, constant: 10).isActive = true
+        rotateHelper.widthAnchor.constraint(equalToConstant: 20)
+        rotateHelper.heightAnchor.constraint(equalToConstant: 20)
+        
+        positionHelper.centerYAnchor.constraint(equalTo: (editingView?.centerYAnchor)!).isActive = true
+        positionHelper.leadingAnchor.constraint(equalTo: (editingView?.trailingAnchor)!, constant: 10).isActive = true
+        positionHelper.widthAnchor.constraint(equalToConstant: 20)
+        positionHelper.heightAnchor.constraint(equalToConstant: 20)
+        
+        print(helperView.frame)
+     
     }
 }
+
