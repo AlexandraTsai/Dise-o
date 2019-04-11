@@ -520,7 +520,9 @@ extension ViewController {
                                                      y: designView.frame.height/2-100,
                                                      width: 200,
                                                      height: 200))
-            newImage.image = image
+//            newImage.image = image
+            
+            newImage.backgroundColor = UIColor.red
             
             designView.addSubview(newImage)
             
