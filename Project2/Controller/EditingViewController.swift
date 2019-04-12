@@ -8,6 +8,7 @@
 
 import UIKit
 import Fusuma
+import CoreGraphics
 
 class EditingViewController: UIViewController {
 
@@ -27,6 +28,7 @@ class EditingViewController: UIViewController {
     @IBOutlet weak var textEditView: UIView!
     @IBOutlet weak var imageEditContainerView: UIView!
     @IBOutlet weak var selectFontView: UIView!
+    @IBOutlet weak var rotationView: UIView!
     
     var lineHeight: Float = 0
     var letterSpacing: Float = 0
@@ -148,7 +150,10 @@ class EditingViewController: UIViewController {
         selectFontView.isHidden = true
 
     }
-
+    @IBAction func rotationDone(_ sender: Any) {
+        rotationView.isHidden = true
+    }
+    
     @IBAction func boldButtonTapped(_ sender: Any) {
 
         guard let view =  editingView as? UITextView else { return }
@@ -271,6 +276,25 @@ class EditingViewController: UIViewController {
             
         }
 
+    }
+    @IBAction func slideToRotate(_ sender: UISlider) {
+        
+//        let transform = CGAffineTransform(rotationAngle: CGFloat(sender.value)
+        
+//        helperView.transform = helperView.transform.rotated(by: CGFloat(sender.value))
+        
+        let transform = CGAffineTransform(rotationAngle: CGFloat(sender.value))
+       
+        helperView.transform = transform
+     
+        //Get the center of editingFrame from helperView to designView
+        let center = helperView.convert(editingFrame.center, to: designView)
+        
+        //Make editingView's center equal to editingFrame's center
+        editingView?.center = center
+        
+        editingView?.transform = helperView.transform
+       
     }
 }
 
@@ -478,8 +502,8 @@ extension EditingViewController {
         rotateView.isUserInteractionEnabled = true
         
         //Handle to tapped
-        let move = UIPanGestureRecognizer(target: self, action: #selector(handleCircleDrag(sender:)))
-        rotateView.addGestureRecognizer(move)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleCircleGesture(_ :)))
+        rotateView.addGestureRecognizer(tap)
     }
 
     @objc func handleTap(sender: UITapGestureRecognizer) {
@@ -515,6 +539,8 @@ extension EditingViewController {
                 return
             }
    
+            print(sender.rotation)
+            
             sender.view?.transform = rotateValue
         
             //Get the center of editingFrame from helperView to designView
@@ -574,29 +600,9 @@ extension EditingViewController {
 
     }
     
-    @objc func handleCircleDrag( sender: UIPanGestureRecognizer) {
+    @objc private func handleCircleGesture(_ gesture: UITapGestureRecognizer) {
 
-        let shapeLayer = CAShapeLayer()
-        
-        guard let width = editingView?.frame.width, let height =  editingView?.frame.height else {
-            return
-        }
-        shapeLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
-        shapeLayer.fillColor = UIColor.orange.withAlphaComponent(0.4).cgColor
-        
-        let arcCenter: CGPoint = shapeLayer.position //圓心
-        let radius: CGFloat = 100 //半徑
-        
-        let path = UIBezierPath(arcCenter: arcCenter, radius: radius, startAngle: 0, endAngle: CGFloat(2*Float.pi), clockwise: true)
-        
-        shapeLayer.path = path.cgPath
-        
-        guard let center = editingView?.center else {
-            return
-        }
-        shapeLayer.position = center
-        
-        view.layer.addSublayer(shapeLayer)
+        rotationView.isHidden = false
     }
 }
 
@@ -935,13 +941,13 @@ extension EditingViewController {
         rotateHelper.backgroundColor = UIColor.white
         rotateHelper.layer.cornerRadius = 10
         
-        //Add Gesture
-        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
-        rotateHelper.addGestureRecognizer(rotate)
+//        //Add Gesture
+//        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
+//        rotateHelper.addGestureRecognizer(rotate)
         
         addAllGesture(to: helperView)
         
-//        addCircleGesture(to: rotateHelper)
+        addCircleGesture(to: rotateHelper)
     }
 }
 
