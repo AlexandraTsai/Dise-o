@@ -511,11 +511,7 @@ extension ViewController {
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
         
         if addingNewImage == true {
-            
-//            print(designView.center.x)
-//            print(designView.center.y)
-//            print(designView.frame)
-            
+ 
             let newImage = UIImageView(frame: CGRect(x: designView.frame.width/2-100,
                                                      y: designView.frame.height/2-100,
                                                      width: 200,

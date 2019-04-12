@@ -1,17 +1,17 @@
 //
-//  UIImageView+Extension.swift
+//  UIView+Extension.swift
 //  Project2
 //
-//  Created by 蔡佳宣 on 2019/4/4.
+//  Created by 蔡佳宣 on 2019/4/12.
 //  Copyright © 2019年 蔡佳宣. All rights reserved.
 //
 
 import UIKit
 
-extension UIImageView {
-
-    func makeACopy(from originView: UIImageView) {
-
+extension UIView {
+    
+    func makeACopy(from originView: UIView) {
+        
         //Record the rotaion of the original image view
         let originRotation =  originView.transform
 
@@ -21,9 +21,7 @@ extension UIImageView {
         self.frame = originView.frame
 
         self.transform = originRotation
-        self.image = originView.image
 
         originView.transform = originRotation
-
     }
 }

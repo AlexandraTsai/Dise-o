@@ -33,18 +33,27 @@ class EditingViewController: UIViewController {
     var currentFontName: FontName = FontName.helveticaNeue
     var helperView = UIView()
     
-    let rotateHelper = UIImageView()
-    let positionHelper = UIImageView()
-    let editingFrame = UIView()
+    var rotateHelper = UIImageView()
+    var positionHelper = UIImageView()
+    var editingFrame = UIView()
  
     var editingView: UIView? {
 
         didSet {
-
+            
             guard let editingView = editingView else {
                 return
             }
+            
+            helperView = UIView()
+            rotateHelper = UIImageView()
+            positionHelper = UIImageView()
+            editingFrame = UIView()
+            
             createEditingHelper(for: editingView)
+            
+            print("final editing view\(editingView.frame)")
+            print("final editing view\(helperView.frame)")
             
             guard let view = editingView as? UITextView else {
 
@@ -84,9 +93,7 @@ class EditingViewController: UIViewController {
     }
 
     @IBAction func addBtnTapped(_ sender: Any) {
-
-//        editingView?.layer.borderWidth = 0
-        
+      
         let oldHelperView =  designView.subviews.first
         oldHelperView?.removeFromSuperview()
         
@@ -465,9 +472,19 @@ extension EditingViewController {
             tap.numberOfTouchesRequired = 1
             newView.addGestureRecognizer(tap)
     }
+    
+    func addCircleGesture(to rotateView: UIView) {
+        
+        rotateView.isUserInteractionEnabled = true
+        
+        //Handle to tapped
+        let move = UIPanGestureRecognizer(target: self, action: #selector(handleCircleDrag(sender:)))
+        rotateView.addGestureRecognizer(move)
+    }
 
     @objc func handleTap(sender: UITapGestureRecognizer) {
         
+        helperView.frame = CGRect(x: 0, y: 0, width: 0, height: 0) //ask 加這行就可以控制住 UIImageView，但 UITextView 還是會不準
         helperView.removeFromSuperview()
 
         editingView = sender.view
@@ -505,14 +522,9 @@ extension EditingViewController {
             
             //Make editingView's center equal to editingFrame's center
             editingView?.center = center
+            
             editingView?.transform = rotateValue
-            
-            //Get the center of editingFrame from helperView to designView
-//            let frame = sender.view?.convert(editingFrame.frame, to: designView)
-//            editingView?.frame = frame!
-            
-            print(editingFrame.transform)
-            
+        
             sender.rotation = 0
             
         }
@@ -531,24 +543,14 @@ extension EditingViewController {
 
                 return
             }
-            
-//            editingView?.bounds.size = editingFrame.bounds.applying(transform).size
-            
-            sender.view?.transform = transform
-            
-            //Get the center of editingFrame from helperView to designView
-//            let frame = sender.view?.convert(editingFrame.frame, to: designView)
-            
-            //Make editingView's center equal to editingFrame's center
-         
-//            print(editingView?.frame.size)
-            
-            let center = sender.view?.convert(editingFrame.center, to: designView)
-            editingView?.center = center!
-            editingView?.transform = transform
 
-//            editingView?.transform = transform
+            sender.view?.transform = transform
+    
+            guard let center = sender.view?.convert(editingFrame.center, to: designView) else { return }
+            editingView?.center = center
             
+            editingView?.transform = transform
+   
             sender.scale = 1
             
             return
@@ -570,6 +572,31 @@ extension EditingViewController {
         view?.center = CGPoint(x: xCenter2+translation.x, y: yCenter2+translation.y)
         gesture.setTranslation(CGPoint.zero, in: view)
 
+    }
+    
+    @objc func handleCircleDrag( sender: UIPanGestureRecognizer) {
+
+        let shapeLayer = CAShapeLayer()
+        
+        guard let width = editingView?.frame.width, let height =  editingView?.frame.height else {
+            return
+        }
+        shapeLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        shapeLayer.fillColor = UIColor.orange.withAlphaComponent(0.4).cgColor
+        
+        let arcCenter: CGPoint = shapeLayer.position //圓心
+        let radius: CGFloat = 100 //半徑
+        
+        let path = UIBezierPath(arcCenter: arcCenter, radius: radius, startAngle: 0, endAngle: CGFloat(2*Float.pi), clockwise: true)
+        
+        shapeLayer.path = path.cgPath
+        
+        guard let center = editingView?.center else {
+            return
+        }
+        shapeLayer.position = center
+        
+        view.layer.addSublayer(shapeLayer)
     }
 }
 
@@ -860,61 +887,34 @@ extension EditingViewController {
     
     func createEditingHelper(for view: UIView) {
         
-        helperView.backgroundColor = UIColor.clear
-
-        editingFrame.layer.borderWidth = 2
-        editingFrame.layer.borderColor = UIColor.white.cgColor
-
-        positionHelper.image = #imageLiteral(resourceName: "noun_navigate")
-        rotateHelper.image = #imageLiteral(resourceName: "Icon_Rotate")
-//        positionHelper.contentMode = .center
-        positionHelper.backgroundColor = UIColor.white
-        positionHelper.layer.cornerRadius = 10
-        rotateHelper.backgroundColor = UIColor.white
-        rotateHelper.layer.cornerRadius = 10
-        
-        guard let transform = editingView?.transform else { return }
-        helperView.transform = transform
-        
         helperView.addSubview(rotateHelper)
         helperView.addSubview(positionHelper)
         helperView.addSubview(editingFrame)
         
         designView.addSubview(helperView)
-    
-        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
-        rotateHelper.addGestureRecognizer(rotate)
+
+        helperView.makeACopy(from: editingView!)
+
+        guard let center = editingView?.center else { return }
         
-        addAllGesture(to: helperView)
-       
-        guard let xPosition = editingView?.frame.origin.x,
-            let yPosition = editingView?.frame.origin.y,
-            let width = editingView?.frame.width,
-            let height = editingView?.frame.height else { return }
-        helperView.frame = CGRect(x: xPosition,
-                                  y: yPosition,
-                                  width: width+50,
-                                  height: height+50)
-        
-        helperView.backgroundColor = UIColor.blue
-        helperView.alpha = 0.4
-        
-         //Get the frame of editingView from designView to helperView
-        let rect = designView.convert(editingView!.frame, to: helperView)
-        
-        //Make editingFrame's frame equal to editingView's frame
-        editingFrame.frame = rect
+        let rect = designView.convert(center, to: helperView)
+        editingFrame.center = rect
+        editingFrame.bounds = (editingView?.bounds)!
+
+        print(editingView?.transform)
+        print(helperView.transform)
+        print(editingFrame.transform)
         
         rotateHelper.translatesAutoresizingMaskIntoConstraints = false
         positionHelper.translatesAutoresizingMaskIntoConstraints = false
-    
-        rotateHelper.centerXAnchor.constraint(equalTo: (editingFrame.centerXAnchor)).isActive = true
-        rotateHelper.topAnchor.constraint(equalTo: (editingFrame.bottomAnchor), constant: 10).isActive = true
+        
+        rotateHelper.centerXAnchor.constraint(equalTo: (helperView.centerXAnchor)).isActive = true
+        rotateHelper.topAnchor.constraint(equalTo: (helperView.bottomAnchor), constant: 10).isActive = true
         rotateHelper.widthAnchor.constraint(equalToConstant: 20)
         rotateHelper.heightAnchor.constraint(equalToConstant: 20)
-
-        positionHelper.centerYAnchor.constraint(equalTo: (editingFrame.centerYAnchor)).isActive = true
-        positionHelper.leadingAnchor.constraint(equalTo: (editingFrame.trailingAnchor), constant: 10).isActive = true
+        
+        positionHelper.centerYAnchor.constraint(equalTo: (helperView.centerYAnchor)).isActive = true
+        positionHelper.leadingAnchor.constraint(equalTo: (helperView.trailingAnchor), constant: 10).isActive = true
         positionHelper.widthAnchor.constraint(equalToConstant: 20)
         positionHelper.heightAnchor.constraint(equalToConstant: 20)
         
@@ -922,7 +922,30 @@ extension EditingViewController {
         editingView?.layoutIfNeeded()
         rotateHelper.layoutIfNeeded()
         positionHelper.layoutIfNeeded()
-   
+        
+        //Setting
+        helperView.backgroundColor = UIColor.blue
+        helperView.alpha = 0.4
+        //        helperView.backgroundColor = UIColor.clear
+
+        editingFrame.layer.borderWidth = 2
+        editingFrame.layer.borderColor = UIColor.white.cgColor
+
+        positionHelper.image = #imageLiteral(resourceName: "noun_navigate")
+        rotateHelper.image = #imageLiteral(resourceName: "Icon_Rotate")
+
+        positionHelper.backgroundColor = UIColor.white
+        positionHelper.layer.cornerRadius = 10
+        rotateHelper.backgroundColor = UIColor.white
+        rotateHelper.layer.cornerRadius = 10
+        
+        //Add Gesture
+        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
+        rotateHelper.addGestureRecognizer(rotate)
+        
+        addAllGesture(to: helperView)
+        
+//        addCircleGesture(to: rotateHelper)
     }
 }
 
