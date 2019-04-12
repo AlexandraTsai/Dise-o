@@ -516,10 +516,8 @@ extension ViewController {
                                                      y: designView.frame.height/2-100,
                                                      width: 200,
                                                      height: 200))
-//            newImage.image = image
-            
-            newImage.backgroundColor = UIColor.red
-            
+            newImage.image = image
+
             designView.addSubview(newImage)
             
             goToEditingVC(with: newImage, navigationBarForImage: true)

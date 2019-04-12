@@ -52,9 +52,6 @@ class EditingViewController: UIViewController {
             
             createEditingHelper(for: editingView)
             
-            print("final editing view\(editingView.frame)")
-            print("final editing view\(helperView.frame)")
-            
             guard let view = editingView as? UITextView else {
 
                textEditView.isHidden = true
@@ -415,6 +412,8 @@ extension EditingViewController {
     }
 
     @objc func didTapCopyButton(sender: AnyObject) {
+        
+        helperView.removeFromSuperview()
 
         guard let tappedView = (editingView as? UITextView) else {
 
@@ -425,9 +424,10 @@ extension EditingViewController {
             newView.makeACopy(from: tappedView)
 
             addTapGesture(to: newView)
-            editingView = newView
-
+            
             designView.addSubview(newView)
+            
+            editingView = newView
 
             return
         }
@@ -437,11 +437,11 @@ extension EditingViewController {
         newView.makeACopy(from: tappedView)
 
         addTapGesture(to: newView)
-        editingView = newView
-
+        
         designView.addSubview(newView)
-
+        
         editingView = newView
+
     }
 }
 
@@ -901,10 +901,6 @@ extension EditingViewController {
         editingFrame.center = rect
         editingFrame.bounds = (editingView?.bounds)!
 
-        print(editingView?.transform)
-        print(helperView.transform)
-        print(editingFrame.transform)
-        
         rotateHelper.translatesAutoresizingMaskIntoConstraints = false
         positionHelper.translatesAutoresizingMaskIntoConstraints = false
         
