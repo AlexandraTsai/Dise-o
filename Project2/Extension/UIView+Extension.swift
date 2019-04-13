@@ -12,25 +12,12 @@ class ALGestureView: UIView {
     
     var rotateHelper = UIImageView()
     var positionHelper  =  UIImageView()
+    var editingFrame = UIImageView()
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         
-        guard isUserInteractionEnabled else { return nil }
-        
-        guard !isHidden else { return nil }
-        
-        guard alpha >= 0.01 else { return nil }
-        
-        guard self.point(inside: point, with: event) else { return nil }
-        
-        if rotateHelper.point(inside: convert(point, to: rotateHelper), with: event) {
-            return rotateHelper
-        }
-        
-        if positionHelper.point(inside: convert(point, to: positionHelper), with: event) {
-            return positionHelper
-        }
-        return super.hitTest(point, with: event)
+        super.hitTest(point, with: event)
+        return overlapHitTest(point: point, withEvent: event)
     }
 }
 
@@ -66,4 +53,40 @@ extension UIView {
         
         originView.transform = originRotation
     }
+    
+    func overlapHitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+       
+        if !self.isUserInteractionEnabled
+            || self.isHidden
+            || self.alpha == 0 {
+            
+            return nil
+        }
+        
+        // If touch is inside self, self will be considered as potential result.
+        var hitView: UIView? = self
+        if !self.point(inside: point, with: event) {
+            
+            if self.clipsToBounds {
+                return nil
+            } else {
+                hitView = nil
+            }
+        }
+        
+        // Check recursively all subviews for hit. If any, return it.
+        for subview in self.subviews.reversed() {
+            
+            let insideSubview = self.convert(point, to: subview)
+          
+            if let sview = subview.overlapHitTest(point: insideSubview, withEvent: event) {
+                
+                return sview
+            }
+        }
+        
+        // Else return self or nil depending on result from step 2.
+        return hitView
+    }
+    
 }

@@ -76,30 +76,8 @@ class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
             let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
             let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
             let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
-            print(paths)
+            
         }
-    }
-
-    @IBAction func addLabelBtnTapped(_ sender: Any) {
-
-        let txtLabel = UILabel(frame: CGRect(x: designView.frame.origin.x,
-                                             y: designView.frame.origin.y,
-                                             width: 200,
-                                             height: 100))
-
-        txtLabel.backgroundColor = UIColor.blue
-        txtLabel.textAlignment = .center
-        txtLabel.textColor = UIColor.red
-
-        txtLabel.text = "I'm a new label"
-        txtLabel.font.withSize(100)
-
-        designView.addSubview(txtLabel)
-
-        txtLabel.isUserInteractionEnabled = true
-
-        addAllGesture(to: txtLabel)
-
     }
 
     @IBAction func addBtnTapped(_ sender: Any) {

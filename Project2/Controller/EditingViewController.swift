@@ -35,13 +35,8 @@ class EditingViewController: UIViewController {
     var lineHeight: Float = 0
     var letterSpacing: Float = 0
     var currentFontName: FontName = FontName.helveticaNeue
-    var helperView = UIView()
-    
-    var rotateHelper = UIImageView()
-    var positionHelper = UIImageView()
-    var editingFrame = UIView()
-    var positionButton = UIButton()
- 
+    var helperView = ALGestureView()
+
     var editingView: UIView? {
 
         didSet {
@@ -51,11 +46,7 @@ class EditingViewController: UIViewController {
             }
             disableNavigationButton()
             rotationView.isHidden = true
-            helperView = UIView()
-            rotateHelper = UIImageView()
-//            positionHelper = UIImageView()
-            editingFrame = UIView()
-            positionButton = UIButton()
+            helperView = ALGestureView()
             
             createEditingHelper(for: editingView)
             
@@ -293,7 +284,7 @@ class EditingViewController: UIViewController {
         helperView.transform = transform.scaledBy(x: xScale, y: yScale)
      
         //Get the center of editingFrame from helperView to designView
-        let center = helperView.convert(editingFrame.center, to: designView)
+        let center = helperView.convert(helperView.editingFrame.center, to: designView)
         
         //Make editingView's center equal to editingFrame's center
         editingView?.center = center
@@ -650,13 +641,11 @@ extension EditingViewController {
             guard let rotateValue = sender.view?.transform.rotated(by: sender.rotation) else {
                 return
             }
-   
-            print(sender.rotation)
             
             sender.view?.transform = rotateValue
         
             //Get the center of editingFrame from helperView to designView
-            let center = sender.view!.convert(editingFrame.center, to: designView)
+            let center = sender.view!.convert(helperView.editingFrame.center, to: designView)
             
             //Make editingView's center equal to editingFrame's center
             editingView?.center = center
@@ -684,7 +673,7 @@ extension EditingViewController {
 
             sender.view?.transform = transform
     
-            guard let center = sender.view?.convert(editingFrame.center, to: designView) else { return }
+            guard let center = sender.view?.convert(helperView.editingFrame.center, to: designView) else { return }
             editingView?.center = center
             
             editingView?.transform = transform
@@ -1016,85 +1005,65 @@ extension EditingViewController {
     
     func createEditingHelper(for view: UIView) {
         
-        
-        helperView.addSubview(rotateHelper)
-//        helperView.addSubview(positionHelper)
-        helperView.addSubview(editingFrame)
-        helperView.addSubview(positionButton)
+        helperView.addSubview(helperView.rotateHelper)
+        helperView.addSubview(helperView.positionHelper)
+        helperView.addSubview(helperView.editingFrame)
         
         designView.addSubview(helperView)
 
         helperView.makeACopy(from: editingView!)
-//        helperView.makeEqualCenterView(from: editingView!, forSize: 2)
 
         guard let center = editingView?.center else { return }
         
         let rect = designView.convert(center, to: helperView)
-        editingFrame.center = rect
-        editingFrame.bounds = (editingView?.bounds)!
+        helperView.editingFrame.center = rect
+        helperView.editingFrame.bounds = (editingView?.bounds)!
 
-        rotateHelper.translatesAutoresizingMaskIntoConstraints = false
-//        positionHelper.translatesAutoresizingMaskIntoConstraints = false
-        positionButton.translatesAutoresizingMaskIntoConstraints = false
+        helperView.rotateHelper.translatesAutoresizingMaskIntoConstraints = false
+        helperView.positionHelper.translatesAutoresizingMaskIntoConstraints = false
         
-        rotateHelper.centerXAnchor.constraint(equalTo: (editingFrame.centerXAnchor)).isActive = true
-        rotateHelper.topAnchor.constraint(equalTo: (editingFrame.bottomAnchor), constant: 10).isActive = true
-        rotateHelper.widthAnchor.constraint(equalToConstant: 20)
-        rotateHelper.heightAnchor.constraint(equalToConstant: 20)
+        helperView.rotateHelper.centerXAnchor.constraint(equalTo:
+            (helperView.editingFrame.centerXAnchor)).isActive = true
+        helperView.rotateHelper.topAnchor.constraint(equalTo:
+            (helperView.editingFrame.bottomAnchor), constant: 10).isActive = true
+        helperView.rotateHelper.widthAnchor.constraint(equalToConstant: 20)
+        helperView.rotateHelper.heightAnchor.constraint(equalToConstant: 20)
         
-//        positionHelper.centerYAnchor.constraint(equalTo: (helperView.centerYAnchor)).isActive = true
-//        positionHelper.leadingAnchor.constraint(equalTo: (helperView.trailingAnchor), constant: 10).isActive = true
-//        positionHelper.widthAnchor.constraint(equalToConstant: 20)
-//        positionHelper.heightAnchor.constraint(equalToConstant: 20)
-
-        positionButton.centerYAnchor.constraint(equalTo: (editingFrame.centerYAnchor)).isActive = true
-        positionButton.leadingAnchor.constraint(equalTo: (editingFrame.trailingAnchor), constant: 10).isActive = true
-        positionButton.widthAnchor.constraint(equalToConstant: 20)
-        positionButton.heightAnchor.constraint(equalToConstant: 20)
-        
+        helperView.positionHelper.centerYAnchor.constraint(equalTo:
+            (helperView.centerYAnchor)).isActive = true
+        helperView.positionHelper.leadingAnchor.constraint(equalTo:
+            (helperView.trailingAnchor), constant: 10).isActive = true
+        helperView.positionHelper.widthAnchor.constraint(equalToConstant: 20)
+        helperView.positionHelper.heightAnchor.constraint(equalToConstant: 20)
+ 
         helperView.layoutIfNeeded()
         editingView?.layoutIfNeeded()
-        rotateHelper.layoutIfNeeded()
-        positionHelper.layoutIfNeeded()
-        positionButton.layoutIfNeeded()
+        helperView.rotateHelper.layoutIfNeeded()
+        helperView.positionHelper.layoutIfNeeded()
         
         //Setting
         helperView.backgroundColor = UIColor.blue
         helperView.alpha = 0.4
         //        helperView.backgroundColor = UIColor.clear
 
-        editingFrame.layer.borderWidth = 2
-        editingFrame.layer.borderColor = UIColor.white.cgColor
+        helperView.editingFrame.layer.borderWidth = 2
+        helperView.editingFrame.layer.borderColor = UIColor.white.cgColor
 
-//        positionHelper.image = #imageLiteral(resourceName: "noun_navigate")
-        rotateHelper.image = #imageLiteral(resourceName: "Icon_Rotate")
-        positionButton.setImage(#imageLiteral(resourceName: "noun_navigate"), for: .normal)
-        positionButton.backgroundColor = UIColor.white
+        helperView.positionHelper.image = #imageLiteral(resourceName: "noun_navigate")
+        helperView.rotateHelper.image = #imageLiteral(resourceName: "Icon_Rotate")
 
-        positionHelper.backgroundColor = UIColor.white
-        positionHelper.layer.cornerRadius = 10
-        rotateHelper.backgroundColor = UIColor.white
-        rotateHelper.layer.cornerRadius = 10
-        
-//        //Add Gesture
-//        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
-//        rotateHelper.addGestureRecognizer(rotate)
+        helperView.positionHelper.backgroundColor = UIColor.white
+        helperView.positionHelper.layer.cornerRadius = 10
+        helperView.rotateHelper.backgroundColor = UIColor.white
+        helperView.rotateHelper.layer.cornerRadius = 10
         
         addAllGesture(to: helperView)
         
-        addCircleGesture(to: rotateHelper)
+        helperView.clipsToBounds = false
+        helperView.isUserInteractionEnabled = true
         
-//        positionButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-//        
-//        positionButton.addTarget(self,
-//                         action: #selector(drag(control:event:)),
-//                         for: UIControl.Event.touchDragInside)
-//        positionButton.addTarget(self,
-//                         action: #selector(drag(control:event:)),
-//                         for: [UIControl.Event.touchDragExit,
-//                               UIControl.Event.touchDragOutside])
-        
-        helperView.hitTest(rotateHelper.frame.origin, with: UIEvent.init())
+        addCircleGesture(to: helperView.rotateHelper)
+
     }
     
     @objc func buttonAction() {
