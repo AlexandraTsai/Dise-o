@@ -280,14 +280,13 @@ class EditingViewController: UIViewController {
 
     }
     @IBAction func slideToRotate(_ sender: UISlider) {
-
-//        helperView.transform = helperView.transform.rotated(by: CGFloat(sender.value))
-        
-//        let transform = CGAffineTransform(rotationAngle: CGFloat(sender.value))
         
         let transform = CGAffineTransform(rotationAngle: CGFloat(sender.value/360)*CGFloat.pi*2)
-       
-        helperView.transform = transform
+
+        //To keep the transformation
+        let xScale = helperView.transform.scaleX
+        let yScale = helperView.transform.scaleY
+        helperView.transform = transform.scaledBy(x: xScale, y: yScale)
      
         //Get the center of editingFrame from helperView to designView
         let center = helperView.convert(editingFrame.center, to: designView)

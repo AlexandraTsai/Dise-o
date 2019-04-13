@@ -440,31 +440,39 @@
                                             <action selector="rotationDone:" destination="mFr-ri-311" eventType="touchUpInside" id="hMN-rX-XNj"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOJ-jk-Avv">
-                                        <rect key="frame" x="20" y="34.5" width="50" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="360" translatesAutoresizingMaskIntoConstraints="NO" id="nhs-aB-c2l">
-                                        <rect key="frame" x="83" y="30" width="274" height="31"/>
+                                        <rect key="frame" x="83" y="124.5" width="274" height="31"/>
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="slideToRotate:" destination="mFr-ri-311" eventType="valueChanged" id="KbZ-g9-BZa"/>
                                         </connections>
                                     </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOJ-jk-Avv">
+                                        <rect key="frame" x="20" y="129" width="50" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IhV-fb-cht">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="94.5"/>
+                                        <color key="backgroundColor" red="0.87450980389999999" green="0.85882352939999995" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Qea-se-LcX" firstAttribute="leading" secondItem="tRd-aQ-VLq" secondAttribute="leading" constant="20" id="5Yu-kp-qI0"/>
+                                    <constraint firstAttribute="trailing" secondItem="IhV-fb-cht" secondAttribute="trailing" id="5aL-RN-s71"/>
                                     <constraint firstAttribute="trailing" secondItem="x8J-xa-yTB" secondAttribute="trailing" constant="20" id="APm-Po-qoR"/>
+                                    <constraint firstItem="Qea-se-LcX" firstAttribute="top" secondItem="AOJ-jk-Avv" secondAttribute="bottom" constant="30" id="Dkx-a2-C6v"/>
                                     <constraint firstItem="nhs-aB-c2l" firstAttribute="leading" secondItem="AOJ-jk-Avv" secondAttribute="trailing" constant="15" id="ESJ-FO-f8m"/>
-                                    <constraint firstItem="nhs-aB-c2l" firstAttribute="top" secondItem="tRd-aQ-VLq" secondAttribute="top" constant="30" id="Kih-Ud-5ra"/>
                                     <constraint firstItem="AOJ-jk-Avv" firstAttribute="leading" secondItem="tRd-aQ-VLq" secondAttribute="leading" constant="20" id="LhQ-S5-MKn"/>
                                     <constraint firstItem="AOJ-jk-Avv" firstAttribute="centerY" secondItem="nhs-aB-c2l" secondAttribute="centerY" id="NE8-oi-LdE"/>
                                     <constraint firstItem="x8J-xa-yTB" firstAttribute="centerY" secondItem="Qea-se-LcX" secondAttribute="centerY" id="SHy-nj-scv"/>
+                                    <constraint firstItem="IhV-fb-cht" firstAttribute="top" secondItem="tRd-aQ-VLq" secondAttribute="top" id="ahu-D6-vLn"/>
                                     <constraint firstAttribute="bottom" secondItem="Qea-se-LcX" secondAttribute="bottom" constant="8" id="kYn-J2-5ZN"/>
                                     <constraint firstAttribute="trailing" secondItem="nhs-aB-c2l" secondAttribute="trailing" constant="20" id="s9h-Wx-fe5"/>
+                                    <constraint firstItem="nhs-aB-c2l" firstAttribute="top" secondItem="IhV-fb-cht" secondAttribute="bottom" constant="30" id="vmK-FE-koC"/>
+                                    <constraint firstItem="IhV-fb-cht" firstAttribute="leading" secondItem="tRd-aQ-VLq" secondAttribute="leading" id="yA2-xt-8Cz"/>
                                 </constraints>
                             </view>
                         </subviews>
