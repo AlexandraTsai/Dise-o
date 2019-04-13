@@ -8,6 +8,32 @@
 
 import UIKit
 
+class ALGestureView: UIView {
+    
+    var rotateHelper = UIImageView()
+    var positionHelper  =  UIImageView()
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        
+        guard isUserInteractionEnabled else { return nil }
+        
+        guard !isHidden else { return nil }
+        
+        guard alpha >= 0.01 else { return nil }
+        
+        guard self.point(inside: point, with: event) else { return nil }
+        
+        if rotateHelper.point(inside: convert(point, to: rotateHelper), with: event) {
+            return rotateHelper
+        }
+        
+        if positionHelper.point(inside: convert(point, to: positionHelper), with: event) {
+            return positionHelper
+        }
+        return super.hitTest(point, with: event)
+    }
+}
+
 extension UIView {
     
     func makeACopy(from originView: UIView) {

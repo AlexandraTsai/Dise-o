@@ -1016,6 +1016,7 @@ extension EditingViewController {
     
     func createEditingHelper(for view: UIView) {
         
+        
         helperView.addSubview(rotateHelper)
 //        helperView.addSubview(positionHelper)
         helperView.addSubview(editingFrame)
