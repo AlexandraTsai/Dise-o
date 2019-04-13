@@ -49,6 +49,7 @@ class EditingViewController: UIViewController {
             guard let editingView = editingView else {
                 return
             }
+            disableNavigationButton()
             rotationView.isHidden = true
             helperView = UIView()
             rotateHelper = UIImageView()
@@ -385,6 +386,38 @@ extension EditingViewController {
         self.navigationItem.leftBarButtonItem  = leftButton
 
     }
+    
+    func disableNavigationButton() {
+        
+        guard let editingView = editingView else { return }
+        
+        guard let index = designView.subviews.firstIndex(of: editingView) else { return }
+        
+        switch index {
+            
+        //Editing view is the last one
+        case 0:
+            
+            guard (editingView as? UITextView) != nil else {
+                
+                self.navigationItem.rightBarButtonItems?[2].isEnabled = false
+                return
+            }
+            
+            self.navigationItem.rightBarButtonItems?[1].isEnabled = false
+            
+         //Editing view is the first one
+        case designView.subviews.count-1:
+            
+            guard (editingView as? UITextView) != nil else {
+                self.navigationItem.rightBarButtonItems?[3].isEnabled = false
+                return
+            }
+            self.navigationItem.rightBarButtonItems?[2].isEnabled = false
+        default:
+            break
+        }
+    }
 
     @objc func didTapDoneButton(sender: AnyObject) {
 
@@ -428,8 +461,7 @@ extension EditingViewController {
     @objc func didTapDownButton(sender: AnyObject) {
 
         guard let editingView = editingView else { return }
-//        designView.sendSubviewToBack(editingView)
-        
+   
         guard let index = designView.subviews.firstIndex(of: editingView) else { return }
         
         switch index {
@@ -437,6 +469,33 @@ extension EditingViewController {
             print("You are the last one.")
         default:
             designView.insertSubview(editingView, at: index-1)
+        }
+        
+        //Navigationbar for UITextView
+        guard (editingView as? UITextView) != nil else {
+            
+            if index == 1 {
+                self.navigationItem.rightBarButtonItems?[2].isEnabled = false
+              
+            }
+            
+            if index == designView.subviews.count-2  {
+                
+              self.navigationItem.rightBarButtonItems?[3].isEnabled = true
+            }
+            
+            return
+        }
+        
+        //Navigationbar for UIImageView
+        if index == 1 {
+            self.navigationItem.rightBarButtonItems?[1].isEnabled = false
+        }
+        
+        if index == designView.subviews.count-2  {
+            
+            self.navigationItem.rightBarButtonItems?[2].isEnabled = true
+          
         }
 
     }
@@ -453,7 +512,36 @@ extension EditingViewController {
         default:
             designView.insertSubview(editingView, at: index+1)
         }
-
+        
+        //Navigationbar for UITextView
+        guard (editingView as? UITextView) != nil else {
+            
+            if index == designView.subviews.count-3 {
+                
+                //Disable the forward button.
+                self.navigationItem.rightBarButtonItems?[3].isEnabled = false
+                
+            }
+            
+            if index == 0  {
+                
+                self.navigationItem.rightBarButtonItems?[2].isEnabled = true
+            }
+            
+            return
+        }
+        
+        //Navigationbar for UIImageView
+        if index == designView.subviews.count-3 {
+                self.navigationItem.rightBarButtonItems?[3].isEnabled = false
+        }
+        
+        if index == 0  {
+            
+            self.navigationItem.rightBarButtonItems?[2].isEnabled = true
+            
+        }
+        
     }
 
     @objc func didTapCopyButton(sender: AnyObject) {
@@ -829,6 +917,7 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
     }
 }
 
+//MARK:- Fusuma Image Picker
 extension EditingViewController: FusumaDelegate {
     
     //Notification for image picked
