@@ -24,4 +24,20 @@ extension UIView {
 
         originView.transform = originRotation
     }
+    
+    func makeEqualCenterView(from originView: UIView, forSize: CGFloat) {
+        
+        //Record the rotaion of the original image view
+        let originRotation =  originView.transform
+        
+        //Transform the origin image view
+        originView.transform = CGAffineTransform(rotationAngle: 0)
+        
+        self.bounds = CGRect(x: 0, y: 0, width: originView.bounds.width*forSize, height: originView.bounds.height*forSize)
+        self.center = originView.center
+        
+        self.transform = originRotation
+        
+        originView.transform = originRotation
+    }
 }

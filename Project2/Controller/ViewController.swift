@@ -512,10 +512,10 @@ extension ViewController {
         
         if addingNewImage == true {
  
-            let newImage = UIImageView(frame: CGRect(x: designView.frame.width/2-100,
-                                                     y: designView.frame.height/2-100,
-                                                     width: 200,
-                                                     height: 200))
+            let newImage = UIImageView(frame: CGRect(x: designView.frame.width/2-75,
+                                                     y: designView.frame.height/2-75,
+                                                     width: 150,
+                                                     height: 150))
             newImage.image = image
 
             designView.addSubview(newImage)

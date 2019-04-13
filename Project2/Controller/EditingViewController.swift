@@ -10,6 +10,7 @@ import UIKit
 import Fusuma
 import CoreGraphics
 
+// swiftlint:disable file_length
 class EditingViewController: UIViewController {
 
     @IBOutlet weak var currentFontBtn: UIButton!
@@ -39,6 +40,7 @@ class EditingViewController: UIViewController {
     var rotateHelper = UIImageView()
     var positionHelper = UIImageView()
     var editingFrame = UIView()
+    var positionButton = UIButton()
  
     var editingView: UIView? {
 
@@ -50,8 +52,9 @@ class EditingViewController: UIViewController {
             rotationView.isHidden = true
             helperView = UIView()
             rotateHelper = UIImageView()
-            positionHelper = UIImageView()
+//            positionHelper = UIImageView()
             editingFrame = UIView()
+            positionButton = UIButton()
             
             createEditingHelper(for: editingView)
             
@@ -425,14 +428,31 @@ extension EditingViewController {
     @objc func didTapDownButton(sender: AnyObject) {
 
         guard let editingView = editingView else { return }
-        designView.sendSubviewToBack(editingView)
+//        designView.sendSubviewToBack(editingView)
+        
+        guard let index = designView.subviews.firstIndex(of: editingView) else { return }
+        
+        switch index {
+        case 0:
+            print("You are the last one.")
+        default:
+            designView.insertSubview(editingView, at: index-1)
+        }
 
     }
 
     @objc func didTapUpButton(sender: AnyObject) {
 
         guard let editingView = editingView else { return }
-        designView.bringSubviewToFront(editingView)
+        
+        guard let index = designView.subviews.firstIndex(of: editingView) else { return }
+        
+        switch index {
+        case designView.subviews.count-2:
+            print("You are the toppest one.")
+        default:
+            designView.insertSubview(editingView, at: index+1)
+        }
 
     }
 
@@ -512,6 +532,7 @@ extension EditingViewController {
     @objc func handleTap(sender: UITapGestureRecognizer) {
         
 //        helperView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+       
         helperView.removeFromSuperview()
 
         editingView = sender.view
@@ -907,12 +928,14 @@ extension EditingViewController {
     func createEditingHelper(for view: UIView) {
         
         helperView.addSubview(rotateHelper)
-        helperView.addSubview(positionHelper)
+//        helperView.addSubview(positionHelper)
         helperView.addSubview(editingFrame)
+        helperView.addSubview(positionButton)
         
         designView.addSubview(helperView)
 
         helperView.makeACopy(from: editingView!)
+//        helperView.makeEqualCenterView(from: editingView!, forSize: 2)
 
         guard let center = editingView?.center else { return }
         
@@ -921,22 +944,29 @@ extension EditingViewController {
         editingFrame.bounds = (editingView?.bounds)!
 
         rotateHelper.translatesAutoresizingMaskIntoConstraints = false
-        positionHelper.translatesAutoresizingMaskIntoConstraints = false
+//        positionHelper.translatesAutoresizingMaskIntoConstraints = false
+        positionButton.translatesAutoresizingMaskIntoConstraints = false
         
-        rotateHelper.centerXAnchor.constraint(equalTo: (helperView.centerXAnchor)).isActive = true
-        rotateHelper.topAnchor.constraint(equalTo: (helperView.bottomAnchor), constant: 10).isActive = true
+        rotateHelper.centerXAnchor.constraint(equalTo: (editingFrame.centerXAnchor)).isActive = true
+        rotateHelper.topAnchor.constraint(equalTo: (editingFrame.bottomAnchor), constant: 10).isActive = true
         rotateHelper.widthAnchor.constraint(equalToConstant: 20)
         rotateHelper.heightAnchor.constraint(equalToConstant: 20)
         
-        positionHelper.centerYAnchor.constraint(equalTo: (helperView.centerYAnchor)).isActive = true
-        positionHelper.leadingAnchor.constraint(equalTo: (helperView.trailingAnchor), constant: 10).isActive = true
-        positionHelper.widthAnchor.constraint(equalToConstant: 20)
-        positionHelper.heightAnchor.constraint(equalToConstant: 20)
+//        positionHelper.centerYAnchor.constraint(equalTo: (helperView.centerYAnchor)).isActive = true
+//        positionHelper.leadingAnchor.constraint(equalTo: (helperView.trailingAnchor), constant: 10).isActive = true
+//        positionHelper.widthAnchor.constraint(equalToConstant: 20)
+//        positionHelper.heightAnchor.constraint(equalToConstant: 20)
+
+        positionButton.centerYAnchor.constraint(equalTo: (editingFrame.centerYAnchor)).isActive = true
+        positionButton.leadingAnchor.constraint(equalTo: (editingFrame.trailingAnchor), constant: 10).isActive = true
+        positionButton.widthAnchor.constraint(equalToConstant: 20)
+        positionButton.heightAnchor.constraint(equalToConstant: 20)
         
         helperView.layoutIfNeeded()
         editingView?.layoutIfNeeded()
         rotateHelper.layoutIfNeeded()
         positionHelper.layoutIfNeeded()
+        positionButton.layoutIfNeeded()
         
         //Setting
         helperView.backgroundColor = UIColor.blue
@@ -946,8 +976,10 @@ extension EditingViewController {
         editingFrame.layer.borderWidth = 2
         editingFrame.layer.borderColor = UIColor.white.cgColor
 
-        positionHelper.image = #imageLiteral(resourceName: "noun_navigate")
+//        positionHelper.image = #imageLiteral(resourceName: "noun_navigate")
         rotateHelper.image = #imageLiteral(resourceName: "Icon_Rotate")
+        positionButton.setImage(#imageLiteral(resourceName: "noun_navigate"), for: .normal)
+        positionButton.backgroundColor = UIColor.white
 
         positionHelper.backgroundColor = UIColor.white
         positionHelper.layer.cornerRadius = 10
@@ -960,7 +992,41 @@ extension EditingViewController {
         
         addAllGesture(to: helperView)
         
-        addCircleGesture(to: helperView)
+        addCircleGesture(to: rotateHelper)
+        
+//        positionButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+//        
+//        positionButton.addTarget(self,
+//                         action: #selector(drag(control:event:)),
+//                         for: UIControl.Event.touchDragInside)
+//        positionButton.addTarget(self,
+//                         action: #selector(drag(control:event:)),
+//                         for: [UIControl.Event.touchDragExit,
+//                               UIControl.Event.touchDragOutside])
+        
+        helperView.hitTest(rotateHelper.frame.origin, with: UIEvent.init())
     }
+    
+    @objc func buttonAction() {
+        
+        rotationView.isHidden = false
+        
+        guard let rotateDegree = editingView?.transform.angleInDegrees else { return }
+        
+        if Int(rotateDegree) >= 0 {
+            rotateSlider.value = Float(Int(rotateDegree))
+            
+        } else {
+            rotateSlider.value = Float(360-Int(rotateDegree)*(-1))
+        }
+        
+    }
+    
+    @objc func drag(control: UIControl, event: UIEvent) {
+        if let center = event.allTouches?.first?.location(in: self.view) {
+            control.center = center
+        }
+    }
+    
 }
-
+ // swiftlint:enable file_length
