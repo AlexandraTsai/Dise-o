@@ -29,6 +29,7 @@ class EditingViewController: UIViewController {
     @IBOutlet weak var imageEditContainerView: UIView!
     @IBOutlet weak var selectFontView: UIView!
     @IBOutlet weak var rotationView: UIView!
+    @IBOutlet weak var rotateSlider: UISlider!
     
     var lineHeight: Float = 0
     var letterSpacing: Float = 0
@@ -46,7 +47,7 @@ class EditingViewController: UIViewController {
             guard let editingView = editingView else {
                 return
             }
-            
+            rotationView.isHidden = true
             helperView = UIView()
             rotateHelper = UIImageView()
             positionHelper = UIImageView()
@@ -275,15 +276,16 @@ class EditingViewController: UIViewController {
             }
             
         }
+         rotationView.isHidden = true
 
     }
     @IBAction func slideToRotate(_ sender: UISlider) {
-        
-//        let transform = CGAffineTransform(rotationAngle: CGFloat(sender.value)
-        
+
 //        helperView.transform = helperView.transform.rotated(by: CGFloat(sender.value))
         
-        let transform = CGAffineTransform(rotationAngle: CGFloat(sender.value))
+//        let transform = CGAffineTransform(rotationAngle: CGFloat(sender.value))
+        
+        let transform = CGAffineTransform(rotationAngle: CGFloat(sender.value/360)*CGFloat.pi*2)
        
         helperView.transform = transform
      
@@ -488,13 +490,13 @@ extension EditingViewController {
 
     func addTapGesture(to newView: UIView) {
 
-            newView.isUserInteractionEnabled = true
+        newView.isUserInteractionEnabled = true
 
-            //Handle to tapped
-            let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
-            tap.numberOfTapsRequired = 1
-            tap.numberOfTouchesRequired = 1
-            newView.addGestureRecognizer(tap)
+        //Handle to tapped
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        tap.numberOfTapsRequired = 1
+        tap.numberOfTouchesRequired = 1
+        newView.addGestureRecognizer(tap)
     }
     
     func addCircleGesture(to rotateView: UIView) {
@@ -502,13 +504,15 @@ extension EditingViewController {
         rotateView.isUserInteractionEnabled = true
         
         //Handle to tapped
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleCircleGesture(_ :)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleCircleGesture(sender:)))
+        tap.numberOfTapsRequired = 1
+        tap.numberOfTouchesRequired = 1
         rotateView.addGestureRecognizer(tap)
     }
 
     @objc func handleTap(sender: UITapGestureRecognizer) {
         
-        helperView.frame = CGRect(x: 0, y: 0, width: 0, height: 0) //ask 加這行就可以控制住 UIImageView，但 UITextView 還是會不準
+//        helperView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
         helperView.removeFromSuperview()
 
         editingView = sender.view
@@ -600,9 +604,19 @@ extension EditingViewController {
 
     }
     
-    @objc private func handleCircleGesture(_ gesture: UITapGestureRecognizer) {
+    @objc func handleCircleGesture(sender: UITapGestureRecognizer) {
 
         rotationView.isHidden = false
+        
+        guard let rotateDegree = editingView?.transform.angleInDegrees else { return }
+        
+        if Int(rotateDegree) >= 0 {
+            rotateSlider.value = Float(Int(rotateDegree))
+            
+        } else {
+              rotateSlider.value = Float(360-Int(rotateDegree)*(-1))
+        }
+        
     }
 }
 
@@ -947,7 +961,7 @@ extension EditingViewController {
         
         addAllGesture(to: helperView)
         
-        addCircleGesture(to: rotateHelper)
+        addCircleGesture(to: helperView)
     }
 }
 

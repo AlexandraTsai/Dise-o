@@ -312,7 +312,7 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9l-L7-B0S">
                                         <rect key="frame" x="260" y="2" width="40" height="40"/>
-                                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.58105844259999995" green="0.12855249639999999" blue="0.57453137639999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="S9l-L7-B0S" secondAttribute="height" multiplier="1:1" id="ujF-vP-NdU"/>
                                         </constraints>
@@ -440,8 +440,15 @@
                                             <action selector="rotationDone:" destination="mFr-ri-311" eventType="touchUpInside" id="hMN-rX-XNj"/>
                                         </connections>
                                     </button>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="6.2831853100000004" translatesAutoresizingMaskIntoConstraints="NO" id="nhs-aB-c2l">
-                                        <rect key="frame" x="18" y="30" width="339" height="31"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOJ-jk-Avv">
+                                        <rect key="frame" x="20" y="34.5" width="50" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="360" translatesAutoresizingMaskIntoConstraints="NO" id="nhs-aB-c2l">
+                                        <rect key="frame" x="83" y="30" width="274" height="31"/>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="slideToRotate:" destination="mFr-ri-311" eventType="valueChanged" id="KbZ-g9-BZa"/>
                                         </connections>
@@ -451,9 +458,11 @@
                                 <constraints>
                                     <constraint firstItem="Qea-se-LcX" firstAttribute="leading" secondItem="tRd-aQ-VLq" secondAttribute="leading" constant="20" id="5Yu-kp-qI0"/>
                                     <constraint firstAttribute="trailing" secondItem="x8J-xa-yTB" secondAttribute="trailing" constant="20" id="APm-Po-qoR"/>
+                                    <constraint firstItem="nhs-aB-c2l" firstAttribute="leading" secondItem="AOJ-jk-Avv" secondAttribute="trailing" constant="15" id="ESJ-FO-f8m"/>
                                     <constraint firstItem="nhs-aB-c2l" firstAttribute="top" secondItem="tRd-aQ-VLq" secondAttribute="top" constant="30" id="Kih-Ud-5ra"/>
+                                    <constraint firstItem="AOJ-jk-Avv" firstAttribute="leading" secondItem="tRd-aQ-VLq" secondAttribute="leading" constant="20" id="LhQ-S5-MKn"/>
+                                    <constraint firstItem="AOJ-jk-Avv" firstAttribute="centerY" secondItem="nhs-aB-c2l" secondAttribute="centerY" id="NE8-oi-LdE"/>
                                     <constraint firstItem="x8J-xa-yTB" firstAttribute="centerY" secondItem="Qea-se-LcX" secondAttribute="centerY" id="SHy-nj-scv"/>
-                                    <constraint firstItem="nhs-aB-c2l" firstAttribute="leading" secondItem="tRd-aQ-VLq" secondAttribute="leading" constant="20" id="YNl-BV-bLY"/>
                                     <constraint firstAttribute="bottom" secondItem="Qea-se-LcX" secondAttribute="bottom" constant="8" id="kYn-J2-5ZN"/>
                                     <constraint firstAttribute="trailing" secondItem="nhs-aB-c2l" secondAttribute="trailing" constant="20" id="s9h-Wx-fe5"/>
                                 </constraints>
@@ -495,6 +504,7 @@
                         <outlet property="imageEditContainerView" destination="eE4-nX-key" id="1L3-L3-zrS"/>
                         <outlet property="italicButton" destination="Oyb-zP-bPa" id="E5H-ac-N6M"/>
                         <outlet property="letterCaseButton" destination="w0y-2d-Q2k" id="iXK-ov-pAx"/>
+                        <outlet property="rotateSlider" destination="nhs-aB-c2l" id="0dk-3Z-xJf"/>
                         <outlet property="rotationView" destination="tRd-aQ-VLq" id="ih5-4m-TvQ"/>
                         <outlet property="selectFontView" destination="sHk-BO-mXn" id="oQs-4B-EOn"/>
                         <outlet property="textEditView" destination="Yke-94-yj6" id="6x1-h4-UMb"/>
