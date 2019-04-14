@@ -266,11 +266,10 @@ class EditingViewController: UIViewController {
 
         guard designView.subviews.count > 0 else { return }
 
-        for count in 0...designView.subviews.count-1 {
+        for count in 0...designView.subviews.count-1
+            where designView.subviews[count] != helperView {
             
-            if designView.subviews[count] != helperView {
                 addTapGesture(to: designView.subviews[count])
-            }
             
         }
          rotationView.isHidden = true
@@ -476,7 +475,7 @@ extension EditingViewController {
               
             }
             
-            if index == designView.subviews.count-2  {
+            if index == designView.subviews.count-2 {
                 
               self.navigationItem.rightBarButtonItems?[3].isEnabled = true
             }
@@ -489,7 +488,7 @@ extension EditingViewController {
             self.navigationItem.rightBarButtonItems?[1].isEnabled = false
         }
         
-        if index == designView.subviews.count-2  {
+        if index == designView.subviews.count-2 {
             
             self.navigationItem.rightBarButtonItems?[2].isEnabled = true
           
@@ -520,7 +519,7 @@ extension EditingViewController {
                 
             }
             
-            if index == 0  {
+            if index == 0 {
                 
                 self.navigationItem.rightBarButtonItems?[2].isEnabled = true
             }
@@ -533,7 +532,7 @@ extension EditingViewController {
                 self.navigationItem.rightBarButtonItems?[3].isEnabled = false
         }
         
-        if index == 0  {
+        if index == 0 {
             
             self.navigationItem.rightBarButtonItems?[2].isEnabled = true
             
@@ -614,11 +613,12 @@ extension EditingViewController {
         rotateView.addGestureRecognizer(tap)
     }
     
-    func addPanGesture(to view: UIView){
+    func addPanGesture(to view: UIView) {
         view.isUserInteractionEnabled = true
         
         //Handle to tapped
-        let pan = UIPanGestureRecognizer(target: self, action:  #selector(handleDragged(_ :)))
+        let pan = UIPanGestureRecognizer(target: self,
+                                         action: #selector(handleDragged(_:)))
         
         view.addGestureRecognizer(pan)
     }
@@ -922,7 +922,7 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
     }
 }
 
-//MARK:- Fusuma Image Picker
+// MARK: - Fusuma image picker
 extension EditingViewController: FusumaDelegate {
     
     //Notification for image picked

@@ -19,6 +19,8 @@ struct NotificationInfo {
     static let backgroundIsImage = true
     static let changeImage = true
     static let didChangeImage = true
+    
+    static let addShape = CAShapeLayer()
 }
 
 enum NotiName: String {
@@ -30,4 +32,7 @@ enum NotiName: String {
     case pickingPhotoMode
     case changeImage //Change image at editingVC
     case didChangeImage
+    
+    //Shape
+    case addShape
 }

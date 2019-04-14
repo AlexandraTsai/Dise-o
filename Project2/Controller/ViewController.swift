@@ -11,6 +11,7 @@ import AssetsLibrary
 import Photos
 import Fusuma
 
+// swiftlint:disable file_length
 class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
 
     @IBOutlet weak var designView: UIImageView!
@@ -20,7 +21,8 @@ class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
     @IBOutlet weak var hintView: UIView!
 
     @IBOutlet weak var addImageContainerView: UIView!
-
+    @IBOutlet weak var addShapeContainerView: UIView!
+    
     @IBOutlet weak var addButton: UIButton! {
 
         didSet {
@@ -41,6 +43,7 @@ class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
         notEditingMode()
 
         addImageContainerView.isHidden = true
+        addShapeContainerView.isHidden = true
     }
 
     override func viewDidLoad() {
@@ -92,8 +95,6 @@ class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
     @IBAction func addImageBtnTapped(_ sender: Any) {
 
         addImageContainerView.isHidden = false
-        
-//        scrollView.isHidden = !scrollView.isHidden
 
         addingNewImage = true
         self.present(fusuma, animated: true, completion: nil)
@@ -104,6 +105,13 @@ class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
 
         addingTextMode()
 
+    }
+    
+    @IBAction func addShapeBtnTapped(_ sender: Any) {
+        
+         addShapeContainerView.isHidden = false
+         hintView.isHidden = true
+         scrollView.isHidden = true
     }
 }
 
@@ -152,6 +160,14 @@ extension ViewController {
             
             containerVC.loadViewIfNeeded()
             containerVC.colorButton.isSelected = true
+        } else if segue.identifier
+            == "shapeSegue" {
+            
+            guard let containerVC: ShapeContainerViewController = segue.destination as? ShapeContainerViewController
+                else { return }
+            
+            containerVC.loadViewIfNeeded()
+            
         }
     }
 
@@ -183,6 +199,11 @@ extension ViewController {
 
         NotificationCenter.default.addObserver(self, selector:
             #selector(showPickPhotoVC(noti:)), name: notificationName5, object: nil)
+
+        let notificationName6 = Notification.Name(NotiName.addShape.rawValue)
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(addShape(noti:)), name: notificationName6, object: nil)
 
     }
 
@@ -244,6 +265,24 @@ extension ViewController {
 
             }
         }
+    }
+    
+    @objc func addShape(noti: Notification) {
+        
+        guard let userInfo = noti.userInfo,
+            let newShape = userInfo[NotificationInfo.addShape] as? CAShapeLayer
+            else { return }
+        
+//        let newImage = UIImageView(frame: CGRect(x: designView.center.x-100,
+//                                                 y: designView.center.y-100,
+//                                                 width: 200,
+//                                                 height: 200))
+//        newImage.image = addImage
+        
+        designView.layer.addSublayer(newShape)
+        
+//        goToEditingVC(with: newImage, navigationBarForImage: true)
+        
     }
 }
 
@@ -566,3 +605,4 @@ extension ViewController {
     }
 
 }
+// swiftlint:enable file_length

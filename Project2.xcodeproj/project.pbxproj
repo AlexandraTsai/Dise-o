@@ -47,6 +47,9 @@
 		A8DEBBB0225621B30081A694 /* PaletteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DEBBAE225621B30081A694 /* PaletteCollectionViewCell.xib */; };
 		A8DEBBB2225638070081A694 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DEBBB1225638070081A694 /* UIImageView+Extension.swift */; };
 		A8DEBBB4225713770081A694 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8DEBBB3225713770081A694 /* Assets.xcassets */; };
+		A8E3063C2262FE0000DA03A7 /* ShapeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E3063B2262FE0000DA03A7 /* ShapeContainerViewController.swift */; };
+		A8E3063F2263009C00DA03A7 /* ShapeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E3063D2263009C00DA03A7 /* ShapeCollectionViewCell.swift */; };
+		A8E306402263009D00DA03A7 /* ShapeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8E3063E2263009C00DA03A7 /* ShapeCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +96,9 @@
 		A8DEBBAE225621B30081A694 /* PaletteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaletteCollectionViewCell.xib; sourceTree = "<group>"; };
 		A8DEBBB1225638070081A694 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		A8DEBBB3225713770081A694 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A8E3063B2262FE0000DA03A7 /* ShapeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeContainerViewController.swift; sourceTree = "<group>"; };
+		A8E3063D2263009C00DA03A7 /* ShapeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCollectionViewCell.swift; sourceTree = "<group>"; };
+		A8E3063E2263009C00DA03A7 /* ShapeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShapeCollectionViewCell.xib; sourceTree = "<group>"; };
 		E0D502422CADB0A6DB80DCEF /* Pods-Project2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.release.xcconfig"; path = "Target Support Files/Pods-Project2/Pods-Project2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,6 +203,7 @@
 		A8D2C464225222790085AD24 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A8E30641226300A800DA03A7 /* Shape */,
 				A8BFF77C225A37960010E56B /* Image */,
 				A8BFF77B225A37770010E56B /* Color */,
 				A8BFF77022588E890010E56B /* Text */,
@@ -214,6 +221,7 @@
 				A8D2C4832252F9FF0085AD24 /* ImageContainerViewController.swift */,
 				A8DEBBA1225496D20081A694 /* AddImageContainerViewController.swift */,
 				A8BFF77F225A4AC00010E56B /* ImageEditContainerViewController.swift */,
+				A8E3063B2262FE0000DA03A7 /* ShapeContainerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -252,6 +260,15 @@
 				A8D2C453225219030085AD24 /* Main.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		A8E30641226300A800DA03A7 /* Shape */ = {
+			isa = PBXGroup;
+			children = (
+				A8E3063D2263009C00DA03A7 /* ShapeCollectionViewCell.swift */,
+				A8E3063E2263009C00DA03A7 /* ShapeCollectionViewCell.xib */,
+			);
+			path = Shape;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8BFF76F22586E5C0010E56B /* FontTableViewCell.xib in Resources */,
+				A8E306402263009D00DA03A7 /* ShapeCollectionViewCell.xib in Resources */,
 				A8BFF7782258D1970010E56B /* FontSizeTableViewCell.xib in Resources */,
 				A8D2C45D225219080085AD24 /* LaunchScreen.storyboard in Resources */,
 				A8D2C47F22523A490085AD24 /* PhotoCollectionViewCell.xib in Resources */,
@@ -363,7 +381,6 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Project2/Pods-Project2-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Fusuma/Fusuma.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/UIFontComplete/UIFontComplete.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -371,7 +388,6 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fusuma.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIFontComplete.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,7 +448,9 @@
 				A8DEBBB2225638070081A694 /* UIImageView+Extension.swift in Sources */,
 				A8D2C458225219030085AD24 /* Project2.xcdatamodeld in Sources */,
 				A8BFF76E22586E5C0010E56B /* FontTableViewCell.swift in Sources */,
+				A8E3063C2262FE0000DA03A7 /* ShapeContainerViewController.swift in Sources */,
 				A8BFF76B22586E3D0010E56B /* UIFont+Extension.swift in Sources */,
+				A8E3063F2263009C00DA03A7 /* ShapeCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

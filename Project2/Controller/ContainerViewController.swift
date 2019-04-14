@@ -8,7 +8,6 @@
 
 import UIKit
 import Photos
-import Kingfisher
 
 class ContainerViewController: UIViewController, PhotoManagerDelegate {
 
@@ -102,18 +101,6 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
 
         photoCell.photoImage.image = imageArray[indexPath.item]
 
-//        photoCell.photoImage.kf.setImage(with: URL(string: "//var/mobile/Media/DCIM/134APPLE/IMG_4696.JPG"))
-//        print(imageURL[0])
-//
-//        let fileURL: URL = imageURL[indexPath.item]
-//        let provider = LocalFileImageDataProvider(fileURL: fileURL)
-//
-//        photoCell.photoImage.backgroundColor = UIColor.orange
-
-//        photoCell.photoImage.kf.setImage(with: provider)
-//        photoCell.photoImage.kf.setImage(with: imageURL[indexPath.item])
-
-//        print(photoCell.photoImage.image)
         return photoCell
     }
 

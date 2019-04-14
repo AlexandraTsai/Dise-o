@@ -46,7 +46,11 @@ extension UIView {
         //Transform the origin image view
         originView.transform = CGAffineTransform(rotationAngle: 0)
         
-        self.bounds = CGRect(x: 0, y: 0, width: originView.bounds.width*forSize, height: originView.bounds.height*forSize)
+        self.bounds = CGRect(x: 0,
+                             y: 0,
+                             width: originView.bounds.width*forSize,
+                             height: originView.bounds.height*forSize)
+        
         self.center = originView.center
         
         self.transform = originRotation

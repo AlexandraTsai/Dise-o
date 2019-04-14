@@ -49,3 +49,12 @@ extension UIImage {
     }
 
 }
+
+enum ShapeAsset: String, CaseIterable {
+    
+    case circle
+    case triangle
+    case rectangle
+    case circleBorder
+    
+}
