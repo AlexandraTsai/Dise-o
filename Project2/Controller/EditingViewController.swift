@@ -89,8 +89,7 @@ class EditingViewController: UIViewController {
 
     @IBAction func addBtnTapped(_ sender: Any) {
       
-        let oldHelperView =  designView.subviews.first
-        oldHelperView?.removeFromSuperview()
+        helperView.removeFromSuperview()
         
         /*Notification*/
         let notificationName = Notification.Name(NotiName.addingMode.rawValue)
@@ -98,7 +97,13 @@ class EditingViewController: UIViewController {
             name: notificationName,
             object: nil,
             userInfo: [NotificationInfo.addingMode: true])
-
+        
+        let notificationName2 = Notification.Name(NotiName.updateImage.rawValue)
+        NotificationCenter.default.post(
+            name: notificationName2,
+            object: nil,
+            userInfo: [NotificationInfo.editedImage: designView.subviews])
+      
         self.navigationController?.popViewController(animated: true)
 
     }
@@ -190,9 +195,6 @@ class EditingViewController: UIViewController {
 
         guard let view =  editingView as? UITextView else { return }
 
-//        view.font = UIFont.preferredFont(forTextStyle: .body).italic()
-//        view.adjustsFontForContentSizeCategory = true
-//
         switch italicButton.currentTitleColor {
 
         case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
@@ -412,8 +414,6 @@ extension EditingViewController {
 
     @objc func didTapDoneButton(sender: AnyObject) {
 
-//        editingView?.layer.borderWidth = 0
-        
         helperView.removeFromSuperview()
         
         /*Notification*/
@@ -424,7 +424,13 @@ extension EditingViewController {
             userInfo: [NotificationInfo.editedImage: designView.subviews])
 
         self.navigationController?.popViewController(animated: true)
-
+        
+        let notificationName2 = Notification.Name(NotiName.addingMode.rawValue)
+        NotificationCenter.default.post(
+            name: notificationName2,
+            object: nil,
+            userInfo: [NotificationInfo.addingMode: false])
+        
     }
 
     @objc func didTapCropButton(sender: AnyObject) {
@@ -607,11 +613,18 @@ extension EditingViewController {
         tap.numberOfTouchesRequired = 1
         rotateView.addGestureRecognizer(tap)
     }
+    
+    func addPanGesture(to view: UIView){
+        view.isUserInteractionEnabled = true
+        
+        //Handle to tapped
+        let pan = UIPanGestureRecognizer(target: self, action:  #selector(handleDragged(_ :)))
+        
+        view.addGestureRecognizer(pan)
+    }
 
     @objc func handleTap(sender: UITapGestureRecognizer) {
         
-//        helperView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-       
         helperView.removeFromSuperview()
 
         editingView = sender.view
@@ -692,6 +705,9 @@ extension EditingViewController {
 
         editingView?.center = CGPoint(x: xCenter+translation.x, y: yCenter+translation.y)
         gesture.setTranslation(CGPoint.zero, in: editingView)
+        
+        guard let center = editingView?.center else { return }
+        helperView.center = center
 
         let view = gesture.view
         guard let xCenter2 = view?.center.x, let yCenter2 = view?.center.y else { return }
@@ -1063,28 +1079,8 @@ extension EditingViewController {
         helperView.isUserInteractionEnabled = true
         
         addCircleGesture(to: helperView.rotateHelper)
+        addPanGesture(to: helperView.positionHelper)
 
-    }
-    
-    @objc func buttonAction() {
-        
-        rotationView.isHidden = false
-        
-        guard let rotateDegree = editingView?.transform.angleInDegrees else { return }
-        
-        if Int(rotateDegree) >= 0 {
-            rotateSlider.value = Float(Int(rotateDegree))
-            
-        } else {
-            rotateSlider.value = Float(360-Int(rotateDegree)*(-1))
-        }
-        
-    }
-    
-    @objc func drag(control: UIControl, event: UIEvent) {
-        if let center = event.allTouches?.first?.location(in: self.view) {
-            control.center = center
-        }
     }
     
 }

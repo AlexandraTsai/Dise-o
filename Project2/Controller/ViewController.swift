@@ -39,7 +39,6 @@ class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
         super.viewWillAppear(true)
 
         notEditingMode()
-        scrollView.isHidden = true
 
         addImageContainerView.isHidden = true
     }
@@ -54,6 +53,8 @@ class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
         setupNavigationBar()
 
         setupImagePicker()
+        
+        scrollView.isHidden = true
     }
 
     // MARK: - Add image to Library
@@ -73,10 +74,6 @@ class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             present(alert, animated: true)
 
-            let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
-            let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
-            let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
-            
         }
     }
 
@@ -210,6 +207,8 @@ extension ViewController {
             let mode = userInfo[NotificationInfo.addingMode] as? Bool {
             if mode == true {
                 scrollView.isHidden = false
+            } else {
+                 scrollView.isHidden = true
             }
         }
     }
