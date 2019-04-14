@@ -270,18 +270,18 @@ extension ViewController {
     @objc func addShape(noti: Notification) {
         
         guard let userInfo = noti.userInfo,
-            let newShape = userInfo[NotificationInfo.addShape] as? CAShapeLayer
+            let shapeType = userInfo[NotificationInfo.addShape] as? String
             else { return }
         
-//        let newImage = UIImageView(frame: CGRect(x: designView.center.x-100,
-//                                                 y: designView.center.y-100,
-//                                                 width: 200,
-//                                                 height: 200))
-//        newImage.image = addImage
-        
-        designView.layer.addSublayer(newShape)
-        
-//        goToEditingVC(with: newImage, navigationBarForImage: true)
+        let newShape = ShapeView(frame: CGRect(x: designView.frame.width/2,
+                                               y: designView.frame.height/2,
+                                               width: 150,
+                                               height: 150))
+        newShape.shapeType = shapeType
+        designView.addSubview(newShape)
+        addAllGesture(to: newShape)
+     
+        goToEditingVC(with: newShape, navigationBarForImage: true)
         
     }
 }

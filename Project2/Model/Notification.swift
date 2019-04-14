@@ -20,7 +20,7 @@ struct NotificationInfo {
     static let changeImage = true
     static let didChangeImage = true
     
-    static let addShape = CAShapeLayer()
+    static let addShape = ""
 }
 
 enum NotiName: String {

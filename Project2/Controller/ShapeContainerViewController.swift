@@ -49,22 +49,10 @@ class ShapeContainerViewController: UIViewController, UICollectionViewDelegate, 
         
         let notificationName = Notification.Name(NotiName.addShape.rawValue)
         
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
-        shapeLayer.fillColor = UIColor.orange.cgColor
-        shapeLayer.lineWidth = 3
-        shapeLayer.strokeColor = UIColor.black.cgColor
-        let arcCenter:CGPoint = shapeLayer.position // 設定圓心
-        let radius:CGFloat = 100 // 設定半徑
-        
-        let path = UIBezierPath(arcCenter: arcCenter, radius: radius, startAngle: 0, endAngle: CGFloat(2 * Float.pi), clockwise: true)
-        
-        shapeLayer.path = path.cgPath
-        
         NotificationCenter.default.post(
             name: notificationName,
             object: nil,
-            userInfo: [NotificationInfo.addShape: shapeLayer])
+            userInfo: [NotificationInfo.addShape: ShapeAsset.allCases[indexPath.item].rawValue])
     }
     
     private func setupCollectionViewLayout() {
