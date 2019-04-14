@@ -422,7 +422,7 @@ extension EditingViewController {
             object: nil,
             userInfo: [NotificationInfo.editedImage: designView.subviews])
 
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: false)
         
         let notificationName2 = Notification.Name(NotiName.addingMode.rawValue)
         NotificationCenter.default.post(
@@ -450,7 +450,7 @@ extension EditingViewController {
             object: nil,
             userInfo: [NotificationInfo.editedImage: designView.subviews])
         
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: false)
 
     }
 

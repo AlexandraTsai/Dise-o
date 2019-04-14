@@ -12,6 +12,7 @@ class ShapeView: UIView {
 
     var path = UIBezierPath()
     var shapeType: String = ""
+    var defaultColor: UIColor = UIColor.white
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,10 +36,10 @@ class ShapeView: UIView {
             break
         }
         
-        UIColor.red.setFill()
+        defaultColor.setFill()
         path.fill()
-    }
     
+    }
     
     func createRectangle() {
         

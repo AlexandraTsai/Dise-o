@@ -884,7 +884,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="enV-vB-FrM">
-                                <rect key="frame" x="0.0" y="10" width="375" height="198"/>
+                                <rect key="frame" x="0.0" y="47" width="375" height="161"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Fw6-hv-jjs">
                                     <size key="itemSize" width="50" height="50"/>
@@ -894,13 +894,31 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your new element!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZB-Ii-mqc">
+                                <rect key="frame" x="20" y="10" width="204" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D0E-Z1-BRv">
+                                <rect key="frame" x="20" y="36" width="228" height="2"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="L5J-zY-Jgs"/>
+                                    <constraint firstAttribute="width" constant="228" id="wiJ-2t-rxr"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.87450980389999999" green="0.85882352939999995" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="enV-vB-FrM" firstAttribute="leading" secondItem="HyH-qW-Txo" secondAttribute="leading" id="AiX-YE-Fes"/>
-                            <constraint firstItem="enV-vB-FrM" firstAttribute="top" secondItem="HyH-qW-Txo" secondAttribute="top" constant="10" id="Hrx-60-XMc"/>
+                            <constraint firstItem="enV-vB-FrM" firstAttribute="top" secondItem="D0E-Z1-BRv" secondAttribute="bottom" constant="9" id="PNz-nD-fvS"/>
+                            <constraint firstItem="D0E-Z1-BRv" firstAttribute="leading" secondItem="iZB-Ii-mqc" secondAttribute="leading" id="Ymk-27-KYZ"/>
                             <constraint firstAttribute="bottom" secondItem="enV-vB-FrM" secondAttribute="bottom" id="czK-CW-B51"/>
                             <constraint firstAttribute="trailing" secondItem="enV-vB-FrM" secondAttribute="trailing" id="gdl-xb-7g2"/>
+                            <constraint firstItem="iZB-Ii-mqc" firstAttribute="top" secondItem="FGZ-D7-4O1" secondAttribute="top" constant="10" id="u5c-hF-lpq"/>
+                            <constraint firstItem="iZB-Ii-mqc" firstAttribute="leading" secondItem="FGZ-D7-4O1" secondAttribute="leading" constant="20" id="ulF-hh-iS8"/>
+                            <constraint firstItem="D0E-Z1-BRv" firstAttribute="top" secondItem="iZB-Ii-mqc" secondAttribute="bottom" constant="5" id="zvF-hb-oun"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FGZ-D7-4O1"/>
                     </view>

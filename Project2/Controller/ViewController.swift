@@ -134,10 +134,10 @@ extension ViewController {
         if designView.image == nil {
 
             //只顯示 Camera Roll, Colors(Default)
-
             NotificationCenter.default.post(name: notificationName,
                                             object: nil,
                                             userInfo: [NotificationInfo.backgroundIsImage: false])
+            addShapeContainerView.isHidden = true
 
         } else {
 
@@ -146,6 +146,7 @@ extension ViewController {
                 name: notificationName,
                 object: nil,
                 userInfo: [NotificationInfo.backgroundIsImage: true])
+            addShapeContainerView.isHidden = true
         }
 
     }
@@ -273,15 +274,22 @@ extension ViewController {
             let shapeType = userInfo[NotificationInfo.addShape] as? String
             else { return }
         
-        let newShape = ShapeView(frame: CGRect(x: designView.frame.width/2,
-                                               y: designView.frame.height/2,
+        let newShape = ShapeView(frame: CGRect(x: designView.frame.width/2-75,
+                                               y: designView.frame.height/2-75,
                                                width: 150,
                                                height: 150))
+        
         newShape.shapeType = shapeType
+        
+        if designView.image == nil && designView.backgroundColor == UIColor.white {
+            
+            newShape.defaultColor = UIColor.init(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
+        }
+       
         designView.addSubview(newShape)
         addAllGesture(to: newShape)
      
-        goToEditingVC(with: newShape, navigationBarForImage: true)
+        goToEditingVC(with: newShape, navigationBarForImage: false)
         
     }
 }
@@ -304,8 +312,6 @@ extension ViewController {
     @objc func handleTap(sender: UITapGestureRecognizer) {
 
         guard let tappedView = sender.view else { return }
-//
-//        designView.bringSubviewToFront(tappedView)
 
         guard (tappedView as? UIImageView) != nil else {
 
