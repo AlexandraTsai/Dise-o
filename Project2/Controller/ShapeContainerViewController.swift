@@ -53,6 +53,7 @@ class ShapeContainerViewController: UIViewController, UICollectionViewDelegate, 
             name: notificationName,
             object: nil,
             userInfo: [NotificationInfo.addShape: ShapeAsset.allCases[indexPath.item].rawValue])
+
     }
     
     private func setupCollectionViewLayout() {

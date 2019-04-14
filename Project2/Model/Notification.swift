@@ -21,6 +21,7 @@ struct NotificationInfo {
     static let didChangeImage = true
     
     static let addShape = ""
+ 
 }
 
 enum NotiName: String {
@@ -35,4 +36,5 @@ enum NotiName: String {
     
     //Shape
     case addShape
+
 }

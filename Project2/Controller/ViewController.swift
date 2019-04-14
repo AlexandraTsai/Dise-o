@@ -281,11 +281,26 @@ extension ViewController {
         
         newShape.shapeType = shapeType
         
-        if designView.image == nil && designView.backgroundColor == UIColor.white {
+        for shape in ShapeAsset.allCases {
             
-            newShape.defaultColor = UIColor.init(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
+            if shape.rawValue == shapeType {
+                
+                let border = shape.shapeBorderOnly()
+                
+                if border {
+                    
+                     newShape.stroke =  true
+                    
+                } else {
+                    
+                    if designView.image == nil && designView.backgroundColor == UIColor.white {
+                        
+                        newShape.defaultColor = UIColor.init(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
+                    }
+                }
+            }
         }
-       
+        
         designView.addSubview(newShape)
         addAllGesture(to: newShape)
      

@@ -546,7 +546,21 @@ extension EditingViewController {
 
         guard let tappedView = (editingView as? UITextView) else {
 
-            guard let tappedView = (editingView as? UIImageView)else { return }
+            guard let tappedView = (editingView as? UIImageView)else {
+                
+                guard let tappedView = (editingView as? ShapeView) else { return }
+                
+                let newView = tappedView.makeACopyShape()
+                
+                addTapGesture(to: newView)
+                
+                designView.addSubview(newView)
+                
+                editingView = newView
+               
+                return
+                
+            }
 
             let newView = UIImageView()
 

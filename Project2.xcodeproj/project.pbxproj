@@ -50,7 +50,7 @@
 		A8E3063C2262FE0000DA03A7 /* ShapeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E3063B2262FE0000DA03A7 /* ShapeContainerViewController.swift */; };
 		A8E3063F2263009C00DA03A7 /* ShapeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E3063D2263009C00DA03A7 /* ShapeCollectionViewCell.swift */; };
 		A8E306402263009D00DA03A7 /* ShapeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8E3063E2263009C00DA03A7 /* ShapeCollectionViewCell.xib */; };
-		A8E30643226319FD00DA03A7 /* shapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E30642226319FD00DA03A7 /* shapeView.swift */; };
+		A8E30643226319FD00DA03A7 /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E30642226319FD00DA03A7 /* ShapeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,7 +100,7 @@
 		A8E3063B2262FE0000DA03A7 /* ShapeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeContainerViewController.swift; sourceTree = "<group>"; };
 		A8E3063D2263009C00DA03A7 /* ShapeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCollectionViewCell.swift; sourceTree = "<group>"; };
 		A8E3063E2263009C00DA03A7 /* ShapeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShapeCollectionViewCell.xib; sourceTree = "<group>"; };
-		A8E30642226319FD00DA03A7 /* shapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shapeView.swift; sourceTree = "<group>"; };
+		A8E30642226319FD00DA03A7 /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
 		E0D502422CADB0A6DB80DCEF /* Pods-Project2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.release.xcconfig"; path = "Target Support Files/Pods-Project2/Pods-Project2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -252,7 +252,7 @@
 				A8BFF7792259E1960010E56B /* UIButton+Extenstion.swift */,
 				A86824C322603BC500BDCCD8 /* CGAffineTransform+Extension.swift */,
 				A86824C72260838200BDCCD8 /* ALRotationGestureRecognizer.swift */,
-				A8E30642226319FD00DA03A7 /* shapeView.swift */,
+				A8E30642226319FD00DA03A7 /* ShapeView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -445,7 +445,7 @@
 				A8D2C450225219020085AD24 /* AppDelegate.swift in Sources */,
 				A8BFF7772258D1970010E56B /* FontSizeTableViewCell.swift in Sources */,
 				A86824C2225CCF4000BDCCD8 /* Notification.swift in Sources */,
-				A8E30643226319FD00DA03A7 /* shapeView.swift in Sources */,
+				A8E30643226319FD00DA03A7 /* ShapeView.swift in Sources */,
 				A8D2C4722252270C0085AD24 /* ContainerViewController.swift in Sources */,
 				A86824C62260461500BDCCD8 /* UIView+Extension.swift in Sources */,
 				A8BFF77A2259E1960010E56B /* UIButton+Extenstion.swift in Sources */,

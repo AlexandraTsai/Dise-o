@@ -53,8 +53,26 @@ extension UIImage {
 enum ShapeAsset: String, CaseIterable {
     
     case circle
+    case equilateralTriangle
     case triangle
     case rectangle
-    case circleBorder
     
+    //Line
+    case thinLine
+    case thickLine
+    
+    //Only border
+    case circleBorder
+    case thickCircleBorder
+    
+    func shapeBorderOnly() -> Bool {
+        
+        switch self {
+        case .circleBorder, .thickCircleBorder:
+            return true
+        default:
+            return false
+        }
+    }
+
 }
