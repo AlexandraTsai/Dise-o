@@ -60,9 +60,7 @@ class EditingViewController: UIViewController {
             }
 
             view.delegate = self
-            
-//            self.changeTextAttributeWith(lineHeight: 1.4, letterSpacing: 0.0)
-
+        
             textEditView.isHidden = false
             imageEditContainerView.isHidden = true
         }
@@ -283,6 +281,8 @@ class EditingViewController: UIViewController {
         let xScale = helperView.transform.scaleX
         let yScale = helperView.transform.scaleY
         helperView.transform = transform.scaledBy(x: xScale, y: yScale)
+        
+//        helperView.transform = helperView.transform.rotated(by: CGFloat.pi/4)
      
         //Get the center of editingFrame from helperView to designView
         let center = helperView.convert(helperView.editingFrame.center, to: designView)
@@ -298,7 +298,7 @@ class EditingViewController: UIViewController {
 //Setup Navigation Bar
 extension EditingViewController {
 
-    func navigationBarForText() {
+    func normalNavigationBar() {
 
         let button1 = UIBarButtonItem(
             image: UIImage(named: ImageAsset.Icon_TrashCan.rawValue),
@@ -336,7 +336,7 @@ extension EditingViewController {
 
     }
 
-    func navigationBarForImage() {
+    func complexNavigationBar() {
         let button1 = UIBarButtonItem(
             image: UIImage(named: ImageAsset.Icon_Crop.rawValue),
             style: .plain,
@@ -390,22 +390,22 @@ extension EditingViewController {
         //Editing view is the last one
         case 0:
             
-            guard (editingView as? UITextView) != nil else {
+            guard (editingView as? UIImageView) != nil else {
                 
-                self.navigationItem.rightBarButtonItems?[2].isEnabled = false
+                self.navigationItem.rightBarButtonItems?[1].isEnabled = false
                 return
             }
             
-            self.navigationItem.rightBarButtonItems?[1].isEnabled = false
+            self.navigationItem.rightBarButtonItems?[2].isEnabled = false
             
          //Editing view is the first one
         case designView.subviews.count-1:
             
-            guard (editingView as? UITextView) != nil else {
-                self.navigationItem.rightBarButtonItems?[3].isEnabled = false
+            guard (editingView as? UIImageView) != nil else {
+                self.navigationItem.rightBarButtonItems?[2].isEnabled = false
                 return
             }
-            self.navigationItem.rightBarButtonItems?[2].isEnabled = false
+            self.navigationItem.rightBarButtonItems?[3].isEnabled = false
         default:
             break
         }
@@ -467,8 +467,8 @@ extension EditingViewController {
             designView.insertSubview(editingView, at: index-1)
         }
         
-        //Navigationbar for UITextView
-        guard (editingView as? UITextView) != nil else {
+        //Navigationbar for UITextView/ShapeView
+        guard (editingView as? UITextView) != nil || (editingView as? ShapeView) != nil else {
             
             if index == 1 {
                 self.navigationItem.rightBarButtonItems?[2].isEnabled = false
@@ -509,8 +509,8 @@ extension EditingViewController {
             designView.insertSubview(editingView, at: index+1)
         }
         
-        //Navigationbar for UITextView
-        guard (editingView as? UITextView) != nil else {
+        //Navigationbar for UITextView/ShapeView
+        guard (editingView as? UITextView) != nil || (editingView as? ShapeView) != nil else {
             
             if index == designView.subviews.count-3 {
                 
@@ -643,16 +643,16 @@ extension EditingViewController {
 
         editingView = sender.view
 
-        guard (sender.view as? UITextView) != nil else {
+        guard (sender.view as? UITextView) != nil || (sender.view as? ShapeView) != nil else {
 
             guard (sender.view as? UIImageView) != nil else { return }
 
-            navigationBarForImage()
+            complexNavigationBar()
 
             return
         }
 
-        navigationBarForText()
+        normalNavigationBar()
 
     }
 

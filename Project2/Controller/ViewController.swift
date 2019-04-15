@@ -286,22 +286,19 @@ extension ViewController {
         
         newShape.shapeType = shapeType
         
-        for shape in ShapeAsset.allCases {
-            
-            if shape.rawValue == shapeType {
+        for shape in ShapeAsset.allCases where shape.rawValue == shapeType {
                 
-                let border = shape.shapeBorderOnly()
+            let border = shape.shapeBorderOnly()
                 
-                if border {
+            if border {
                     
-                     newShape.stroke =  true
+                newShape.stroke =  true
                     
-                } else {
+            } else {
                     
-                    if designView.image == nil && designView.backgroundColor == UIColor.white {
+                if designView.image == nil && designView.backgroundColor == UIColor.white {
                         
-                        newShape.defaultColor = UIColor.init(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
-                    }
+                    newShape.defaultColor = UIColor.init(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
                 }
             }
         }
@@ -534,9 +531,9 @@ extension ViewController {
 
         switch navigationBarForImage {
         case true:
-            editingVC.navigationBarForImage()
+            editingVC.complexNavigationBar()
         default:
-            editingVC.navigationBarForText()
+            editingVC.normalNavigationBar()
 
         }
 

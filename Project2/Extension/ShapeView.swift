@@ -29,8 +29,10 @@ class ShapeView: UIView {
     override func draw(_ rect: CGRect) {
         
         switch shapeType {
-        case ShapeAsset.circle.rawValue, ShapeAsset.circleBorder.rawValue:
+        case ShapeAsset.circle.rawValue:
             self.createCircle()
+        case ShapeAsset.circleBorder.rawValue:
+            self.createThinCircleBorder()
         case ShapeAsset.square.rawValue:
             self.createSquare()
         case ShapeAsset.rectangle.rawValue:
@@ -39,7 +41,7 @@ class ShapeView: UIView {
             self.createEquilateralTriangle()
         case ShapeAsset.triangle.rawValue:
             self.createTriangle()
-//        case ShapeAsset.thinLine.rawValue:
+        case ShapeAsset.thinLine.rawValue:
             self.createThinLine()
         case ShapeAsset.thickLine.rawValue:
             self.createThickLine()
@@ -100,7 +102,7 @@ class ShapeView: UIView {
                                                 width: self.frame.size.height-20,
                                                 height: self.frame.size.height-20))
         
-         path.lineWidth = 10
+         path.lineWidth = 3
     }
     
     func createThickCircleBorder() {
@@ -152,12 +154,30 @@ class ShapeView: UIView {
     func makeACopyShape() -> ShapeView {
         
         let newShape = ShapeView()
+//        guard let path = self.path.copy() as? UIBezierPath else { return ShapeView()}
+//        path.apply(self.transform)
         
-        newShape.path = self.path
+//        let a = self.path.cgPath.copy(strokingWithWidth: self.path.lineWidth,
+//                                                     lineCap: self.path.lineCapStyle,
+//                                                     lineJoin: self.path.lineJoinStyle,
+//                                                     miterLimit: self.path.miterLimit,
+//                                                     transform: self.transform)
+//
+//        newShape.path.cgPath = self.path.cgPath.copy()!
+//
+        
+        if self.path.lineWidth > 1.0 {
+           newShape.path.cgPath = self.path.cgPath.copy(strokingWithWidth: self.path.lineWidth,
+                                                        lineCap: self.path.lineCapStyle,
+                                                        lineJoin: self.path.lineJoinStyle,
+                                                        miterLimit: self.path.miterLimit,
+                                                        transform: self.transform)
+        } else {
+              newShape.path = self.path
+        }
         
         newShape.frame = self.frame
-        newShape.transform = self.transform
-        
+
         return newShape
         
     }

@@ -59,7 +59,7 @@ enum ShapeAsset: String, CaseIterable {
     case rectangle
     
     //Line
-//    case thinLine
+    case thinLine
     case thickLine
     
     //Only border
