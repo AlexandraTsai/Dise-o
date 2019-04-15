@@ -83,6 +83,11 @@ class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
     @IBAction func addBtnTapped(_ sender: Any) {
 
         scrollView.isHidden = !scrollView.isHidden
+        
+        addShapeContainerView.isHidden = true
+        
+        hintView.isHidden = false
+
     }
 
     @IBAction func downBtnTapped(_ sender: Any) {

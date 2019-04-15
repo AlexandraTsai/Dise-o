@@ -55,10 +55,11 @@ enum ShapeAsset: String, CaseIterable {
     case circle
     case equilateralTriangle
     case triangle
+    case square
     case rectangle
     
     //Line
-    case thinLine
+//    case thinLine
     case thickLine
     
     //Only border

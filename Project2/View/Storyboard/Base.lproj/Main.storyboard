@@ -25,7 +25,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnc-r6-ZzI">
-                                <rect key="frame" x="0.0" y="459" width="375" height="208"/>
+                                <rect key="frame" x="0.0" y="439" width="375" height="228"/>
                                 <connections>
                                     <segue destination="qFV-y9-D1b" kind="embed" identifier="shapeSegue" id="UND-c5-d5S"/>
                                 </connections>
@@ -157,6 +157,7 @@
                             <constraint firstItem="zg0-Kt-1Ej" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BXC-mn-8V9"/>
                             <constraint firstItem="DZf-mM-usS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EOD-Bq-wnu"/>
                             <constraint firstItem="k2Y-E1-iHA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GRS-Ul-4od"/>
+                            <constraint firstItem="fnc-r6-ZzI" firstAttribute="top" secondItem="DZf-mM-usS" secondAttribute="bottom" constant="30" id="HMn-Yt-AeG"/>
                             <constraint firstItem="k2Y-E1-iHA" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="KhU-Kl-S9f"/>
                             <constraint firstItem="qfP-Fw-Eth" firstAttribute="trailing" secondItem="k2Y-E1-iHA" secondAttribute="trailing" id="LHa-8d-qoM"/>
                             <constraint firstItem="MPz-Hy-TZc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MPh-xs-G33"/>
@@ -171,7 +172,6 @@
                             <constraint firstItem="zg0-Kt-1Ej" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="s4e-vF-w2d"/>
                             <constraint firstItem="fnc-r6-ZzI" firstAttribute="trailing" secondItem="k2Y-E1-iHA" secondAttribute="trailing" id="stb-Ng-svV"/>
                             <constraint firstItem="fnc-r6-ZzI" firstAttribute="bottom" secondItem="k2Y-E1-iHA" secondAttribute="bottom" id="vW9-E9-fgI"/>
-                            <constraint firstItem="fnc-r6-ZzI" firstAttribute="top" secondItem="k2Y-E1-iHA" secondAttribute="top" id="vuz-8W-bkn"/>
                             <constraint firstItem="VJC-L0-vuv" firstAttribute="centerX" secondItem="DZf-mM-usS" secondAttribute="centerX" id="wAc-gS-irl"/>
                             <constraint firstItem="DZf-mM-usS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="wa0-V2-l3L"/>
                             <constraint firstItem="qfP-Fw-Eth" firstAttribute="top" secondItem="k2Y-E1-iHA" secondAttribute="top" id="xnx-Hv-ssj"/>
@@ -880,11 +880,11 @@
             <objects>
                 <viewController id="qFV-y9-D1b" customClass="ShapeContainerViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HyH-qW-Txo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="208"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="enV-vB-FrM">
-                                <rect key="frame" x="0.0" y="47" width="375" height="161"/>
+                                <rect key="frame" x="0.0" y="47" width="375" height="181"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Fw6-hv-jjs">
                                     <size key="itemSize" width="50" height="50"/>

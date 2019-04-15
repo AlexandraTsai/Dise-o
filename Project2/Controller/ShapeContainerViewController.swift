@@ -28,6 +28,11 @@ class ShapeContainerViewController: UIViewController, UICollectionViewDelegate, 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
+        if ShapeAsset.allCases.count%3 == 0 {
+            
+            return ShapeAsset.allCases.count+1
+        }
+        
         return ShapeAsset.allCases.count
     }
     
@@ -40,8 +45,20 @@ class ShapeContainerViewController: UIViewController, UICollectionViewDelegate, 
         
         guard let shapeCell = cell as? ShapeCollectionViewCell else { return cell }
             
-        shapeCell.shapeImage.image = UIImage(named: ShapeAsset.allCases[indexPath.item].rawValue)
-        
+            if collectionView.numberOfItems(inSection: 0) > ShapeAsset.allCases.count {
+                
+                if indexPath.item == ShapeAsset.allCases.count {
+                    
+                    shapeCell.shapeImage.image = nil
+                    
+                } else {
+                    
+                    shapeCell.shapeImage.image = UIImage(named: ShapeAsset.allCases[indexPath.item].rawValue)
+                }
+            } else {
+                 shapeCell.shapeImage.image = UIImage(named: ShapeAsset.allCases[indexPath.item].rawValue)
+            }
+            
         return shapeCell
     }
     

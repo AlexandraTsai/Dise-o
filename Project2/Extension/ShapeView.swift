@@ -31,13 +31,15 @@ class ShapeView: UIView {
         switch shapeType {
         case ShapeAsset.circle.rawValue, ShapeAsset.circleBorder.rawValue:
             self.createCircle()
+        case ShapeAsset.square.rawValue:
+            self.createSquare()
         case ShapeAsset.rectangle.rawValue:
             self.createRectangle()
         case ShapeAsset.equilateralTriangle.rawValue:
             self.createEquilateralTriangle()
         case ShapeAsset.triangle.rawValue:
             self.createTriangle()
-        case ShapeAsset.thinLine.rawValue:
+//        case ShapeAsset.thinLine.rawValue:
             self.createThinLine()
         case ShapeAsset.thickLine.rawValue:
             self.createThickLine()
@@ -61,7 +63,7 @@ class ShapeView: UIView {
     
     }
     
-    func createRectangle() {
+    func createSquare() {
         
         // Specify the point that the path should start get drawn.
         path.move(to: CGPoint(x: 0.0, y: 0.0))
@@ -69,6 +71,17 @@ class ShapeView: UIView {
         path.addLine(to: CGPoint(x: 0.0, y: self.frame.size.height))
         path.addLine(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height))
         path.addLine(to: CGPoint(x: self.frame.size.width, y: 0.0))
+        path.close()
+    }
+    
+    func createRectangle() {
+        
+        // Specify the point that the path should start get drawn.
+        path.move(to: CGPoint(x: 0.0, y: 20))
+        
+        path.addLine(to: CGPoint(x: self.frame.size.width, y: 20))
+        path.addLine(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height-20))
+        path.addLine(to: CGPoint(x: 0.0, y: self.frame.size.height-20))
         path.close()
     }
     
@@ -117,19 +130,6 @@ class ShapeView: UIView {
         path.close()
     }
     
-    func makeACopyShape() -> ShapeView {
-        
-        let newShape = ShapeView()
-        
-        newShape.path = self.path
-    
-        newShape.frame = self.frame
-        newShape.transform = self.transform
-        
-        return newShape
-        
-    }
-    
     func createThinLine() {
         
         path.move(to: CGPoint(x: 0.0, y: self.frame.height/2-1))
@@ -146,5 +146,19 @@ class ShapeView: UIView {
         path.addLine(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height/2+3))
         path.addLine(to: CGPoint(x: 0.0, y: self.frame.size.height/2+3))
         path.close()
+    }
+    
+    // MARK: - Copy
+    func makeACopyShape() -> ShapeView {
+        
+        let newShape = ShapeView()
+        
+        newShape.path = self.path
+        
+        newShape.frame = self.frame
+        newShape.transform = self.transform
+        
+        return newShape
+        
     }
 }
