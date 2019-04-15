@@ -8,9 +8,13 @@
 
 import UIKit
 import Photos
+import HueKit
 
 class ContainerViewController: UIViewController, PhotoManagerDelegate {
 
+    @IBOutlet weak var colorSquarePicker: ColorSquarePicker!
+    @IBOutlet weak var colorIndicatorView: ColorIndicatorView!
+    
     @IBOutlet weak var cameraRollButton: UIButton!
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var colorButton: UIButton!
@@ -37,6 +41,8 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
         colorButton.isSelected = true
 
         createNotification()
+        
+        didChangeColor(colorSquarePicker.color)
 
 //        collectionView.al_registerCellWithNib(identifier: String(describing:
 //        PhotoCollectionViewCell.self), bundle: nil)
@@ -75,6 +81,23 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
         collectionView.reloadData()
     }
 
+    @IBAction func colorBarPickerValueChnaged(_ sender: ColorBarPicker) {
+        
+        colorSquarePicker.hue = sender.hue
+        didChangeColor(colorSquarePicker.color)
+        
+    }
+    
+    @IBAction func colorSquarePickerValueChanged(_ sender: ColorSquarePicker) {
+        
+        didChangeColor(sender.color)
+    }
+    
+    func didChangeColor(_ color: UIColor) {
+        
+        colorIndicatorView.color = color
+        
+    }
 }
 
 extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
