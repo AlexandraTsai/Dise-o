@@ -9,5 +9,7 @@ target 'Project2' do
   pod 'UIFontComplete'
   pod 'Fusuma'
   pod 'SwiftLint'
+  pod 'ChromaColorPicker'
+  pod 'HueKit', '~> 1.0'
 
 end

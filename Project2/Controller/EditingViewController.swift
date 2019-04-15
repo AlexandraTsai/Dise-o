@@ -281,9 +281,7 @@ class EditingViewController: UIViewController {
         let xScale = helperView.transform.scaleX
         let yScale = helperView.transform.scaleY
         helperView.transform = transform.scaledBy(x: xScale, y: yScale)
-        
-//        helperView.transform = helperView.transform.rotated(by: CGFloat.pi/4)
-     
+      
         //Get the center of editingFrame from helperView to designView
         let center = helperView.convert(helperView.editingFrame.center, to: designView)
         
@@ -1074,11 +1072,11 @@ extension EditingViewController {
         //Setting
         helperView.backgroundColor = UIColor.blue
         helperView.alpha = 0.4
-        //        helperView.backgroundColor = UIColor.clear
+//        helperView.backgroundColor = UIColor.clear
 
         helperView.editingFrame.layer.borderWidth = 2
         helperView.editingFrame.layer.borderColor = UIColor.white.cgColor
-
+  
         helperView.positionHelper.image = #imageLiteral(resourceName: "noun_navigate")
         helperView.rotateHelper.image = #imageLiteral(resourceName: "Icon_Rotate")
 

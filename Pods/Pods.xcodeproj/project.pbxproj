@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		169C6447844E3F3CEC857E942EEC2E57 /* SwiftLint */ = {
+		32A2731E808EAA16451AE28A12E129CE /* SwiftLint */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 1F7293B1D15ACC733F773D78191B5FBC /* Build configuration list for PBXAggregateTarget "SwiftLint" */;
+			buildConfigurationList = 0060F2A75FDCDC33172DA9B99330FE46 /* Build configuration list for PBXAggregateTarget "SwiftLint" */;
 			buildPhases = (
 			);
 			dependencies = (
@@ -19,111 +19,191 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		12C76B22D2B6E9A2CD81C80D5D1F8344 /* FSCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00867DBCD080DEFC2B9A391567512BD1 /* FSCameraView.swift */; };
-		13E7A7CA4E001A85127D6A7C58B5302D /* FusumaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5A25816A65156E8A2350F8B0E689251 /* FusumaViewController.xib */; };
-		18E7F93D64134E6CA468F92239EA87BB /* FSVideoCameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8125C629F40FC0FA6CA0B170F564D626 /* FSVideoCameraView.xib */; };
-		206BE441E5D9A04B66C39B9703EC963C /* FSImageCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436EAA302E3406AE626105CB744634C7 /* FSImageCropView.swift */; };
-		3B89579623B33C5DF2632FAE308B272A /* FSAlbumViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48194BD1036A354829A65598A797692D /* FSAlbumViewCell.swift */; };
-		3F5CD2684A53487CD5DA9D0DE2F5F178 /* FontRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7B42679F617B56BDF9CF51A9E5A49 /* FontRepresentable.swift */; };
-		4299E95530FF64D324957C230E0FB058 /* Pods-Project2-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A1D6F9C2058EF5C2AD918A6F73527C /* Pods-Project2-dummy.m */; };
-		42FEF84BECD2DD81D74795D4BC90B8A4 /* FSAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83C00472B24D39525FD0103C369F419 /* FSAlbumView.swift */; };
-		507B1A0F6149E85D610184A363970965 /* UIFontComplete-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 75723674054DC9125ECA64A028F7B5E3 /* UIFontComplete-dummy.m */; };
-		527D87C37F25BCCC7F3E2784EDCBD8C2 /* FSVideoCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAE5FBB07B8361001F9C0A0F85CF231 /* FSVideoCameraView.swift */; };
-		5A7AB14D404FE5E4DCEE58E2AD36B2C3 /* FSAlbumViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF53DDF450BFD1547C0DA61D617210FB /* FSAlbumViewCell.xib */; };
-		628022652915F54C6CF8F55EF2959505 /* FSCameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 065A797A971EC5FE5636D0FF290B7640 /* FSCameraView.xib */; };
-		809122798C4A39396501A8F58CD9CFA7 /* Pods-Project2-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F22E0BC2A3216BC410CD52D446D119DB /* Pods-Project2-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		820B49DDED12C295A5091B03A4CD1B20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 304DFB726EFDB9FC63D0D011B0F9B401 /* Assets.xcassets */; };
-		955DE95D5665C1FC6B01E5B527560FA9 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FACB757D39D11EF687284A3E985678F /* Font.swift */; };
-		A26E9E1B4205A447CB0BB4823E90C541 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E490D57B7E68D6A1BBDD1752E8B43F1 /* UIColorExtensions.swift */; };
-		ACC8F1E84CA6CDF58DA9DA8495794A56 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD682EDBC83C9625670F7B3DC5AB37B /* UIViewExtensions.swift */; };
-		AFBC35362A6704F66790486318351446 /* FSAlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC86A14B103555CB6F0A6AC5193EE2E8 /* FSAlbumView.xib */; };
-		BC2CEACD16DA7589A7F09F78BC345EDE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
-		CFBE0A83CBA892D3B3C75AACAF6D5703 /* Fusuma-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 283C51348F0D6FA114D82FEB04B2C6B0 /* Fusuma-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D7667288E7E8795FE2F52E7E9065B16A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		0F02CA4D2A1912317CBCDB211F947EBE /* UIColor+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3510572C3CC9C484CEE8FB7680942B2F /* UIColor+Utilities.swift */; };
+		1137576C79E85B6C8038B1053824C768 /* ColorSquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0163FDBA3C733E908BC3AF4EFAF86DBD /* ColorSquareView.swift */; };
+		12C76B22D2B6E9A2CD81C80D5D1F8344 /* FSCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B66CDAA88E1F7AB37AA2C6DEE306C4 /* FSCameraView.swift */; };
+		13E7A7CA4E001A85127D6A7C58B5302D /* FusumaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A082576A9424B9E059618551B0A5EAAF /* FusumaViewController.xib */; };
+		18E7F93D64134E6CA468F92239EA87BB /* FSVideoCameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67D87D4838183DAED8700C81B247E114 /* FSVideoCameraView.xib */; };
+		206BE441E5D9A04B66C39B9703EC963C /* FSImageCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E99BBC04DAB935C3FE5096F27ADEF3 /* FSImageCropView.swift */; };
+		248774DB039E4F62AF5F623200A7FB53 /* ChromaAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F21088686A92B2AB64DD6D52B93BFA /* ChromaAddButton.swift */; };
+		319C36E930174CA5E2F06F5E2CE1244E /* ColorBarPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA050DDEB786EB9B0D44C87B152027E /* ColorBarPicker.swift */; };
+		365D366E59B2F052D4A18E1A7ED8835D /* UIFontComplete-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1613614CFC7E27786815C95994876D59 /* UIFontComplete-dummy.m */; };
+		379E62C9BB1D18B28920F059DC76FC21 /* FontRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECA783BF4BC3E513BF941171BB0C44C /* FontRepresentable.swift */; };
+		3B89579623B33C5DF2632FAE308B272A /* FSAlbumViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF95870AB4C785B97254D835EF86137 /* FSAlbumViewCell.swift */; };
+		42FEF84BECD2DD81D74795D4BC90B8A4 /* FSAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF06391A3DC15701F4AF25130F04EEA /* FSAlbumView.swift */; };
+		4E7FB939D905AD5EE01E0E4CB0991A91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		527D87C37F25BCCC7F3E2784EDCBD8C2 /* FSVideoCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A6F88013194E18CAF651A6840D67B5 /* FSVideoCameraView.swift */; };
+		550DFC588469BB0B611751731B71E887 /* HueKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FEF4B91B3660E7CE453C98625655E8 /* HueKit-dummy.m */; };
+		55AA1E9E910063317805602067271185 /* ChromaColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CD86CB07EB3AC9545D399A4C336065 /* ChromaColorPicker.swift */; };
+		5A7AB14D404FE5E4DCEE58E2AD36B2C3 /* FSAlbumViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2704F1782C1C926246809D9BDF1C499D /* FSAlbumViewCell.xib */; };
+		628022652915F54C6CF8F55EF2959505 /* FSCameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A532B5486B0993111461DC33D1781A1A /* FSCameraView.xib */; };
+		6DA02D5523B1AC8DA397E70253B5F93E /* UIColor+Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84D0ADF323AECEBF8D68C80A172574 /* UIColor+Values.swift */; };
+		7F9FA379BA3CE4E0F23EE1BA26779938 /* SourceColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F0025242D7627A119E3626A6096574 /* SourceColorView.swift */; };
+		820B49DDED12C295A5091B03A4CD1B20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0F45B030FDF54F61A4E014F45F6372E /* Assets.xcassets */; };
+		84E5C58DE82411ECAE4F382CAF3773E4 /* CGFloat+Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F46D7E4AC0CBD318F790F54F4866DD /* CGFloat+Pin.swift */; };
+		8C7FDB03DA801D792E21F3B468550A65 /* ColorBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB91F0437F42E0EA6E23704C4BCBF3 /* ColorBarView.swift */; };
+		9C37517E94FA86F04ECA7E7F727BA401 /* ChromaShadeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB702D94BA0C9E09E4F3A1C926E7F73 /* ChromaShadeSlider.swift */; };
+		A26E9E1B4205A447CB0BB4823E90C541 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D1DD0C97FA0A0CA3C9EE19945AA0 /* UIColorExtensions.swift */; };
+		A8D43D74C2D42CAB7496BFBD1349732E /* ChromaHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FE0A4046C141322C663C324E389E63 /* ChromaHandle.swift */; };
+		AA5C6F12BAE8553E44E060508B9CE2A9 /* ChromaColorPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D1DF66381B53DCEFF413C79C38C2BF5B /* ChromaColorPicker-dummy.m */; };
+		AAA1CF3972031A6AE4DC8D9CB171BE49 /* Pods-Project2-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A1D6F9C2058EF5C2AD918A6F73527C /* Pods-Project2-dummy.m */; };
+		ACC8F1E84CA6CDF58DA9DA8495794A56 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D29CE864CD6C451577ABCA80597A8 /* UIViewExtensions.swift */; };
+		AFBC35362A6704F66790486318351446 /* FSAlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A0BB41A0D2B78F72C51EB952CF4B508 /* FSAlbumView.xib */; };
+		B0A6FFFB0B6932F91CFE7DC1FCB53ECB /* ChromaColorPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 914C3740DE48521F51FF2D006F98BF41 /* ChromaColorPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC1A4B8DB8AA97FB13A95E776221C4F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		BD9830B7BB80444BE74E918341681422 /* HSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0FDB91AA3A9259014D4E9DB6C50CD1 /* HSV.swift */; };
+		BEE1951D88F828243E5E4EBEB687C355 /* ColorIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4194B0874F6888605BE73144BD4586 /* ColorIndicatorView.swift */; };
+		BF1ED76B311A737DCDCD276B6FA0CBC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		C561845F34E5A39B41ED93FF728A30C2 /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509132E4857A5DDB5E4E3DEE09FE0D8D /* RGB.swift */; };
+		CC085EA3DAA08AF6C66243F748D5E4F9 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8C2F88C692BE0FFD790CE81BE97915 /* UIFont+Extension.swift */; };
+		CD48AFB4CF30BD91F7B5D795C0ACC647 /* HSBGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D39C6A566B7D1829D2AF213B36D6DC /* HSBGen.swift */; };
+		CFBE0A83CBA892D3B3C75AACAF6D5703 /* Fusuma-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 20D1F27C540E59DF8E241F058284F0A0 /* Fusuma-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D41C5E79C8C73ECA93FA71A6F25868CD /* ColorModeToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE5446BF7A0EA9D33FCAE2E10F70E14 /* ColorModeToggleButton.swift */; };
+		D55049E37CE1DF723420D320CE171F65 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2ED30638A29DA04B303691546ACB50 /* Font.swift */; };
 		D9F779A12F91F99967692F11198FBDD6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
-		DDB7A6B2804DA5923A9A4AD12EA884F4 /* UIFontComplete-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E5E4246D088F5F2EFD58F32B461B468D /* UIFontComplete-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E1BBDEA66206C29C9E2000C7BA4A67C3 /* Fusuma-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D57450FC97943A43B09452F2929820 /* Fusuma-dummy.m */; };
-		E538E7D1C4D7A7EA374754493E95C040 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BCE657FBB7BF51B34581E1BE0F9886 /* UIFont+Extension.swift */; };
-		EEBFD41D1B35B0F64DE737EB4BACF0D5 /* FusumaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6A50A98C251A1EC98BE54BC939E677 /* FusumaViewController.swift */; };
+		DA91E758D5DA4A8DF2BEF5150BF9FF57 /* HueKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1080574275B1CF164E6BA98F46B6E216 /* HueKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1BBDEA66206C29C9E2000C7BA4A67C3 /* Fusuma-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD07D2015A1B4022F6CCFABC467524C /* Fusuma-dummy.m */; };
+		EEBFD41D1B35B0F64DE737EB4BACF0D5 /* FusumaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A034C7993B8BC9CF0A39E2819E1940 /* FusumaViewController.swift */; };
+		F02176DD3D796C166C70486F9F18D92A /* Pods-Project2-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F22E0BC2A3216BC410CD52D446D119DB /* Pods-Project2-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2AC0AA9F54AD80A481003E9394F6CDE /* UIFontComplete-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C0DE209C8230649C6ACBB4A129984203 /* UIFontComplete-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F6E36B75B50A9625F7BA053D8BABD884 /* HSBComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2864732ADDCD74BECEDF9719C2498183 /* HSBComponent.swift */; };
+		F9523D8DB3542B8666D6804E43A09101 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		F99DF4FAFB05CFCE0B404B59D8BFB611 /* ColorSquarePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A07D15594E02D82BD2B5FDFA5189BA /* ColorSquarePicker.swift */; };
+		FDA032C9DD591D2B9E64A9140BE2CADB /* ChromaColorPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = A255576BAF2AF82E9F51ADFA269E61C7 /* ChromaColorPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		18CEF6C924927CBBC92644BA22682539 /* PBXContainerItemProxy */ = {
+		3D7E392A5122C13AC271912963BFF112 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4202CD716EB029DA83242CE9A120D276;
+			remoteInfo = HueKit;
+		};
+		4E4EB327ADD9BA84755F16F6CB18701C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 32A2731E808EAA16451AE28A12E129CE;
+			remoteInfo = SwiftLint;
+		};
+		4F77CFCF510EC29DB58B8A07C62E56C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 26CE2929849C62F806A2ECE77E5D65A3;
+			remoteInfo = UIFontComplete;
+		};
+		76D01EBC07C27C36BDE3233FFCB1B35D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0FB8DF16358C7F452C2AB6AA4E763449;
+			remoteInfo = ChromaColorPicker;
+		};
+		976A075DB7C5A8B186B5BEA118C74EA1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = B4D1FFA8802FF56DFD83493D06D75199;
 			remoteInfo = Fusuma;
 		};
-		34B4B168137585E9E26E1866B8DF65ED /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8C7477425BD2CAB40E8C7A052A3F9A0B;
-			remoteInfo = UIFontComplete;
-		};
-		D2383F1EB77FE76EFD1D7D9F696DDD08 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 169C6447844E3F3CEC857E942EEC2E57;
-			remoteInfo = SwiftLint;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00867DBCD080DEFC2B9A391567512BD1 /* FSCameraView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FSCameraView.swift; path = Sources/FSCameraView.swift; sourceTree = "<group>"; };
-		065A797A971EC5FE5636D0FF290B7640 /* FSCameraView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = FSCameraView.xib; path = Sources/FSCameraView.xib; sourceTree = "<group>"; };
-		21FB9CB408EA54447A5ACD16F0886A9C /* Fusuma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Fusuma.framework; path = Fusuma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		283C51348F0D6FA114D82FEB04B2C6B0 /* Fusuma-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Fusuma-umbrella.h"; sourceTree = "<group>"; };
-		304DFB726EFDB9FC63D0D011B0F9B401 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Sources/Assets.xcassets; sourceTree = "<group>"; };
+		0163FDBA3C733E908BC3AF4EFAF86DBD /* ColorSquareView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorSquareView.swift; path = HueKit/View/ColorSquareView.swift; sourceTree = "<group>"; };
+		027F70CC0FA502342AA4493101E9D041 /* UIFontComplete.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = UIFontComplete.modulemap; sourceTree = "<group>"; };
+		0CE5446BF7A0EA9D33FCAE2E10F70E14 /* ColorModeToggleButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorModeToggleButton.swift; path = ChromaColorPicker/ColorModeToggleButton.swift; sourceTree = "<group>"; };
+		0E84D0ADF323AECEBF8D68C80A172574 /* UIColor+Values.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Values.swift"; path = "HueKit/Util/UIColor+Values.swift"; sourceTree = "<group>"; };
+		1080574275B1CF164E6BA98F46B6E216 /* HueKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HueKit-umbrella.h"; sourceTree = "<group>"; };
+		1613614CFC7E27786815C95994876D59 /* UIFontComplete-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIFontComplete-dummy.m"; sourceTree = "<group>"; };
+		190540D2E187BC1771E085AA25D93DAC /* HueKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HueKit.framework; path = HueKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DA8554407817B233D626C5725976305 /* ChromaColorPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ChromaColorPicker.modulemap; sourceTree = "<group>"; };
+		1E0FDB91AA3A9259014D4E9DB6C50CD1 /* HSV.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HSV.swift; path = HueKit/Model/HSV.swift; sourceTree = "<group>"; };
+		20D1F27C540E59DF8E241F058284F0A0 /* Fusuma-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Fusuma-umbrella.h"; sourceTree = "<group>"; };
+		233DAE4635220928C15617CC73C17136 /* ChromaColorPicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ChromaColorPicker.xcconfig; sourceTree = "<group>"; };
+		23B66CDAA88E1F7AB37AA2C6DEE306C4 /* FSCameraView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FSCameraView.swift; path = Sources/FSCameraView.swift; sourceTree = "<group>"; };
+		23BB91F0437F42E0EA6E23704C4BCBF3 /* ColorBarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorBarView.swift; path = HueKit/View/ColorBarView.swift; sourceTree = "<group>"; };
+		2704F1782C1C926246809D9BDF1C499D /* FSAlbumViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = FSAlbumViewCell.xib; path = Sources/FSAlbumViewCell.xib; sourceTree = "<group>"; };
+		27D39C6A566B7D1829D2AF213B36D6DC /* HSBGen.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HSBGen.swift; path = HueKit/Util/HSBGen.swift; sourceTree = "<group>"; };
+		2864732ADDCD74BECEDF9719C2498183 /* HSBComponent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HSBComponent.swift; path = HueKit/Model/HSBComponent.swift; sourceTree = "<group>"; };
+		2B52D1DD0C97FA0A0CA3C9EE19945AA0 /* UIColorExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIColorExtensions.swift; path = Sources/Extensions/UIColorExtensions.swift; sourceTree = "<group>"; };
+		2ECA783BF4BC3E513BF941171BB0C44C /* FontRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontRepresentable.swift; path = Sources/FontRepresentable.swift; sourceTree = "<group>"; };
+		3510572C3CC9C484CEE8FB7680942B2F /* UIColor+Utilities.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Utilities.swift"; path = "ChromaColorPicker/UIColor+Utilities.swift"; sourceTree = "<group>"; };
+		354FFA5026429957DAD7426AAC52DE71 /* Fusuma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Fusuma.framework; path = Fusuma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36CD7967581323FD35D0DC21E1A20402 /* Pods-Project2-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Project2-acknowledgements.markdown"; sourceTree = "<group>"; };
-		436EAA302E3406AE626105CB744634C7 /* FSImageCropView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FSImageCropView.swift; path = Sources/FSImageCropView.swift; sourceTree = "<group>"; };
-		44A7B42679F617B56BDF9CF51A9E5A49 /* FontRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontRepresentable.swift; path = Sources/FontRepresentable.swift; sourceTree = "<group>"; };
-		462840BA69D04310E08A4B0ABD20F107 /* Pods_Project2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Project2.framework; path = "Pods-Project2.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		48194BD1036A354829A65598A797692D /* FSAlbumViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FSAlbumViewCell.swift; path = Sources/FSAlbumViewCell.swift; sourceTree = "<group>"; };
-		51BCE657FBB7BF51B34581E1BE0F9886 /* UIFont+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIFont+Extension.swift"; path = "Sources/UIFont+Extension.swift"; sourceTree = "<group>"; };
-		56AC85DBF3C65805E6A323849613CA96 /* Fusuma.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Fusuma.xcconfig; sourceTree = "<group>"; };
+		383B89785F0EC96FFE17E9B3D65D602C /* Fusuma.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Fusuma.modulemap; sourceTree = "<group>"; };
+		3F269194D5509C18FE9EF3610D35F1D5 /* ChromaColorPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ChromaColorPicker.framework; path = ChromaColorPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44763C0D097FB862BEF57D327537D5CC /* Pods_Project2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Project2.framework; path = "Pods-Project2.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49F0025242D7627A119E3626A6096574 /* SourceColorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SourceColorView.swift; path = HueKit/View/SourceColorView.swift; sourceTree = "<group>"; };
+		4DA050DDEB786EB9B0D44C87B152027E /* ColorBarPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorBarPicker.swift; path = HueKit/View/ColorBarPicker.swift; sourceTree = "<group>"; };
+		509132E4857A5DDB5E4E3DEE09FE0D8D /* RGB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RGB.swift; path = HueKit/Model/RGB.swift; sourceTree = "<group>"; };
+		51FE0A4046C141322C663C324E389E63 /* ChromaHandle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaHandle.swift; path = ChromaColorPicker/ChromaHandle.swift; sourceTree = "<group>"; };
+		525E371DC6FB16C97DFBE2EA904514FA /* UIFontComplete.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UIFontComplete.xcconfig; sourceTree = "<group>"; };
+		58F21088686A92B2AB64DD6D52B93BFA /* ChromaAddButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaAddButton.swift; path = ChromaColorPicker/ChromaAddButton.swift; sourceTree = "<group>"; };
 		59D92C44CB35B3381FB1F2F4C9C01872 /* Pods-Project2-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Project2-frameworks.sh"; sourceTree = "<group>"; };
-		59F797890E37D9DDF6EAACFE3FE86482 /* UIFontComplete-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIFontComplete-prefix.pch"; sourceTree = "<group>"; };
 		5C15BDD3EC25D4F401BF705CCF34B9F2 /* Pods-Project2-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Project2-Info.plist"; sourceTree = "<group>"; };
-		5FACB757D39D11EF687284A3E985678F /* Font.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Font.swift; path = Sources/Font.swift; sourceTree = "<group>"; };
-		6E490D57B7E68D6A1BBDD1752E8B43F1 /* UIColorExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIColorExtensions.swift; path = Sources/Extensions/UIColorExtensions.swift; sourceTree = "<group>"; };
-		7332206B4C45DF2382D89BAC3DCA1658 /* UIFontComplete.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UIFontComplete.xcconfig; sourceTree = "<group>"; };
-		75723674054DC9125ECA64A028F7B5E3 /* UIFontComplete-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIFontComplete-dummy.m"; sourceTree = "<group>"; };
-		7855DA95AB6FC9BF0F816E7532EEA0BE /* Fusuma-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Fusuma-prefix.pch"; sourceTree = "<group>"; };
-		7FB15A4E6EAD8D1EBB8931E0788FC790 /* UIFontComplete.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = UIFontComplete.framework; path = UIFontComplete.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FD682EDBC83C9625670F7B3DC5AB37B /* UIViewExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIViewExtensions.swift; path = Sources/Extensions/UIViewExtensions.swift; sourceTree = "<group>"; };
-		8125C629F40FC0FA6CA0B170F564D626 /* FSVideoCameraView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = FSVideoCameraView.xib; path = Sources/FSVideoCameraView.xib; sourceTree = "<group>"; };
-		8664CEEB4EEF4B92C3E4F0B912A14CAE /* UIFontComplete.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = UIFontComplete.modulemap; sourceTree = "<group>"; };
+		5EB792BD0A51C382D10478C6FF66A725 /* ChromaColorPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChromaColorPicker-prefix.pch"; sourceTree = "<group>"; };
+		62CD86CB07EB3AC9545D399A4C336065 /* ChromaColorPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaColorPicker.swift; path = ChromaColorPicker/ChromaColorPicker.swift; sourceTree = "<group>"; };
+		64A6F88013194E18CAF651A6840D67B5 /* FSVideoCameraView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FSVideoCameraView.swift; path = Sources/FSVideoCameraView.swift; sourceTree = "<group>"; };
+		67D87D4838183DAED8700C81B247E114 /* FSVideoCameraView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = FSVideoCameraView.xib; path = Sources/FSVideoCameraView.xib; sourceTree = "<group>"; };
+		68C16FBF63657EC65A50BAA1C12D7FF0 /* UIFontComplete.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = UIFontComplete.framework; path = UIFontComplete.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A0BB41A0D2B78F72C51EB952CF4B508 /* FSAlbumView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = FSAlbumView.xib; path = Sources/FSAlbumView.xib; sourceTree = "<group>"; };
+		7BB5956967E40ABC166C95C1591A9FFE /* Fusuma-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Fusuma-prefix.pch"; sourceTree = "<group>"; };
+		7CD07D2015A1B4022F6CCFABC467524C /* Fusuma-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Fusuma-dummy.m"; sourceTree = "<group>"; };
+		805D29CE864CD6C451577ABCA80597A8 /* UIViewExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIViewExtensions.swift; path = Sources/Extensions/UIViewExtensions.swift; sourceTree = "<group>"; };
+		82201441E0D9C413894A90CF4F1CB232 /* UIFontComplete-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIFontComplete-prefix.pch"; sourceTree = "<group>"; };
+		8800BA69F97B1C7190E5B904A5C9B9D4 /* SwiftLint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.xcconfig; sourceTree = "<group>"; };
+		8A2ED30638A29DA04B303691546ACB50 /* Font.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Font.swift; path = Sources/Font.swift; sourceTree = "<group>"; };
+		8E8C2F88C692BE0FFD790CE81BE97915 /* UIFont+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIFont+Extension.swift"; path = "Sources/UIFont+Extension.swift"; sourceTree = "<group>"; };
 		909A5380BAF209EECD6F18DA69D60B43 /* Pods-Project2-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Project2-acknowledgements.plist"; sourceTree = "<group>"; };
+		914C3740DE48521F51FF2D006F98BF41 /* ChromaColorPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChromaColorPicker-umbrella.h"; sourceTree = "<group>"; };
+		98E99BBC04DAB935C3FE5096F27ADEF3 /* FSImageCropView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FSImageCropView.swift; path = Sources/FSImageCropView.swift; sourceTree = "<group>"; };
+		9A315AD1782687D9E7A316C94953BEB3 /* HueKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HueKit-prefix.pch"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9F6A50A98C251A1EC98BE54BC939E677 /* FusumaViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FusumaViewController.swift; path = Sources/FusumaViewController.swift; sourceTree = "<group>"; };
+		A082576A9424B9E059618551B0A5EAAF /* FusumaViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = FusumaViewController.xib; path = Sources/FusumaViewController.xib; sourceTree = "<group>"; };
+		A255576BAF2AF82E9F51ADFA269E61C7 /* ChromaColorPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ChromaColorPicker.h; path = ChromaColorPicker/ChromaColorPicker.h; sourceTree = "<group>"; };
 		A3A1D6F9C2058EF5C2AD918A6F73527C /* Pods-Project2-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Project2-dummy.m"; sourceTree = "<group>"; };
-		A5A25816A65156E8A2350F8B0E689251 /* FusumaViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = FusumaViewController.xib; path = Sources/FusumaViewController.xib; sourceTree = "<group>"; };
-		BAAE5FBB07B8361001F9C0A0F85CF231 /* FSVideoCameraView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FSVideoCameraView.swift; path = Sources/FSVideoCameraView.swift; sourceTree = "<group>"; };
-		BC86A14B103555CB6F0A6AC5193EE2E8 /* FSAlbumView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = FSAlbumView.xib; path = Sources/FSAlbumView.xib; sourceTree = "<group>"; };
-		C10DB5D3E63031D2A017FBB830A2B6BB /* UIFontComplete-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "UIFontComplete-Info.plist"; sourceTree = "<group>"; };
-		C1210DF794439E243E42EB6E67A811C3 /* SwiftLint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.xcconfig; sourceTree = "<group>"; };
+		A532B5486B0993111461DC33D1781A1A /* FSCameraView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = FSCameraView.xib; path = Sources/FSCameraView.xib; sourceTree = "<group>"; };
+		A8F46D7E4AC0CBD318F790F54F4866DD /* CGFloat+Pin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGFloat+Pin.swift"; path = "HueKit/Util/CGFloat+Pin.swift"; sourceTree = "<group>"; };
+		BA4194B0874F6888605BE73144BD4586 /* ColorIndicatorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorIndicatorView.swift; path = HueKit/View/ColorIndicatorView.swift; sourceTree = "<group>"; };
+		BB697051D5E940CC2AC944B7CD7E9195 /* ChromaColorPicker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ChromaColorPicker-Info.plist"; sourceTree = "<group>"; };
+		BBD2F5B3A3FC30E66C32B900A0C5F5C2 /* HueKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HueKit.xcconfig; sourceTree = "<group>"; };
+		BCFE192943FB57821E3154FD9734AD9F /* UIFontComplete-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "UIFontComplete-Info.plist"; sourceTree = "<group>"; };
+		C0DE209C8230649C6ACBB4A129984203 /* UIFontComplete-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIFontComplete-umbrella.h"; sourceTree = "<group>"; };
+		C0F45B030FDF54F61A4E014F45F6372E /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Sources/Assets.xcassets; sourceTree = "<group>"; };
 		C3E98055C9CC1D0105949F24E89C2B9D /* Pods-Project2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Project2.modulemap"; sourceTree = "<group>"; };
+		C4A034C7993B8BC9CF0A39E2819E1940 /* FusumaViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FusumaViewController.swift; path = Sources/FusumaViewController.swift; sourceTree = "<group>"; };
+		C7A07D15594E02D82BD2B5FDFA5189BA /* ColorSquarePicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorSquarePicker.swift; path = HueKit/View/ColorSquarePicker.swift; sourceTree = "<group>"; };
+		CA575F74D06DA86AB9628C8A8808FD37 /* HueKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "HueKit-Info.plist"; sourceTree = "<group>"; };
 		CAEC27B293FE99F779A12F2420BB982B /* Pods-Project2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Project2.release.xcconfig"; sourceTree = "<group>"; };
 		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		CF06271275051A096AB11C49D25B0833 /* Fusuma.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Fusuma.modulemap; sourceTree = "<group>"; };
-		E5E4246D088F5F2EFD58F32B461B468D /* UIFontComplete-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIFontComplete-umbrella.h"; sourceTree = "<group>"; };
-		EF53DDF450BFD1547C0DA61D617210FB /* FSAlbumViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = FSAlbumViewCell.xib; path = Sources/FSAlbumViewCell.xib; sourceTree = "<group>"; };
+		CCF95870AB4C785B97254D835EF86137 /* FSAlbumViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FSAlbumViewCell.swift; path = Sources/FSAlbumViewCell.swift; sourceTree = "<group>"; };
+		CEF06391A3DC15701F4AF25130F04EEA /* FSAlbumView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FSAlbumView.swift; path = Sources/FSAlbumView.swift; sourceTree = "<group>"; };
+		D1DF66381B53DCEFF413C79C38C2BF5B /* ChromaColorPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ChromaColorPicker-dummy.m"; sourceTree = "<group>"; };
+		DFB702D94BA0C9E09E4F3A1C926E7F73 /* ChromaShadeSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaShadeSlider.swift; path = ChromaColorPicker/ChromaShadeSlider.swift; sourceTree = "<group>"; };
 		F22E0BC2A3216BC410CD52D446D119DB /* Pods-Project2-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Project2-umbrella.h"; sourceTree = "<group>"; };
-		F23A8B98EF59FAEB47D3FD7E5CDD1E5B /* Fusuma-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Fusuma-Info.plist"; sourceTree = "<group>"; };
 		F3BB0F7CF4FCE9F03301D6E03F674B3A /* Pods-Project2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Project2.debug.xcconfig"; sourceTree = "<group>"; };
-		F4D57450FC97943A43B09452F2929820 /* Fusuma-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Fusuma-dummy.m"; sourceTree = "<group>"; };
-		F83C00472B24D39525FD0103C369F419 /* FSAlbumView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FSAlbumView.swift; path = Sources/FSAlbumView.swift; sourceTree = "<group>"; };
+		F5FEF4B91B3660E7CE453C98625655E8 /* HueKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HueKit-dummy.m"; sourceTree = "<group>"; };
+		F9C2DEF2E71BD3936E4D2002C30FF744 /* HueKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = HueKit.modulemap; sourceTree = "<group>"; };
+		FC4969AC72445222C4FB93155724FCD0 /* Fusuma.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Fusuma.xcconfig; sourceTree = "<group>"; };
+		FC567D6A9F24A2C6CF366A7DB7809ECF /* Fusuma-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Fusuma-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		240790FD9F502E07A0C2C2A08D2A2AB6 /* Frameworks */ = {
+		3259A23C8A47DCEA4433E347E29B2B70 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7667288E7E8795FE2F52E7E9065B16A /* Foundation.framework in Frameworks */,
+				4E7FB939D905AD5EE01E0E4CB0991A91 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8FA15B43A108BCBC943C7C5D796E06A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC1A4B8DB8AA97FB13A95E776221C4F9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,28 +215,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE481896E81521489EB99C2C5D4A93FF /* Frameworks */ = {
+		D86A9F7E0469729215BED6D71382F2AC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC2CEACD16DA7589A7F09F78BC345EDE /* Foundation.framework in Frameworks */,
+				BF1ED76B311A737DCDCD276B6FA0CBC4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0A7E0ABB742A03FB7598694A172E8A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9523D8DB3542B8666D6804E43A09101 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0047FC095FCA9FFFAF54820B5A1F2B22 /* Resources */ = {
+		12224EE0FD041F8C50B594351A82AF7E /* SwiftLint */ = {
 			isa = PBXGroup;
 			children = (
-				304DFB726EFDB9FC63D0D011B0F9B401 /* Assets.xcassets */,
-				BC86A14B103555CB6F0A6AC5193EE2E8 /* FSAlbumView.xib */,
-				EF53DDF450BFD1547C0DA61D617210FB /* FSAlbumViewCell.xib */,
-				065A797A971EC5FE5636D0FF290B7640 /* FSCameraView.xib */,
-				8125C629F40FC0FA6CA0B170F564D626 /* FSVideoCameraView.xib */,
-				A5A25816A65156E8A2350F8B0E689251 /* FusumaViewController.xib */,
+				BF44C66FD7720118E86A465CA15881AC /* Support Files */,
 			);
-			name = Resources;
+			name = SwiftLint;
+			path = SwiftLint;
 			sourceTree = "<group>";
 		};
 		1CDD15429C1813C5D760D05A2C079F1F /* Pods-Project2 */ = {
@@ -176,71 +260,122 @@
 			path = "Target Support Files/Pods-Project2";
 			sourceTree = "<group>";
 		};
-		25EA887EC369C054DBCC9E64B67205FC /* Support Files */ = {
+		3A696D63DCF460DF28B6FC1A22B501BC /* Fusuma */ = {
 			isa = PBXGroup;
 			children = (
-				8664CEEB4EEF4B92C3E4F0B912A14CAE /* UIFontComplete.modulemap */,
-				7332206B4C45DF2382D89BAC3DCA1658 /* UIFontComplete.xcconfig */,
-				75723674054DC9125ECA64A028F7B5E3 /* UIFontComplete-dummy.m */,
-				C10DB5D3E63031D2A017FBB830A2B6BB /* UIFontComplete-Info.plist */,
-				59F797890E37D9DDF6EAACFE3FE86482 /* UIFontComplete-prefix.pch */,
-				E5E4246D088F5F2EFD58F32B461B468D /* UIFontComplete-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/UIFontComplete";
-			sourceTree = "<group>";
-		};
-		457A731D4A423983A3C38F47D7D9429A /* UIFontComplete */ = {
-			isa = PBXGroup;
-			children = (
-				5FACB757D39D11EF687284A3E985678F /* Font.swift */,
-				44A7B42679F617B56BDF9CF51A9E5A49 /* FontRepresentable.swift */,
-				51BCE657FBB7BF51B34581E1BE0F9886 /* UIFont+Extension.swift */,
-				25EA887EC369C054DBCC9E64B67205FC /* Support Files */,
-			);
-			name = UIFontComplete;
-			path = UIFontComplete;
-			sourceTree = "<group>";
-		};
-		6ACB289A13C48DF7C8DAF698B7256629 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				C1210DF794439E243E42EB6E67A811C3 /* SwiftLint.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftLint";
-			sourceTree = "<group>";
-		};
-		7630DFFFCCB1D04A0FDB8DE6D772075F /* Fusuma */ = {
-			isa = PBXGroup;
-			children = (
-				F83C00472B24D39525FD0103C369F419 /* FSAlbumView.swift */,
-				48194BD1036A354829A65598A797692D /* FSAlbumViewCell.swift */,
-				00867DBCD080DEFC2B9A391567512BD1 /* FSCameraView.swift */,
-				436EAA302E3406AE626105CB744634C7 /* FSImageCropView.swift */,
-				BAAE5FBB07B8361001F9C0A0F85CF231 /* FSVideoCameraView.swift */,
-				9F6A50A98C251A1EC98BE54BC939E677 /* FusumaViewController.swift */,
-				6E490D57B7E68D6A1BBDD1752E8B43F1 /* UIColorExtensions.swift */,
-				7FD682EDBC83C9625670F7B3DC5AB37B /* UIViewExtensions.swift */,
-				0047FC095FCA9FFFAF54820B5A1F2B22 /* Resources */,
-				919740E53399E111ACF9DFB863CF1C8B /* Support Files */,
+				CEF06391A3DC15701F4AF25130F04EEA /* FSAlbumView.swift */,
+				CCF95870AB4C785B97254D835EF86137 /* FSAlbumViewCell.swift */,
+				23B66CDAA88E1F7AB37AA2C6DEE306C4 /* FSCameraView.swift */,
+				98E99BBC04DAB935C3FE5096F27ADEF3 /* FSImageCropView.swift */,
+				64A6F88013194E18CAF651A6840D67B5 /* FSVideoCameraView.swift */,
+				C4A034C7993B8BC9CF0A39E2819E1940 /* FusumaViewController.swift */,
+				2B52D1DD0C97FA0A0CA3C9EE19945AA0 /* UIColorExtensions.swift */,
+				805D29CE864CD6C451577ABCA80597A8 /* UIViewExtensions.swift */,
+				5A1907F15C4ED7E6AA812372E6AE7157 /* Resources */,
+				8950D25CEA0E68B70B7BC081F80EC077 /* Support Files */,
 			);
 			name = Fusuma;
 			path = Fusuma;
 			sourceTree = "<group>";
 		};
-		919740E53399E111ACF9DFB863CF1C8B /* Support Files */ = {
+		542F37D366EAB24F3F079860FE1319D0 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				CF06271275051A096AB11C49D25B0833 /* Fusuma.modulemap */,
-				56AC85DBF3C65805E6A323849613CA96 /* Fusuma.xcconfig */,
-				F4D57450FC97943A43B09452F2929820 /* Fusuma-dummy.m */,
-				F23A8B98EF59FAEB47D3FD7E5CDD1E5B /* Fusuma-Info.plist */,
-				7855DA95AB6FC9BF0F816E7532EEA0BE /* Fusuma-prefix.pch */,
-				283C51348F0D6FA114D82FEB04B2C6B0 /* Fusuma-umbrella.h */,
+				1DA8554407817B233D626C5725976305 /* ChromaColorPicker.modulemap */,
+				233DAE4635220928C15617CC73C17136 /* ChromaColorPicker.xcconfig */,
+				D1DF66381B53DCEFF413C79C38C2BF5B /* ChromaColorPicker-dummy.m */,
+				BB697051D5E940CC2AC944B7CD7E9195 /* ChromaColorPicker-Info.plist */,
+				5EB792BD0A51C382D10478C6FF66A725 /* ChromaColorPicker-prefix.pch */,
+				914C3740DE48521F51FF2D006F98BF41 /* ChromaColorPicker-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ChromaColorPicker";
+			sourceTree = "<group>";
+		};
+		55D856A71946B0081F2801B3146E9BA1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				027F70CC0FA502342AA4493101E9D041 /* UIFontComplete.modulemap */,
+				525E371DC6FB16C97DFBE2EA904514FA /* UIFontComplete.xcconfig */,
+				1613614CFC7E27786815C95994876D59 /* UIFontComplete-dummy.m */,
+				BCFE192943FB57821E3154FD9734AD9F /* UIFontComplete-Info.plist */,
+				82201441E0D9C413894A90CF4F1CB232 /* UIFontComplete-prefix.pch */,
+				C0DE209C8230649C6ACBB4A129984203 /* UIFontComplete-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/UIFontComplete";
+			sourceTree = "<group>";
+		};
+		5A1907F15C4ED7E6AA812372E6AE7157 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C0F45B030FDF54F61A4E014F45F6372E /* Assets.xcassets */,
+				7A0BB41A0D2B78F72C51EB952CF4B508 /* FSAlbumView.xib */,
+				2704F1782C1C926246809D9BDF1C499D /* FSAlbumViewCell.xib */,
+				A532B5486B0993111461DC33D1781A1A /* FSCameraView.xib */,
+				67D87D4838183DAED8700C81B247E114 /* FSVideoCameraView.xib */,
+				A082576A9424B9E059618551B0A5EAAF /* FusumaViewController.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		5ABDED052A5FD1366F0978A72FC334F4 /* HueKit */ = {
+			isa = PBXGroup;
+			children = (
+				A8F46D7E4AC0CBD318F790F54F4866DD /* CGFloat+Pin.swift */,
+				4DA050DDEB786EB9B0D44C87B152027E /* ColorBarPicker.swift */,
+				23BB91F0437F42E0EA6E23704C4BCBF3 /* ColorBarView.swift */,
+				BA4194B0874F6888605BE73144BD4586 /* ColorIndicatorView.swift */,
+				C7A07D15594E02D82BD2B5FDFA5189BA /* ColorSquarePicker.swift */,
+				0163FDBA3C733E908BC3AF4EFAF86DBD /* ColorSquareView.swift */,
+				2864732ADDCD74BECEDF9719C2498183 /* HSBComponent.swift */,
+				27D39C6A566B7D1829D2AF213B36D6DC /* HSBGen.swift */,
+				1E0FDB91AA3A9259014D4E9DB6C50CD1 /* HSV.swift */,
+				509132E4857A5DDB5E4E3DEE09FE0D8D /* RGB.swift */,
+				49F0025242D7627A119E3626A6096574 /* SourceColorView.swift */,
+				0E84D0ADF323AECEBF8D68C80A172574 /* UIColor+Values.swift */,
+				FDE8D893A57B95E05D0E23824F0BDC21 /* Support Files */,
+			);
+			name = HueKit;
+			path = HueKit;
+			sourceTree = "<group>";
+		};
+		7AE52463972A6C2AB61997E3FD7979D8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3F269194D5509C18FE9EF3610D35F1D5 /* ChromaColorPicker.framework */,
+				354FFA5026429957DAD7426AAC52DE71 /* Fusuma.framework */,
+				190540D2E187BC1771E085AA25D93DAC /* HueKit.framework */,
+				44763C0D097FB862BEF57D327537D5CC /* Pods_Project2.framework */,
+				68C16FBF63657EC65A50BAA1C12D7FF0 /* UIFontComplete.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8950D25CEA0E68B70B7BC081F80EC077 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				383B89785F0EC96FFE17E9B3D65D602C /* Fusuma.modulemap */,
+				FC4969AC72445222C4FB93155724FCD0 /* Fusuma.xcconfig */,
+				7CD07D2015A1B4022F6CCFABC467524C /* Fusuma-dummy.m */,
+				FC567D6A9F24A2C6CF366A7DB7809ECF /* Fusuma-Info.plist */,
+				7BB5956967E40ABC166C95C1591A9FFE /* Fusuma-prefix.pch */,
+				20D1F27C540E59DF8E241F058284F0A0 /* Fusuma-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Fusuma";
+			sourceTree = "<group>";
+		};
+		90CF9B7FA509EBC25AD847528503CE71 /* UIFontComplete */ = {
+			isa = PBXGroup;
+			children = (
+				8A2ED30638A29DA04B303691546ACB50 /* Font.swift */,
+				2ECA783BF4BC3E513BF941171BB0C44C /* FontRepresentable.swift */,
+				8E8C2F88C692BE0FFD790CE81BE97915 /* UIFont+Extension.swift */,
+				55D856A71946B0081F2801B3146E9BA1 /* Support Files */,
+			);
+			name = UIFontComplete;
+			path = UIFontComplete;
 			sourceTree = "<group>";
 		};
 		9B055D0CFEA43187E72B03DED11F5662 /* iOS */ = {
@@ -259,14 +394,25 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		BC1D622C334302805C23F27ABA87D7F0 /* Pods */ = {
+		B8EEB88389E5737AE72BC1D3DFE04706 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7630DFFFCCB1D04A0FDB8DE6D772075F /* Fusuma */,
-				F0542EB526ACDBA57C0F0C082CC4C111 /* SwiftLint */,
-				457A731D4A423983A3C38F47D7D9429A /* UIFontComplete */,
+				F7E3D48998249245AFB28EF0BCD3E93E /* ChromaColorPicker */,
+				3A696D63DCF460DF28B6FC1A22B501BC /* Fusuma */,
+				5ABDED052A5FD1366F0978A72FC334F4 /* HueKit */,
+				12224EE0FD041F8C50B594351A82AF7E /* SwiftLint */,
+				90CF9B7FA509EBC25AD847528503CE71 /* UIFontComplete */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		BF44C66FD7720118E86A465CA15881AC /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8800BA69F97B1C7190E5B904A5C9B9D4 /* SwiftLint.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftLint";
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -274,8 +420,8 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				BC1D622C334302805C23F27ABA87D7F0 /* Pods */,
-				D58AFDF86F13AA04807DCB8BBBF20585 /* Products */,
+				B8EEB88389E5737AE72BC1D3DFE04706 /* Pods */,
+				7AE52463972A6C2AB61997E3FD7979D8 /* Products */,
 				B5CCF87B3DC42376FDC7A8366C15ABD8 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -288,41 +434,53 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D58AFDF86F13AA04807DCB8BBBF20585 /* Products */ = {
+		F7E3D48998249245AFB28EF0BCD3E93E /* ChromaColorPicker */ = {
 			isa = PBXGroup;
 			children = (
-				21FB9CB408EA54447A5ACD16F0886A9C /* Fusuma.framework */,
-				462840BA69D04310E08A4B0ABD20F107 /* Pods_Project2.framework */,
-				7FB15A4E6EAD8D1EBB8931E0788FC790 /* UIFontComplete.framework */,
+				58F21088686A92B2AB64DD6D52B93BFA /* ChromaAddButton.swift */,
+				A255576BAF2AF82E9F51ADFA269E61C7 /* ChromaColorPicker.h */,
+				62CD86CB07EB3AC9545D399A4C336065 /* ChromaColorPicker.swift */,
+				51FE0A4046C141322C663C324E389E63 /* ChromaHandle.swift */,
+				DFB702D94BA0C9E09E4F3A1C926E7F73 /* ChromaShadeSlider.swift */,
+				0CE5446BF7A0EA9D33FCAE2E10F70E14 /* ColorModeToggleButton.swift */,
+				3510572C3CC9C484CEE8FB7680942B2F /* UIColor+Utilities.swift */,
+				542F37D366EAB24F3F079860FE1319D0 /* Support Files */,
 			);
-			name = Products;
+			name = ChromaColorPicker;
+			path = ChromaColorPicker;
 			sourceTree = "<group>";
 		};
-		F0542EB526ACDBA57C0F0C082CC4C111 /* SwiftLint */ = {
+		FDE8D893A57B95E05D0E23824F0BDC21 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				6ACB289A13C48DF7C8DAF698B7256629 /* Support Files */,
+				F9C2DEF2E71BD3936E4D2002C30FF744 /* HueKit.modulemap */,
+				BBD2F5B3A3FC30E66C32B900A0C5F5C2 /* HueKit.xcconfig */,
+				F5FEF4B91B3660E7CE453C98625655E8 /* HueKit-dummy.m */,
+				CA575F74D06DA86AB9628C8A8808FD37 /* HueKit-Info.plist */,
+				9A315AD1782687D9E7A316C94953BEB3 /* HueKit-prefix.pch */,
+				1080574275B1CF164E6BA98F46B6E216 /* HueKit-umbrella.h */,
 			);
-			name = SwiftLint;
-			path = SwiftLint;
+			name = "Support Files";
+			path = "../Target Support Files/HueKit";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		356D5FD6C01B5FBEC58DFA8944A9612B /* Headers */ = {
+		6C76CC9ECF1E73497B371E69D452589A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				809122798C4A39396501A8F58CD9CFA7 /* Pods-Project2-umbrella.h in Headers */,
+				B0A6FFFB0B6932F91CFE7DC1FCB53ECB /* ChromaColorPicker-umbrella.h in Headers */,
+				FDA032C9DD591D2B9E64A9140BE2CADB /* ChromaColorPicker.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C73D0174E2EBD8C711CF9ABEB6F13539 /* Headers */ = {
+		9C1E6C77981F9E08BEFDDE7912773111 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDB7A6B2804DA5923A9A4AD12EA884F4 /* UIFontComplete-umbrella.h in Headers */,
+				F02176DD3D796C166C70486F9F18D92A /* Pods-Project2-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,17 +492,74 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E4EE37E76AF6AB83F4D9E23CA67D6751 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2AC0AA9F54AD80A481003E9394F6CDE /* UIFontComplete-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F165EB9E3B32403377BF3A2A51D9066F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA91E758D5DA4A8DF2BEF5150BF9FF57 /* HueKit-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		8C7477425BD2CAB40E8C7A052A3F9A0B /* UIFontComplete */ = {
+		0FB8DF16358C7F452C2AB6AA4E763449 /* ChromaColorPicker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 706D583ECDE329908B063C1499C6A5EA /* Build configuration list for PBXNativeTarget "UIFontComplete" */;
+			buildConfigurationList = 31A5605865C39E9C6162EBFBB9458055 /* Build configuration list for PBXNativeTarget "ChromaColorPicker" */;
 			buildPhases = (
-				C73D0174E2EBD8C711CF9ABEB6F13539 /* Headers */,
-				1C18BA6625792E5769C03E88D47D3CEB /* Sources */,
-				CE481896E81521489EB99C2C5D4A93FF /* Frameworks */,
-				DDD8DAEE83B7D04C9615AE80F2E4AA09 /* Resources */,
+				6C76CC9ECF1E73497B371E69D452589A /* Headers */,
+				998D4F0C39EA18DFAEBC8F11B773C609 /* Sources */,
+				D86A9F7E0469729215BED6D71382F2AC /* Frameworks */,
+				1E48C44DE9B70F866CFA381B3E135BB5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChromaColorPicker;
+			productName = ChromaColorPicker;
+			productReference = 3F269194D5509C18FE9EF3610D35F1D5 /* ChromaColorPicker.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		2563C372864B1C0C1311400EFBAE6340 /* Pods-Project2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3E85BC88B97B6F60316312B8FFF7A02 /* Build configuration list for PBXNativeTarget "Pods-Project2" */;
+			buildPhases = (
+				9C1E6C77981F9E08BEFDDE7912773111 /* Headers */,
+				D3692D1172749F1430A661B46BDD9B39 /* Sources */,
+				E0A7E0ABB742A03FB7598694A172E8A6 /* Frameworks */,
+				1ED9DE0DEF09B70D9EF0DCC492887C7C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7C85DA4388D844C5A4057D3C1E4D19A8 /* PBXTargetDependency */,
+				CD6A2206CDA460054E5628119D5EC6B4 /* PBXTargetDependency */,
+				C0B922EB3F14971ECA606AD4396CE12A /* PBXTargetDependency */,
+				6B2DA2F7BA1889925EB65D898804FF6E /* PBXTargetDependency */,
+				973FC9A4120C23953AD552579562FA82 /* PBXTargetDependency */,
+			);
+			name = "Pods-Project2";
+			productName = "Pods-Project2";
+			productReference = 44763C0D097FB862BEF57D327537D5CC /* Pods_Project2.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		26CE2929849C62F806A2ECE77E5D65A3 /* UIFontComplete */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B2D6AE29B71DACFAC3C09149D8A7602 /* Build configuration list for PBXNativeTarget "UIFontComplete" */;
+			buildPhases = (
+				E4EE37E76AF6AB83F4D9E23CA67D6751 /* Headers */,
+				547D2D5603276C267501398B1328AD62 /* Sources */,
+				8FA15B43A108BCBC943C7C5D796E06A1 /* Frameworks */,
+				656625F9B82C7BAADB0A64B1501C9033 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -352,28 +567,25 @@
 			);
 			name = UIFontComplete;
 			productName = UIFontComplete;
-			productReference = 7FB15A4E6EAD8D1EBB8931E0788FC790 /* UIFontComplete.framework */;
+			productReference = 68C16FBF63657EC65A50BAA1C12D7FF0 /* UIFontComplete.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		A4BD19799C5B1375CD979D9C2888DF7A /* Pods-Project2 */ = {
+		4202CD716EB029DA83242CE9A120D276 /* HueKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0DF07D5726BE9771BFE6447A635454F1 /* Build configuration list for PBXNativeTarget "Pods-Project2" */;
+			buildConfigurationList = 65D5D47BDC02CD472358679D7B197B88 /* Build configuration list for PBXNativeTarget "HueKit" */;
 			buildPhases = (
-				356D5FD6C01B5FBEC58DFA8944A9612B /* Headers */,
-				C88B7A47D4527DDFAF3E267D1A2A45A8 /* Sources */,
-				240790FD9F502E07A0C2C2A08D2A2AB6 /* Frameworks */,
-				D8DE5075ADB7F0ECA15908C5AE91D602 /* Resources */,
+				F165EB9E3B32403377BF3A2A51D9066F /* Headers */,
+				7DC8CAB530FDAB0A5A387701F64C6079 /* Sources */,
+				3259A23C8A47DCEA4433E347E29B2B70 /* Frameworks */,
+				166416348C029BE700873B31DED7ABA2 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5D9E9930B7E66712C590C2E543531EC3 /* PBXTargetDependency */,
-				F7028E31ED84F6EFD52EEFCC42BC5BA2 /* PBXTargetDependency */,
-				3FA378E5082087E77C714BAE636762C9 /* PBXTargetDependency */,
 			);
-			name = "Pods-Project2";
-			productName = "Pods-Project2";
-			productReference = 462840BA69D04310E08A4B0ABD20F107 /* Pods_Project2.framework */;
+			name = HueKit;
+			productName = HueKit;
+			productReference = 190540D2E187BC1771E085AA25D93DAC /* HueKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B4D1FFA8802FF56DFD83493D06D75199 /* Fusuma */ = {
@@ -391,7 +603,7 @@
 			);
 			name = Fusuma;
 			productName = Fusuma;
-			productReference = 21FB9CB408EA54447A5ACD16F0886A9C /* Fusuma.framework */;
+			productReference = 354FFA5026429957DAD7426AAC52DE71 /* Fusuma.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -411,20 +623,43 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = D58AFDF86F13AA04807DCB8BBBF20585 /* Products */;
+			productRefGroup = 7AE52463972A6C2AB61997E3FD7979D8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				0FB8DF16358C7F452C2AB6AA4E763449 /* ChromaColorPicker */,
 				B4D1FFA8802FF56DFD83493D06D75199 /* Fusuma */,
-				A4BD19799C5B1375CD979D9C2888DF7A /* Pods-Project2 */,
-				169C6447844E3F3CEC857E942EEC2E57 /* SwiftLint */,
-				8C7477425BD2CAB40E8C7A052A3F9A0B /* UIFontComplete */,
+				4202CD716EB029DA83242CE9A120D276 /* HueKit */,
+				2563C372864B1C0C1311400EFBAE6340 /* Pods-Project2 */,
+				32A2731E808EAA16451AE28A12E129CE /* SwiftLint */,
+				26CE2929849C62F806A2ECE77E5D65A3 /* UIFontComplete */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D8DE5075ADB7F0ECA15908C5AE91D602 /* Resources */ = {
+		166416348C029BE700873B31DED7ABA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E48C44DE9B70F866CFA381B3E135BB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1ED9DE0DEF09B70D9EF0DCC492887C7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		656625F9B82C7BAADB0A64B1501C9033 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -444,32 +679,59 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DDD8DAEE83B7D04C9615AE80F2E4AA09 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1C18BA6625792E5769C03E88D47D3CEB /* Sources */ = {
+		547D2D5603276C267501398B1328AD62 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				955DE95D5665C1FC6B01E5B527560FA9 /* Font.swift in Sources */,
-				3F5CD2684A53487CD5DA9D0DE2F5F178 /* FontRepresentable.swift in Sources */,
-				E538E7D1C4D7A7EA374754493E95C040 /* UIFont+Extension.swift in Sources */,
-				507B1A0F6149E85D610184A363970965 /* UIFontComplete-dummy.m in Sources */,
+				D55049E37CE1DF723420D320CE171F65 /* Font.swift in Sources */,
+				379E62C9BB1D18B28920F059DC76FC21 /* FontRepresentable.swift in Sources */,
+				CC085EA3DAA08AF6C66243F748D5E4F9 /* UIFont+Extension.swift in Sources */,
+				365D366E59B2F052D4A18E1A7ED8835D /* UIFontComplete-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C88B7A47D4527DDFAF3E267D1A2A45A8 /* Sources */ = {
+		7DC8CAB530FDAB0A5A387701F64C6079 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4299E95530FF64D324957C230E0FB058 /* Pods-Project2-dummy.m in Sources */,
+				84E5C58DE82411ECAE4F382CAF3773E4 /* CGFloat+Pin.swift in Sources */,
+				319C36E930174CA5E2F06F5E2CE1244E /* ColorBarPicker.swift in Sources */,
+				8C7FDB03DA801D792E21F3B468550A65 /* ColorBarView.swift in Sources */,
+				BEE1951D88F828243E5E4EBEB687C355 /* ColorIndicatorView.swift in Sources */,
+				F99DF4FAFB05CFCE0B404B59D8BFB611 /* ColorSquarePicker.swift in Sources */,
+				1137576C79E85B6C8038B1053824C768 /* ColorSquareView.swift in Sources */,
+				F6E36B75B50A9625F7BA053D8BABD884 /* HSBComponent.swift in Sources */,
+				CD48AFB4CF30BD91F7B5D795C0ACC647 /* HSBGen.swift in Sources */,
+				BD9830B7BB80444BE74E918341681422 /* HSV.swift in Sources */,
+				550DFC588469BB0B611751731B71E887 /* HueKit-dummy.m in Sources */,
+				C561845F34E5A39B41ED93FF728A30C2 /* RGB.swift in Sources */,
+				7F9FA379BA3CE4E0F23EE1BA26779938 /* SourceColorView.swift in Sources */,
+				6DA02D5523B1AC8DA397E70253B5F93E /* UIColor+Values.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		998D4F0C39EA18DFAEBC8F11B773C609 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				248774DB039E4F62AF5F623200A7FB53 /* ChromaAddButton.swift in Sources */,
+				AA5C6F12BAE8553E44E060508B9CE2A9 /* ChromaColorPicker-dummy.m in Sources */,
+				55AA1E9E910063317805602067271185 /* ChromaColorPicker.swift in Sources */,
+				A8D43D74C2D42CAB7496BFBD1349732E /* ChromaHandle.swift in Sources */,
+				9C37517E94FA86F04ECA7E7F727BA401 /* ChromaShadeSlider.swift in Sources */,
+				D41C5E79C8C73ECA93FA71A6F25868CD /* ColorModeToggleButton.swift in Sources */,
+				0F02CA4D2A1912317CBCDB211F947EBE /* UIColor+Utilities.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3692D1172749F1430A661B46BDD9B39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAA1CF3972031A6AE4DC8D9CB171BE49 /* Pods-Project2-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,32 +754,43 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3FA378E5082087E77C714BAE636762C9 /* PBXTargetDependency */ = {
+		6B2DA2F7BA1889925EB65D898804FF6E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftLint;
+			target = 32A2731E808EAA16451AE28A12E129CE /* SwiftLint */;
+			targetProxy = 4E4EB327ADD9BA84755F16F6CB18701C /* PBXContainerItemProxy */;
+		};
+		7C85DA4388D844C5A4057D3C1E4D19A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ChromaColorPicker;
+			target = 0FB8DF16358C7F452C2AB6AA4E763449 /* ChromaColorPicker */;
+			targetProxy = 76D01EBC07C27C36BDE3233FFCB1B35D /* PBXContainerItemProxy */;
+		};
+		973FC9A4120C23953AD552579562FA82 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = UIFontComplete;
-			target = 8C7477425BD2CAB40E8C7A052A3F9A0B /* UIFontComplete */;
-			targetProxy = 34B4B168137585E9E26E1866B8DF65ED /* PBXContainerItemProxy */;
+			target = 26CE2929849C62F806A2ECE77E5D65A3 /* UIFontComplete */;
+			targetProxy = 4F77CFCF510EC29DB58B8A07C62E56C1 /* PBXContainerItemProxy */;
 		};
-		5D9E9930B7E66712C590C2E543531EC3 /* PBXTargetDependency */ = {
+		C0B922EB3F14971ECA606AD4396CE12A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = HueKit;
+			target = 4202CD716EB029DA83242CE9A120D276 /* HueKit */;
+			targetProxy = 3D7E392A5122C13AC271912963BFF112 /* PBXContainerItemProxy */;
+		};
+		CD6A2206CDA460054E5628119D5EC6B4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Fusuma;
 			target = B4D1FFA8802FF56DFD83493D06D75199 /* Fusuma */;
-			targetProxy = 18CEF6C924927CBBC92644BA22682539 /* PBXContainerItemProxy */;
-		};
-		F7028E31ED84F6EFD52EEFCC42BC5BA2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftLint;
-			target = 169C6447844E3F3CEC857E942EEC2E57 /* SwiftLint */;
-			targetProxy = D2383F1EB77FE76EFD1D7D9F696DDD08 /* PBXContainerItemProxy */;
+			targetProxy = 976A075DB7C5A8B186B5BEA118C74EA1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		2867AA9132BA9021DE56095EBC89599E /* Debug */ = {
+		194B688D57E3ECB006549BD5B2455C23 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3BB0F7CF4FCE9F03301D6E03F674B3A /* Pods-Project2.debug.xcconfig */;
+			baseConfigurationReference = BBD2F5B3A3FC30E66C32B900A0C5F5C2 /* HueKit.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -528,32 +801,31 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Project2/Pods-Project2-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/HueKit/HueKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/HueKit/HueKit-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Project2/Pods-Project2.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/HueKit/HueKit.modulemap";
+				PRODUCT_MODULE_NAME = HueKit;
+				PRODUCT_NAME = HueKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		430F5F5C3D268F4363BBF47761FB7A7F /* Debug */ = {
+		2E6FD6DBE5FEFA3EB5D27F05AF873829 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7332206B4C45DF2382D89BAC3DCA1658 /* UIFontComplete.xcconfig */;
+			baseConfigurationReference = 525E371DC6FB16C97DFBE2EA904514FA /* UIFontComplete.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -585,6 +857,42 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		543B23C34326594A1A5A055879B0F764 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 525E371DC6FB16C97DFBE2EA904514FA /* UIFontComplete.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/UIFontComplete/UIFontComplete-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/UIFontComplete/UIFontComplete-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/UIFontComplete/UIFontComplete.modulemap";
+				PRODUCT_MODULE_NAME = UIFontComplete;
+				PRODUCT_NAME = UIFontComplete;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		7C7D9FC81F470AE33FF86230A663FBDD /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -643,6 +951,82 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		8302ADFF09EB9528BD7DEC7273BFE783 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBD2F5B3A3FC30E66C32B900A0C5F5C2 /* HueKit.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/HueKit/HueKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/HueKit/HueKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/HueKit/HueKit.modulemap";
+				PRODUCT_MODULE_NAME = HueKit;
+				PRODUCT_NAME = HueKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9388BEFE639B0BDC42F1AD80F7D67E3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAEC27B293FE99F779A12F2420BB982B /* Pods-Project2.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Project2/Pods-Project2-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Project2/Pods-Project2.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -712,7 +1096,7 @@
 		};
 		A342BD965332B10B60747272CF0C472E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56AC85DBF3C65805E6A323849613CA96 /* Fusuma.xcconfig */;
+			baseConfigurationReference = FC4969AC72445222C4FB93155724FCD0 /* Fusuma.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -746,9 +1130,9 @@
 			};
 			name = Release;
 		};
-		C0100148BEAFE1652B4DBDC62E6CD6B5 /* Debug */ = {
+		AC3D35151DA5BF70BE1FCBEB758FF99D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1210DF794439E243E42EB6E67A811C3 /* SwiftLint.xcconfig */;
+			baseConfigurationReference = 8800BA69F97B1C7190E5B904A5C9B9D4 /* SwiftLint.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -759,12 +1143,13 @@
 				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
-			name = Debug;
+			name = Release;
 		};
-		E06B331A996A8C90FBF5339D9774C166 /* Release */ = {
+		BE087E9FC262FB0017836A38A3D8CCBA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7332206B4C45DF2382D89BAC3DCA1658 /* UIFontComplete.xcconfig */;
+			baseConfigurationReference = 233DAE4635220928C15617CC73C17136 /* ChromaColorPicker.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -775,18 +1160,53 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/UIFontComplete/UIFontComplete-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/UIFontComplete/UIFontComplete-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/ChromaColorPicker/ChromaColorPicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ChromaColorPicker/ChromaColorPicker-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/UIFontComplete/UIFontComplete.modulemap";
-				PRODUCT_MODULE_NAME = UIFontComplete;
-				PRODUCT_NAME = UIFontComplete;
+				MODULEMAP_FILE = "Target Support Files/ChromaColorPicker/ChromaColorPicker.modulemap";
+				PRODUCT_MODULE_NAME = ChromaColorPicker;
+				PRODUCT_NAME = ChromaColorPicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BEFB230958D47317410ADEBF9DBADC36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 233DAE4635220928C15617CC73C17136 /* ChromaColorPicker.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ChromaColorPicker/ChromaColorPicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ChromaColorPicker/ChromaColorPicker-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ChromaColorPicker/ChromaColorPicker.modulemap";
+				PRODUCT_MODULE_NAME = ChromaColorPicker;
+				PRODUCT_NAME = ChromaColorPicker;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -798,9 +1218,9 @@
 			};
 			name = Release;
 		};
-		EA9742C4E69EE320415306356A9584EC /* Release */ = {
+		D963B4B7AA9E466D9508200AF5040D5D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CAEC27B293FE99F779A12F2420BB982B /* Pods-Project2.release.xcconfig */;
+			baseConfigurationReference = F3BB0F7CF4FCE9F03301D6E03F674B3A /* Pods-Project2.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -831,15 +1251,14 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
-		EC27DF63DAAEC113DF9354793D0A1C54 /* Release */ = {
+		F3E6011C59F8044238072C442859D8B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1210DF794439E243E42EB6E67A811C3 /* SwiftLint.xcconfig */;
+			baseConfigurationReference = 8800BA69F97B1C7190E5B904A5C9B9D4 /* SwiftLint.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -850,13 +1269,12 @@
 				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Debug;
 		};
 		FED38AF19F7593EDE2DE85EDB96B310D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56AC85DBF3C65805E6A323849613CA96 /* Fusuma.xcconfig */;
+			baseConfigurationReference = FC4969AC72445222C4FB93155724FCD0 /* Fusuma.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -892,20 +1310,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0DF07D5726BE9771BFE6447A635454F1 /* Build configuration list for PBXNativeTarget "Pods-Project2" */ = {
+		0060F2A75FDCDC33172DA9B99330FE46 /* Build configuration list for PBXAggregateTarget "SwiftLint" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2867AA9132BA9021DE56095EBC89599E /* Debug */,
-				EA9742C4E69EE320415306356A9584EC /* Release */,
+				F3E6011C59F8044238072C442859D8B9 /* Debug */,
+				AC3D35151DA5BF70BE1FCBEB758FF99D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1F7293B1D15ACC733F773D78191B5FBC /* Build configuration list for PBXAggregateTarget "SwiftLint" */ = {
+		31A5605865C39E9C6162EBFBB9458055 /* Build configuration list for PBXNativeTarget "ChromaColorPicker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C0100148BEAFE1652B4DBDC62E6CD6B5 /* Debug */,
-				EC27DF63DAAEC113DF9354793D0A1C54 /* Release */,
+				BE087E9FC262FB0017836A38A3D8CCBA /* Debug */,
+				BEFB230958D47317410ADEBF9DBADC36 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -919,11 +1337,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		706D583ECDE329908B063C1499C6A5EA /* Build configuration list for PBXNativeTarget "UIFontComplete" */ = {
+		65D5D47BDC02CD472358679D7B197B88 /* Build configuration list for PBXNativeTarget "HueKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				430F5F5C3D268F4363BBF47761FB7A7F /* Debug */,
-				E06B331A996A8C90FBF5339D9774C166 /* Release */,
+				194B688D57E3ECB006549BD5B2455C23 /* Debug */,
+				8302ADFF09EB9528BD7DEC7273BFE783 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7B2D6AE29B71DACFAC3C09149D8A7602 /* Build configuration list for PBXNativeTarget "UIFontComplete" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E6FD6DBE5FEFA3EB5D27F05AF873829 /* Debug */,
+				543B23C34326594A1A5A055879B0F764 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -933,6 +1360,15 @@
 			buildConfigurations = (
 				FED38AF19F7593EDE2DE85EDB96B310D /* Debug */,
 				A342BD965332B10B60747272CF0C472E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3E85BC88B97B6F60316312B8FFF7A02 /* Build configuration list for PBXNativeTarget "Pods-Project2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D963B4B7AA9E466D9508200AF5040D5D /* Debug */,
+				9388BEFE639B0BDC42F1AD80F7D67E3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -1,9 +1,9 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Fusuma" "${PODS_CONFIGURATION_BUILD_DIR}/UIFontComplete"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/ChromaColorPicker" "${PODS_CONFIGURATION_BUILD_DIR}/Fusuma" "${PODS_CONFIGURATION_BUILD_DIR}/HueKit" "${PODS_CONFIGURATION_BUILD_DIR}/UIFontComplete"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Fusuma/Fusuma.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/UIFontComplete/UIFontComplete.framework/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/ChromaColorPicker/ChromaColorPicker.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Fusuma/Fusuma.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/HueKit/HueKit.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/UIFontComplete/UIFontComplete.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_LDFLAGS = $(inherited) -framework "Fusuma" -framework "UIFontComplete"
+OTHER_LDFLAGS = $(inherited) -framework "ChromaColorPicker" -framework "Fusuma" -framework "HueKit" -framework "UIFontComplete"
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

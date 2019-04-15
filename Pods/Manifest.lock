@@ -1,24 +1,32 @@
 PODS:
+  - ChromaColorPicker (1.7.2)
   - Fusuma (1.3.3)
+  - HueKit (1.0.1)
   - SwiftLint (0.31.0)
   - UIFontComplete (3.0.0)
 
 DEPENDENCIES:
+  - ChromaColorPicker
   - Fusuma
+  - HueKit (~> 1.0)
   - SwiftLint
   - UIFontComplete
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - ChromaColorPicker
     - Fusuma
+    - HueKit
     - SwiftLint
     - UIFontComplete
 
 SPEC CHECKSUMS:
+  ChromaColorPicker: 78194fbae9f342d3781ac178c4d92c7652197d18
   Fusuma: 3bd08c8c5341ec60c0074fa28570fea8765966f0
+  HueKit: a255770053f7028907db3e84d5cdecc7837197e4
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   UIFontComplete: 5b0f59a83308816c610164b79a2540b3520f9b72
 
-PODFILE CHECKSUM: 74c48db5f18bbfed36a65e7f41db97fea18baace
+PODFILE CHECKSUM: a565b93f1696830c2a9b0243e493948eb441283a
 
 COCOAPODS: 1.6.0
