@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		732E4A17C4EE4240C0412462 /* Pods_Project2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF328FB228DDA472B389400 /* Pods_Project2.framework */; };
+		A80F296B22660BED009C13F5 /* TextContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F296A22660BED009C13F5 /* TextContainerViewController.swift */; };
 		A86824C2225CCF4000BDCCD8 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86824C1225CCF4000BDCCD8 /* Notification.swift */; };
 		A86824C422603BC500BDCCD8 /* CGAffineTransform+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86824C322603BC500BDCCD8 /* CGAffineTransform+Extension.swift */; };
 		A86824C62260461500BDCCD8 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86824C52260461500BDCCD8 /* UIView+Extension.swift */; };
@@ -56,6 +57,7 @@
 /* Begin PBXFileReference section */
 		8BF328FB228DDA472B389400 /* Pods_Project2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97709A67B679D68A1DBDCC55 /* Pods-Project2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.debug.xcconfig"; path = "Target Support Files/Pods-Project2/Pods-Project2.debug.xcconfig"; sourceTree = "<group>"; };
+		A80F296A22660BED009C13F5 /* TextContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextContainerViewController.swift; sourceTree = "<group>"; };
 		A86824C1225CCF4000BDCCD8 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		A86824C322603BC500BDCCD8 /* CGAffineTransform+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGAffineTransform+Extension.swift"; sourceTree = "<group>"; };
 		A86824C52260461500BDCCD8 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				A8DEBBA1225496D20081A694 /* AddImageContainerViewController.swift */,
 				A8BFF77F225A4AC00010E56B /* ImageEditContainerViewController.swift */,
 				A8E3063B2262FE0000DA03A7 /* ShapeContainerViewController.swift */,
+				A80F296A22660BED009C13F5 /* TextContainerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				A8BFF780225A4AC00010E56B /* ImageEditContainerViewController.swift in Sources */,
 				A8DEBBA2225496D20081A694 /* AddImageContainerViewController.swift in Sources */,
 				A8D2C47B22522A8F0085AD24 /* UICollectionView+Extension.swift in Sources */,
+				A80F296B22660BED009C13F5 /* TextContainerViewController.swift in Sources */,
 				A8DEBB9822543DBF0081A694 /* border.swift in Sources */,
 				A8DEBBA82255A5A90081A694 /* UITextView+Extension.swift in Sources */,
 				A8BFF77322588EA90010E56B /* SpacingTableViewCell.swift in Sources */,

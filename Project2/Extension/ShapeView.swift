@@ -170,11 +170,22 @@ class ShapeView: UIView {
                                                         miterLimit: self.path.miterLimit,
                                                         transform: self.transform)
         } else {
-              newShape.path = self.path
+            
+             let path = UIBezierPath()
+             path.cgPath = self.path.cgPath
+             newShape.path = path
+            
+//             newShape.path = self.path
 
         }
         
-        newShape.shapeColor = self.shapeColor
+        let color = UIColor(cgColor: self.shapeColor.cgColor)
+//        color = self.shapeColor
+        newShape.shapeColor = color
+        
+        //done 了以後，再編輯，顏色就會互相影響
+//        newShape.shapeColor = self.shapeColor
+        
         newShape.frame = self.frame
 
         return newShape

@@ -128,8 +128,16 @@ class EditingViewController: UIViewController {
     }
 
     @IBAction func colorButtonTapped(_ sender: Any) {
-        fontTableView.reloadData()
-        selectFontView.isHidden = false
+
+        selectFontView.isHidden = true
+        textEditView.isHidden = true
+        
+        let notificationName = Notification.Name(NotiName.addElementButton.rawValue)
+        
+        NotificationCenter.default.post(
+            name: notificationName,
+            object: nil,
+            userInfo: [NotificationInfo.addElementButton: false])
     }
     @IBAction func fontSizeButtonTapped(_ sender: Any) {
 
@@ -283,7 +291,6 @@ class EditingViewController: UIViewController {
             
         }
          rotationView.isHidden = true
-
     }
     @IBAction func slideToRotate(_ sender: UISlider) {
         
@@ -1006,6 +1013,10 @@ extension EditingViewController: FusumaDelegate {
             
             if mode == true {
                 addElementButton.isHidden = false
+                
+                guard ((editingView as? UITextView) != nil) else { return }
+                textEditView.isHidden = false
+                
             } else {
                 addElementButton.isHidden = true
             }
