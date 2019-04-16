@@ -57,6 +57,15 @@ class EditingViewController: UIViewController {
                textEditView.isHidden = true
                imageEditContainerView.isHidden = false
                 
+                guard let view = editingView as? ShapeView else { return }
+                
+                    let notificationName = Notification.Name(NotiName.paletteColor.rawValue)
+                
+                    NotificationCenter.default.post(
+                    name: notificationName,
+                    object: nil,
+                    userInfo: [NotificationInfo.paletteColor: view.shapeColor])
+                
                return
 
             }
@@ -65,6 +74,7 @@ class EditingViewController: UIViewController {
         
             textEditView.isHidden = false
             imageEditContainerView.isHidden = true
+            
         }
     }
 
@@ -978,11 +988,9 @@ extension EditingViewController: FusumaDelegate {
             guard let view = editingView as? UIImageView else {
                 
                 guard let view = editingView as? ShapeView else { return }
-                
-                    let fillLayer = CAShapeLayer()
-                    fillLayer.path = view.path.cgPath
-                    fillLayer.fillColor = color.cgColor
-                    editingView?.layer.addSublayer(fillLayer)
+ 
+                    view.shapeColor = color
+                    view.setNeedsDisplay()
                 
                     return
             }

@@ -657,26 +657,16 @@
                                     <action selector="colorSquarePickerValueChanged:" destination="8WY-QU-6sx" eventType="valueChanged" id="cz7-fs-5vR"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLz-S9-nzs" customClass="ColorIndicatorView" customModule="HueKit">
-                                <rect key="frame" x="20" y="218" width="20" height="20"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="mqk-Ok-gjP"/>
-                                    <constraint firstAttribute="height" constant="20" id="n1L-ib-0wn"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="PLz-S9-nzs" firstAttribute="top" secondItem="r8O-34-aXt" secondAttribute="bottom" constant="10" id="4T0-vo-eJq"/>
-                            <constraint firstItem="GWu-x6-JAE" firstAttribute="bottom" secondItem="PLz-S9-nzs" secondAttribute="bottom" constant="10" id="9Kg-mD-yaS"/>
                             <constraint firstItem="JeK-gH-KLU" firstAttribute="leading" secondItem="GWu-x6-JAE" secondAttribute="leading" id="9go-7q-axA"/>
                             <constraint firstItem="r8O-34-aXt" firstAttribute="top" secondItem="dGw-3T-aI8" secondAttribute="bottom" id="CRx-AO-exd"/>
                             <constraint firstItem="JeK-gH-KLU" firstAttribute="top" secondItem="GWu-x6-JAE" secondAttribute="top" id="IDg-V5-XEx"/>
-                            <constraint firstItem="PLz-S9-nzs" firstAttribute="leading" secondItem="GWu-x6-JAE" secondAttribute="leading" constant="20" id="K5c-lo-eVW"/>
                             <constraint firstItem="dGw-3T-aI8" firstAttribute="trailing" secondItem="r8O-34-aXt" secondAttribute="trailing" id="OGx-M7-FhB"/>
                             <constraint firstItem="dGw-3T-aI8" firstAttribute="top" secondItem="JeK-gH-KLU" secondAttribute="bottom" id="ejM-Kt-HaX"/>
                             <constraint firstItem="r8O-34-aXt" firstAttribute="leading" secondItem="GWu-x6-JAE" secondAttribute="leading" constant="10" id="lIN-9J-244"/>
+                            <constraint firstItem="GWu-x6-JAE" firstAttribute="bottom" secondItem="r8O-34-aXt" secondAttribute="bottom" constant="40" id="mrk-Fh-znF"/>
                             <constraint firstItem="JeK-gH-KLU" firstAttribute="trailing" secondItem="GWu-x6-JAE" secondAttribute="trailing" id="pbk-CZ-uX3"/>
                             <constraint firstItem="dGw-3T-aI8" firstAttribute="leading" secondItem="r8O-34-aXt" secondAttribute="leading" id="rvF-fg-XTZ"/>
                             <constraint firstItem="GWu-x6-JAE" firstAttribute="trailing" secondItem="r8O-34-aXt" secondAttribute="trailing" constant="10" id="yqC-I8-FSw"/>
@@ -686,7 +676,6 @@
                     <connections>
                         <outlet property="cameraRollButton" destination="saX-TL-hqu" id="eCR-mQ-Q0L"/>
                         <outlet property="colorButton" destination="gDk-lN-Nys" id="nfy-lt-VMM"/>
-                        <outlet property="colorIndicatorView" destination="PLz-S9-nzs" id="GCT-BW-3fi"/>
                         <outlet property="colorSquarePicker" destination="dGw-3T-aI8" id="8KD-VM-OX7"/>
                         <outlet property="filterButton" destination="qTQ-dc-u20" id="x6m-Ic-JK8"/>
                     </connections>
@@ -1059,11 +1048,13 @@
                     </view>
                     <connections>
                         <outlet property="cameraRollBtn" destination="0Df-jh-1M5" id="07m-xv-gDZ"/>
+                        <outlet property="colorBarPicker" destination="Ur6-DU-mut" id="Bzr-yS-g8U"/>
                         <outlet property="colorBtn" destination="Rbk-G1-1Gi" id="UNy-KP-q8z"/>
                         <outlet property="colorSquarePicker" destination="5l4-nD-QNE" id="RUf-gI-rMV"/>
                         <outlet property="filterBtn" destination="fB2-KQ-M1U" id="gme-CX-knP"/>
                         <outlet property="paletteView" destination="LAs-jG-Wny" id="Mc4-WT-Jxx"/>
                         <outlet property="transparencyBtn" destination="ea9-IE-deO" id="RK5-4l-85K"/>
+                        <outlet property="usedColorButton" destination="nDG-5N-xSe" id="rEd-bk-nbN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U0k-cg-hcp" userLabel="First Responder" sceneMemberID="firstResponder"/>

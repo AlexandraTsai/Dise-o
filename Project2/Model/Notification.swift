@@ -23,6 +23,8 @@ struct NotificationInfo {
     static let backgroundColor = "backgroundColor"  //UIColor
     
     static let addShape = ""
+    static let paletteColor = "paletteColor"
+
     static let changeEditingViewColor = "changeEditingViewColor"
     static let addElementButton = true
  
@@ -44,6 +46,10 @@ enum NotiName: String {
     
     //Shape
     case addShape
+    case shapeColor
+    
+    //Palette
+    case paletteColor
     
     //Button
     case addElementButton

@@ -303,7 +303,7 @@ extension ViewController {
                     
                 if designView.image == nil && designView.backgroundColor == UIColor.white {
                         
-                    newShape.defaultColor = UIColor.init(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
+                    newShape.shapeColor = UIColor.init(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
                 }
             }
         }
@@ -534,6 +534,7 @@ extension ViewController {
 
         editingVC.loadViewIfNeeded()
 
+        editingVC.designView.backgroundColor = designView.backgroundColor
         editingVC.designView.image = designView.image
 
         let count = designView.subviews.count

@@ -12,9 +12,11 @@ class ShapeView: UIView {
 
     var path = UIBezierPath()
     var shapeType: String = ""
-    var defaultColor: UIColor = UIColor.init(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
+    
+    var hue: CGFloat = 0.0
+    var shapeColor: UIColor = UIColor.init(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
     var stroke: Bool = false
-   
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -53,13 +55,13 @@ class ShapeView: UIView {
         }
         
         if stroke == true {
-       
-            defaultColor.setStroke()
+
+            shapeColor.setStroke()
             path.stroke()
-            
+
         } else {
-            
-            defaultColor.setFill()
+
+            shapeColor.setFill()
             path.fill()
         }
     
@@ -89,10 +91,16 @@ class ShapeView: UIView {
     
     func createCircle() {
        
+//       let fillLayer = CAShapeLayer()
+    
        self.path = UIBezierPath(ovalIn: CGRect(x: 0,
-                                                    y: 0,
-                                                    width: self.frame.size.height,
-                                                    height: self.frame.size.height))
+                                               y: 0,
+                                               width: self.frame.size.height,
+                                               height: self.frame.size.height))
+        
+//        fillLayer.path = self.path.cgPath
+//        fillLayer.fillColor = UIColor.red.cgColor
+//        self.layer.addSublayer(fillLayer)
     }
     
     func createThinCircleBorder() {
@@ -154,17 +162,6 @@ class ShapeView: UIView {
     func makeACopyShape() -> ShapeView {
         
         let newShape = ShapeView()
-//        guard let path = self.path.copy() as? UIBezierPath else { return ShapeView()}
-//        path.apply(self.transform)
-        
-//        let a = self.path.cgPath.copy(strokingWithWidth: self.path.lineWidth,
-//                                                     lineCap: self.path.lineCapStyle,
-//                                                     lineJoin: self.path.lineJoinStyle,
-//                                                     miterLimit: self.path.miterLimit,
-//                                                     transform: self.transform)
-//
-//        newShape.path.cgPath = self.path.cgPath.copy()!
-//
         
         if self.path.lineWidth > 1.0 {
            newShape.path.cgPath = self.path.cgPath.copy(strokingWithWidth: self.path.lineWidth,
@@ -177,6 +174,7 @@ class ShapeView: UIView {
 
         }
         
+        newShape.shapeColor = self.shapeColor
         newShape.frame = self.frame
 
         return newShape

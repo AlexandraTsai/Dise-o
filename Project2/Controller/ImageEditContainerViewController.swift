@@ -18,6 +18,8 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
     
     @IBOutlet weak var paletteView: UIView!
     @IBOutlet weak var colorSquarePicker: ColorSquarePicker!
+    @IBOutlet weak var colorBarPicker: ColorBarPicker!
+    @IBOutlet weak var usedColorButton: UIButton!
     
     @IBOutlet weak var imageCollectionView: UICollectionView! {
 
@@ -89,7 +91,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         filterBtn.isSelected = true
         transparencyBtn.isSelected = false
     }
-    
+
     @IBAction func transparencyBtnTapped(_ sender: Any) {
         
         cameraRollBtn.isSelected = false
@@ -127,6 +129,16 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         
         colorSquarePicker.hue = sender.hue
         
+        print(colorSquarePicker.hue)
+        
+        let notificationName = Notification.Name(NotiName.changeEditingViewColor.rawValue)
+        
+        NotificationCenter.default.post(
+            name: notificationName,
+            object: nil,
+            userInfo: [NotificationInfo.changeEditingViewColor: colorSquarePicker.color])
+        
+        usedColorButton.backgroundColor = colorSquarePicker.color
     }
     
     @IBAction func colorSquarePickerValueChanged(_ sender: ColorSquarePicker) {
@@ -137,6 +149,8 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
             name: notificationName,
             object: nil,
             userInfo: [NotificationInfo.changeEditingViewColor: sender.color])
+        
+        usedColorButton.backgroundColor = sender.color
     }
     
     @IBAction func checkBtnTapped(_ sender: Any) {
@@ -208,6 +222,11 @@ extension ImageEditContainerViewController {
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(changeImage(noti:)), name: notificationName, object: nil)
+        
+        let notificationName2 = Notification.Name(NotiName.paletteColor.rawValue)
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(changePaletteColor(noti:)), name: notificationName2, object: nil)
     }
     
     // 收到通知後要執行的動作
@@ -221,4 +240,14 @@ extension ImageEditContainerViewController {
             }
         }
     }
+    
+    @objc func changePaletteColor(noti: Notification) {
+        if let userInfo = noti.userInfo,
+            let color = userInfo[NotificationInfo.paletteColor] as? UIColor {
+       
+//            colorSquarePicker.hue = 0.3349206349206349
+//            colorBarPicker.hue = 0.3349206349206349
+        }
+    }
 }
+
