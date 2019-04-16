@@ -42,7 +42,7 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
 
         createNotification()
         
-        didChangeColor(colorSquarePicker.color)
+//        didChangeColor(colorSquarePicker.color)
 
 //        collectionView.al_registerCellWithNib(identifier: String(describing:
 //        PhotoCollectionViewCell.self), bundle: nil)
@@ -82,21 +82,26 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
     }
 
     @IBAction func colorBarPickerValueChnaged(_ sender: ColorBarPicker) {
-        
+       
         colorSquarePicker.hue = sender.hue
-        didChangeColor(colorSquarePicker.color)
+      
+        let notificationName = Notification.Name(NotiName.backgroundColor.rawValue)
+        
+        NotificationCenter.default.post(
+            name: notificationName,
+            object: nil,
+            userInfo: [NotificationInfo.backgroundColor: colorSquarePicker.color])
         
     }
     
     @IBAction func colorSquarePickerValueChanged(_ sender: ColorSquarePicker) {
         
-        didChangeColor(sender.color)
-    }
-    
-    func didChangeColor(_ color: UIColor) {
+        let notificationName = Notification.Name(NotiName.backgroundColor.rawValue)
         
-        colorIndicatorView.color = color
-        
+        NotificationCenter.default.post(
+            name: notificationName,
+            object: nil,
+            userInfo: [NotificationInfo.backgroundColor: sender.color])
     }
 }
 
@@ -105,8 +110,6 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
         return imageArray.count
-
-//        return imageURL.count
 
     }
 

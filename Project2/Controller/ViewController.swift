@@ -210,6 +210,11 @@ extension ViewController {
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(addShape(noti:)), name: notificationName6, object: nil)
+        
+        let notificationName7 = Notification.Name(NotiName.backgroundColor.rawValue)
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(changeBackgroundColor(noti:)), name: notificationName7, object: nil)
 
     }
 
@@ -309,6 +314,17 @@ extension ViewController {
         goToEditingVC(with: newShape, navigationBarForImage: false)
         
     }
+    
+    @objc func changeBackgroundColor(noti: Notification) {
+        
+        if let userInfo = noti.userInfo,
+            let color = userInfo[NotificationInfo.backgroundColor] as? UIColor {
+            
+            designView.image = nil
+            designView.backgroundColor = color
+        }
+    }
+    
 }
 
 //Handle Gesture
