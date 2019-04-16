@@ -174,6 +174,7 @@ class ShapeView: UIView {
                                                         transform: self.transform)
         } else {
               newShape.path = self.path
+
         }
         
         newShape.frame = self.frame

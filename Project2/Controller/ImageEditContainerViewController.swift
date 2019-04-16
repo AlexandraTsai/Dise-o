@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HueKit
 
 class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
     
@@ -14,6 +15,9 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
     @IBOutlet weak var colorBtn: UIButton!
     @IBOutlet weak var filterBtn: UIButton!
     @IBOutlet weak var transparencyBtn: UIButton!
+    
+    @IBOutlet weak var paletteView: UIView!
+    @IBOutlet weak var colorSquarePicker: ColorSquarePicker!
     
     @IBOutlet weak var imageCollectionView: UICollectionView! {
 
@@ -35,11 +39,12 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
 //        photoManager.delegate = self
 //        photoManager.grabPhoto()
 
-        imageCollectionView.al_registerCellWithNib(
-            identifier: String(describing: PhotoCollectionViewCell.self),
-            bundle: nil)
+//         imageCollectionView.al_registerCellWithNib(
+//             identifier: String(describing: PhotoCollectionViewCell.self),
+//             bundle: nil)
 
-        setupCollectionViewLayout()
+//        setupCollectionViewLayout()
+        
         createNotification()
         
         filterBtn.isSelected = true
@@ -85,6 +90,40 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         filterBtn.isSelected = false
         transparencyBtn.isSelected = true
     }
+    @IBAction func usedColorBtnTapped(_ sender: Any) {
+        
+        
+    }
+    
+    @IBAction func defaultColorBtnTapped(_ sender: UIButton) {
+        
+        guard let color = sender.backgroundColor else { return }
+        
+        let notificationName = Notification.Name(NotiName.changeEditingViewColor.rawValue)
+        
+        NotificationCenter.default.post(
+            name: notificationName,
+            object: nil,
+            userInfo: [NotificationInfo.changeEditingViewColor: color])
+   
+    }
+    
+    @IBAction func colorBarPickerValueChanged(_ sender: ColorBarPicker) {
+        
+        colorSquarePicker.hue = sender.hue
+        
+    }
+    
+    @IBAction func colorSquarePickerValueChanged(_ sender: ColorSquarePicker) {
+       
+        let notificationName = Notification.Name(NotiName.changeEditingViewColor.rawValue)
+        
+        NotificationCenter.default.post(
+            name: notificationName,
+            object: nil,
+            userInfo: [NotificationInfo.changeEditingViewColor: sender.color])
+    }
+    
 }
 
 extension ImageEditContainerViewController: UICollectionViewDelegate, UICollectionViewDataSource {

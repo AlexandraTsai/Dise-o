@@ -37,7 +37,7 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         colorButton.isSelected = true
 
         createNotification()

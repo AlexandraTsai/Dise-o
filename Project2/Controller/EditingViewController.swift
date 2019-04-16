@@ -945,6 +945,11 @@ extension EditingViewController: FusumaDelegate {
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(changeImage(noti:)), name: notificationName, object: nil)
+        
+        let notificationName2 = Notification.Name(NotiName.changeEditingViewColor.rawValue)
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(changeEditingViewColor(noti:)), name: notificationName2, object: nil)
     }
     
     // 收到通知後要執行的動作
@@ -955,6 +960,28 @@ extension EditingViewController: FusumaDelegate {
             if mode == true {
                 self.present(fusuma, animated: true, completion: nil)
             }
+        }
+    }
+    
+    @objc func changeEditingViewColor(noti: Notification) {
+        
+        if let userInfo =  noti.userInfo,
+            let color = userInfo[NotificationInfo.changeEditingViewColor] as? UIColor {
+            
+            guard let view = editingView as? UIImageView else {
+                
+                guard let view = editingView as? ShapeView else { return }
+                
+                    let fillLayer = CAShapeLayer()
+                    fillLayer.path = view.path.cgPath
+                    fillLayer.fillColor = color.cgColor
+                    editingView?.layer.addSublayer(fillLayer)
+                
+                    return
+            }
+            view.image = nil
+            view.backgroundColor = color
+                
         }
     }
     

@@ -23,6 +23,7 @@ struct NotificationInfo {
     static let backgroundColor = "backgroundColor"  //UIColor
     
     static let addShape = ""
+    static let changeEditingViewColor = "changeEditingViewColor"
  
 }
 
@@ -38,6 +39,7 @@ enum NotiName: String {
     case pickingPhotoMode
     case changeImage //Change image at editingVC
     case didChangeImage
+    case changeEditingViewColor
     
     //Shape
     case addShape
