@@ -515,6 +515,7 @@
                         <viewLayoutGuide key="safeArea" id="Va0-bd-i16"/>
                     </view>
                     <connections>
+                        <outlet property="addElementButton" destination="ZBA-2a-ivG" id="ooV-Ma-uaD"/>
                         <outlet property="alignmentButton" destination="YEZ-w7-1D9" id="wCA-YW-Usw"/>
                         <outlet property="boldbutton" destination="64J-AB-AX5" id="lfi-A0-iYM"/>
                         <outlet property="currentFontBtn" destination="oKA-Vq-X5A" id="BPh-zg-PJS"/>
@@ -985,68 +986,74 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAs-jG-Wny">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="218"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shg-Ow-2Sl">
-                                        <rect key="frame" x="20" y="180" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ur6-DU-mut" customClass="ColorBarPicker" customModule="HueKit">
+                                        <rect key="frame" x="10" y="158" width="355" height="10"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="KiR-7U-HEO"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="colorBarPickerValueChanged:" destination="WfK-Wl-JPr" eventType="valueChanged" id="Uu5-Xe-9sI"/>
+                                            <action selector="colorBarPickerValueChnaged:" destination="8WY-QU-6sx" eventType="valueChanged" id="h4I-aA-ZEH"/>
+                                        </connections>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shg-Ow-2Sl">
+                                        <rect key="frame" x="20" y="188" width="21" height="22"/>
+                                        <state key="normal" image="noun_Cancel"/>
+                                        <connections>
+                                            <action selector="checkBtnTapped:" destination="WfK-Wl-JPr" eventType="touchUpInside" id="Oqy-uW-Dfh"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eQ-hd-ewn">
-                                        <rect key="frame" x="309" y="180" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eQ-hd-ewn">
+                                        <rect key="frame" x="334" y="188" width="21" height="22"/>
+                                        <state key="normal" image="noun_Check"/>
+                                        <connections>
+                                            <action selector="checkBtnTapped:" destination="WfK-Wl-JPr" eventType="touchUpInside" id="I1G-jO-YcP"/>
+                                        </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5l4-nD-QNE" customClass="ColorSquarePicker" customModule="HueKit">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="158"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="point" keyPath="value">
+                                                <point key="value" x="0.0" y="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="colorSquarePickerValueChanged:" destination="8WY-QU-6sx" eventType="valueChanged" id="Mby-K5-dh8"/>
+                                            <action selector="colorSquarePickerValueChanged:" destination="WfK-Wl-JPr" eventType="valueChanged" id="Syy-IE-uco"/>
+                                        </connections>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="shg-Ow-2Sl" secondAttribute="bottom" constant="8" id="HGN-qN-9d1"/>
                                     <constraint firstItem="2eQ-hd-ewn" firstAttribute="centerY" secondItem="shg-Ow-2Sl" secondAttribute="centerY" id="PJd-6v-1Ik"/>
+                                    <constraint firstItem="Ur6-DU-mut" firstAttribute="centerX" secondItem="5l4-nD-QNE" secondAttribute="centerX" id="eki-AH-wpk"/>
+                                    <constraint firstItem="5l4-nD-QNE" firstAttribute="leading" secondItem="LAs-jG-Wny" secondAttribute="leading" id="h0u-Ua-oHf"/>
+                                    <constraint firstItem="Ur6-DU-mut" firstAttribute="top" secondItem="5l4-nD-QNE" secondAttribute="bottom" id="hpG-LU-jxu"/>
+                                    <constraint firstItem="shg-Ow-2Sl" firstAttribute="top" secondItem="Ur6-DU-mut" secondAttribute="bottom" constant="20" id="kWV-7s-arR"/>
                                     <constraint firstItem="shg-Ow-2Sl" firstAttribute="leading" secondItem="LAs-jG-Wny" secondAttribute="leading" constant="20" id="oH2-mu-Hkz"/>
+                                    <constraint firstAttribute="trailing" secondItem="5l4-nD-QNE" secondAttribute="trailing" id="oJO-dQ-gVo"/>
                                     <constraint firstAttribute="trailing" secondItem="2eQ-hd-ewn" secondAttribute="trailing" constant="20" id="qM8-Rt-oRo"/>
+                                    <constraint firstItem="5l4-nD-QNE" firstAttribute="top" secondItem="LAs-jG-Wny" secondAttribute="top" id="rA0-11-FMv"/>
+                                    <constraint firstItem="Ur6-DU-mut" firstAttribute="leading" secondItem="LAs-jG-Wny" secondAttribute="leading" constant="10" id="rYz-It-tbJ"/>
                                 </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5l4-nD-QNE" customClass="ColorSquarePicker" customModule="HueKit">
-                                <rect key="frame" x="10" y="5" width="355" height="149"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="point" keyPath="value">
-                                        <point key="value" x="0.0" y="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="colorSquarePickerValueChanged:" destination="8WY-QU-6sx" eventType="valueChanged" id="Mby-K5-dh8"/>
-                                    <action selector="colorSquarePickerValueChanged:" destination="WfK-Wl-JPr" eventType="valueChanged" id="Syy-IE-uco"/>
-                                </connections>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ur6-DU-mut" customClass="ColorBarPicker" customModule="HueKit">
-                                <rect key="frame" x="10" y="156" width="355" height="10"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="10" id="KiR-7U-HEO"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="colorBarPickerValueChanged:" destination="WfK-Wl-JPr" eventType="valueChanged" id="Uu5-Xe-9sI"/>
-                                    <action selector="colorBarPickerValueChnaged:" destination="8WY-QU-6sx" eventType="valueChanged" id="h4I-aA-ZEH"/>
-                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hcr-h6-7bz" firstAttribute="leading" secondItem="BVZ-XK-vg7" secondAttribute="leading" id="0rV-Ic-pjW"/>
-                            <constraint firstItem="BVZ-XK-vg7" firstAttribute="bottom" secondItem="Ur6-DU-mut" secondAttribute="bottom" constant="52" id="5IF-cg-rR2"/>
                             <constraint firstItem="LAs-jG-Wny" firstAttribute="top" secondItem="BVZ-XK-vg7" secondAttribute="top" id="ABJ-sw-WsK"/>
                             <constraint firstItem="LAs-jG-Wny" firstAttribute="leading" secondItem="BVZ-XK-vg7" secondAttribute="leading" id="BZx-jb-7RB"/>
                             <constraint firstAttribute="trailing" secondItem="5x3-mL-B3g" secondAttribute="trailing" id="CtG-Pb-Jyw"/>
                             <constraint firstItem="LAs-jG-Wny" firstAttribute="trailing" secondItem="BVZ-XK-vg7" secondAttribute="trailing" id="HhU-4Y-Hzp"/>
-                            <constraint firstItem="BVZ-XK-vg7" firstAttribute="trailing" secondItem="5l4-nD-QNE" secondAttribute="trailing" constant="10" id="LOx-kQ-yIr"/>
                             <constraint firstItem="LAs-jG-Wny" firstAttribute="bottom" secondItem="BVZ-XK-vg7" secondAttribute="bottom" id="LaX-Le-dUT"/>
                             <constraint firstItem="5x3-mL-B3g" firstAttribute="top" secondItem="5Vu-MO-3I2" secondAttribute="top" id="Ocr-3j-88g"/>
                             <constraint firstItem="hcr-h6-7bz" firstAttribute="bottom" secondItem="BVZ-XK-vg7" secondAttribute="bottom" id="Q81-KH-jNd"/>
                             <constraint firstItem="hcr-h6-7bz" firstAttribute="trailing" secondItem="BVZ-XK-vg7" secondAttribute="trailing" id="Ty9-CB-y4A"/>
-                            <constraint firstItem="5l4-nD-QNE" firstAttribute="leading" secondItem="BVZ-XK-vg7" secondAttribute="leading" constant="10" id="VvS-UP-MKa"/>
                             <constraint firstItem="5x3-mL-B3g" firstAttribute="leading" secondItem="5Vu-MO-3I2" secondAttribute="leading" id="WGt-US-3cN"/>
-                            <constraint firstItem="Ur6-DU-mut" firstAttribute="leading" secondItem="5l4-nD-QNE" secondAttribute="leading" id="dIZ-aP-0xz"/>
-                            <constraint firstItem="Ur6-DU-mut" firstAttribute="top" secondItem="5l4-nD-QNE" secondAttribute="bottom" constant="2" id="gJC-iq-BYD"/>
                             <constraint firstItem="hcr-h6-7bz" firstAttribute="top" secondItem="5x3-mL-B3g" secondAttribute="bottom" id="qWG-Me-Pjl"/>
-                            <constraint firstItem="5l4-nD-QNE" firstAttribute="top" secondItem="BVZ-XK-vg7" secondAttribute="top" constant="5" id="rXW-CR-E2N"/>
-                            <constraint firstItem="Ur6-DU-mut" firstAttribute="trailing" secondItem="5l4-nD-QNE" secondAttribute="trailing" id="tnM-rS-Cnk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BVZ-XK-vg7"/>
                     </view>

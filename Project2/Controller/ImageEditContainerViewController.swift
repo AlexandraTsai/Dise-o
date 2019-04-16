@@ -31,6 +31,13 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
     var imageArray = [UIImage]()
     var imageURL = [URL]()
     var cache = NSCache<NSString, UIImage>()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(true)
+        
+        paletteView.isHidden = true
+    }
 
     override func viewDidLoad() {
         
@@ -92,6 +99,14 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
     }
     @IBAction func usedColorBtnTapped(_ sender: Any) {
         
+        paletteView.isHidden = false
+        
+        let notificationName = Notification.Name(NotiName.addElementButton.rawValue)
+        
+        NotificationCenter.default.post(
+            name: notificationName,
+            object: nil,
+            userInfo: [NotificationInfo.addElementButton: false])
         
     }
     
@@ -122,6 +137,18 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
             name: notificationName,
             object: nil,
             userInfo: [NotificationInfo.changeEditingViewColor: sender.color])
+    }
+    
+    @IBAction func checkBtnTapped(_ sender: Any) {
+        
+        paletteView.isHidden = true
+        
+        let notificationName = Notification.Name(NotiName.addElementButton.rawValue)
+        
+        NotificationCenter.default.post(
+            name: notificationName,
+            object: nil,
+            userInfo: [NotificationInfo.addElementButton: true])
     }
     
 }

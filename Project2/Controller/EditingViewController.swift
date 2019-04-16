@@ -32,6 +32,8 @@ class EditingViewController: UIViewController {
     @IBOutlet weak var rotationView: UIView!
     @IBOutlet weak var rotateSlider: UISlider!
     
+    @IBOutlet weak var addElementButton: UIButton!
+    
     var lineHeight: Float = 0
     var letterSpacing: Float = 0
     var currentFontName: FontName = FontName.helveticaNeue
@@ -950,6 +952,11 @@ extension EditingViewController: FusumaDelegate {
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(changeEditingViewColor(noti:)), name: notificationName2, object: nil)
+        
+        let notificationName3 = Notification.Name(NotiName.addElementButton.rawValue)
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(showOrHideButton(noti:)), name: notificationName3, object: nil)
     }
     
     // 收到通知後要執行的動作
@@ -982,6 +989,18 @@ extension EditingViewController: FusumaDelegate {
             view.image = nil
             view.backgroundColor = color
                 
+        }
+    }
+    
+    @objc func showOrHideButton(noti: Notification) {
+        if let userInfo = noti.userInfo,
+            let mode = userInfo[NotificationInfo.addElementButton] as? Bool {
+            
+            if mode == true {
+                addElementButton.isHidden = false
+            } else {
+                addElementButton.isHidden = true
+            }
         }
     }
     

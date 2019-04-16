@@ -24,6 +24,7 @@ struct NotificationInfo {
     
     static let addShape = ""
     static let changeEditingViewColor = "changeEditingViewColor"
+    static let addElementButton = true
  
 }
 
@@ -43,5 +44,8 @@ enum NotiName: String {
     
     //Shape
     case addShape
+    
+    //Button
+    case addElementButton
 
 }
