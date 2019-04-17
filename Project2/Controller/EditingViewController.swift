@@ -19,8 +19,8 @@ class EditingViewController: UIViewController {
     @IBOutlet weak var fontTableView: UITableView! {
 
         didSet {
-            fontTableView.delegate = self
-            fontTableView.dataSource = self
+//            fontTableView.delegate = self
+//            fontTableView.dataSource = self
         }
     }
     @IBOutlet weak var italicButton: UIButton!
@@ -33,6 +33,10 @@ class EditingViewController: UIViewController {
     @IBOutlet weak var rotateSlider: UISlider!
     
     @IBOutlet weak var addElementButton: UIButton!
+    
+    deinit {
+        print("EditingViewController deinit \(self)")
+    }
     
     var lineHeight: Float = 0
     var letterSpacing: Float = 0
@@ -90,7 +94,7 @@ class EditingViewController: UIViewController {
         fontTableView.al_registerCellWithNib(identifier: String(describing: FontTableViewCell.self), bundle: nil)
         fontTableView.al_registerCellWithNib(identifier: String(describing: SpacingTableViewCell.self), bundle: nil)
         fontTableView.al_registerCellWithNib(identifier: String(describing: FontSizeTableViewCell.self), bundle: nil)
-        
+
         setupImagePicker()
         createNotification()
         selectFontView.isHidden = true
@@ -974,6 +978,16 @@ extension EditingViewController: FusumaDelegate {
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(showOrHideButton(noti:)), name: notificationName3, object: nil)
+        
+        let notificationName4 = Notification.Name(NotiName.textTransparency.rawValue)
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(changeTextTransparency(noti:)), name: notificationName4, object: nil)
+        
+        let notificationName5 = Notification.Name(NotiName.textColor.rawValue)
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(changeTextColor(noti:)), name: notificationName5, object: nil)
     }
     
     // 收到通知後要執行的動作
@@ -1023,6 +1037,23 @@ extension EditingViewController: FusumaDelegate {
         }
     }
     
+    @objc func changeTextColor(noti: Notification) {
+        if let userInfo = noti.userInfo,
+            let color = userInfo[NotificationInfo.textColor] as? UIColor {
+            
+            guard let text = editingView as? UITextView else { return }
+            text.textColor = color
+        }
+    }
+    @objc func changeTextTransparency(noti: Notification) {
+        if let userInfo = noti.userInfo,
+            let transparency = userInfo[NotificationInfo.textTransparency] as? CGFloat {
+            
+            guard let text = editingView as? UITextView else { return }
+            text.alpha = transparency
+        }
+    }
+    
     func setupImagePicker() {
         
         fusuma.delegate = self
@@ -1046,7 +1077,7 @@ extension EditingViewController: FusumaDelegate {
         fusumaCameraTitle = "Camera"
         fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         
-        self.present(fusuma, animated: true, completion: nil)
+//        self.present(fusuma, animated: true, completion: nil)
     }
     
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {

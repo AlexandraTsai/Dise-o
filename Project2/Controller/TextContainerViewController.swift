@@ -10,11 +10,24 @@ import UIKit
 
 class TextContainerViewController: UIViewController {
 
+    @IBOutlet weak var slider: UISlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
-   
+    
+    @IBAction func sliderDidSlide(_ sender: UISlider) {
+        
+        let notificationName = Notification.Name(NotiName.textTransparency.rawValue)
+        
+        NotificationCenter.default.post(
+            name: notificationName,
+            object: nil,
+            userInfo: [NotificationInfo.textTransparency: sender.value])
+        
+    }
+    
     @IBAction func doneButtonTapped(_ sender: Any) {
         
         let notificationName = Notification.Name(NotiName.addElementButton.rawValue)

@@ -27,6 +27,10 @@ struct NotificationInfo {
 
     static let changeEditingViewColor = "changeEditingViewColor"
     static let addElementButton = true
+    
+    //Text attribute
+    static let textTransparency = "textTransparency" //CGFloat
+    static let textColor = "textColor" //UIColor
  
 }
 
@@ -53,5 +57,8 @@ enum NotiName: String {
     
     //Button
     case addElementButton
-
+    
+    //Text Attribute
+    case textTransparency
+    case textColor
 }

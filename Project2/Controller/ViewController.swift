@@ -90,12 +90,12 @@ class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
 
     }
 
-    @IBAction func downBtnTapped(_ sender: Any) {
-
-        guard let editingView = editingView  else { return }
-        designView.sendSubviewToBack(editingView)
-
-    }
+//    @IBAction func downBtnTapped(_ sender: Any) {
+//
+//        guard let editingView = editingView  else { return }
+//        designView.sendSubviewToBack(editingView)
+//
+//    }
 
     @IBAction func addImageBtnTapped(_ sender: Any) {
 

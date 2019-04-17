@@ -79,7 +79,6 @@
                                                 <state key="normal" image="Icon_shape"/>
                                                 <connections>
                                                     <action selector="addShapeBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8KX-Kr-M6Q"/>
-                                                    <action selector="downBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QWa-mD-Zi7"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cau-ql-3Op">
@@ -214,16 +213,16 @@
                                     <constraint firstAttribute="width" constant="335" id="j4N-Y5-YtX"/>
                                 </constraints>
                             </imageView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eE4-nX-key">
-                                <rect key="frame" x="0.0" y="449" width="375" height="218"/>
-                                <connections>
-                                    <segue destination="WfK-Wl-JPr" kind="embed" id="cm5-nj-F31"/>
-                                </connections>
-                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Xu-MZ-AX6">
                                 <rect key="frame" x="0.0" y="449" width="375" height="218"/>
                                 <connections>
                                     <segue destination="igD-yW-FCX" kind="embed" id="A8b-mS-9Wu"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eE4-nX-key">
+                                <rect key="frame" x="0.0" y="449" width="375" height="218"/>
+                                <connections>
+                                    <segue destination="WfK-Wl-JPr" kind="embed" id="cm5-nj-F31"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yke-94-yj6">
@@ -1162,8 +1161,11 @@
                                             <constraint firstAttribute="height" constant="30" id="mnT-dn-44b"/>
                                         </constraints>
                                     </imageView>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jdW-rE-rl3">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="jdW-rE-rl3">
                                         <rect key="frame" x="58" y="0.0" width="260.5" height="31"/>
+                                        <connections>
+                                            <action selector="sliderDidSlide:" destination="igD-yW-FCX" eventType="valueChanged" id="uMV-yV-ewb"/>
+                                        </connections>
                                     </slider>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4u-ec-zuI">
                                         <rect key="frame" x="20" y="67" width="30" height="30"/>
@@ -1287,6 +1289,9 @@
                             <constraint firstItem="F4V-KY-2DR" firstAttribute="top" secondItem="arG-83-L2Y" secondAttribute="top" id="bES-XY-azb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="slider" destination="jdW-rE-rl3" id="hHP-Qe-AnC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q8x-Mg-Dpv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
