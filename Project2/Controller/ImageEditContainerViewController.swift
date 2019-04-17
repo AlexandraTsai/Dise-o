@@ -129,8 +129,6 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         
         colorSquarePicker.hue = sender.hue
         
-        print(colorSquarePicker.hue)
-        
         let notificationName = Notification.Name(NotiName.changeEditingViewColor.rawValue)
         
         NotificationCenter.default.post(

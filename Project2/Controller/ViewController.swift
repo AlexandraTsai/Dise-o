@@ -514,6 +514,7 @@ extension ViewController {
         newText.font = textView.font
         newText.backgroundColor = UIColor.clear
         newText.textAlignment = textView.textAlignment
+        newText.textColor = UIColor.black
 
         newText.addDoneButtonOnKeyboard()
 

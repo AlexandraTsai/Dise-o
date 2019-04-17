@@ -26,6 +26,8 @@ class EditingViewController: UIViewController {
     @IBOutlet weak var italicButton: UIButton!
     @IBOutlet weak var boldbutton: UIButton!
     @IBOutlet weak var fontSizeBtn: UIButton!
+    @IBOutlet weak var colorButton: UIButton!
+    
     @IBOutlet weak var textEditView: UIView!
     @IBOutlet weak var imageEditContainerView: UIView!
     @IBOutlet weak var selectFontView: UIView!
@@ -73,8 +75,6 @@ class EditingViewController: UIViewController {
                return
 
             }
-
-            view.delegate = self
         
             textEditView.isHidden = false
             imageEditContainerView.isHidden = true
@@ -997,6 +997,7 @@ extension EditingViewController: FusumaDelegate {
             
             if mode == true {
                 self.present(fusuma, animated: true, completion: nil)
+                print(fusuma)
             }
         }
     }
@@ -1028,8 +1029,9 @@ extension EditingViewController: FusumaDelegate {
             if mode == true {
                 addElementButton.isHidden = false
                 
-                guard ((editingView as? UITextView) != nil) else { return }
-                textEditView.isHidden = false
+                if editingView as? UITextView != nil {
+                     textEditView.isHidden = false
+                }
                 
             } else {
                 addElementButton.isHidden = true
@@ -1037,20 +1039,24 @@ extension EditingViewController: FusumaDelegate {
         }
     }
     
+    //Text Attribute
     @objc func changeTextColor(noti: Notification) {
         if let userInfo = noti.userInfo,
             let color = userInfo[NotificationInfo.textColor] as? UIColor {
             
             guard let text = editingView as? UITextView else { return }
             text.textColor = color
+            colorButton.backgroundColor = color
         }
     }
     @objc func changeTextTransparency(noti: Notification) {
         if let userInfo = noti.userInfo,
             let transparency = userInfo[NotificationInfo.textTransparency] as? CGFloat {
             
-            guard let text = editingView as? UITextView else { return }
-            text.alpha = transparency
+            guard let textView = editingView as? UITextView else { return }
+            
+            let color = textView.textColor
+            textView.textColor = color?.withAlphaComponent(transparency)
         }
     }
     
@@ -1076,8 +1082,7 @@ extension EditingViewController: FusumaDelegate {
         
         fusumaCameraTitle = "Camera"
         fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-        
-//        self.present(fusuma, animated: true, completion: nil)
+    
     }
     
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
