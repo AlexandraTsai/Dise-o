@@ -88,7 +88,8 @@ extension UITextView {
         }
     }
 
-    func keepAttributeWith(lineHeight: Float, letterSpacing: Float, fontName: String, fontSize: CGFloat) {
+    func keepAttributeWith(lineHeight: Float, letterSpacing: Float, fontName: String, fontSize: CGFloat, textColor: UIColor
+) {
 
         let align = self.textAlignment
 
@@ -101,7 +102,7 @@ extension UITextView {
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle,
                                       value: paragraphStyle,
                                       range: NSRange(location: 0, length: attributedString.length))
-
+        
         let range = NSRange(location: 0, length: attributedString.length)
         //Letter Spacing
         attributedString.addAttribute(NSAttributedString.Key.kern, value: letterSpacing, range: range)
@@ -111,6 +112,8 @@ extension UITextView {
         attributedString.addAttribute(NSAttributedString.Key.font,
                                       value: font,
                                       range: NSRange(location: 0, length: attributedString.length))
+        
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: textColor, range: NSRange(location: 0, length: attributedString.length))
 
         self.attributedText = attributedString
 

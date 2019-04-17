@@ -19,8 +19,8 @@ class EditingViewController: UIViewController {
     @IBOutlet weak var fontTableView: UITableView! {
 
         didSet {
-//            fontTableView.delegate = self
-//            fontTableView.dataSource = self
+            fontTableView.delegate = self
+            fontTableView.dataSource = self
         }
     }
     @IBOutlet weak var italicButton: UIButton!
@@ -927,7 +927,8 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
 
         guard let view = editingView as? UITextView,
             let fontName = view.font?.fontName,
-            let fontSize = view.font?.pointSize  else { return }
+            let fontSize = view.font?.pointSize,
+            let textColor = view.textColor else { return }
         
         let contentSize = view.sizeThatFits(self.view.bounds.size)
         view.frame.size.height = contentSize.height
@@ -935,25 +936,41 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
         view.keepAttributeWith(lineHeight: lineHeight,
                                letterSpacing: letterSpacing,
                                fontName: fontName,
-                               fontSize: fontSize)
+                               fontSize: fontSize,
+                               textColor: textColor)
     }
 
     func changeFontSize(to size: Int) {
 
-        guard let view = editingView as? UITextView, let fontName = view.font?.fontName  else { return }
+        guard let view = editingView as? UITextView,
+            let fontName = view.font?.fontName,
+            let textColor = view.textColor else { return }
 
         let contentSize = view.sizeThatFits(self.view.bounds.size)
         
         view.keepAttributeWith(lineHeight: self.lineHeight,
                                letterSpacing: self.letterSpacing,
                                fontName: fontName,
-                               fontSize: CGFloat(size))
+                               fontSize: CGFloat(size),
+                               textColor: textColor)
 
         view.font = UIFont(name: fontName, size: CGFloat(size))
 
         view.frame.size.height = contentSize.height
         
+        resize(textView: view)
+        
         fontSizeBtn.setTitle(String(size), for: .normal)
+    }
+    
+    fileprivate func resize(textView: UITextView) {
+        var newFrame = textView.frame
+        let width = newFrame.size.width
+        let newSize = textView.sizeThatFits(CGSize(width: width, height: CGFloat.greatestFiniteMagnitude))
+        newFrame.size = CGSize(width: width, height: newSize.height)
+        
+        textView.frame = newFrame
+        
     }
 }
 

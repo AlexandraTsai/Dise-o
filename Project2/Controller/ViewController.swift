@@ -515,7 +515,8 @@ extension ViewController {
         newText.backgroundColor = UIColor.clear
         newText.textAlignment = textView.textAlignment
         newText.textColor = UIColor.black
-
+        newText.isScrollEnabled = false
+       
         newText.addDoneButtonOnKeyboard()
 
         addAllGesture(to: newText)
