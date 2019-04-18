@@ -68,8 +68,6 @@ class TextContainerViewController: UIViewController {
                                         object: nil,
                                         userInfo: [NotificationInfo.textColor: color])
         
-        usedColorButton.backgroundColor = sender.backgroundColor
-        
     }
 
     @IBAction func colorSquarePickerValueChanged(_ sender: ColorSquarePicker) {
@@ -80,7 +78,6 @@ class TextContainerViewController: UIViewController {
                                         object: nil,
                                         userInfo: [NotificationInfo.textColor: colorSquarePicker.color])
         
-        usedColorButton.backgroundColor = sender.color
     }
     
     @IBAction func colorBarPickerValueChanged(_ sender: ColorBarPicker) {
@@ -92,8 +89,6 @@ class TextContainerViewController: UIViewController {
         NotificationCenter.default.post(name: notificationName,
                                         object: nil,
                                         userInfo: [NotificationInfo.textColor: colorSquarePicker.color])
-        
-        usedColorButton.backgroundColor = colorSquarePicker.color
-        
+      
     }
 }

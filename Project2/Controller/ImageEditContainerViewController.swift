@@ -17,9 +17,14 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
     @IBOutlet weak var transparencyBtn: UIButton!
     
     @IBOutlet weak var paletteView: UIView!
+    @IBOutlet weak var transparencyView: UIView!
+    
     @IBOutlet weak var colorSquarePicker: ColorSquarePicker!
     @IBOutlet weak var colorBarPicker: ColorBarPicker!
     @IBOutlet weak var usedColorButton: UIButton!
+    @IBOutlet weak var slider: UISlider! 
+
+    @IBOutlet weak var transparencyLabel: UILabel!
     
     @IBOutlet weak var imageCollectionView: UICollectionView! {
 
@@ -32,13 +37,13 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
     let photoManager = PhotoManager()
     var imageArray = [UIImage]()
     var imageURL = [URL]()
-    var cache = NSCache<NSString, UIImage>()
-    
+   
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(true)
         
         paletteView.isHidden = true
+        transparencyView.isHidden = true
     }
 
     override func viewDidLoad() {
@@ -57,6 +62,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         createNotification()
         
         filterBtn.isSelected = true
+        
     }
     
     func setupImage() {
@@ -69,6 +75,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         colorBtn.isSelected = false
         filterBtn.isSelected = false
         transparencyBtn.isSelected = false
+        transparencyView.isHidden = true
         
         let notificationName = Notification.Name(NotiName.changeImage.rawValue)
         NotificationCenter.default.post(
@@ -83,6 +90,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         colorBtn.isSelected = true
         filterBtn.isSelected = false
         transparencyBtn.isSelected = false
+        transparencyView.isHidden = true
     }
     
     @IBAction func filterBtnTapped(_ sender: Any) {
@@ -90,6 +98,8 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         colorBtn.isSelected = false
         filterBtn.isSelected = true
         transparencyBtn.isSelected = false
+        transparencyView.isHidden = true
+        
     }
 
     @IBAction func transparencyBtnTapped(_ sender: Any) {
@@ -98,7 +108,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         colorBtn.isSelected = false
         filterBtn.isSelected = false
         transparencyBtn.isSelected = true
-        
+        transparencyView.isHidden = false
         
     }
     @IBAction func usedColorBtnTapped(_ sender: Any) {
@@ -137,8 +147,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
             name: notificationName,
             object: nil,
             userInfo: [NotificationInfo.changeEditingViewColor: colorSquarePicker.color])
-        
-        usedColorButton.backgroundColor = colorSquarePicker.color
+       
     }
     
     @IBAction func colorSquarePickerValueChanged(_ sender: ColorSquarePicker) {
@@ -150,7 +159,6 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
             object: nil,
             userInfo: [NotificationInfo.changeEditingViewColor: sender.color])
         
-        usedColorButton.backgroundColor = sender.color
     }
     
     @IBAction func checkBtnTapped(_ sender: Any) {
@@ -165,6 +173,11 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
             userInfo: [NotificationInfo.addElementButton: true])
     }
     
+    @IBAction func sliderDidSlide(_ sender: UISlider) {
+        
+        transparencyLabel.text = "\(Int(sender.value))"
+        
+    }
 }
 
 extension ImageEditContainerViewController: UICollectionViewDelegate, UICollectionViewDataSource {

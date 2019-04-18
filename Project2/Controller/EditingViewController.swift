@@ -41,7 +41,7 @@ class EditingViewController: UIViewController {
     }
     
     var textContainerVC: TextContainerViewController?
-    
+    var imageContainerVC: ImageEditContainerViewController?
     var lineHeight: Float = 0
     var letterSpacing: Float = 0
     var currentFontName: FontName = FontName.helveticaNeue
@@ -60,23 +60,41 @@ class EditingViewController: UIViewController {
             
             createEditingHelper(for: editingView)
             
-            guard editingView is UITextView else {
+            guard let textView = editingView as? UITextView else {
 
                textEditView.isHidden = true
                imageEditContainerView.isHidden = false
+
+                guard let view = editingView as? ShapeView else {
+                    
+                    guard let view = editingView as? UIImageView else { return }
+                    
+                    imageContainerVC?.filterBtn.isSelected = true
+                    imageContainerVC?.transparencyView.isHidden = true
+                    imageContainerVC?.transparencyBtn.isSelected = false
+                    
+                    let alpha = view.alpha
+                   
+                    imageContainerVC?.slider.value = Float(alpha*100)
+                    imageContainerVC?.transparencyLabel.text = "\(Int(Float(alpha*100)))"
+                    
+                    return
+                    
+                }
                 
-                guard let view = editingView as? ShapeView else { return }
+                let notificationName = Notification.Name(NotiName.paletteColor.rawValue)
                 
-                    let notificationName = Notification.Name(NotiName.paletteColor.rawValue)
-                
-                    NotificationCenter.default.post(
-                    name: notificationName,
-                    object: nil,
-                    userInfo: [NotificationInfo.paletteColor: view.shapeColor])
+                NotificationCenter.default.post(name: notificationName,
+                                                object: nil,
+                                                userInfo: [NotificationInfo.paletteColor: view.shapeColor])
                 
                return
 
             }
+        
+            guard let alpha = textView.textColor?.cgColor.alpha else { return }
+            textContainerVC?.slider.value = Float(alpha*100)
+            colorButton.backgroundColor = textView.textColor?.withAlphaComponent(1)
         
             textEditView.isHidden = false
             imageEditContainerView.isHidden = true
@@ -100,7 +118,10 @@ class EditingViewController: UIViewController {
         setupImagePicker()
         createNotification()
         selectFontView.isHidden = true
-
+        
+        imageContainerVC?.slider.addTarget(self,
+                                           action: #selector(editImageTransparency(sender:)),
+                                           for: .valueChanged)
     }
 
     @IBAction func addBtnTapped(_ sender: Any) {
@@ -321,9 +342,16 @@ class EditingViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "textSegue" {
             textContainerVC = segue.destination as? TextContainerViewController
-            
+        } else if segue.identifier == "imageSegue" {
+            imageContainerVC = segue.destination as? ImageEditContainerViewController
+           
         }
     }
+    
+    @objc func editImageTransparency(sender: UISlider) {
+        editingView?.alpha = CGFloat(sender.value/100)
+    }
+
 }
 
 //Setup Navigation Bar
@@ -686,7 +714,7 @@ extension EditingViewController {
 
         editingView = sender.view
 
-        guard let texView = sender.view as? UITextView else {
+        guard (sender.view as? UITextView) != nil else {
 
             guard (sender.view as? UIImageView) != nil else {
                 
@@ -702,10 +730,7 @@ extension EditingViewController {
 
             return
         }
-        
-        guard let alpha = texView.textColor?.cgColor.alpha else { return }
-        textContainerVC?.slider.value = Float(alpha*100)
-        
+       
         normalNavigationBar()
 
     }
@@ -782,7 +807,6 @@ extension EditingViewController {
 
         view?.center = CGPoint(x: xCenter2+translation.x, y: yCenter2+translation.y)
         gesture.setTranslation(CGPoint.zero, in: view)
-
     }
     
     @objc func handleCircleGesture(sender: UITapGestureRecognizer) {
@@ -1050,7 +1074,7 @@ extension EditingViewController: FusumaDelegate {
  
                     view.shapeColor = color
                     view.setNeedsDisplay()
-                
+
                     return
             }
             view.image = nil
