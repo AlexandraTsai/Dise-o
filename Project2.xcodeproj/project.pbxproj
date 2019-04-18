@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		732E4A17C4EE4240C0412462 /* Pods_Project2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF328FB228DDA472B389400 /* Pods_Project2.framework */; };
+		A80804EB226882720042E4FF /* EditeFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80804EA226882720042E4FF /* EditeFrameView.swift */; };
 		A80F296B22660BED009C13F5 /* TextContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F296A22660BED009C13F5 /* TextContainerViewController.swift */; };
 		A86824C2225CCF4000BDCCD8 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86824C1225CCF4000BDCCD8 /* Notification.swift */; };
 		A86824C422603BC500BDCCD8 /* CGAffineTransform+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86824C322603BC500BDCCD8 /* CGAffineTransform+Extension.swift */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		8BF328FB228DDA472B389400 /* Pods_Project2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97709A67B679D68A1DBDCC55 /* Pods-Project2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.debug.xcconfig"; path = "Target Support Files/Pods-Project2/Pods-Project2.debug.xcconfig"; sourceTree = "<group>"; };
+		A80804EA226882720042E4FF /* EditeFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditeFrameView.swift; sourceTree = "<group>"; };
 		A80F296A22660BED009C13F5 /* TextContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextContainerViewController.swift; sourceTree = "<group>"; };
 		A86824C1225CCF4000BDCCD8 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		A86824C322603BC500BDCCD8 /* CGAffineTransform+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGAffineTransform+Extension.swift"; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				A86824C322603BC500BDCCD8 /* CGAffineTransform+Extension.swift */,
 				A86824C72260838200BDCCD8 /* ALRotationGestureRecognizer.swift */,
 				A8E30642226319FD00DA03A7 /* ShapeView.swift */,
+				A80804EA226882720042E4FF /* EditeFrameView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				A86824C62260461500BDCCD8 /* UIView+Extension.swift in Sources */,
 				A8BFF77A2259E1960010E56B /* UIButton+Extenstion.swift in Sources */,
 				A8DEBBB2225638070081A694 /* UIImageView+Extension.swift in Sources */,
+				A80804EB226882720042E4FF /* EditeFrameView.swift in Sources */,
 				A8D2C458225219030085AD24 /* Project2.xcdatamodeld in Sources */,
 				A8BFF76E22586E5C0010E56B /* FontTableViewCell.swift in Sources */,
 				A8E3063C2262FE0000DA03A7 /* ShapeContainerViewController.swift in Sources */,

@@ -308,6 +308,8 @@ class EditingViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(true)
 
         guard designView.subviews.count > 0 else { return }
 
@@ -340,6 +342,9 @@ class EditingViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
         if segue.identifier == "textSegue" {
             textContainerVC = segue.destination as? TextContainerViewController
         } else if segue.identifier == "imageSegue" {
@@ -1237,12 +1242,8 @@ extension EditingViewController {
         helperView.positionHelper.layoutIfNeeded()
         
         //Setting
-        helperView.backgroundColor = UIColor.blue
-        helperView.alpha = 0.4
-//        helperView.backgroundColor = UIColor.clear
-
-        helperView.editingFrame.layer.borderWidth = 2
-        helperView.editingFrame.layer.borderColor = UIColor.white.cgColor
+        helperView.backgroundColor = UIColor.clear
+        helperView.editingFrame.backgroundColor = UIColor.clear
   
         helperView.positionHelper.image = #imageLiteral(resourceName: "noun_navigate")
         helperView.rotateHelper.image = #imageLiteral(resourceName: "Icon_Rotate")
@@ -1251,26 +1252,7 @@ extension EditingViewController {
         helperView.positionHelper.layer.cornerRadius = 10
         helperView.rotateHelper.backgroundColor = UIColor.white
         helperView.rotateHelper.layer.cornerRadius = 10
-        
-//        let path = UIBezierPath(rect: helperView.bounds)
-//
-//        let layer = CAShapeLayer()
-//        layer.frame = helperView.bounds
-//        layer.path = path.cgPath
-//        layer.masksToBounds = false
-//        layer.shadowOpacity = 0.3
-//
-////        layer.fillColor = UIColor.red.cgColor
-////        UIColor.red.setStroke()
-////        path.stroke()
-//        layer.shadowColor = UIColor.black.cgColor
-//        layer.shadowOffset = CGSize(width: 0, height: 1)
-        
-        helperView.editingFrame.layer.borderColor = UIColor.red.cgColor
-        helperView.editingFrame.layer.borderWidth = 2
-        
-//        helperView.layer.addSublayer(layer)
-        
+
         addAllGesture(to: helperView)
         
         helperView.clipsToBounds = false
@@ -1278,7 +1260,6 @@ extension EditingViewController {
         
         addCircleGesture(to: helperView.rotateHelper)
         addPanGesture(to: helperView.positionHelper)
-
     }
     
 }

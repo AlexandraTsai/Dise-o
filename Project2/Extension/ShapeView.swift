@@ -30,6 +30,8 @@ class ShapeView: UIView {
     
     override func draw(_ rect: CGRect) {
         
+        super.draw(rect)
+        
         switch shapeType {
         case ShapeAsset.circle.rawValue:
             self.createCircle()
