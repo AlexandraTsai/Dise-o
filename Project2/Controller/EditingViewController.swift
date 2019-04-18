@@ -614,16 +614,21 @@ extension EditingViewController {
     
     func addAllGesture(to helperView: UIView) {
         
-        //Enable label to rotate
+        //Enable textView to rotate
         let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation(sender:)))
         helperView.addGestureRecognizer(rotate)
         
-        //Enable to move label
+        //Enable to move textView
         let move = UIPanGestureRecognizer(target: self, action: #selector(handleDragged(_ :)))
         helperView.addGestureRecognizer(move)
         
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
         helperView.addGestureRecognizer(pinch)
+        
+        //Enable to edit textView
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap(sender:)))
+        tap.numberOfTapsRequired = 2
+
     }
 
     func addTapGesture(to newView: UIView) {
@@ -656,6 +661,13 @@ extension EditingViewController {
                                          action: #selector(handleDragged(_:)))
         
         view.addGestureRecognizer(pan)
+    }
+    
+    @objc func handleDoubleTap(sender: UITapGestureRecognizer) {
+      
+        guard let textView = editingView as? UITextView else { return }
+        
+        textView.becomeFirstResponder()
     }
 
     @objc func handleTap(sender: UITapGestureRecognizer) {
@@ -941,13 +953,11 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
     }
 
     func changeFontSize(to size: Int) {
-
+        
         guard let view = editingView as? UITextView,
             let fontName = view.font?.fontName,
             let textColor = view.textColor else { return }
 
-        let contentSize = view.sizeThatFits(self.view.bounds.size)
-        
         view.keepAttributeWith(lineHeight: self.lineHeight,
                                letterSpacing: self.letterSpacing,
                                fontName: fontName,
@@ -956,22 +966,11 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
 
         view.font = UIFont(name: fontName, size: CGFloat(size))
 
-        view.frame.size.height = contentSize.height
-        
-        resize(textView: view)
+        view.resize()
         
         fontSizeBtn.setTitle(String(size), for: .normal)
     }
     
-    fileprivate func resize(textView: UITextView) {
-        var newFrame = textView.frame
-        let width = newFrame.size.width
-        let newSize = textView.sizeThatFits(CGSize(width: width, height: CGFloat.greatestFiniteMagnitude))
-        newFrame.size = CGSize(width: width, height: newSize.height)
-        
-        textView.frame = newFrame
-        
-    }
 }
 
 // MARK: - Fusuma image picker
@@ -1061,8 +1060,11 @@ extension EditingViewController: FusumaDelegate {
         if let userInfo = noti.userInfo,
             let color = userInfo[NotificationInfo.textColor] as? UIColor {
             
-            guard let text = editingView as? UITextView else { return }
-            text.textColor = color
+            guard let textView = editingView as? UITextView else { return }
+            
+            guard let alpha = textView.textColor?.cgColor.alpha else { return }
+            
+            textView.textColor = color.withAlphaComponent(alpha)
             colorButton.backgroundColor = color
         }
     }
@@ -1073,7 +1075,9 @@ extension EditingViewController: FusumaDelegate {
             guard let textView = editingView as? UITextView else { return }
             
             let color = textView.textColor
+            
             textView.textColor = color?.withAlphaComponent(transparency)
+            
         }
     }
     
@@ -1202,6 +1206,25 @@ extension EditingViewController {
         helperView.positionHelper.layer.cornerRadius = 10
         helperView.rotateHelper.backgroundColor = UIColor.white
         helperView.rotateHelper.layer.cornerRadius = 10
+        
+//        let path = UIBezierPath(rect: helperView.bounds)
+//
+//        let layer = CAShapeLayer()
+//        layer.frame = helperView.bounds
+//        layer.path = path.cgPath
+//        layer.masksToBounds = false
+//        layer.shadowOpacity = 0.3
+//
+////        layer.fillColor = UIColor.red.cgColor
+////        UIColor.red.setStroke()
+////        path.stroke()
+//        layer.shadowColor = UIColor.black.cgColor
+//        layer.shadowOffset = CGSize(width: 0, height: 1)
+        
+        helperView.editingFrame.layer.borderColor = UIColor.red.cgColor
+        helperView.editingFrame.layer.borderWidth = 2
+        
+//        helperView.layer.addSublayer(layer)
         
         addAllGesture(to: helperView)
         

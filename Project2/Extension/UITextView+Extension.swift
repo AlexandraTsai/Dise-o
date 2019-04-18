@@ -57,7 +57,7 @@ extension UITextView {
 
         self.text = oldView.text
         self.font = oldView.font
-        self.tintColor = oldView.tintColor
+        self.textColor = oldView.textColor
         self.textAlignment = oldView.textAlignment
 
     }
@@ -88,8 +88,11 @@ extension UITextView {
         }
     }
 
-    func keepAttributeWith(lineHeight: Float, letterSpacing: Float, fontName: String, fontSize: CGFloat, textColor: UIColor
-) {
+    func keepAttributeWith(lineHeight: Float,
+                           letterSpacing: Float,
+                           fontName: String,
+                           fontSize: CGFloat,
+                           textColor: UIColor) {
 
         let align = self.textAlignment
 
@@ -113,13 +116,24 @@ extension UITextView {
                                       value: font,
                                       range: NSRange(location: 0, length: attributedString.length))
         
-        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: textColor, range: NSRange(location: 0, length: attributedString.length))
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                      value: textColor,
+                                      range: NSRange(location: 0,
+                                                     length: attributedString.length))
 
         self.attributedText = attributedString
-
-//        print(self.attributedText.font)
-
         self.textAlignment = align
 
+    }
+    
+    func resize() {
+        
+        var newFrame = self.frame
+        let width = newFrame.size.width
+        let newSize = self.sizeThatFits(CGSize(width: width, height: CGFloat.greatestFiniteMagnitude))
+        newFrame.size = CGSize(width: width, height: newSize.height)
+        
+        self.frame = newFrame
+        
     }
 }
