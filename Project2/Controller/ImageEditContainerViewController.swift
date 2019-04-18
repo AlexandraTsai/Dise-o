@@ -98,6 +98,8 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         colorBtn.isSelected = false
         filterBtn.isSelected = false
         transparencyBtn.isSelected = true
+        
+        
     }
     @IBAction func usedColorBtnTapped(_ sender: Any) {
         

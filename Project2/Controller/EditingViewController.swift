@@ -40,6 +40,8 @@ class EditingViewController: UIViewController {
         print("EditingViewController deinit \(self)")
     }
     
+    var textContainerVC: TextContainerViewController?
+    
     var lineHeight: Float = 0
     var letterSpacing: Float = 0
     var currentFontName: FontName = FontName.helveticaNeue
@@ -58,7 +60,7 @@ class EditingViewController: UIViewController {
             
             createEditingHelper(for: editingView)
             
-            guard let view = editingView as? UITextView else {
+            guard editingView is UITextView else {
 
                textEditView.isHidden = true
                imageEditContainerView.isHidden = false
@@ -295,6 +297,7 @@ class EditingViewController: UIViewController {
             
         }
          rotationView.isHidden = true
+ 
     }
     @IBAction func slideToRotate(_ sender: UISlider) {
         
@@ -313,6 +316,13 @@ class EditingViewController: UIViewController {
         
         editingView?.transform = helperView.transform
        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "textSegue" {
+            textContainerVC = segue.destination as? TextContainerViewController
+            
+        }
     }
 }
 
@@ -676,15 +686,26 @@ extension EditingViewController {
 
         editingView = sender.view
 
-        guard (sender.view as? UITextView) != nil || (sender.view as? ShapeView) != nil else {
+        guard let texView = sender.view as? UITextView else {
 
-            guard (sender.view as? UIImageView) != nil else { return }
+            guard (sender.view as? UIImageView) != nil else {
+                
+                guard (sender.view as? ShapeView) != nil else { return }
+                
+                normalNavigationBar()
+                
+                return
+                
+            }
 
             complexNavigationBar()
 
             return
         }
-
+        
+        guard let alpha = texView.textColor?.cgColor.alpha else { return }
+        textContainerVC?.slider.value = Float(alpha*100)
+        
         normalNavigationBar()
 
     }

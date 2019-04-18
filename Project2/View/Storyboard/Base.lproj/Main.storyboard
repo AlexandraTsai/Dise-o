@@ -216,7 +216,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Xu-MZ-AX6">
                                 <rect key="frame" x="0.0" y="449" width="375" height="218"/>
                                 <connections>
-                                    <segue destination="igD-yW-FCX" kind="embed" id="A8b-mS-9Wu"/>
+                                    <segue destination="igD-yW-FCX" kind="embed" identifier="textSegue" id="A8b-mS-9Wu"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eE4-nX-key">
