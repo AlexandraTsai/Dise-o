@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H0H-X8-Pxh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qv9-9e-YnF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Design View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="DesignViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1095,6 +1095,55 @@
             </objects>
             <point key="canvasLocation" x="2704.8000000000002" y="-589.20539730134942"/>
         </scene>
+        <!--Home View Controller-->
+        <scene sceneID="Rlf-hJ-w15">
+            <objects>
+                <viewController id="Qv9-9e-YnF" customClass="HomeViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Foe-Wy-frM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRf-at-Deu">
+                                <rect key="frame" x="162.5" y="597" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Hwf-5E-Uk9"/>
+                                    <constraint firstAttribute="width" constant="50" id="y5Z-x0-aEm"/>
+                                </constraints>
+                                <state key="normal" image="Add_button"/>
+                                <connections>
+                                    <action selector="addButtonTapped:" destination="Qv9-9e-YnF" eventType="touchUpInside" id="zPy-4V-Rjh"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DESign" translatesAutoresizingMaskIntoConstraints="NO" id="6uI-Yj-POL">
+                                <rect key="frame" x="162.5" y="35" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6uI-Yj-POL" secondAttribute="height" multiplier="1:1" id="14S-fn-us4"/>
+                                    <constraint firstAttribute="width" constant="50" id="GJ1-Yd-Wq4"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP + To  CREAT YOUR FIRST DESIGN" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCI-2J-uOG">
+                                <rect key="frame" x="76" y="311.5" width="223" height="44.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="R4s-Hv-sYs" firstAttribute="bottom" secondItem="lRf-at-Deu" secondAttribute="bottom" constant="20" id="43X-WJ-FrX"/>
+                            <constraint firstItem="6uI-Yj-POL" firstAttribute="top" secondItem="R4s-Hv-sYs" secondAttribute="top" constant="15" id="6Pl-UC-leJ"/>
+                            <constraint firstItem="6uI-Yj-POL" firstAttribute="centerX" secondItem="Foe-Wy-frM" secondAttribute="centerX" id="Oqo-EB-aBU"/>
+                            <constraint firstItem="lRf-at-Deu" firstAttribute="centerX" secondItem="Foe-Wy-frM" secondAttribute="centerX" id="ekK-gC-C8D"/>
+                            <constraint firstItem="SCI-2J-uOG" firstAttribute="centerY" secondItem="Foe-Wy-frM" secondAttribute="centerY" id="oJ8-Iy-0kF"/>
+                            <constraint firstItem="SCI-2J-uOG" firstAttribute="centerX" secondItem="Foe-Wy-frM" secondAttribute="centerX" id="onq-T8-bww"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="R4s-Hv-sYs"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JCg-bb-8Ko" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-599" y="-564"/>
+        </scene>
         <!--Shape Container View Controller-->
         <scene sceneID="A8E-I5-KUy">
             <objects>
@@ -1362,7 +1411,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Add_button" width="85" height="85"/>
         <image name="Color-wheel" width="42" height="42"/>
+        <image name="DESign" width="77" height="77"/>
         <image name="Icon_AlignCenter" width="21" height="21"/>
         <image name="Icon_Plus" width="85" height="85"/>
         <image name="Icon_image" width="199" height="199"/>

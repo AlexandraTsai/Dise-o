@@ -12,7 +12,7 @@ import Photos
 import Fusuma
 
 // swiftlint:disable file_length
-class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
+class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
 
     @IBOutlet weak var designView: UIImageView!
     @IBOutlet weak var containerView: ContainerViewController!
@@ -120,7 +120,7 @@ class ViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
     }
 }
 
-extension ViewController {
+extension DesignViewController {
 
     func addGesture(to view: UIView, action: Selector) {
 
@@ -330,7 +330,7 @@ extension ViewController {
 }
 
 //Handle Gesture
-extension ViewController {
+extension DesignViewController {
 
     func addAllGesture(to newView: UIView) {
 
@@ -409,7 +409,7 @@ extension ViewController {
 }
 
 //Setup Navigation Bar
-extension ViewController {
+extension DesignViewController {
 
     func setupNavigationBar() {
 
@@ -470,7 +470,7 @@ extension ViewController {
     }
 }
 
-extension ViewController {
+extension DesignViewController {
 
     //NavigationBar
     func addingTextMode() {
@@ -565,7 +565,7 @@ extension ViewController {
 
 }
 
-extension ViewController {
+extension DesignViewController {
 
     // Return the image which is selected from camera roll or is taken via the camera.
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
