@@ -16,10 +16,10 @@ class EditFrameView: UIView {
         let context = UIGraphicsGetCurrentContext()
         
         ///Shadow Declarations
-        let shadow = UIColor.black
+        let shadow = UIColor.black.withAlphaComponent(0.8)
         let shadowOffSet = CGSize(width: 0, height: 0)
         let shadowBlurRadius: CGFloat = 5
-        
+       
         ///Bezier Drawing
         let bezierPath = UIBezierPath()
         
@@ -31,6 +31,7 @@ class EditFrameView: UIView {
         context?.saveGState()
         
         context?.setShadow(offset: shadowOffSet, blur: shadowBlurRadius, color: shadow.cgColor)
+        
         UIColor.white.setStroke()
         bezierPath.lineWidth = 1
         bezierPath.stroke()

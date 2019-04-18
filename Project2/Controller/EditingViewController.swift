@@ -45,7 +45,7 @@ class EditingViewController: UIViewController {
     var lineHeight: Float = 0
     var letterSpacing: Float = 0
     var currentFontName: FontName = FontName.helveticaNeue
-    var helperView = ALGestureView()
+    var helperView = HelperView()
 
     var editingView: UIView? {
 
@@ -56,7 +56,7 @@ class EditingViewController: UIViewController {
             }
             disableNavigationButton()
             rotationView.isHidden = true
-            helperView = ALGestureView()
+            helperView = HelperView()
             
             createEditingHelper(for: editingView)
             

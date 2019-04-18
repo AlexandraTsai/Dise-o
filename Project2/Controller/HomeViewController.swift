@@ -10,10 +10,13 @@ import UIKit
 
 class HomeViewController: UIViewController, UITextFieldDelegate {
     
-    let newDesignView = NewDeign()
+    var newDesignView = NewDeign()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addSubview(newDesignView)
+        newDesignView.isHidden = true
 
         // Do any additional setup after loading the view.
     }
@@ -26,7 +29,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     func setupInputView() {
         
-        self.view.addSubview(newDesignView)
+        newDesignView.isHidden = false
         
         //Auto Layout
         newDesignView.translatesAutoresizingMaskIntoConstraints = false
@@ -37,6 +40,14 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         newDesignView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 60).isActive = true
         
         newDesignView.textField.delegate = self
+        newDesignView.textField.becomeFirstResponder()
         
+        newDesignView.cancelButton.addTarget(self, action: #selector(cancelButtonTapped(sender:)), for: .touchUpInside)
+    }
+    
+    @objc func cancelButtonTapped(sender: UIButton) {
+        newDesignView.isHidden = true
+        self.view.endEditing(true)
+//        self.view.becomeFirstResponder()
     }
 }

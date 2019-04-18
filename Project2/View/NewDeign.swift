@@ -12,28 +12,49 @@ class NewDeign: UIView {
     
     let titleLabel = UILabel()
     let textField = UITextField()
+    let cancelButton = UIButton()
+    let confirmButton = UIButton()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setup()
+        
         setupLayout()
         settingForTitleLabel()
-        setup()
+        
+        settingForTextField()
        
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
+        setup()
+        
         setupLayout()
         settingForTitleLabel()
-        setup()
+        
+        settingForTextField()
     }
     
     func setup() {
         
+        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.layer.borderWidth = 2
+        
         self.backgroundColor = UIColor.white
         self.layer.cornerRadius = 20
+        
+        //Shadow
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = .zero
+        self.layer.shadowRadius = 10
+        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        
+        self.layer.shouldRasterize = true
+        self.layer.rasterizationScale =  UIScreen.main.scale
         
     }
     
@@ -42,6 +63,8 @@ class NewDeign: UIView {
         //Add sub views
         self.addSubview(titleLabel)
         self.addSubview(textField)
+        self.addSubview(cancelButton)
+        self.addSubview(confirmButton)
         
         //Auto layout
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -49,6 +72,28 @@ class NewDeign: UIView {
         textField.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
+        
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
+        
+        cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        cancelButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
+        cancelButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
+        cancelButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        cancelButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        cancelButton.setImage(#imageLiteral(resourceName: "noun_Cancel"), for: .normal)
+        
+        confirmButton.translatesAutoresizingMaskIntoConstraints = false
+        confirmButton.centerXAnchor.constraint(equalTo: textField.centerXAnchor).isActive = true
+        confirmButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 20).isActive = true
+        confirmButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30).isActive = true
+        confirmButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30).isActive = true
+        confirmButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        confirmButton.layer.cornerRadius = 20
+        confirmButton.setTitle("CREATE", for: .normal)
+        confirmButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 20)
+        confirmButton.backgroundColor = UIColor.black
         
     }
     
@@ -59,4 +104,9 @@ class NewDeign: UIView {
         
     }
     
+    func settingForTextField() {
+        textField.placeholder = "Name your design"
+      
+    }
+   
 }
