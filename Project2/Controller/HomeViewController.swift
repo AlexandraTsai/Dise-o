@@ -23,24 +23,33 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
  
     @IBAction func addButtonTapped(_ sender: UIButton) {
         
-        setupInputView()
+        self.setupInputView()
+        newDesignView.alpha = 0
+   
+        UIView.animate(withDuration: 0.7, animations: {
+            self.newDesignView.alpha = 1
+          
+        })
         
+        newDesignView.textField.delegate = self
+        newDesignView.textField.becomeFirstResponder()
+       
     }
     
     func setupInputView() {
         
         newDesignView.isHidden = false
-        
-        //Auto Layout
+
+//        //Auto Layout
         newDesignView.translatesAutoresizingMaskIntoConstraints = false
         
         newDesignView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
         newDesignView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
         newDesignView.heightAnchor.constraint(equalToConstant: 200).isActive = true
         newDesignView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 60).isActive = true
-        
-        newDesignView.textField.delegate = self
-        newDesignView.textField.becomeFirstResponder()
+            
+//        newDesignView.textField.delegate = self
+//        newDesignView.textField.becomeFirstResponder()
         
         newDesignView.cancelButton.addTarget(self, action: #selector(cancelButtonTapped(sender:)), for: .touchUpInside)
     }

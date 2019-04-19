@@ -86,13 +86,13 @@ class NewDeign: UIView {
         
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
         confirmButton.centerXAnchor.constraint(equalTo: textField.centerXAnchor).isActive = true
-        confirmButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 20).isActive = true
+        confirmButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 25).isActive = true
         confirmButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30).isActive = true
         confirmButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30).isActive = true
         confirmButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         confirmButton.layer.cornerRadius = 20
         confirmButton.setTitle("CREATE", for: .normal)
-        confirmButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 20)
+        confirmButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 18)
         confirmButton.backgroundColor = UIColor.black
         
     }
