@@ -29,9 +29,24 @@ class ShapeView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-        
         super.draw(rect)
         
+        drawWithShapeType()
+        
+        if stroke == true {
+
+            shapeColor.setStroke()
+            path.stroke()
+
+        } else {
+
+            shapeColor.setFill()
+            path.fill()
+        }
+    
+    }
+    
+    func drawWithShapeType() {
         switch shapeType {
         case ShapeAsset.circle.rawValue:
             self.createCircle()
@@ -51,22 +66,10 @@ class ShapeView: UIView {
             self.createThickLine()
         case ShapeAsset.thickCircleBorder.rawValue:
             self.createThickCircleBorder()
-       
+    
         default:
             break
         }
-        
-        if stroke == true {
-
-            shapeColor.setStroke()
-            path.stroke()
-
-        } else {
-
-            shapeColor.setFill()
-            path.fill()
-        }
-    
     }
     
     func createSquare() {

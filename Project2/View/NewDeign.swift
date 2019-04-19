@@ -45,12 +45,10 @@ class NewDeign: UIView {
         self.layer.cornerRadius = 20
         
         //Shadow
-        self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: -1, height: 1)
-        self.layer.shadowRadius = 10
+        self.layer.shadowRadius = 12
         self.layer.shadowOpacity = 1
-//        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
     }
     
     func setupLayout() {
@@ -102,6 +100,8 @@ class NewDeign: UIView {
     func settingForTextField() {
         
         textField.placeholder = "Name your design"
+        textField.font = UIFont(name: FontName.futura.rawValue, size: 13)
+        
         textField.backgroundColor = UIColor.white
 
         textField.layer.shadowColor = UIColor.gray.cgColor

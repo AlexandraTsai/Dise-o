@@ -438,7 +438,8 @@ extension DesignViewController {
     }
 
     @objc func didTapProfileButton(sender: AnyObject) {
-       print("profile btn tapped")
+        
+       self.navigationController?.popViewController(animated: true)
 
     }
 
