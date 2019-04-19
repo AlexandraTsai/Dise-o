@@ -22,7 +22,6 @@ class NewDeign: UIView {
         
         setupLayout()
         settingForTitleLabel()
-        
         settingForTextField()
        
     }
@@ -34,14 +33,13 @@ class NewDeign: UIView {
         
         setupLayout()
         settingForTitleLabel()
-        
         settingForTextField()
     }
     
     func setup() {
         
-        self.layer.borderColor = UIColor.lightGray.cgColor
-        self.layer.borderWidth = 2
+//        self.layer.borderColor = UIColor.lightGray.cgColor
+//        self.layer.borderWidth = 2
         
         self.backgroundColor = UIColor.white
         self.layer.cornerRadius = 20
@@ -49,13 +47,10 @@ class NewDeign: UIView {
         //Shadow
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOffset = .zero
+        self.layer.shadowOffset = CGSize(width: -1, height: 1)
         self.layer.shadowRadius = 10
-        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        
-        self.layer.shouldRasterize = true
-        self.layer.rasterizationScale =  UIScreen.main.scale
-        
+        self.layer.shadowOpacity = 1
+//        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
     }
     
     func setupLayout() {
@@ -70,8 +65,8 @@ class NewDeign: UIView {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         textField.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
-        textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
+        textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30).isActive = true
+        textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30).isActive = true
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
@@ -87,12 +82,12 @@ class NewDeign: UIView {
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
         confirmButton.centerXAnchor.constraint(equalTo: textField.centerXAnchor).isActive = true
         confirmButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 25).isActive = true
-        confirmButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30).isActive = true
-        confirmButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30).isActive = true
+        confirmButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50).isActive = true
+        confirmButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50).isActive = true
         confirmButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         confirmButton.layer.cornerRadius = 20
         confirmButton.setTitle("CREATE", for: .normal)
-        confirmButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 18)
+        confirmButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 16)
         confirmButton.backgroundColor = UIColor.black
         
     }
@@ -105,8 +100,15 @@ class NewDeign: UIView {
     }
     
     func settingForTextField() {
+        
         textField.placeholder = "Name your design"
-      
+        textField.backgroundColor = UIColor.white
+
+        textField.layer.shadowColor = UIColor.gray.cgColor
+        textField.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        textField.layer.shadowRadius = 0.0
+        textField.layer.shadowOpacity = 1.0
+        
     }
    
 }
