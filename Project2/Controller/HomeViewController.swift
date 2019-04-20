@@ -63,10 +63,15 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     @objc func cancelButtonTapped(sender: UIButton) {
         
-        newDesignView.isHidden = true
-        
-        //To hide the keyboard
-        self.view.endEditing(true)
+        UIView.animate(withDuration: 0.7, animations: {
+            
+            self.newDesignView.isHidden = true
+            
+            //To hide the keyboard
+            self.view.endEditing(true)
+            
+        })
+       
     }
     
     @objc func confirmButtonTapped(sender: UIButton) {

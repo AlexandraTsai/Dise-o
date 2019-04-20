@@ -37,10 +37,7 @@ class NewDeign: UIView {
     }
     
     func setup() {
-        
-//        self.layer.borderColor = UIColor.lightGray.cgColor
-//        self.layer.borderWidth = 2
-        
+
         self.backgroundColor = UIColor.white
         self.layer.cornerRadius = 20
         
@@ -78,7 +75,7 @@ class NewDeign: UIView {
         cancelButton.setImage(#imageLiteral(resourceName: "noun_Cancel"), for: .normal)
         
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
-        confirmButton.centerXAnchor.constraint(equalTo: textField.centerXAnchor).isActive = true
+        confirmButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         confirmButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 25).isActive = true
         confirmButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50).isActive = true
         confirmButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50).isActive = true
