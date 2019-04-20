@@ -14,7 +14,7 @@ import Fusuma
 // swiftlint:disable file_length
 class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
 
-    @IBOutlet weak var designView: UIImageView!
+    @IBOutlet weak var designView: ALDesignView!
     @IBOutlet weak var containerView: ContainerViewController!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var hintLabel: UILabel!
@@ -440,6 +440,24 @@ extension DesignViewController {
     @objc func didTapProfileButton(sender: AnyObject) {
         
        self.navigationController?.popViewController(animated: true)
+   
+        StorageManager.shared.saveDesign(createTime: designView.createTime,
+                                         designName: designView.designName,
+                                         frame: designView.frame,
+                                         backgroundColor: designView.backgroundColor,
+                                         backgroundImage:designView.image,
+                                         completion: { result in
+                                            switch result {
+                                                
+                                            case .success(_):
+                                           
+                                                print("Save success.")
+                                                
+                                            case .failure(_):
+                                                
+                                                print("Fail to save")
+                                            }
+                                        })
 
     }
 

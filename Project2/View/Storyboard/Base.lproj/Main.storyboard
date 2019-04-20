@@ -47,7 +47,7 @@
                                     <constraint firstItem="WSb-rm-uin" firstAttribute="centerX" secondItem="qfP-Fw-Eth" secondAttribute="centerX" id="wfl-7p-DcI"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DZf-mM-usS">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DZf-mM-usS" customClass="ALDesignView" customModule="Project2" customModuleProvider="target">
                                 <rect key="frame" x="20" y="74" width="335" height="335"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
@@ -205,7 +205,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G2c-KZ-Yq1">
+                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G2c-KZ-Yq1" customClass="ALDesignView" customModule="Project2" customModuleProvider="target">
                                 <rect key="frame" x="20" y="74" width="335" height="335"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1415,14 +1415,14 @@
     </scenes>
     <resources>
         <image name="Add_button" width="85" height="85"/>
-        <image name="Color-wheel" width="42" height="42"/>
-        <image name="DESign" width="77" height="77"/>
+        <image name="Color-wheel" width="42.5" height="42.5"/>
+        <image name="DESign" width="77.5" height="77.5"/>
         <image name="Icon_AlignCenter" width="21" height="21"/>
         <image name="Icon_Plus" width="85" height="85"/>
         <image name="Icon_image" width="199" height="199"/>
-        <image name="Icon_shape" width="208" height="206"/>
-        <image name="Icon_sortDown" width="10" height="10"/>
-        <image name="Icon_text" width="173" height="173"/>
+        <image name="Icon_shape" width="208" height="206.5"/>
+        <image name="Icon_sortDown" width="10.5" height="10.5"/>
+        <image name="Icon_text" width="173.5" height="173.5"/>
         <image name="noun_Cancel" width="21" height="21"/>
         <image name="noun_Check" width="21" height="21"/>
         <image name="noun_Transparency" width="21" height="21"/>

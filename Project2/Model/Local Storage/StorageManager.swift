@@ -7,6 +7,7 @@
 //
 
 import CoreData
+import UIKit
 
 typealias ALDesignResults = (Result<[Design]>) -> Void
 
@@ -89,20 +90,73 @@ class StorageManager {
     }
     
     func saveDesign (
-        createTime: Int64, designName: String, completion: (Result<Void>) -> Void) {
+        createTime: Int64,
+        designName: String,
+        frame: CGRect,
+        backgroundColor: UIColor?,
+        backgroundImage: UIImage?,
+        completion: (Result<Void>) -> Void) {
         
         let design = Design(context: viewContext)
         
-        let image = Image(context: viewContext)
+//        let image = Image(context: viewContext)
         
-    
+        design.frame = frame as NSObject
+        
+        design.createTime = createTime
+        
+        design.designName = designName
+        
+        if backgroundColor == nil {
+
+            design.backgroundColor = nil
+          
+        } else {
+            
+            guard let color = backgroundColor else { return }
+            
+            design.backgroundColor = color as NSObject
+        }
+       
+        if backgroundImage == nil {
+            
+            design.backgroundImage = nil
+            
+        } else {
+            
+            guard let image = backgroundImage else { return }
+            
+            design.backgroundImage = image as NSObject
+            
+        }
+        
+        do {
+            
+            try viewContext.save()
+            
+            completion(Result.success(()))
+            
+        } catch {
+            
+            completion(Result.failure(error))
+        }
         
     }
 }
 
 private extension Design {
     
-    func mapping(_ object: Design) {
+    func mapping(_ object: ALDesignView) {
+        
+        frame = object.frame as NSObject
+        
+//        backgroundColor = object.backgroundColor as NSObject
+//
+//        backgroundImage = object.image as NSObject
+        
+        designName = object.designName
+        
+        createTime = object.createTime
         
         
     }

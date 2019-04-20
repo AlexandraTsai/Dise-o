@@ -106,7 +106,7 @@ class EditingViewController: UIViewController {
     var tableViewIndex: Int = 0
     var originalText = ""
 
-    @IBOutlet weak var designView: UIImageView!
+    @IBOutlet weak var designView: ALDesignView!
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -12,10 +12,51 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     var newDesignView = NewDeign()
     
+    var design = ALDesignView()
+    
+    var designs: [Design] = [] {
+        
+        didSet {
+            
+            if designs.count == 0 {
+                
+            } else {
+                
+                print("-----Fetch success------------")
+                
+                print(designs.count)
+                
+                for object in 0...designs.count-1 {
+                    
+                    print(designs[object].designName)
+                    
+                    guard let frame = designs[object].frame as? CGRect else { return }
+                    
+                     print(frame)
+                    
+                    if designs[object].backgroundColor != nil {
+                        
+                        guard let color = designs[object].backgroundColor as? UIColor else { return }
+                        print(color)
+                    }
+                    
+                    if designs[object].backgroundImage != nil {
+                        
+                        guard let image = designs[object].backgroundImage as? UIImage else { return }
+                        print(image)
+                    }
+                    
+                }
+            }
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
         setupNavigationBar()
+        
+        fetchData()
     }
 
     override func viewDidLoad() {
@@ -87,6 +128,12 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
                 withIdentifier: String(describing: DesignViewController.self)) as? DesignViewController
             else { return }
         
+        guard let text = newDesignView.textField.text else { return }
+        
+        designVC.loadViewIfNeeded()
+        
+        designVC.designView.designName = text
+        
         show(designVC, sender: nil)
         
     }
@@ -95,5 +142,22 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.navigationBar.tintColor = UIColor.black
+    }
+    
+    func fetchData() {
+        
+        StorageManager.shared.fetchDesigns(completion: { result in
+            
+            switch result {
+                
+            case .success(let designs):
+                
+                self.designs = designs
+                
+            case .failure(_):
+                
+                print("讀取資料發生錯誤")
+            }
+        })
     }
 }
