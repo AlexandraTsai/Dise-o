@@ -151,20 +151,14 @@ private extension Design {
         
         images = NSSet(array:
         
-            object.subImages.map({ image in
+            object.subImages.map({ imageView in
                 
-                print(object.subImages)
-                
-                print(object.subImages[0].index)
-                
-                print(object.subImages[1].index)
-                
-                let alImage = Image(context: StorageManager.shared.viewContext
+                let alImageView = Image(context: StorageManager.shared.viewContext
                 )
                 
-                alImage.mapping(image)
+                alImageView.mapping(imageView)
                 
-                return alImage
+                return alImageView
                 
             })
         

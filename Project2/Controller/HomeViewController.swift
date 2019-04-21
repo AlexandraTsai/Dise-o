@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class HomeViewController: UIViewController, UITextFieldDelegate {
     
@@ -42,10 +43,37 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
                     
                     if designs[object].backgroundImage != nil {
                         
-                        guard let image = designs[object].backgroundImage as? UIImage else { return }
-                        print(image)
+                        guard let backgroundImage = designs[object].backgroundImage as? UIImage else { return }
+                        print(backgroundImage)
                     }
                     
+                    if designs[0].images != nil {
+                        
+                        guard let array = designs[0].images else { return }
+                        
+                        let subImages = Array(array)
+                        
+                        print(subImages)
+                        
+                        guard let alArray = subImages as? [Image] else { return }
+                        
+                        print(alArray)
+                        
+                        for view in alArray {
+                            
+                            print(view.image)
+                                
+                            let imageView = UIImageView(frame: CGRect(x: 30, y: 20, width: 100, height: 100))
+                            
+                            guard let image = view.image as? UIImage else { return }
+                            
+                            imageView.image = image
+                            
+                            self.view.addSubview(imageView)
+                          
+                        }
+                        
+                    }
                 }
             }
         }
