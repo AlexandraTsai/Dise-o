@@ -439,7 +439,10 @@ extension DesignViewController {
 
     @objc func didTapProfileButton(sender: AnyObject) {
         
-       addSubImage()
+        if designView.subviews.count > 0 {
+            
+             addSubImage()
+        }
         
        self.navigationController?.popViewController(animated: true)
    
@@ -681,7 +684,7 @@ extension DesignViewController  {
         
         for index in 0...count-1 {
             
-            guard let subViewToAdd = designView.subviews.first else { return }
+            let subViewToAdd = designView.subviews[index]
             
             let imageView = subViewToAdd as? ALImageView
             
@@ -690,6 +693,12 @@ extension DesignViewController  {
             view.index = index
             
             designView.subImages.append(view)
+            
+            print("===================")
+            
+            print(designView.subImages)
+            
+            print(designView.subImages[index].index)
         }
     }
     

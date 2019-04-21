@@ -153,6 +153,12 @@ private extension Design {
         
             object.subImages.map({ image in
                 
+                print(object.subImages)
+                
+                print(object.subImages[0].index)
+                
+                print(object.subImages[1].index)
+                
                 let alImage = Image(context: StorageManager.shared.viewContext
                 )
                 
@@ -178,6 +184,10 @@ private extension Image {
         }
         
         frame = object.frame as NSObject
+        
+        print("------index-------")
+        
+        print(object.index)
         
         index = Int16(object.index)
     }
