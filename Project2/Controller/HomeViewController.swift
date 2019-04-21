@@ -32,13 +32,15 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
             
             if designs.count == 0 {
                 
+                alDesignArray = []
+                
             } else {
                 
                 print("-----Fetch success------------")
                 
                 print(designs.count)
                 
-                insertAllDesigns()
+                addAllDesigns()
                
             }
         }
@@ -51,7 +53,18 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         
         collectionView.reloadData()
         
+        designs = []
+        
         fetchData()
+        
+        if designs.count == 0 {
+            
+            collectionView.isHidden = true
+            
+        } else {
+            
+            collectionView.isHidden = false
+        }
     }
 
     override func viewDidLoad() {
@@ -61,8 +74,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         newDesignView.isHidden = true
         
         collectionView.al_registerCellWithNib(
-            identifier: String(describing: PortfolioCollectionViewCell.self)
-            , bundle: nil)
+            identifier: String(describing: PortfolioCollectionViewCell.self),
+            bundle: nil)
         
         setupCollectionViewLayout()
 
@@ -162,15 +175,20 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         })
     }
     
-    func insertAllDesigns() {
+    func addAllDesigns() {
         
         for object in 0...designs.count-1 {
             
             let designView = ALDesignView()
             
-            guard let frame = designs[object].frame as? CGRect else { return }
+            guard let frame = designs[object].frame as? CGRect,
+                let designName = designs[object].designName else { return }
             
             designView.frame = frame
+            
+            designView.createTime = designs[object].createTime
+            
+            designView.designName = designName
             
             if designs[object].backgroundColor != nil {
                 
@@ -227,15 +245,54 @@ extension HomeViewController {
         return alDesignArray.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath)
+        -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PortfolioCollectionViewCell.self), for: indexPath)
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: String(describing: PortfolioCollectionViewCell.self),
+            for: indexPath)
         
         guard let portfolioCell = cell as? PortfolioCollectionViewCell else { return cell }
         
         portfolioCell.designView.image = alDesignArray[indexPath.item].image
         
         return portfolioCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let designVC = UIStoryboard(
+            name: "Main",
+            bundle: nil).instantiateViewController(
+                withIdentifier: String(describing: DesignViewController.self)) as? DesignViewController
+            else { return }
+        
+        designVC.loadViewIfNeeded()
+        
+        let selectedDesign = alDesignArray[indexPath.item]
+        
+        designVC.designView.backgroundColor = selectedDesign.backgroundColor
+        
+        designVC.designView.image = selectedDesign.image
+        
+        designVC.designView.createTime = selectedDesign.createTime
+        
+        if alDesignArray[indexPath.row].subImages.count > 0 {
+            
+            for count in 0...selectedDesign.subImages.count-1 {
+                
+                let view = selectedDesign.subImages[count]
+                
+                print(view.index)
+                
+                designVC.designView.insertSubview(view, at: view.index)
+                
+            }
+            
+        }
+        
+        show(designVC, sender: nil)
     }
     
     private func setupCollectionViewLayout() {

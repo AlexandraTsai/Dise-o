@@ -45,7 +45,7 @@ class StorageManager {
         
         container.loadPersistentStores(completionHandler:
             
-            { (description, error) in
+            {(_, error) in
             
                 if let error = error {
                     fatalError("Unresolved error \(error)")
@@ -140,6 +140,41 @@ class StorageManager {
         } catch {
             
             completion(Result.failure(error))
+        }
+        
+    }
+    
+    func updateOrder(
+        updateDesign: ALDesignView,
+        createTime: Int64,
+        completion: (Result<Void>) -> Void) {
+        
+        let request = NSFetchRequest<Design>(entityName: Entity.design.rawValue)
+        
+        request.predicate = NSPredicate(format: "createTime == %lld", createTime)
+ 
+        do {
+            
+            let design = try viewContext.fetch(request)
+            
+            for object in design {
+                
+                let updateTime = Int64(Date().timeIntervalSince1970)
+                
+                object.setValue(updateDesign.backgroundColor, forKey: "backgroundColor")
+                object.setValue(updateTime, forKey: "createTime")
+                object.setValue(updateDesign.image, forKey: "backgroundImage")
+                
+                try viewContext.save()
+                
+                completion(Result.success(()))
+                
+            }
+            
+        } catch {
+            
+            completion(Result.failure(error))
+            
         }
         
     }

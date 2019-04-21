@@ -12,7 +12,7 @@ class ALDesignView: UIImageView {
     
     var designName: String = ""
     
-    var createTime = Int64(Date().timeIntervalSince1970)
+    var createTime: Int64?
     
     var subImages = [ALImageView]()
     

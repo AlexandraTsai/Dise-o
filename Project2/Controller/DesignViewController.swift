@@ -445,27 +445,53 @@ extension DesignViewController {
         }
         
        self.navigationController?.popViewController(animated: true)
-   
-        StorageManager.shared.saveDesign(
-            newDesign: designView,
-                                            createTime: designView.createTime,
-                                         designName: designView.designName,
-                                         frame: designView.frame,
-                                         backgroundColor: designView.backgroundColor,
-                                         backgroundImage:designView.image,
-                                         completion: { result in
-                                            switch result {
-                                                
-                                            case .success(_):
-                                           
-                                                print("Save success.")
-                                                
-                                            case .failure(_):
-                                                
-                                                print("Fail to save")
-                                            }
-                                        })
-
+        
+       if designView.createTime == nil {
+        
+            designView.createTime = Int64(Date().timeIntervalSince1970)
+        
+            guard let createTime = designView.createTime else { return }
+        
+            StorageManager.shared.saveDesign(
+                newDesign: designView,
+                createTime: createTime,
+                designName: designView.designName,
+                frame: designView.frame,
+                backgroundColor: designView.backgroundColor,
+                backgroundImage: designView.image,
+                completion: { result in
+                    switch result {
+                    case .success(_):
+                    
+                        print("Save success.")
+                    
+                    case .failure(_):
+                    
+                        print("Fail to save")
+                }
+            })
+        
+        } else {
+        
+            guard let createTime = designView.createTime else { return }
+        
+            StorageManager.shared.updateOrder(
+                updateDesign: designView,
+                createTime: createTime,
+                completion: { result in
+                
+                    switch result {
+                    
+                    case .success(_):
+                    
+                        print("Save success.")
+                    
+                    case .failure(_):
+                    
+                        print("Fail to save")
+                    }
+                })
+        }
     }
 
     @objc func didTapDownloadButton(sender: AnyObject) {
@@ -676,7 +702,7 @@ extension DesignViewController {
 
 }
 
-extension DesignViewController  {
+extension DesignViewController {
     
     func addSubImage() {
         
