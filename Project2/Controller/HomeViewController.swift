@@ -254,8 +254,17 @@ extension HomeViewController {
             for: indexPath)
         
         guard let portfolioCell = cell as? PortfolioCollectionViewCell else { return cell }
-        
-        portfolioCell.designView.image = alDesignArray[indexPath.item].image
+            
+        let design = alDesignArray[indexPath.item]
+            
+        if design.image == nil {
+            
+            portfolioCell.designView.backgroundColor = design.backgroundColor
+            
+        } else {
+            
+            portfolioCell.designView.image = design.image
+        }
         
         return portfolioCell
     }

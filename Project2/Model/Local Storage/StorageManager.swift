@@ -63,7 +63,7 @@ class StorageManager {
         
         let request = NSFetchRequest<Design>(entityName: Entity.design.rawValue)
         
-        request.sortDescriptors = [NSSortDescriptor(key: ALDesign.createTime, ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: ALDesign.createTime, ascending: false)]
         
         do {
             
