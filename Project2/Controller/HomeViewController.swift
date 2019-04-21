@@ -9,11 +9,22 @@
 import UIKit
 import CoreData
 
-class HomeViewController: UIViewController, UITextFieldDelegate {
+class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    @IBOutlet weak var collectionView: UICollectionView! {
+        
+        didSet {
+            
+            collectionView.delegate = self
+            
+            collectionView.dataSource = self
+            
+        }
+    }
     
     var newDesignView = NewDeign()
     
-    var design = ALDesignView()
+    var alDesignArray: [ALDesignView] = []
     
     var designs: [Design] = [] {
         
@@ -27,54 +38,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
                 
                 print(designs.count)
                 
-                for object in 0...designs.count-1 {
-                    
-                    print(designs[object].designName)
-                    
-                    guard let frame = designs[object].frame as? CGRect else { return }
-                    
-                     print(frame)
-                    
-                    if designs[object].backgroundColor != nil {
-                        
-                        guard let color = designs[object].backgroundColor as? UIColor else { return }
-                        print(color)
-                    }
-                    
-                    if designs[object].backgroundImage != nil {
-                        
-                        guard let backgroundImage = designs[object].backgroundImage as? UIImage else { return }
-                        print(backgroundImage)
-                    }
-                    
-                    if designs[0].images != nil {
-                        
-                        guard let array = designs[0].images else { return }
-                        
-                        let subImages = Array(array)
-                        
-                        print(subImages)
-                        
-                        guard let alArray = subImages as? [Image] else { return }
-                        
-                        print(alArray)
-                        
-                        for view in alArray {
-                            
-                            print(view.image)
-                                
-                            let imageView = UIImageView(frame: CGRect(x: 30, y: 20, width: 100, height: 100))
-                            
-                            guard let image = view.image as? UIImage else { return }
-                            
-                            imageView.image = image
-                            
-                            self.view.addSubview(imageView)
-                          
-                        }
-                        
-                    }
-                }
+                insertAllDesigns()
+               
             }
         }
     }
@@ -84,6 +49,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         
         setupNavigationBar()
         
+        collectionView.reloadData()
+        
         fetchData()
     }
 
@@ -92,6 +59,12 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         
         self.view.addSubview(newDesignView)
         newDesignView.isHidden = true
+        
+        collectionView.al_registerCellWithNib(
+            identifier: String(describing: PortfolioCollectionViewCell.self)
+            , bundle: nil)
+        
+        setupCollectionViewLayout()
 
     }
  
@@ -188,4 +161,99 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
             }
         })
     }
+    
+    func insertAllDesigns() {
+        
+        for object in 0...designs.count-1 {
+            
+            let designView = ALDesignView()
+            
+            guard let frame = designs[object].frame as? CGRect else { return }
+            
+            designView.frame = frame
+            
+            if designs[object].backgroundColor != nil {
+                
+                guard let color = designs[object].backgroundColor as? UIColor else { return }
+                
+                designView.backgroundColor = color
+                
+            }
+            
+            if designs[object].backgroundImage != nil {
+                
+                guard let backgroundImage = designs[object].backgroundImage as? UIImage else { return }
+                
+                designView.image = backgroundImage
+                
+            }
+            
+            if designs[object].images != nil {
+                
+                guard let array = designs[0].images else { return }
+                
+                let subImages = Array(array)
+                
+                guard let alArray = subImages as? [Image] else { return }
+      
+                for image in alArray {
+                    
+                    let imageView = ALImageView(frame: CGRect(x: 30, y: 20, width: 100, height: 100))
+                    
+                    guard let image = image.image as? UIImage else { return }
+                    
+                    imageView.image = image
+                    
+                    designView.addSubview(imageView)
+                    
+                }
+                
+            }
+            
+            alDesignArray.append(designView)
+            
+            print("There are \(alDesignArray.count) designs.")
+            
+            print(alDesignArray)
+            
+        }
+    }
+}
+
+extension HomeViewController {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return alDesignArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PortfolioCollectionViewCell.self), for: indexPath)
+        
+        guard let portfolioCell = cell as? PortfolioCollectionViewCell else { return cell }
+        
+        portfolioCell.designView.image = alDesignArray[indexPath.item].image
+        
+        return portfolioCell
+    }
+    
+    private func setupCollectionViewLayout() {
+        
+        let flowLayout = UICollectionViewFlowLayout()
+        
+        flowLayout.itemSize = CGSize(
+            width: (UIScreen.main.bounds.width-60)/2,
+            height: (UIScreen.main.bounds.width-60)/2
+        )
+        
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        flowLayout.minimumLineSpacing = 20
+        
+        flowLayout.minimumInteritemSpacing = 20
+        
+        collectionView.collectionViewLayout = flowLayout
+    }
+    
 }

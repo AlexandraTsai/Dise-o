@@ -1108,13 +1108,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="q3y-67-E3N">
+                                <rect key="frame" x="0.0" y="129" width="375" height="448"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="o1l-3g-hRi">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="R4s-Hv-sYs" firstAttribute="bottom" secondItem="lRf-at-Deu" secondAttribute="bottom" constant="20" id="43X-WJ-FrX"/>
                             <constraint firstItem="6uI-Yj-POL" firstAttribute="top" secondItem="R4s-Hv-sYs" secondAttribute="top" constant="15" id="6Pl-UC-leJ"/>
+                            <constraint firstItem="lRf-at-Deu" firstAttribute="top" secondItem="q3y-67-E3N" secondAttribute="bottom" constant="10" id="Hm3-SJ-Fo0"/>
                             <constraint firstItem="6uI-Yj-POL" firstAttribute="centerX" secondItem="Foe-Wy-frM" secondAttribute="centerX" id="Oqo-EB-aBU"/>
+                            <constraint firstItem="q3y-67-E3N" firstAttribute="leading" secondItem="R4s-Hv-sYs" secondAttribute="leading" id="P80-U3-QlT"/>
+                            <constraint firstItem="q3y-67-E3N" firstAttribute="trailing" secondItem="R4s-Hv-sYs" secondAttribute="trailing" id="beo-1J-a0g"/>
                             <constraint firstItem="lRf-at-Deu" firstAttribute="centerX" secondItem="Foe-Wy-frM" secondAttribute="centerX" id="ekK-gC-C8D"/>
+                            <constraint firstItem="q3y-67-E3N" firstAttribute="top" secondItem="6uI-Yj-POL" secondAttribute="bottom" id="nBT-EP-WrS"/>
                             <constraint firstItem="SCI-2J-uOG" firstAttribute="centerY" secondItem="Foe-Wy-frM" secondAttribute="centerY" id="oJ8-Iy-0kF"/>
                             <constraint firstItem="SCI-2J-uOG" firstAttribute="centerX" secondItem="Foe-Wy-frM" secondAttribute="centerX" id="onq-T8-bww"/>
                         </constraints>
@@ -1122,12 +1137,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="YaJ-Ot-qnO"/>
                     <connections>
+                        <outlet property="collectionView" destination="q3y-67-E3N" id="KOl-To-Wrv"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="designViewSegue" id="2dQ-QD-5co"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JCg-bb-8Ko" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="838" y="-564"/>
+            <point key="canvasLocation" x="837.60000000000002" y="-564.46776611694156"/>
         </scene>
         <!--Shape Container View Controller-->
         <scene sceneID="A8E-I5-KUy">

@@ -21,6 +21,8 @@
 		A86824C82260838200BDCCD8 /* ALRotationGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86824C72260838200BDCCD8 /* ALRotationGestureRecognizer.swift */; };
 		A8AD7463226AF82200BDE3A7 /* ALDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD7462226AF82200BDE3A7 /* ALDesignView.swift */; };
 		A8AD7465226C004E00BDE3A7 /* ALImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD7464226C004E00BDE3A7 /* ALImageView.swift */; };
+		A8AD7468226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD7466226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift */; };
+		A8AD7469226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AD7467226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib */; };
 		A8BFF76B22586E3D0010E56B /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */; };
 		A8BFF76E22586E5C0010E56B /* FontTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */; };
 		A8BFF76F22586E5C0010E56B /* FontTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */; };
@@ -78,6 +80,8 @@
 		A86824C72260838200BDCCD8 /* ALRotationGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALRotationGestureRecognizer.swift; sourceTree = "<group>"; };
 		A8AD7462226AF82200BDE3A7 /* ALDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALDesignView.swift; sourceTree = "<group>"; };
 		A8AD7464226C004E00BDE3A7 /* ALImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALImageView.swift; sourceTree = "<group>"; };
+		A8AD7466226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCollectionViewCell.swift; sourceTree = "<group>"; };
+		A8AD7467226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioCollectionViewCell.xib; sourceTree = "<group>"; };
 		A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableViewCell.swift; sourceTree = "<group>"; };
 		A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FontTableViewCell.xib; sourceTree = "<group>"; };
@@ -242,6 +246,8 @@
 				A8BFF77B225A37770010E56B /* Color */,
 				A8BFF77022588E890010E56B /* Text */,
 				A8D2C4822252F7420085AD24 /* Storyboard */,
+				A8AD7466226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift */,
+				A8AD7467226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -375,6 +381,7 @@
 				A8BFF7782258D1970010E56B /* FontSizeTableViewCell.xib in Resources */,
 				A8D2C45D225219080085AD24 /* LaunchScreen.storyboard in Resources */,
 				A8D2C47F22523A490085AD24 /* PhotoCollectionViewCell.xib in Resources */,
+				A8AD7469226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib in Resources */,
 				A8DEBBB0225621B30081A694 /* PaletteCollectionViewCell.xib in Resources */,
 				A8BFF77422588EA90010E56B /* SpacingTableViewCell.xib in Resources */,
 				A8DEBBA622549DC30081A694 /* ImageCollectionReusableView.xib in Resources */,
@@ -479,6 +486,7 @@
 				A8DEBB9E2254803B0081A694 /* UIImage+Extension.swift in Sources */,
 				A8DEBBA522549DC30081A694 /* ImageCollectionReusableView.swift in Sources */,
 				A8AD7463226AF82200BDE3A7 /* ALDesignView.swift in Sources */,
+				A8AD7468226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift in Sources */,
 				A8BFF782225A4B6B0010E56B /* PhotoManager.swift in Sources */,
 				A8D2C4842252F9FF0085AD24 /* ImageContainerViewController.swift in Sources */,
 				A8D2C481225268000085AD24 /* EditingViewController.swift in Sources */,
