@@ -90,6 +90,7 @@ class StorageManager {
     }
     
     func saveDesign (
+        newDesign: ALDesignView,
         createTime: Int64,
         designName: String,
         frame: CGRect,
@@ -99,7 +100,7 @@ class StorageManager {
         
         let design = Design(context: viewContext)
         
-//        let image = Image(context: viewContext)
+        design.mapping(newDesign)
         
         design.frame = frame as NSObject
         
@@ -148,17 +149,37 @@ private extension Design {
     
     func mapping(_ object: ALDesignView) {
         
+        images = NSSet(array:
+        
+            object.subImages.map({ image in
+                
+                let alImage = Image(context: StorageManager.shared.viewContext
+                )
+                
+                alImage.mapping(image)
+                
+                return alImage
+                
+            })
+        
+        )
+    }
+}
+
+private extension Image {
+    
+    func mapping(_ object: ALImageView) {
+        
+        if object.image != nil {
+            
+            guard let imageToSave = object.image else { return }
+            
+            image = imageToSave as NSObject
+        }
+        
         frame = object.frame as NSObject
         
-//        backgroundColor = object.backgroundColor as NSObject
-//
-//        backgroundImage = object.image as NSObject
-        
-        designName = object.designName
-        
-        createTime = object.createTime
-        
-        
+        index = Int16(object.index)
     }
     
 }

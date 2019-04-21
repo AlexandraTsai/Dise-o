@@ -253,7 +253,7 @@ extension DesignViewController {
             let addImage = userInfo[NotificationInfo.addImage] as? UIImage
             else { return }
 
-        let newImage = UIImageView(frame: CGRect(x: designView.center.x-100,
+        let newImage = ALImageView(frame: CGRect(x: designView.center.x-100,
                                                  y: designView.center.y-100,
                                                  width: 200,
                                                  height: 200))
@@ -348,7 +348,7 @@ extension DesignViewController {
 
         guard let tappedView = sender.view else { return }
 
-        guard (tappedView as? UIImageView) != nil else {
+        guard (tappedView as? ALImageView) != nil else {
 
             goToEditingVC(with: tappedView, navigationBarForImage: false)
             return
@@ -439,9 +439,13 @@ extension DesignViewController {
 
     @objc func didTapProfileButton(sender: AnyObject) {
         
+       addSubImage()
+        
        self.navigationController?.popViewController(animated: true)
    
-        StorageManager.shared.saveDesign(createTime: designView.createTime,
+        StorageManager.shared.saveDesign(
+            newDesign: designView,
+                                            createTime: designView.createTime,
                                          designName: designView.designName,
                                          frame: designView.frame,
                                          backgroundColor: designView.backgroundColor,
@@ -591,7 +595,7 @@ extension DesignViewController {
         
         if addingNewImage == true {
  
-            let newImage = UIImageView(frame: CGRect(x: designView.frame.width/2-75,
+            let newImage = ALImageView(frame: CGRect(x: designView.frame.width/2-75,
                                                      y: designView.frame.height/2-75,
                                                      width: 150,
                                                      height: 150))
@@ -667,5 +671,27 @@ extension DesignViewController {
         fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
     }
 
+}
+
+extension DesignViewController  {
+    
+    func addSubImage() {
+        
+        let count = designView.subviews.count
+        
+        for index in 0...count-1 {
+            
+            guard let subViewToAdd = designView.subviews.first else { return }
+            
+            let imageView = subViewToAdd as? ALImageView
+            
+            guard let view = imageView else { return }
+            
+            view.index = index
+            
+            designView.subImages.append(view)
+        }
+    }
+    
 }
 // swiftlint:enable file_length

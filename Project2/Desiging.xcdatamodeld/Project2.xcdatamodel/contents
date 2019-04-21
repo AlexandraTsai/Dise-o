@@ -6,25 +6,25 @@
         <attribute name="createTime" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="designName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="frame" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <relationship name="image" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Image" inverseName="design" inverseEntity="Image" syncable="YES"/>
-        <relationship name="shape" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Shape" inverseName="design" inverseEntity="Shape" syncable="YES"/>
-        <relationship name="text" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Text" inverseName="design" inverseEntity="Text" syncable="YES"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Image" inverseName="design" inverseEntity="Image" syncable="YES"/>
+        <relationship name="shapes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Shape" inverseName="design" inverseEntity="Shape" syncable="YES"/>
+        <relationship name="texts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Text" inverseName="design" inverseEntity="Text" syncable="YES"/>
     </entity>
     <entity name="Image" representedClassName="Image" syncable="YES" codeGenerationType="class">
         <attribute name="frame" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="design" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Design" inverseName="image" inverseEntity="Design" syncable="YES"/>
+        <relationship name="design" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Design" inverseName="images" inverseEntity="Design" syncable="YES"/>
     </entity>
     <entity name="Shape" representedClassName="Shape" syncable="YES" codeGenerationType="class">
         <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="shapView" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <relationship name="design" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Design" inverseName="shape" inverseEntity="Design" syncable="YES"/>
+        <relationship name="design" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Design" inverseName="shapes" inverseEntity="Design" syncable="YES"/>
     </entity>
     <entity name="Text" representedClassName="Text" syncable="YES" codeGenerationType="class">
         <attribute name="attributedText" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="design" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Design" inverseName="text" inverseEntity="Design" syncable="YES"/>
+        <relationship name="design" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Design" inverseName="texts" inverseEntity="Design" syncable="YES"/>
     </entity>
     <elements>
         <element name="Design" positionX="-63" positionY="-18" width="128" height="165"/>

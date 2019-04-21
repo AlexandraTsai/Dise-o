@@ -20,6 +20,7 @@
 		A86824C62260461500BDCCD8 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86824C52260461500BDCCD8 /* UIView+Extension.swift */; };
 		A86824C82260838200BDCCD8 /* ALRotationGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86824C72260838200BDCCD8 /* ALRotationGestureRecognizer.swift */; };
 		A8AD7463226AF82200BDE3A7 /* ALDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD7462226AF82200BDE3A7 /* ALDesignView.swift */; };
+		A8AD7465226C004E00BDE3A7 /* ALImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD7464226C004E00BDE3A7 /* ALImageView.swift */; };
 		A8BFF76B22586E3D0010E56B /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */; };
 		A8BFF76E22586E5C0010E56B /* FontTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */; };
 		A8BFF76F22586E5C0010E56B /* FontTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */; };
@@ -76,6 +77,7 @@
 		A86824C52260461500BDCCD8 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		A86824C72260838200BDCCD8 /* ALRotationGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALRotationGestureRecognizer.swift; sourceTree = "<group>"; };
 		A8AD7462226AF82200BDE3A7 /* ALDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALDesignView.swift; sourceTree = "<group>"; };
+		A8AD7464226C004E00BDE3A7 /* ALImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALImageView.swift; sourceTree = "<group>"; };
 		A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableViewCell.swift; sourceTree = "<group>"; };
 		A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FontTableViewCell.xib; sourceTree = "<group>"; };
@@ -233,12 +235,13 @@
 				A82B5F362268C8090093671D /* HelperView.swift */,
 				A8E30642226319FD00DA03A7 /* ShapeView.swift */,
 				A82B5F342268A4930093671D /* NewDeign.swift */,
+				A8AD7464226C004E00BDE3A7 /* ALImageView.swift */,
+				A8AD7462226AF82200BDE3A7 /* ALDesignView.swift */,
 				A8E30641226300A800DA03A7 /* Shape */,
 				A8BFF77C225A37960010E56B /* Image */,
 				A8BFF77B225A37770010E56B /* Color */,
 				A8BFF77022588E890010E56B /* Text */,
 				A8D2C4822252F7420085AD24 /* Storyboard */,
-				A8AD7462226AF82200BDE3A7 /* ALDesignView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				A8BFF780225A4AC00010E56B /* ImageEditContainerViewController.swift in Sources */,
 				A8DEBBA2225496D20081A694 /* AddImageContainerViewController.swift in Sources */,
 				A8D2C47B22522A8F0085AD24 /* UICollectionView+Extension.swift in Sources */,
+				A8AD7465226C004E00BDE3A7 /* ALImageView.swift in Sources */,
 				A82B5F332268A2270093671D /* HomeViewController.swift in Sources */,
 				A82B5F352268A4930093671D /* NewDeign.swift in Sources */,
 				A80F296B22660BED009C13F5 /* TextContainerViewController.swift in Sources */,

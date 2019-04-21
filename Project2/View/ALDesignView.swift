@@ -14,4 +14,6 @@ class ALDesignView: UIImageView {
     
     var createTime = Int64(Date().timeIntervalSince1970)
     
+    var subImages = [ALImageView]()
+    
 }
