@@ -17,4 +17,15 @@ class PortfolioCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
 
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        layer.cornerRadius = 20
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        layer.cornerRadius = 20
+    }
 }

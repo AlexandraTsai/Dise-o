@@ -1109,7 +1109,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="q3y-67-E3N">
-                                <rect key="frame" x="0.0" y="129" width="375" height="448"/>
+                                <rect key="frame" x="20" y="144" width="335" height="433"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="o1l-3g-hRi">
                                     <size key="itemSize" width="50" height="50"/>
@@ -1126,10 +1126,10 @@
                             <constraint firstItem="6uI-Yj-POL" firstAttribute="top" secondItem="R4s-Hv-sYs" secondAttribute="top" constant="15" id="6Pl-UC-leJ"/>
                             <constraint firstItem="lRf-at-Deu" firstAttribute="top" secondItem="q3y-67-E3N" secondAttribute="bottom" constant="10" id="Hm3-SJ-Fo0"/>
                             <constraint firstItem="6uI-Yj-POL" firstAttribute="centerX" secondItem="Foe-Wy-frM" secondAttribute="centerX" id="Oqo-EB-aBU"/>
-                            <constraint firstItem="q3y-67-E3N" firstAttribute="leading" secondItem="R4s-Hv-sYs" secondAttribute="leading" id="P80-U3-QlT"/>
-                            <constraint firstItem="q3y-67-E3N" firstAttribute="trailing" secondItem="R4s-Hv-sYs" secondAttribute="trailing" id="beo-1J-a0g"/>
+                            <constraint firstItem="q3y-67-E3N" firstAttribute="leading" secondItem="R4s-Hv-sYs" secondAttribute="leading" constant="20" id="P80-U3-QlT"/>
+                            <constraint firstItem="q3y-67-E3N" firstAttribute="trailing" secondItem="R4s-Hv-sYs" secondAttribute="trailing" constant="-20" id="beo-1J-a0g"/>
                             <constraint firstItem="lRf-at-Deu" firstAttribute="centerX" secondItem="Foe-Wy-frM" secondAttribute="centerX" id="ekK-gC-C8D"/>
-                            <constraint firstItem="q3y-67-E3N" firstAttribute="top" secondItem="6uI-Yj-POL" secondAttribute="bottom" id="nBT-EP-WrS"/>
+                            <constraint firstItem="q3y-67-E3N" firstAttribute="top" secondItem="6uI-Yj-POL" secondAttribute="bottom" constant="15" id="nBT-EP-WrS"/>
                             <constraint firstItem="SCI-2J-uOG" firstAttribute="centerY" secondItem="Foe-Wy-frM" secondAttribute="centerY" id="oJ8-Iy-0kF"/>
                             <constraint firstItem="SCI-2J-uOG" firstAttribute="centerX" secondItem="Foe-Wy-frM" secondAttribute="centerX" id="onq-T8-bww"/>
                         </constraints>
