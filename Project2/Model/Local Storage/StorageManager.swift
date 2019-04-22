@@ -144,8 +144,8 @@ class StorageManager {
         
     }
     
-    func updateOrder(
-        updateDesign: ALDesignView,
+    func updateDesign(
+        design: ALDesignView,
         createTime: Int64,
         completion: (Result<Void>) -> Void) {
         
@@ -155,15 +155,15 @@ class StorageManager {
  
         do {
             
-            let design = try viewContext.fetch(request)
+            let designs = try viewContext.fetch(request)
             
-            for object in design {
+            for object in designs {
                 
                 let updateTime = Int64(Date().timeIntervalSince1970)
-                
-                object.setValue(updateDesign.backgroundColor, forKey: "backgroundColor")
+              
+                object.setValue(design.backgroundColor, forKey: "backgroundColor")
                 object.setValue(updateTime, forKey: "createTime")
-                object.setValue(updateDesign.image, forKey: "backgroundImage")
+                object.setValue(design.image, forKey: "backgroundImage")
                 
                 try viewContext.save()
                 
@@ -213,10 +213,6 @@ private extension Image {
         }
         
         frame = object.frame as NSObject
-        
-        print("------index-------")
-        
-        print(object.index)
         
         index = Int16(object.index)
     }

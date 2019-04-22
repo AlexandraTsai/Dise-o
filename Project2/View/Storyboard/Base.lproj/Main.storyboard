@@ -730,7 +730,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pxe-lR-41Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1649" y="501"/>
+            <point key="canvasLocation" x="1074" y="256"/>
         </scene>
         <!--Image Edit Container View Controller-->
         <scene sceneID="STs-Lf-zk0">
@@ -1085,10 +1085,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRf-at-Deu">
-                                <rect key="frame" x="157.5" y="587" width="60" height="60"/>
+                                <rect key="frame" x="162.5" y="597" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Hwf-5E-Uk9"/>
-                                    <constraint firstAttribute="width" constant="60" id="y5Z-x0-aEm"/>
+                                    <constraint firstAttribute="height" constant="50" id="Hwf-5E-Uk9"/>
+                                    <constraint firstAttribute="width" constant="50" id="y5Z-x0-aEm"/>
                                 </constraints>
                                 <state key="normal" image="Add_button"/>
                                 <connections>
@@ -1108,8 +1108,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="q3y-67-E3N">
-                                <rect key="frame" x="20" y="144" width="335" height="433"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="q3y-67-E3N">
+                                <rect key="frame" x="20" y="144" width="335" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="o1l-3g-hRi">
                                     <size key="itemSize" width="50" height="50"/>

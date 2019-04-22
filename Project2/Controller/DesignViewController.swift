@@ -38,7 +38,7 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
     let fusuma = FusumaViewController()
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
 
         notEditingMode()
 
@@ -444,8 +444,6 @@ extension DesignViewController {
              addSubImage()
         }
         
-       self.navigationController?.popViewController(animated: true)
-        
        if designView.createTime == nil {
         
             designView.createTime = Int64(Date().timeIntervalSince1970)
@@ -475,8 +473,8 @@ extension DesignViewController {
         
             guard let createTime = designView.createTime else { return }
         
-            StorageManager.shared.updateOrder(
-                updateDesign: designView,
+            StorageManager.shared.updateDesign(
+                design: designView,
                 createTime: createTime,
                 completion: { result in
                 
@@ -492,6 +490,8 @@ extension DesignViewController {
                     }
                 })
         }
+        
+        self.navigationController?.popViewController(animated: true)
     }
 
     @objc func didTapDownloadButton(sender: AnyObject) {
@@ -720,11 +720,6 @@ extension DesignViewController {
             
             designView.subImages.append(view)
             
-            print("===================")
-            
-            print(designView.subImages)
-            
-            print(designView.subImages[index].index)
         }
     }
     

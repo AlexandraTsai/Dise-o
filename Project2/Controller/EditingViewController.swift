@@ -309,7 +309,7 @@ class EditingViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
 
         guard designView.subviews.count > 0 else { return }
 

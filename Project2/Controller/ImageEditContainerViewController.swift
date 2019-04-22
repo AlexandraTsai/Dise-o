@@ -40,7 +40,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
    
     override func viewWillAppear(_ animated: Bool) {
         
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         
         paletteView.isHidden = true
         transparencyView.isHidden = true

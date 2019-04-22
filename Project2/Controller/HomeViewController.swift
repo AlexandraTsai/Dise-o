@@ -35,11 +35,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                 alDesignArray = []
                 
             } else {
-                
-                print("-----Fetch success------------")
-                
-                print(designs.count)
-                
+             
                 addAllDesigns()
                
             }
@@ -47,7 +43,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         
         setupNavigationBar()
         
@@ -230,10 +226,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
             
             alDesignArray.append(designView)
             
-            print("There are \(alDesignArray.count) designs.")
-            
-            print(alDesignArray)
-            
         }
     }
 }
@@ -260,6 +252,7 @@ extension HomeViewController {
         if design.image == nil {
             
             portfolioCell.designView.backgroundColor = design.backgroundColor
+            portfolioCell.designView.image = nil
             
         } else {
             
