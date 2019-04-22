@@ -30,7 +30,7 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
             addButton.clipsToBounds = true
         }
     }
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textView: ALTextView!
 
     var editingView: UIView?
     var addingNewImage = false
@@ -39,7 +39,7 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         notEditingMode()
 
         addImageContainerView.isHidden = true
@@ -286,7 +286,7 @@ extension DesignViewController {
             let shapeType = userInfo[NotificationInfo.addShape] as? String
             else { return }
         
-        let newShape = ShapeView(frame: CGRect(x: designView.frame.width/2-75,
+        let newShape = ALShapeView(frame: CGRect(x: designView.frame.width/2-75,
                                                y: designView.frame.height/2-75,
                                                width: 150,
                                                height: 150))
@@ -441,7 +441,7 @@ extension DesignViewController {
         
         if designView.subviews.count > 0 {
             
-             addSubImage()
+             prepareForSaving()
         }
         
        if designView.createTime == nil {
@@ -554,11 +554,11 @@ extension DesignViewController {
 
     }
 
-    func addTextView() -> UITextView {
+    func addTextView() -> ALTextView {
 
         let contentSize = self.textView.sizeThatFits(self.textView.bounds.size)
         
-        let newText = UITextView(
+        let newText = ALTextView(
             frame: CGRect(x: textView.frame.origin.x-designView.frame.origin.x,
                           y: textView.frame.origin.y-designView.frame.origin.y,
                           width: textView.frame.width,
@@ -704,7 +704,7 @@ extension DesignViewController {
 
 extension DesignViewController {
     
-    func addSubImage() {
+    func prepareForSaving() {
         
         let count = designView.subviews.count
         
@@ -712,13 +712,30 @@ extension DesignViewController {
             
             let subViewToAdd = designView.subviews[index]
             
-            let imageView = subViewToAdd as? ALImageView
+            guard let imageView = subViewToAdd as? ALImageView else {
+                
+                guard let textView = subViewToAdd as? ALTextView else {
+                    
+                    guard let shapeView = subViewToAdd as? ALShapeView else { return }
+                    
+                    shapeView.index = index
+                    
+                    designView.subShapes.append(shapeView)
+                    
+                    return
+                }
+                
+                textView.index = index
+                
+                designView.subTexts.append(textView)
+                
+                return
+                
+            }
             
-            guard let view = imageView else { return }
+            imageView.index = index
             
-            view.index = index
-            
-            designView.subImages.append(view)
+            designView.subImages.append(imageView)
             
         }
     }

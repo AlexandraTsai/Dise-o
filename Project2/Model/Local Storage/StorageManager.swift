@@ -198,6 +198,20 @@ private extension Design {
             })
         
         )
+        
+        texts = NSSet(array:
+        
+            object.subTexts.map({ textView in
+                
+                let alTextView = Text(context: StorageManager.shared.viewContext)
+                
+                alTextView.mapping(textView)
+                
+                return alTextView
+                
+            })
+        
+        )
     }
 }
 
@@ -214,7 +228,22 @@ private extension Image {
         
         frame = object.frame as NSObject
         
-        index = Int16(object.index)
+        guard let objectIndex = object.index else { return }
+        
+        index = Int16(objectIndex)
     }
     
+}
+
+private extension Text {
+    
+    func mapping(_ object: ALTextView) {
+        
+        if object.text != nil {
+            
+            guard let textToSave = object.text else { return }
+            
+            attributedText = textToSave as NSObject
+        }
+    }
 }

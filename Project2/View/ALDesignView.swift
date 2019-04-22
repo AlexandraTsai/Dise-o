@@ -16,4 +16,8 @@ class ALDesignView: UIImageView {
     
     var subImages = [ALImageView]()
     
+    var subTexts = [ALTextView]()
+    
+    var subShapes = [ALShapeView]()
+    
 }

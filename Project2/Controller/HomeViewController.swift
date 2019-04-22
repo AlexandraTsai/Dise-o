@@ -185,7 +185,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
             designView.createTime = designs[object].createTime
             
             designView.designName = designName
-            
+
             if designs[object].backgroundColor != nil {
                 
                 guard let color = designs[object].backgroundColor as? UIColor else { return }
@@ -208,17 +208,23 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                 
                 let subImages = Array(array)
                 
-                guard let alArray = subImages as? [Image] else { return }
+                guard let imageArray = subImages as? [Image] else { return }
       
-                for image in alArray {
+                for object in imageArray {
                     
-                    let imageView = ALImageView(frame: CGRect(x: 30, y: 20, width: 100, height: 100))
+                    let index = object.index
                     
-                    guard let image = image.image as? UIImage else { return }
+                    guard let image = object.image as? UIImage, let frame = object.frame as? CGRect else { return }
+                    
+                    let imageView = ALImageView(frame: CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.width, height: frame.height))
                     
                     imageView.image = image
                     
+                    imageView.index = Int(index)
+                    
                     designView.addSubview(imageView)
+                    
+                    designView.subImages.append(imageView)
                     
                 }
                 
@@ -272,27 +278,7 @@ extension HomeViewController {
         
         designVC.loadViewIfNeeded()
         
-        let selectedDesign = alDesignArray[indexPath.item]
-        
-        designVC.designView.backgroundColor = selectedDesign.backgroundColor
-        
-        designVC.designView.image = selectedDesign.image
-        
-        designVC.designView.createTime = selectedDesign.createTime
-        
-        if alDesignArray[indexPath.row].subImages.count > 0 {
-            
-            for count in 0...selectedDesign.subImages.count-1 {
-                
-                let view = selectedDesign.subImages[count]
-                
-                print(view.index)
-                
-                designVC.designView.insertSubview(view, at: view.index)
-                
-            }
-            
-        }
+        showTappedDesign(for: indexPath.item, at: designVC)
         
         show(designVC, sender: nil)
     }
@@ -313,6 +299,36 @@ extension HomeViewController {
         flowLayout.minimumInteritemSpacing = 20
         
         collectionView.collectionViewLayout = flowLayout
+    }
+    
+    func showTappedDesign(for index: Int, at designVC: DesignViewController) {
+        
+        let selectedDesign = alDesignArray[index]
+        
+        //Design View
+        designVC.designView.backgroundColor = selectedDesign.backgroundColor
+        
+        designVC.designView.image = selectedDesign.image
+        
+        designVC.designView.createTime = selectedDesign.createTime
+        
+        //Show sub images
+        if alDesignArray[index].subImages.count > 0 {
+            
+            for count in 0...selectedDesign.subImages.count-1 {
+                
+                let view = selectedDesign.subImages[count]
+                
+                guard let index = view.index else { return }
+                
+                designVC.designView.insertSubview(view, at: index)
+                
+                designVC.addAllGesture(to: view)
+                
+            }
+            
+        }
+        
     }
     
 }

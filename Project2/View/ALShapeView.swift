@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ShapeView: UIView {
+class ALShapeView: UIView {
+    
+    var index: Int?
 
     var path = UIBezierPath()
     var shapeType: String = ""
@@ -164,9 +166,9 @@ class ShapeView: UIView {
     }
     
     // MARK: - Copy
-    func makeACopyShape() -> ShapeView {
+    func makeACopyShape() -> ALShapeView {
         
-        let newShape = ShapeView()
+        let newShape = ALShapeView()
         
         if self.path.lineWidth > 1.0 {
            newShape.path.cgPath = self.path.cgPath.copy(strokingWithWidth: self.path.lineWidth,

@@ -23,6 +23,7 @@
 		A8AD7465226C004E00BDE3A7 /* ALImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD7464226C004E00BDE3A7 /* ALImageView.swift */; };
 		A8AD7468226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD7466226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift */; };
 		A8AD7469226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AD7467226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib */; };
+		A8B5E4F7226D91D800514A75 /* ALTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B5E4F6226D91D800514A75 /* ALTextView.swift */; };
 		A8BFF76B22586E3D0010E56B /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */; };
 		A8BFF76E22586E5C0010E56B /* FontTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */; };
 		A8BFF76F22586E5C0010E56B /* FontTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */; };
@@ -61,7 +62,7 @@
 		A8E3063C2262FE0000DA03A7 /* ShapeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E3063B2262FE0000DA03A7 /* ShapeContainerViewController.swift */; };
 		A8E3063F2263009C00DA03A7 /* ShapeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E3063D2263009C00DA03A7 /* ShapeCollectionViewCell.swift */; };
 		A8E306402263009D00DA03A7 /* ShapeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8E3063E2263009C00DA03A7 /* ShapeCollectionViewCell.xib */; };
-		A8E30643226319FD00DA03A7 /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E30642226319FD00DA03A7 /* ShapeView.swift */; };
+		A8E30643226319FD00DA03A7 /* ALShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E30642226319FD00DA03A7 /* ALShapeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		A8AD7464226C004E00BDE3A7 /* ALImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALImageView.swift; sourceTree = "<group>"; };
 		A8AD7466226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCollectionViewCell.swift; sourceTree = "<group>"; };
 		A8AD7467226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioCollectionViewCell.xib; sourceTree = "<group>"; };
+		A8B5E4F6226D91D800514A75 /* ALTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALTextView.swift; sourceTree = "<group>"; };
 		A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableViewCell.swift; sourceTree = "<group>"; };
 		A8BFF76D22586E5C0010E56B /* FontTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FontTableViewCell.xib; sourceTree = "<group>"; };
@@ -122,7 +124,7 @@
 		A8E3063B2262FE0000DA03A7 /* ShapeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeContainerViewController.swift; sourceTree = "<group>"; };
 		A8E3063D2263009C00DA03A7 /* ShapeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCollectionViewCell.swift; sourceTree = "<group>"; };
 		A8E3063E2263009C00DA03A7 /* ShapeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShapeCollectionViewCell.xib; sourceTree = "<group>"; };
-		A8E30642226319FD00DA03A7 /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
+		A8E30642226319FD00DA03A7 /* ALShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALShapeView.swift; sourceTree = "<group>"; };
 		E0D502422CADB0A6DB80DCEF /* Pods-Project2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.release.xcconfig"; path = "Target Support Files/Pods-Project2/Pods-Project2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -237,10 +239,11 @@
 			children = (
 				A80804EA226882720042E4FF /* EditeFrameView.swift */,
 				A82B5F362268C8090093671D /* HelperView.swift */,
-				A8E30642226319FD00DA03A7 /* ShapeView.swift */,
 				A82B5F342268A4930093671D /* NewDeign.swift */,
-				A8AD7464226C004E00BDE3A7 /* ALImageView.swift */,
 				A8AD7462226AF82200BDE3A7 /* ALDesignView.swift */,
+				A8AD7464226C004E00BDE3A7 /* ALImageView.swift */,
+				A8B5E4F6226D91D800514A75 /* ALTextView.swift */,
+				A8E30642226319FD00DA03A7 /* ALShapeView.swift */,
 				A8E30641226300A800DA03A7 /* Shape */,
 				A8BFF77C225A37960010E56B /* Image */,
 				A8BFF77B225A37770010E56B /* Color */,
@@ -481,6 +484,7 @@
 				A8DEBB9822543DBF0081A694 /* border.swift in Sources */,
 				A865976C2269CB43000789A2 /* StorageManager.swift in Sources */,
 				A8DEBBA82255A5A90081A694 /* UITextView+Extension.swift in Sources */,
+				A8B5E4F7226D91D800514A75 /* ALTextView.swift in Sources */,
 				A8BFF77322588EA90010E56B /* SpacingTableViewCell.swift in Sources */,
 				A8D2C47E22523A480085AD24 /* PhotoCollectionViewCell.swift in Sources */,
 				A8DEBB9E2254803B0081A694 /* UIImage+Extension.swift in Sources */,
@@ -498,7 +502,7 @@
 				A8D2C450225219020085AD24 /* AppDelegate.swift in Sources */,
 				A8BFF7772258D1970010E56B /* FontSizeTableViewCell.swift in Sources */,
 				A86824C2225CCF4000BDCCD8 /* Notification.swift in Sources */,
-				A8E30643226319FD00DA03A7 /* ShapeView.swift in Sources */,
+				A8E30643226319FD00DA03A7 /* ALShapeView.swift in Sources */,
 				A865976F2269D22F000789A2 /* Result.swift in Sources */,
 				A8D2C4722252270C0085AD24 /* ContainerViewController.swift in Sources */,
 				A86824C62260461500BDCCD8 /* UIView+Extension.swift in Sources */,

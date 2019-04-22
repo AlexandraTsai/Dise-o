@@ -60,12 +60,12 @@ class EditingViewController: UIViewController {
             
             createEditingHelper(for: editingView)
             
-            guard let textView = editingView as? UITextView else {
+            guard let textView = editingView as? ALTextView else {
 
                textEditView.isHidden = true
                imageEditContainerView.isHidden = false
 
-                guard let view = editingView as? ShapeView else {
+                guard let view = editingView as? ALShapeView else {
                     
                     guard let view = editingView as? UIImageView else { return }
                     
@@ -176,7 +176,7 @@ class EditingViewController: UIViewController {
 
     @IBAction func alignmentButtonTapped(_ sender: Any) {
 
-        guard let view =  editingView as? UITextView else { return }
+        guard let view =  editingView as? ALTextView else { return }
 
         switch view.textAlignment {
         case .center:
@@ -202,7 +202,7 @@ class EditingViewController: UIViewController {
     
     @IBAction func boldButtonTapped(_ sender: Any) {
 
-        guard let view =  editingView as? UITextView else { return }
+        guard let view =  editingView as? ALTextView else { return }
 
         switch boldbutton.currentTitleColor {
 
@@ -238,7 +238,7 @@ class EditingViewController: UIViewController {
 
     @IBAction func italicButtonTapped(_ sender: Any) {
 
-        guard let view =  editingView as? UITextView else { return }
+        guard let view =  editingView as? ALTextView else { return }
 
         switch italicButton.currentTitleColor {
 
@@ -276,7 +276,7 @@ class EditingViewController: UIViewController {
 
     @IBAction func letterCaseBtnTapped(_ sender: Any) {
 
-        guard let view =  editingView as? UITextView else { return }
+        guard let view =  editingView as? ALTextView else { return }
 
         switch letterCaseButton.titleLabel?.text {
 
@@ -531,8 +531,8 @@ extension EditingViewController {
             designView.insertSubview(editingView, at: index-1)
         }
         
-        //Navigationbar for UITextView/ShapeView
-        guard (editingView as? UITextView) != nil || (editingView as? ShapeView) != nil else {
+        //Navigationbar for ALTextView/ShapeView
+        guard (editingView as? ALTextView) != nil || (editingView as? ALShapeView) != nil else {
             
             if index == 1 {
                 self.navigationItem.rightBarButtonItems?[2].isEnabled = false
@@ -573,8 +573,8 @@ extension EditingViewController {
             designView.insertSubview(editingView, at: index+1)
         }
         
-        //Navigationbar for UITextView/ShapeView
-        guard (editingView as? UITextView) != nil || (editingView as? ShapeView) != nil else {
+        //Navigationbar for ALTextView/ShapeView
+        guard (editingView as? ALTextView) != nil || (editingView as? ALShapeView) != nil else {
             
             if index == designView.subviews.count-3 {
                 
@@ -608,11 +608,11 @@ extension EditingViewController {
         
         helperView.removeFromSuperview()
 
-        guard let tappedView = (editingView as? UITextView) else {
+        guard let tappedView = (editingView as? ALTextView) else {
 
             guard let tappedView = (editingView as? UIImageView)else {
                 
-                guard let tappedView = (editingView as? ShapeView) else { return }
+                guard let tappedView = (editingView as? ALShapeView) else { return }
                 
                 let newView = tappedView.makeACopyShape()
                 
@@ -639,7 +639,7 @@ extension EditingViewController {
             return
         }
 
-        let newView = UITextView()
+        let newView = ALTextView()
 
         newView.makeACopy(from: tappedView)
 
@@ -708,7 +708,7 @@ extension EditingViewController {
     
     @objc func handleDoubleTap(sender: UITapGestureRecognizer) {
       
-        guard let textView = editingView as? UITextView else { return }
+        guard let textView = editingView as? ALTextView else { return }
         
         textView.becomeFirstResponder()
     }
@@ -719,11 +719,11 @@ extension EditingViewController {
 
         editingView = sender.view
 
-        guard (sender.view as? UITextView) != nil else {
+        guard (sender.view as? ALTextView) != nil else {
 
             guard (sender.view as? UIImageView) != nil else {
                 
-                guard (sender.view as? ShapeView) != nil else { return }
+                guard (sender.view as? ALShapeView) != nil else { return }
                 
                 normalNavigationBar()
                 
@@ -925,7 +925,7 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
 
             guard let fontSizeCell = cell as? FontSizeTableViewCell else { return cell }
 
-            guard let view = editingView as? UITextView else { return cell }
+            guard let view = editingView as? ALTextView else { return cell }
             guard let fontSize = view.font?.pointSize else {return cell}
 
             fontSizeCell.delegate = self
@@ -941,7 +941,7 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
 
         switch tableViewIndex {
         case 0:
-            guard let view = editingView as? UITextView,
+            guard let view = editingView as? ALTextView,
                 let fontSize = view.font?.pointSize else { return }
 
             let fontName = FontName.allCases[indexPath.row].rawValue
@@ -987,7 +987,7 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
         self.lineHeight = lineHeight
         self.letterSpacing = letterSpacing
 
-        guard let view = editingView as? UITextView,
+        guard let view = editingView as? ALTextView,
             let fontName = view.font?.fontName,
             let fontSize = view.font?.pointSize,
             let textColor = view.textColor else { return }
@@ -1004,7 +1004,7 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
 
     func changeFontSize(to size: Int) {
         
-        guard let view = editingView as? UITextView,
+        guard let view = editingView as? ALTextView,
             let fontName = view.font?.fontName,
             let textColor = view.textColor else { return }
 
@@ -1075,7 +1075,7 @@ extension EditingViewController: FusumaDelegate {
             
             guard let view = editingView as? UIImageView else {
                 
-                guard let view = editingView as? ShapeView else { return }
+                guard let view = editingView as? ALShapeView else { return }
  
                     view.shapeColor = color
                     view.setNeedsDisplay()
@@ -1095,7 +1095,7 @@ extension EditingViewController: FusumaDelegate {
             if mode == true {
                 addElementButton.isHidden = false
                 
-                if editingView as? UITextView != nil {
+                if editingView as? ALTextView != nil {
                      textEditView.isHidden = false
                 }
                 
@@ -1110,7 +1110,7 @@ extension EditingViewController: FusumaDelegate {
         if let userInfo = noti.userInfo,
             let color = userInfo[NotificationInfo.textColor] as? UIColor {
             
-            guard let textView = editingView as? UITextView else { return }
+            guard let textView = editingView as? ALTextView else { return }
             
             guard let alpha = textView.textColor?.cgColor.alpha else { return }
             
@@ -1122,7 +1122,7 @@ extension EditingViewController: FusumaDelegate {
         if let userInfo = noti.userInfo,
             let transparency = userInfo[NotificationInfo.textTransparency] as? CGFloat {
             
-            guard let textView = editingView as? UITextView else { return }
+            guard let textView = editingView as? ALTextView else { return }
             
             let color = textView.textColor
             
