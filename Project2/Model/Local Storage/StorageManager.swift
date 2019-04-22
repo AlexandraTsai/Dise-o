@@ -226,6 +226,10 @@ private extension Image {
             image = imageToSave as NSObject
         }
         
+        transform = object.transform as NSObject
+        
+        object.transform = CGAffineTransform(rotationAngle: 0)
+        
         frame = object.frame as NSObject
         
         guard let objectIndex = object.index else { return }
@@ -241,9 +245,21 @@ private extension Text {
         
         if object.text != nil {
             
-            guard let textToSave = object.text else { return }
+            guard let textToSave = object.attributedText else { return }
             
             attributedText = textToSave as NSObject
         }
+        
+        textContainerSize = object.textContainer.size as NSObject
+        
+        transform = object.transform as NSObject
+        
+        object.transform = CGAffineTransform(rotationAngle: 0)
+        
+        frame = object.frame as NSObject
+        
+        guard let objectIndex = object.index else { return }
+        
+        index = Int16(objectIndex)
     }
 }

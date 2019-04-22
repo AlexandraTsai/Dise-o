@@ -202,9 +202,10 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                 
             }
             
+            //SubView: Images
             if designs[object].images != nil {
                 
-                guard let array = designs[0].images else { return }
+                guard let array = designs[object].images else { return }
                 
                 let subImages = Array(array)
                 
@@ -214,18 +215,59 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                     
                     let index = object.index
                     
-                    guard let image = object.image as? UIImage, let frame = object.frame as? CGRect else { return }
+                    guard let image = object.image as? UIImage,
+                        let frame = object.frame as? CGRect,
+                        let transform = object.transform as? CGAffineTransform else { return }
                     
-                    let imageView = ALImageView(frame: CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.width, height: frame.height))
+                    let imageView = ALImageView()
+                    
+                    designView.addSubview(imageView)
+                    
+                    imageView.frame = frame
                     
                     imageView.image = image
                     
                     imageView.index = Int(index)
                     
-                    designView.addSubview(imageView)
-                    
+                    imageView.transform = transform
+                
                     designView.subImages.append(imageView)
                     
+                }
+                
+            }
+            
+            //SubView: TextView
+            if designs[object].texts != nil {
+                
+                guard let texts = designs[object].texts else { return }
+                
+                guard let textArray = Array(texts) as? [Text] else { return }
+                
+                for element in textArray {
+                    
+                    let index = element.index
+                    
+                    guard let frame = element.frame as? CGRect,
+                        let transform = element.transform as? CGAffineTransform,
+                        let attributedText = element.attributedText as? NSAttributedString else { return }
+                    
+                    let textView = ALTextView()
+                    
+                    textView.backgroundColor = UIColor.clear
+                    
+                    textView.frame = frame
+                    
+                    textView.transform = transform
+                    
+                    textView.index = Int(index)
+                    
+                    textView.attributedText = attributedText
+                    
+                    designView.addSubview(textView)
+                    
+                    designView.subTexts.append(textView)
+                   
                 }
                 
             }
@@ -327,6 +369,20 @@ extension HomeViewController {
                 
             }
             
+        }
+        
+        if alDesignArray[index].subTexts.count > 0 {
+            
+            for count in 0...selectedDesign.subTexts.count-1 {
+                
+                let view = selectedDesign.subTexts[count]
+                
+                guard let index = view.index else { return }
+                
+                designVC.designView.insertSubview(view, at: index)
+                
+                designVC.addAllGesture(to: view)
+            }
         }
         
     }
