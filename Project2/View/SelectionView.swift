@@ -12,6 +12,7 @@ class SelectionView: UIView {
     
     let deleteButton = UIButton()
     let openButton = UIButton()
+    
     let cancelButton = UIButton()
     let closeButton = UIButton()
     
@@ -65,29 +66,31 @@ class SelectionView: UIView {
         cancelButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50).isActive = true
         cancelButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50).isActive = true
         cancelButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+ 
+        //Open Button
+        openButton.translatesAutoresizingMaskIntoConstraints = false
+        openButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 40).isActive = true
+        openButton.bottomAnchor.constraint(equalTo: deleteButton.topAnchor, constant: -10).isActive = true
+        openButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15).isActive = true
+        openButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15).isActive = true
+        openButton.heightAnchor.constraint(equalTo: deleteButton.heightAnchor, multiplier: 1)
+        openButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
+        //Delete Button
         deleteButton.translatesAutoresizingMaskIntoConstraints = false
         
-        deleteButton.bottomAnchor.constraint(equalTo: cancelButton.topAnchor, constant: -10).isActive = true
-        deleteButton.topAnchor.constraint(equalTo: openButton.bottomAnchor, constant: 10).isActive = true
-        deleteButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
-        deleteButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
-//        deleteButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        deleteButton.bottomAnchor.constraint(equalTo: cancelButton.topAnchor, constant: -20).isActive = true
+        deleteButton.topAnchor.constraint(equalTo: openButton.bottomAnchor, constant: 20).isActive = true
+        deleteButton.leadingAnchor.constraint(equalTo: openButton.leadingAnchor).isActive = true
+        deleteButton.trailingAnchor.constraint(equalTo: openButton.trailingAnchor).isActive = true
         
-        openButton.translatesAutoresizingMaskIntoConstraints = false
-        openButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
-        openButton.bottomAnchor.constraint(equalTo: deleteButton.topAnchor, constant: -10).isActive = true
-        openButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
-        openButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
-        openButton.heightAnchor.constraint(equalTo: deleteButton.heightAnchor, multiplier: 1)
-        
-//        cancelButton.translatesAutoresizingMaskIntoConstraints = false
-//        cancelButton.centerYAnchor.constraint(equalTo: openButton.centerYAnchor).isActive = true
-//        cancelButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
-//        cancelButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
-//        cancelButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
-//        cancelButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-//        cancelButton.setImage(#imageLiteral(resourceName: "noun_Cancel"), for: .normal)
+        //Close Button
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
+        closeButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
+        closeButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        closeButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        closeButton.setImage(#imageLiteral(resourceName: "noun_Cancel"), for: .normal)
     }
     
     func setupButtonTitles() {
@@ -109,14 +112,14 @@ class SelectionView: UIView {
     func setupButtonColor() {
         
         openButton.backgroundColor = UIColor.black
-        deleteButton.backgroundColor = UIColor.black
+        deleteButton.backgroundColor = UIColor.gray
         cancelButton.backgroundColor = UIColor.white
         
         cancelButton.layer.borderColor = UIColor.black.cgColor
         cancelButton.layer.borderWidth = 1
         
-        openButton.layer.cornerRadius = 20
-        deleteButton.layer.cornerRadius = 20
+        openButton.layer.cornerRadius = 25
+        deleteButton.layer.cornerRadius = 25
         cancelButton.layer.cornerRadius = 20
         
     }
@@ -126,7 +129,7 @@ class SelectionView: UIView {
         specificView.addSubview(self)
         
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.heightAnchor.constraint(equalToConstant: 400).isActive = true
+        self.heightAnchor.constraint(equalToConstant: 250).isActive = true
         self.bottomAnchor.constraint(equalTo: specificView.bottomAnchor, constant: -20).isActive = true
         self.leadingAnchor.constraint(equalTo: specificView.leadingAnchor, constant: 20).isActive = true
         self.trailingAnchor.constraint(equalTo: specificView.trailingAnchor, constant: -20).isActive = true
