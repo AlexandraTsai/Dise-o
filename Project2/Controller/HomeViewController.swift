@@ -166,6 +166,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                 
                 self.designs = designs
                 
+                
+                
             case .failure(_):
                 
                 print("讀取資料發生錯誤")
@@ -178,6 +180,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         
         for object in 0...designs.count-1 {
             
+            //Create designView and setup the background
             let designView = ALDesignView()
             
             guard let frame = designs[object].frame as? CGRect,
@@ -215,31 +218,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                 guard let imageArray = subImages as? [Image] else { return }
                 
                 layerArray.append(contentsOf: imageArray)
-      
-//                for object in imageArray {
-//
-//                    let index = object.index
-//
-//                    guard let image = object.image as? UIImage,
-//                        let frame = object.frame as? CGRect,
-//                        let transform = object.transform as? CGAffineTransform else { return }
-//
-//                    let imageView = ALImageView()
-//
-//                    designView.addSubview(imageView)
-//
-//                    imageView.frame = frame
-//
-//                    imageView.image = image
-//
-//                    imageView.index = Int(index)
-//
-//                    imageView.transform = transform
-//
-//                    designView.subImages.append(imageView)
-//
-//                }
-                
+
             }
             
             //SubView: TextView
@@ -250,33 +229,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                 guard let textArray = Array(texts) as? [Text] else { return }
                 
                 layerArray.append(contentsOf: textArray)
-                
-//                for element in textArray {
-//
-//                    let index = element.index
-//
-//                    guard let frame = element.frame as? CGRect,
-//                        let transform = element.transform as? CGAffineTransform,
-//                        let attributedText = element.attributedText as? NSAttributedString else { return }
-//
-//                    let textView = ALTextView()
-//
-//                    textView.backgroundColor = UIColor.clear
-//
-//                    textView.frame = frame
-//
-//                    textView.transform = transform
-//
-//                    textView.index = Int(index)
-//
-//                    textView.attributedText = attributedText
-//
-//                    designView.addSubview(textView)
-//
-//                    designView.subTexts.append(textView)
-//
-//                }
-                
+ 
             }
             
             //SubView: ShapeView
@@ -287,33 +240,62 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                 guard let shapesArray = Array(shapes) as? [Shape] else { return }
                 
                 layerArray.append(contentsOf: shapesArray)
-                
-//                for element in shapesArray {
-//
-//                    let index = element.index
-//
-//                    guard let shapeView = element.shapView as? ALShapeView else { return }
-//
-//                    shapeView.index = Int(index)
-//
-//                    designView.addSubview(shapeView)
-//
-//                    designView.subShapes.append(shapeView)
-//
-//                }
+
             }
-            print("=====================")
-            print("-------before--------")
-            print(layerArray)
-            
+          
             layerArray.sort {
                 
                 $0.index < $1.index
             }
-            print("-------after--------")
-            print(layerArray)
-            
+      
+            for layer in layerArray {
+                
+                if let view = layer as? Image {
+                    
+                    guard let frame = view.frame as? CGRect,
+                        let image = view.image as? UIImage,
+                        let transform = view.transform as? CGAffineTransform else { return }
+                    
+                    let imageView = ALImageView()
+                    
+                    imageView.frame = frame
+                    
+                    imageView.image = image
+                    
+                    imageView.transform = transform
+                    
+                    designView.addSubview(imageView)
+                    
+                } else if let view = layer as? Text {
+                    
+                    guard let frame = view.frame as? CGRect,
+                        let transform = view.transform as? CGAffineTransform,
+                        let attributedText = view.attributedText as? NSAttributedString else { return }
+                    
+                    let textView = ALTextView()
+                    
+                    textView.frame = frame
+                    
+                    textView.transform = transform
+                    
+                    textView.attributedText = attributedText
+                    
+                    textView.backgroundColor = UIColor.clear
+                    
+                    designView.addSubview(textView)
+                    
+                } else if let view = layer as? Shape {
+                    
+                    guard let shapeView = view.shapView as? ALShapeView else { return }
+                    
+                    designView.addSubview(shapeView)
+                    
+                }
+            }
+          
             alDesignArray.append(designView)
+            
+            layerArray = []
             
         }
     }
@@ -399,55 +381,11 @@ extension HomeViewController {
         designVC.designView.image = selectedDesign.image
         
         designVC.designView.createTime = selectedDesign.createTime
-    
-        //Show sub images
-        if alDesignArray[index].subImages.count > 0 {
-            
-            for count in 0...selectedDesign.subImages.count-1 {
-                
-                let view = selectedDesign.subImages[count]
-                
-                guard let index = view.index else { return }
-                
-                designVC.designView.insertSubview(view, at: index)
-                
-                designVC.addAllGesture(to: view)
-                
-            }
-            
-        }
         
-        if alDesignArray[index].subTexts.count > 0 {
+        for subView in selectedDesign.subviews {
             
-            for count in 0...selectedDesign.subTexts.count-1 {
-                
-                let view = selectedDesign.subTexts[count]
-                
-                guard let index = view.index else { return }
-                
-                designVC.designView.insertSubview(view, at: index)
-                
-                designVC.addAllGesture(to: view)
-            }
+             designVC.designView.addSubview(subView)
         }
-        
-        if alDesignArray[index].subShapes.count > 0 {
-            
-            for count in 0...selectedDesign.subShapes.count-1 {
-                
-                let view = selectedDesign.subShapes[count]
-                
-                print("index is \(view.index)")
-                
-                guard let index = view.index else { return }
-
-                designVC.designView.insertSubview(view, at: index)
-                
-                designVC.addAllGesture(to: view)
-            }
-        }
-        
-        let shape = designVC.designView.subviews.filter{$0 is ALShapeView}
         
     }
 }
