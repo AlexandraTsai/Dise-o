@@ -766,6 +766,7 @@ extension EditingViewController {
             sender.rotation = 0
             
         }
+
     }
 
     @objc func handlePinch(sender: UIPinchGestureRecognizer) {

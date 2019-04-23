@@ -24,6 +24,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
     
     var newDesignView = NewDeign()
     
+    var layerArray: [LayerProtocol] = []
+    
     var alDesignArray: [ALDesignView] = []
     
     var designs: [Design] = [] {
@@ -171,6 +173,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         })
     }
     
+    // swiftlint:disable cyclomatic_complexity
     func addAllDesigns() {
         
         for object in 0...designs.count-1 {
@@ -210,30 +213,32 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                 let subImages = Array(array)
                 
                 guard let imageArray = subImages as? [Image] else { return }
-      
-                for object in imageArray {
-                    
-                    let index = object.index
-                    
-                    guard let image = object.image as? UIImage,
-                        let frame = object.frame as? CGRect,
-                        let transform = object.transform as? CGAffineTransform else { return }
-                    
-                    let imageView = ALImageView()
-                    
-                    designView.addSubview(imageView)
-                    
-                    imageView.frame = frame
-                    
-                    imageView.image = image
-                    
-                    imageView.index = Int(index)
-                    
-                    imageView.transform = transform
                 
-                    designView.subImages.append(imageView)
-                    
-                }
+                layerArray.append(contentsOf: imageArray)
+      
+//                for object in imageArray {
+//
+//                    let index = object.index
+//
+//                    guard let image = object.image as? UIImage,
+//                        let frame = object.frame as? CGRect,
+//                        let transform = object.transform as? CGAffineTransform else { return }
+//
+//                    let imageView = ALImageView()
+//
+//                    designView.addSubview(imageView)
+//
+//                    imageView.frame = frame
+//
+//                    imageView.image = image
+//
+//                    imageView.index = Int(index)
+//
+//                    imageView.transform = transform
+//
+//                    designView.subImages.append(imageView)
+//
+//                }
                 
             }
             
@@ -244,38 +249,75 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                 
                 guard let textArray = Array(texts) as? [Text] else { return }
                 
-                for element in textArray {
-                    
-                    let index = element.index
-                    
-                    guard let frame = element.frame as? CGRect,
-                        let transform = element.transform as? CGAffineTransform,
-                        let attributedText = element.attributedText as? NSAttributedString else { return }
-                    
-                    let textView = ALTextView()
-                    
-                    textView.backgroundColor = UIColor.clear
-                    
-                    textView.frame = frame
-                    
-                    textView.transform = transform
-                    
-                    textView.index = Int(index)
-                    
-                    textView.attributedText = attributedText
-                    
-                    designView.addSubview(textView)
-                    
-                    designView.subTexts.append(textView)
-                   
-                }
+                layerArray.append(contentsOf: textArray)
+                
+//                for element in textArray {
+//
+//                    let index = element.index
+//
+//                    guard let frame = element.frame as? CGRect,
+//                        let transform = element.transform as? CGAffineTransform,
+//                        let attributedText = element.attributedText as? NSAttributedString else { return }
+//
+//                    let textView = ALTextView()
+//
+//                    textView.backgroundColor = UIColor.clear
+//
+//                    textView.frame = frame
+//
+//                    textView.transform = transform
+//
+//                    textView.index = Int(index)
+//
+//                    textView.attributedText = attributedText
+//
+//                    designView.addSubview(textView)
+//
+//                    designView.subTexts.append(textView)
+//
+//                }
                 
             }
+            
+            //SubView: ShapeView
+            if designs[object].shapes != nil {
+                
+                guard let shapes = designs[object].shapes else { return }
+                
+                guard let shapesArray = Array(shapes) as? [Shape] else { return }
+                
+                layerArray.append(contentsOf: shapesArray)
+                
+//                for element in shapesArray {
+//
+//                    let index = element.index
+//
+//                    guard let shapeView = element.shapView as? ALShapeView else { return }
+//
+//                    shapeView.index = Int(index)
+//
+//                    designView.addSubview(shapeView)
+//
+//                    designView.subShapes.append(shapeView)
+//
+//                }
+            }
+            print("=====================")
+            print("-------before--------")
+            print(layerArray)
+            
+            layerArray.sort {
+                
+                $0.index < $1.index
+            }
+            print("-------after--------")
+            print(layerArray)
             
             alDesignArray.append(designView)
             
         }
     }
+    // swiftlint:enable cyclomatic_complexity
 }
 
 extension HomeViewController {
@@ -343,6 +385,10 @@ extension HomeViewController {
         collectionView.collectionViewLayout = flowLayout
     }
     
+}
+
+extension HomeViewController {
+    
     func showTappedDesign(for index: Int, at designVC: DesignViewController) {
         
         let selectedDesign = alDesignArray[index]
@@ -353,7 +399,7 @@ extension HomeViewController {
         designVC.designView.image = selectedDesign.image
         
         designVC.designView.createTime = selectedDesign.createTime
-        
+    
         //Show sub images
         if alDesignArray[index].subImages.count > 0 {
             
@@ -385,6 +431,23 @@ extension HomeViewController {
             }
         }
         
+        if alDesignArray[index].subShapes.count > 0 {
+            
+            for count in 0...selectedDesign.subShapes.count-1 {
+                
+                let view = selectedDesign.subShapes[count]
+                
+                print("index is \(view.index)")
+                
+                guard let index = view.index else { return }
+
+                designVC.designView.insertSubview(view, at: index)
+                
+                designVC.addAllGesture(to: view)
+            }
+        }
+        
+        let shape = designVC.designView.subviews.filter{$0 is ALShapeView}
+        
     }
-    
 }

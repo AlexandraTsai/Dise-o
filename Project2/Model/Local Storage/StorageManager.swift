@@ -212,10 +212,28 @@ private extension Design {
             })
         
         )
+        
+        shapes = NSSet(array:
+            
+            object.subShapes.map({ shapeView in
+                
+                let alShapeView = Shape(context: StorageManager.shared.viewContext)
+                
+                alShapeView.mapping(shapeView)
+                
+                return alShapeView
+                
+            })
+        
+        )
     }
 }
 
-private extension Image {
+protocol LayerProtocol {
+    var index: Int16 { get set }
+}
+
+extension Image: LayerProtocol {
     
     func mapping(_ object: ALImageView) {
         
@@ -239,7 +257,7 @@ private extension Image {
     
 }
 
-private extension Text {
+extension Text: LayerProtocol {
     
     func mapping(_ object: ALTextView) {
         
@@ -261,5 +279,18 @@ private extension Text {
         guard let objectIndex = object.index else { return }
         
         index = Int16(objectIndex)
+    }
+}
+
+extension Shape: LayerProtocol {
+    
+    func mapping(_ object: ALShapeView) {
+        
+        shapView = object
+        
+        guard let objectIndex = object.index else { return }
+        
+        index = Int16(objectIndex)
+       
     }
 }

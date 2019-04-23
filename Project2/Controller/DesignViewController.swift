@@ -375,6 +375,7 @@ extension DesignViewController {
             sender.rotation = 0
 
         }
+    
     }
 
     @objc func handlePinch(sender: UIPinchGestureRecognizer) {
@@ -708,35 +709,28 @@ extension DesignViewController {
         
         let count = designView.subviews.count
         
-        for index in 0...count-1 {
+        for index in 0..<count {
             
             let subViewToAdd = designView.subviews[index]
             
-            guard let imageView = subViewToAdd as? ALImageView else {
+            if let imageView = subViewToAdd as? ALImageView {
                 
-                guard let textView = subViewToAdd as? ALTextView else {
-                    
-                    guard let shapeView = subViewToAdd as? ALShapeView else { return }
-                    
-                    shapeView.index = index
-                    
-                    designView.subShapes.append(shapeView)
-                    
-                    return
-                }
+            imageView.index = index
+            
+            designView.subImages.append(imageView)
+            
+            } else if let textView = subViewToAdd as? ALTextView {
                 
                 textView.index = index
                 
                 designView.subTexts.append(textView)
                 
-                return
+            } else if let shapeView = subViewToAdd as? ALShapeView {
                 
+                shapeView.index = index
+                
+                designView.subShapes.append(shapeView)
             }
-            
-            imageView.index = index
-            
-            designView.subImages.append(imageView)
-            
         }
     }
     
