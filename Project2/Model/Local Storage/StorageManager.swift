@@ -95,7 +95,7 @@ class StorageManager {
         designName: String,
         frame: CGRect,
         backgroundColor: UIColor?,
-        backgroundImage: UIImage?,
+        backgroundImage: String?,
         completion: (Result<Void>) -> Void) {
         
         let design = Design(context: viewContext)
@@ -127,7 +127,7 @@ class StorageManager {
             
             guard let image = backgroundImage else { return }
             
-            design.backgroundImage = image as NSObject
+            design.backgroundImage = image
             
         }
         
@@ -163,7 +163,7 @@ class StorageManager {
               
                 object.setValue(design.backgroundColor, forKey: "backgroundColor")
                 object.setValue(updateTime, forKey: "createTime")
-                object.setValue(design.image, forKey: "backgroundImage")
+                object.setValue(design.imageFileName, forKey: "backgroundImage")
                
                 let images = NSSet(array:
                     
@@ -289,9 +289,9 @@ extension Image: LayerProtocol {
         
         if object.image != nil {
             
-            guard let imageToSave = object.image else { return }
+            guard let imageToSave = object.imageFileName else { return }
             
-            image = imageToSave as NSObject
+            image = imageToSave
         }
         
         transform = object.transform as NSObject

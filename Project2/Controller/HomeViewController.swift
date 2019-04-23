@@ -76,7 +76,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
             bundle: nil)
         
         setupCollectionViewLayout()
-
+        
     }
  
     @IBAction func addButtonTapped(_ sender: UIButton) {
@@ -165,9 +165,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
             case .success(let designs):
                 
                 self.designs = designs
-                
-                
-                
+              
             case .failure(_):
                 
                 print("讀取資料發生錯誤")
@@ -202,9 +200,13 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
             
             if designs[object].backgroundImage != nil {
                 
-                guard let backgroundImage = designs[object].backgroundImage as? UIImage else { return }
+                guard let fileName = designs[object].backgroundImage else { return }
+                
+                let backgroundImage = loadImageFromDiskWith(fileName: fileName)
                 
                 designView.image = backgroundImage
+                
+                designView.imageFileName = fileName
                 
             }
             
@@ -250,16 +252,20 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                 if let view = layer as? Image {
                     
                     guard let frame = view.frame as? CGRect,
-                        let image = view.image as? UIImage,
+                        let fileName = view.image,
                         let transform = view.transform as? CGAffineTransform else { return }
                     
                     let imageView = ALImageView()
                     
                     imageView.frame = frame
+                   
+                    imageView.transform = transform
+                    
+                    let image = loadImageFromDiskWith(fileName: fileName)
                     
                     imageView.image = image
                     
-                    imageView.transform = transform
+                    imageView.imageFileName = fileName
                     
                     designView.addSubview(imageView)
                     
@@ -387,6 +393,8 @@ extension HomeViewController {
         
         designVC.designView.image = selectedDesign.image
         
+        designVC.designView.imageFileName = selectedDesign.imageFileName
+        
         designVC.designView.createTime = selectedDesign.createTime
         
         for subView in selectedDesign.subviews {
@@ -396,5 +404,28 @@ extension HomeViewController {
             designVC.addAllGesture(to: subView)
         }
         
+    }
+    
+    func loadImageFromDiskWith(fileName: String) -> UIImage? {
+        
+        let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
+        
+        let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+        
+        let paths = NSSearchPathForDirectoriesInDomains(documentDirectory,
+                                                        userDomainMask,
+                                                        true)
+        
+        if let dirPath = paths.first {
+            
+            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(fileName)
+            
+            let image = UIImage(contentsOfFile: imageUrl.path)
+            
+            return image
+            
+        }
+        
+        return nil
     }
 }

@@ -11,4 +11,6 @@ class ALImageView: UIImageView {
     
     var index: Int?
     
+    var imageFileName: String?
+    
 }

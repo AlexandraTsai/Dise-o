@@ -457,7 +457,7 @@ extension DesignViewController {
                 designName: designView.designName,
                 frame: designView.frame,
                 backgroundColor: designView.backgroundColor,
-                backgroundImage: designView.image,
+                backgroundImage: designView.imageFileName,
                 completion: { result in
                     switch result {
                     case .success(_):
@@ -623,6 +623,10 @@ extension DesignViewController {
     // Return the image which is selected from camera roll or is taken via the camera.
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
         
+        let fileName = String(Date().timeIntervalSince1970)
+        
+        saveImage(fileName: fileName, image: image)
+        
         if addingNewImage == true {
  
             let newImage = ALImageView(frame: CGRect(x: designView.frame.width/2-75,
@@ -631,6 +635,8 @@ extension DesignViewController {
                                                      height: 150))
             newImage.image = image
 
+            newImage.imageFileName = fileName
+            
             designView.addSubview(newImage)
             
             goToEditingVC(with: newImage, navigationBarForImage: true)
@@ -639,6 +645,8 @@ extension DesignViewController {
             
         } else {
             designView.image = image
+            
+            designView.imageFileName = fileName
             
             let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
             
@@ -674,7 +682,7 @@ extension DesignViewController {
 
     // Return an image and the detailed information.
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode, metaData: ImageMetadata) {
-
+     
     }
 
     func setupImagePicker() {
@@ -732,6 +740,40 @@ extension DesignViewController {
                 designView.subShapes.append(shapeView)
             }
         }
+    }
+    
+    func saveImage(fileName: String, image: UIImage) {
+        
+        guard let documentsDirectory = FileManager.default.urls(
+            for: .documentDirectory,
+            in: .userDomainMask).first else { return }
+        
+        let fileURL = documentsDirectory.appendingPathComponent(fileName)
+        
+        guard let data = image.jpegData(compressionQuality: 1) else { return }
+        
+        if FileManager.default.fileExists(atPath: fileURL.path) {
+            
+            do {
+                try FileManager.default.removeItem(atPath: fileURL.path)
+                print("Removed old image")
+            } catch let removeError {
+                
+                print("Couldn't remove file at path", removeError)
+            }
+        }
+        
+        do {
+            
+            try data.write(to: fileURL)
+            print(fileURL)
+            
+        } catch let error {
+            
+            print("error saving file with error", error)
+            
+        }
+        
     }
     
 }

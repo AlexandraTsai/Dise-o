@@ -2,7 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18B75" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Design" representedClassName="Design" syncable="YES" codeGenerationType="class">
         <attribute name="backgroundColor" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="backgroundImage" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="backgroundImage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createTime" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="designName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="frame" optional="YES" attributeType="Transformable" syncable="YES"/>
@@ -12,7 +12,7 @@
     </entity>
     <entity name="Image" representedClassName="Image" syncable="YES" codeGenerationType="class">
         <attribute name="frame" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="image" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="transform" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="design" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Design" inverseName="images" inverseEntity="Design" syncable="YES"/>

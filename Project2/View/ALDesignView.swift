@@ -20,4 +20,5 @@ class ALDesignView: UIImageView {
     
     var subShapes = [ALShapeView]()
     
+    var imageFileName: String?
 }
