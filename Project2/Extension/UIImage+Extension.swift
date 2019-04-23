@@ -37,6 +37,17 @@ enum ImageAsset: String {
     case Icon_Download
 
     case Icon_Eye_Dropper
+    
+    case Icon_show_more
+    
+    var imageTemplate: UIImage {
+        
+        let origImage = UIImage(named: self.rawValue)
+        guard let tintedImage = origImage?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate) else { return UIImage()}
+        
+        return tintedImage
+        
+    }
 
 }
 // swiftlint:enable identifier_name

@@ -11,10 +11,18 @@ import UIKit
 class PortfolioCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var designView: UIImageView!
+    @IBOutlet weak var showMoreButton: UIButton!
+    
+    var btnTapAction: (()->())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+    showMoreButton.setImage(ImageAsset.Icon_show_more.imageTemplate, for: .normal)
+        
+        showMoreButton.tintColor = UIColor.white
+        showMoreButton.layer.cornerRadius = 8
     }
 
     override init(frame: CGRect) {
@@ -28,4 +36,11 @@ class PortfolioCollectionViewCell: UICollectionViewCell {
         
         layer.cornerRadius = 20
     }
+    
+    @IBAction func showMoreBtnTapped(_ sender: Any) {
+        
+        btnTapAction?()
+        
+    }
+    
 }

@@ -37,7 +37,7 @@
                                         <rect key="frame" x="97.5" y="10" width="180" height="22.5"/>
                                         <color key="backgroundColor" red="0.87450980389999999" green="0.85882352939999995" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -987,7 +987,7 @@
                                         </connections>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.87450980389999999" green="0.85882352939999995" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="shg-Ow-2Sl" secondAttribute="bottom" constant="8" id="HGN-qN-9d1"/>
                                     <constraint firstItem="2eQ-hd-ewn" firstAttribute="centerY" secondItem="shg-Ow-2Sl" secondAttribute="centerY" id="PJd-6v-1Ik"/>

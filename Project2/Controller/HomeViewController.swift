@@ -343,11 +343,36 @@ extension HomeViewController {
             
             portfolioCell.designView.image = design.image
         }
-        
+            
+        portfolioCell.btnTapAction = {
+            
+            let selectionView = SelectionView()
+            selectionView.addOn(self.view)
+        }
+            
+//        for subView in design.subviews {
+//
+//            let originX = 157.5*(subView.frame.origin.x)/335
+//
+//            let width = 157.5*(subView.frame.width)/335
+//
+//            let height = 157.5*(subView.frame.height)/335
+//
+//            subView.frame = CGRect(x: originX, y: originX, width: width, height: height)
+//
+//            portfolioCell.designView.addSubview(subView)
+//        }
+      
         return portfolioCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let cell = collectionView.cellForItem(at: indexPath)
+        
+        guard let portfolioCell = cell as? PortfolioCollectionViewCell else { return }
+        
+        guard let subViews = cell?.subviews else { return }
         
         guard let designVC = UIStoryboard(
             name: "Main",
@@ -357,7 +382,7 @@ extension HomeViewController {
         
         designVC.loadViewIfNeeded()
         
-        showTappedDesign(for: indexPath.item, at: designVC)
+        showTappedDesign(for: indexPath.item, with: subViews, at: designVC)
         
         show(designVC, sender: nil)
     }
@@ -384,7 +409,7 @@ extension HomeViewController {
 
 extension HomeViewController {
     
-    func showTappedDesign(for index: Int, at designVC: DesignViewController) {
+    func showTappedDesign(for index: Int, with subViews: [UIView],at designVC: DesignViewController) {
         
         let selectedDesign = alDesignArray[index]
         
@@ -398,12 +423,12 @@ extension HomeViewController {
         designVC.designView.createTime = selectedDesign.createTime
         
         for subView in selectedDesign.subviews {
-            
+
             designVC.designView.addSubview(subView)
-            
+
             designVC.addAllGesture(to: subView)
         }
-        
+
     }
     
     func loadImageFromDiskWith(fileName: String) -> UIImage? {
