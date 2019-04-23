@@ -135,4 +135,5 @@ class SelectionView: UIView {
         self.trailingAnchor.constraint(equalTo: specificView.trailingAnchor, constant: -20).isActive = true
         
     }
+
 }

@@ -24,6 +24,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
     
     var newDesignView = NewDeign()
     
+    let selectionView = SelectionView()
+    
     var layerArray: [LayerProtocol] = []
     
     var alDesignArray: [ALDesignView] = []
@@ -63,6 +65,9 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
             
             collectionView.isHidden = false
         }
+        
+        selectionView.alpha = 0
+        selectionView.isHidden = true
     }
 
     override func viewDidLoad() {
@@ -77,14 +82,20 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         
         setupCollectionViewLayout()
         
+        selectionView.addOn(self.view)
+        
+        selectionView.closeButton.addTarget(self, action: #selector(self.closeBtnTapped(sender:)), for: .touchUpInside)
+        
+        selectionView.cancelButton.addTarget(self, action: #selector(closeBtnTapped(sender:)), for: .touchUpInside)
+        
     }
  
     @IBAction func addButtonTapped(_ sender: UIButton) {
         self.setupInputView()
         newDesignView.alpha = 0
    
-        UIView.animate(withDuration: 0.7, animations: {
-            self.newDesignView.alpha = 1
+        UIView.animate(withDuration: 0.7, animations: { [weak self] in
+            self?.newDesignView.alpha = 1
           
         })
         
@@ -116,12 +127,12 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
     
     @objc func cancelButtonTapped(sender: UIButton) {
         
-        UIView.animate(withDuration: 0.7, animations: {
+        UIView.animate(withDuration: 0.7, animations: { [weak self] in
             
-            self.newDesignView.isHidden = true
+            self?.newDesignView.isHidden = true
             
             //To hide the keyboard
-            self.view.endEditing(true)
+            self?.view.endEditing(true)
             
         })
        
@@ -344,25 +355,17 @@ extension HomeViewController {
             portfolioCell.designView.image = design.image
         }
             
-        portfolioCell.btnTapAction = {
+        portfolioCell.btnTapAction = { [weak self] in
             
-            let selectionView = SelectionView()
-            selectionView.addOn(self.view)
+            UIView.animate(withDuration: 0.7, animations: { [weak self] in
+                
+                self?.selectionView.alpha = 1
+                self?.selectionView.isHidden = false
+            
+            })
+            
         }
-            
-//        for subView in design.subviews {
-//
-//            let originX = 157.5*(subView.frame.origin.x)/335
-//
-//            let width = 157.5*(subView.frame.width)/335
-//
-//            let height = 157.5*(subView.frame.height)/335
-//
-//            subView.frame = CGRect(x: originX, y: originX, width: width, height: height)
-//
-//            portfolioCell.designView.addSubview(subView)
-//        }
-      
+
         return portfolioCell
     }
     
@@ -452,5 +455,14 @@ extension HomeViewController {
         }
         
         return nil
+    }
+   
+    @objc func closeBtnTapped(sender: UIButton) {
+        
+        UIView.animate(withDuration: 0.4, animations: { [weak self] in
+
+          self?.selectionView.alpha = 0
+            
+        })
     }
 }
