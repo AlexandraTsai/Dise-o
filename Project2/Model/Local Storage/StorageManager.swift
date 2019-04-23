@@ -164,6 +164,56 @@ class StorageManager {
                 object.setValue(design.backgroundColor, forKey: "backgroundColor")
                 object.setValue(updateTime, forKey: "createTime")
                 object.setValue(design.image, forKey: "backgroundImage")
+               
+                let images = NSSet(array:
+                    
+                    design.subImages.map({ imageView in
+                    
+                        let alImageView = Image(context: StorageManager.shared.viewContext
+                        )
+                    
+                    alImageView.mapping(imageView)
+                    
+                    return alImageView
+                    
+                    })
+                
+                )
+                
+                let shapes = NSSet(array:
+                    
+                    design.subShapes.map({ shapeView in
+                        
+                        let alShapeView = Shape(context: StorageManager.shared.viewContext
+                        )
+                        
+                        alShapeView.mapping(shapeView)
+                        
+                        return alShapeView
+                        
+                    })
+                    
+                )
+                
+                let texts = NSSet(array:
+                
+                    design.subTexts.map({ textView in
+                        
+                        let alTextView = Text(context:
+                        
+                            StorageManager.shared.viewContext
+                        )
+                        
+                        alTextView.mapping(textView)
+                        
+                        return alTextView
+                    })
+                
+                )
+                
+                object.setValue(images, forKey: "images")
+                object.setValue(shapes, forKey: "shapes")
+                object.setValue(texts, forKey: "texts")
                 
                 try viewContext.save()
                 
@@ -287,6 +337,12 @@ extension Shape: LayerProtocol {
     func mapping(_ object: ALShapeView) {
         
         shapView = object
+        
+        shapeType = object.shapeType
+        
+        shapeColor = object.shapeColor
+        
+        stroke = object.stroke
         
         guard let objectIndex = object.index else { return }
         

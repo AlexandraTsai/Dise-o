@@ -243,10 +243,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
 
             }
           
-            layerArray.sort {
-                
-                $0.index < $1.index
-            }
+            layerArray.sort { $0.index < $1.index }
       
             for layer in layerArray {
                 
@@ -288,6 +285,16 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                     
                     guard let shapeView = view.shapView as? ALShapeView else { return }
                     
+                    if let shapeType = view.shapeType, let color = view.shapeColor as? UIColor {
+                        
+                        shapeView.shapeType = shapeType
+                        
+                        shapeView.shapeColor = color
+                        
+                        shapeView.stroke = view.stroke
+
+                    }
+                   
                     designView.addSubview(shapeView)
                     
                 }
@@ -384,7 +391,9 @@ extension HomeViewController {
         
         for subView in selectedDesign.subviews {
             
-             designVC.designView.addSubview(subView)
+            designVC.designView.addSubview(subView)
+            
+            designVC.addAllGesture(to: subView)
         }
         
     }
