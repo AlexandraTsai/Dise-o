@@ -464,10 +464,6 @@ extension DesignViewController {
             StorageManager.shared.saveDesign(
                 newDesign: designView,
                 createTime: createTime,
-                designName: designView.designName,
-                frame: designView.frame,
-                backgroundColor: designView.backgroundColor,
-                backgroundImage: designView.imageFileName,
                 completion: { result in
                     
                     switch result {

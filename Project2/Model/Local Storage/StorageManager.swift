@@ -90,44 +90,40 @@ class StorageManager {
     func saveDesign (
         newDesign: ALDesignView,
         createTime: Int64,
-        designName: String,
-        frame: CGRect,
-        backgroundColor: UIColor?,
-        backgroundImage: String?,
         completion: (Result<Void>) -> Void) {
         
         let design = Design(context: viewContext)
         
         design.mapping(newDesign)
-        
-        design.frame = frame as NSObject
+
+        design.frame = newDesign.frame as NSObject
         
         design.createTime = createTime
-        
-        design.designName = designName
+
+        design.designName = newDesign.designName
         
         guard let screenshot = newDesign.screenshotName else { return }
         
         design.screenshot = screenshot
         
-        if backgroundColor == nil {
+        if newDesign.backgroundColor == nil {
 
             design.backgroundColor = nil
           
         } else {
             
-            guard let color = backgroundColor else { return }
+            guard let color = newDesign.backgroundColor else { return }
             
             design.backgroundColor = color as NSObject
         }
        
-        if backgroundImage == nil {
+        if  newDesign.image == nil {
             
             design.backgroundImage = nil
             
         } else {
             
-            guard let image = backgroundImage else { return }
+            guard let image = newDesign.imageFileName else { return }
             
             design.backgroundImage = image
             

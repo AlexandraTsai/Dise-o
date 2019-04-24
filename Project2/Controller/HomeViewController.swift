@@ -304,58 +304,15 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                 
                 if let view = layer as? Image {
                     
-                    guard let frame = view.frame as? CGRect,
-                        let fileName = view.image,
-                        let transform = view.transform as? CGAffineTransform else { return }
-                    
-                    let imageView = ALImageView()
-                    
-                    imageView.frame = frame
-                   
-                    imageView.transform = transform
-                    
-                    let image = loadImageFromDiskWith(fileName: fileName)
-                    
-                    imageView.image = image
-                    
-                    imageView.imageFileName = fileName
-                    
-                    designView.addSubview(imageView)
+                   view.transformImage(for: designView)
                     
                 } else if let view = layer as? Text {
                     
-                    guard let frame = view.frame as? CGRect,
-                        let transform = view.transform as? CGAffineTransform,
-                        let attributedText = view.attributedText as? NSAttributedString else { return }
-                    
-                    let textView = ALTextView()
-                    
-                    textView.frame = frame
-                    
-                    textView.transform = transform
-                    
-                    textView.attributedText = attributedText
-                    
-                    textView.backgroundColor = UIColor.clear
-                    
-                    designView.addSubview(textView)
+                    view.transformText(for: designView)
                     
                 } else if let view = layer as? Shape {
                     
-                    guard let shapeView = view.shapView as? ALShapeView else { return }
-                    
-                    if let shapeType = view.shapeType, let color = view.shapeColor as? UIColor {
-                        
-                        shapeView.shapeType = shapeType
-                        
-                        shapeView.shapeColor = color
-                        
-                        shapeView.stroke = view.stroke
-
-                    }
-                   
-                    designView.addSubview(shapeView)
-                    
+                    view.transformShape(for: designView)
                 }
             }
           

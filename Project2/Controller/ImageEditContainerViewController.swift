@@ -236,10 +236,10 @@ extension ImageEditContainerViewController {
         NotificationCenter.default.addObserver(self, selector:
             #selector(changeImage(noti:)), name: notificationName, object: nil)
         
-        let notificationName2 = Notification.Name(NotiName.paletteColor.rawValue)
+//        let notificationName2 = Notification.Name(NotiName.paletteColor.rawValue)
         
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(changePaletteColor(noti:)), name: notificationName2, object: nil)
+//        NotificationCenter.default.addObserver(self, selector:
+//            #selector(changePaletteColor(noti:)), name: notificationName2, object: nil)
     }
     
     // 收到通知後要執行的動作
@@ -253,12 +253,11 @@ extension ImageEditContainerViewController {
             }
         }
     }
-    
-    @objc func changePaletteColor(noti: Notification) {
-        if let userInfo = noti.userInfo,
-            let _ = userInfo[NotificationInfo.paletteColor] as? UIColor {
-       
-        }
-    }
 }
 
+//    @objc func changePaletteColor(noti: Notification) {
+//        if let userInfo = noti.userInfo,
+//            let _ = userInfo[NotificationInfo.paletteColor] as? UIColor {
+//
+//        }
+//    }

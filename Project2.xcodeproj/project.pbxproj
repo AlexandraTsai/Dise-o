@@ -16,6 +16,9 @@
 		A84880CB226F26D200F308AC /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84880CA226F26D200F308AC /* SelectionView.swift */; };
 		A84880CD227036A200F308AC /* SaveSuccessLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84880CC227036A200F308AC /* SaveSuccessLabel.swift */; };
 		A84880CF22704A8900F308AC /* RenameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84880CE22704A8900F308AC /* RenameView.swift */; };
+		A84880D12270672100F308AC /* Shape+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84880D02270672100F308AC /* Shape+Extension.swift */; };
+		A84880D32270687500F308AC /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84880D22270687500F308AC /* Text+Extension.swift */; };
+		A84880D52270688400F308AC /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84880D42270688400F308AC /* Image+Extension.swift */; };
 		A865976C2269CB43000789A2 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A865976B2269CB43000789A2 /* StorageManager.swift */; };
 		A865976F2269D22F000789A2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A865976E2269D22F000789A2 /* Result.swift */; };
 		A86824C2225CCF4000BDCCD8 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86824C1225CCF4000BDCCD8 /* Notification.swift */; };
@@ -79,6 +82,9 @@
 		A84880CA226F26D200F308AC /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
 		A84880CC227036A200F308AC /* SaveSuccessLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSuccessLabel.swift; sourceTree = "<group>"; };
 		A84880CE22704A8900F308AC /* RenameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameView.swift; sourceTree = "<group>"; };
+		A84880D02270672100F308AC /* Shape+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shape+Extension.swift"; sourceTree = "<group>"; };
+		A84880D22270687500F308AC /* Text+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
+		A84880D42270688400F308AC /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
 		A865976B2269CB43000789A2 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		A865976E2269D22F000789A2 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		A86824C1225CCF4000BDCCD8 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
@@ -161,6 +167,16 @@
 				E0D502422CADB0A6DB80DCEF /* Pods-Project2.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A84880D62270688700F308AC /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				A84880D02270672100F308AC /* Shape+Extension.swift */,
+				A84880D22270687500F308AC /* Text+Extension.swift */,
+				A84880D42270688400F308AC /* Image+Extension.swift */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 		A865976D2269CB4D000789A2 /* Local Storage */ = {
@@ -294,6 +310,7 @@
 		A8D2C473225227F60085AD24 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A84880D62270688700F308AC /* Core Data */,
 				A8DEBB9722543DBF0081A694 /* border.swift */,
 				A8D2C474225228130085AD24 /* UITableView+Extension.swift */,
 				A8D2C47A22522A8F0085AD24 /* UICollectionView+Extension.swift */,
@@ -495,6 +512,7 @@
 				A8DEBBA82255A5A90081A694 /* UITextView+Extension.swift in Sources */,
 				A8B5E4F7226D91D800514A75 /* ALTextView.swift in Sources */,
 				A8BFF77322588EA90010E56B /* SpacingTableViewCell.swift in Sources */,
+				A84880D52270688400F308AC /* Image+Extension.swift in Sources */,
 				A8D2C47E22523A480085AD24 /* PhotoCollectionViewCell.swift in Sources */,
 				A84880CD227036A200F308AC /* SaveSuccessLabel.swift in Sources */,
 				A8DEBB9E2254803B0081A694 /* UIImage+Extension.swift in Sources */,
@@ -504,10 +522,12 @@
 				A8BFF782225A4B6B0010E56B /* PhotoManager.swift in Sources */,
 				A8D2C4842252F9FF0085AD24 /* ImageContainerViewController.swift in Sources */,
 				A8D2C481225268000085AD24 /* EditingViewController.swift in Sources */,
+				A84880D12270672100F308AC /* Shape+Extension.swift in Sources */,
 				A8DEBB9B22545B8F0081A694 /* CollectionReusableView.swift in Sources */,
 				A8D2C475225228130085AD24 /* UITableView+Extension.swift in Sources */,
 				A86824C82260838200BDCCD8 /* ALRotationGestureRecognizer.swift in Sources */,
 				A8DEBBAF225621B30081A694 /* PaletteCollectionViewCell.swift in Sources */,
+				A84880D32270687500F308AC /* Text+Extension.swift in Sources */,
 				A8D2C452225219020085AD24 /* DesignViewController.swift in Sources */,
 				A8D2C450225219020085AD24 /* AppDelegate.swift in Sources */,
 				A8BFF7772258D1970010E56B /* FontSizeTableViewCell.swift in Sources */,
