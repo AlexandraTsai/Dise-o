@@ -440,6 +440,16 @@ extension DesignViewController {
 
     @objc func didTapProfileButton(sender: AnyObject) {
         
+        let date = String(Date().timeIntervalSince1970)
+        
+        let fileName = "Screenshot_\(date)"
+        
+        let screenshot = designView.takeScreenshot()
+        
+        designView.screenshotName = fileName
+        
+        saveImage(fileName: fileName, image: screenshot)
+        
         if designView.subviews.count > 0 {
             
              prepareForSaving()

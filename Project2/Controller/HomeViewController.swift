@@ -206,13 +206,16 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
             let designView = ALDesignView()
             
             guard let frame = designs[object].frame as? CGRect,
-                let designName = designs[object].designName else { return }
+                let designName = designs[object].designName,
+                let screeshot = designs[object].screenshot else { return }
             
             designView.frame = frame
             
             designView.createTime = designs[object].createTime
             
             designView.designName = designName
+            
+            designView.screenshotName = screeshot
 
             if designs[object].backgroundColor != nil {
                 
@@ -358,15 +361,21 @@ extension HomeViewController {
             
         let design = alDesignArray[indexPath.item]
             
-        if design.image == nil {
+//        if design.image == nil {
+//
+//            portfolioCell.designView.backgroundColor = design.backgroundColor
+//            portfolioCell.designView.image = nil
+//
+//        } else {
+//
+//            portfolioCell.designView.image = design.image
+//        }
+    
+        guard let fileName = design.screenshotName else { return cell }
+        
+        let screenshot = loadImageFromDiskWith(fileName: fileName)
             
-            portfolioCell.designView.backgroundColor = design.backgroundColor
-            portfolioCell.designView.image = nil
-            
-        } else {
-            
-            portfolioCell.designView.image = design.image
-        }
+        portfolioCell.designView.image = screenshot
             
         portfolioCell.btnTapAction = { [weak self] in
             

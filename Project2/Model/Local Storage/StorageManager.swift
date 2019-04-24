@@ -108,6 +108,12 @@ class StorageManager {
         
         design.designName = designName
         
+        guard let screenshot = newDesign.screenshotName else { return }
+        
+        design.screenshot = screenshot
+        
+        print(newDesign.screenshotName)
+        
         if backgroundColor == nil {
 
             design.backgroundColor = nil
@@ -164,6 +170,7 @@ class StorageManager {
                 object.setValue(design.backgroundColor, forKey: "backgroundColor")
                 object.setValue(updateTime, forKey: "createTime")
                 object.setValue(design.imageFileName, forKey: "backgroundImage")
+                object.setValue(design.screenshotName, forKey: "screenshot")
                
                 let images = NSSet(array:
                     
