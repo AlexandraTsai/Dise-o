@@ -484,6 +484,11 @@ extension DesignViewController {
         
             guard let createTime = designView.createTime else { return }
         
+            if designView.image == nil {
+            
+                designView.imageFileName = nil
+            }
+        
             StorageManager.shared.updateDesign(
                 design: designView,
                 createTime: createTime,

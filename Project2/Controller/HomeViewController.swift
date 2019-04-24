@@ -360,22 +360,14 @@ extension HomeViewController {
         guard let portfolioCell = cell as? PortfolioCollectionViewCell else { return cell }
             
         let design = alDesignArray[indexPath.item]
-            
-//        if design.image == nil {
-//
-//            portfolioCell.designView.backgroundColor = design.backgroundColor
-//            portfolioCell.designView.image = nil
-//
-//        } else {
-//
-//            portfolioCell.designView.image = design.image
-//        }
-    
+ 
         guard let fileName = design.screenshotName else { return cell }
         
         let screenshot = loadImageFromDiskWith(fileName: fileName)
             
         portfolioCell.designView.image = screenshot
+            
+        portfolioCell.designNameLabel.text = design.designName
             
         portfolioCell.btnTapAction = { [weak self] in
             
@@ -398,12 +390,6 @@ extension HomeViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-//        let cell = collectionView.cellForItem(at: indexPath)
-//
-//        guard let portfolioCell = cell as? PortfolioCollectionViewCell else { return }
-        
-//        guard let subViews = cell?.subviews else { return }
-        
         guard let designVC = UIStoryboard(
             name: "Main",
             bundle: nil).instantiateViewController(
@@ -423,7 +409,7 @@ extension HomeViewController {
         
         flowLayout.itemSize = CGSize(
             width: (UIScreen.main.bounds.width-60)/2,
-            height: (UIScreen.main.bounds.width-60)/2
+            height: (UIScreen.main.bounds.width-60)/2+31
         )
         
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -528,7 +514,8 @@ extension HomeViewController {
     
     @objc func openBtnTapped(sender: UIButton) {
         
-       guard let designVC = UIStoryboard(name: "Main",bundle: nil)
+       guard let designVC = UIStoryboard(name: "Main",
+                                         bundle: nil)
         .instantiateViewController(withIdentifier: String(describing: DesignViewController.self)) as? DesignViewController else { return }
       
         designVC.loadViewIfNeeded()
