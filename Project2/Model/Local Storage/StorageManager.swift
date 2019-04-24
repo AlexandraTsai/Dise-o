@@ -171,6 +171,7 @@ class StorageManager {
                 object.setValue(updateTime, forKey: "createTime")
                 object.setValue(design.imageFileName, forKey: "backgroundImage")
                 object.setValue(design.screenshotName, forKey: "screenshot")
+                object.setValue(design.designName, forKey: "designName")
                
                 let images = NSSet(array:
                     

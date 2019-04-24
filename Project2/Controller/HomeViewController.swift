@@ -28,6 +28,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
     
     let alertLabel = SaveSuccessLabel()
     
+    let renameView = RenameView()
+    
     var newDesignView = NewDeign()
     
     let selectionView = SelectionView()
@@ -47,6 +49,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                 alDesignArray = []
                 
             } else {
+                
+                alDesignArray = []
                 
                 collectionView.isHidden = false
              
@@ -83,14 +87,17 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         
         addDesignButton.alpha = 1
         selectionView.alpha = 0
+        renameView.alpha = 0
         selectionView.isHidden = true
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        renameView.addOn(self.view)
         self.view.addSubview(newDesignView)
         self.view.addSubview(alertLabel)
+        self.view.addSubview(renameView)
         newDesignView.isHidden = true
         alertLabel.alpha = 0
         
@@ -110,7 +117,14 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         
         selectionView.openButton.addTarget(self, action: #selector(openBtnTapped(sender:)), for: .touchUpInside)
         
-        selectionView.saveButton.addTarget(self, action: #selector(saveBtnTapped(sender:)), for: .touchUpInside)
+        selectionView.saveButton.addTarget(self, action: #selector(saveImageBtnTapped(sender:)), for: .touchUpInside)
+        
+        selectionView.renameButton.addTarget(self, action: #selector(renameBtnTapped(sender:)), for: .touchUpInside)
+        
+        renameView.saveButton.addTarget(self, action: #selector(saveNameBtnTapped(sender:)), for: .touchUpInside)
+        
+        renameView.cancelButton.addTarget(self, action: #selector(cancelRename(sender:)), for: .touchUpInside)
+        
     }
  
     @IBAction func addButtonTapped(_ sender: UIButton) {
@@ -450,6 +464,8 @@ extension HomeViewController {
         
         designVC.designView.createTime = selectedDesign.createTime
         
+        designVC.designView.designName = selectedDesign.designName
+        
         for subView in selectedDesign.subviews {
 
             designVC.designView.addSubview(subView)
@@ -504,7 +520,11 @@ extension HomeViewController {
                                                 
                                             case .success(_):
                                                 
-                                                designs.remove(at: index)
+//                                                designs.remove(at: index)
+                                                
+                                                fetchData()
+                                                
+                                                collectionView.reloadData()
                                                 
                                             case .failure(_):
                                                 
@@ -514,10 +534,8 @@ extension HomeViewController {
             
         })
     
-        fetchData()
-        
-        collectionView.reloadData()
         selectionView.alpha = 0
+        addDesignButton.alpha = 1
         
         addDesignButton.alpha = 1
         
@@ -538,7 +556,7 @@ extension HomeViewController {
         show(designVC, sender: nil)
     }
     
-    @objc func saveBtnTapped(sender: UIButton) {
+    @objc func saveImageBtnTapped(sender: UIButton) {
         
         UIView.animate(withDuration: 0.3) { [weak self] in
             
@@ -582,4 +600,59 @@ extension HomeViewController {
         }
     }
    
+    @objc func renameBtnTapped(sender: UIButton) {
+        
+        guard let index = selectedCell else { return }
+        
+        let oldName = alDesignArray[index].designName
+        
+        renameView.textField.text = oldName
+        
+        UIView.animate(withDuration: 0.5) { [weak self] in
+        
+            self?.renameView.alpha = 1
+            self?.renameView.textField.becomeFirstResponder()
+        }
+      
+        selectionView.alpha = 0
+    }
+    
+    @objc func saveNameBtnTapped(sender: UIButton) {
+        
+        self.view.endEditing(true)
+        
+        guard let index = selectedCell,
+            let newName = renameView.textField.text else { return }
+        
+        let design = alDesignArray[index]
+        
+        design.designName = newName
+        
+        guard let createTime = design.createTime else { return }
+        
+        StorageManager.shared.updateDesign(design: design,
+                                           createTime: createTime,
+                                           completion:  { result in
+            
+            switch result {
+                
+            case .success(_):
+                
+                fetchData()
+                collectionView.reloadData()
+                renameView.alpha = 0
+                
+            case .failure(_):
+                
+                print("Fail to rename")
+            }
+        })
+    }
+    
+    @objc func cancelRename(sender: UIButton) {
+        
+        renameView.alpha = 0
+        
+        self.view.endEditing(true)
+    }
 }
