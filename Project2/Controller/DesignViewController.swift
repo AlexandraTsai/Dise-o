@@ -469,12 +469,13 @@ extension DesignViewController {
                 backgroundColor: designView.backgroundColor,
                 backgroundImage: designView.imageFileName,
                 completion: { result in
+                    
                     switch result {
-                    case .success(_):
+                    case .success:
                     
                         print("Save success.")
                     
-                    case .failure(_):
+                    case .failure:
                     
                         print("Fail to save")
                 }
@@ -496,11 +497,11 @@ extension DesignViewController {
                 
                     switch result {
                     
-                    case .success(_):
+                    case .success:
                     
                         print("Save success.")
                     
-                    case .failure(_):
+                    case .failure:
                     
                         print("Fail to save")
                     }

@@ -43,7 +43,12 @@ enum ImageAsset: String {
     var imageTemplate: UIImage {
         
         let origImage = UIImage(named: self.rawValue)
-        guard let tintedImage = origImage?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate) else { return UIImage()}
+        
+        guard let tintedImage =
+            
+            origImage?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+            
+            else { return UIImage()}
         
         return tintedImage
         

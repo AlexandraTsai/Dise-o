@@ -256,10 +256,8 @@ extension ImageEditContainerViewController {
     
     @objc func changePaletteColor(noti: Notification) {
         if let userInfo = noti.userInfo,
-            let color = userInfo[NotificationInfo.paletteColor] as? UIColor {
+            let _ = userInfo[NotificationInfo.paletteColor] as? UIColor {
        
-//            colorSquarePicker.hue = 0.3349206349206349
-//            colorBarPicker.hue = 0.3349206349206349
         }
     }
 }

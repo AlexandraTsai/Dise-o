@@ -43,14 +43,12 @@ class StorageManager {
         
         let container = NSPersistentContainer(name: "Desiging")
         
-        container.loadPersistentStores(completionHandler:
-            
-            {(_, error) in
+        container.loadPersistentStores(completionHandler: {(_, error) in
             
                 if let error = error {
                     fatalError("Unresolved error \(error)")
                 }
-            })
+        })
         return container
     }()
     
@@ -111,8 +109,6 @@ class StorageManager {
         guard let screenshot = newDesign.screenshotName else { return }
         
         design.screenshot = screenshot
-        
-        print(newDesign.screenshotName)
         
         if backgroundColor == nil {
 
@@ -237,7 +233,7 @@ class StorageManager {
         
     }
     
-    func deleteDesign(_ design: Design, completion:(Result<Void>) -> Void) {
+    func deleteDesign(_ design: Design, completion: (Result<Void>) -> Void) {
         
         do {
             

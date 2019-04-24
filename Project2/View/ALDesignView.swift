@@ -35,7 +35,7 @@ class ALDesignView: UIImageView {
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        if let screenshotImage = image{
+        if let screenshotImage = image {
             
             return screenshotImage
             

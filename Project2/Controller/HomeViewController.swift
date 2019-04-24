@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+// swiftlint:disable file_length
 class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView! {
@@ -215,7 +216,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                 
                 self.designs = designs
               
-            case .failure(_):
+            case .failure:
                 
                 print("讀取資料發生錯誤")
             }
@@ -518,7 +519,7 @@ extension HomeViewController {
                                             
                                             switch result {
                                                 
-                                            case .success(_):
+                                            case .success:
                                                 
 //                                                designs.remove(at: index)
                                                 
@@ -526,7 +527,7 @@ extension HomeViewController {
                                                 
                                                 collectionView.reloadData()
                                                 
-                                            case .failure(_):
+                                            case .failure:
                                                 
                                                 print("Fail to delete.")
                                                 
@@ -543,9 +544,10 @@ extension HomeViewController {
     
     @objc func openBtnTapped(sender: UIButton) {
         
-       guard let designVC = UIStoryboard(name: "Main",
-                                         bundle: nil)
-        .instantiateViewController(withIdentifier: String(describing: DesignViewController.self)) as? DesignViewController else { return }
+       guard let designVC =
+        UIStoryboard(name: "Main",
+                     bundle: nil).instantiateViewController(withIdentifier:
+            String(describing: DesignViewController.self)) as? DesignViewController else { return }
       
         designVC.loadViewIfNeeded()
         
@@ -632,17 +634,17 @@ extension HomeViewController {
         
         StorageManager.shared.updateDesign(design: design,
                                            createTime: createTime,
-                                           completion:  { result in
+                                           completion: { result in
             
             switch result {
                 
-            case .success(_):
+            case .success:
                 
                 fetchData()
                 collectionView.reloadData()
                 renameView.alpha = 0
                 
-            case .failure(_):
+            case .failure:
                 
                 print("Fail to rename")
             }
@@ -656,3 +658,4 @@ extension HomeViewController {
         self.view.endEditing(true)
     }
 }
+// swiftlint:enable file_length

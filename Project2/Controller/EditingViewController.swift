@@ -1174,7 +1174,7 @@ extension EditingViewController: FusumaDelegate {
     }
 
     // Return the image but called after is dismissed.
-    func fusumaDismissedWithImage(image: UIImage, source: FusumaMode) {
+    private func fusumaDismissedWithImage(image: UIImage, source: FusumaMode) {
        
         print("dismiss")
     }

@@ -10,14 +10,14 @@ import UIKit
 
 class SaveSuccessLabel: UILabel {
    
-    func setupLabel(on vc: UIViewController, with title: String) {
+    func setupLabel(on viewController: UIViewController, with title: String) {
         
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.centerXAnchor.constraint(equalTo: vc.view.centerXAnchor).isActive = true
+        self.centerXAnchor.constraint(equalTo: viewController.view.centerXAnchor).isActive = true
         self.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        self.leadingAnchor.constraint(equalTo: vc.view.leadingAnchor).isActive = true
-        self.trailingAnchor.constraint(equalTo: vc.view.trailingAnchor).isActive = true
-        self.topAnchor.constraint(equalTo: vc.view.topAnchor).isActive = true
+        self.leadingAnchor.constraint(equalTo: viewController.view.leadingAnchor).isActive = true
+        self.trailingAnchor.constraint(equalTo: viewController.view.trailingAnchor).isActive = true
+        self.topAnchor.constraint(equalTo: viewController.view.topAnchor).isActive = true
         
         self.backgroundColor = UIColor.init(red: 252/255, green: 195/255, blue: 37/255, alpha: 1)
         
