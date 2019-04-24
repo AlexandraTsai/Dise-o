@@ -22,6 +22,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         }
     }
     
+    var selectedCell: Int?
+    
     var newDesignView = NewDeign()
     
     let selectionView = SelectionView()
@@ -36,9 +38,13 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
             
             if designs.count == 0 {
                 
+                collectionView.isHidden = true
+                
                 alDesignArray = []
                 
             } else {
+                
+                collectionView.isHidden = false
              
                 addAllDesigns()
                
@@ -87,6 +93,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         selectionView.closeButton.addTarget(self, action: #selector(self.closeBtnTapped(sender:)), for: .touchUpInside)
         
         selectionView.cancelButton.addTarget(self, action: #selector(closeBtnTapped(sender:)), for: .touchUpInside)
+        
+        selectionView.deleteButton.addTarget(self, action: #selector(deleteBtnTapped(sender:)), for: .touchUpInside)
         
     }
  
@@ -357,6 +365,8 @@ extension HomeViewController {
             
         portfolioCell.btnTapAction = { [weak self] in
             
+            self?.selectedCell = indexPath.item
+            
             UIView.animate(withDuration: 0.7, animations: { [weak self] in
                 
                 self?.selectionView.alpha = 1
@@ -412,7 +422,9 @@ extension HomeViewController {
 
 extension HomeViewController {
     
-    func showTappedDesign(for index: Int, with subViews: [UIView],at designVC: DesignViewController) {
+    func showTappedDesign(for index: Int,
+                          with subViews: [UIView],
+                          at designVC: DesignViewController) {
         
         let selectedDesign = alDesignArray[index]
         
@@ -465,4 +477,34 @@ extension HomeViewController {
             
         })
     }
+    
+    @objc func deleteBtnTapped(sender: UIButton) {
+        
+        guard let index = selectedCell else { return }
+        
+        StorageManager.shared.deleteDesign(designs[index],
+                                           completion: { result in
+                                            
+                                            switch result {
+                                                
+                                            case .success(_):
+                                                
+                                                designs.remove(at: index)
+                                                
+                                            case .failure(_):
+                                                
+                                                print("Fail to delete.")
+                                                
+                                            }
+            
+        })
+    
+       fetchData()
+        
+       collectionView.reloadData()
+        
+       selectionView.alpha = 0
+        
+    }
+    
 }

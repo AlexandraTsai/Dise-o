@@ -228,6 +228,24 @@ class StorageManager {
         }
         
     }
+    
+    func deleteDesign(_ design: Design, completion:(Result<Void>) -> Void) {
+        
+        do {
+            
+            viewContext.delete(design)
+            
+            try viewContext.save()
+            
+            completion(Result.success(()))
+            
+        } catch {
+            
+            completion(Result.failure(error))
+            
+        }
+        
+    }
 }
 
 private extension Design {
