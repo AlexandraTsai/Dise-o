@@ -26,6 +26,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
     
     var selectedCell: Int?
     
+    let alertLabel = SaveSuccessLabel()
+    
     var newDesignView = NewDeign()
     
     let selectionView = SelectionView()
@@ -52,6 +54,11 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                
             }
         }
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        
+        return true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,7 +90,9 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         super.viewDidLoad()
         
         self.view.addSubview(newDesignView)
+        self.view.addSubview(alertLabel)
         newDesignView.isHidden = true
+        alertLabel.alpha = 0
         
         collectionView.al_registerCellWithNib(
             identifier: String(describing: PortfolioCollectionViewCell.self),
@@ -100,6 +109,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         selectionView.deleteButton.addTarget(self, action: #selector(deleteBtnTapped(sender:)), for: .touchUpInside)
         
         selectionView.openButton.addTarget(self, action: #selector(openBtnTapped(sender:)), for: .touchUpInside)
+        
+        selectionView.saveButton.addTarget(self, action: #selector(saveBtnTapped(sender:)), for: .touchUpInside)
     }
  
     @IBAction func addButtonTapped(_ sender: UIButton) {
@@ -526,4 +537,49 @@ extension HomeViewController {
         
         show(designVC, sender: nil)
     }
+    
+    @objc func saveBtnTapped(sender: UIButton) {
+        
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            
+            self?.selectionView.alpha = 0
+            self?.addDesignButton.alpha = 1
+            
+        }
+        
+        guard let index = selectedCell else { return}
+        
+        guard let screenshot = alDesignArray[index].screenshotName else { return }
+        
+        guard let image = loadImageFromDiskWith(fileName: screenshot) else { return}
+        
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_: didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        
+        if error != nil {
+            
+            let alertLabel = SaveSuccessLabel()
+            
+            self.view.addSubview(alertLabel)
+            alertLabel.setupLabel(on: self, with: "Fail to save image")
+            
+        } else {
+            
+            alertLabel.setupLabel(on: self, with: "Saved to camera roll")
+            
+            alertLabel.alpha = 1
+            
+            UIView.animate(withDuration: 0.4,
+                           delay: 0.7,
+                           animations: {[weak self] in
+                
+                self?.alertLabel.alpha = 0
+                
+                }, completion: nil)
+            
+        }
+    }
+   
 }
