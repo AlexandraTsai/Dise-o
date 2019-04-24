@@ -449,6 +449,13 @@ extension EditingViewController {
         
         guard let index = designView.subviews.firstIndex(of: editingView) else { return }
         
+        if editingView is ALImageView {
+            
+            complexNavigationBar()
+        } else {
+            normalNavigationBar()
+        }
+        
         switch index {
             
         //Editing view is the last one
@@ -568,7 +575,7 @@ extension EditingViewController {
         
         switch index {
         case designView.subviews.count-2:
-            print("You are the toppest one.")
+            break
         default:
             designView.insertSubview(editingView, at: index+1)
         }
@@ -593,12 +600,12 @@ extension EditingViewController {
         
         //Navigationbar for UIImageView
         if index == designView.subviews.count-3 {
-                self.navigationItem.rightBarButtonItems?[3].isEnabled = false
+                self.navigationItem.rightBarButtonItems?[2].isEnabled = false
         }
         
         if index == 0 {
             
-            self.navigationItem.rightBarButtonItems?[2].isEnabled = true
+            self.navigationItem.rightBarButtonItems?[1].isEnabled = true
             
         }
         
@@ -716,27 +723,8 @@ extension EditingViewController {
     @objc func handleTap(sender: UITapGestureRecognizer) {
         
         helperView.removeFromSuperview()
-
+        
         editingView = sender.view
-
-        guard (sender.view as? ALTextView) != nil else {
-
-            guard (sender.view as? UIImageView) != nil else {
-                
-                guard (sender.view as? ALShapeView) != nil else { return }
-                
-                normalNavigationBar()
-                
-                return
-                
-            }
-
-            complexNavigationBar()
-
-            return
-        }
-       
-        normalNavigationBar()
 
     }
 
