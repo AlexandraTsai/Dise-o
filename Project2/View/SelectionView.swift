@@ -65,7 +65,7 @@ class SelectionView: UIView {
         cancelButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20).isActive = true
         cancelButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50).isActive = true
         cancelButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50).isActive = true
-        cancelButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        cancelButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
  
         //Open Button
         openButton.translatesAutoresizingMaskIntoConstraints = false
@@ -74,12 +74,10 @@ class SelectionView: UIView {
         openButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15).isActive = true
         openButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15).isActive = true
         openButton.heightAnchor.constraint(equalTo: deleteButton.heightAnchor, multiplier: 1)
-        openButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        openButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         //Delete Button
         deleteButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        deleteButton.bottomAnchor.constraint(equalTo: cancelButton.topAnchor, constant: -20).isActive = true
         deleteButton.topAnchor.constraint(equalTo: openButton.bottomAnchor, constant: 20).isActive = true
         deleteButton.leadingAnchor.constraint(equalTo: openButton.leadingAnchor).isActive = true
         deleteButton.trailingAnchor.constraint(equalTo: openButton.trailingAnchor).isActive = true
@@ -99,9 +97,9 @@ class SelectionView: UIView {
         deleteButton.setTitle("Delete", for: .normal)
         openButton.setTitle("Open", for: .normal)
         
-        cancelButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 15)
-        deleteButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 19)
-        openButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 19)
+        cancelButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 13)
+        deleteButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 16)
+        openButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 16)
         
         cancelButton.setTitleColor(UIColor.black, for: .normal)
         deleteButton.setTitleColor(UIColor.white, for: .normal)
@@ -118,9 +116,9 @@ class SelectionView: UIView {
         cancelButton.layer.borderColor = UIColor.black.cgColor
         cancelButton.layer.borderWidth = 1
         
-        openButton.layer.cornerRadius = 25
-        deleteButton.layer.cornerRadius = 25
-        cancelButton.layer.cornerRadius = 20
+        openButton.layer.cornerRadius = 20
+        deleteButton.layer.cornerRadius = 20
+        cancelButton.layer.cornerRadius = 15
         
     }
     
@@ -129,8 +127,8 @@ class SelectionView: UIView {
         specificView.addSubview(self)
         
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.heightAnchor.constraint(equalToConstant: 250).isActive = true
-        self.bottomAnchor.constraint(equalTo: specificView.bottomAnchor, constant: -20).isActive = true
+        self.heightAnchor.constraint(equalToConstant: 190).isActive = true
+        self.bottomAnchor.constraint(equalTo: specificView.bottomAnchor, constant: -30).isActive = true
         self.leadingAnchor.constraint(equalTo: specificView.leadingAnchor, constant: 20).isActive = true
         self.trailingAnchor.constraint(equalTo: specificView.trailingAnchor, constant: -20).isActive = true
         

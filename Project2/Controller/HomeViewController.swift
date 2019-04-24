@@ -22,6 +22,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         }
     }
     
+    @IBOutlet weak var addDesignButton: UIButton!
+    
     var selectedCell: Int?
     
     var newDesignView = NewDeign()
@@ -72,6 +74,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
             collectionView.isHidden = false
         }
         
+        addDesignButton.alpha = 1
         selectionView.alpha = 0
         selectionView.isHidden = true
     }
@@ -96,11 +99,13 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         
         selectionView.deleteButton.addTarget(self, action: #selector(deleteBtnTapped(sender:)), for: .touchUpInside)
         
+        selectionView.openButton.addTarget(self, action: #selector(openBtnTapped(sender:)), for: .touchUpInside)
     }
  
     @IBAction func addButtonTapped(_ sender: UIButton) {
         self.setupInputView()
         newDesignView.alpha = 0
+        newDesignView.textField.text = ""
    
         UIView.animate(withDuration: 0.7, animations: { [weak self] in
             self?.newDesignView.alpha = 1
@@ -367,11 +372,14 @@ extension HomeViewController {
             
             self?.selectedCell = indexPath.item
             
+            self?.addDesignButton.alpha = 0
+            
             UIView.animate(withDuration: 0.7, animations: { [weak self] in
                 
                 self?.selectionView.alpha = 1
+                
                 self?.selectionView.isHidden = false
-            
+
             })
             
         }
@@ -381,11 +389,11 @@ extension HomeViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let cell = collectionView.cellForItem(at: indexPath)
+//        let cell = collectionView.cellForItem(at: indexPath)
+//
+//        guard let portfolioCell = cell as? PortfolioCollectionViewCell else { return }
         
-        guard let portfolioCell = cell as? PortfolioCollectionViewCell else { return }
-        
-        guard let subViews = cell?.subviews else { return }
+//        guard let subViews = cell?.subviews else { return }
         
         guard let designVC = UIStoryboard(
             name: "Main",
@@ -395,7 +403,7 @@ extension HomeViewController {
         
         designVC.loadViewIfNeeded()
         
-        showTappedDesign(for: indexPath.item, with: subViews, at: designVC)
+        showTappedDesign(for: indexPath.item, at: designVC)
         
         show(designVC, sender: nil)
     }
@@ -423,7 +431,6 @@ extension HomeViewController {
 extension HomeViewController {
     
     func showTappedDesign(for index: Int,
-                          with subViews: [UIView],
                           at designVC: DesignViewController) {
         
         let selectedDesign = alDesignArray[index]
@@ -472,8 +479,10 @@ extension HomeViewController {
     @objc func closeBtnTapped(sender: UIButton) {
         
         UIView.animate(withDuration: 0.4, animations: { [weak self] in
-
-          self?.selectionView.alpha = 0
+            
+            self?.selectionView.alpha = 0
+            
+            self?.addDesignButton.alpha = 1
             
         })
     }
@@ -499,12 +508,26 @@ extension HomeViewController {
             
         })
     
-       fetchData()
+        fetchData()
         
-       collectionView.reloadData()
+        collectionView.reloadData()
+        selectionView.alpha = 0
         
-       selectionView.alpha = 0
+        addDesignButton.alpha = 1
         
     }
     
+    @objc func openBtnTapped(sender: UIButton) {
+        
+       guard let designVC = UIStoryboard(name: "Main",bundle: nil)
+        .instantiateViewController(withIdentifier: String(describing: DesignViewController.self)) as? DesignViewController else { return }
+      
+        designVC.loadViewIfNeeded()
+        
+        guard let index = selectedCell else { return }
+        
+        showTappedDesign(for: index, at: designVC)
+        
+        show(designVC, sender: nil)
+    }
 }

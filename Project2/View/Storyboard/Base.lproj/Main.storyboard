@@ -1137,6 +1137,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="YaJ-Ot-qnO"/>
                     <connections>
+                        <outlet property="addDesignButton" destination="lRf-at-Deu" id="nV7-NV-yqu"/>
                         <outlet property="collectionView" destination="q3y-67-E3N" id="KOl-To-Wrv"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="designViewSegue" id="2dQ-QD-5co"/>
                     </connections>
