@@ -231,37 +231,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
             //Create designView and setup the background
             let designView = ALDesignView()
             
-            guard let frame = designs[object].frame as? CGRect,
-                let designName = designs[object].designName,
-                let screeshot = designs[object].screenshot else { return }
-            
-            designView.frame = frame
-            
-            designView.createTime = designs[object].createTime
-            
-            designView.designName = designName
-            
-            designView.screenshotName = screeshot
-
-            if designs[object].backgroundColor != nil {
-                
-                guard let color = designs[object].backgroundColor as? UIColor else { return }
-                
-                designView.backgroundColor = color
-                
-            }
-            
-            if designs[object].backgroundImage != nil {
-                
-                guard let fileName = designs[object].backgroundImage else { return }
-                
-                let backgroundImage = loadImageFromDiskWith(fileName: fileName)
-                
-                designView.image = backgroundImage
-                
-                designView.imageFileName = fileName
-                
-            }
+            designs[object].transformDesign(for: designView)
             
             //SubView: Images
             if designs[object].images != nil {
