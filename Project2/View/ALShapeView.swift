@@ -33,6 +33,10 @@ class ALShapeView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
+        let originTransform = self.transform
+        
+        self.transform = CGAffineTransform(rotationAngle: 0)
+        
         drawWithShapeType()
         
         if stroke == true {
@@ -45,6 +49,8 @@ class ALShapeView: UIView {
             shapeColor.setFill()
             path.fill()
         }
+        
+        self.transform = originTransform
     
     }
     
@@ -181,19 +187,24 @@ class ALShapeView: UIView {
              let path = UIBezierPath()
              path.cgPath = self.path.cgPath
              newShape.path = path
-            
-//             newShape.path = self.path
 
         }
         
         let color = UIColor(cgColor: self.shapeColor.cgColor)
-//        color = self.shapeColor
+
         newShape.shapeColor = color
         
-        //done 了以後，再編輯，顏色就會互相影響
-//        newShape.shapeColor = self.shapeColor
+        let originTransform = self.transform
+        
+        self.transform = CGAffineTransform(rotationAngle: 0)
         
         newShape.frame = self.frame
+        
+        newShape.bounds = self.bounds
+        
+        newShape.transform = originTransform
+        
+        self.transform = originTransform
 
         return newShape
         
