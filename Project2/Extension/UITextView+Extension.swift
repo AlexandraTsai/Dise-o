@@ -128,12 +128,22 @@ extension UITextView {
     
     func resize() {
         
-        var newFrame = self.frame
-        let width = newFrame.size.width
-        let newSize = self.sizeThatFits(CGSize(width: width, height: CGFloat.greatestFiniteMagnitude))
-        newFrame.size = CGSize(width: width, height: newSize.height)
+        //Record the origin transform
+        let originTransform = self.transform
         
-        self.frame = newFrame
+        self.transform = CGAffineTransform(rotationAngle: 0)
+       
+        var frame = self.frame
+        
+        let fixedWidth = frame.size.width
+        
+        // Calculate the biggest size that fixes in the given CGSize
+        let newSize = self.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+        frame.size = CGSize(width: fixedWidth, height: newSize.height)
+        
+        self.transform = originTransform
+        
+        self.bounds.size = frame.size
         
     }
 }
