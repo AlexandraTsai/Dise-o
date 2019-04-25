@@ -1007,6 +1007,8 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
 
         view.resize()
         
+        createEditingHelper(for: view)
+        
         fontSizeBtn.setTitle(String(size), for: .normal)
     }
     
@@ -1194,53 +1196,25 @@ extension EditingViewController {
     
     func createEditingHelper(for view: UIView) {
         
-        helperView.addSubview(helperView.rotateHelper)
-        helperView.addSubview(helperView.positionHelper)
-        helperView.addSubview(helperView.editingFrame)
-        
         designView.addSubview(helperView)
+        
+        guard let editingView = editingView else { return }
 
-        helperView.makeACopy(from: editingView!)
+//        helperView.makeACopy(from: editingView)
+        
+        helperView.resize(accordingTo: editingView)
 
-        guard let center = editingView?.center else { return }
+        let center = editingView.center
         
         let rect = designView.convert(center, to: helperView)
+        
         helperView.editingFrame.center = rect
-        helperView.editingFrame.bounds = (editingView?.bounds)!
+        helperView.editingFrame.bounds = (editingView.bounds)
 
-        helperView.rotateHelper.translatesAutoresizingMaskIntoConstraints = false
-        helperView.positionHelper.translatesAutoresizingMaskIntoConstraints = false
-        
-        helperView.rotateHelper.centerXAnchor.constraint(equalTo:
-            (helperView.editingFrame.centerXAnchor)).isActive = true
-        helperView.rotateHelper.topAnchor.constraint(equalTo:
-            (helperView.editingFrame.bottomAnchor), constant: 10).isActive = true
-        helperView.rotateHelper.widthAnchor.constraint(equalToConstant: 20)
-        helperView.rotateHelper.heightAnchor.constraint(equalToConstant: 20)
-        
-        helperView.positionHelper.centerYAnchor.constraint(equalTo:
-            (helperView.centerYAnchor)).isActive = true
-        helperView.positionHelper.leadingAnchor.constraint(equalTo:
-            (helperView.trailingAnchor), constant: 10).isActive = true
-        helperView.positionHelper.widthAnchor.constraint(equalToConstant: 20)
-        helperView.positionHelper.heightAnchor.constraint(equalToConstant: 20)
- 
         helperView.layoutIfNeeded()
-        editingView?.layoutIfNeeded()
+        editingView.layoutIfNeeded()
         helperView.rotateHelper.layoutIfNeeded()
         helperView.positionHelper.layoutIfNeeded()
-        
-        //Setting
-        helperView.backgroundColor = UIColor.clear
-        helperView.editingFrame.backgroundColor = UIColor.clear
-  
-        helperView.positionHelper.image = #imageLiteral(resourceName: "noun_navigate")
-        helperView.rotateHelper.image = #imageLiteral(resourceName: "Icon_Rotate")
-
-        helperView.positionHelper.backgroundColor = UIColor.white
-        helperView.positionHelper.layer.cornerRadius = 10
-        helperView.rotateHelper.backgroundColor = UIColor.white
-        helperView.rotateHelper.layer.cornerRadius = 10
 
         addAllGesture(to: helperView)
         
