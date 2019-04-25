@@ -495,7 +495,19 @@ extension DesignViewController {
                     
                     case .success:
                     
-                        print("Save success.")
+                        StorageManager.shared.deleteSubElement(completion: { result in
+                            
+                            switch result {
+                                
+                            case .success:
+                                
+                                print("Success to delete unused data")
+                                
+                            case .failure:
+                                
+                                print("Fail to delete unused data")
+                            }
+                        })
                     
                     case .failure:
                     

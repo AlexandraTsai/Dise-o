@@ -19,13 +19,11 @@
         <relationship name="design" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Design" inverseName="images" inverseEntity="Design" syncable="YES"/>
     </entity>
     <entity name="Shape" representedClassName="Shape" syncable="YES" codeGenerationType="class">
-        <attribute name="frame" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="shapeColor" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="shapeType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shapView" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="stroke" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="transform" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="design" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Design" inverseName="shapes" inverseEntity="Design" syncable="YES"/>
     </entity>
     <entity name="Text" representedClassName="Text" syncable="YES" codeGenerationType="class">
@@ -39,7 +37,7 @@
     <elements>
         <element name="Design" positionX="-63" positionY="-18" width="128" height="180"/>
         <element name="Image" positionX="-54" positionY="9" width="128" height="120"/>
-        <element name="Shape" positionX="-18" positionY="27" width="128" height="165"/>
+        <element name="Shape" positionX="-18" positionY="27" width="128" height="135"/>
         <element name="Text" positionX="-36" positionY="18" width="128" height="135"/>
     </elements>
 </model>

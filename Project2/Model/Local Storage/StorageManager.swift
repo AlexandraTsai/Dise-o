@@ -166,49 +166,49 @@ class StorageManager {
                 object.setValue(design.designName, forKey: "designName")
                
                 let images = NSSet(array:
-                    
+
                     design.subImages.map({ imageView in
-                    
+
                         let alImageView = Image(context: StorageManager.shared.viewContext
                         )
-                    
+
                     alImageView.mapping(imageView)
-                    
+
                     return alImageView
-                    
+
                     })
-                
+
                 )
-                
+
                 let shapes = NSSet(array:
-                    
+
                     design.subShapes.map({ shapeView in
-                        
+
                         let alShapeView = Shape(context: StorageManager.shared.viewContext
                         )
-                        
+
                         alShapeView.mapping(shapeView)
-                        
+
                         return alShapeView
-                        
+
                     })
-                    
+
                 )
-                
+
                 let texts = NSSet(array:
-                
+
                     design.subTexts.map({ textView in
-                        
+
                         let alTextView = Text(context:
-                        
+
                             StorageManager.shared.viewContext
                         )
-                        
+
                         alTextView.mapping(textView)
-                        
+
                         return alTextView
                     })
-                
+
                 )
                 
                 object.setValue(images, forKey: "images")
@@ -225,6 +225,52 @@ class StorageManager {
             
             completion(Result.failure(error))
             
+        }
+        
+    }
+
+    func deleteSubElement(completion: (Result<Void>) -> Void) {
+    
+        let request = NSFetchRequest<Image>(entityName: Entity.image.rawValue)
+        
+        request.predicate = NSPredicate(format: "design == null")
+        
+        let request2 = NSFetchRequest<Text>(entityName: Entity.text.rawValue)
+        
+        request2.predicate = NSPredicate(format: "design == null")
+        
+        let request3 = NSFetchRequest<Shape>(entityName: Entity.shape.rawValue)
+        
+        request3.predicate = NSPredicate(format: "design == null")
+        
+        do {
+            
+            let images = try viewContext.fetch(request)
+            let texts = try viewContext.fetch(request2)
+            let shapes = try viewContext.fetch(request3)
+           
+            for image in images {
+                
+                viewContext.delete(image)
+                
+            }
+           
+            for text in texts {
+                viewContext.delete(text)
+                
+            }
+            
+            for shape in shapes {
+                viewContext.delete(shape)
+            }
+            
+            try viewContext.save()
+            
+            completion(Result.success(()))
+    
+        } catch {
+            
+            completion(Result.failure(error))
         }
         
     }
