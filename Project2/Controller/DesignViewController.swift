@@ -44,12 +44,15 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
 
         addImageContainerView.isHidden = true
         addShapeContainerView.isHidden = true
+        
+         self.tabBarController?.tabBar.barTintColor = UIColor.clear
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         addGesture(to: designView, action: #selector(designViewClicked(_:)))
+        addGesture(to: self.view, action: #selector(endEditing(_:)))
 
         createNotification()
 
@@ -81,6 +84,24 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
     }
 
     @IBAction func addBtnTapped(_ sender: Any) {
+        
+        if scrollView.isHidden == true {
+            
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                
+                self?.addButton.transform = CGAffineTransform.init(rotationAngle: -(CGFloat.pi*7/4))
+             
+            }
+       
+        } else {
+            
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                
+                self?.addButton.transform = CGAffineTransform.init(rotationAngle: 0)
+                
+            }
+            
+        }
 
         scrollView.isHidden = !scrollView.isHidden
         
@@ -127,6 +148,19 @@ extension DesignViewController {
         let gesture = UITapGestureRecognizer(target: self, action: action)
         view.addGestureRecognizer(gesture)
 
+    }
+    
+    @objc func endEditing(_ sender: UITapGestureRecognizer) {
+        
+        hintView.isHidden = false
+        scrollView.isHidden = true
+        
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            
+            self?.addButton.transform = CGAffineTransform.init(rotationAngle: 0)
+            
+        }
+        
     }
 
     @objc func designViewClicked(_ sender: UITapGestureRecognizer) {
@@ -436,6 +470,7 @@ extension DesignViewController {
             target: self,
             action: #selector(tapProfileBtn(sender:)))
          self.navigationItem.leftBarButtonItem  = leftButton
+        
     }
    
     // swiftlint:disable cyclomatic_complexity
