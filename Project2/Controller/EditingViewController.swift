@@ -106,7 +106,16 @@ class EditingViewController: UIViewController {
     var tableViewIndex: Int = 0
     var originalText = ""
 
-    @IBOutlet weak var designView: ALDesignView!
+    @IBOutlet weak var designView: ALDesignView! {
+        
+        didSet {
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(endEditing(sender:)))
+            
+            designView.addGestureRecognizer(tap)
+
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -711,6 +720,20 @@ extension EditingViewController {
                                          action: #selector(handleDragged(_:)))
         
         view.addGestureRecognizer(pan)
+    }
+    
+    @objc func endEditing(sender: UITapGestureRecognizer){
+        
+        helperView.removeFromSuperview()
+        
+        let notificationName2 = Notification.Name(NotiName.updateImage.rawValue)
+        NotificationCenter.default.post(
+            name: notificationName2,
+            object: nil,
+            userInfo: [NotificationInfo.editedImage: designView.subviews])
+        
+        self.navigationController?.popViewController(animated: true)
+        
     }
     
     @objc func handleDoubleTap(sender: UITapGestureRecognizer) {

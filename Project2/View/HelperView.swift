@@ -10,6 +10,9 @@ import UIKit
 
 class HelperView: UIView {
     
+    var leftHelper = UIView()
+    var rightHelper = UIView()
+    
     var rotateHelper = UIImageView()
     var positionHelper  =  UIImageView()
     var editingFrame = EditFrameView() {
@@ -100,6 +103,16 @@ class HelperView: UIView {
         self.transform = originRotation
         
         view.transform = originRotation
+    }
+    
+    func setupSizeHelper() {
+        
+        leftHelper.addSubview(self)
+        rightHelper.addSubview(self)
+        
+        
+        
+        
     }
    
 }
