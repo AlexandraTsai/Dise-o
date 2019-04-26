@@ -841,7 +841,7 @@ extension EditingViewController {
         
     }
     
-    @objc func handlePanOnHelper(sender: UIPanGestureRecognizer) {
+    @objc func handleLeftHelper(sender: UIPanGestureRecognizer) {
         
         let location = sender.location(in: designView)
         
@@ -872,6 +872,99 @@ extension EditingViewController {
         
     }
     
+    @objc func handleRightHelper(sender: UIPanGestureRecognizer) {
+        
+        let location = sender.location(in: designView)
+        
+        guard let editingView = editingView else { return }
+        
+        let distance = CGPointDistance(from: editingView.center, to: location)
+        
+        let reduce = editingView.bounds.width-distance
+        
+        let oldCenter =  editingView.center
+        
+        let angle = editingView.transform.angle
+        
+        let transform = editingView.transform
+        
+        editingView.transform = CGAffineTransform(rotationAngle: 0)
+        
+        editingView.frame = CGRect(x: editingView.frame.origin.x,
+                                   y: editingView.frame.origin.y,
+                                   width: editingView.frame.width-reduce,
+                                   height: editingView.frame.height)
+        
+        editingView.center = rotatePoint(target: editingView.center, aroundOrigin: oldCenter, byDegree: angle)
+        
+        editingView.transform = transform
+        
+        helperView.resize(accordingTo: editingView)
+        
+    }
+    
+    @objc func handleTopHelper(sender: UIPanGestureRecognizer) {
+        
+        let location = sender.location(in: designView)
+        
+        guard let editingView = editingView else { return }
+        
+        let distance = CGPointDistance(from: editingView.center, to: location)
+        
+        let reduce = editingView.bounds.height-distance
+        
+        let oldCenter =  editingView.center
+        
+        let angle = editingView.transform.angle
+        
+        let transform = editingView.transform
+        
+        editingView.transform = CGAffineTransform(rotationAngle: 0)
+        
+        editingView.frame = CGRect(x: editingView.frame.origin.x,
+                                   y: editingView.frame.origin.y+reduce,
+                                   width: editingView.frame.width,
+                                   height: editingView.frame.height-reduce)
+        
+        editingView.center = rotatePoint(target: editingView.center, aroundOrigin: oldCenter, byDegree: angle)
+        
+        editingView.transform = transform
+        
+        helperView.resize(accordingTo: editingView)
+        
+    }
+    
+    @objc func handleBottomHelper(sender: UIPanGestureRecognizer) {
+        
+        let location = sender.location(in: designView)
+        
+        guard let editingView = editingView else { return }
+        
+        let distance = CGPointDistance(from: editingView.center, to: location)
+        
+        let reduce = editingView.bounds.height-distance
+        
+        let oldCenter =  editingView.center
+        
+        let angle = editingView.transform.angle
+        
+        let transform = editingView.transform
+        
+        editingView.transform = CGAffineTransform(rotationAngle: 0)
+        
+        editingView.frame = CGRect(x: editingView.frame.origin.x,
+                                   y: editingView.frame.origin.y,
+                                   width: editingView.frame.width,
+                                   height: editingView.frame.height-reduce)
+        
+        editingView.center = rotatePoint(target: editingView.center, aroundOrigin: oldCenter, byDegree: angle)
+        
+        editingView.transform = transform
+        
+        helperView.resize(accordingTo: editingView)
+        
+    }
+    
     func CGPointDistance(from: CGPoint, to: CGPoint) -> CGFloat {
         return sqrt(CGPointDistanceSquared(from: from, to: to))
     }
@@ -882,13 +975,13 @@ extension EditingViewController {
     
     func rotatePoint(target: CGPoint, aroundOrigin origin: CGPoint, byDegree: CGFloat) -> CGPoint {
         
-        let dx = target.x - origin.x
-        let dy = target.y - origin.y
+        let distanceX = target.x - origin.x
+        let distanceY = target.y - origin.y
         
-        let radius = sqrt(dx*dx+dy*dy)
+        let radius = sqrt(distanceX*distanceX+distanceY*distanceY)
         
-        let azimuth = atan2(dy, dx)
-        let newAzimuth = azimuth + byDegree*CGFloat(M_PI/180.0)
+        let azimuth = atan2(distanceY, distanceX)
+        let newAzimuth = azimuth + byDegree*CGFloat.pi/180.0
         
         let newX = origin.x + radius*cos(newAzimuth)
         let newY = origin.y + radius*sin(newAzimuth)
@@ -1278,8 +1371,6 @@ extension EditingViewController {
         designView.addSubview(helperView)
         
         guard let editingView = editingView else { return }
-
-//        helperView.makeACopy(from: editingView)
         
         helperView.resize(accordingTo: editingView)
 
@@ -1305,9 +1396,38 @@ extension EditingViewController {
         
         //Handle to tapped
         let pan = UIPanGestureRecognizer(target: self,
-                                         action: #selector(handlePanOnHelper(sender:)))
+                                         action: #selector(handleLeftHelper(sender:)))
         
         helperView.leftHelper.addGestureRecognizer(pan)
+        
+        let pan2 = UIPanGestureRecognizer(target: self,
+                                          action: #selector(handleRightHelper(sender:)))
+        
+        helperView.rightHelper.addGestureRecognizer(pan2)
+        
+        let pan3 = UIPanGestureRecognizer(target: self,
+                                          action: #selector(handleTopHelper(sender:)))
+        
+        helperView.topHelper.addGestureRecognizer(pan3)
+        
+        let pan4 = UIPanGestureRecognizer(target: self,
+                                          action: #selector(handleBottomHelper(sender:)))
+        
+        helperView.bottomHelper.addGestureRecognizer(pan4)
+        
+        if editingView is UIImageView {
+            
+            helperView.withoutResizeHelper()
+            
+        } else if editingView is UITextView {
+            
+            helperView.withWidthHelper()
+            
+        } else if editingView is UITextView {
+            
+            helperView.withResizeHelper()
+            
+        }
         
     }
     

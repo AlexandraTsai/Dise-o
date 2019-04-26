@@ -12,6 +12,8 @@ class HelperView: UIView {
     
     var leftHelper = UIView()
     var rightHelper = UIView()
+    var topHelper = UIView()
+    var bottomHelper = UIView()
     
     var rotateHelper = UIImageView()
     var positionHelper  =  UIImageView()
@@ -119,10 +121,14 @@ class HelperView: UIView {
         
         self.addSubview(leftHelper)
         self.addSubview(rightHelper)
+        self.addSubview(topHelper)
+        self.addSubview(bottomHelper)
         
         //Layout
         leftHelper.translatesAutoresizingMaskIntoConstraints = false
         rightHelper.translatesAutoresizingMaskIntoConstraints = false
+        topHelper.translatesAutoresizingMaskIntoConstraints = false
+        bottomHelper.translatesAutoresizingMaskIntoConstraints = false
         
         leftHelper.centerXAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
         leftHelper.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
@@ -133,6 +139,16 @@ class HelperView: UIView {
         rightHelper.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         rightHelper.widthAnchor.constraint(equalTo: leftHelper.widthAnchor).isActive = true
         rightHelper.heightAnchor.constraint(equalTo: leftHelper.heightAnchor).isActive = true
+        
+        topHelper.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
+        topHelper.centerYAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        topHelper.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        topHelper.heightAnchor.constraint(equalToConstant: 4).isActive = true
+        
+        bottomHelper.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
+        bottomHelper.centerYAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        bottomHelper.widthAnchor.constraint(equalTo: topHelper.widthAnchor).isActive = true
+        bottomHelper.heightAnchor.constraint(equalTo: topHelper.heightAnchor).isActive = true
         
         setupShadow()
         
@@ -146,6 +162,12 @@ class HelperView: UIView {
         rightHelper.backgroundColor = UIColor.white
         rightHelper.layer.cornerRadius = 4
         
+        topHelper.backgroundColor = UIColor.white
+        topHelper.layer.cornerRadius = 4
+        
+        bottomHelper.backgroundColor = UIColor.white
+        bottomHelper.layer.cornerRadius = 4
+        
         //Shadow
         leftHelper.layer.shadowColor = UIColor.black.cgColor
         leftHelper.layer.shadowOffset = CGSize(width: 0, height: 0)
@@ -157,6 +179,16 @@ class HelperView: UIView {
         rightHelper.layer.shadowRadius = 3
         rightHelper.layer.shadowOpacity = 1
         
+        topHelper.layer.shadowColor = UIColor.black.cgColor
+        topHelper.layer.shadowOffset = CGSize(width: 0, height: 0)
+        topHelper.layer.shadowRadius = 3
+        topHelper.layer.shadowOpacity = 1
+        
+        bottomHelper.layer.shadowColor = UIColor.black.cgColor
+        bottomHelper.layer.shadowOffset = CGSize(width: 0, height: 0)
+        bottomHelper.layer.shadowRadius = 3
+        bottomHelper.layer.shadowOpacity = 1
+        
         editingFrame.layer.shadowColor = UIColor.black.cgColor
         editingFrame.layer.shadowOffset = CGSize(width: 0, height: 0)
         editingFrame.layer.shadowRadius = 3
@@ -167,6 +199,32 @@ class HelperView: UIView {
         
         rightHelper.isUserInteractionEnabled = true
         leftHelper.isUserInteractionEnabled = true
+        
     }
    
+    func withoutResizeHelper() {
+        
+        rightHelper.isHidden = true
+        leftHelper.isHidden = true
+        topHelper.isHidden = true
+        bottomHelper.isHidden = true
+        
+    }
+    
+    func withResizeHelper() {
+        
+        rightHelper.isHidden = false
+        leftHelper.isHidden = false
+        topHelper.isHidden = false
+        bottomHelper.isHidden = false
+    }
+    
+    func withWidthHelper() {
+        
+        rightHelper.isHidden = false
+        leftHelper.isHidden = false
+        topHelper.isHidden = true
+        bottomHelper.isHidden = true
+    }
+    
 }
