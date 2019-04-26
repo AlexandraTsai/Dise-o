@@ -847,12 +847,53 @@ extension EditingViewController {
         
         guard let editingView = editingView else { return }
         
-        let reduce = location.x-(editingView.frame.origin.x)
+        let distance = CGPointDistance(from: editingView.center, to: location)
         
-        editingView.frame.origin.x = location.x
-        editingView.bounds.size = CGSize(width: (editingView.bounds.size.width)-reduce, height: (editingView.bounds.size.height))
+        let reduce = editingView.bounds.width-distance
         
+        let oldCenter =  editingView.center
+        
+        let angle = editingView.transform.angle
+        
+        let transform = editingView.transform
+
+        editingView.transform = CGAffineTransform(rotationAngle: 0)
+        
+        editingView.frame = CGRect(x: editingView.frame.origin.x+reduce,
+                                   y: editingView.frame.origin.y,
+                                   width: editingView.frame.width-reduce,
+                                   height: editingView.frame.height)
+        
+        editingView.center = rotatePoint(target: editingView.center, aroundOrigin: oldCenter, byDegree: angle)
+        
+        editingView.transform = transform
+
         helperView.resize(accordingTo: editingView)
+        
+    }
+    
+    func CGPointDistance(from: CGPoint, to: CGPoint) -> CGFloat {
+        return sqrt(CGPointDistanceSquared(from: from, to: to))
+    }
+    
+    func CGPointDistanceSquared(from: CGPoint, to: CGPoint) -> CGFloat {
+        return (from.x - to.x) * (from.x - to.x) + (from.y - to.y) * (from.y - to.y)
+    }
+    
+    func rotatePoint(target: CGPoint, aroundOrigin origin: CGPoint, byDegree: CGFloat) -> CGPoint {
+        
+        let dx = target.x - origin.x
+        let dy = target.y - origin.y
+        
+        let radius = sqrt(dx*dx+dy*dy)
+        
+        let azimuth = atan2(dy, dx)
+        let newAzimuth = azimuth + byDegree*CGFloat(M_PI/180.0)
+        
+        let newX = origin.x + radius*cos(newAzimuth)
+        let newY = origin.y + radius*sin(newAzimuth)
+        
+        return CGPoint(x: newX, y: newY)
         
     }
 }
