@@ -34,6 +34,8 @@ class HelperView: UIView {
         super.init(frame: frame)
         
         setupHelper()
+        setupSizeHelper()
+        enableUserInteractive()
         
     }
     
@@ -41,6 +43,8 @@ class HelperView: UIView {
         super.init(coder: aDecoder)
         
         setupHelper()
+        setupSizeHelper()
+        enableUserInteractive()
     }
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
@@ -57,8 +61,14 @@ class HelperView: UIView {
         self.addSubview(positionHelper)
         self.addSubview(editingFrame)
         
+        editingFrame.translatesAutoresizingMaskIntoConstraints = false
         rotateHelper.translatesAutoresizingMaskIntoConstraints = false
         positionHelper.translatesAutoresizingMaskIntoConstraints = false
+        
+        editingFrame.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        editingFrame.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        editingFrame.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        editingFrame.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         
         rotateHelper.centerXAnchor.constraint(equalTo:
             (editingFrame.centerXAnchor)).isActive = true
@@ -107,12 +117,56 @@ class HelperView: UIView {
     
     func setupSizeHelper() {
         
-        leftHelper.addSubview(self)
-        rightHelper.addSubview(self)
+        self.addSubview(leftHelper)
+        self.addSubview(rightHelper)
         
+        //Layout
+        leftHelper.translatesAutoresizingMaskIntoConstraints = false
+        rightHelper.translatesAutoresizingMaskIntoConstraints = false
         
+        leftHelper.centerXAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
+        leftHelper.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        leftHelper.widthAnchor.constraint(equalToConstant: 4).isActive = true
+        leftHelper.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
+        rightHelper.centerXAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+        rightHelper.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        rightHelper.widthAnchor.constraint(equalTo: leftHelper.widthAnchor).isActive = true
+        rightHelper.heightAnchor.constraint(equalTo: leftHelper.heightAnchor).isActive = true
         
+        setupShadow()
+        
+    }
+    
+    func setupShadow() {
+        
+        leftHelper.backgroundColor = UIColor.white
+        leftHelper.layer.cornerRadius = 4
+        
+        rightHelper.backgroundColor = UIColor.white
+        rightHelper.layer.cornerRadius = 4
+        
+        //Shadow
+        leftHelper.layer.shadowColor = UIColor.black.cgColor
+        leftHelper.layer.shadowOffset = CGSize(width: 0, height: 0)
+        leftHelper.layer.shadowRadius = 3
+        leftHelper.layer.shadowOpacity = 1
+        
+        rightHelper.layer.shadowColor = UIColor.black.cgColor
+        rightHelper.layer.shadowOffset = CGSize(width: 0, height: 0)
+        rightHelper.layer.shadowRadius = 3
+        rightHelper.layer.shadowOpacity = 1
+        
+        editingFrame.layer.shadowColor = UIColor.black.cgColor
+        editingFrame.layer.shadowOffset = CGSize(width: 0, height: 0)
+        editingFrame.layer.shadowRadius = 3
+        editingFrame.layer.shadowOpacity = 1
+    }
+    
+    func enableUserInteractive() {
+        
+        rightHelper.isUserInteractionEnabled = true
+        leftHelper.isUserInteractionEnabled = true
     }
    
 }

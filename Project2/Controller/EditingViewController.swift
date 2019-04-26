@@ -721,7 +721,7 @@ extension EditingViewController {
         
         view.addGestureRecognizer(pan)
     }
-    
+   
     @objc func endEditing(sender: UITapGestureRecognizer){
         
         helperView.removeFromSuperview()
@@ -838,6 +838,21 @@ extension EditingViewController {
         } else {
               rotateSlider.value = Float(360-Int(rotateDegree)*(-1))
         }
+        
+    }
+    
+    @objc func handlePanOnHelper(sender: UIPanGestureRecognizer) {
+        
+        let location = sender.location(in: designView)
+        
+        guard let editingView = editingView else { return }
+        
+        let reduce = location.x-(editingView.frame.origin.x)
+        
+        editingView.frame.origin.x = location.x
+        editingView.bounds.size = CGSize(width: (editingView.bounds.size.width)-reduce, height: (editingView.bounds.size.height))
+        
+        helperView.resize(accordingTo: editingView)
         
     }
 }
@@ -1241,11 +1256,18 @@ extension EditingViewController {
 
         addAllGesture(to: helperView)
         
-        helperView.clipsToBounds = false
+//        helperView.clipsToBounds = false
         helperView.isUserInteractionEnabled = true
         
         addCircleGesture(to: helperView.rotateHelper)
         addPanGesture(to: helperView.positionHelper)
+        
+        //Handle to tapped
+        let pan = UIPanGestureRecognizer(target: self,
+                                         action: #selector(handlePanOnHelper(sender:)))
+        
+        helperView.leftHelper.addGestureRecognizer(pan)
+        
     }
     
 }

@@ -21,7 +21,13 @@ class PortfolioCollectionViewCell: UICollectionViewCell {
     }
     
     @IBOutlet weak var showMoreButton: UIButton!
-    @IBOutlet weak var designNameLabel: UILabel!
+    @IBOutlet weak var designNameLabel: UILabel! {
+        
+        didSet {
+            
+            designNameLabel.font = UIFont(name: FontName.futura.rawValue, size: 16)
+        }
+    }
     
     var btnTapAction: (() -> Void)?
     
