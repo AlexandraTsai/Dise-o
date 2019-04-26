@@ -722,7 +722,7 @@ extension EditingViewController {
         view.addGestureRecognizer(pan)
     }
    
-    @objc func endEditing(sender: UITapGestureRecognizer){
+    @objc func endEditing(sender: UITapGestureRecognizer) {
         
         helperView.removeFromSuperview()
         
@@ -867,6 +867,12 @@ extension EditingViewController {
         editingView.center = rotatePoint(target: editingView.center, aroundOrigin: oldCenter, byDegree: angle)
         
         editingView.transform = transform
+        
+        if let textView = editingView as? UITextView {
+            
+            textView.resize()
+            
+        }
 
         helperView.resize(accordingTo: editingView)
         
@@ -898,6 +904,12 @@ extension EditingViewController {
         editingView.center = rotatePoint(target: editingView.center, aroundOrigin: oldCenter, byDegree: angle)
         
         editingView.transform = transform
+        
+        if let textView = editingView as? UITextView {
+    
+            textView.resize()
+            
+        }
         
         helperView.resize(accordingTo: editingView)
         
@@ -965,6 +977,7 @@ extension EditingViewController {
         
     }
     
+    // swiftlint:disable identifier_name
     func CGPointDistance(from: CGPoint, to: CGPoint) -> CGFloat {
         return sqrt(CGPointDistanceSquared(from: from, to: to))
     }
@@ -972,6 +985,7 @@ extension EditingViewController {
     func CGPointDistanceSquared(from: CGPoint, to: CGPoint) -> CGFloat {
         return (from.x - to.x) * (from.x - to.x) + (from.y - to.y) * (from.y - to.y)
     }
+    // swiftlint:enable identifier_name
     
     func rotatePoint(target: CGPoint, aroundOrigin origin: CGPoint, byDegree: CGFloat) -> CGPoint {
         

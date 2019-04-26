@@ -434,11 +434,12 @@ extension DesignViewController {
             image: UIImage(named: ImageAsset.Icon_profile.rawValue),
             style: .plain,
             target: self,
-            action: #selector(didTapProfileButton(sender:)))
+            action: #selector(tapProfileBtn(sender:)))
          self.navigationItem.leftBarButtonItem  = leftButton
     }
-
-    @objc func didTapProfileButton(sender: AnyObject) {
+   
+    // swiftlint:disable cyclomatic_complexity
+    @objc func tapProfileBtn(sender: AnyObject) {
         
         let date = String(Date().timeIntervalSince1970)
         
@@ -518,6 +519,7 @@ extension DesignViewController {
         
         self.navigationController?.popViewController(animated: true)
     }
+    // swiftlint:enable cyclomatic_complexity
 
     @objc func didTapDownloadButton(sender: AnyObject) {
 
