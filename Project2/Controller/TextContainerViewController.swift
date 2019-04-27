@@ -18,6 +18,16 @@ class TextContainerViewController: UIViewController {
     
     @IBOutlet weak var usedColorButton: UIButton!
     
+    @IBOutlet weak var whiteColorButton: UIButton! {
+        
+        didSet {
+            
+            whiteColorButton.layer.borderColor = UIColor.DSColor.lightGray.cgColor
+            whiteColorButton.layer.borderWidth = 1
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

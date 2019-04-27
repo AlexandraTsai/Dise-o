@@ -42,6 +42,8 @@ enum ImageAsset: String {
     
     case Icon_add_button
     
+    case Icon_color
+    
     var imageTemplate: UIImage {
         
         let origImage = UIImage(named: self.rawValue)

@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.3999999999999999" minValue="0.0" maxValue="6" translatesAutoresizingMaskIntoConstraints="NO" id="NVy-aM-PVz">
-                        <rect key="frame" x="138" y="15" width="243" height="31"/>
+                        <rect key="frame" x="138" y="16.5" width="243" height="31"/>
                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="OCs-MS-nYA"/>
@@ -30,43 +30,43 @@
                         </connections>
                     </slider>
                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="7" translatesAutoresizingMaskIntoConstraints="NO" id="RKK-cI-RGp">
-                        <rect key="frame" x="138" y="60" width="243" height="30.5"/>
+                        <rect key="frame" x="138" y="62.5" width="243" height="28"/>
                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                         <connections>
                             <action selector="slideLetterSpacing:" destination="KGk-i7-Jjw" eventType="valueChanged" id="t6t-ZN-6OW"/>
                         </connections>
                     </slider>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line height" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6T-5P-PZA">
-                        <rect key="frame" x="20" y="20" width="85" height="20"/>
+                        <rect key="frame" x="20" y="20" width="85" height="22.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="85" id="88m-6a-VN8"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Letter spacing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Mb-T4-KNi">
-                        <rect key="frame" x="20" y="60" width="110" height="29.5"/>
+                        <rect key="frame" x="20" y="62.5" width="110" height="27"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="110" id="8XS-6c-Na0"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbq-oy-ckr">
-                        <rect key="frame" x="389" y="15" width="30" height="30"/>
+                        <rect key="frame" x="389" y="16.5" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="o2B-Pd-rOT"/>
                             <constraint firstAttribute="height" constant="30" id="x4k-2l-ZlE"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LfU-bo-1l7">
-                        <rect key="frame" x="389" y="60" width="30" height="30"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="389" y="61" width="30" height="30"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -92,7 +92,7 @@
                     <constraint firstItem="LfU-bo-1l7" firstAttribute="height" secondItem="pbq-oy-ckr" secondAttribute="height" id="xPD-Wc-1Sp"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.87450980389999999" green="0.85882352939999995" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="letterSpacingLabel" destination="LfU-bo-1l7" id="U11-o0-Dz4"/>

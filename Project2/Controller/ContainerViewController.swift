@@ -15,9 +15,28 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
     @IBOutlet weak var colorSquarePicker: ColorSquarePicker!
     @IBOutlet weak var colorIndicatorView: ColorIndicatorView!
     
-    @IBOutlet weak var cameraRollButton: UIButton!
+    @IBOutlet weak var cameraRollButton: UIButton! {
+        
+        didSet {
+            
+            cameraRollButton.setImage(ImageAsset.Icon_image.imageTemplate, for: .normal)
+            
+            cameraRollButton.tintColor = UIColor.white
+            
+        }
+    }
+    
     @IBOutlet weak var filterButton: UIButton!
-    @IBOutlet weak var colorButton: UIButton!
+    @IBOutlet weak var colorButton: UIButton! {
+        
+        didSet {
+            
+            colorButton.setImage(ImageAsset.Icon_color.imageTemplate, for: .normal)
+            
+            colorButton.tintColor = UIColor.white
+            
+        }
+    }
 
     @IBOutlet weak var collectionView: UICollectionView! {
 
@@ -68,13 +87,13 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
 
     @IBAction func filterBtnTapped(_ sender: Any) {
 
-        filterButton.isSelected = true
+//        filterButton.isSelected = true
         colorButton.isSelected = false
     }
 
     @IBAction func colorBtnTapped(_ sender: Any) {
 
-        filterButton.isSelected = false
+//        filterButton.isSelected = false
         colorButton.isSelected = true
     }
     func setupImage() {
@@ -199,11 +218,11 @@ extension ContainerViewController {
         if let userInfo = noti.userInfo,
             let mode = userInfo[NotificationInfo.backgroundIsImage] as? Bool {
             if mode == true {
-                filterButton.isHidden = false
-                filterButton.isSelected = true
+//                filterButton.isHidden = false
+//                filterButton.isSelected = true
                 colorButton.isSelected = false
             } else {
-                filterButton.isHidden = true
+//                filterButton.isHidden = true
                 colorButton.isSelected = true
             }
         }

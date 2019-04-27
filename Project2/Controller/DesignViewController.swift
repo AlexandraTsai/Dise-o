@@ -72,7 +72,7 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
         super.viewDidLoad()
 
         addGesture(to: designView, action: #selector(designViewClicked(_:)))
-        addGesture(to: self.view, action: #selector(endEditing(_:)))
+//        addGesture(to: self.view, action: #selector(endEditing(_:)))
 
         createNotification()
 
@@ -203,8 +203,13 @@ extension DesignViewController {
     @objc func designViewClicked(_ sender: UITapGestureRecognizer) {
 
         scrollView.isHidden = true
-        hintView.isHidden = true
-
+        hintView.isHidden = !hintView.isHidden
+        
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            
+            self?.addButton.transform = CGAffineTransform(rotationAngle: 0)
+        }
+        
         let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
 
         if designView.image == nil {
@@ -332,6 +337,8 @@ extension DesignViewController {
             } else {
                 
                 scrollView.isHidden = true
+                
+                hintView.isHidden = false
             }
         }
     }

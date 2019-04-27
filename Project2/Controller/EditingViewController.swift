@@ -13,7 +13,16 @@ import CoreGraphics
 // swiftlint:disable file_length
 class EditingViewController: UIViewController {
 
-    @IBOutlet weak var currentFontBtn: UIButton!
+    @IBOutlet weak var currentFontBtn: UIButton! {
+        
+        didSet {
+            
+            currentFontBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+            
+        }
+      
+    }
+    
     @IBOutlet weak var alignmentButton: UIButton!
     @IBOutlet weak var letterCaseButton: UIButton!
     @IBOutlet weak var fontTableView: UITableView! {
@@ -23,12 +32,55 @@ class EditingViewController: UIViewController {
             fontTableView.dataSource = self
         }
     }
+    
     @IBOutlet weak var italicButton: UIButton!
     @IBOutlet weak var boldbutton: UIButton!
-    @IBOutlet weak var fontSizeBtn: UIButton!
-    @IBOutlet weak var colorButton: UIButton!
+    @IBOutlet weak var fontSizeBtn: UIButton! {
+        
+        didSet {
+            
+            fontSizeBtn.layer.cornerRadius = 8
+            
+            fontSizeBtn.layer.shadowOpacity = 1
+            fontSizeBtn.layer.shadowRadius = 2
+            fontSizeBtn.layer.shadowOffset = CGSize(width: 0, height: 0)
+            fontSizeBtn.layer.shadowColor = UIColor.DSColor.heavyGray.cgColor
+            
+        }
+        
+    }
+    @IBOutlet weak var colorButton: UIButton! {
+        
+        didSet {
+            
+            colorButton.layer.cornerRadius = 8
+            
+            colorButton.layer.shadowOpacity = 1
+            colorButton.layer.shadowRadius = 2
+            colorButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+            colorButton.layer.shadowColor = UIColor.DSColor.heavyGray.cgColor
+            
+        }
+        
+    }
     
     @IBOutlet weak var textEditView: UIView!
+    
+    @IBOutlet weak var textToolView: UIView! {
+        
+        didSet {
+            
+            textToolView.layer.cornerRadius = 6
+            
+            textToolView.layer.shadowColor = UIColor.DSColor.heavyGray.cgColor
+            textToolView.layer.shadowOffset = CGSize(width: 0, height: 0)
+            textToolView.layer.shadowRadius = 6
+            textToolView.layer.shadowOpacity = 1
+            
+        }
+        
+    }
+    
     @IBOutlet weak var imageEditContainerView: UIView!
     @IBOutlet weak var selectFontView: UIView!
     @IBOutlet weak var rotationView: UIView!
@@ -57,6 +109,7 @@ class EditingViewController: UIViewController {
     var lineHeight: Float = 0
     var letterSpacing: Float = 0
     var currentFontName: FontName = FontName.helveticaNeue
+    
     var helperView = HelperView()
 
     var editingView: UIView? {
@@ -81,7 +134,7 @@ class EditingViewController: UIViewController {
                     
                     guard let view = editingView as? UIImageView else { return }
                     
-                    imageContainerVC?.filterBtn.isSelected = true
+//                    imageContainerVC?.filterBtn.isSelected = true
                     imageContainerVC?.transparencyView.isHidden = true
                     imageContainerVC?.transparencyBtn.isSelected = false
                     
@@ -1081,6 +1134,16 @@ extension EditingViewController: UITextViewDelegate {
 
 extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
             SpacingTableViewCellDelegate, FontSizeTableViewCellDelegate {
+    
+//    func scrollToRow(at index: IndexPath, with: UITableView.ScrollPosition, animated: Bool) {
+//
+//        DispatchQueue.main.async {
+//            let index = IndexPath(row: index.row, section: 0)
+//
+//            fontTableView.scrollToRow(at: index,at: .middle, animated: true) //here .middle is the scroll position can change it as per your need
+//        }
+//
+//    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
@@ -1107,7 +1170,17 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
 
             fontCell.fontLabel.text = FontName.allCases[indexPath.row].rawValue
             fontCell.fontLabel.font = UIFont(name: FontName.allCases[indexPath.row].rawValue, size: 18)
-
+      
+            if currentFontName == FontName.allCases[indexPath.row] {
+                
+                fontCell.fontLabel.textColor = UIColor.DSColor.yellow
+                
+            } else {
+                
+                fontCell.fontLabel.textColor = UIColor.black
+                
+            }
+        
             return fontCell
         case 1:
             let cell = tableView.dequeueReusableCell(
@@ -1157,6 +1230,8 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
 
             currentFontBtn.setTitle(fontName, for: .normal)
             currentFontBtn.titleLabel?.font = UIFont(name: fontName, size: 20)
+            
+            tableView.reloadData()
 
             //Setup rBold and Italic Buttons
             switch FontName.allCases[indexPath.row].fontStyle() {
@@ -1201,6 +1276,7 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
                                fontName: fontName,
                                fontSize: fontSize,
                                textColor: textColor)
+//        view.resize()
     }
 
     func changeFontSize(to size: Int) {

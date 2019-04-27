@@ -17,7 +17,8 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GzL-93-cRl">
-                    <rect key="frame" x="50" y="15" width="83" height="31"/>
+                    <rect key="frame" x="50" y="15" width="96" height="31"/>
+                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                     <state key="normal" title="Camera Roll">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
@@ -26,7 +27,8 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAs-zE-y3Z">
-                    <rect key="frame" x="203" y="15.5" width="45" height="30"/>
+                    <rect key="frame" x="216" y="13" width="50" height="35"/>
+                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                     <state key="normal" title="Colors">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>

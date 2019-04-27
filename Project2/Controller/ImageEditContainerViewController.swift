@@ -61,7 +61,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         
         createNotification()
         
-        filterBtn.isSelected = true
+//        filterBtn.isSelected = true
         
     }
     
@@ -73,7 +73,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         
         cameraRollBtn.isSelected = true
         colorBtn.isSelected = false
-        filterBtn.isSelected = false
+//        filterBtn.isSelected = false
         transparencyBtn.isSelected = false
         transparencyView.isHidden = true
         
@@ -88,7 +88,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         
         cameraRollBtn.isSelected = false
         colorBtn.isSelected = true
-        filterBtn.isSelected = false
+//        filterBtn.isSelected = false
         transparencyBtn.isSelected = false
         transparencyView.isHidden = true
     }
@@ -96,7 +96,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
     @IBAction func filterBtnTapped(_ sender: Any) {
         cameraRollBtn.isSelected = false
         colorBtn.isSelected = false
-        filterBtn.isSelected = true
+//        filterBtn.isSelected = true
         transparencyBtn.isSelected = false
         transparencyView.isHidden = true
         
@@ -106,7 +106,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         
         cameraRollBtn.isSelected = false
         colorBtn.isSelected = false
-        filterBtn.isSelected = false
+//        filterBtn.isSelected = false
         transparencyBtn.isSelected = true
         transparencyView.isHidden = false
         
@@ -248,7 +248,7 @@ extension ImageEditContainerViewController {
             let mode = userInfo[NotificationInfo.didChangeImage] as? Bool {
             
             if mode == true {
-               filterBtn.isSelected = true
+//               filterBtn.isSelected = true
                cameraRollBtn.isSelected = false
             }
         }

@@ -20,23 +20,23 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjx-Yz-iZP">
-                        <rect key="frame" x="20" y="10" width="32.5" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="20" y="10" width="33" height="22.5"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" minValue="6" maxValue="260" translatesAutoresizingMaskIntoConstraints="NO" id="YGe-qO-Jqa">
-                        <rect key="frame" x="60.5" y="5.5" width="197.5" height="31"/>
+                        <rect key="frame" x="61" y="6.5" width="193" height="31"/>
                         <connections>
                             <action selector="sliderDidSlide:" destination="KGk-i7-Jjw" eventType="valueChanged" id="fhs-jM-ktu"/>
                         </connections>
                     </slider>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fa9-g9-C9M">
-                        <rect key="frame" x="266" y="10" width="31" height="21"/>
+                        <rect key="frame" x="262" y="10" width="35" height="22.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="31" id="REU-Bb-1Ea"/>
+                            <constraint firstAttribute="width" constant="35" id="REU-Bb-1Ea"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -51,7 +51,7 @@
                     <constraint firstItem="fa9-g9-C9M" firstAttribute="centerY" secondItem="tjx-Yz-iZP" secondAttribute="centerY" id="wTF-XR-uRJ"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.87450980389999999" green="0.85882352939999995" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="fontSizeLabel" destination="fa9-g9-C9M" id="FM1-20-h7E"/>
