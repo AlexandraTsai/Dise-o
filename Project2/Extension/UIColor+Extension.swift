@@ -38,6 +38,20 @@ extension UIColor {
                                                         blue: 138/255,
                                                         alpha: 1)
         }
+        
+        static var lightGreen: UIColor { return UIColor(red: 111/255,
+                                                        green: 122/255,
+                                                        blue: 119/255,
+                                                        alpha: 0.5)
+            
+        }
+        
+        static var heavyGreen: UIColor { return UIColor(red: 111/255,
+                                                        green: 122/255,
+                                                        blue: 119/255,
+                                                        alpha: 1)
+            
+        }
 
     }
 }
