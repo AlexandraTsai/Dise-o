@@ -14,13 +14,22 @@ import Fusuma
 // swiftlint:disable file_length
 class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
 
-    @IBOutlet weak var designView: ALDesignView! {
+    @IBOutlet weak var designView: ALDesignView!
+    
+    @IBOutlet weak var shadowView: UIView! {
         
         didSet {
+                
+            shadowView.clipsToBounds = false
+            shadowView.layer.shadowColor = UIColor.DSColor.mediumGray.cgColor
+            shadowView.layer.shadowOffset = CGSize(width: 0, height: 0)
+            shadowView.layer.shadowRadius = 10
+            shadowView.layer.shadowOpacity = 0.6
             
-            designView.setupShadow()
         }
+        
     }
+    
     @IBOutlet weak var containerView: ContainerViewController!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var hintLabel: UILabel!
@@ -321,6 +330,7 @@ extension DesignViewController {
                 })
                
             } else {
+                
                 scrollView.isHidden = true
             }
         }

@@ -42,13 +42,5 @@ class ALDesignView: UIImageView {
         }
         return UIImage()
     }
-    
-    func setupShadow() {
-       
-        self.clipsToBounds = false
-        self.layer.shadowColor = UIColor.DSColor.mediumGray.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 0)
-        self.layer.shadowRadius = 10
-        self.layer.shadowOpacity = 0.6
-    }
+  
 }

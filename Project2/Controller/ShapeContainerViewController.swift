@@ -9,6 +9,21 @@
 import UIKit
 
 class ShapeContainerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    @IBOutlet weak var bottomView: UIView! {
+        
+        didSet {
+            
+            bottomView.layer.cornerRadius = 50
+           
+            bottomView.layer.shadowOffset = CGSize(width: -1, height: -1)
+            bottomView.layer.shadowColor = UIColor.DSColor.heavyGray.cgColor
+            bottomView.layer.shadowRadius = 6
+            bottomView.layer.shadowOpacity = 1
+             
+        }
+        
+    }
 
     @IBOutlet weak var collectionView: UICollectionView! {
         
@@ -24,6 +39,7 @@ class ShapeContainerViewController: UIViewController, UICollectionViewDelegate, 
 
         collectionView.al_registerCellWithNib(identifier: String(describing: ShapeCollectionViewCell.self), bundle: nil)
         setupCollectionViewLayout()
+     
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
