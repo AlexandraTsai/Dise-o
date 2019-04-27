@@ -35,7 +35,7 @@ class PortfolioCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         
-    showMoreButton.setImage(ImageAsset.Icon_show_more.imageTemplate, for: .normal)
+        showMoreButton.setImage(ImageAsset.Icon_show_more.imageTemplate, for: .normal)
         
         showMoreButton.tintColor = UIColor.white
         showMoreButton.layer.cornerRadius = 8

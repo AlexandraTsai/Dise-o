@@ -34,7 +34,19 @@ class EditingViewController: UIViewController {
     @IBOutlet weak var rotationView: UIView!
     @IBOutlet weak var rotateSlider: UISlider!
     
-    @IBOutlet weak var addElementButton: UIButton!
+    @IBOutlet weak var addElementButton: UIButton! {
+        
+        didSet {
+            
+            addElementButton.layer.cornerRadius = addElementButton.frame.width/2
+            addElementButton.clipsToBounds = true
+            addElementButton.setImage(ImageAsset.Icon_add_button.imageTemplate, for: .normal)
+            addElementButton.tintColor = UIColor.DSColor.yellow
+            addElementButton.backgroundColor = UIColor.white
+            
+        }
+        
+    }
     
     deinit {
         print("EditingViewController deinit \(self)")
@@ -113,6 +125,8 @@ class EditingViewController: UIViewController {
             let tap = UITapGestureRecognizer(target: self, action: #selector(endEditing(sender:)))
             
             designView.addGestureRecognizer(tap)
+            
+            designView.setupShadow()
 
         }
     }

@@ -204,10 +204,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.navigationBar.tintColor = UIColor.black
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 223/255,
-                                                                        green: 219/255,
-                                                                        blue: 209/255,
-                                                                        alpha: 1)
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
 

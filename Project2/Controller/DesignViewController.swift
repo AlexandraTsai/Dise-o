@@ -14,7 +14,13 @@ import Fusuma
 // swiftlint:disable file_length
 class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
 
-    @IBOutlet weak var designView: ALDesignView!
+    @IBOutlet weak var designView: ALDesignView! {
+        
+        didSet {
+            
+            designView.setupShadow()
+        }
+    }
     @IBOutlet weak var containerView: ContainerViewController!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var hintLabel: UILabel!
@@ -28,6 +34,10 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
         didSet {
             addButton.layer.cornerRadius = addButton.frame.width/2
             addButton.clipsToBounds = true
+            addButton.setImage(ImageAsset.Icon_add_button.imageTemplate, for: .normal)
+            addButton.tintColor = UIColor.DSColor.yellow
+            addButton.backgroundColor = UIColor.white
+            
         }
     }
     @IBOutlet weak var textView: ALTextView!
@@ -45,7 +55,8 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
         addImageContainerView.isHidden = true
         addShapeContainerView.isHidden = true
         
-         self.tabBarController?.tabBar.barTintColor = UIColor.clear
+        self.tabBarController?.tabBar.barTintColor = UIColor.clear
+     
     }
 
     override func viewDidLoad() {
@@ -87,28 +98,45 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
         
         if scrollView.isHidden == true {
             
-            UIView.animate(withDuration: 0.3) { [weak self] in
+            UIView.animate(withDuration: 0.3, animations: { [weak self] in
                 
                 self?.addButton.transform = CGAffineTransform.init(rotationAngle: -(CGFloat.pi*7/4))
-             
-            }
+                
+            }, completion: {  [weak self] done in
+                
+                if done {
+                    
+                    self?.scrollView.isHidden = false
+                    
+                    self?.hintView.isHidden = false
+                    
+                }
+                
+            })
        
         } else {
             
-            UIView.animate(withDuration: 0.3) { [weak self] in
+            UIView.animate(withDuration: 0.3, animations: {
+                [weak self] in
                 
                 self?.addButton.transform = CGAffineTransform.init(rotationAngle: 0)
                 
-            }
-            
+                }, completion: {  [weak self] done in
+                    
+                    if done {
+                        
+                        self?.scrollView.isHidden = true
+                        
+                        self?.hintView.isHidden = false
+                        
+                    }
+                    
+            })
+
         }
 
-        scrollView.isHidden = !scrollView.isHidden
-        
         addShapeContainerView.isHidden = true
         
-        hintView.isHidden = false
-
     }
 
 //    @IBAction func downBtnTapped(_ sender: Any) {
@@ -273,10 +301,27 @@ extension DesignViewController {
     @objc func switchToAddingMode(noti: Notification) {
         if let userInfo = noti.userInfo,
             let mode = userInfo[NotificationInfo.addingMode] as? Bool {
+            
             if mode == true {
-                scrollView.isHidden = false
+               
+                UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                    
+                    self?.addButton.transform = CGAffineTransform.init(rotationAngle: -(CGFloat.pi*7/4))
+                    
+                    }, completion: {  [weak self] done in
+                        
+                        if done {
+                            
+                            self?.scrollView.isHidden = false
+                            
+                            self?.hintView.isHidden = false
+                            
+                        }
+                        
+                })
+               
             } else {
-                 scrollView.isHidden = true
+                scrollView.isHidden = true
             }
         }
     }
@@ -836,6 +881,6 @@ extension DesignViewController {
         }
         
     }
-    
+   
 }
 // swiftlint:enable file_length
