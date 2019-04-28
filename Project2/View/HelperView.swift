@@ -10,10 +10,10 @@ import UIKit
 
 class HelperView: UIView {
     
-    var leftHelper = UIView()
-    var rightHelper = UIView()
-    var topHelper = UIView()
-    var bottomHelper = UIView()
+    var leftHelper = SizeHelperView()
+    var rightHelper = SizeHelperView()
+    var topHelper = SizeHelperView()
+    var bottomHelper = SizeHelperView()
     
     var rotateHelper = UIImageView()
     var positionHelper  =  UIImageView()
@@ -226,5 +226,5 @@ class HelperView: UIView {
         topHelper.isHidden = true
         bottomHelper.isHidden = true
     }
-    
+   
 }

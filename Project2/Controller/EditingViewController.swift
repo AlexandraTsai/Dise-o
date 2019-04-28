@@ -1264,6 +1264,8 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
             }
 
             view.font = newFont
+            
+            view.resize()
 
             currentFontName = FontName.allCases[indexPath.row]
 

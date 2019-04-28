@@ -10,6 +10,7 @@
 		732E4A17C4EE4240C0412462 /* Pods_Project2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF328FB228DDA472B389400 /* Pods_Project2.framework */; };
 		A80804EB226882720042E4FF /* EditeFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80804EA226882720042E4FF /* EditeFrameView.swift */; };
 		A80F296B22660BED009C13F5 /* TextContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F296A22660BED009C13F5 /* TextContainerViewController.swift */; };
+		A816BEB322755860004E3896 /* SizeHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A816BEB222755860004E3896 /* SizeHelperView.swift */; };
 		A82B5F332268A2270093671D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F322268A2270093671D /* HomeViewController.swift */; };
 		A82B5F352268A4930093671D /* NewDeign.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F342268A4930093671D /* NewDeign.swift */; };
 		A82B5F372268C8090093671D /* HelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F362268C8090093671D /* HelperView.swift */; };
@@ -79,6 +80,7 @@
 		97709A67B679D68A1DBDCC55 /* Pods-Project2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.debug.xcconfig"; path = "Target Support Files/Pods-Project2/Pods-Project2.debug.xcconfig"; sourceTree = "<group>"; };
 		A80804EA226882720042E4FF /* EditeFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditeFrameView.swift; sourceTree = "<group>"; };
 		A80F296A22660BED009C13F5 /* TextContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextContainerViewController.swift; sourceTree = "<group>"; };
+		A816BEB222755860004E3896 /* SizeHelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeHelperView.swift; sourceTree = "<group>"; };
 		A82B5F322268A2270093671D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A82B5F342268A4930093671D /* NewDeign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeign.swift; sourceTree = "<group>"; };
 		A82B5F362268C8090093671D /* HelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperView.swift; sourceTree = "<group>"; };
@@ -254,7 +256,6 @@
 				A8D2C4662252228D0085AD24 /* Model */,
 				A8D2C465225222850085AD24 /* Controller */,
 				A8D2C464225222790085AD24 /* View */,
-				A8D2C44F225219020085AD24 /* AppDelegate.swift */,
 				A8DEBBB3225713770081A694 /* Assets.xcassets */,
 				A8D2C45B225219080085AD24 /* LaunchScreen.storyboard */,
 				A8D2C45E225219080085AD24 /* Info.plist */,
@@ -268,6 +269,7 @@
 			children = (
 				A80804EA226882720042E4FF /* EditeFrameView.swift */,
 				A82B5F362268C8090093671D /* HelperView.swift */,
+				A816BEB222755860004E3896 /* SizeHelperView.swift */,
 				A82B5F342268A4930093671D /* NewDeign.swift */,
 				A84880CA226F26D200F308AC /* SelectionView.swift */,
 				A84880CE22704A8900F308AC /* RenameView.swift */,
@@ -283,6 +285,7 @@
 				A8D2C4822252F7420085AD24 /* Storyboard */,
 				A8AD7466226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift */,
 				A8AD7467226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib */,
+				A8D2C44F225219020085AD24 /* AppDelegate.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				A8BFF780225A4AC00010E56B /* ImageEditContainerViewController.swift in Sources */,
 				A8DEBBA2225496D20081A694 /* AddImageContainerViewController.swift in Sources */,
 				A8D2C47B22522A8F0085AD24 /* UICollectionView+Extension.swift in Sources */,
+				A816BEB322755860004E3896 /* SizeHelperView.swift in Sources */,
 				A8AD7465226C004E00BDE3A7 /* ALImageView.swift in Sources */,
 				A82B5F332268A2270093671D /* HomeViewController.swift in Sources */,
 				A82B5F352268A4930093671D /* NewDeign.swift in Sources */,
