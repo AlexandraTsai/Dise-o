@@ -1067,7 +1067,12 @@ extension EditingViewController {
         
         let location = sender.location(in: designView)
         
+        print("-------------------------")
+        print(location)
+        
         guard let editingView = editingView else { return }
+        
+        print(editingView.frame)
         
         let distance = CGPointDistance(from: editingView.center, to: location)
         
@@ -1081,6 +1086,8 @@ extension EditingViewController {
         
         editingView.transform = CGAffineTransform(rotationAngle: 0)
         
+        print(editingView.frame)
+        
         editingView.frame = CGRect(x: editingView.frame.origin.x,
                                    y: editingView.frame.origin.y,
                                    width: editingView.frame.width,
@@ -1089,6 +1096,8 @@ extension EditingViewController {
         editingView.center = rotatePoint(target: editingView.center, aroundOrigin: oldCenter, byDegree: angle)
         
         editingView.transform = transform
+        
+        print(editingView.frame)
         
         helperView.resize(accordingTo: editingView)
         
@@ -1308,16 +1317,15 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
             let fontName = view.font?.fontName,
             let fontSize = view.font?.pointSize,
             let textColor = view.textColor else { return }
-        
-        let contentSize = view.sizeThatFits(self.view.bounds.size)
-        view.frame.size.height = contentSize.height
-        
+
         view.keepAttributeWith(lineHeight: lineHeight,
                                letterSpacing: letterSpacing,
                                fontName: fontName,
                                fontSize: fontSize,
                                textColor: textColor)
-//        view.resize()
+        view.resize()
+        
+        helperView.resize(accordingTo: view)
     }
 
     func changeFontSize(to size: Int) {

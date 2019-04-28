@@ -226,5 +226,5 @@ class HelperView: UIView {
         topHelper.isHidden = true
         bottomHelper.isHidden = true
     }
-   
+    
 }
