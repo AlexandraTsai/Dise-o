@@ -61,7 +61,6 @@ class RenameView: UIView {
         textField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         textField.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30).isActive = true
-        textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30).isActive = true
         textField.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -74,7 +73,7 @@ class RenameView: UIView {
         cancelButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
         cancelButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         cancelButton.trailingAnchor.constraint(equalTo: saveButton.leadingAnchor, constant: -20).isActive = true
-        cancelButton.heightAnchor.constraint(equalToConstant: 27).isActive = true
+//        cancelButton.heightAnchor.constraint(equalToConstant: 27).isActive = true
         
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         saveButton.centerYAnchor.constraint(equalTo: cancelButton.centerYAnchor).isActive = true

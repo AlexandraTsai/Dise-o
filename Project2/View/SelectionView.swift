@@ -70,8 +70,6 @@ class SelectionView: UIView {
         openButton.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -10).isActive = true
         openButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15).isActive = true
         openButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15).isActive = true
-        openButton.heightAnchor.constraint(equalTo: saveButton.heightAnchor, multiplier: 1)
-        openButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         //Save Button
         saveButton.translatesAutoresizingMaskIntoConstraints = false

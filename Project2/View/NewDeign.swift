@@ -58,10 +58,11 @@ class NewDeign: UIView {
         
         //Auto layout
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         textField.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30).isActive = true
-        textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30).isActive = true
+        let centerConstraint = textField.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+        centerConstraint.priority = UILayoutPriority(rawValue: 750)
+        centerConstraint.isActive = true
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
@@ -75,11 +76,14 @@ class NewDeign: UIView {
         cancelButton.setImage(#imageLiteral(resourceName: "noun_Cancel"), for: .normal)
         
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
-        confirmButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         confirmButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 25).isActive = true
-        confirmButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50).isActive = true
         confirmButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50).isActive = true
         confirmButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        let centerConstraint2 = confirmButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+        centerConstraint2.priority = UILayoutPriority(rawValue: 750)
+        centerConstraint2.isActive = true
+        
         confirmButton.layer.cornerRadius = 20
         confirmButton.setTitle("CREATE", for: .normal)
         confirmButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 16)

@@ -221,7 +221,7 @@
                             <constraint firstItem="fnc-r6-ZzI" firstAttribute="trailing" secondItem="k2Y-E1-iHA" secondAttribute="trailing" id="stb-Ng-svV"/>
                             <constraint firstItem="fnc-r6-ZzI" firstAttribute="bottom" secondItem="k2Y-E1-iHA" secondAttribute="bottom" id="vW9-E9-fgI"/>
                             <constraint firstItem="VJC-L0-vuv" firstAttribute="centerX" secondItem="DZf-mM-usS" secondAttribute="centerX" id="wAc-gS-irl"/>
-                            <constraint firstItem="DZf-mM-usS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="wa0-V2-l3L"/>
+                            <constraint firstItem="DZf-mM-usS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" priority="750" constant="20" id="wa0-V2-l3L"/>
                             <constraint firstItem="qfP-Fw-Eth" firstAttribute="top" secondItem="k2Y-E1-iHA" secondAttribute="top" id="xnx-Hv-ssj"/>
                             <constraint firstItem="zg0-Kt-1Ej" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="zOB-g9-GQN"/>
                         </constraints>
@@ -1522,7 +1522,7 @@
         <image name="Icon_shape" width="208" height="206.5"/>
         <image name="Icon_sortDown" width="10.5" height="10.5"/>
         <image name="Icon_text" width="173.5" height="173.5"/>
-        <image name="Icon_transparency" width="21" height="21"/>
+        <image name="Icon_transparency" width="42.5" height="42.5"/>
         <image name="noun_Cancel" width="21" height="21"/>
         <image name="noun_Check" width="21" height="21"/>
         <image name="noun_Image_973304-2" width="42.5" height="42"/>
