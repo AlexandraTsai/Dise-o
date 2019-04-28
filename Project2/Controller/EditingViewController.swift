@@ -769,8 +769,15 @@ extension EditingViewController {
         helperView.addGestureRecognizer(pinch)
         
         //Enable to edit textView
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap(sender:)))
-        tap.numberOfTapsRequired = 2
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap(sender:)))
+        doubleTap.numberOfTapsRequired = 2
+        doubleTap.numberOfTouchesRequired = 1
+        helperView.addGestureRecognizer(doubleTap)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapHelperView(sender:)))
+        tap.numberOfTapsRequired = 1
+        tap.numberOfTouchesRequired = 1
+        helperView.addGestureRecognizer(tap)
 
     }
 
@@ -824,7 +831,31 @@ extension EditingViewController {
       
         guard let textView = editingView as? ALTextView else { return }
         
+        textView.addDoneButtonOnKeyboard()
+        
         textView.becomeFirstResponder()
+        
+    }
+    
+    @objc func tapHelperView(sender: UITapGestureRecognizer) {
+        
+        if let textView = editingView as? ALTextView {
+            
+            textView.addDoneButtonOnKeyboard()
+            
+            textView.becomeFirstResponder()
+            
+        } else {
+            
+            helperView.alpha = 0
+            
+            UIView.animate(withDuration: 0.2) {  [weak self] in
+                
+                self?.helperView.alpha = 1
+            }
+            
+        }
+       
     }
 
     @objc func handleTap(sender: UITapGestureRecognizer) {
