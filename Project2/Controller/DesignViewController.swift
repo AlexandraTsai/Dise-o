@@ -64,6 +64,9 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
         addImageContainerView.isHidden = true
         addShapeContainerView.isHidden = true
         
+        scrollView.isHidden = true
+        addButton.transform = CGAffineTransform(rotationAngle: 0)
+        
         self.tabBarController?.tabBar.barTintColor = UIColor.clear
      
     }

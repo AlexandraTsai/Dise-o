@@ -157,6 +157,8 @@ class EditingViewController: UIViewController {
 
             }
         
+            textView.delegate = self
+            
             guard let alpha = textView.textColor?.cgColor.alpha else { return }
             textContainerVC?.slider.value = Float(alpha*100)
             colorButton.backgroundColor = textView.textColor?.withAlphaComponent(1)
@@ -1123,9 +1125,8 @@ extension EditingViewController {
 extension EditingViewController: UITextViewDelegate {
 
     func textViewDidChange(_ textView: UITextView) {
-        
-        let contentSize = textView.sizeThatFits(textView.bounds.size)
-        textView.frame.size.height = contentSize.height
+ 
+        textView.resize()
 
         switch letterCaseButton.titleLabel?.text {
         case "AA":
@@ -1164,6 +1165,8 @@ extension EditingViewController: UITextViewDelegate {
             originalText = textView.text
 
         }
+        
+        helperView.resize(accordingTo: textView)
 
     }
 }
