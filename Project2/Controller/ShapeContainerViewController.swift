@@ -14,7 +14,7 @@ class ShapeContainerViewController: UIViewController, UICollectionViewDelegate, 
         
         didSet {
             
-            bottomView.layer.cornerRadius = 50
+            bottomView.layer.cornerRadius = 30
            
             bottomView.layer.shadowOffset = CGSize(width: -1, height: -1)
             bottomView.layer.shadowColor = UIColor.DSColor.heavyGray.cgColor

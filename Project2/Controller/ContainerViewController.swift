@@ -21,7 +21,7 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
             
             cameraRollButton.setImage(ImageAsset.Icon_image.imageTemplate, for: .normal)
             
-            cameraRollButton.tintColor = UIColor.white
+            cameraRollButton.tintColor = UIColor.DSColor.lightGreen
             
         }
     }
@@ -33,7 +33,7 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
             
             colorButton.setImage(ImageAsset.Icon_color.imageTemplate, for: .normal)
             
-            colorButton.tintColor = UIColor.white
+            colorButton.tintColor = UIColor.DSColor.heavyGreen
             
         }
     }

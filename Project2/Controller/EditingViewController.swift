@@ -484,8 +484,13 @@ extension EditingViewController {
             style: .done,
             target: self,
             action: #selector(didTapDoneButton(sender:)))
+        
+        leftButton.setTitleTextAttributes([
+            NSAttributedString.Key.font: UIFont(name: FontName.futura.rawValue,
+                                                size: 17.0)
+            ], for: .normal)
+        
         self.navigationItem.leftBarButtonItem  = leftButton
-
     }
 
     func complexNavigationBar() {
