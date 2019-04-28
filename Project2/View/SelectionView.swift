@@ -67,27 +67,27 @@ class SelectionView: UIView {
         //Open Button
         openButton.translatesAutoresizingMaskIntoConstraints = false
         openButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 40).isActive = true
-        openButton.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -10).isActive = true
+        openButton.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -15).isActive = true
         openButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15).isActive = true
         openButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15).isActive = true
         
         //Save Button
         saveButton.translatesAutoresizingMaskIntoConstraints = false
-        saveButton.bottomAnchor.constraint(equalTo: renameButton.topAnchor, constant: -10).isActive = true
+        saveButton.bottomAnchor.constraint(equalTo: renameButton.topAnchor, constant: -15).isActive = true
         saveButton.leadingAnchor.constraint(equalTo: openButton.leadingAnchor).isActive = true
         saveButton.trailingAnchor.constraint(equalTo: openButton.trailingAnchor).isActive = true
         saveButton.heightAnchor.constraint(equalTo: openButton.heightAnchor, multiplier: 1).isActive = true
         
         //Rename Button
         renameButton.translatesAutoresizingMaskIntoConstraints = false
-        renameButton.bottomAnchor.constraint(equalTo: deleteButton.topAnchor, constant: -10).isActive = true
+        renameButton.bottomAnchor.constraint(equalTo: deleteButton.topAnchor, constant: -15).isActive = true
         renameButton.leadingAnchor.constraint(equalTo: openButton.leadingAnchor).isActive = true
         renameButton.trailingAnchor.constraint(equalTo: openButton.trailingAnchor).isActive = true
         renameButton.heightAnchor.constraint(equalTo: openButton.heightAnchor, multiplier: 1).isActive = true
         
         //Delete Button
         deleteButton.translatesAutoresizingMaskIntoConstraints = false
-        deleteButton.bottomAnchor.constraint(equalTo: cancelButton.topAnchor, constant: -10).isActive = true
+        deleteButton.bottomAnchor.constraint(equalTo: cancelButton.topAnchor, constant: -15).isActive = true
         deleteButton.leadingAnchor.constraint(equalTo: openButton.leadingAnchor).isActive = true
         deleteButton.trailingAnchor.constraint(equalTo: openButton.trailingAnchor).isActive = true
         deleteButton.heightAnchor.constraint(equalTo: openButton.heightAnchor, multiplier: 1).isActive = true
@@ -154,7 +154,7 @@ class SelectionView: UIView {
         specificView.addSubview(self)
         
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.heightAnchor.constraint(equalToConstant: 270).isActive = true
+        self.heightAnchor.constraint(equalToConstant: 290).isActive = true
         self.bottomAnchor.constraint(equalTo: specificView.bottomAnchor, constant: -30).isActive = true
         self.leadingAnchor.constraint(equalTo: specificView.leadingAnchor, constant: 20).isActive = true
         self.trailingAnchor.constraint(equalTo: specificView.trailingAnchor, constant: -20).isActive = true

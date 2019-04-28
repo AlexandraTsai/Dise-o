@@ -15,15 +15,27 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
     @IBOutlet weak var colorSquarePicker: ColorSquarePicker!
     @IBOutlet weak var colorIndicatorView: ColorIndicatorView!
     
+    @IBOutlet weak var photoView: UIView!
+    
     @IBOutlet weak var cameraRollButton: UIButton! {
         
         didSet {
             
             cameraRollButton.setImage(ImageAsset.Icon_image.imageTemplate, for: .normal)
             
-            cameraRollButton.tintColor = UIColor.DSColor.lightGreen
+            cameraRollButton.tintColor = UIColor.DSColor.heavyGreen
             
         }
+    }
+    
+    @IBOutlet weak var cameraUnderLine: UIView! {
+        
+        didSet {
+            
+            cameraUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
+            
+        }
+        
     }
     
     @IBOutlet weak var filterButton: UIButton!
@@ -33,9 +45,19 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
             
             colorButton.setImage(ImageAsset.Icon_color.imageTemplate, for: .normal)
             
-            colorButton.tintColor = UIColor.DSColor.heavyGreen
+            colorButton.tintColor = UIColor.DSColor.lightGreen
             
         }
+    }
+    
+    @IBOutlet weak var colorUnderLine: UIView! {
+        
+        didSet {
+            
+            colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+            
+        }
+        
     }
 
     @IBOutlet weak var collectionView: UICollectionView! {
@@ -76,12 +98,14 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
     }
 
     @IBAction func cameraRollBtnTapped(_ sender: Any) {
-
-        let notificationName = Notification.Name(NotiName.pickingPhotoMode.rawValue)
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.pickingPhotoMode: true])
+        
+        photoView.isHidden = false
+        
+        colorButton.tintColor = UIColor.DSColor.lightGreen
+        colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        
+        cameraRollButton.tintColor = UIColor.DSColor.heavyGreen
+        cameraUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
 
     }
 
@@ -94,7 +118,15 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
     @IBAction func colorBtnTapped(_ sender: Any) {
 
 //        filterButton.isSelected = false
-        colorButton.isSelected = true
+        
+        photoView.isHidden = true
+        
+        colorButton.tintColor = UIColor.DSColor.heavyGreen
+        colorUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
+        
+        cameraRollButton.tintColor = UIColor.DSColor.lightGreen
+        cameraUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        
     }
     func setupImage() {
         collectionView.reloadData()
@@ -121,6 +153,27 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
             name: notificationName,
             object: nil,
             userInfo: [NotificationInfo.backgroundColor: sender.color])
+    }
+    
+    @IBAction func photoLibraryBtnTapped(_ sender: UIButton) {
+    
+        let notificationName = Notification.Name(NotiName.pickingPhotoMode.rawValue)
+        
+        NotificationCenter.default.post(
+                    name: notificationName,
+                    object: nil,
+                    userInfo: [NotificationInfo.pickingPhotoMode: true])
+        
+    }
+    
+    @IBAction func cameraBtnTapped(_ sender: UIButton) {
+        
+        let notificationName = Notification.Name(NotiName.takePhotoMode.rawValue)
+        
+        NotificationCenter.default.post(
+            name: notificationName,
+            object: nil,
+            userInfo: [NotificationInfo.takePhotoMode: true])
     }
 }
 

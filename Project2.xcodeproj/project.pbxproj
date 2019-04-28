@@ -11,6 +11,7 @@
 		A80804EB226882720042E4FF /* EditeFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80804EA226882720042E4FF /* EditeFrameView.swift */; };
 		A80F296B22660BED009C13F5 /* TextContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F296A22660BED009C13F5 /* TextContainerViewController.swift */; };
 		A816BEB322755860004E3896 /* SizeHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A816BEB222755860004E3896 /* SizeHelperView.swift */; };
+		A816BEB522758CC4004E3896 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A816BEB422758CC4004E3896 /* UITextField+Extension.swift */; };
 		A82B5F332268A2270093671D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F322268A2270093671D /* HomeViewController.swift */; };
 		A82B5F352268A4930093671D /* NewDeign.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F342268A4930093671D /* NewDeign.swift */; };
 		A82B5F372268C8090093671D /* HelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F362268C8090093671D /* HelperView.swift */; };
@@ -81,6 +82,7 @@
 		A80804EA226882720042E4FF /* EditeFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditeFrameView.swift; sourceTree = "<group>"; };
 		A80F296A22660BED009C13F5 /* TextContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextContainerViewController.swift; sourceTree = "<group>"; };
 		A816BEB222755860004E3896 /* SizeHelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeHelperView.swift; sourceTree = "<group>"; };
+		A816BEB422758CC4004E3896 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		A82B5F322268A2270093671D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A82B5F342268A4930093671D /* NewDeign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeign.swift; sourceTree = "<group>"; };
 		A82B5F362268C8090093671D /* HelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperView.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				A8BFF7792259E1960010E56B /* UIButton+Extenstion.swift */,
 				A86824C322603BC500BDCCD8 /* CGAffineTransform+Extension.swift */,
 				A86824C72260838200BDCCD8 /* ALRotationGestureRecognizer.swift */,
+				A816BEB422758CC4004E3896 /* UITextField+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				A8AD7463226AF82200BDE3A7 /* ALDesignView.swift in Sources */,
 				A848811F2273FAC200F308AC /* UIColor+Extension.swift in Sources */,
 				A8AD7468226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift in Sources */,
+				A816BEB522758CC4004E3896 /* UITextField+Extension.swift in Sources */,
 				A8BFF782225A4B6B0010E56B /* PhotoManager.swift in Sources */,
 				A8D2C4842252F9FF0085AD24 /* ImageContainerViewController.swift in Sources */,
 				A8D2C481225268000085AD24 /* EditingViewController.swift in Sources */,

@@ -129,16 +129,20 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
     }
  
     @IBAction func addButtonTapped(_ sender: UIButton) {
+        
         self.setupInputView()
         newDesignView.alpha = 0
         newDesignView.textField.text = ""
+        
+        newDesignView.textField.delegate = self
    
         UIView.animate(withDuration: 0.7, animations: { [weak self] in
+            
             self?.newDesignView.alpha = 1
           
         })
         
-        newDesignView.textField.delegate = self
+        newDesignView.textField.addDoneButtonOnKeyboard()
         newDesignView.textField.becomeFirstResponder()
       
     }
@@ -153,7 +157,13 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         newDesignView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
         newDesignView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
         newDesignView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        newDesignView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 60).isActive = true
+        
+        let topConstant = (100/667)*UIScreen.main.bounds.height
+    
+        newDesignView.topAnchor.constraint(equalTo: self.view.topAnchor,
+                                           constant: topConstant).isActive = true
+        
+//        newDesignView.textField.delegate = self
  
         newDesignView.cancelButton.addTarget(self,
                                              action: #selector(cancelButtonTapped(sender:)),
@@ -544,7 +554,10 @@ extension HomeViewController {
         UIView.animate(withDuration: 0.5) { [weak self] in
         
             self?.renameView.alpha = 1
+            
             self?.renameView.textField.becomeFirstResponder()
+            
+            self?.renameView.textField.delegate = self
         }
       
         selectionView.alpha = 0

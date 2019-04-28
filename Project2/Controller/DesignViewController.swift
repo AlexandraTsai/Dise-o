@@ -54,7 +54,8 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
     var editingView: UIView?
     var addingNewImage = false
 
-    let fusuma = FusumaViewController()
+    let fusumaAlbum = FusumaViewController()
+    let fusumaCamera = FusumaViewController()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -82,6 +83,8 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
         setupNavigationBar()
 
         setupImagePicker()
+        
+        setupCamera()
         
         scrollView.isHidden = true
     }
@@ -163,7 +166,8 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
         addImageContainerView.isHidden = false
 
         addingNewImage = true
-        self.present(fusuma, animated: true, completion: nil)
+        
+        self.present(fusumaAlbum, animated: true, completion: nil)
 
     }
 
@@ -264,8 +268,8 @@ extension DesignViewController {
         // 註冊addObserver
         let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
 
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(changeImage(noti:)), name: notificationName, object: nil)
+//        NotificationCenter.default.addObserver(self, selector:
+//            #selector(pickAnotherImage(noti:)), name: notificationName, object: nil)
 
         let notificationName2 = Notification.Name(NotiName.addImage.rawValue)
 
@@ -287,15 +291,21 @@ extension DesignViewController {
         NotificationCenter.default.addObserver(self, selector:
             #selector(showPickPhotoVC(noti:)), name: notificationName5, object: nil)
 
-        let notificationName6 = Notification.Name(NotiName.addShape.rawValue)
+        let notificationName6 = Notification.Name(NotiName.takePhotoMode.rawValue)
         
         NotificationCenter.default.addObserver(self, selector:
-            #selector(addShape(noti:)), name: notificationName6, object: nil)
+            #selector(showCameraVC(noti:)), name: notificationName6, object: nil)
         
-        let notificationName7 = Notification.Name(NotiName.backgroundColor.rawValue)
+        
+        let notificationName7 = Notification.Name(NotiName.addShape.rawValue)
         
         NotificationCenter.default.addObserver(self, selector:
-            #selector(changeBackgroundColor(noti:)), name: notificationName7, object: nil)
+            #selector(addShape(noti:)), name: notificationName7, object: nil)
+        
+        let notificationName8 = Notification.Name(NotiName.backgroundColor.rawValue)
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(changeBackgroundColor(noti:)), name: notificationName8, object: nil)
 
     }
 
@@ -304,7 +314,16 @@ extension DesignViewController {
         if let userInfo = noti.userInfo,
             let mode = userInfo[NotificationInfo.pickingPhotoMode] as? Bool {
             if mode == true {
-                self.present(fusuma, animated: true, completion: nil)
+                self.present(fusumaAlbum, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    @objc func showCameraVC(noti: Notification) {
+        if let userInfo = noti.userInfo,
+            let mode = userInfo[NotificationInfo.takePhotoMode] as? Bool {
+            if mode == true {
+                self.present(fusumaCamera, animated: true, completion: nil)
             }
         }
     }
@@ -770,6 +789,7 @@ extension DesignViewController {
             addingNewImage = false
             
         } else {
+            
             designView.image = image
             
             designView.imageFileName = fileName
@@ -810,15 +830,18 @@ extension DesignViewController {
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode, metaData: ImageMetadata) {
      
     }
-
+    
     func setupImagePicker() {
 
-        fusuma.delegate = self
-        fusuma.availableModes = [FusumaMode.library, FusumaMode.camera]
+        fusumaAlbum.delegate = self
+        fusumaAlbum.availableModes = [FusumaMode.library]
+        
+        // FusumaMode.camera
+        
         // Add .video capturing mode to the default .library and .camera modes
-        fusuma.cropHeightRatio = 1
+        fusumaAlbum.cropHeightRatio = 1
         // Height-to-width ratio. The default value is 1, which means a squared-size photo.
-        fusuma.allowMultipleSelection = false
+        fusumaAlbum.allowMultipleSelection = false
         // You can select multiple photos from the camera roll. The default value is false.
 
         fusumaSavesImage = true
@@ -833,8 +856,25 @@ extension DesignViewController {
 
         fusumaCameraTitle = "Camera"
         fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        
     }
-
+    
+    func setupCamera() {
+        
+        fusumaCamera.delegate = self
+        fusumaCamera.availableModes = [FusumaMode.camera]
+ 
+        fusumaSavesImage = true
+        
+        fusumaTitleFont = UIFont(name: FontName.copperplate.boldStyle(), size: 18)
+        
+        fusumaBackgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
+   
+        fusumaCameraTitle = "Camera"
+        fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        
+    }
+    
 }
 
 extension DesignViewController {

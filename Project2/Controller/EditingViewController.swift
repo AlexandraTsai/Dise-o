@@ -112,6 +112,10 @@ class EditingViewController: UIViewController {
     
     var helperView = HelperView()
 
+    var oldLocation: CGPoint?
+    
+    var newLocation: CGPoint?
+    
     var editingView: UIView? {
 
         didSet {
@@ -169,7 +173,9 @@ class EditingViewController: UIViewController {
         }
     }
 
-    let fusuma = FusumaViewController()
+    let fusumaAlbum = FusumaViewController()
+    let fusumaCamera = FusumaViewController()
+    
     var tableViewIndex: Int = 0
     var originalText = ""
 
@@ -206,6 +212,7 @@ class EditingViewController: UIViewController {
         fontTableView.al_registerCellWithNib(identifier: String(describing: FontSizeTableViewCell.self), bundle: nil)
 
         setupImagePicker()
+        setupCamera()
         createNotification()
         selectFontView.isHidden = true
         
@@ -1066,39 +1073,38 @@ extension EditingViewController {
     @objc func handleBottomHelper(sender: UIPanGestureRecognizer) {
         
         let location = sender.location(in: designView)
-        
-        print("-------------------------")
-        print(location)
-        
+    
         guard let editingView = editingView else { return }
-        
-        print(editingView.frame)
-        
+       
         let distance = CGPointDistance(from: editingView.center, to: location)
         
         let reduce = editingView.bounds.height-distance
         
-        let oldCenter =  editingView.center
+//        if sender.state == UITapGestureRecognizer.State.began {
+//
+//            reduce = editingView.bounds.height/2-distance
+//
+//        }
         
+        let oldCenter = editingView.center
+            
         let angle = editingView.transform.angle
-        
+            
         let transform = editingView.transform
-        
+            
         editingView.transform = CGAffineTransform(rotationAngle: 0)
-        
-        print(editingView.frame)
-        
+            
         editingView.frame = CGRect(x: editingView.frame.origin.x,
                                    y: editingView.frame.origin.y,
                                    width: editingView.frame.width,
                                    height: editingView.frame.height-reduce)
-        
-        editingView.center = rotatePoint(target: editingView.center, aroundOrigin: oldCenter, byDegree: angle)
-        
+            
+        editingView.center = rotatePoint(target: editingView.center,
+                                         aroundOrigin: oldCenter,
+                                         byDegree: angle)
+            
         editingView.transform = transform
-        
-        print(editingView.frame)
-        
+      
         helperView.resize(accordingTo: editingView)
         
     }
@@ -1358,10 +1364,15 @@ extension EditingViewController: FusumaDelegate {
     func createNotification() {
         
         // 註冊addObserver
-        let notificationName = Notification.Name(NotiName.changeImage.rawValue)
+        let notificationName = Notification.Name(NotiName.changeImageWithAlbum.rawValue)
         
         NotificationCenter.default.addObserver(self, selector:
-            #selector(changeImage(noti:)), name: notificationName, object: nil)
+            #selector(pickAnotherImage(noti:)), name: notificationName, object: nil)
+        
+        let notificationName1 = Notification.Name(NotiName.changeImageByCamera.rawValue)
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(changeImageWithCamera(noti:)), name: notificationName1, object: nil)
         
         let notificationName2 = Notification.Name(NotiName.changeEditingViewColor.rawValue)
         
@@ -1385,13 +1396,23 @@ extension EditingViewController: FusumaDelegate {
     }
     
     // 收到通知後要執行的動作
-    @objc func changeImage(noti: Notification) {
+    @objc func pickAnotherImage(noti: Notification) {
         if let userInfo = noti.userInfo,
-            let mode = userInfo[NotificationInfo.changeImage] as? Bool {
+            let mode = userInfo[NotificationInfo.changeImageWithAlbum] as? Bool {
             
             if mode == true {
-                self.present(fusuma, animated: true, completion: nil)
-                print(fusuma)
+                self.present(fusumaAlbum, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    @objc func changeImageWithCamera(noti: Notification) {
+        
+        if let userInfo = noti.userInfo,
+            let mode = userInfo[NotificationInfo.changeImageByCamera] as? Bool {
+            
+            if mode == true {
+                self.present(fusumaCamera, animated: true, completion: nil)
             }
         }
     }
@@ -1461,12 +1482,12 @@ extension EditingViewController: FusumaDelegate {
     
     func setupImagePicker() {
         
-        fusuma.delegate = self
-        fusuma.availableModes = [FusumaMode.library, FusumaMode.camera]
+        fusumaAlbum.delegate = self
+        fusumaAlbum.availableModes = [FusumaMode.library]
         // Add .video capturing mode to the default .library and .camera modes
-        fusuma.cropHeightRatio = 1
+        fusumaAlbum.cropHeightRatio = 1
         // Height-to-width ratio. The default value is 1, which means a squared-size photo.
-        fusuma.allowMultipleSelection = false
+        fusumaAlbum.allowMultipleSelection = false
         // You can select multiple photos from the camera roll. The default value is false.
         
         fusumaSavesImage = true
@@ -1482,6 +1503,22 @@ extension EditingViewController: FusumaDelegate {
         fusumaCameraTitle = "Camera"
         fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
     
+    }
+    
+    func setupCamera() {
+        
+        fusumaCamera.delegate = self
+        fusumaCamera.availableModes = [FusumaMode.camera]
+        
+        fusumaSavesImage = true
+        
+        fusumaTitleFont = UIFont(name: FontName.copperplate.boldStyle(), size: 18)
+        
+        fusumaBackgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
+        
+        fusumaCameraTitle = "Camera"
+        fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        
     }
     
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {

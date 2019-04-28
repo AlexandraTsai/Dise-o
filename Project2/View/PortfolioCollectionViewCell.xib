@@ -32,7 +32,7 @@
                             <constraint firstAttribute="height" constant="25" id="4Vn-iV-uBu"/>
                             <constraint firstAttribute="width" constant="25" id="wA8-bQ-3eK"/>
                         </constraints>
-                        <state key="normal" image="noun_more_605070-2"/>
+                        <state key="normal" image="Icon_show_more"/>
                         <connections>
                             <action selector="showMoreBtnTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="SDE-m0-imf"/>
                         </connections>
@@ -70,6 +70,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="noun_more_605070-2" width="42.5" height="42.5"/>
+        <image name="Icon_show_more" width="42.5" height="42.5"/>
     </resources>
 </document>

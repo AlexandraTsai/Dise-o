@@ -16,8 +16,10 @@ struct NotificationInfo {
     static let editedImage = [UIView]()
     static let addingMode = true
     static let pickingPhotoMode = true
+    static let takePhotoMode = true
     static let backgroundIsImage = true
-    static let changeImage = true
+    static let changeImageWithAlbum = true
+    static let changeImageByCamera = true
     static let didChangeImage = true
     
     static let backgroundColor = "backgroundColor"  //UIColor
@@ -44,7 +46,9 @@ enum NotiName: String {
     
     case addingMode //Add new element
     case pickingPhotoMode
-    case changeImage //Change image at editingVC
+    case takePhotoMode
+    case changeImageWithAlbum //Change image at editingVC
+    case changeImageByCamera
     case didChangeImage
     case changeEditingViewColor
     

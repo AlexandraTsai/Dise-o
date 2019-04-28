@@ -22,10 +22,10 @@ class ImageContainerViewController: UIViewController {
     func createNotification() {
 
         // 註冊addObserver
-        let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
-
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(changeImage(noti:)), name: notificationName, object: nil)
+//        let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
+//
+//        NotificationCenter.default.addObserver(self, selector:
+//            #selector(pickAnotherImage(noti:)), name: notificationName, object: nil)
     }
 
     // 收到通知後要執行的動作

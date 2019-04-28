@@ -15,6 +15,8 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
     @IBOutlet weak var colorUnderLine: UIView!
     @IBOutlet weak var transparencyUnderLine: UIView!
     
+    @IBOutlet weak var photoView: UIView!
+    
     @IBOutlet weak var cameraRollBtn: UIButton! {
         
         didSet {
@@ -133,24 +135,14 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         colorBtn.tintColor = UIColor.DSColor.lightGreen
         transparencyBtn.tintColor = UIColor.DSColor.lightGreen
         transparencyView.isHidden = true
+        photoView.isHidden = false
         
         cameraUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
         colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         transparencyUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         
-        let notificationName = Notification.Name(NotiName.changeImage.rawValue)
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.changeImage: true])
-        
     }
     @IBAction func colorsBtnTapped(_ sender: Any) {
-        
-//        cameraRollBtn.isSelected = false
-//        colorBtn.isSelected = true
-//        filterBtn.isSelected = false
-//        transparencyBtn.isSelected = false
         
         cameraRollBtn.tintColor = UIColor.DSColor.lightGreen
         colorBtn.tintColor = UIColor.DSColor.heavyGreen
@@ -161,6 +153,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         transparencyUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         
         transparencyView.isHidden = true
+        photoView.isHidden = true
     }
     
     @IBAction func filterBtnTapped(_ sender: Any) {
@@ -187,8 +180,29 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         transparencyUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
         
         transparencyView.isHidden = false
+        photoView.isHidden = true
         
     }
+    
+    @IBAction func photoLibraryBtnTapped(_ sender: UIButton) {
+        
+        let notificationName = Notification.Name(NotiName.changeImageWithAlbum.rawValue)
+        NotificationCenter.default.post(
+            name: notificationName,
+            object: nil,
+            userInfo: [NotificationInfo.changeImageWithAlbum: true])
+        
+    }
+    
+    @IBAction func cameraBtnTapped(_ sender: UIButton) {
+        
+        let notificationName = Notification.Name(NotiName.changeImageByCamera.rawValue)
+        NotificationCenter.default.post(
+            name: notificationName,
+            object: nil,
+            userInfo: [NotificationInfo.changeImageWithAlbum: true])
+    }
+    
     @IBAction func usedColorBtnTapped(_ sender: Any) {
         
         paletteView.isHidden = false
