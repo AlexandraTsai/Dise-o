@@ -1319,11 +1319,11 @@
                                     <action selector="addButtonTapped:" destination="Qv9-9e-YnF" eventType="touchUpInside" id="zPy-4V-Rjh"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DESign" translatesAutoresizingMaskIntoConstraints="NO" id="6uI-Yj-POL">
-                                <rect key="frame" x="162.5" y="79" width="50" height="50"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Industrial Park-5" translatesAutoresizingMaskIntoConstraints="NO" id="6uI-Yj-POL">
+                                <rect key="frame" x="157.5" y="79" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="6uI-Yj-POL" secondAttribute="height" multiplier="1:1" id="14S-fn-us4"/>
-                                    <constraint firstAttribute="width" constant="50" id="GJ1-Yd-Wq4"/>
+                                    <constraint firstAttribute="width" constant="60" id="GJ1-Yd-Wq4"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP + To  CREATE YOUR FIRST DESIGN" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCI-2J-uOG">
@@ -1333,7 +1333,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="q3y-67-E3N">
-                                <rect key="frame" x="20" y="144" width="335" height="443"/>
+                                <rect key="frame" x="20" y="154" width="335" height="433"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="o1l-3g-hRi">
                                     <size key="itemSize" width="50" height="50"/>
@@ -1658,7 +1658,6 @@
     </scenes>
     <resources>
         <image name="Color-wheel" width="42.5" height="42.5"/>
-        <image name="DESign" width="77.5" height="77.5"/>
         <image name="Icon_AlignCenter" width="21" height="21"/>
         <image name="Icon_add_button" width="85" height="85"/>
         <image name="Icon_color" width="42.5" height="37"/>
@@ -1667,6 +1666,7 @@
         <image name="Icon_sortDown" width="10.5" height="10.5"/>
         <image name="Icon_text" width="173.5" height="173.5"/>
         <image name="Icon_transparency" width="42.5" height="42.5"/>
+        <image name="Industrial Park-5" width="166.5" height="166.5"/>
         <image name="icons8-ios-photos-96" width="32" height="32"/>
         <image name="noun_Camera_1683064-2" width="43" height="42.5"/>
         <image name="noun_Cancel" width="21" height="21"/>
