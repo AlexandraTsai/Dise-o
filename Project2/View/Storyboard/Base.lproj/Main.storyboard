@@ -1192,7 +1192,7 @@
                                 <rect key="frame" x="0.0" y="49" width="375" height="179"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="101" translatesAutoresizingMaskIntoConstraints="NO" id="ymb-1J-rxv">
-                                        <rect key="frame" x="105" y="15" width="165" height="32"/>
+                                        <rect key="frame" x="105" y="5" width="165" height="32"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3B-4L-2fD">
                                                 <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
@@ -1219,7 +1219,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIo-xi-m1w">
-                                        <rect key="frame" x="73" y="52" width="96" height="35"/>
+                                        <rect key="frame" x="73" y="42" width="96" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="pUp-rd-9aA"/>
                                         </constraints>
@@ -1232,7 +1232,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ZJ-TD-6gP">
-                                        <rect key="frame" x="202.5" y="52" width="103" height="35"/>
+                                        <rect key="frame" x="202.5" y="42" width="103" height="35"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                         <state key="normal" title="Take A Photo">
                                             <color key="titleColor" red="1" green="0.7758135464" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1246,7 +1246,7 @@
                                 <constraints>
                                     <constraint firstItem="4ZJ-TD-6gP" firstAttribute="centerX" secondItem="fgP-nA-YFY" secondAttribute="centerX" id="0bw-IL-Xas"/>
                                     <constraint firstItem="ymb-1J-rxv" firstAttribute="centerX" secondItem="wCy-tu-PtZ" secondAttribute="centerX" id="8Db-G5-fAT"/>
-                                    <constraint firstItem="ymb-1J-rxv" firstAttribute="top" secondItem="wCy-tu-PtZ" secondAttribute="top" constant="15" id="BA7-6O-zWY"/>
+                                    <constraint firstItem="ymb-1J-rxv" firstAttribute="top" secondItem="wCy-tu-PtZ" secondAttribute="top" constant="5" id="BA7-6O-zWY"/>
                                     <constraint firstItem="KIo-xi-m1w" firstAttribute="top" secondItem="S3B-4L-2fD" secondAttribute="bottom" constant="5" id="IF9-o5-ZRC"/>
                                     <constraint firstItem="4ZJ-TD-6gP" firstAttribute="centerY" secondItem="KIo-xi-m1w" secondAttribute="centerY" id="QeS-8T-ZBR"/>
                                     <constraint firstItem="KIo-xi-m1w" firstAttribute="centerX" secondItem="S3B-4L-2fD" secondAttribute="centerX" id="jCt-SW-kg1"/>

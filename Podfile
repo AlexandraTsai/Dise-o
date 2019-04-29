@@ -11,5 +11,8 @@ target 'Project2' do
   pod 'SwiftLint'
   pod 'ChromaColorPicker'
   pod 'HueKit', '~> 1.0'
+  pod 'Fabric'
+  pod 'Crashlytics'
+  pod 'Firebase/Core'
 
 end

@@ -268,8 +268,8 @@ extension DesignViewController {
         // 註冊addObserver
         let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
 
-//        NotificationCenter.default.addObserver(self, selector:
-//            #selector(pickAnotherImage(noti:)), name: notificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(changeImage(noti:)), name: notificationName, object: nil)
 
         let notificationName2 = Notification.Name(NotiName.addImage.rawValue)
 
@@ -295,7 +295,6 @@ extension DesignViewController {
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(showCameraVC(noti:)), name: notificationName6, object: nil)
-        
         
         let notificationName7 = Notification.Name(NotiName.addShape.rawValue)
         
@@ -890,7 +889,7 @@ extension DesignViewController {
             if let imageView = subViewToAdd as? ALImageView {
                 
             imageView.index = index
-            
+          
             designView.subImages.append(imageView)
             
             } else if let textView = subViewToAdd as? ALTextView {
