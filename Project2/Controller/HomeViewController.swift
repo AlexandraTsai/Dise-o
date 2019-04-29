@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Crashlytics
 
 // swiftlint:disable file_length
 class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -94,7 +95,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         renameView.addOn(self.view)
         self.view.addSubview(newDesignView)
         self.view.addSubview(alertLabel)
@@ -127,7 +128,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         renameView.cancelButton.addTarget(self, action: #selector(cancelRename(sender:)), for: .touchUpInside)
         
     }
- 
+   
     @IBAction func addButtonTapped(_ sender: UIButton) {
         
         self.setupInputView()

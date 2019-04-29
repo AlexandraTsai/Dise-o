@@ -34,6 +34,7 @@
 		A8AD7465226C004E00BDE3A7 /* ALImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD7464226C004E00BDE3A7 /* ALImageView.swift */; };
 		A8AD7468226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD7466226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift */; };
 		A8AD7469226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AD7467226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib */; };
+		A8AF2A512276CDBD00C2B118 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AF2A502276CDBD00C2B118 /* GoogleService-Info.plist */; };
 		A8B5E4F7226D91D800514A75 /* ALTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B5E4F6226D91D800514A75 /* ALTextView.swift */; };
 		A8BFF76B22586E3D0010E56B /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */; };
 		A8BFF76E22586E5C0010E56B /* FontTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */; };
@@ -105,6 +106,7 @@
 		A8AD7464226C004E00BDE3A7 /* ALImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALImageView.swift; sourceTree = "<group>"; };
 		A8AD7466226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCollectionViewCell.swift; sourceTree = "<group>"; };
 		A8AD7467226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioCollectionViewCell.xib; sourceTree = "<group>"; };
+		A8AF2A502276CDBD00C2B118 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A8B5E4F6226D91D800514A75 /* ALTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALTextView.swift; sourceTree = "<group>"; };
 		A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableViewCell.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				A8D2C464225222790085AD24 /* View */,
 				A8DEBBB3225713770081A694 /* Assets.xcassets */,
 				A8D2C45B225219080085AD24 /* LaunchScreen.storyboard */,
+				A8AF2A502276CDBD00C2B118 /* GoogleService-Info.plist */,
 				A8D2C45E225219080085AD24 /* Info.plist */,
 				A8D2C456225219030085AD24 /* Desiging.xcdatamodeld */,
 			);
@@ -372,6 +375,7 @@
 				A8D2C44A225219020085AD24 /* Resources */,
 				499648E5D8EF661CADAE1ED9 /* [CP] Embed Pods Frameworks */,
 				A86824C0225C993900BDCCD8 /* SwiftLint */,
+				A8AF2A4F2276C16600C2B118 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -425,6 +429,7 @@
 				A8BFF7782258D1970010E56B /* FontSizeTableViewCell.xib in Resources */,
 				A8D2C45D225219080085AD24 /* LaunchScreen.storyboard in Resources */,
 				A8D2C47F22523A490085AD24 /* PhotoCollectionViewCell.xib in Resources */,
+				A8AF2A512276CDBD00C2B118 /* GoogleService-Info.plist in Resources */,
 				A8AD7469226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib in Resources */,
 				A8DEBBB0225621B30081A694 /* PaletteCollectionViewCell.xib in Resources */,
 				A8BFF77422588EA90010E56B /* SpacingTableViewCell.xib in Resources */,
@@ -472,8 +477,10 @@
 				"${PODS_ROOT}/Target Support Files/Pods-Project2/Pods-Project2-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ChromaColorPicker/ChromaColorPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/Fusuma/Fusuma.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/HueKit/HueKit.framework",
 				"${BUILT_PRODUCTS_DIR}/UIFontComplete/UIFontComplete.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -481,8 +488,10 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChromaColorPicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fusuma.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HueKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIFontComplete.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -506,6 +515,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n\n";
+		};
+		A8AF2A4F2276C16600C2B118 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Info.plist",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
