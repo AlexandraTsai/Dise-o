@@ -63,7 +63,7 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
     let saveSuccessLabel = SaveSuccessLabel()
     
     let openLibraryAlert = GoSettingAlertView()
-    
+
     let openCameraAlert = GoSettingAlertView()
 
     override func viewWillAppear(_ animated: Bool) {
@@ -188,7 +188,18 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
 
         addingNewImage = true
         
-        self.present(fusumaAlbum, animated: true, completion: nil)
+        let status = PHPhotoLibrary.authorizationStatus()
+        
+        switch status {
+            
+        case PHAuthorizationStatus.authorized, PHAuthorizationStatus.notDetermined:
+            
+            self.present(fusumaAlbum, animated: true, completion: nil)
+            
+        default:
+            
+            showPhotoLibrayAlert()
+        }
 
     }
 

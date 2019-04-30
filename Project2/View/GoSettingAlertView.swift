@@ -13,6 +13,7 @@ class GoSettingAlertView: UIView {
     let titleLabel = UILabel()
     let cancelButton = UIButton()
     let settingButton = UIButton()
+    let backgroundView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,8 +46,8 @@ class GoSettingAlertView: UIView {
     
     func setup() {
         
-        self.backgroundColor = UIColor.white
-        self.layer.cornerRadius = 20
+        backgroundView.backgroundColor = UIColor.white
+        backgroundView.layer.cornerRadius = 20
         
         //Shadow
         self.layer.shadowColor = UIColor.black.cgColor
@@ -58,29 +59,41 @@ class GoSettingAlertView: UIView {
     func setupLayout() {
         
         //Add sub views
-        self.addSubview(titleLabel)
-        self.addSubview(cancelButton)
-        self.addSubview(settingButton)
+//        self.addSubview(titleLabel)
+//        self.addSubview(cancelButton)
+//        self.addSubview(settingButton)
+        self.addSubview(backgroundView)
+        backgroundView.addSubview(titleLabel)
+        backgroundView.addSubview(cancelButton)
+        backgroundView.addSubview(settingButton)
+        
+//        self.frame.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         
         //Auto layout
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        titleLabel.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 10).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 20).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         settingButton.translatesAutoresizingMaskIntoConstraints = false
-        settingButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        settingButton.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor).isActive = true
         settingButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         settingButton.widthAnchor.constraint(equalTo: titleLabel.widthAnchor).isActive = true
         settingButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
         
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         cancelButton.topAnchor.constraint(equalTo: settingButton.bottomAnchor, constant: 10).isActive = true
-        cancelButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
+        cancelButton.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -10).isActive = true
         cancelButton.leadingAnchor.constraint(equalTo: settingButton.leadingAnchor).isActive = true
         cancelButton.trailingAnchor.constraint(equalTo: settingButton.trailingAnchor).isActive = true
-      
+        
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundView.heightAnchor.constraint(equalToConstant: 220).isActive = true
+        backgroundView.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        backgroundView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        backgroundView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        
         settingButton.layer.cornerRadius = 13
         cancelButton.layer.cornerRadius = 13
         
@@ -109,10 +122,10 @@ class GoSettingAlertView: UIView {
         specificView.addSubview(self)
         
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.heightAnchor.constraint(equalToConstant: 220).isActive = true
-        self.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        self.centerXAnchor.constraint(equalTo: specificView.centerXAnchor).isActive = true
-        self.centerYAnchor.constraint(equalTo: specificView.centerYAnchor).isActive = true
+        self.leadingAnchor.constraint(equalTo: specificView.leadingAnchor).isActive = true
+        self.trailingAnchor.constraint(equalTo: specificView.trailingAnchor).isActive = true
+        self.topAnchor.constraint(equalTo: specificView.topAnchor).isActive = true
+        self.bottomAnchor.constraint(equalTo: specificView.bottomAnchor).isActive = true
         
     }
     

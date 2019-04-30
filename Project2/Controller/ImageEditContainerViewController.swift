@@ -8,8 +8,18 @@
 
 import UIKit
 import HueKit
+import Photos
+
+protocol ImageEditContainerViewControllerProtocol: AnyObject {
+    
+    func showPhotoLibrayAlert()
+    func showCameraAlert()
+    
+}
 
 class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
+    
+    weak var delegate: ImageEditContainerViewControllerProtocol?
     
     @IBOutlet weak var cameraUnderLine: UIView!
     @IBOutlet weak var colorUnderLine: UIView!
@@ -186,21 +196,41 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
     
     @IBAction func photoLibraryBtnTapped(_ sender: UIButton) {
         
-        let notificationName = Notification.Name(NotiName.changeImageWithAlbum.rawValue)
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.changeImageWithAlbum: true])
+        let status = PHPhotoLibrary.authorizationStatus()
         
+        switch status {
+            
+        case PHAuthorizationStatus.authorized, PHAuthorizationStatus.notDetermined:
+            
+            let notificationName = Notification.Name(NotiName.changeImageWithAlbum.rawValue)
+            NotificationCenter.default.post(
+                name: notificationName,
+                object: nil,
+                userInfo: [NotificationInfo.changeImageWithAlbum: true])
+        
+        default:
+            delegate?.showPhotoLibrayAlert()
+        
+        }
+      
     }
     
     @IBAction func cameraBtnTapped(_ sender: UIButton) {
         
-        let notificationName = Notification.Name(NotiName.changeImageByCamera.rawValue)
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.changeImageWithAlbum: true])
+        if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) ==  AVAuthorizationStatus.authorized {
+            
+            let notificationName = Notification.Name(NotiName.changeImageByCamera.rawValue)
+            NotificationCenter.default.post(
+                name: notificationName,
+                object: nil,
+                userInfo: [NotificationInfo.changeImageWithAlbum: true])
+            
+        } else {
+            
+            delegate?.showCameraAlert()
+            
+        }
+        
     }
     
     @IBAction func usedColorBtnTapped(_ sender: Any) {
