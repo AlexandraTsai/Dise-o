@@ -179,17 +179,8 @@ class EditingViewController: UIViewController {
     var tableViewIndex: Int = 0
     var originalText = ""
 
-    @IBOutlet weak var designView: ALDesignView! {
-        
-        didSet {
-            
-            let tap = UITapGestureRecognizer(target: self, action: #selector(endEditing(sender:)))
-            
-            designView.addGestureRecognizer(tap)
-            
-        }
-    }
-    
+    @IBOutlet weak var designView: ALDesignView!
+ 
     @IBOutlet weak var shadowView: UIView! {
         
         didSet {
@@ -221,26 +212,6 @@ class EditingViewController: UIViewController {
                                            for: .valueChanged)
     }
 
-    @IBAction func addBtnTapped(_ sender: Any) {
-      
-        helperView.removeFromSuperview()
-        
-        /*Notification*/
-        let notificationName = Notification.Name(NotiName.addingMode.rawValue)
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.addingMode: true])
-        
-        let notificationName2 = Notification.Name(NotiName.updateImage.rawValue)
-        NotificationCenter.default.post(
-            name: notificationName2,
-            object: nil,
-            userInfo: [NotificationInfo.editedImage: designView.subviews])
-      
-        self.navigationController?.popViewController(animated: true)
-
-    }
     @IBAction func fontButtonTapped(_ sender: Any) {
 
         tableViewIndex = 0
@@ -595,7 +566,7 @@ extension EditingViewController {
             object: nil,
             userInfo: [NotificationInfo.editedImage: designView.subviews])
 
-        self.navigationController?.popViewController(animated: false)
+        self.navigationController?.popViewController(animated: true)
         
         let notificationName2 = Notification.Name(NotiName.addingMode.rawValue)
         NotificationCenter.default.post(
@@ -822,19 +793,20 @@ extension EditingViewController {
         view.addGestureRecognizer(pan)
     }
    
-    @objc func endEditing(sender: UITapGestureRecognizer) {
-        
-        helperView.removeFromSuperview()
-        
-        let notificationName2 = Notification.Name(NotiName.updateImage.rawValue)
-        NotificationCenter.default.post(
-            name: notificationName2,
-            object: nil,
-            userInfo: [NotificationInfo.editedImage: designView.subviews])
-        
-        self.navigationController?.popViewController(animated: true)
-        
-    }
+//    @objc func endEditing(sender: UITapGestureRecognizer) {
+//
+//        helperView.removeFromSuperview()
+//
+//        let notificationName2 = Notification.Name(NotiName.updateImage.rawValue)
+//        NotificationCenter.default.post(
+//            name: notificationName2,
+//            object: nil,
+//            userInfo: [NotificationInfo.editedImage: designView.subviews])
+//
+//        self.navigationController?.
+//    (animated: true)
+//
+//    }
     
     @objc func handleDoubleTap(sender: UITapGestureRecognizer) {
       
