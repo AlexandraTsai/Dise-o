@@ -35,7 +35,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
     var newDesignView = NewDeign()
     
     let selectionView = SelectionView()
-    
+   
     var layerArray: [LayerProtocol] = []
     
     var alDesignArray: [ALDesignView] = []
@@ -142,8 +142,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
             self?.newDesignView.alpha = 1
           
         })
-        
-        newDesignView.textField.addDoneButtonOnKeyboard()
+
         newDesignView.textField.becomeFirstResponder()
       
     }
