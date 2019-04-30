@@ -538,19 +538,19 @@ extension DesignViewController {
     func setupNavigationBar() {
 
         //Right Buttons
-        let button1 = UIBarButtonItem(
-            image: UIImage(named: ImageAsset.Icon_Share.rawValue),
-            style: .plain,
-            target: self,
-            action: #selector(didTapShareButton(sender:)))
+//        let button2 = UIBarButtonItem(
+//            image: UIImage(named: ImageAsset.Icon_Share.rawValue),
+//            style: .plain,
+//            target: self,
+//            action: #selector(didTapShareButton(sender:)))
 
-        let button2 = UIBarButtonItem(
+        let button1 = UIBarButtonItem(
             image: UIImage(named: ImageAsset.Icon_Download.rawValue),
             style: .plain,
             target: self,
             action: #selector(didTapDownloadButton(sender:)))
 
-        self.navigationItem.rightBarButtonItems  = [button1, button2]
+        self.navigationItem.rightBarButtonItems  = [button1]
 
         //Left Buttons
         let leftButton = UIBarButtonItem(
@@ -667,10 +667,6 @@ extension DesignViewController {
                                        nil)
 
     }
-
-    @objc func didTapShareButton(sender: AnyObject) {
-
-    }
 }
 
 extension DesignViewController {
@@ -753,13 +749,7 @@ extension DesignViewController {
             editingVC.designView.addSubview(subViewToAdd)
         }
 
-        switch navigationBarForImage {
-        case true:
-            editingVC.complexNavigationBar()
-        default:
-            editingVC.normalNavigationBar()
-
-        }
+        editingVC.setupNavigationBar()
 
         editingVC.editingView = viewToBeEdit
         
