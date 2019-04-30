@@ -9,7 +9,15 @@
 import UIKit
 import HueKit
 
+protocol TextContainerProtocol: AnyObject {
+    
+    func hideColorPicker()
+    
+}
+
 class TextContainerViewController: UIViewController {
+    
+    weak var delegate: TextContainerProtocol!
 
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var colorPickerView: UIView!
@@ -50,17 +58,15 @@ class TextContainerViewController: UIViewController {
     @IBAction func doneButtonTapped(_ sender: Any) {
         
         if colorPickerView.isHidden {
-            let notificationName = Notification.Name(NotiName.addElementButton.rawValue)
-            
-            NotificationCenter.default.post(
-                name: notificationName,
-                object: nil,
-                userInfo: [NotificationInfo.addElementButton: true])
+        
+            delegate.hideColorPicker()
             
         } else {
+            
             colorPickerView.isHidden = true
+            
         }
-        
+       
     }
     
     @IBAction func usedColorBtnTapped(_ sender: Any) {

@@ -1428,7 +1428,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noun_Transparency" translatesAutoresizingMaskIntoConstraints="NO" id="eFM-fm-FZN">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_transparency" translatesAutoresizingMaskIntoConstraints="NO" id="eFM-fm-FZN">
                                         <rect key="frame" x="20" y="0.0" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="U8X-6B-ULC"/>
@@ -1657,7 +1657,6 @@
         <image name="noun_Cancel" width="21" height="21"/>
         <image name="noun_Check" width="21" height="21"/>
         <image name="noun_Image_973304-2" width="42.5" height="42"/>
-        <image name="noun_Transparency" width="21" height="21"/>
         <image name="noun_color_2173024" width="42.5" height="37"/>
     </resources>
 </document>

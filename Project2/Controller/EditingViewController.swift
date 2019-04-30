@@ -237,13 +237,8 @@ class EditingViewController: UIViewController {
         selectFontView.isHidden = true
         textEditView.isHidden = true
         
-        let notificationName = Notification.Name(NotiName.addElementButton.rawValue)
-        
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.addElementButton: false])
     }
+    
     @IBAction func fontSizeButtonTapped(_ sender: Any) {
 
         tableViewIndex = 2
@@ -426,6 +421,8 @@ class EditingViewController: UIViewController {
         if segue.identifier == "textSegue" {
             
             textContainerVC = segue.destination as? TextContainerViewController
+            
+            textContainerVC?.delegate = self
             
         } else if segue.identifier == "imageSegue" {
             
@@ -1270,21 +1267,16 @@ extension EditingViewController: FusumaDelegate {
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(changeEditingViewColor(noti:)), name: notificationName2, object: nil)
-        
-        let notificationName3 = Notification.Name(NotiName.addElementButton.rawValue)
-        
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(showOrHideButton(noti:)), name: notificationName3, object: nil)
-        
-        let notificationName4 = Notification.Name(NotiName.textTransparency.rawValue)
+       
+        let notificationName3 = Notification.Name(NotiName.textTransparency.rawValue)
         
         NotificationCenter.default.addObserver(self, selector:
-            #selector(changeTextTransparency(noti:)), name: notificationName4, object: nil)
+            #selector(changeTextTransparency(noti:)), name: notificationName3, object: nil)
         
-        let notificationName5 = Notification.Name(NotiName.textColor.rawValue)
+        let notificationName4 = Notification.Name(NotiName.textColor.rawValue)
         
         NotificationCenter.default.addObserver(self, selector:
-            #selector(changeTextColor(noti:)), name: notificationName5, object: nil)
+            #selector(changeTextColor(noti:)), name: notificationName4, object: nil)
     }
     
     // 收到通知後要執行的動作
@@ -1326,23 +1318,6 @@ extension EditingViewController: FusumaDelegate {
             view.image = nil
             view.backgroundColor = color
                 
-        }
-    }
-    
-    @objc func showOrHideButton(noti: Notification) {
-        if let userInfo = noti.userInfo,
-            let mode = userInfo[NotificationInfo.addElementButton] as? Bool {
-            
-            if mode == true {
-                addElementButton.isHidden = false
-                
-                if editingView as? ALTextView != nil {
-                     textEditView.isHidden = false
-                }
-                
-            } else {
-                addElementButton.isHidden = true
-            }
         }
     }
     
@@ -1542,5 +1517,15 @@ extension EditingViewController: ImageEditContainerViewControllerProtocol {
         openCameraAlert.addOn(self.view)
         openCameraAlert.titleLabel.text = "To use the Camera, pleace allow permission for Diseño in Settings."
     }
+}
+
+extension EditingViewController: TextContainerProtocol {
+    
+    func hideColorPicker() {
+        
+        textEditView.isHidden = false
+    }
+    
+    
 }
  // swiftlint:enable file_length
