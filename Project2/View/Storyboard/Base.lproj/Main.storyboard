@@ -433,18 +433,6 @@
                                     <constraint firstItem="Fwj-X3-mH3" firstAttribute="centerY" secondItem="oKA-Vq-X5A" secondAttribute="centerY" id="yz6-IV-Ugn"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZBA-2a-ivG">
-                                <rect key="frame" x="305" y="597" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="gIU-ww-7eA"/>
-                                    <constraint firstAttribute="width" constant="50" id="i24-Wt-jbV"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" image="Icon_add_button"/>
-                                <connections>
-                                    <action selector="addBtnTapped:" destination="mFr-ri-311" eventType="touchUpInside" id="I7s-jQ-1vy"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sHk-BO-mXn">
                                 <rect key="frame" x="0.0" y="414" width="375" height="253"/>
                                 <subviews>
@@ -558,7 +546,6 @@
                             <constraint firstItem="6Xu-MZ-AX6" firstAttribute="trailing" secondItem="eE4-nX-key" secondAttribute="trailing" id="9xo-jb-fh9"/>
                             <constraint firstItem="sHk-BO-mXn" firstAttribute="leading" secondItem="Yke-94-yj6" secondAttribute="leading" id="E0A-j4-mso"/>
                             <constraint firstItem="G2c-KZ-Yq1" firstAttribute="centerX" secondItem="5m0-ak-QCl" secondAttribute="centerX" id="H2o-1X-Ok3"/>
-                            <constraint firstItem="Va0-bd-i16" firstAttribute="trailing" secondItem="ZBA-2a-ivG" secondAttribute="trailing" constant="20" id="IFn-f0-Zeb"/>
                             <constraint firstItem="6Xu-MZ-AX6" firstAttribute="bottom" secondItem="eE4-nX-key" secondAttribute="bottom" id="JXL-Hb-SPh"/>
                             <constraint firstItem="sHk-BO-mXn" firstAttribute="trailing" secondItem="Yke-94-yj6" secondAttribute="trailing" id="KLG-2o-qWT"/>
                             <constraint firstItem="Yke-94-yj6" firstAttribute="trailing" secondItem="Va0-bd-i16" secondAttribute="trailing" id="LlE-Rp-kNO"/>
@@ -567,7 +554,6 @@
                             <constraint firstItem="eE4-nX-key" firstAttribute="top" secondItem="Yke-94-yj6" secondAttribute="top" id="RPe-1w-yOs"/>
                             <constraint firstItem="tRd-aQ-VLq" firstAttribute="top" secondItem="eE4-nX-key" secondAttribute="top" id="Sxc-KA-Q84"/>
                             <constraint firstItem="Yke-94-yj6" firstAttribute="leading" secondItem="Va0-bd-i16" secondAttribute="leading" id="TNJ-uB-No6"/>
-                            <constraint firstItem="Va0-bd-i16" firstAttribute="bottom" secondItem="ZBA-2a-ivG" secondAttribute="bottom" constant="20" id="TZc-h4-p3D"/>
                             <constraint firstItem="sHk-BO-mXn" firstAttribute="bottom" secondItem="Yke-94-yj6" secondAttribute="bottom" id="bkf-mU-b3s"/>
                             <constraint firstItem="eE4-nX-key" firstAttribute="bottom" secondItem="Yke-94-yj6" secondAttribute="bottom" id="c8U-BZ-9Gr"/>
                             <constraint firstItem="Yke-94-yj6" firstAttribute="bottom" secondItem="Va0-bd-i16" secondAttribute="bottom" id="dQw-sA-LVx"/>
@@ -584,7 +570,6 @@
                         <viewLayoutGuide key="safeArea" id="Va0-bd-i16"/>
                     </view>
                     <connections>
-                        <outlet property="addElementButton" destination="ZBA-2a-ivG" id="ooV-Ma-uaD"/>
                         <outlet property="alignmentButton" destination="YEZ-w7-1D9" id="wCA-YW-Usw"/>
                         <outlet property="boldbutton" destination="64J-AB-AX5" id="lfi-A0-iYM"/>
                         <outlet property="colorButton" destination="S9l-L7-B0S" id="rBf-QO-ptM"/>

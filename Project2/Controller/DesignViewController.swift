@@ -58,7 +58,11 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
     let fusumaCamera = FusumaViewController()
 
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
+        
+        print("-------Design VC------")
+        print(self)
         
         notEditingMode()
 
@@ -97,6 +101,8 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
                                        message: error.localizedDescription,
                                        preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
+            
+            print(error.localizedDescription)
             present(alert, animated: true)
             
         } else {
