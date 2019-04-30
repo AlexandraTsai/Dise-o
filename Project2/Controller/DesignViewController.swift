@@ -56,6 +56,8 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
 
     let fusumaAlbum = FusumaViewController()
     let fusumaCamera = FusumaViewController()
+  
+    let saveImageAlert = GoSettingAlertView()
 
     override func viewWillAppear(_ animated: Bool) {
         
@@ -91,21 +93,40 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
         setupCamera()
         
         scrollView.isHidden = true
+        
+        self.view.addSubview(saveImageAlert)
+        saveImageAlert.alpha = 0
     }
 
     // MARK: - Add image to Library
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        
         if let error = error {
-            // we got back an error!
-            let alert = UIAlertController(title: "Save error",
-                                       message: error.localizedDescription,
-                                       preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
             
-            print(error.localizedDescription)
-            present(alert, animated: true)
+            saveImageAlert.alpha = 1
+            saveImageAlert.addOn(self.view)
+            
+            // we got back an error!
+//            let alert = UIAlertController(title: "Save error",
+//                                       message: error.localizedDescription,
+//                                       preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+////            alert.addAction(UIAlertAction(title: "", style: <#T##UIAlertAction.Style#>, handler: <#T##((UIAlertAction) -> Void)?##((UIAlertAction) -> Void)?##(UIAlertAction) -> Void#>))
+//
+//            present(alert, animated: true)
+
+//            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+//                return
+//            }
+//
+//            if UIApplication.shared.canOpenURL(settingsUrl) {
+//                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+//                    print("Settings opened: \(success)")
+//                })
+//            }
             
         } else {
+            
             let alert = UIAlertController(title: "Saved!",
                                        message: "Your altered image has been saved to your photos.",
                                        preferredStyle: .alert)

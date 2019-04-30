@@ -35,7 +35,6 @@
 		A8AD7468226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD7466226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift */; };
 		A8AD7469226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AD7467226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib */; };
 		A8AF2A512276CDBD00C2B118 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AF2A502276CDBD00C2B118 /* GoogleService-Info.plist */; };
-		A8AF2A5322781CC000C2B118 /* GoSettingAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AF2A5222781CBF00C2B118 /* GoSettingAlertView.swift */; };
 		A8B5E4F7226D91D800514A75 /* ALTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B5E4F6226D91D800514A75 /* ALTextView.swift */; };
 		A8BFF76B22586E3D0010E56B /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */; };
 		A8BFF76E22586E5C0010E56B /* FontTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */; };
@@ -108,7 +107,6 @@
 		A8AD7466226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCollectionViewCell.swift; sourceTree = "<group>"; };
 		A8AD7467226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioCollectionViewCell.xib; sourceTree = "<group>"; };
 		A8AF2A502276CDBD00C2B118 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		A8AF2A5222781CBF00C2B118 /* GoSettingAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoSettingAlertView.swift; sourceTree = "<group>"; };
 		A8B5E4F6226D91D800514A75 /* ALTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALTextView.swift; sourceTree = "<group>"; };
 		A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableViewCell.swift; sourceTree = "<group>"; };
@@ -120,7 +118,7 @@
 		A8BFF7792259E1960010E56B /* UIButton+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extenstion.swift"; sourceTree = "<group>"; };
 		A8BFF77F225A4AC00010E56B /* ImageEditContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditContainerViewController.swift; sourceTree = "<group>"; };
 		A8BFF781225A4B6B0010E56B /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
-		A8D2C44C225219020085AD24 /* Project2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8D2C44C225219020085AD24 /* Diseño.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Diseño.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D2C44F225219020085AD24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8D2C451225219020085AD24 /* DesignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignViewController.swift; sourceTree = "<group>"; };
 		A8D2C454225219030085AD24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -250,7 +248,7 @@
 		A8D2C44D225219020085AD24 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A8D2C44C225219020085AD24 /* Project2.app */,
+				A8D2C44C225219020085AD24 /* Diseño.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -280,7 +278,6 @@
 				A82B5F342268A4930093671D /* NewDeign.swift */,
 				A84880CA226F26D200F308AC /* SelectionView.swift */,
 				A84880CE22704A8900F308AC /* RenameView.swift */,
-				A8AF2A5222781CBF00C2B118 /* GoSettingAlertView.swift */,
 				A84880CC227036A200F308AC /* SaveSuccessLabel.swift */,
 				A8AD7462226AF82200BDE3A7 /* ALDesignView.swift */,
 				A8AD7464226C004E00BDE3A7 /* ALImageView.swift */,
@@ -368,9 +365,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A8D2C44B225219020085AD24 /* Project2 */ = {
+		A8D2C44B225219020085AD24 /* Diseño */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A8D2C461225219080085AD24 /* Build configuration list for PBXNativeTarget "Project2" */;
+			buildConfigurationList = A8D2C461225219080085AD24 /* Build configuration list for PBXNativeTarget "Diseño" */;
 			buildPhases = (
 				031F6A6E9698140A18753760 /* [CP] Check Pods Manifest.lock */,
 				A8D2C448225219020085AD24 /* Sources */,
@@ -384,9 +381,9 @@
 			);
 			dependencies = (
 			);
-			name = Project2;
+			name = "Diseño";
 			productName = Project2;
-			productReference = A8D2C44C225219020085AD24 /* Project2.app */;
+			productReference = A8D2C44C225219020085AD24 /* Diseño.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -404,7 +401,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A8D2C447225219020085AD24 /* Build configuration list for PBXProject "Project2" */;
+			buildConfigurationList = A8D2C447225219020085AD24 /* Build configuration list for PBXProject "Diseño" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -417,7 +414,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A8D2C44B225219020085AD24 /* Project2 */,
+				A8D2C44B225219020085AD24 /* Diseño */,
 			);
 		};
 /* End PBXProject section */
@@ -570,7 +567,6 @@
 				A8AD7468226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift in Sources */,
 				A816BEB522758CC4004E3896 /* UITextField+Extension.swift in Sources */,
 				A8BFF782225A4B6B0010E56B /* PhotoManager.swift in Sources */,
-				A8AF2A5322781CC000C2B118 /* GoSettingAlertView.swift in Sources */,
 				A8D2C4842252F9FF0085AD24 /* ImageContainerViewController.swift in Sources */,
 				A8D2C481225268000085AD24 /* EditingViewController.swift in Sources */,
 				A84880D12270672100F308AC /* Shape+Extension.swift in Sources */,
@@ -782,7 +778,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A8D2C447225219020085AD24 /* Build configuration list for PBXProject "Project2" */ = {
+		A8D2C447225219020085AD24 /* Build configuration list for PBXProject "Diseño" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A8D2C45F225219080085AD24 /* Debug */,
@@ -791,7 +787,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A8D2C461225219080085AD24 /* Build configuration list for PBXNativeTarget "Project2" */ = {
+		A8D2C461225219080085AD24 /* Build configuration list for PBXNativeTarget "Diseño" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A8D2C462225219080085AD24 /* Debug */,
