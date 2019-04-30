@@ -36,6 +36,7 @@
 		A8AD7469226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AD7467226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib */; };
 		A8AF2A512276CDBD00C2B118 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AF2A502276CDBD00C2B118 /* GoogleService-Info.plist */; };
 		A8AF2A5322781CC000C2B118 /* GoSettingAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AF2A5222781CBF00C2B118 /* GoSettingAlertView.swift */; };
+		A8AF2A552278290A00C2B118 /* SavedImageAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AF2A542278290A00C2B118 /* SavedImageAlert.swift */; };
 		A8B5E4F7226D91D800514A75 /* ALTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B5E4F6226D91D800514A75 /* ALTextView.swift */; };
 		A8BFF76B22586E3D0010E56B /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */; };
 		A8BFF76E22586E5C0010E56B /* FontTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */; };
@@ -109,6 +110,7 @@
 		A8AD7467226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioCollectionViewCell.xib; sourceTree = "<group>"; };
 		A8AF2A502276CDBD00C2B118 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A8AF2A5222781CBF00C2B118 /* GoSettingAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoSettingAlertView.swift; sourceTree = "<group>"; };
+		A8AF2A542278290A00C2B118 /* SavedImageAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedImageAlert.swift; sourceTree = "<group>"; };
 		A8B5E4F6226D91D800514A75 /* ALTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALTextView.swift; sourceTree = "<group>"; };
 		A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		A8BFF76C22586E5C0010E56B /* FontTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableViewCell.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				A84880CA226F26D200F308AC /* SelectionView.swift */,
 				A84880CE22704A8900F308AC /* RenameView.swift */,
 				A8AF2A5222781CBF00C2B118 /* GoSettingAlertView.swift */,
+				A8AF2A542278290A00C2B118 /* SavedImageAlert.swift */,
 				A84880CC227036A200F308AC /* SaveSuccessLabel.swift */,
 				A8AD7462226AF82200BDE3A7 /* ALDesignView.swift */,
 				A8AD7464226C004E00BDE3A7 /* ALImageView.swift */,
@@ -562,6 +565,7 @@
 				A8BFF77322588EA90010E56B /* SpacingTableViewCell.swift in Sources */,
 				A84880D52270688400F308AC /* Image+Extension.swift in Sources */,
 				A8D2C47E22523A480085AD24 /* PhotoCollectionViewCell.swift in Sources */,
+				A8AF2A552278290A00C2B118 /* SavedImageAlert.swift in Sources */,
 				A84880CD227036A200F308AC /* SaveSuccessLabel.swift in Sources */,
 				A8DEBB9E2254803B0081A694 /* UIImage+Extension.swift in Sources */,
 				A8DEBBA522549DC30081A694 /* ImageCollectionReusableView.swift in Sources */,

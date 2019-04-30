@@ -31,6 +31,7 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
     }
     
     @IBOutlet weak var containerView: ContainerViewController!
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var hintLabel: UILabel!
     @IBOutlet weak var hintView: UIView!
@@ -58,14 +59,17 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
     let fusumaCamera = FusumaViewController()
   
     let saveImageAlert = GoSettingAlertView()
+  
+    let saveSuccessLabel = SaveSuccessLabel()
+    
+    let openLibraryAlert = GoSettingAlertView()
+    
+    let openCameraAlert = GoSettingAlertView()
 
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-        
-        print("-------Design VC------")
-        print(self)
-        
+     
         notEditingMode()
 
         addImageContainerView.isHidden = true
@@ -82,7 +86,6 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
         super.viewDidLoad()
 
         addGesture(to: designView, action: #selector(designViewClicked(_:)))
-//        addGesture(to: self.view, action: #selector(endEditing(_:)))
 
         createNotification()
 
@@ -93,45 +96,36 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
         setupCamera()
         
         scrollView.isHidden = true
-        
-        self.view.addSubview(saveImageAlert)
-        saveImageAlert.alpha = 0
+
+        self.view.addSubview(saveSuccessLabel)
+        self.view.addSubview(openLibraryAlert)
+        self.view.addSubview(openCameraAlert)
+        saveSuccessLabel.alpha = 0
+        openLibraryAlert.alpha = 0
+        openCameraAlert.alpha = 0
     }
 
     // MARK: - Add image to Library
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         
-        if let error = error {
+        if error != nil {
             
             saveImageAlert.alpha = 1
             saveImageAlert.addOn(self.view)
-            
-            // we got back an error!
-//            let alert = UIAlertController(title: "Save error",
-//                                       message: error.localizedDescription,
-//                                       preferredStyle: .alert)
-//            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-////            alert.addAction(UIAlertAction(title: "", style: <#T##UIAlertAction.Style#>, handler: <#T##((UIAlertAction) -> Void)?##((UIAlertAction) -> Void)?##(UIAlertAction) -> Void#>))
-//
-//            present(alert, animated: true)
 
-//            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-//                return
-//            }
-//
-//            if UIApplication.shared.canOpenURL(settingsUrl) {
-//                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-//                    print("Settings opened: \(success)")
-//                })
-//            }
-            
         } else {
             
-            let alert = UIAlertController(title: "Saved!",
-                                       message: "Your altered image has been saved to your photos.",
-                                       preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alert, animated: true)
+            saveSuccessLabel.setupLabel(on: self, with: "Saved to camera roll")
+            
+            saveSuccessLabel.alpha = 1
+            
+            UIView.animate(withDuration: 0.3,
+                           delay: 1.2,
+                           animations: {[weak self] in
+                            
+                            self?.saveSuccessLabel.alpha = 0
+                            
+                }, completion: nil)
 
         }
     }
@@ -235,7 +229,7 @@ extension DesignViewController {
     }
 
     @objc func designViewClicked(_ sender: UITapGestureRecognizer) {
-
+      
         scrollView.isHidden = true
         hintView.isHidden = !hintView.isHidden
         
@@ -278,6 +272,8 @@ extension DesignViewController {
             
             containerVC.loadViewIfNeeded()
             containerVC.colorButton.isSelected = true
+            containerVC.delegate = self
+            
         } else if segue.identifier
             == "shapeSegue" {
             
@@ -958,5 +954,24 @@ extension DesignViewController {
         
     }
    
+}
+
+extension DesignViewController: ContainerViewControllerProtocol {
+    
+    func showPhotoLibrayAlert() {
+        
+        openLibraryAlert.alpha = 1
+        openLibraryAlert.addOn(self.view)
+        openLibraryAlert.titleLabel.text = "To use your own photos, please allow access to your camera roll."
+    }
+    
+    func showCameraAlert() {
+        
+        openCameraAlert.alpha = 1
+        openCameraAlert.addOn(self.view)
+        openCameraAlert.titleLabel.text = "To use the Camera, pleace allow permission for Diseño in Settings."
+        
+    }
+    
 }
 // swiftlint:enable file_length

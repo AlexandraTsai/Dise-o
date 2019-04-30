@@ -10,6 +10,13 @@ import UIKit
 import Photos
 import HueKit
 
+protocol ContainerViewControllerProtocol: AnyObject {
+    
+    func showPhotoLibrayAlert()
+    func showCameraAlert()
+    
+}
+
 class ContainerViewController: UIViewController, PhotoManagerDelegate {
 
     @IBOutlet weak var colorSquarePicker: ColorSquarePicker!
@@ -70,6 +77,8 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
 
         }
     }
+    
+    weak var delegate: ContainerViewControllerProtocol?
 
     let photoManager = PhotoManager()
     var imageArray: [UIImage] = []
@@ -156,24 +165,44 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
     }
     
     @IBAction func photoLibraryBtnTapped(_ sender: UIButton) {
-    
-        let notificationName = Notification.Name(NotiName.pickingPhotoMode.rawValue)
         
-        NotificationCenter.default.post(
-                    name: notificationName,
-                    object: nil,
-                    userInfo: [NotificationInfo.pickingPhotoMode: true])
+        let status = PHPhotoLibrary.authorizationStatus()
         
+        switch status {
+        
+        case PHAuthorizationStatus.authorized, PHAuthorizationStatus.notDetermined:
+            
+            let notificationName = Notification.Name(NotiName.pickingPhotoMode.rawValue)
+            
+            NotificationCenter.default.post(
+                name: notificationName,
+                object: nil,
+                userInfo: [NotificationInfo.pickingPhotoMode: true])
+            
+        default:
+            
+            delegate?.showCameraAlert()
+        }
+      
     }
     
     @IBAction func cameraBtnTapped(_ sender: UIButton) {
         
-        let notificationName = Notification.Name(NotiName.takePhotoMode.rawValue)
+        if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) ==  AVAuthorizationStatus.authorized {
+            
+            let notificationName = Notification.Name(NotiName.takePhotoMode.rawValue)
+            
+            NotificationCenter.default.post(
+                name: notificationName,
+                object: nil,
+                userInfo: [NotificationInfo.takePhotoMode: true])
+            
+        } else {
+           
+            delegate?.showPhotoLibrayAlert()
+            
+        }
         
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.takePhotoMode: true])
     }
 }
 
