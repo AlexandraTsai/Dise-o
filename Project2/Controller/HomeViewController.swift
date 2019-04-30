@@ -331,7 +331,7 @@ extension HomeViewController {
         guard let fileName = design.screenshotName else { return cell }
         
         let screenshot = loadImageFromDiskWith(fileName: fileName)
-            
+        
         portfolioCell.designView.image = screenshot
             
         portfolioCell.designNameLabel.text = design.designName
