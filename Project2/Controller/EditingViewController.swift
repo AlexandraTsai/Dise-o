@@ -430,7 +430,7 @@ class EditingViewController: UIViewController {
 //Setup Navigation Bar
 extension EditingViewController {
 
-    func normalNavigationBar() {
+    func setupNavigationBar() {
 
         let button1 = UIBarButtonItem(
             image: UIImage(named: ImageAsset.Icon_TrashCan.rawValue),
@@ -473,83 +473,26 @@ extension EditingViewController {
         self.navigationItem.leftBarButtonItem  = leftButton
     }
 
-    func complexNavigationBar() {
-        let button1 = UIBarButtonItem(
-            image: UIImage(named: ImageAsset.Icon_Crop.rawValue),
-            style: .plain,
-            target: self,
-            action: #selector(didTapCropButton(sender:)))
-
-        let button2 = UIBarButtonItem(
-            image: UIImage(named: ImageAsset.Icon_TrashCan.rawValue),
-            style: .plain,
-            target: self,
-            action: #selector(didTapDeleteButton(sender:)))
-
-        let button3 = UIBarButtonItem(
-            image: UIImage(named: ImageAsset.Icon_down.rawValue),
-            style: .plain,
-            target: self,
-            action: #selector(didTapDownButton(sender:)))
-
-        let button4 = UIBarButtonItem(
-            image: UIImage(named: ImageAsset.Icon_up.rawValue),
-            style: .plain,
-            target: self,
-            action: #selector(didTapUpButton(sender:)))
-
-        let button5 = UIBarButtonItem(
-            image: UIImage(named: ImageAsset.Icon_Copy.rawValue),
-            style: .plain,
-            target: self,
-            action: #selector(didTapCopyButton(sender:)))
-
-        self.navigationItem.rightBarButtonItems  = [button1, button2, button3, button4, button5]
-
-        //Left Buttons
-        let leftButton = UIBarButtonItem(
-            title: "Done",
-            style: .done,
-            target: self,
-            action: #selector(didTapDoneButton(sender:)))
-        self.navigationItem.leftBarButtonItem  = leftButton
-
-    }
-    
     func disableNavigationButton() {
         
         guard let editingView = editingView else { return }
         
         guard let index = designView.subviews.firstIndex(of: editingView) else { return }
         
-        if editingView is ALImageView {
-            
-            complexNavigationBar()
-        } else {
-            normalNavigationBar()
-        }
+        setupNavigationBar()
         
         switch index {
             
         //Editing view is the last one
         case 0:
             
-            guard (editingView as? UIImageView) != nil else {
-                
-                self.navigationItem.rightBarButtonItems?[1].isEnabled = false
-                return
-            }
-            
-            self.navigationItem.rightBarButtonItems?[2].isEnabled = false
-            
-         //Editing view is the first one
+            self.navigationItem.rightBarButtonItems?[1].isEnabled = false
+        
+        //Editing view is the first one
         case designView.subviews.count-1:
-            
-            guard (editingView as? UIImageView) != nil else {
-                self.navigationItem.rightBarButtonItems?[2].isEnabled = false
-                return
-            }
-            self.navigationItem.rightBarButtonItems?[3].isEnabled = false
+          
+            self.navigationItem.rightBarButtonItems?[2].isEnabled = false
+        
         default:
             break
         }
@@ -574,10 +517,6 @@ extension EditingViewController {
             object: nil,
             userInfo: [NotificationInfo.addingMode: false])
         
-    }
-
-    @objc func didTapCropButton(sender: AnyObject) {
-
     }
 
     @objc func didTapDeleteButton(sender: AnyObject) {
@@ -612,20 +551,20 @@ extension EditingViewController {
         }
         
         //Navigationbar for ALTextView/ShapeView
-        guard (editingView as? ALTextView) != nil || (editingView as? ALShapeView) != nil else {
-            
-            if index == 1 {
-                self.navigationItem.rightBarButtonItems?[2].isEnabled = false
-              
-            }
-            
-            if index == designView.subviews.count-2 {
-                
-              self.navigationItem.rightBarButtonItems?[3].isEnabled = true
-            }
-            
-            return
-        }
+//        guard (editingView as? ALTextView) != nil || (editingView as? ALShapeView) != nil else {
+//
+//            if index == 1 {
+//                self.navigationItem.rightBarButtonItems?[2].isEnabled = false
+//
+//            }
+//
+//            if index == designView.subviews.count-2 {
+//
+//              self.navigationItem.rightBarButtonItems?[3].isEnabled = true
+//            }
+//
+//            return
+//        }
         
         //Navigationbar for UIImageView
         if index == 1 {
@@ -651,24 +590,6 @@ extension EditingViewController {
             break
         default:
             designView.insertSubview(editingView, at: index+1)
-        }
-        
-        //Navigationbar for ALTextView/ShapeView
-        guard (editingView as? ALTextView) != nil || (editingView as? ALShapeView) != nil else {
-            
-            if index == designView.subviews.count-3 {
-                
-                //Disable the forward button.
-                self.navigationItem.rightBarButtonItems?[3].isEnabled = false
-                
-            }
-            
-            if index == 0 {
-                
-                self.navigationItem.rightBarButtonItems?[2].isEnabled = true
-            }
-            
-            return
         }
         
         //Navigationbar for UIImageView
@@ -792,22 +713,7 @@ extension EditingViewController {
         
         view.addGestureRecognizer(pan)
     }
-   
-//    @objc func endEditing(sender: UITapGestureRecognizer) {
-//
-//        helperView.removeFromSuperview()
-//
-//        let notificationName2 = Notification.Name(NotiName.updateImage.rawValue)
-//        NotificationCenter.default.post(
-//            name: notificationName2,
-//            object: nil,
-//            userInfo: [NotificationInfo.editedImage: designView.subviews])
-//
-//        self.navigationController?.
-//    (animated: true)
-//
-//    }
-    
+
     @objc func handleDoubleTap(sender: UITapGestureRecognizer) {
       
         guard let textView = editingView as? ALTextView else { return }
