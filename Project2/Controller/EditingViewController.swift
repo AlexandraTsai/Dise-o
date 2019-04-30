@@ -100,6 +100,10 @@ class EditingViewController: UIViewController {
         
     }
     
+    let openLibraryAlert = GoSettingAlertView()
+    
+    let openCameraAlert = GoSettingAlertView()
+    
     deinit {
         print("EditingViewController deinit \(self)")
     }
@@ -210,6 +214,12 @@ class EditingViewController: UIViewController {
         imageContainerVC?.slider.addTarget(self,
                                            action: #selector(editImageTransparency(sender:)),
                                            for: .valueChanged)
+        
+        self.view.addSubview(openLibraryAlert)
+        self.view.addSubview(openCameraAlert)
+      
+        openLibraryAlert.alpha = 0
+        openCameraAlert.alpha = 0
     }
 
     @IBAction func fontButtonTapped(_ sender: Any) {
@@ -414,9 +424,13 @@ class EditingViewController: UIViewController {
         super.prepare(for: segue, sender: sender)
         
         if segue.identifier == "textSegue" {
+            
             textContainerVC = segue.destination as? TextContainerViewController
+            
         } else if segue.identifier == "imageSegue" {
+            
             imageContainerVC = segue.destination as? ImageEditContainerViewController
+            imageContainerVC?.delegate = self
            
         }
     }
@@ -1511,5 +1525,22 @@ extension EditingViewController {
         
     }
     
+}
+
+extension EditingViewController: ImageEditContainerViewControllerProtocol {
+    
+    func showPhotoLibrayAlert() {
+        
+        openLibraryAlert.alpha = 1
+        openLibraryAlert.addOn(self.view)
+        openLibraryAlert.titleLabel.text = "To use your own photos, please allow access to your camera roll."
+    }
+    
+    func showCameraAlert() {
+        
+        openCameraAlert.alpha = 1
+        openCameraAlert.addOn(self.view)
+        openCameraAlert.titleLabel.text = "To use the Camera, pleace allow permission for Diseño in Settings."
+    }
 }
  // swiftlint:enable file_length
