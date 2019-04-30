@@ -15,6 +15,11 @@ class PortfolioCollectionViewCell: UICollectionViewCell {
         didSet {
             
             designView.layer.cornerRadius = 20
+            
+            designView.layer.borderWidth = 1
+            
+            designView.layer.borderColor = UIColor.DSColor.lightGreen.cgColor
+            
             designView.clipsToBounds = true
         }
         
