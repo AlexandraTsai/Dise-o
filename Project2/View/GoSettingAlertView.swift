@@ -22,6 +22,8 @@ class GoSettingAlertView: UIView {
         setupLayout()
         setupTitle()
         
+        setupAction()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,6 +33,8 @@ class GoSettingAlertView: UIView {
         
         setupLayout()
         setupTitle()
+        
+        setupAction()
   
     }
     
@@ -89,9 +93,8 @@ class GoSettingAlertView: UIView {
         
         //Title
         titleLabel.text =
-            "Diseño does not have access to your photo library. You can change this by going to the Settings app → Privacy → Photos"
+        "Diseño does not have access to your photo library. Choose 'Settings' to change this."
         titleLabel.font = UIFont(name: FontName.futura.rawValue, size: 17)
-//        titleLabel.textColor = UIColor.white
         titleLabel.numberOfLines = 0
         
         settingButton.setTitle("Settings", for: .normal)
@@ -110,6 +113,32 @@ class GoSettingAlertView: UIView {
         self.widthAnchor.constraint(equalToConstant: 300).isActive = true
         self.centerXAnchor.constraint(equalTo: specificView.centerXAnchor).isActive = true
         self.centerYAnchor.constraint(equalTo: specificView.centerYAnchor).isActive = true
+        
+    }
+    
+    func setupAction() {
+        
+        cancelButton.addTarget(self, action: #selector(cancelAlert(sender:)), for: .touchUpInside)
+        settingButton.addTarget(self, action: #selector(openSetting(sender:)), for: .touchUpInside)
+    }
+    
+    @objc func cancelAlert(sender: UIButton) {
+        
+        self.removeFromSuperview()
+        
+    }
+    
+    @objc func openSetting(sender: UIButton) {
+        
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+            return
+        }
+        
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+            UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                print("Settings opened: \(success)")
+            })
+        }
         
     }
     

@@ -14,7 +14,7 @@ class SaveSuccessLabel: UILabel {
         
         self.translatesAutoresizingMaskIntoConstraints = false
         self.centerXAnchor.constraint(equalTo: viewController.view.centerXAnchor).isActive = true
-        self.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        self.heightAnchor.constraint(equalToConstant: 70).isActive = true
         self.leadingAnchor.constraint(equalTo: viewController.view.leadingAnchor).isActive = true
         self.trailingAnchor.constraint(equalTo: viewController.view.trailingAnchor).isActive = true
         self.topAnchor.constraint(equalTo: viewController.view.topAnchor).isActive = true
@@ -23,7 +23,7 @@ class SaveSuccessLabel: UILabel {
         
         self.text = title
         self.textAlignment = .center
-        self.font = UIFont(name: FontName.futura.rawValue, size: 13)
+        self.font = UIFont(name: FontName.futura.rawValue, size: 16)
         self.textColor = UIColor.white
     }
 
