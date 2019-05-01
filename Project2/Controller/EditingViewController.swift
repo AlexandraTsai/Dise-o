@@ -142,7 +142,15 @@ class EditingViewController: UIViewController {
                     
                     guard let view = editingView as? UIImageView else { return }
                     
-//                    imageContainerVC?.filterBtn.isSelected = true
+                    imageContainerVC?.cameraRollBtn.alpha = 1
+                    imageContainerVC?.cameraUnderLine.alpha = 1
+                    
+                    imageContainerVC?.cameraRollBtn.tintColor = UIColor.DSColor.heavyGreen
+                    imageContainerVC?.cameraUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
+                    
+                    imageContainerVC?.colorBtn.tintColor = UIColor.DSColor.lightGreen
+                    imageContainerVC?.colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+                    
                     imageContainerVC?.transparencyView.isHidden = true
                     imageContainerVC?.transparencyBtn.isSelected = false
                     
@@ -154,6 +162,12 @@ class EditingViewController: UIViewController {
                     return
                     
                 }
+                
+                imageContainerVC?.cameraRollBtn.alpha = 0
+                imageContainerVC?.cameraUnderLine.alpha = 0
+                
+                imageContainerVC?.colorBtn.tintColor = UIColor.DSColor.heavyGreen
+                imageContainerVC?.colorUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
                 
                 let notificationName = Notification.Name(NotiName.paletteColor.rawValue)
                 
