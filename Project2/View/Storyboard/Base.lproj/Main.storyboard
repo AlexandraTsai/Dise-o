@@ -1311,12 +1311,16 @@
                                     <constraint firstAttribute="width" constant="60" id="GJ1-Yd-Wq4"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP + To  CREATE YOUR FIRST DESIGN" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCI-2J-uOG">
-                                <rect key="frame" x="71" y="311.5" width="233" height="44.5"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="cya-zX-Bgy">
+                                <rect key="frame" x="71" y="305" width="233" height="57"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="TAP + To  CREATE YOUR FIRST DESIGN">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addButtonTapped:" destination="Qv9-9e-YnF" eventType="touchUpInside" id="izu-lQ-zOR"/>
+                                </connections>
+                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="q3y-67-E3N">
                                 <rect key="frame" x="20" y="154" width="335" height="433"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1333,14 +1337,14 @@
                         <constraints>
                             <constraint firstItem="R4s-Hv-sYs" firstAttribute="bottom" secondItem="lRf-at-Deu" secondAttribute="bottom" constant="20" id="43X-WJ-FrX"/>
                             <constraint firstItem="6uI-Yj-POL" firstAttribute="top" secondItem="R4s-Hv-sYs" secondAttribute="top" constant="15" id="6Pl-UC-leJ"/>
+                            <constraint firstItem="cya-zX-Bgy" firstAttribute="centerX" secondItem="Foe-Wy-frM" secondAttribute="centerX" id="99n-rD-tpP"/>
                             <constraint firstItem="lRf-at-Deu" firstAttribute="top" secondItem="q3y-67-E3N" secondAttribute="bottom" constant="10" id="Hm3-SJ-Fo0"/>
                             <constraint firstItem="6uI-Yj-POL" firstAttribute="centerX" secondItem="Foe-Wy-frM" secondAttribute="centerX" id="Oqo-EB-aBU"/>
                             <constraint firstItem="q3y-67-E3N" firstAttribute="leading" secondItem="R4s-Hv-sYs" secondAttribute="leading" constant="20" id="P80-U3-QlT"/>
                             <constraint firstItem="q3y-67-E3N" firstAttribute="trailing" secondItem="R4s-Hv-sYs" secondAttribute="trailing" constant="-20" id="beo-1J-a0g"/>
                             <constraint firstItem="lRf-at-Deu" firstAttribute="centerX" secondItem="Foe-Wy-frM" secondAttribute="centerX" id="ekK-gC-C8D"/>
                             <constraint firstItem="q3y-67-E3N" firstAttribute="top" secondItem="6uI-Yj-POL" secondAttribute="bottom" constant="15" id="nBT-EP-WrS"/>
-                            <constraint firstItem="SCI-2J-uOG" firstAttribute="centerY" secondItem="Foe-Wy-frM" secondAttribute="centerY" id="oJ8-Iy-0kF"/>
-                            <constraint firstItem="SCI-2J-uOG" firstAttribute="centerX" secondItem="Foe-Wy-frM" secondAttribute="centerX" id="onq-T8-bww"/>
+                            <constraint firstItem="cya-zX-Bgy" firstAttribute="centerY" secondItem="Foe-Wy-frM" secondAttribute="centerY" id="vCg-dR-e54"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R4s-Hv-sYs"/>
                     </view>
@@ -1348,6 +1352,7 @@
                     <connections>
                         <outlet property="addDesignButton" destination="lRf-at-Deu" id="nV7-NV-yqu"/>
                         <outlet property="collectionView" destination="q3y-67-E3N" id="KOl-To-Wrv"/>
+                        <outlet property="hintButton" destination="cya-zX-Bgy" id="8dJ-92-FZb"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="designViewSegue" id="2dQ-QD-5co"/>
                     </connections>
                 </viewController>

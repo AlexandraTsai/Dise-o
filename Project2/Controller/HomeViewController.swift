@@ -26,6 +26,16 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
     
     @IBOutlet weak var addDesignButton: UIButton!
     
+    @IBOutlet weak var hintButton: UIButton! {
+        
+        didSet {
+            
+            hintButton.titleLabel?.textAlignment = .center
+            
+        }
+        
+    }
+    
     var selectedCell: Int?
     
     let alertLabel = SaveSuccessLabel()

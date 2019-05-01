@@ -200,14 +200,28 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         
         switch status {
             
-        case PHAuthorizationStatus.authorized, PHAuthorizationStatus.notDetermined:
+        case PHAuthorizationStatus.authorized:
             
             let notificationName = Notification.Name(NotiName.changeImageWithAlbum.rawValue)
             NotificationCenter.default.post(
                 name: notificationName,
                 object: nil,
                 userInfo: [NotificationInfo.changeImageWithAlbum: true])
-        
+            
+        case PHAuthorizationStatus.notDetermined:
+            
+            PHPhotoLibrary.requestAuthorization({ status in
+                
+                if status == .authorized {
+                    
+                    let notificationName = Notification.Name(NotiName.changeImageWithAlbum.rawValue)
+                    NotificationCenter.default.post(
+                        name: notificationName,
+                        object: nil,
+                        userInfo: [NotificationInfo.changeImageWithAlbum: true])
+                }
+                
+            })
         default:
             delegate?.showPhotoLibrayAlert()
         
@@ -217,7 +231,11 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
     
     @IBAction func cameraBtnTapped(_ sender: UIButton) {
         
-        if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) ==  AVAuthorizationStatus.authorized {
+        let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        
+        switch status {
+            
+        case AVAuthorizationStatus.authorized:
             
             let notificationName = Notification.Name(NotiName.changeImageByCamera.rawValue)
             NotificationCenter.default.post(
@@ -225,10 +243,24 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
                 object: nil,
                 userInfo: [NotificationInfo.changeImageWithAlbum: true])
             
-        } else {
+        case AVAuthorizationStatus.notDetermined:
             
+            AVCaptureDevice.requestAccess(for: AVMediaType.video) { (granted) in
+                
+                if granted {
+                    
+                    let notificationName = Notification.Name(NotiName.changeImageByCamera.rawValue)
+                    NotificationCenter.default.post(
+                        name: notificationName,
+                        object: nil,
+                        userInfo: [NotificationInfo.changeImageWithAlbum: true])
+                    
+                }
+                
+            }
+            
+        default:
             delegate?.showCameraAlert()
-            
         }
         
     }
