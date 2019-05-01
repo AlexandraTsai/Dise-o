@@ -109,10 +109,7 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         
         if error != nil {
-            
-            saveImageAlert.alpha = 1
-            saveImageAlert.addOn(self.view)
-
+   
         } else {
             
             saveSuccessLabel.setupLabel(on: self, with: "Saved to camera roll")
@@ -192,9 +189,22 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
         
         switch status {
             
-        case PHAuthorizationStatus.authorized, PHAuthorizationStatus.notDetermined:
+        case PHAuthorizationStatus.authorized:
             
             self.present(fusumaAlbum, animated: true, completion: nil)
+            
+        case PHAuthorizationStatus.notDetermined:
+            
+            PHPhotoLibrary.requestAuthorization({ [weak self, fusumaAlbum] status in
+                
+                if status == .authorized {
+                    
+                    DispatchQueue.main.async {
+                        self?.present(fusumaAlbum, animated: true, completion: nil)
+                    }
+                }
+                
+            })
             
         default:
             
@@ -347,7 +357,12 @@ extension DesignViewController {
         if let userInfo = noti.userInfo,
             let mode = userInfo[NotificationInfo.pickingPhotoMode] as? Bool {
             if mode == true {
-                self.present(fusumaAlbum, animated: true, completion: nil)
+                
+                DispatchQueue.main.async { [weak self, fusumaAlbum] in
+                    
+                    self?.present(fusumaAlbum, animated: true, completion: nil)
+                }
+                
             }
         }
     }
@@ -356,7 +371,12 @@ extension DesignViewController {
         if let userInfo = noti.userInfo,
             let mode = userInfo[NotificationInfo.takePhotoMode] as? Bool {
             if mode == true {
-                self.present(fusumaCamera, animated: true, completion: nil)
+                
+                DispatchQueue.main.async { [weak self, fusumaCamera] in
+                    
+                    self?.present(fusumaCamera, animated: true, completion: nil)
+                }
+                
             }
         }
     }
@@ -688,11 +708,23 @@ extension DesignViewController {
         }
 
         UIGraphicsEndImageContext()
-
-        UIImageWriteToSavedPhotosAlbum(imageWithLabel,
-                                       self,
-                                       #selector(image(_: didFinishSavingWithError:contextInfo:)),
-                                       nil)
+        
+        let status = PHPhotoLibrary.authorizationStatus()
+        
+        switch status {
+        case PHAuthorizationStatus.authorized, PHAuthorizationStatus.notDetermined:
+            
+            UIImageWriteToSavedPhotosAlbum(imageWithLabel,
+                                           self,
+                                           #selector(image(_: didFinishSavingWithError:contextInfo:)),
+                                           nil)
+            
+        default:
+            
+            saveImageAlert.alpha = 1
+            saveImageAlert.addOn(self.view)
+            
+        }
 
     }
 }

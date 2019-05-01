@@ -170,7 +170,7 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
         
         switch status {
         
-        case PHAuthorizationStatus.authorized, PHAuthorizationStatus.notDetermined:
+        case PHAuthorizationStatus.authorized:
             
             let notificationName = Notification.Name(NotiName.pickingPhotoMode.rawValue)
             
@@ -179,16 +179,35 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
                 object: nil,
                 userInfo: [NotificationInfo.pickingPhotoMode: true])
             
+        case PHAuthorizationStatus.notDetermined:
+            
+            PHPhotoLibrary.requestAuthorization({ status in
+                
+                if status == .authorized {
+                    
+                    let notificationName = Notification.Name(NotiName.pickingPhotoMode.rawValue)
+                    
+                    NotificationCenter.default.post(
+                        name: notificationName,
+                        object: nil,
+                        userInfo: [NotificationInfo.pickingPhotoMode: true])
+                }
+                
+            })
+            
         default:
             
-            delegate?.showCameraAlert()
+            delegate?.showPhotoLibrayAlert()
         }
       
     }
     
     @IBAction func cameraBtnTapped(_ sender: UIButton) {
         
-        if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) ==  AVAuthorizationStatus.authorized {
+        let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        
+        switch status {
+        case AVAuthorizationStatus.authorized:
             
             let notificationName = Notification.Name(NotiName.takePhotoMode.rawValue)
             
@@ -196,13 +215,27 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
                 name: notificationName,
                 object: nil,
                 userInfo: [NotificationInfo.takePhotoMode: true])
-            
-        } else {
            
-            delegate?.showPhotoLibrayAlert()
+        case AVAuthorizationStatus.notDetermined:
+
+            AVCaptureDevice.requestAccess(for: AVMediaType.video) { granted in
+                if granted {
+                    
+                    let notificationName = Notification.Name(NotiName.takePhotoMode.rawValue)
+                    
+                    NotificationCenter.default.post(
+                        name: notificationName,
+                        object: nil,
+                        userInfo: [NotificationInfo.takePhotoMode: true])
+                    
+                }
+            }
+            
+        default:
+            
+            delegate?.showCameraAlert()
             
         }
-        
     }
 }
 

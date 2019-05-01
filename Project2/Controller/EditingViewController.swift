@@ -1285,7 +1285,12 @@ extension EditingViewController: FusumaDelegate {
             let mode = userInfo[NotificationInfo.changeImageWithAlbum] as? Bool {
             
             if mode == true {
-                self.present(fusumaAlbum, animated: true, completion: nil)
+                
+                DispatchQueue.main.async { [weak self, fusumaAlbum] in
+                    
+                    self?.present(fusumaAlbum, animated: true, completion: nil)
+                }
+                
             }
         }
     }
@@ -1296,7 +1301,13 @@ extension EditingViewController: FusumaDelegate {
             let mode = userInfo[NotificationInfo.changeImageByCamera] as? Bool {
             
             if mode == true {
-                self.present(fusumaCamera, animated: true, completion: nil)
+                
+                DispatchQueue.main.async { [weak self, fusumaCamera] in
+                    
+                    self?.present(fusumaCamera, animated: true, completion: nil)
+                    
+                }
+                
             }
         }
     }
