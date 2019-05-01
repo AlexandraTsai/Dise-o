@@ -775,6 +775,8 @@ extension EditingViewController {
         helperView.removeFromSuperview()
         
         editingView = sender.view
+        
+        showHelper(after: sender)
 
     }
 
@@ -804,6 +806,8 @@ extension EditingViewController {
             sender.rotation = 0
             
         }
+        
+        showHelper(after: sender)
 
     }
 
@@ -832,6 +836,8 @@ extension EditingViewController {
             
             return
         }
+        
+        showHelper(after: sender)
     }
 
     @objc func handleDragged( _ gesture: UIPanGestureRecognizer) {
@@ -851,6 +857,9 @@ extension EditingViewController {
 
         view?.center = CGPoint(x: xCenter2+translation.x, y: yCenter2+translation.y)
         gesture.setTranslation(CGPoint.zero, in: view)
+        
+        showHelper(after: gesture)
+        
     }
     
     @objc func handleCircleGesture(sender: UITapGestureRecognizer) {
@@ -1551,6 +1560,25 @@ extension EditingViewController: TextContainerProtocol {
         textEditView.isHidden = false
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        helperView.rightHelper.alpha = 0
+        helperView.leftHelper.alpha = 0
+        helperView.topHelper.alpha = 0
+        helperView.bottomHelper.alpha = 0
+    }
+    
+    func showHelper(after gesture: UIGestureRecognizer) {
+        
+        if gesture.state == UIGestureRecognizer.State.ended {
+            
+            helperView.rightHelper.alpha = 1
+            helperView.leftHelper.alpha = 1
+            helperView.topHelper.alpha = 1
+            helperView.bottomHelper.alpha = 1
+        }
+        
+    }
     
 }
  // swiftlint:enable file_length
