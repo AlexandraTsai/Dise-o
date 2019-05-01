@@ -32,7 +32,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         didSet {
             
             cameraRollBtn.setImage(ImageAsset.Icon_image.imageTemplate, for: .normal)
-            cameraRollBtn.tintColor = UIColor.DSColor.lightGreen
+            
             
         }
         
@@ -100,14 +100,6 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         
         paletteView.isHidden = true
         transparencyView.isHidden = true
-        
-        cameraRollBtn.tintColor = UIColor.DSColor.lightGreen
-        colorBtn.tintColor = UIColor.DSColor.heavyGreen
-        transparencyBtn.tintColor = UIColor.DSColor.lightGreen
-        
-        cameraUnderLine.backgroundColor = UIColor.DSColor.lightGreen
-        colorUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
-        transparencyUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         
     }
 

@@ -23,9 +23,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>To use the Camera, pleace allow permission for Diseño in Settings.</string>
+	<string>To take a picture, pleace allow permission for Diseño to use the camera. </string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Please allow access to save photo in your photo library</string>
+	<string>To save photo, please allow access to save photo in your photo library</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>To use your own photos, please allow access to your camera roll.</string>
 	<key>UILaunchStoryboardName</key>
