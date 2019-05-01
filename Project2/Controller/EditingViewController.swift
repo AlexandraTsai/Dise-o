@@ -120,9 +120,15 @@ class EditingViewController: UIViewController {
     
     var newLocation: CGPoint?
     
+    var originLocation = CGPoint(x: 0, y: 0)
+    
+    var originSize = CGSize(width: 0, height: 0)
+    
     var editingView: UIView? {
 
         didSet {
+            
+            print(editingView?.frame)
             
             guard let editingView = editingView else {
                 return
@@ -775,8 +781,6 @@ extension EditingViewController {
         helperView.removeFromSuperview()
         
         editingView = sender.view
-        
-        showHelper(after: sender)
 
     }
 
@@ -819,6 +823,8 @@ extension EditingViewController {
         }
 
         if sender.state == .began || sender.state == .changed {
+            
+            print(sender.scale)
 
             guard let transform = sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale) else {
 
@@ -912,6 +918,8 @@ extension EditingViewController {
 
         helperView.resize(accordingTo: editingView)
         
+        showHelper(after: sender)
+        
     }
     
     @objc func handleRightHelper(sender: UIPanGestureRecognizer) {
@@ -949,6 +957,8 @@ extension EditingViewController {
         
         helperView.resize(accordingTo: editingView)
         
+        showHelper(after: sender)
+        
     }
     
     @objc func handleTopHelper(sender: UIPanGestureRecognizer) {
@@ -979,6 +989,8 @@ extension EditingViewController {
         editingView.transform = transform
         
         helperView.resize(accordingTo: editingView)
+        
+        showHelper(after: sender)
         
     }
     
@@ -1018,6 +1030,8 @@ extension EditingViewController {
         editingView.transform = transform
       
         helperView.resize(accordingTo: editingView)
+        
+        showHelper(after: sender)
         
     }
     
@@ -1532,6 +1546,21 @@ extension EditingViewController {
             
         }
         
+        
+        addGestureTo(helperView.leftTopHelper)
+        addGestureTo(helperView.leftBottomHelper)
+        addGestureTo(helperView.rightTopHelper)
+        addGestureTo(helperView.rightBottomHelper)
+      
+    }
+    
+    func addGestureTo(_ cornerHelper: CornerHelperView) {
+        
+        let pan = UIPanGestureRecognizer(target: self,
+                                          action: #selector(handleCornerResize(gesture:)))
+        
+        cornerHelper.addGestureRecognizer(pan)
+        
     }
     
 }
@@ -1566,6 +1595,25 @@ extension EditingViewController: TextContainerProtocol {
         helperView.leftHelper.alpha = 0
         helperView.topHelper.alpha = 0
         helperView.bottomHelper.alpha = 0
+        
+        helperView.leftTopHelper.alpha = 0
+        helperView.leftBottomHelper.alpha = 0
+        helperView.rightTopHelper.alpha = 0
+        helperView.rightBottomHelper.alpha = 0
+        
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        helperView.rightHelper.alpha = 1
+        helperView.leftHelper.alpha = 1
+        helperView.topHelper.alpha = 1
+        helperView.bottomHelper.alpha = 1
+        
+        helperView.leftTopHelper.alpha = 1
+        helperView.leftBottomHelper.alpha = 1
+        helperView.rightTopHelper.alpha = 1
+        helperView.rightBottomHelper.alpha = 1
     }
     
     func showHelper(after gesture: UIGestureRecognizer) {
@@ -1576,8 +1624,61 @@ extension EditingViewController: TextContainerProtocol {
             helperView.leftHelper.alpha = 1
             helperView.topHelper.alpha = 1
             helperView.bottomHelper.alpha = 1
+            
+            helperView.leftTopHelper.alpha = 1
+            helperView.leftBottomHelper.alpha = 1
+            helperView.rightTopHelper.alpha = 1
+            helperView.rightBottomHelper.alpha = 1
         }
         
+    }
+    
+    @objc func handleCornerResize(gesture: UIPanGestureRecognizer) {
+       
+        let location = gesture.location(in: designView)
+    
+        var originDistance: CGFloat = 0
+        
+        var newDistance: CGFloat = 0
+        
+        switch gesture.state {
+            
+        case .began:
+           
+            originLocation = CGPoint(x: location.x,
+                                         y: location.y)
+            
+            if let width = editingView?.bounds.width,
+                let height = editingView?.bounds.height {
+             
+                originSize = CGSize(width: width, height: height)
+                
+            }
+        
+        case .changed:
+            
+            let location = gesture.location(in: designView)
+            
+            newDistance = CGPointDistance(from: location, to: (editingView?.center)!)
+            
+            originDistance = CGPointDistance(from: originLocation, to: (editingView?.center)!)
+            
+            let scale = newDistance/originDistance
+            
+            let width = (originSize.width)*scale
+            
+            let height = (originSize.height)*scale
+            
+            editingView?.bounds.size = CGSize(width: width, height: height)
+        
+            helperView.resize(accordingTo: editingView!)
+            
+        default:
+            
+            helperView.resize(accordingTo: editingView!)
+            
+            showHelper(after: gesture)
+        }
     }
     
 }

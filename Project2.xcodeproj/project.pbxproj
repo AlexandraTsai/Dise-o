@@ -24,6 +24,7 @@
 		A84880D922706ABE00F308AC /* Design+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84880D822706ABE00F308AC /* Design+Extension.swift */; };
 		A848811D2273E5BC00F308AC /* animation-w930-h950.json in Resources */ = {isa = PBXBuildFile; fileRef = A848811C2273E5BC00F308AC /* animation-w930-h950.json */; };
 		A848811F2273FAC200F308AC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A848811E2273FAC200F308AC /* UIColor+Extension.swift */; };
+		A85B04052279C0F000853841 /* CornerHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85B04042279C0F000853841 /* CornerHelperView.swift */; };
 		A865976C2269CB43000789A2 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A865976B2269CB43000789A2 /* StorageManager.swift */; };
 		A865976F2269D22F000789A2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A865976E2269D22F000789A2 /* Result.swift */; };
 		A86824C2225CCF4000BDCCD8 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86824C1225CCF4000BDCCD8 /* Notification.swift */; };
@@ -98,6 +99,7 @@
 		A84880D822706ABE00F308AC /* Design+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Design+Extension.swift"; sourceTree = "<group>"; };
 		A848811C2273E5BC00F308AC /* animation-w930-h950.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "animation-w930-h950.json"; sourceTree = "<group>"; };
 		A848811E2273FAC200F308AC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		A85B04042279C0F000853841 /* CornerHelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerHelperView.swift; sourceTree = "<group>"; };
 		A865976B2269CB43000789A2 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		A865976E2269D22F000789A2 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		A86824C1225CCF4000BDCCD8 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				A80804EA226882720042E4FF /* EditeFrameView.swift */,
 				A82B5F362268C8090093671D /* HelperView.swift */,
 				A816BEB222755860004E3896 /* SizeHelperView.swift */,
+				A85B04042279C0F000853841 /* CornerHelperView.swift */,
 				A82B5F342268A4930093671D /* NewDeign.swift */,
 				A84880CA226F26D200F308AC /* SelectionView.swift */,
 				A84880CE22704A8900F308AC /* RenameView.swift */,
@@ -584,6 +587,7 @@
 				A8DEBBAF225621B30081A694 /* PaletteCollectionViewCell.swift in Sources */,
 				A84880D32270687500F308AC /* Text+Extension.swift in Sources */,
 				A8D2C452225219020085AD24 /* DesignViewController.swift in Sources */,
+				A85B04052279C0F000853841 /* CornerHelperView.swift in Sources */,
 				A8D2C450225219020085AD24 /* AppDelegate.swift in Sources */,
 				A8BFF7772258D1970010E56B /* FontSizeTableViewCell.swift in Sources */,
 				A86824C2225CCF4000BDCCD8 /* Notification.swift in Sources */,

@@ -65,6 +65,10 @@ class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate
     let openLibraryAlert = GoSettingAlertView()
 
     let openCameraAlert = GoSettingAlertView()
+    
+    deinit {
+        print("DesignViewController deinit \(self)")
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         

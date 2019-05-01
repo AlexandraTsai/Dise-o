@@ -15,6 +15,11 @@ class HelperView: UIView {
     var topHelper = SizeHelperView()
     var bottomHelper = SizeHelperView()
     
+    let leftTopHelper = CornerHelperView()
+    let leftBottomHelper = CornerHelperView()
+    let rightTopHelper = CornerHelperView()
+    let rightBottomHelper = CornerHelperView()
+    
     var rotateHelper = UIImageView()
     var positionHelper  =  UIImageView()
     var editingFrame = EditFrameView() {
@@ -38,6 +43,7 @@ class HelperView: UIView {
         setupHelper()
         setupSizeHelper()
         enableUserInteractive()
+        setupCornerHelper()
         
     }
     
@@ -47,6 +53,7 @@ class HelperView: UIView {
         setupHelper()
         setupSizeHelper()
         enableUserInteractive()
+        setupCornerHelper()
     }
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
@@ -154,6 +161,43 @@ class HelperView: UIView {
         
     }
     
+    func setupCornerHelper() {
+        
+        self.addSubview(leftTopHelper)
+        self.addSubview(leftBottomHelper)
+        self.addSubview(rightTopHelper)
+        self.addSubview(rightBottomHelper)
+        
+        leftTopHelper.translatesAutoresizingMaskIntoConstraints = false
+        
+        leftTopHelper.centerXAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        leftTopHelper.centerYAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        leftTopHelper.widthAnchor.constraint(equalToConstant: 10).isActive = true
+        leftTopHelper.heightAnchor.constraint(equalToConstant: 10).isActive = true
+
+        rightTopHelper.translatesAutoresizingMaskIntoConstraints = false
+        
+        rightTopHelper.centerXAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        rightTopHelper.centerYAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        rightTopHelper.widthAnchor.constraint(equalTo: leftTopHelper.widthAnchor).isActive = true
+        rightTopHelper.heightAnchor.constraint(equalTo: leftTopHelper.heightAnchor).isActive = true
+
+        leftBottomHelper.translatesAutoresizingMaskIntoConstraints = false
+        
+        leftBottomHelper.centerXAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        leftBottomHelper.centerYAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        leftBottomHelper.widthAnchor.constraint(equalTo: leftTopHelper.widthAnchor).isActive = true
+        leftBottomHelper.heightAnchor.constraint(equalTo: leftTopHelper.heightAnchor).isActive = true
+
+        rightBottomHelper.translatesAutoresizingMaskIntoConstraints = false
+        
+        rightBottomHelper.centerXAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        rightBottomHelper.centerYAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        rightBottomHelper.widthAnchor.constraint(equalTo: leftTopHelper.widthAnchor).isActive = true
+        rightBottomHelper.heightAnchor.constraint(equalTo: leftTopHelper.heightAnchor).isActive = true
+
+    }
+
     func setupShadow() {
         
         leftHelper.backgroundColor = UIColor.white
