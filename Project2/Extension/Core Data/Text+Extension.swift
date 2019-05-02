@@ -27,6 +27,10 @@ extension Text {
         
         textView.backgroundColor = UIColor.clear
         
+        textView.index = Int(self.index)
+        
+        designView.subTexts.append(textView)
+        
         designView.addSubview(textView)
     }
    
