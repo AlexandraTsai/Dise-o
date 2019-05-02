@@ -148,6 +148,7 @@ class EditingViewController: UIViewController {
                     
                     imageContainerVC?.cameraRollBtn.alpha = 1
                     imageContainerVC?.cameraUnderLine.alpha = 1
+                    imageContainerVC?.photoView.alpha = 1
                     
                     imageContainerVC?.cameraRollBtn.tintColor = UIColor.DSColor.heavyGreen
                     imageContainerVC?.cameraUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
@@ -169,6 +170,7 @@ class EditingViewController: UIViewController {
                 
                 imageContainerVC?.cameraRollBtn.alpha = 0
                 imageContainerVC?.cameraUnderLine.alpha = 0
+                imageContainerVC?.photoView.alpha = 0
                 
                 imageContainerVC?.colorBtn.tintColor = UIColor.DSColor.heavyGreen
                 imageContainerVC?.colorUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
@@ -1642,7 +1644,7 @@ extension EditingViewController: TextContainerProtocol {
     }
     
     @objc func handleCornerResize(gesture: UIPanGestureRecognizer) {
-       
+        
         let location = gesture.location(in: designView)
     
         var originDistance: CGFloat = 0
@@ -1655,38 +1657,48 @@ extension EditingViewController: TextContainerProtocol {
            
             originLocation = CGPoint(x: location.x,
                                          y: location.y)
-            
+
             if let width = editingView?.bounds.width,
                 let height = editingView?.bounds.height {
-             
+
                 originSize = CGSize(width: width, height: height)
-                
+
             }
-        
+           
         case .changed:
             
             let location = gesture.location(in: designView)
-            
+
             newDistance = CGPointDistance(from: location, to: (editingView?.center)!)
-            
+
             originDistance = CGPointDistance(from: originLocation, to: (editingView?.center)!)
-            
+
             let scale = newDistance/originDistance
-            
+
             let width = (originSize.width)*scale
-            
+
             let height = (originSize.height)*scale
-            
+
             editingView?.bounds.size = CGSize(width: width, height: height)
-        
+            
+//            editingView?.frame.size = CGSize(width: width, height: height)
+
             helperView.resize(accordingTo: editingView!)
+
+            if let textView = editingView as? UITextView {
+                
+                textView.updateTextFont()
+
+            }
             
         default:
             
             helperView.resize(accordingTo: editingView!)
-            
+
             showHelper(after: gesture)
+            
         }
+       
     }
     
 }

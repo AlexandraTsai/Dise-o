@@ -67,6 +67,14 @@ extension UITextView {
     func updateTextFont() {
 
         if self.text.isEmpty || self.bounds.size.equalTo(CGSize.zero) { return }
+        
+        print(self.frame)
+        
+        let oldTransform = self.transform
+////
+        self.transform = CGAffineTransform(rotationAngle: 0)
+        
+        print(self.frame)
 
         let textViewSize = self.frame.size
         let fixedWidth = textViewSize.width
@@ -88,6 +96,10 @@ extension UITextView {
             }
             self.font = expectFont
         }
+        
+         print(self.frame)
+        self.transform = oldTransform
+        
     }
 
     func keepAttributeWith(lineHeight: Float,
