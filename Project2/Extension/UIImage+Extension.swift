@@ -33,6 +33,7 @@ enum ImageAsset: String {
     case Icon_sortDown
 
     case Icon_profile
+    case Icon_HomePage
     case Icon_uTurn_right
     case Icon_Download
 

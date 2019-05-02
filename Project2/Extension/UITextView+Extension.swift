@@ -56,6 +56,7 @@ extension UITextView {
         self.transform = oldView.transform
 
         self.backgroundColor = oldView.backgroundColor
+        self.alpha = oldView.alpha
 
         self.text = oldView.text
         self.font = oldView.font

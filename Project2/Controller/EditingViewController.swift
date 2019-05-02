@@ -247,6 +247,7 @@ class EditingViewController: UIViewController {
         tableViewIndex = 0
 
         fontTableView.isScrollEnabled = true
+        fontTableView.isScrollEnabled = true
         fontTableView.reloadData()
         selectFontView.isHidden = false
 
@@ -263,6 +264,7 @@ class EditingViewController: UIViewController {
 
         tableViewIndex = 2
         fontTableView.reloadData()
+        fontTableView.isScrollEnabled = false
         selectFontView.isHidden = false
 
     }
@@ -662,7 +664,7 @@ extension EditingViewController {
                 guard let tappedView = (editingView as? ALShapeView) else { return }
                 
                 let newView = tappedView.makeACopyShape()
-                
+
                 addTapGesture(to: newView)
                 
                 designView.addSubview(newView)

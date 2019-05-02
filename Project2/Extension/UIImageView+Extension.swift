@@ -22,6 +22,7 @@ extension UIImageView {
 
         self.transform = originRotation
         self.image = originView.image
+        self.alpha = originView.alpha
 
         originView.transform = originRotation
 
