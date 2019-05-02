@@ -33,7 +33,6 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
             
             cameraRollBtn.setImage(ImageAsset.Icon_image.imageTemplate, for: .normal)
             
-            
         }
         
     }

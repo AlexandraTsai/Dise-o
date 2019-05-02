@@ -440,9 +440,7 @@ extension HomeViewController {
         if let dirPath = paths.first {
             
             let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(fileName)
-            
-            print(imageUrl)
-            
+
             let image = UIImage(contentsOfFile: imageUrl.path)
             
             return image

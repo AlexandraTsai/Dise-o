@@ -10,10 +10,10 @@ import UIKit
 
 class CornerHelperView: UIView {
     
-    var hitInsets:UIEdgeInsets = UIEdgeInsets(top: -20,
-                                              left: -20,
-                                              bottom: -20,
-                                              right: -20)
+    var hitInsets:UIEdgeInsets = UIEdgeInsets(top: -10,
+                                              left: -10,
+                                              bottom: -10,
+                                              right: -10)
     
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         
