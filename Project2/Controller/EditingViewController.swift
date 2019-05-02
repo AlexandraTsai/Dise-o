@@ -127,9 +127,7 @@ class EditingViewController: UIViewController {
     var editingView: UIView? {
 
         didSet {
-            
-            print(editingView?.frame)
-            
+           
             guard let editingView = editingView else {
                 return
             }
@@ -800,7 +798,10 @@ extension EditingViewController {
             sender.view?.transform = rotateValue
         
             //Get the center of editingFrame from helperView to designView
-            let center = sender.view!.convert(helperView.editingFrame.center, to: designView)
+            
+            guard let view = sender.view else { return }
+            
+            let center = view.convert(helperView.editingFrame.center, to: designView)
             
             //Make editingView's center equal to editingFrame's center
             editingView?.center = center
@@ -824,8 +825,6 @@ extension EditingViewController {
 
         if sender.state == .began || sender.state == .changed {
             
-            print(sender.scale)
-
             guard let transform = sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale) else {
 
                 return
@@ -841,6 +840,7 @@ extension EditingViewController {
             sender.scale = 1
             
             return
+            
         }
         
         showHelper(after: sender)
@@ -1358,10 +1358,17 @@ extension EditingViewController: FusumaDelegate {
                 
                 guard let view = editingView as? ALShapeView else { return }
  
-                    view.shapeColor = color
-                    view.setNeedsDisplay()
+//                view.shapeColor = color
+//
+//                print(view.path)
+////                view.drawWithShapeType()
+//                view.setNeedsDisplay()
+//
+//                print(view.path)
 
-                    return
+                view.redrawWith(color)
+                
+                return
             }
             view.image = nil
             view.backgroundColor = color
@@ -1605,6 +1612,24 @@ extension EditingViewController: TextContainerProtocol {
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+        showAllHelper()
+        
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        showAllHelper()
+    }
+    
+    func showHelper(after gesture: UIGestureRecognizer) {
+        
+        if gesture.state == UIGestureRecognizer.State.ended {
+            
+            showAllHelper()
+        }
+        
+    }
+    
+    func showAllHelper() {
         helperView.rightHelper.alpha = 1
         helperView.leftHelper.alpha = 1
         helperView.topHelper.alpha = 1
@@ -1614,23 +1639,6 @@ extension EditingViewController: TextContainerProtocol {
         helperView.leftBottomHelper.alpha = 1
         helperView.rightTopHelper.alpha = 1
         helperView.rightBottomHelper.alpha = 1
-    }
-    
-    func showHelper(after gesture: UIGestureRecognizer) {
-        
-        if gesture.state == UIGestureRecognizer.State.ended {
-            
-            helperView.rightHelper.alpha = 1
-            helperView.leftHelper.alpha = 1
-            helperView.topHelper.alpha = 1
-            helperView.bottomHelper.alpha = 1
-            
-            helperView.leftTopHelper.alpha = 1
-            helperView.leftBottomHelper.alpha = 1
-            helperView.rightTopHelper.alpha = 1
-            helperView.rightBottomHelper.alpha = 1
-        }
-        
     }
     
     @objc func handleCornerResize(gesture: UIPanGestureRecognizer) {
