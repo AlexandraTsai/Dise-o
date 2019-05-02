@@ -176,24 +176,6 @@ class ALShapeView: UIView {
         
         let newShape = ALShapeView()
         
-        if self.path.lineWidth > 1.0 {
-           newShape.path.cgPath = self.path.cgPath.copy(strokingWithWidth: self.path.lineWidth,
-                                                        lineCap: self.path.lineCapStyle,
-                                                        lineJoin: self.path.lineJoinStyle,
-                                                        miterLimit: self.path.miterLimit,
-                                                        transform: self.transform)
-        } else {
-            
-             let path = UIBezierPath()
-             path.cgPath = self.path.cgPath
-             newShape.path = path
-
-        }
-        
-        let color = UIColor(cgColor: self.shapeColor.cgColor)
-
-        newShape.shapeColor = color
-        
         let originTransform = self.transform
         
         self.transform = CGAffineTransform(rotationAngle: 0)
@@ -202,11 +184,53 @@ class ALShapeView: UIView {
         
         newShape.bounds = self.bounds
         
+        newShape.shapeType = self.shapeType
+        
+        if self.path.lineWidth > 1.0 {
+          
+            newShape.path.cgPath = self.path.cgPath.copy(strokingWithWidth: self.path.lineWidth,
+                                                        lineCap: self.path.lineCapStyle,
+                                                        lineJoin: self.path.lineJoinStyle,
+                                                        miterLimit: self.path.miterLimit,
+                                                        transform: self.transform)
+            
+        } else {
+            
+//            let path = UIBezierPath()
+            
+//            path.cgPath = self.path.cgPath
+            
+            newShape.drawWithShapeType()
+
+        }
+        
+        let color = UIColor(cgColor: self.shapeColor.cgColor)
+        
+        newShape.shapeColor = color
+        
         newShape.transform = originTransform
         
         self.transform = originTransform
 
         return newShape
+        
+    }
+    
+    func redrawWith(_ newColor: UIColor) {
+        
+        self.path = UIBezierPath()
+        
+        self.shapeColor = newColor
+        
+//        let originTransform = self.transform
+//
+//        self.transform = CGAffineTransform(rotationAngle: 0)
+       
+//        self.drawWithShapeType()
+
+        self.setNeedsDisplay()
+        
+//        self.transform = originTransform
         
     }
 }
