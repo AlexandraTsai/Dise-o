@@ -12,27 +12,28 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="FontSizeTableViewCell" customModule="Project2" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="317" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="68" id="KGk-i7-Jjw" customClass="FontSizeTableViewCell" customModule="Project2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="317" height="68"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="317" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="317" height="67.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjx-Yz-iZP">
-                        <rect key="frame" x="20" y="10" width="33" height="22.5"/>
+                        <rect key="frame" x="20" y="10" width="33" height="57.5"/>
                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" minValue="6" maxValue="260" translatesAutoresizingMaskIntoConstraints="NO" id="YGe-qO-Jqa">
-                        <rect key="frame" x="61" y="6.5" width="193" height="31"/>
+                        <rect key="frame" x="61" y="30" width="193" height="18.5"/>
+                        <color key="tintColor" red="0.30588235289999999" green="0.47450980390000003" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
                             <action selector="sliderDidSlide:" destination="KGk-i7-Jjw" eventType="valueChanged" id="fhs-jM-ktu"/>
                         </connections>
                     </slider>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fa9-g9-C9M">
-                        <rect key="frame" x="262" y="10" width="35" height="22.5"/>
+                        <rect key="frame" x="262" y="27.5" width="35" height="22.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="REU-Bb-1Ea"/>
                         </constraints>
@@ -41,8 +42,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                 <constraints>
+                    <constraint firstItem="YGe-qO-Jqa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="7LD-GB-Zp5"/>
                     <constraint firstItem="tjx-Yz-iZP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="9M4-Ry-MNe"/>
+                    <constraint firstAttribute="bottom" secondItem="YGe-qO-Jqa" secondAttribute="bottom" constant="20" id="AXt-mq-OKm"/>
                     <constraint firstItem="YGe-qO-Jqa" firstAttribute="leading" secondItem="tjx-Yz-iZP" secondAttribute="trailing" constant="10" id="Bgk-YA-4z7"/>
                     <constraint firstItem="tjx-Yz-iZP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="GgW-Sp-9BW"/>
                     <constraint firstItem="YGe-qO-Jqa" firstAttribute="centerY" secondItem="tjx-Yz-iZP" secondAttribute="centerY" id="Kha-dH-rPv"/>
@@ -57,7 +61,7 @@
                 <outlet property="fontSizeLabel" destination="fa9-g9-C9M" id="FM1-20-h7E"/>
                 <outlet property="slider" destination="YGe-qO-Jqa" id="1zQ-9r-Qof"/>
             </connections>
-            <point key="canvasLocation" x="135.19999999999999" y="154.72263868065968"/>
+            <point key="canvasLocation" x="135.19999999999999" y="165.51724137931035"/>
         </tableViewCell>
     </objects>
 </document>

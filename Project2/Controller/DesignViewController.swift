@@ -606,7 +606,7 @@ extension DesignViewController {
 
         //Left Buttons
         let leftButton = UIBarButtonItem(
-            image: UIImage(named: ImageAsset.Icon_profile.rawValue),
+            image: UIImage(named: ImageAsset.Icon_HomePage.rawValue),
             style: .plain,
             target: self,
             action: #selector(tapProfileBtn(sender:)))

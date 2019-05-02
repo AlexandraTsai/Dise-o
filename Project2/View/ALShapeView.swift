@@ -186,6 +186,8 @@ class ALShapeView: UIView {
         
         newShape.shapeType = self.shapeType
         
+        newShape.alpha  = self.alpha
+        
         if self.path.lineWidth > 1.0 {
           
             newShape.path.cgPath = self.path.cgPath.copy(strokingWithWidth: self.path.lineWidth,
@@ -195,11 +197,7 @@ class ALShapeView: UIView {
                                                         transform: self.transform)
             
         } else {
-            
-//            let path = UIBezierPath()
-            
-//            path.cgPath = self.path.cgPath
-            
+ 
             newShape.drawWithShapeType()
 
         }

@@ -33,8 +33,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfP-Fw-Eth">
                                 <rect key="frame" x="0.0" y="419" width="375" height="248"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to edit background" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSb-rm-uin">
-                                        <rect key="frame" x="97.5" y="10" width="180" height="22.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap something to start editing." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSb-rm-uin">
+                                        <rect key="frame" x="71" y="10" width="233" height="22.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                         <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -502,38 +502,30 @@
                                         </connections>
                                     </button>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="360" translatesAutoresizingMaskIntoConstraints="NO" id="nhs-aB-c2l">
-                                        <rect key="frame" x="83" y="134" width="274" height="31"/>
-                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="83" y="26.5" width="274" height="31"/>
+                                        <color key="tintColor" red="0.30588235289999999" green="0.47450980390000003" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="slideToRotate:" destination="mFr-ri-311" eventType="valueChanged" id="KbZ-g9-BZa"/>
                                         </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOJ-jk-Avv">
-                                        <rect key="frame" x="20" y="137.5" width="50" height="22.5"/>
+                                        <rect key="frame" x="20" y="30" width="50" height="22.5"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IhV-fb-cht">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="AOJ-jk-Avv" firstAttribute="top" secondItem="tRd-aQ-VLq" secondAttribute="top" constant="30" id="5H6-Vh-ay5"/>
                                     <constraint firstItem="Qea-se-LcX" firstAttribute="leading" secondItem="tRd-aQ-VLq" secondAttribute="leading" constant="20" id="5Yu-kp-qI0"/>
-                                    <constraint firstAttribute="trailing" secondItem="IhV-fb-cht" secondAttribute="trailing" id="5aL-RN-s71"/>
                                     <constraint firstAttribute="trailing" secondItem="x8J-xa-yTB" secondAttribute="trailing" constant="20" id="APm-Po-qoR"/>
-                                    <constraint firstItem="Qea-se-LcX" firstAttribute="top" secondItem="AOJ-jk-Avv" secondAttribute="bottom" constant="30" id="Dkx-a2-C6v"/>
                                     <constraint firstItem="nhs-aB-c2l" firstAttribute="leading" secondItem="AOJ-jk-Avv" secondAttribute="trailing" constant="15" id="ESJ-FO-f8m"/>
                                     <constraint firstItem="AOJ-jk-Avv" firstAttribute="leading" secondItem="tRd-aQ-VLq" secondAttribute="leading" constant="20" id="LhQ-S5-MKn"/>
                                     <constraint firstItem="AOJ-jk-Avv" firstAttribute="centerY" secondItem="nhs-aB-c2l" secondAttribute="centerY" id="NE8-oi-LdE"/>
                                     <constraint firstItem="x8J-xa-yTB" firstAttribute="centerY" secondItem="Qea-se-LcX" secondAttribute="centerY" id="SHy-nj-scv"/>
-                                    <constraint firstItem="IhV-fb-cht" firstAttribute="top" secondItem="tRd-aQ-VLq" secondAttribute="top" id="ahu-D6-vLn"/>
                                     <constraint firstAttribute="bottom" secondItem="Qea-se-LcX" secondAttribute="bottom" constant="8" id="kYn-J2-5ZN"/>
                                     <constraint firstAttribute="trailing" secondItem="nhs-aB-c2l" secondAttribute="trailing" constant="20" id="s9h-Wx-fe5"/>
-                                    <constraint firstItem="nhs-aB-c2l" firstAttribute="top" secondItem="IhV-fb-cht" secondAttribute="bottom" constant="30" id="vmK-FE-koC"/>
-                                    <constraint firstItem="IhV-fb-cht" firstAttribute="leading" secondItem="tRd-aQ-VLq" secondAttribute="leading" id="yA2-xt-8Cz"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1019,7 +1011,7 @@
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="c2y-eN-r4k">
                                         <rect key="frame" x="58" y="19" width="258" height="31"/>
-                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="tintColor" red="0.30588235289999999" green="0.47450980390000003" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="sliderDidSlide:" destination="WfK-Wl-JPr" eventType="valueChanged" id="lBs-2f-U2y"/>
                                         </connections>
@@ -1442,7 +1434,7 @@
                                     </imageView>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="jdW-rE-rl3">
                                         <rect key="frame" x="58" y="0.0" width="260.5" height="31"/>
-                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="tintColor" red="0.30588235289999999" green="0.47450980390000003" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="sliderDidSlide:" destination="igD-yW-FCX" eventType="valueChanged" id="uMV-yV-ewb"/>
                                         </connections>
