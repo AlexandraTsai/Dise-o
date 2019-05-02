@@ -369,8 +369,11 @@ class EditingViewController: UIViewController {
 
     @IBAction func letterCaseBtnTapped(_ sender: Any) {
 
-        guard let view =  editingView as? ALTextView else { return }
-
+        guard let view =  editingView as? ALTextView,
+            let fontName = view.font?.fontName,
+            let fontSize = view.font?.pointSize,
+            let textColor = view.textColor else { return }
+      
         switch letterCaseButton.titleLabel?.text {
 
         case "Aa":
@@ -378,13 +381,25 @@ class EditingViewController: UIViewController {
             originalText = view.text
 
             view.text = view.text.uppercased()
-
+        
             letterCaseButton.setTitle("AA", for: .normal)
+            
+            view.keepAttributeWith(lineHeight: self.lineHeight,
+                                   letterSpacing: self.letterSpacing,
+                                   fontName: fontName,
+                                   fontSize: fontSize,
+                                   textColor: textColor)
 
         default:
 
             letterCaseButton.setTitle("Aa", for: .normal)
             view.text = originalText
+            
+            view.keepAttributeWith(lineHeight: self.lineHeight,
+                                   letterSpacing: self.letterSpacing,
+                                   fontName: fontName,
+                                   fontSize: fontSize,
+                                   textColor: textColor)
 
         }
 
@@ -1555,7 +1570,6 @@ extension EditingViewController {
             
         }
         
-        
         addGestureTo(helperView.leftTopHelper)
         addGestureTo(helperView.leftBottomHelper)
         addGestureTo(helperView.rightTopHelper)
@@ -1680,8 +1694,6 @@ extension EditingViewController: TextContainerProtocol {
             let height = (originSize.height)*scale
 
             editingView?.bounds.size = CGSize(width: width, height: height)
-            
-//            editingView?.frame.size = CGSize(width: width, height: height)
 
             helperView.resize(accordingTo: editingView!)
 
