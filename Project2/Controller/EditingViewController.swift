@@ -202,7 +202,7 @@ class EditingViewController: UIViewController {
     
     var tableViewIndex: Int = 0
     var originalText = ""
-
+    
     @IBOutlet weak var designView: ALDesignView!
  
     @IBOutlet weak var shadowView: UIView! {
@@ -368,7 +368,7 @@ class EditingViewController: UIViewController {
     }
 
     @IBAction func letterCaseBtnTapped(_ sender: Any) {
-
+        
         guard let view =  editingView as? ALTextView,
             let fontName = view.font?.fontName,
             let fontSize = view.font?.pointSize,
@@ -400,7 +400,7 @@ class EditingViewController: UIViewController {
                                    fontName: fontName,
                                    fontSize: fontSize,
                                    textColor: textColor)
-
+            
         }
 
     }

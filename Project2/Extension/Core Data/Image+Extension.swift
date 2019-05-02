@@ -29,6 +29,10 @@ extension Image {
         
         imageView.imageFileName = fileName
         
+        imageView.index = Int(self.index)
+        
+        designView.subImages.append(imageView)
+        
         designView.addSubview(imageView)
     }
     

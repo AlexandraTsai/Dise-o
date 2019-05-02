@@ -583,7 +583,7 @@ extension HomeViewController {
         let design = alDesignArray[index]
         
         design.designName = newName
-        
+
         guard let createTime = design.createTime else { return }
         
         StorageManager.shared.updateDesign(design: design,

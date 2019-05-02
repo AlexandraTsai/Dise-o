@@ -25,6 +25,10 @@ extension Shape {
             
         }
         
+        shapeView.index = Int(self.index)
+        
+        designView.subShapes.append(shapeView)
+        
         designView.addSubview(shapeView)
     }
 }
