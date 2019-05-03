@@ -12,6 +12,8 @@
 		A80F296B22660BED009C13F5 /* TextContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F296A22660BED009C13F5 /* TextContainerViewController.swift */; };
 		A816BEB322755860004E3896 /* SizeHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A816BEB222755860004E3896 /* SizeHelperView.swift */; };
 		A816BEB522758CC4004E3896 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A816BEB422758CC4004E3896 /* UITextField+Extension.swift */; };
+		A8242DAE227BC91B006143CB /* RotateHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DAD227BC91B006143CB /* RotateHelperView.swift */; };
+		A8242DB0227C0C51006143CB /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DAF227C0C51006143CB /* Float+Extension.swift */; };
 		A82B5F332268A2270093671D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F322268A2270093671D /* HomeViewController.swift */; };
 		A82B5F352268A4930093671D /* NewDeign.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F342268A4930093671D /* NewDeign.swift */; };
 		A82B5F372268C8090093671D /* HelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F362268C8090093671D /* HelperView.swift */; };
@@ -87,6 +89,8 @@
 		A80F296A22660BED009C13F5 /* TextContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextContainerViewController.swift; sourceTree = "<group>"; };
 		A816BEB222755860004E3896 /* SizeHelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeHelperView.swift; sourceTree = "<group>"; };
 		A816BEB422758CC4004E3896 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		A8242DAD227BC91B006143CB /* RotateHelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateHelperView.swift; sourceTree = "<group>"; };
+		A8242DAF227C0C51006143CB /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		A82B5F322268A2270093671D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A82B5F342268A4930093671D /* NewDeign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeign.swift; sourceTree = "<group>"; };
 		A82B5F362268C8090093671D /* HelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperView.swift; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 			children = (
 				A80804EA226882720042E4FF /* EditeFrameView.swift */,
 				A82B5F362268C8090093671D /* HelperView.swift */,
+				A8242DAD227BC91B006143CB /* RotateHelperView.swift */,
 				A816BEB222755860004E3896 /* SizeHelperView.swift */,
 				A85B04042279C0F000853841 /* CornerHelperView.swift */,
 				A82B5F342268A4930093671D /* NewDeign.swift */,
@@ -350,6 +355,7 @@
 				A86824C322603BC500BDCCD8 /* CGAffineTransform+Extension.swift */,
 				A86824C72260838200BDCCD8 /* ALRotationGestureRecognizer.swift */,
 				A816BEB422758CC4004E3896 /* UITextField+Extension.swift */,
+				A8242DAF227C0C51006143CB /* Float+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -552,6 +558,7 @@
 			files = (
 				A86824C422603BC500BDCCD8 /* CGAffineTransform+Extension.swift in Sources */,
 				A8DEBBAA2255A8A50081A694 /* ALCustomView.swift in Sources */,
+				A8242DB0227C0C51006143CB /* Float+Extension.swift in Sources */,
 				A8BFF780225A4AC00010E56B /* ImageEditContainerViewController.swift in Sources */,
 				A8DEBBA2225496D20081A694 /* AddImageContainerViewController.swift in Sources */,
 				A8D2C47B22522A8F0085AD24 /* UICollectionView+Extension.swift in Sources */,
@@ -571,6 +578,7 @@
 				A8AF2A552278290A00C2B118 /* SavedImageAlert.swift in Sources */,
 				A84880CD227036A200F308AC /* SaveSuccessLabel.swift in Sources */,
 				A8DEBB9E2254803B0081A694 /* UIImage+Extension.swift in Sources */,
+				A8242DAE227BC91B006143CB /* RotateHelperView.swift in Sources */,
 				A8DEBBA522549DC30081A694 /* ImageCollectionReusableView.swift in Sources */,
 				A8AD7463226AF82200BDE3A7 /* ALDesignView.swift in Sources */,
 				A848811F2273FAC200F308AC /* UIColor+Extension.swift in Sources */,
