@@ -942,38 +942,44 @@ extension EditingViewController {
 //
 //                originAngle = 360 + originAngle
 //            }
-
-            originAngle = (angle/360)*CGFloat.pi*2
             
-            if originAngle+newAngle >= CGFloat.pi*2 {
-
-                editingView?.transform = CGAffineTransform(rotationAngle: originAngle+newAngle-CGFloat.pi*2)
-
-            } else {
+            let result = isClockwise(from: originLocation, to: newLocation, center: origin)
             
-                editingView?.transform =
-                    CGAffineTransform(rotationAngle: originAngle+newAngle)
-
+            print(result)
+            
+            if isClockwise(from: originLocation, to: newLocation, center: origin) {
+            
+                originAngle = (angle/360)*CGFloat.pi*2
+                
+                if originAngle+newAngle >= CGFloat.pi*2 {
+                    
+                    editingView?.transform = CGAffineTransform(rotationAngle: originAngle+newAngle-CGFloat.pi*2)
+                    
+                } else {
+                    
+                    editingView?.transform =
+                        CGAffineTransform(rotationAngle: originAngle+newAngle)
+                    
+                }
+                
+                guard let editingView = editingView else { return }
+                
+                helperView.resize(accordingTo: editingView)
+                
             }
-            
+
             print(angle)
             print(originAngle)
             print(newAngle)
             print(originAngle+newAngle)
-            print(editingView?.transform.angleInDegrees)
+//            print(editingView?.transform.angleInDegrees)
             print(".....................")
-            
-            guard let editingView = editingView else { return }
-            
-            helperView.resize(accordingTo: editingView)
             
         default:
             
             print("---------END-----------")
             
             helperView.rotateHelper.decreaseHitInset()
-            
-            break
         }
         
 //        guard let rotateDegree = editingView?.transform.angleInDegrees else { return }
@@ -1136,6 +1142,87 @@ extension EditingViewController {
         helperView.resize(accordingTo: editingView)
         
         showHelper(after: sender)
+        
+    }
+    
+    func isClockwise(from oldPoint: CGPoint,
+                     to newPoint: CGPoint,
+                     center: CGPoint) -> Bool {
+        
+        switch oldPoint.x - center.x {
+       
+        //Quadrant one & four
+        case let value where value > 0 :
+            
+            print("第1/4象限")
+            
+            if oldPoint.y >= newPoint.y {
+                
+                if oldPoint.x > newPoint.x {
+                   
+                    return true
+                    
+                } else {
+                    
+                    return false
+                }
+
+            } else {
+                
+                return false
+            }
+            
+        case let value where value == 0 :
+            
+            print("y軸上")
+        
+            if oldPoint.y > center.y {
+                
+                if newPoint.x > oldPoint.x {
+                    
+                    return true
+                } else {
+                    return false
+                }
+                
+            } else {
+                
+                if newPoint.x < oldPoint.x {
+                    
+                    return true
+                    
+                } else {
+                    
+                    return false
+                }
+            }
+            
+        //Quadrant two & three
+        default:
+            
+            print("第2/3")
+            
+            let oldC = CGPointDistance(from: oldPoint, to: CGPoint(x: center.x, y: center.y+10))
+            
+            let newC = CGPointDistance(from: newPoint, to: CGPoint(x: center.x, y: center.y+10))
+            
+            let distance = CGPointDistance(from: oldPoint, to: center)
+            
+            let distance2 = CGPointDistance(from: newPoint, to: center)
+            
+            let oldAngle = acos((distance*distance+10*10-oldC*oldC)/(2*distance*10))
+            
+            let newAngle = acos((distance2*distance2+10*10-newC*newC)/(2*distance2*10))
+          
+            if oldAngle < newAngle {
+                
+                return true
+                
+            } else {
+                
+                return false
+            }
+        }
         
     }
     
