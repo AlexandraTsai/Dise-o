@@ -435,6 +435,9 @@ class EditingViewController: UIViewController {
     @IBAction func slideToRotate(_ sender: UISlider) {
         
         let transform = CGAffineTransform(rotationAngle: CGFloat(sender.value/360)*CGFloat.pi*2)
+        
+        print(sender.value)
+        print(CGFloat(sender.value/360)*CGFloat.pi*2)
 
         //To keep the transformation
         let xScale = helperView.transform.scaleX
@@ -448,7 +451,7 @@ class EditingViewController: UIViewController {
         editingView?.center = center
         
         editingView?.transform = helperView.transform
-       
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -746,10 +749,10 @@ extension EditingViewController {
         rotateView.isUserInteractionEnabled = true
         
         //Handle to tapped
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleCircleGesture(sender:)))
-        tap.numberOfTapsRequired = 1
-        tap.numberOfTouchesRequired = 1
-        rotateView.addGestureRecognizer(tap)
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(handleCircleGesture(sender:)))
+//        tap.numberOfTapsRequired = 1
+//        tap.numberOfTouchesRequired = 1
+        rotateView.addGestureRecognizer(pan)
     }
     
     func addPanGesture(to view: UIView) {
@@ -888,17 +891,99 @@ extension EditingViewController {
     }
     
     @objc func handleCircleGesture(sender: UITapGestureRecognizer) {
+        
+        helperView.rotateHelper.increaseHitInset()
 
         rotationView.isHidden = false
         
-        guard let rotateDegree = editingView?.transform.angleInDegrees else { return }
+        let state = sender.state
         
-        if Int(rotateDegree) >= 0 {
-            rotateSlider.value = Float(Int(rotateDegree))
+        switch state {
             
-        } else {
-              rotateSlider.value = Float(360-Int(rotateDegree)*(-1))
+        case .began:
+            
+            print("---------start-----------")
+            
+            originLocation = sender.location(in: designView)
+            
+        case .changed:
+            
+            if newLocation == nil {
+                
+                newLocation = sender.location(in: designView)
+                
+            } else {
+                
+                guard let location = newLocation else { return }
+                
+                originLocation = location
+                
+                newLocation = sender.location(in: designView)
+                
+            }
+        
+            guard let origin = editingView?.center,
+                let newLocation = newLocation else { return }
+            
+            let oldDistance = CGPointDistance(from: originLocation, to: origin)
+
+            let newDistance = CGPointDistance(from: newLocation, to: origin)
+            
+            let twoPointDistance = CGPointDistance(from: originLocation,
+                                                   to: newLocation)
+            
+            let newAngle = acos((oldDistance*oldDistance+newDistance*newDistance-twoPointDistance*twoPointDistance)/(2*oldDistance*newDistance))
+            
+            var originAngle: CGFloat = 0
+
+            guard let angle = editingView?.transform.angleInDegrees else { return }
+            
+//            if angle < CGFloat(0) {
+//
+//                originAngle = 360 + originAngle
+//            }
+
+            originAngle = (angle/360)*CGFloat.pi*2
+            
+            if originAngle+newAngle >= CGFloat.pi*2 {
+
+                editingView?.transform = CGAffineTransform(rotationAngle: originAngle+newAngle-CGFloat.pi*2)
+
+            } else {
+            
+                editingView?.transform =
+                    CGAffineTransform(rotationAngle: originAngle+newAngle)
+
+            }
+            
+            print(angle)
+            print(originAngle)
+            print(newAngle)
+            print(originAngle+newAngle)
+            print(editingView?.transform.angleInDegrees)
+            print(".....................")
+            
+            guard let editingView = editingView else { return }
+            
+            helperView.resize(accordingTo: editingView)
+            
+        default:
+            
+            print("---------END-----------")
+            
+            helperView.rotateHelper.decreaseHitInset()
+            
+            break
         }
+        
+//        guard let rotateDegree = editingView?.transform.angleInDegrees else { return }
+//
+//        if Int(rotateDegree) >= 0 {
+//            rotateSlider.value = Float(Int(rotateDegree))
+//
+//        } else {
+//              rotateSlider.value = Float(360-Int(rotateDegree)*(-1))
+//        }
         
     }
     
@@ -1696,7 +1781,7 @@ extension EditingViewController: TextContainerProtocol {
             let height = (originSize.height)*scale
 
             editingView?.bounds.size = CGSize(width: width, height: height)
-
+ 
             helperView.resize(accordingTo: editingView!)
 
             if let textView = editingView as? UITextView {

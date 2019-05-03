@@ -20,7 +20,7 @@ class HelperView: UIView {
     let rightTopHelper = CornerHelperView()
     let rightBottomHelper = CornerHelperView()
     
-    var rotateHelper = UIImageView()
+    var rotateHelper = RotateHelperView()
     var positionHelper  =  UIImageView()
     var editingFrame = EditFrameView() {
         
