@@ -12,6 +12,7 @@ class SelectionView: UIView {
     
     let openButton = UIButton()
     let saveButton = UIButton()
+    let shareButton = UIButton()
     let renameButton = UIButton()
     let deleteButton = UIButton()
     
@@ -56,6 +57,7 @@ class SelectionView: UIView {
         
         //Add sub views
         self.addSubview(saveButton)
+        self.addSubview(shareButton)
         self.addSubview(renameButton)
         self.addSubview(deleteButton)
         self.addSubview(openButton)
@@ -73,10 +75,17 @@ class SelectionView: UIView {
         
         //Save Button
         saveButton.translatesAutoresizingMaskIntoConstraints = false
-        saveButton.bottomAnchor.constraint(equalTo: renameButton.topAnchor, constant: -15).isActive = true
+        saveButton.bottomAnchor.constraint(equalTo: shareButton.topAnchor, constant: -15).isActive = true
         saveButton.leadingAnchor.constraint(equalTo: openButton.leadingAnchor).isActive = true
         saveButton.trailingAnchor.constraint(equalTo: openButton.trailingAnchor).isActive = true
         saveButton.heightAnchor.constraint(equalTo: openButton.heightAnchor, multiplier: 1).isActive = true
+        
+        //Save Button
+        shareButton.translatesAutoresizingMaskIntoConstraints = false
+        shareButton.bottomAnchor.constraint(equalTo: renameButton.topAnchor, constant: -15).isActive = true
+        shareButton.leadingAnchor.constraint(equalTo: openButton.leadingAnchor).isActive = true
+        shareButton.trailingAnchor.constraint(equalTo: openButton.trailingAnchor).isActive = true
+        shareButton.heightAnchor.constraint(equalTo: openButton.heightAnchor, multiplier: 1).isActive = true
         
         //Rename Button
         renameButton.translatesAutoresizingMaskIntoConstraints = false
@@ -112,18 +121,24 @@ class SelectionView: UIView {
        
         openButton.setTitle("Open", for: .normal)
         saveButton.setTitle("Save Image", for: .normal)
+        shareButton.setTitle("Share", for: .normal)
+
         renameButton.setTitle("Rename", for: .normal)
         deleteButton.setTitle("Delete", for: .normal)
         cancelButton.setTitle("CANCEL", for: .normal)
         
         openButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 16)
         saveButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 16)
+        shareButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 16)
+
         renameButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 16)
         deleteButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 16)
         cancelButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 13)
         
         openButton.setTitleColor(UIColor.white, for: .normal)
         saveButton.setTitleColor(UIColor.white, for: .normal)
+        shareButton.setTitleColor(UIColor.white, for: .normal)
+
         renameButton.setTitleColor(UIColor.white, for: .normal)
         deleteButton.setTitleColor(UIColor.white, for: .normal)
         cancelButton.setTitleColor(UIColor.black, for: .normal)
@@ -134,6 +149,7 @@ class SelectionView: UIView {
         
         openButton.backgroundColor = UIColor.black
         saveButton.backgroundColor = UIColor.black
+        shareButton.backgroundColor = UIColor.black
         renameButton.backgroundColor = UIColor.black
         deleteButton.backgroundColor = UIColor.gray
         cancelButton.backgroundColor = UIColor.white
@@ -143,6 +159,7 @@ class SelectionView: UIView {
         
         openButton.layer.cornerRadius = 17
         saveButton.layer.cornerRadius = 17
+        shareButton.layer.cornerRadius = 17
         renameButton.layer.cornerRadius = 17
         deleteButton.layer.cornerRadius = 17
         cancelButton.layer.cornerRadius = 15
@@ -154,7 +171,7 @@ class SelectionView: UIView {
         specificView.addSubview(self)
         
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.heightAnchor.constraint(equalToConstant: 290).isActive = true
+        self.heightAnchor.constraint(equalToConstant: 340).isActive = true
         self.bottomAnchor.constraint(equalTo: specificView.bottomAnchor, constant: -30).isActive = true
         self.leadingAnchor.constraint(equalTo: specificView.leadingAnchor, constant: 20).isActive = true
         self.trailingAnchor.constraint(equalTo: specificView.trailingAnchor, constant: -20).isActive = true

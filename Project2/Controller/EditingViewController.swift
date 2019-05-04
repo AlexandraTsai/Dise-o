@@ -426,7 +426,6 @@ class EditingViewController: BaseViewController {
             
         }
         
- 
     }
     @IBAction func slideToRotate(_ sender: UISlider) {
         

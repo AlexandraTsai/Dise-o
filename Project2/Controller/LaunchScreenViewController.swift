@@ -13,14 +13,14 @@ class LaunchScreenViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        drawLine()
+        drawFirstLine()
+        drawSecondLine()
+        drawThirdLine()
         showCircle()
-       
-//        Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(goToHomePage), userInfo: nil, repeats: false)
-        
+
     }
     
-    func drawLine() {
+    func drawFirstLine() {
         
         let shapeLayer = CAShapeLayer()
         let bezierPath = UIBezierPath()
@@ -47,6 +47,15 @@ class LaunchScreenViewController: UIViewController{
         animation2.duration = 3
         shapeLayer.add(animation2, forKey: "drawLineAnimation")
     
+        self.view.layer.addSublayer(shapeLayer)
+       
+    }
+    
+    func drawSecondLine() {
+        
+        let width = UIScreen.main.bounds.width
+        let heigth = UIScreen.main.bounds.height
+       
         let shapeLayer2 = CAShapeLayer()
         let bezierPath2 = UIBezierPath()
         
@@ -55,7 +64,7 @@ class LaunchScreenViewController: UIViewController{
         bezierPath2.addLine(to: CGPoint(x: width/2+50, y: heigth/2+30))
         bezierPath2.addLine(to: CGPoint(x: width/2-50, y: heigth/2+30))
         bezierPath2.close()
-    
+        
         shapeLayer2.path = bezierPath2.cgPath
         shapeLayer2.fillColor = UIColor.clear.cgColor
         shapeLayer2.strokeColor = UIColor.DSColor.logoC2.cgColor
@@ -68,15 +77,23 @@ class LaunchScreenViewController: UIViewController{
         animation.duration = 3
         shapeLayer2.add(animation, forKey: "drawLineAnimation")
         
+         self.view.layer.addSublayer(shapeLayer2)
+    }
+    
+    func drawThirdLine() {
+        
+        let width = UIScreen.main.bounds.width
+        let heigth = UIScreen.main.bounds.height
+        
         let shapeLayer3 = CAShapeLayer()
         let bezierPath3 = UIBezierPath()
-       
+        
         bezierPath3.move(to: CGPoint(x: width/2-40, y: heigth/2-80))
         bezierPath3.addLine(to: CGPoint(x: width/2+60, y: heigth/2-80))
         bezierPath3.addLine(to: CGPoint(x: width/2+60, y: heigth/2+20))
         bezierPath3.addLine(to: CGPoint(x: width/2-40, y: heigth/2+20))
         bezierPath3.close()
-    
+        
         shapeLayer3.path = bezierPath3.cgPath
         
         shapeLayer3.fillColor = UIColor.clear.cgColor
@@ -89,11 +106,8 @@ class LaunchScreenViewController: UIViewController{
         animation3.toValue = 1
         animation3.duration = 3
         shapeLayer3.add(animation3, forKey: "drawLineAnimation")
-   
-        self.view.layer.addSublayer(shapeLayer)
-        self.view.layer.addSublayer(shapeLayer2)
-        self.view.layer.addSublayer(shapeLayer3)
         
+        self.view.layer.addSublayer(shapeLayer3)
     }
     
     func showCircle() {
@@ -153,18 +167,14 @@ class LaunchScreenViewController: UIViewController{
     @objc func goToHomePage() {
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    
-        guard let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
         
-        self.present(homeVC, animated: false, completion: nil)
+        guard let homeVC = storyboard
+            .instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
+        
+        let navController = UINavigationController(rootViewController: homeVC)
+
+        self.present(navController, animated: false, completion: nil)
         
     }
-    
-    override func unwind(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {
-        let segue = ScaleSegue(identifier: unwindSegue.identifier,
-                               source: unwindSegue.source,
-                               destination: unwindSegue.destination)
-        segue.perform()
-    }
-    
+   
 }

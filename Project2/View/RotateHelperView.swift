@@ -10,7 +10,7 @@ import UIKit
 
 class RotateHelperView: UIImageView {
     
-    var hitInsets:UIEdgeInsets = UIEdgeInsets(top: -5,
+    var hitInsets: UIEdgeInsets = UIEdgeInsets(top: -5,
                                               left: -5,
                                               bottom: -5,
                                               right: -5)

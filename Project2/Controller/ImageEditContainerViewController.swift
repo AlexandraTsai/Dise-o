@@ -402,10 +402,3 @@ extension ImageEditContainerViewController {
         }
     }
 }
-
-//    @objc func changePaletteColor(noti: Notification) {
-//        if let userInfo = noti.userInfo,
-//            let _ = userInfo[NotificationInfo.paletteColor] as? UIColor {
-//
-//        }
-//    }
