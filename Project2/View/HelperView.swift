@@ -271,4 +271,29 @@ class HelperView: UIView {
         bottomHelper.isHidden = true
     }
     
+    func hideAllHelper() {
+        
+        rightHelper.alpha = 0
+        leftHelper.alpha = 0
+        topHelper.alpha = 0
+        bottomHelper.alpha = 0
+        
+        leftTopHelper.alpha = 0
+        leftBottomHelper.alpha = 0
+        rightTopHelper.alpha = 0
+        rightBottomHelper.alpha = 0
+    }
+    
+    func showAllHelper() {
+        
+        rightHelper.alpha = 1
+        leftHelper.alpha = 1
+        topHelper.alpha = 1
+        bottomHelper.alpha = 1
+        
+        leftTopHelper.alpha = 1
+        leftBottomHelper.alpha = 1
+        rightTopHelper.alpha = 1
+        rightBottomHelper.alpha = 1
+    }
 }

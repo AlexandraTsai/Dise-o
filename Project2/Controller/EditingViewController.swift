@@ -770,6 +770,8 @@ extension EditingViewController {
         
         textView.becomeFirstResponder()
         
+        showHelper(after: sender)
+        
     }
     
     @objc func tapHelperView(sender: UITapGestureRecognizer) {
@@ -787,6 +789,8 @@ extension EditingViewController {
             UIView.animate(withDuration: 0.2) {  [weak self] in
                 
                 self?.helperView.alpha = 1
+                
+                self?.showHelper(after: sender)
             }
             
         }
@@ -798,6 +802,8 @@ extension EditingViewController {
         helperView.removeFromSuperview()
         
         editingView = sender.view
+        
+        showHelper(after: sender)
 
     }
 
@@ -932,11 +938,7 @@ extension EditingViewController {
             var originAngle: CGFloat = 0
 
             guard let angle = editingView?.transform.angleInDegrees else { return }
-
-            let result = isClockwise(from: originLocation, to: newLocation, center: origin)
-            
-            print(result)
-            
+           
             if isClockwise(from: originLocation, to: newLocation, center: origin) {
             
                 originAngle = (angle/360)*CGFloat.pi*2
@@ -956,11 +958,31 @@ extension EditingViewController {
                 
                 helperView.resize(accordingTo: editingView)
                 
+            } else {
+                
+                originAngle = (angle/360)*CGFloat.pi*2
+                
+                if originAngle-newAngle <= 0 {
+                    
+                    editingView?.transform = CGAffineTransform(rotationAngle: originAngle-newAngle+CGFloat.pi*2)
+                    
+                } else {
+                    
+                    editingView?.transform =
+                        CGAffineTransform(rotationAngle: originAngle-newAngle)
+                    
+                }
+                
+                guard let editingView = editingView else { return }
+                
+                helperView.resize(accordingTo: editingView)
             }
 
         default:
    
             helperView.rotateHelper.decreaseHitInset()
+            
+            showHelper(after: sender)
         }
  
     }
@@ -1759,47 +1781,28 @@ extension EditingViewController: TextContainerProtocol {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        helperView.rightHelper.alpha = 0
-        helperView.leftHelper.alpha = 0
-        helperView.topHelper.alpha = 0
-        helperView.bottomHelper.alpha = 0
-        
-        helperView.leftTopHelper.alpha = 0
-        helperView.leftBottomHelper.alpha = 0
-        helperView.rightTopHelper.alpha = 0
-        helperView.rightBottomHelper.alpha = 0
+        helperView.hideAllHelper()
         
     }
     
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        showAllHelper()
-        
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        showAllHelper()
-    }
+//    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+//
+//        helperView.showAllHelper()
+//
+//    }
+//
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//
+//        helperView.showAllHelper()
+//    }
     
     func showHelper(after gesture: UIGestureRecognizer) {
         
         if gesture.state == UIGestureRecognizer.State.ended {
             
-            showAllHelper()
+            helperView.showAllHelper()
         }
         
-    }
-    
-    func showAllHelper() {
-        helperView.rightHelper.alpha = 1
-        helperView.leftHelper.alpha = 1
-        helperView.topHelper.alpha = 1
-        helperView.bottomHelper.alpha = 1
-        
-        helperView.leftTopHelper.alpha = 1
-        helperView.leftBottomHelper.alpha = 1
-        helperView.rightTopHelper.alpha = 1
-        helperView.rightBottomHelper.alpha = 1
     }
     
     @objc func handleCornerResize(gesture: UIPanGestureRecognizer) {
@@ -1823,7 +1826,7 @@ extension EditingViewController: TextContainerProtocol {
                 originSize = CGSize(width: width, height: height)
 
             }
-           
+      
         case .changed:
             
             let location = gesture.location(in: designView)
