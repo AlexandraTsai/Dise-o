@@ -47,6 +47,10 @@ enum ImageAsset: String {
     
     case Icon_transparency
     
+    case Icon_Circle
+    
+    case Icon_AppName
+    
     var imageTemplate: UIImage {
         
         let origImage = UIImage(named: self.rawValue)
