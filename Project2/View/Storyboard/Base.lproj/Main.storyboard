@@ -1571,7 +1571,7 @@
                         <viewLayoutGuide key="safeArea" id="dbr-VY-kjI"/>
                     </view>
                     <connections>
-                        <segue destination="nRQ-qm-ry9" kind="show" customClass="ScaleSegue" customModule="Project2" customModuleProvider="target" id="Nxj-Qe-Acm"/>
+                        <segue destination="nRQ-qm-ry9" kind="presentation" identifier="homePageSegue" id="Nxj-Qe-Acm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E39-PN-XTD" userLabel="First Responder" sceneMemberID="firstResponder"/>

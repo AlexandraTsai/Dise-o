@@ -20,7 +20,7 @@ class IconView: UIView {
         setup()
     }
     
-    func setup(){
+    func setup() {
         
         self.backgroundColor = UIColor.green
         self.alpha = 0

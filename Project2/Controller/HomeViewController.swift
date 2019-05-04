@@ -131,6 +131,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         
         selectionView.saveButton.addTarget(self, action: #selector(saveImageBtnTapped(sender:)), for: .touchUpInside)
         
+        selectionView.shareButton.addTarget(self, action: #selector(shareBtnTapped(sender:)), for: .touchUpInside)
+        
         selectionView.renameButton.addTarget(self, action: #selector(renameBtnTapped(sender:)), for: .touchUpInside)
         
         renameView.saveButton.addTarget(self, action: #selector(saveNameBtnTapped(sender:)), for: .touchUpInside)
@@ -350,13 +352,13 @@ extension HomeViewController {
             
             self?.selectedCell = indexPath.item
             
+            self?.selectionView.isHidden = false
+            
             self?.addDesignButton.alpha = 0
             
             UIView.animate(withDuration: 0.7, animations: { [weak self] in
                 
                 self?.selectionView.alpha = 1
-                
-                self?.selectionView.isHidden = false
 
             })
             
@@ -527,6 +529,23 @@ extension HomeViewController {
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_: didFinishSavingWithError:contextInfo:)), nil)
     }
     
+    @objc func shareBtnTapped(sender: UIButton) {
+        
+        guard let index = selectedCell else { return}
+        
+        guard let screenshot = alDesignArray[index].screenshotName else { return }
+        
+        guard let image = loadImageFromDiskWith(fileName: screenshot) else { return}
+        
+        let imageToShare = [image]
+        
+        let activityController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        
+        activityController.popoverPresentationController?.sourceView = self.view
+        
+        self.present(activityController, animated: true, completion: nil)
+    }
+    
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         
         if error != nil {
@@ -540,15 +559,28 @@ extension HomeViewController {
             
             alertLabel.setupLabel(on: self, with: "Saved to camera roll")
             
-            alertLabel.alpha = 1
+           
             
             UIView.animate(withDuration: 0.4,
-                           delay: 0.7,
                            animations: {[weak self] in
                 
-                self?.alertLabel.alpha = 0
+                 self?.alertLabel.alpha = 1
                 
-                }, completion: nil)
+                }, completion: { done in
+                    
+                    if done {
+                        
+                        UIView.animate(withDuration: 0.5,
+                                       delay: 1.0,
+                                       animations: { [weak self] in
+                                        
+                            self?.alertLabel.alpha = 0
+                            
+                        })
+                        
+                    }
+                   
+            })
             
         }
     }

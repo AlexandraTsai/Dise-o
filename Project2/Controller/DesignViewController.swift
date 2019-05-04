@@ -118,15 +118,26 @@ class DesignViewController: BaseViewController, UITextViewDelegate, FusumaDelega
             
             saveSuccessLabel.setupLabel(on: self, with: "Saved to camera roll")
             
-            saveSuccessLabel.alpha = 1
-            
             UIView.animate(withDuration: 0.3,
-                           delay: 1.2,
+                           delay: 0,
                            animations: {[weak self] in
                             
-                            self?.saveSuccessLabel.alpha = 0
+                            self?.saveSuccessLabel.alpha = 1
                             
-                }, completion: nil)
+            }, completion: { done in
+                    
+                if done {
+                     
+                    UIView.animate(withDuration: 0.5,
+                                       delay: 1.2,
+                                       animations: {[weak self] in
+                                        
+                                        self?.saveSuccessLabel.alpha = 0
+                                        
+                    }, completion: nil)
+                }
+
+            })
 
         }
     }
@@ -590,19 +601,19 @@ extension DesignViewController {
     func setupNavigationBar() {
 
         //Right Buttons
-//        let button2 = UIBarButtonItem(
-//            image: UIImage(named: ImageAsset.Icon_Share.rawValue),
-//            style: .plain,
-//            target: self,
-//            action: #selector(didTapShareButton(sender:)))
-
         let button1 = UIBarButtonItem(
+            image: UIImage(named: ImageAsset.Icon_Share.rawValue),
+            style: .plain,
+            target: self,
+            action: #selector(didTapShareButton(sender:)))
+
+        let button2 = UIBarButtonItem(
             image: UIImage(named: ImageAsset.Icon_Download.rawValue),
             style: .plain,
             target: self,
             action: #selector(didTapDownloadButton(sender:)))
 
-        self.navigationItem.rightBarButtonItems  = [button1]
+        self.navigationItem.rightBarButtonItems  = [button1, button2]
 
         //Left Buttons
         let leftButton = UIBarButtonItem(
@@ -696,6 +707,20 @@ extension DesignViewController {
         self.navigationController?.popViewController(animated: true)
     }
     // swiftlint:enable cyclomatic_complexity
+    
+    @objc func didTapShareButton(sender: AnyObject) {
+        
+        let screenshot = designView.takeScreenshot()
+        
+        let imageToShare = [ screenshot ]
+        
+        let activityController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        
+        activityController.popoverPresentationController?.sourceView = self.view
+        
+        self.present(activityController, animated: true, completion: nil)
+        
+    }
 
     @objc func didTapDownloadButton(sender: AnyObject) {
 
