@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(urls[urls.count-1] as URL)
         
         FirebaseApp.configure()
-        
+       
         return true
     }
     

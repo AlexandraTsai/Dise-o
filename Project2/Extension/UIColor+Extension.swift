@@ -52,6 +52,13 @@ extension UIColor {
                                                         alpha: 1)
             
         }
+        
+        static var logoC2: UIColor { return UIColor(red: 133/255,
+                                                green: 162/255,
+                                                blue: 160/255,
+                                                alpha: 1)
+            
+        }
 
     }
 }

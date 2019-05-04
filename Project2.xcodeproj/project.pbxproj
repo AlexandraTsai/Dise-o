@@ -15,6 +15,9 @@
 		A8242DAE227BC91B006143CB /* RotateHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DAD227BC91B006143CB /* RotateHelperView.swift */; };
 		A8242DB0227C0C51006143CB /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DAF227C0C51006143CB /* Float+Extension.swift */; };
 		A8242DB2227D3F29006143CB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DB1227D3F29006143CB /* BaseViewController.swift */; };
+		A8242DB6227D5194006143CB /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DB5227D5194006143CB /* IconView.swift */; };
+		A8242DB8227D536B006143CB /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DB7227D536B006143CB /* LaunchScreenViewController.swift */; };
+		A8242DBA227D5BDA006143CB /* ScaleSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DB9227D5BDA006143CB /* ScaleSegue.swift */; };
 		A82B5F332268A2270093671D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F322268A2270093671D /* HomeViewController.swift */; };
 		A82B5F352268A4930093671D /* NewDeign.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F342268A4930093671D /* NewDeign.swift */; };
 		A82B5F372268C8090093671D /* HelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F362268C8090093671D /* HelperView.swift */; };
@@ -93,6 +96,9 @@
 		A8242DAD227BC91B006143CB /* RotateHelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateHelperView.swift; sourceTree = "<group>"; };
 		A8242DAF227C0C51006143CB /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		A8242DB1227D3F29006143CB /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		A8242DB5227D5194006143CB /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
+		A8242DB7227D536B006143CB /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		A8242DB9227D5BDA006143CB /* ScaleSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleSegue.swift; sourceTree = "<group>"; };
 		A82B5F322268A2270093671D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A82B5F342268A4930093671D /* NewDeign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeign.swift; sourceTree = "<group>"; };
 		A82B5F362268C8090093671D /* HelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperView.swift; sourceTree = "<group>"; };
@@ -273,7 +279,6 @@
 				A8D2C465225222850085AD24 /* Controller */,
 				A8D2C464225222790085AD24 /* View */,
 				A8DEBBB3225713770081A694 /* Assets.xcassets */,
-				A8D2C45B225219080085AD24 /* LaunchScreen.storyboard */,
 				A8AF2A502276CDBD00C2B118 /* GoogleService-Info.plist */,
 				A8D2C45E225219080085AD24 /* Info.plist */,
 				A8D2C456225219030085AD24 /* Desiging.xcdatamodeld */,
@@ -299,6 +304,7 @@
 				A8AD7464226C004E00BDE3A7 /* ALImageView.swift */,
 				A8B5E4F6226D91D800514A75 /* ALTextView.swift */,
 				A8E30642226319FD00DA03A7 /* ALShapeView.swift */,
+				A8242DB5227D5194006143CB /* IconView.swift */,
 				A8E30641226300A800DA03A7 /* Shape */,
 				A8BFF77C225A37960010E56B /* Image */,
 				A8BFF77B225A37770010E56B /* Color */,
@@ -324,6 +330,8 @@
 				A8BFF77F225A4AC00010E56B /* ImageEditContainerViewController.swift */,
 				A8E3063B2262FE0000DA03A7 /* ShapeContainerViewController.swift */,
 				A80F296A22660BED009C13F5 /* TextContainerViewController.swift */,
+				A8242DB7227D536B006143CB /* LaunchScreenViewController.swift */,
+				A8242DB9227D5BDA006143CB /* ScaleSegue.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -367,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				A8D2C453225219030085AD24 /* Main.storyboard */,
+				A8D2C45B225219080085AD24 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -560,6 +569,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A86824C422603BC500BDCCD8 /* CGAffineTransform+Extension.swift in Sources */,
+				A8242DBA227D5BDA006143CB /* ScaleSegue.swift in Sources */,
 				A8DEBBAA2255A8A50081A694 /* ALCustomView.swift in Sources */,
 				A8242DB0227C0C51006143CB /* Float+Extension.swift in Sources */,
 				A8BFF780225A4AC00010E56B /* ImageEditContainerViewController.swift in Sources */,
@@ -608,12 +618,14 @@
 				A865976F2269D22F000789A2 /* Result.swift in Sources */,
 				A8D2C4722252270C0085AD24 /* ContainerViewController.swift in Sources */,
 				A86824C62260461500BDCCD8 /* UIView+Extension.swift in Sources */,
+				A8242DB8227D536B006143CB /* LaunchScreenViewController.swift in Sources */,
 				A8BFF77A2259E1960010E56B /* UIButton+Extenstion.swift in Sources */,
 				A8DEBBB2225638070081A694 /* UIImageView+Extension.swift in Sources */,
 				A80804EB226882720042E4FF /* EditeFrameView.swift in Sources */,
 				A8D2C458225219030085AD24 /* Desiging.xcdatamodeld in Sources */,
 				A8BFF76E22586E5C0010E56B /* FontTableViewCell.swift in Sources */,
 				A8E3063C2262FE0000DA03A7 /* ShapeContainerViewController.swift in Sources */,
+				A8242DB6227D5194006143CB /* IconView.swift in Sources */,
 				A8BFF76B22586E3D0010E56B /* UIFont+Extension.swift in Sources */,
 				A82B5F372268C8090093671D /* HelperView.swift in Sources */,
 				A8E3063F2263009C00DA03A7 /* ShapeCollectionViewCell.swift in Sources */,
