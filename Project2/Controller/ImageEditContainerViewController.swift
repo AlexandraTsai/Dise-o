@@ -17,15 +17,26 @@ protocol ImageEditContainerViewControllerProtocol: AnyObject {
     
 }
 
-class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
+class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate{
+    
+    var imageToBeEdit: UIImage?
     
     weak var delegate: ImageEditContainerViewControllerProtocol?
     
     @IBOutlet weak var cameraUnderLine: UIView!
     @IBOutlet weak var colorUnderLine: UIView!
     @IBOutlet weak var transparencyUnderLine: UIView!
+    @IBOutlet weak var filterUnderLine: UIView!
     
     @IBOutlet weak var photoView: UIView!
+    @IBOutlet weak var filterView: UIScrollView!
+    @IBOutlet weak var filterCollectionView: UICollectionView! {
+        
+        didSet {
+            filterCollectionView.delegate = self
+            filterCollectionView.dataSource = self
+        }
+    }
     
     @IBOutlet weak var cameraRollBtn: UIButton! {
         
@@ -48,7 +59,17 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         
     }
     
-    @IBOutlet weak var filterBtn: UIButton!
+    @IBOutlet weak var filterBtn: UIButton! {
+        
+        didSet {
+            
+            filterBtn.setImage(ImageAsset.Icon_filter.imageTemplate, for: .normal)
+            filterBtn.tintColor = UIColor.DSColor.lightGreen
+            
+        }
+        
+    }
+    
     @IBOutlet weak var transparencyBtn: UIButton! {
         
         didSet {
@@ -99,6 +120,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         
         paletteView.isHidden = true
         transparencyView.isHidden = true
+        filterView.isHidden = true
         
     }
 
@@ -106,6 +128,9 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         
         super.viewDidLoad()
 
+        filterCollectionView.al_registerCellWithNib(identifier: String(describing: FilterCollectionViewCell.self),
+                                                    bundle: nil)
+        
 //        photoManager.delegate = self
 //        photoManager.grabPhoto()
 
@@ -113,7 +138,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
 //             identifier: String(describing: PhotoCollectionViewCell.self),
 //             bundle: nil)
 
-//        setupCollectionViewLayout()
+        setupCollectionViewLayout()
         
         createNotification()
         
@@ -158,11 +183,20 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
     }
     
     @IBAction func filterBtnTapped(_ sender: Any) {
-        cameraRollBtn.isSelected = false
-        colorBtn.isSelected = false
-//        filterBtn.isSelected = true
-        transparencyBtn.isSelected = false
+        
+        filterView.isHidden = false
+        
+        cameraRollBtn.tintColor = UIColor.DSColor.lightGreen
+        colorBtn.tintColor = UIColor.DSColor.lightGreen
+        transparencyBtn.tintColor = UIColor.DSColor.lightGreen
+        filterBtn.tintColor = UIColor.DSColor.heavyGreen
+        
+        cameraUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        transparencyUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        
         transparencyView.isHidden = true
+        photoView.isHidden = true
         
     }
 
@@ -323,12 +357,13 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         transparencyLabel.text = "\(Int(sender.value))"
         
     }
+   
 }
 
 extension ImageEditContainerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageArray.count
+        return FilterType.allCases.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -336,13 +371,15 @@ extension ImageEditContainerViewController: UICollectionViewDelegate, UICollecti
     -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: PhotoCollectionViewCell.self),
+            withReuseIdentifier: String(describing: FilterCollectionViewCell.self),
             for: indexPath)
         
-        guard let photoCell = cell as? PhotoCollectionViewCell else { return cell }
-        photoCell.photoImage.image = imageArray[indexPath.item]
+        guard let filterCell = cell as? FilterCollectionViewCell,
+            let image = imageToBeEdit else { return cell }
+        
+        filterCell.filteredImage.image = image.addFilter(filter: FilterType.allCases[indexPath.item])
 
-        return photoCell
+        return filterCell
     }
 
 }
@@ -354,19 +391,27 @@ extension ImageEditContainerViewController {
         let flowLayout = UICollectionViewFlowLayout()
 
         flowLayout.itemSize = CGSize(
-            width: UIScreen.main.bounds.width/4,
-            height: UIScreen.main.bounds.width/4
+            width: UIScreen.main.bounds.width/5,
+            height: UIScreen.main.bounds.width/5
         )
 
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
-        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumInteritemSpacing = 5
 
         flowLayout.minimumLineSpacing = 0
 
-        flowLayout.headerReferenceSize = CGSize(width: imageCollectionView.frame.width, height: 40) // header zone
+//        flowLayout.headerReferenceSize = CGSize(width: imageCollectionView.frame.width, height: 40) // header zone
 
-        imageCollectionView.collectionViewLayout = flowLayout
+        filterCollectionView.collectionViewLayout = flowLayout
+    }
+}
+
+extension ImageEditContainerViewController: BaseViewControllerDelegate {
+   
+    func showAllFilter(for image: UIImage) {
+        
+        imageToBeEdit = image
     }
 }
 

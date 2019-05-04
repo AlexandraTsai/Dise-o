@@ -47,6 +47,8 @@ enum ImageAsset: String {
     
     case Icon_transparency
     
+    case Icon_filter
+    
     case Icon_Circle
     
     case Icon_AppName
@@ -103,4 +105,26 @@ enum ShapeAsset: String, CaseIterable {
         }
     }
 
+}
+
+extension UIImage {
+    
+    func addFilter(filter : FilterType) -> UIImage {
+        
+        let filter = CIFilter(name: filter.rawValue)
+        
+        // convert UIImage to CIImage and set as input
+        let ciInput = CIImage(image: self)
+        filter?.setValue(ciInput, forKey: "inputImage")
+        
+        // get output CIImage, render as CGImage first to retain proper UIImage scale
+        guard let ciOutput = filter?.outputImage else { return self }
+        
+        let ciContext = CIContext()
+        
+        guard let cgImage = ciContext.createCGImage(ciOutput, from: ciOutput.extent)  else { return self }
+        
+        //Return the image
+        return UIImage(cgImage: cgImage)
+    }
 }

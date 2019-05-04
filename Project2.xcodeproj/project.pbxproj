@@ -15,8 +15,10 @@
 		A8242DAE227BC91B006143CB /* RotateHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DAD227BC91B006143CB /* RotateHelperView.swift */; };
 		A8242DB0227C0C51006143CB /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DAF227C0C51006143CB /* Float+Extension.swift */; };
 		A8242DB2227D3F29006143CB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DB1227D3F29006143CB /* BaseViewController.swift */; };
-		A8242DB6227D5194006143CB /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DB5227D5194006143CB /* IconView.swift */; };
 		A8242DB8227D536B006143CB /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DB7227D536B006143CB /* LaunchScreenViewController.swift */; };
+		A8242DBC227DBC8E006143CB /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DBB227DBC8E006143CB /* FilterType.swift */; };
+		A8242DBF227DC641006143CB /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DBD227DC641006143CB /* FilterCollectionViewCell.swift */; };
+		A8242DC0227DC641006143CB /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8242DBE227DC641006143CB /* FilterCollectionViewCell.xib */; };
 		A82B5F332268A2270093671D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F322268A2270093671D /* HomeViewController.swift */; };
 		A82B5F352268A4930093671D /* NewDeign.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F342268A4930093671D /* NewDeign.swift */; };
 		A82B5F372268C8090093671D /* HelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F362268C8090093671D /* HelperView.swift */; };
@@ -95,8 +97,10 @@
 		A8242DAD227BC91B006143CB /* RotateHelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateHelperView.swift; sourceTree = "<group>"; };
 		A8242DAF227C0C51006143CB /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		A8242DB1227D3F29006143CB /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		A8242DB5227D5194006143CB /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		A8242DB7227D536B006143CB /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		A8242DBB227DBC8E006143CB /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
+		A8242DBD227DC641006143CB /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		A8242DBE227DC641006143CB /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
 		A82B5F322268A2270093671D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A82B5F342268A4930093671D /* NewDeign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeign.swift; sourceTree = "<group>"; };
 		A82B5F362268C8090093671D /* HelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperView.swift; sourceTree = "<group>"; };
@@ -247,6 +251,8 @@
 				A8DEBBA422549DC30081A694 /* ImageCollectionReusableView.xib */,
 				A8DEBB9A22545B8F0081A694 /* CollectionReusableView.xib */,
 				A8DEBB9922545B8F0081A694 /* CollectionReusableView.swift */,
+				A8242DBD227DC641006143CB /* FilterCollectionViewCell.swift */,
+				A8242DBE227DC641006143CB /* FilterCollectionViewCell.xib */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -302,7 +308,6 @@
 				A8AD7464226C004E00BDE3A7 /* ALImageView.swift */,
 				A8B5E4F6226D91D800514A75 /* ALTextView.swift */,
 				A8E30642226319FD00DA03A7 /* ALShapeView.swift */,
-				A8242DB5227D5194006143CB /* IconView.swift */,
 				A8E30641226300A800DA03A7 /* Shape */,
 				A8BFF77C225A37960010E56B /* Image */,
 				A8BFF77B225A37770010E56B /* Color */,
@@ -323,9 +328,9 @@
 				A8D2C480225268000085AD24 /* EditingViewController.swift */,
 				A8242DB1227D3F29006143CB /* BaseViewController.swift */,
 				A8D2C4712252270C0085AD24 /* ContainerViewController.swift */,
+				A8BFF77F225A4AC00010E56B /* ImageEditContainerViewController.swift */,
 				A8D2C4832252F9FF0085AD24 /* ImageContainerViewController.swift */,
 				A8DEBBA1225496D20081A694 /* AddImageContainerViewController.swift */,
-				A8BFF77F225A4AC00010E56B /* ImageEditContainerViewController.swift */,
 				A8E3063B2262FE0000DA03A7 /* ShapeContainerViewController.swift */,
 				A80F296A22660BED009C13F5 /* TextContainerViewController.swift */,
 				A8242DB7227D536B006143CB /* LaunchScreenViewController.swift */,
@@ -364,6 +369,7 @@
 				A86824C72260838200BDCCD8 /* ALRotationGestureRecognizer.swift */,
 				A816BEB422758CC4004E3896 /* UITextField+Extension.swift */,
 				A8242DAF227C0C51006143CB /* Float+Extension.swift */,
+				A8242DBB227DBC8E006143CB /* FilterType.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -449,6 +455,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8BFF76F22586E5C0010E56B /* FontTableViewCell.xib in Resources */,
+				A8242DC0227DC641006143CB /* FilterCollectionViewCell.xib in Resources */,
 				A8E306402263009D00DA03A7 /* ShapeCollectionViewCell.xib in Resources */,
 				A8BFF7782258D1970010E56B /* FontSizeTableViewCell.xib in Resources */,
 				A8D2C45D225219080085AD24 /* LaunchScreen.storyboard in Resources */,
@@ -609,6 +616,7 @@
 				A8BFF7772258D1970010E56B /* FontSizeTableViewCell.swift in Sources */,
 				A8242DB2227D3F29006143CB /* BaseViewController.swift in Sources */,
 				A86824C2225CCF4000BDCCD8 /* Notification.swift in Sources */,
+				A8242DBF227DC641006143CB /* FilterCollectionViewCell.swift in Sources */,
 				A8E30643226319FD00DA03A7 /* ALShapeView.swift in Sources */,
 				A84880CF22704A8900F308AC /* RenameView.swift in Sources */,
 				A865976F2269D22F000789A2 /* Result.swift in Sources */,
@@ -616,12 +624,12 @@
 				A86824C62260461500BDCCD8 /* UIView+Extension.swift in Sources */,
 				A8242DB8227D536B006143CB /* LaunchScreenViewController.swift in Sources */,
 				A8BFF77A2259E1960010E56B /* UIButton+Extenstion.swift in Sources */,
+				A8242DBC227DBC8E006143CB /* FilterType.swift in Sources */,
 				A8DEBBB2225638070081A694 /* UIImageView+Extension.swift in Sources */,
 				A80804EB226882720042E4FF /* EditeFrameView.swift in Sources */,
 				A8D2C458225219030085AD24 /* Desiging.xcdatamodeld in Sources */,
 				A8BFF76E22586E5C0010E56B /* FontTableViewCell.swift in Sources */,
 				A8E3063C2262FE0000DA03A7 /* ShapeContainerViewController.swift in Sources */,
-				A8242DB6227D5194006143CB /* IconView.swift in Sources */,
 				A8BFF76B22586E3D0010E56B /* UIFont+Extension.swift in Sources */,
 				A82B5F372268C8090093671D /* HelperView.swift in Sources */,
 				A8E3063F2263009C00DA03A7 /* ShapeCollectionViewCell.swift in Sources */,

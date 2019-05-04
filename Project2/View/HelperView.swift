@@ -22,12 +22,7 @@ class HelperView: UIView {
     
     var rotateHelper = RotateHelperView()
     var positionHelper  =  UIImageView()
-    var editingFrame = EditFrameView() {
-        
-        didSet {
-            editingFrame.backgroundColor = UIColor.clear
-        }
-    }
+    var editingFrame = EditFrameView()
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -54,6 +49,7 @@ class HelperView: UIView {
         setupSizeHelper()
         enableUserInteractive()
         setupCornerHelper()
+        
     }
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
@@ -295,5 +291,29 @@ class HelperView: UIView {
         leftBottomHelper.alpha = 1
         rightTopHelper.alpha = 1
         rightBottomHelper.alpha = 1
+    }
+    
+    override func draw(_ layer: CALayer, in ctx: CGContext) {
+        
+        super.draw(layer, in: ctx)
+    
+    }
+    
+    func setupAlignmentLine() {
+        
+        let layer = CAShapeLayer.init()
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: self.frame.width/2, y: 0))
+        path.addLine(to: CGPoint(x: self.frame.width/2, y: self.frame.height))
+        layer.path = path.cgPath
+        
+        layer.lineWidth = 1
+        
+        layer.strokeColor = UIColor.red.cgColor
+        layer.lineDashPattern = [1, 1]// Here you set line length
+        layer.backgroundColor = UIColor.clear.cgColor
+        layer.fillColor = UIColor.clear.cgColor
+        self.layer.addSublayer(layer)
+        
     }
 }
