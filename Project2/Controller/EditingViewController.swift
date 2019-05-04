@@ -435,9 +435,6 @@ class EditingViewController: UIViewController {
     @IBAction func slideToRotate(_ sender: UISlider) {
         
         let transform = CGAffineTransform(rotationAngle: CGFloat(sender.value/360)*CGFloat.pi*2)
-        
-        print(sender.value)
-        print(CGFloat(sender.value/360)*CGFloat.pi*2)
 
         //To keep the transformation
         let xScale = helperView.transform.scaleX
@@ -901,9 +898,7 @@ extension EditingViewController {
         switch state {
             
         case .began:
-            
-            print("---------start-----------")
-            
+           
             originLocation = sender.location(in: designView)
             
         case .changed:
@@ -937,12 +932,7 @@ extension EditingViewController {
             var originAngle: CGFloat = 0
 
             guard let angle = editingView?.transform.angleInDegrees else { return }
-            
-//            if angle < CGFloat(0) {
-//
-//                originAngle = 360 + originAngle
-//            }
-            
+
             let result = isClockwise(from: originLocation, to: newLocation, center: origin)
             
             print(result)
@@ -968,29 +958,11 @@ extension EditingViewController {
                 
             }
 
-            print(angle)
-            print(originAngle)
-            print(newAngle)
-            print(originAngle+newAngle)
-//            print(editingView?.transform.angleInDegrees)
-            print(".....................")
-            
         default:
-            
-            print("---------END-----------")
-            
+   
             helperView.rotateHelper.decreaseHitInset()
         }
-        
-//        guard let rotateDegree = editingView?.transform.angleInDegrees else { return }
-//
-//        if Int(rotateDegree) >= 0 {
-//            rotateSlider.value = Float(Int(rotateDegree))
-//
-//        } else {
-//              rotateSlider.value = Float(360-Int(rotateDegree)*(-1))
-//        }
-        
+ 
     }
     
     @objc func handleLeftHelper(sender: UIPanGestureRecognizer) {
@@ -1153,19 +1125,22 @@ extension EditingViewController {
        
         //Quadrant one & four
         case let value where value > 0 :
+          
+            let oldC = CGPointDistance(from: oldPoint, to: CGPoint(x: center.x, y: center.y+10))
             
-            print("第1/4象限")
+            let newC = CGPointDistance(from: newPoint, to: CGPoint(x: center.x, y: center.y+10))
             
-            if oldPoint.y >= newPoint.y {
+            let distance = CGPointDistance(from: oldPoint, to: center)
+            
+            let distance2 = CGPointDistance(from: newPoint, to: center)
+            
+            let oldAngle = acos((distance*distance+10*10-oldC*oldC)/(2*distance*10))
+            
+            let newAngle = acos((distance2*distance2+10*10-newC*newC)/(2*distance2*10))
+            
+            if newAngle < oldAngle {
                 
-                if oldPoint.x > newPoint.x {
-                   
-                    return true
-                    
-                } else {
-                    
-                    return false
-                }
+                return true
 
             } else {
                 
@@ -1173,9 +1148,7 @@ extension EditingViewController {
             }
             
         case let value where value == 0 :
-            
-            print("y軸上")
-        
+          
             if oldPoint.y > center.y {
                 
                 if newPoint.x > oldPoint.x {
@@ -1199,9 +1172,7 @@ extension EditingViewController {
             
         //Quadrant two & three
         default:
-            
-            print("第2/3")
-            
+          
             let oldC = CGPointDistance(from: oldPoint, to: CGPoint(x: center.x, y: center.y+10))
             
             let newC = CGPointDistance(from: newPoint, to: CGPoint(x: center.x, y: center.y+10))
