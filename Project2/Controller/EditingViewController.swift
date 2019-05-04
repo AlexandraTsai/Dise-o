@@ -11,7 +11,7 @@ import Fusuma
 import CoreGraphics
 
 // swiftlint:disable file_length
-class EditingViewController: UIViewController {
+class EditingViewController: BaseViewController {
 
     @IBOutlet weak var currentFontBtn: UIButton! {
         
@@ -83,7 +83,6 @@ class EditingViewController: UIViewController {
     
     @IBOutlet weak var imageEditContainerView: UIView!
     @IBOutlet weak var selectFontView: UIView!
-    @IBOutlet weak var rotationView: UIView!
     @IBOutlet weak var rotateSlider: UISlider!
     
     @IBOutlet weak var addElementButton: UIButton! {
@@ -132,7 +131,7 @@ class EditingViewController: UIViewController {
                 return
             }
             disableNavigationButton()
-            rotationView.isHidden = true
+            
             helperView = HelperView()
             
             createEditingHelper(for: editingView)
@@ -291,10 +290,7 @@ class EditingViewController: UIViewController {
         selectFontView.isHidden = true
 
     }
-    @IBAction func rotationDone(_ sender: Any) {
-        rotationView.isHidden = true
-    }
-    
+  
     @IBAction func boldButtonTapped(_ sender: Any) {
 
         guard let view =  editingView as? ALTextView else { return }
@@ -429,7 +425,7 @@ class EditingViewController: UIViewController {
                 addTapGesture(to: designView.subviews[count])
             
         }
-         rotationView.isHidden = true
+        
  
     }
     @IBAction func slideToRotate(_ sender: UISlider) {
@@ -897,8 +893,6 @@ extension EditingViewController {
         
         helperView.rotateHelper.increaseHitInset()
 
-        rotationView.isHidden = false
-        
         let state = sender.state
         
         switch state {
@@ -1629,11 +1623,17 @@ extension EditingViewController: FusumaDelegate {
     
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
         
-        guard let imageView = editingView as? UIImageView else {
+        guard let imageView = editingView as? ALImageView else {
             return
         }
         
+        let fileName = String(Date().timeIntervalSince1970)
+        
+        saveImage(fileName: fileName, image: image)
+        
         imageView.image = image
+        
+        imageView.imageFileName = fileName
 //        imageView.backgroundColor = UIColor.red
  
         let notificationName = Notification.Name(NotiName.didChangeImage.rawValue)

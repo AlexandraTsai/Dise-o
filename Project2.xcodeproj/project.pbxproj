@@ -14,6 +14,7 @@
 		A816BEB522758CC4004E3896 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A816BEB422758CC4004E3896 /* UITextField+Extension.swift */; };
 		A8242DAE227BC91B006143CB /* RotateHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DAD227BC91B006143CB /* RotateHelperView.swift */; };
 		A8242DB0227C0C51006143CB /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DAF227C0C51006143CB /* Float+Extension.swift */; };
+		A8242DB2227D3F29006143CB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DB1227D3F29006143CB /* BaseViewController.swift */; };
 		A82B5F332268A2270093671D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F322268A2270093671D /* HomeViewController.swift */; };
 		A82B5F352268A4930093671D /* NewDeign.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F342268A4930093671D /* NewDeign.swift */; };
 		A82B5F372268C8090093671D /* HelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F362268C8090093671D /* HelperView.swift */; };
@@ -91,6 +92,7 @@
 		A816BEB422758CC4004E3896 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		A8242DAD227BC91B006143CB /* RotateHelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateHelperView.swift; sourceTree = "<group>"; };
 		A8242DAF227C0C51006143CB /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
+		A8242DB1227D3F29006143CB /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A82B5F322268A2270093671D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A82B5F342268A4930093671D /* NewDeign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeign.swift; sourceTree = "<group>"; };
 		A82B5F362268C8090093671D /* HelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperView.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				A82B5F322268A2270093671D /* HomeViewController.swift */,
 				A8D2C451225219020085AD24 /* DesignViewController.swift */,
 				A8D2C480225268000085AD24 /* EditingViewController.swift */,
+				A8242DB1227D3F29006143CB /* BaseViewController.swift */,
 				A8D2C4712252270C0085AD24 /* ContainerViewController.swift */,
 				A8D2C4832252F9FF0085AD24 /* ImageContainerViewController.swift */,
 				A8DEBBA1225496D20081A694 /* AddImageContainerViewController.swift */,
@@ -598,6 +601,7 @@
 				A85B04052279C0F000853841 /* CornerHelperView.swift in Sources */,
 				A8D2C450225219020085AD24 /* AppDelegate.swift in Sources */,
 				A8BFF7772258D1970010E56B /* FontSizeTableViewCell.swift in Sources */,
+				A8242DB2227D3F29006143CB /* BaseViewController.swift in Sources */,
 				A86824C2225CCF4000BDCCD8 /* Notification.swift in Sources */,
 				A8E30643226319FD00DA03A7 /* ALShapeView.swift in Sources */,
 				A84880CF22704A8900F308AC /* RenameView.swift in Sources */,

@@ -12,7 +12,7 @@ import Photos
 import Fusuma
 
 // swiftlint:disable file_length
-class DesignViewController: UIViewController, UITextViewDelegate, FusumaDelegate {
+class DesignViewController: BaseViewController, UITextViewDelegate, FusumaDelegate {
 
     @IBOutlet weak var designView: ALDesignView!
     
@@ -967,40 +967,6 @@ extension DesignViewController {
         }
     }
     
-    func saveImage(fileName: String, image: UIImage) {
-        
-        guard let documentsDirectory = FileManager.default.urls(
-            for: .documentDirectory,
-            in: .userDomainMask).first else { return }
-        
-        let fileURL = documentsDirectory.appendingPathComponent(fileName)
-        
-        guard let data = image.jpegData(compressionQuality: 1) else { return }
-        
-        if FileManager.default.fileExists(atPath: fileURL.path) {
-            
-            do {
-                try FileManager.default.removeItem(atPath: fileURL.path)
-                print("Removed old image")
-            } catch let removeError {
-                
-                print("Couldn't remove file at path", removeError)
-            }
-        }
-        
-        do {
-            
-            try data.write(to: fileURL)
-            print(fileURL)
-            
-        } catch let error {
-            
-            print("error saving file with error", error)
-            
-        }
-        
-    }
-   
 }
 
 extension DesignViewController: ContainerViewControllerProtocol {
