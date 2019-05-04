@@ -147,14 +147,14 @@ class SelectionView: UIView {
     
     func setupButtonColor() {
         
-        openButton.backgroundColor = UIColor.black
-        saveButton.backgroundColor = UIColor.black
-        shareButton.backgroundColor = UIColor.black
-        renameButton.backgroundColor = UIColor.black
+        openButton.backgroundColor = UIColor.DSColor.yellow
+        saveButton.backgroundColor = UIColor.DSColor.heavyGreen
+        shareButton.backgroundColor = UIColor.DSColor.heavyGreen
+        renameButton.backgroundColor = UIColor.DSColor.logoC2
         deleteButton.backgroundColor = UIColor.gray
         cancelButton.backgroundColor = UIColor.white
         
-        cancelButton.layer.borderColor = UIColor.black.cgColor
+        cancelButton.layer.borderColor = UIColor.DSColor.heavyGreen.cgColor
         cancelButton.layer.borderWidth = 1
         
         openButton.layer.cornerRadius = 17

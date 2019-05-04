@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol BaseViewControllerDelegate: AnyObject {
+    
+    func showAllFilter(for image: UIImage)
+}
+
 class BaseViewController: UIViewController {
 
     override func viewDidLoad() {

@@ -163,6 +163,11 @@ class EditingViewController: BaseViewController {
                     imageContainerVC?.slider.value = Float(alpha*100)
                     imageContainerVC?.transparencyLabel.text = "\(Int(Float(alpha*100)))"
                     
+                    if let image = view.image {
+                        
+                        delegate?.showAllFilter(for: image)
+                    }
+                    
                     return
                     
                 }
@@ -201,6 +206,8 @@ class EditingViewController: BaseViewController {
     
     var tableViewIndex: Int = 0
     var originalText = ""
+    
+    weak var delegate: BaseViewControllerDelegate?
     
     @IBOutlet weak var designView: ALDesignView!
  
@@ -460,6 +467,7 @@ class EditingViewController: BaseViewController {
             
             imageContainerVC = segue.destination as? ImageEditContainerViewController
             imageContainerVC?.delegate = self
+            self.delegate = imageContainerVC
            
         }
     }
@@ -899,7 +907,7 @@ extension EditingViewController {
         case .began:
            
             originLocation = sender.location(in: designView)
-            
+          
         case .changed:
             
             if newLocation == nil {
@@ -939,7 +947,7 @@ extension EditingViewController {
                 if originAngle+newAngle >= CGFloat.pi*2 {
                     
                     editingView?.transform = CGAffineTransform(rotationAngle: originAngle+newAngle-CGFloat.pi*2)
-                    
+                   
                 } else {
                     
                     editingView?.transform =
