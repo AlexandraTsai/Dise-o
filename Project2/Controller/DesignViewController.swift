@@ -14,7 +14,17 @@ import Fusuma
 // swiftlint:disable file_length
 class DesignViewController: BaseViewController, UITextViewDelegate, FusumaDelegate {
 
-    @IBOutlet weak var designView: ALDesignView!
+    @IBOutlet weak var designView: ALDesignView! {
+        
+        didSet {
+            
+            guard let image = designView.image else { return }
+            
+            delegate?.showAllFilter(for: image)
+            
+        }
+        
+    }
     
     @IBOutlet weak var shadowView: UIView! {
         
@@ -51,6 +61,8 @@ class DesignViewController: BaseViewController, UITextViewDelegate, FusumaDelega
         }
     }
     @IBOutlet weak var textView: ALTextView!
+    
+    weak var delegate: BaseViewControllerDelegate?
 
     var editingView: UIView?
     var addingNewImage = false
@@ -83,6 +95,17 @@ class DesignViewController: BaseViewController, UITextViewDelegate, FusumaDelega
         addButton.transform = CGAffineTransform(rotationAngle: 0)
         
         self.tabBarController?.tabBar.barTintColor = UIColor.clear
+        
+        if designView.image == nil {
+            
+            self.delegate?.noImageMode()
+            
+        } else {
+            
+            guard let image = designView.image else { return }
+            
+            self.delegate?.showAllFilter(for: image)
+        }
      
     }
 
@@ -107,6 +130,7 @@ class DesignViewController: BaseViewController, UITextViewDelegate, FusumaDelega
         saveSuccessLabel.alpha = 0
         openLibraryAlert.alpha = 0
         openCameraAlert.alpha = 0
+        
     }
 
     // MARK: - Add image to Library
@@ -310,8 +334,10 @@ extension DesignViewController {
             containerVC.colorButton.isSelected = true
             containerVC.delegate = self
             
-        } else if segue.identifier
-            == "shapeSegue" {
+            self.delegate = containerVC
+            
+        } else if segue
+            .identifier == "shapeSegue" {
             
             guard let containerVC: ShapeContainerViewController = segue.destination as? ShapeContainerViewController
                 else { return }
@@ -516,6 +542,8 @@ extension DesignViewController {
             
             designView.image = nil
             designView.backgroundColor = color
+            
+            delegate?.noImageMode()
         }
     }
     
@@ -626,13 +654,13 @@ extension DesignViewController {
             image: UIImage(named: ImageAsset.Icon_HomePage.rawValue),
             style: .plain,
             target: self,
-            action: #selector(tapProfileBtn(sender:)))
+            action: #selector(tapHomeBtn(sender:)))
          self.navigationItem.leftBarButtonItem  = leftButton
         
     }
    
     // swiftlint:disable cyclomatic_complexity
-    @objc func tapProfileBtn(sender: AnyObject) {
+    @objc func tapHomeBtn(sender: AnyObject) {
         
         let date = String(Date().timeIntervalSince1970)
         
@@ -868,8 +896,12 @@ extension DesignViewController {
                                                      y: designView.frame.height/2-75,
                                                      width: 150,
                                                      height: 150))
-            newImage.image = image
-
+            
+            DispatchQueue.main.async { [ weak newImage ] in
+                
+                newImage?.image = image
+            }
+    
             newImage.imageFileName = fileName
             
             designView.addSubview(newImage)
@@ -880,7 +912,12 @@ extension DesignViewController {
             
         } else {
             
-            designView.image = image
+            DispatchQueue.main.async { [ weak self ] in
+                
+                self?.designView.image = image
+                
+                self?.delegate?.showAllFilter(for: image)
+            }
             
             designView.imageFileName = fileName
             
@@ -1017,5 +1054,32 @@ extension DesignViewController: ContainerViewControllerProtocol {
         
     }
     
+    func changeImageWith(filter: FilterType?) {
+        
+        guard let fileName = designView.imageFileName else { return }
+        
+        let originImage = loadImageFromDiskWith(fileName: fileName)
+ 
+        if let filter = filter {
+            
+            DispatchQueue.main.async { [weak self] in
+                
+                self?.designView.image = originImage?.addFilter(filter: filter)
+                
+            }
+            
+            designView.filterName = filter
+            
+        } else {
+            
+            DispatchQueue.main.async { [weak self] in
+                
+                 self?.designView.image = originImage
+            }
+           
+            designView.filterName = nil
+        }
+       
+    }
 }
 // swiftlint:enable file_length

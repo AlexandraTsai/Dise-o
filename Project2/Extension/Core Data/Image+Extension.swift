@@ -33,6 +33,8 @@ extension Image {
                     
                     imageView.image = image?.addFilter(filter: type)
                     
+                    imageView.filterName = type
+                    
                 }
             }
             

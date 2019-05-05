@@ -83,6 +83,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
     }
     
     @IBOutlet weak var paletteView: UIView!
+    @IBOutlet weak var defaultColorView: UIView!
     @IBOutlet weak var transparencyView: UIView!
     
     @IBOutlet weak var colorSquarePicker: ColorSquarePicker!
@@ -119,9 +120,9 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         
         super.viewWillAppear(animated)
         
-        paletteView.isHidden = true
-        transparencyView.isHidden = true
-        filterView.isHidden = true
+//        paletteView.isHidden = true
+//        transparencyView.isHidden = true
+//        filterView.isHidden = true
         
     }
 
@@ -131,20 +132,11 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
 
         filterCollectionView.al_registerCellWithNib(identifier: String(describing: FilterCollectionViewCell.self),
                                                     bundle: nil)
-        
-//        photoManager.delegate = self
-//        photoManager.grabPhoto()
-
-//         imageCollectionView.al_registerCellWithNib(
-//             identifier: String(describing: PhotoCollectionViewCell.self),
-//             bundle: nil)
 
         setupCollectionViewLayout()
         
         createNotification()
-        
-//        filterBtn.isSelected = true
-        
+
     }
     
     func setupImage() {
@@ -153,21 +145,21 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
     
     @IBAction func cameraRollBtnTapped(_ sender: Any) {
         
-//        cameraRollBtn.isSelected = true
-//        colorBtn.isSelected = false
-//        filterBtn.isSelected = false
-//        transparencyBtn.isSelected = false
-        
         cameraRollBtn.tintColor = UIColor.DSColor.heavyGreen
         colorBtn.tintColor = UIColor.DSColor.lightGreen
         transparencyBtn.tintColor = UIColor.DSColor.lightGreen
-        transparencyView.isHidden = true
+        filterBtn.tintColor = UIColor.DSColor.lightGreen
+        
         photoView.isHidden = false
+        transparencyView.isHidden = true
         filterView.isHidden = true
+        defaultColorView.isHidden = true
+        paletteView.isHidden = true
 
         cameraUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
         colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         transparencyUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        filterUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         
     }
     @IBAction func colorsBtnTapped(_ sender: Any) {
@@ -175,15 +167,18 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         cameraRollBtn.tintColor = UIColor.DSColor.lightGreen
         colorBtn.tintColor = UIColor.DSColor.heavyGreen
         transparencyBtn.tintColor = UIColor.DSColor.lightGreen
+        filterBtn.tintColor = UIColor.DSColor.lightGreen
         
         cameraUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         colorUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
         transparencyUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        filterUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         
         transparencyView.isHidden = true
         photoView.isHidden = true
         filterView.isHidden = true
-
+        defaultColorView.isHidden = false
+        
     }
     
     @IBAction func filterBtnTapped(_ sender: Any) {
@@ -198,18 +193,18 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         cameraUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         transparencyUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        filterUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
         
         transparencyView.isHidden = true
         photoView.isHidden = true
+        filterView.isHidden = false
+        defaultColorView.isHidden = true
+        paletteView.isHidden = true
         
     }
 
     @IBAction func transparencyBtnTapped(_ sender: Any) {
-        
-//        cameraRollBtn.isSelected = false
-//        colorBtn.isSelected = false
-////        filterBtn.isSelected = false
-//        transparencyBtn.isSelected = true
+
         cameraRollBtn.tintColor = UIColor.DSColor.lightGreen
         colorBtn.tintColor = UIColor.DSColor.lightGreen
         transparencyBtn.tintColor = UIColor.DSColor.heavyGreen
@@ -217,10 +212,13 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         cameraUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         transparencyUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
+        filterUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         
         transparencyView.isHidden = false
         photoView.isHidden = true
         filterView.isHidden = true
+        defaultColorView.isHidden = true
+        paletteView.isHidden = true
     }
     
     @IBAction func photoLibraryBtnTapped(_ sender: UIButton) {
@@ -251,7 +249,9 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
                 }
                 
             })
+            
         default:
+            
             delegate?.showPhotoLibrayAlert()
         
         }
@@ -297,6 +297,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
     @IBAction func usedColorBtnTapped(_ sender: Any) {
         
         paletteView.isHidden = false
+        defaultColorView.isHidden = true
         
         let notificationName = Notification.Name(NotiName.addElementButton.rawValue)
         
@@ -437,6 +438,53 @@ extension ImageEditContainerViewController: BaseViewControllerDelegate {
         imageToBeEdit = image
         
         filterCollectionView.reloadData()
+    }
+    
+    func editImageMode() {
+        
+        filterView.isHidden = false
+       
+        photoView.isHidden = true
+        transparencyView.isHidden = true
+        defaultColorView.isHidden = true
+        paletteView.isHidden = true
+        
+        cameraRollBtn.isHidden = false
+        cameraUnderLine.isHidden = false
+        filterBtn.isHidden = false
+        filterUnderLine.isHidden = false
+        
+        cameraRollBtn.tintColor = UIColor.DSColor.lightGreen
+        cameraUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        colorBtn.tintColor = UIColor.DSColor.lightGreen
+        colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        transparencyBtn.tintColor = UIColor.DSColor.lightGreen
+        transparencyUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        
+        filterBtn.tintColor = UIColor.DSColor.heavyGreen
+        filterUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
+        
+    }
+    
+    func editShapeMode() {
+        
+        photoView.isHidden = true
+        filterView.isHidden = true
+        transparencyView.isHidden = true
+        defaultColorView.isHidden = false
+        paletteView.isHidden = true
+        
+        cameraRollBtn.isHidden = true
+        cameraUnderLine.isHidden = true
+        filterBtn.isHidden = true
+        filterUnderLine.isHidden = true
+        
+        colorBtn.tintColor = UIColor.DSColor.heavyGreen
+        colorUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
+        
+        transparencyBtn.tintColor = UIColor.DSColor.lightGreen
+        transparencyUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        
     }
 }
 

@@ -14,15 +14,28 @@ protocol ContainerViewControllerProtocol: AnyObject {
     
     func showPhotoLibrayAlert()
     func showCameraAlert()
+    func changeImageWith(filter: FilterType?)
     
 }
 
-class ContainerViewController: UIViewController, PhotoManagerDelegate {
+class ContainerViewController: UIViewController {
+    
+    var imageToBeEdit: UIImage?
 
     @IBOutlet weak var colorSquarePicker: ColorSquarePicker!
     @IBOutlet weak var colorIndicatorView: ColorIndicatorView!
     
     @IBOutlet weak var photoView: UIView!
+    @IBOutlet weak var filterView: UIView!
+    @IBOutlet weak var filterCollectionView: UICollectionView! {
+        
+        didSet {
+            
+            filterCollectionView.delegate = self
+            filterCollectionView.dataSource = self
+            
+        }
+    }
     
     @IBOutlet weak var cameraRollButton: UIButton! {
         
@@ -45,7 +58,27 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
         
     }
     
-    @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var filterButton: UIButton! {
+        
+        didSet {
+            
+            filterButton.setImage(ImageAsset.Icon_filter.imageTemplate, for: .normal)
+            
+            filterButton.tintColor = UIColor.DSColor.heavyGreen
+            
+        }
+        
+    }
+    
+    @IBOutlet weak var filterUnderLine: UIView! {
+        
+        didSet {
+            
+            filterUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
+        }
+
+    }
+    
     @IBOutlet weak var colorButton: UIButton! {
         
         didSet {
@@ -67,17 +100,6 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
         
     }
 
-    @IBOutlet weak var collectionView: UICollectionView! {
-
-        didSet {
-
-            collectionView.delegate = self
-
-            collectionView.dataSource = self
-
-        }
-    }
-    
     weak var delegate: ContainerViewControllerProtocol?
 
     let photoManager = PhotoManager()
@@ -91,43 +113,48 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
         colorButton.isSelected = true
 
         createNotification()
-        
-//        didChangeColor(colorSquarePicker.color)
+ 
+        filterCollectionView.al_registerCellWithNib(identifier: String(describing: FilterCollectionViewCell.self),
+                                                    bundle: nil)
 
-//        collectionView.al_registerCellWithNib(identifier: String(describing:
-//        PhotoCollectionViewCell.self), bundle: nil)
-//        collectionView.al_registerHeaderViewWithNib(identifier:  String(describing:
-//        CollectionReusableView.self), bundle: nil)
-
-//        setupCollectionViewLayout()
-
-//        photoManager.delegate = self
-//        photoManager.grabPhoto()
-
+        setupCollectionViewLayout()
     }
 
     @IBAction func cameraRollBtnTapped(_ sender: Any) {
         
         photoView.isHidden = false
+        filterView.isHidden = true
         
         colorButton.tintColor = UIColor.DSColor.lightGreen
         colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         
         cameraRollButton.tintColor = UIColor.DSColor.heavyGreen
         cameraUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
+        
+        filterButton.tintColor = UIColor.DSColor.lightGreen
+        filterUnderLine.backgroundColor = UIColor.DSColor.lightGreen
 
     }
 
     @IBAction func filterBtnTapped(_ sender: Any) {
 
-//        filterButton.isSelected = true
-        colorButton.isSelected = false
+        photoView.isHidden = true
+        filterView.isHidden = false
+        
+        filterButton.tintColor = UIColor.DSColor.heavyGreen
+        filterUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
+        
+        cameraRollButton.tintColor = UIColor.DSColor.lightGreen
+        cameraUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        
+        colorButton.tintColor = UIColor.DSColor.lightGreen
+        colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+    
     }
 
     @IBAction func colorBtnTapped(_ sender: Any) {
 
-//        filterButton.isSelected = false
-        
+        filterView.isHidden = true
         photoView.isHidden = true
         
         colorButton.tintColor = UIColor.DSColor.heavyGreen
@@ -136,11 +163,11 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
         cameraRollButton.tintColor = UIColor.DSColor.lightGreen
         cameraUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         
+        filterButton.tintColor = UIColor.DSColor.lightGreen
+        filterUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        
     }
-    func setupImage() {
-        collectionView.reloadData()
-    }
-
+    
     @IBAction func colorBarPickerValueChnaged(_ sender: ColorBarPicker) {
        
         colorSquarePicker.hue = sender.hue
@@ -239,11 +266,11 @@ class ContainerViewController: UIViewController, PhotoManagerDelegate {
     }
 }
 
-extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-
+extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDataSource, BaseViewControllerDelegate {
+   
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return imageArray.count
+        return FilterType.allCases.count+1
 
     }
 
@@ -252,46 +279,86 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
     -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: PhotoCollectionViewCell.self),
+            withReuseIdentifier: String(describing: FilterCollectionViewCell.self),
             for: indexPath)
         
-        guard let photoCell = cell as? PhotoCollectionViewCell else {
+        guard let filterCell = cell as? FilterCollectionViewCell else {
             return cell
         }
-
-        photoCell.photoImage.image = imageArray[indexPath.item]
-
-        return photoCell
+        
+        if indexPath.item == 0 {
+            
+            filterCell.filteredImage.image = imageToBeEdit
+            
+        } else {
+            
+            let filter = FilterType.allCases[indexPath.item-1]
+            
+            filterCell.filteredImage.image = imageToBeEdit?.addFilter(filter: filter)
+            
+        }
+        
+        return filterCell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
-//        NotificationCenter.default.post(name: notificationName, object: nil, userInfo:
-//        [NotificationInfo.newImage: imageArray[indexPath.item]])
-
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.newImage: imageURL[indexPath.item]])
-
+        if indexPath.item == 0 {
+            
+            delegate?.changeImageWith(filter: nil)
+            
+        } else {
+            
+            delegate?.changeImageWith(filter: FilterType.allCases[indexPath.item-1])
+            
+        }
+        
+    }
+    
+    func showAllFilter(for image: UIImage) {
+        
+        imageToBeEdit = image
+        
+        filterCollectionView.reloadData()
+        
+        editImageMode()
+    }
+    
+    func editImageMode() {
+        
+        filterView.isHidden = false
+        filterCollectionView.isHidden = false
+//        filterButton.isEnabled = true
+        
+        filterButton.tintColor = UIColor.DSColor.heavyGreen
+        filterUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
+        
+        cameraRollButton.tintColor = UIColor.DSColor.lightGreen
+        cameraUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        
+        colorButton.tintColor = UIColor.DSColor.lightGreen
+        colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        
+    }
+   
+    func noImageMode() {
+        
+        filterView.isHidden = true
+        filterCollectionView.isHidden = true
+//        filterButton.isEnabled = false
+        photoView.isHidden = true
+        
+        filterButton.tintColor = UIColor.DSColor.lightGreen
+        filterUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        
+        cameraRollButton.tintColor = UIColor.DSColor.lightGreen
+        cameraUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        
+        colorButton.tintColor = UIColor.DSColor.heavyGreen
+        colorUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
+        
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath)
-    -> UICollectionReusableView {
-
-        let reusableView = collectionView.dequeueReusableSupplementaryView(
-            ofKind: kind,
-            withReuseIdentifier: String(describing: CollectionReusableView.self),
-            for: indexPath)
-
-        guard let header = reusableView as? CollectionReusableView else { return reusableView }
-
-        return header
-
-    }
 }
 
 extension ContainerViewController {
@@ -299,21 +366,19 @@ extension ContainerViewController {
     private func setupCollectionViewLayout() {
 
         let flowLayout = UICollectionViewFlowLayout()
-
+        
         flowLayout.itemSize = CGSize(
-            width: UIScreen.main.bounds.width/4,
-            height: UIScreen.main.bounds.width/4
+            width: UIScreen.main.bounds.width/5,
+            height: UIScreen.main.bounds.width/5
         )
-
+        
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-
-        flowLayout.minimumInteritemSpacing = 0
-
+        
+        flowLayout.minimumInteritemSpacing = 5
+        
         flowLayout.minimumLineSpacing = 0
-
-        flowLayout.headerReferenceSize = CGSize(width: collectionView.frame.width, height: 40) // header zone
-
-        collectionView.collectionViewLayout = flowLayout
+        
+        filterCollectionView.collectionViewLayout = flowLayout
     }
 }
 

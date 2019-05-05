@@ -11,6 +11,24 @@ import UIKit
 protocol BaseViewControllerDelegate: AnyObject {
     
     func showAllFilter(for image: UIImage)
+    
+    func editImageMode()
+    
+    func editShapeMode()
+    
+    func noImageMode()
+}
+
+extension BaseViewControllerDelegate {
+    
+    func editShapeMode() {
+        
+    }
+    
+    func noImageMode() {
+        
+    }
+    
 }
 
 class BaseViewController: UIViewController {

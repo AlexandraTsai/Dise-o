@@ -144,19 +144,8 @@ class EditingViewController: BaseViewController {
                 guard let view = editingView as? ALShapeView else {
                     
                     guard let view = editingView as? ALImageView else { return }
-                    
-                    imageContainerVC?.cameraRollBtn.alpha = 1
-                    imageContainerVC?.cameraUnderLine.alpha = 1
-                    imageContainerVC?.photoView.alpha = 1
-                    
-                    imageContainerVC?.cameraRollBtn.tintColor = UIColor.DSColor.heavyGreen
-                    imageContainerVC?.cameraUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
-                    
-                    imageContainerVC?.colorBtn.tintColor = UIColor.DSColor.lightGreen
-                    imageContainerVC?.colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
-                    
-                    imageContainerVC?.transparencyView.isHidden = true
-                    imageContainerVC?.transparencyBtn.isSelected = false
+          
+                    imageContainerVC?.editImageMode()
                     
                     let alpha = view.alpha
                    
@@ -172,13 +161,8 @@ class EditingViewController: BaseViewController {
                     
                 }
                 
-                imageContainerVC?.cameraRollBtn.alpha = 0
-                imageContainerVC?.cameraUnderLine.alpha = 0
-                imageContainerVC?.photoView.alpha = 0
-                
-                imageContainerVC?.colorBtn.tintColor = UIColor.DSColor.heavyGreen
-                imageContainerVC?.colorUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
-                
+                imageContainerVC?.editShapeMode()
+
                 let notificationName = Notification.Name(NotiName.paletteColor.rawValue)
                 
                 NotificationCenter.default.post(name: notificationName,
@@ -1623,7 +1607,11 @@ extension EditingViewController: FusumaDelegate {
         
         saveImage(fileName: fileName, image: image)
         
-        imageView.image = image
+        DispatchQueue.main.async { [weak imageView] in
+            
+            imageView?.image = image
+            
+        }
         
         imageView.imageFileName = fileName
         
@@ -1777,12 +1765,22 @@ extension EditingViewController: ImageEditContainerViewControllerProtocol {
         
         if let filter = filter {
             
-            imageView.image = originImage?.addFilter(filter: filter)
+            DispatchQueue.main.async { [weak imageView] in
+                
+                imageView?.image = originImage?.addFilter(filter: filter)
+                
+            }
+            
             imageView.filterName = filter
             
         } else {
+            
+            DispatchQueue.main.async { [weak imageView] in
+                
+                imageView?.image = originImage
+                
+            }
           
-            imageView.image = originImage
             imageView.filterName = nil
             
         }
