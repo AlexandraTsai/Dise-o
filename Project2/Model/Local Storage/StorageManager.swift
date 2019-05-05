@@ -366,6 +366,8 @@ extension Image: LayerProtocol {
             filter = object.filterName?.rawValue
         }
         
+        alpha = object.alpha as NSObject
+        
         transform = object.transform as NSObject
         
         object.transform = CGAffineTransform(rotationAngle: 0)

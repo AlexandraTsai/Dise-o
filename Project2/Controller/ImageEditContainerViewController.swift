@@ -39,6 +39,10 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
         }
     }
     
+    deinit {
+        print("ImageEditContainer is deinit")
+    }
+    
     @IBOutlet weak var cameraRollBtn: UIButton! {
         
         didSet {
