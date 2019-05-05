@@ -12,6 +12,8 @@ class ALDesignView: UIImageView {
     
     var designName: String = ""
     
+    var filterName: FilterType?
+    
     var createTime: Int64?
     
     var subImages = [ALImageView]()
