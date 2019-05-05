@@ -150,8 +150,8 @@ class SelectionView: UIView {
         openButton.backgroundColor = UIColor.DSColor.yellow
         saveButton.backgroundColor = UIColor.DSColor.heavyGreen
         shareButton.backgroundColor = UIColor.DSColor.heavyGreen
-        renameButton.backgroundColor = UIColor.DSColor.logoC2
-        deleteButton.backgroundColor = UIColor.gray
+        renameButton.backgroundColor = UIColor.DSColor.mediumGray
+        deleteButton.backgroundColor = UIColor.DSColor.red
         cancelButton.backgroundColor = UIColor.white
         
         cancelButton.layer.borderColor = UIColor.DSColor.heavyGreen.cgColor

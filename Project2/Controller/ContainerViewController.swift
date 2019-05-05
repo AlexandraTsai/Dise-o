@@ -37,6 +37,10 @@ class ContainerViewController: UIViewController {
         }
     }
     
+    deinit {
+        print("ContainerVC is deinit")
+    }
+    
     @IBOutlet weak var cameraRollButton: UIButton! {
         
         didSet {

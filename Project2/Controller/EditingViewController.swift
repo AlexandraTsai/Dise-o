@@ -83,8 +83,7 @@ class EditingViewController: BaseViewController {
     
     @IBOutlet weak var imageEditContainerView: UIView!
     @IBOutlet weak var selectFontView: UIView!
-    @IBOutlet weak var rotateSlider: UISlider!
-    
+   
     @IBOutlet weak var addElementButton: UIButton! {
         
         didSet {
@@ -160,6 +159,10 @@ class EditingViewController: BaseViewController {
                     return
                     
                 }
+                
+                let alpha = view.alpha
+                
+                imageContainerVC?.slider.value = Float(alpha*100)
                 
                 imageContainerVC?.editShapeMode()
 
@@ -418,25 +421,7 @@ class EditingViewController: BaseViewController {
         }
         
     }
-    @IBAction func slideToRotate(_ sender: UISlider) {
-        
-        let transform = CGAffineTransform(rotationAngle: CGFloat(sender.value/360)*CGFloat.pi*2)
-
-        //To keep the transformation
-        let xScale = helperView.transform.scaleX
-        let yScale = helperView.transform.scaleY
-        helperView.transform = transform.scaledBy(x: xScale, y: yScale)
-      
-        //Get the center of editingFrame from helperView to designView
-        let center = helperView.convert(helperView.editingFrame.center, to: designView)
-        
-        //Make editingView's center equal to editingFrame's center
-        editingView?.center = center
-        
-        editingView?.transform = helperView.transform
-        
-    }
-    
+ 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         super.prepare(for: segue, sender: sender)
@@ -457,6 +442,7 @@ class EditingViewController: BaseViewController {
     }
     
     @objc func editImageTransparency(sender: UISlider) {
+        
         editingView?.alpha = CGFloat(sender.value/100)
     }
 

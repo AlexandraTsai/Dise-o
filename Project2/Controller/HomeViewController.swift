@@ -418,6 +418,8 @@ extension HomeViewController {
         
         designVC.designView.designName = selectedDesign.designName
         
+        designVC.designView.alpha = selectedDesign.alpha
+        
         if let filter = selectedDesign.filterName {
             
             designVC.designView.image = selectedDesign.image?.addFilter(filter: filter)

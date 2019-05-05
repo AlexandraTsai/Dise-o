@@ -15,7 +15,8 @@ extension Image {
         
         guard let frame = self.frame as? CGRect,
             let fileName = self.image,
-            let transform = self.transform as? CGAffineTransform else { return }
+            let transform = self.transform as? CGAffineTransform,
+            let alpha = self.alpha as? CGFloat else { return }
         
         let imageView = ALImageView()
         
@@ -43,6 +44,8 @@ extension Image {
             imageView.image = image
             
         }
+        
+        imageView.alpha = alpha
         
         imageView.originImage = image
         
