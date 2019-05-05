@@ -13,4 +13,8 @@ class ALImageView: UIImageView {
     
     var imageFileName: String?
     
+    var filterName: FilterType?
+    
+    var originImage: UIImage?
+    
 }

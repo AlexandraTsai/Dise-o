@@ -536,8 +536,6 @@ extension HomeViewController {
             
             alertLabel.setupLabel(on: self, with: "Saved to camera roll")
             
-           
-            
             UIView.animate(withDuration: 0.4,
                            animations: {[weak self] in
                 

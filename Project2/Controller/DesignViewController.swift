@@ -458,6 +458,12 @@ extension DesignViewController {
             guard newImage.count != 0 else { return }
 
             for count in 0...newImage.count-1 {
+                
+                if let imageView = newImage[count] as? ALImageView {
+                    
+                    print(imageView.filterName)
+                    
+                }
 
                 designView.addSubview(newImage[count])
                 addAllGesture(to: newImage[count])

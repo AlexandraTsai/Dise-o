@@ -25,7 +25,24 @@ extension Image {
         
         let image = loadImageFromDiskWith(fileName: fileName)
         
-        imageView.image = image
+        if let filter = self.filter {
+            
+            for type in FilterType.allCases {
+                
+                if type.rawValue == filter {
+                    
+                    imageView.image = image?.addFilter(filter: type)
+                    
+                }
+            }
+            
+        } else {
+            
+            imageView.image = image
+            
+        }
+        
+        imageView.originImage = image
         
         imageView.imageFileName = fileName
         

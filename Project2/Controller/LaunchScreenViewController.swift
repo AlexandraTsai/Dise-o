@@ -44,7 +44,7 @@ class LaunchScreenViewController: UIViewController{
         
         animation2.fromValue = 0
         animation2.toValue = 1
-        animation2.duration = 3
+        animation2.duration = 2.5
         shapeLayer.add(animation2, forKey: "drawLineAnimation")
     
         self.view.layer.addSublayer(shapeLayer)
@@ -68,13 +68,13 @@ class LaunchScreenViewController: UIViewController{
         shapeLayer2.path = bezierPath2.cgPath
         shapeLayer2.fillColor = UIColor.clear.cgColor
         shapeLayer2.strokeColor = UIColor.DSColor.logoC2.cgColor
-        shapeLayer2.lineWidth = 3
+        shapeLayer2.lineWidth = 2.5
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         
         animation.fromValue = 0
         animation.toValue = 1
-        animation.duration = 3
+        animation.duration = 2.5
         shapeLayer2.add(animation, forKey: "drawLineAnimation")
         
          self.view.layer.addSublayer(shapeLayer2)
@@ -104,7 +104,7 @@ class LaunchScreenViewController: UIViewController{
         
         animation3.fromValue = 0
         animation3.toValue = 1
-        animation3.duration = 3
+        animation3.duration = 2.5
         shapeLayer3.add(animation3, forKey: "drawLineAnimation")
         
         self.view.layer.addSublayer(shapeLayer3)
@@ -133,7 +133,7 @@ class LaunchScreenViewController: UIViewController{
         self.view.addSubview(circleView)
         self.view.addSubview(nameView)
         
-        UIView.animate(withDuration: 0.5, delay: 3, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.5, delay: 2.5, options: .curveEaseIn, animations: {
             
             circleView.alpha = 1
             
