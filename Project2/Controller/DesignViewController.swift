@@ -18,7 +18,9 @@ class DesignViewController: BaseViewController, UITextViewDelegate, FusumaDelega
         
         didSet {
             
-            guard let image = designView.image else { return }
+            guard let fileName = designView.imageFileName else { return }
+            
+            guard let image = loadImageFromDiskWith(fileName: fileName) else { return }
             
             delegate?.showAllFilter(for: image)
             
@@ -102,7 +104,9 @@ class DesignViewController: BaseViewController, UITextViewDelegate, FusumaDelega
             
         } else {
             
-            guard let image = designView.image else { return }
+            guard let fileName = designView.imageFileName else { return }
+            
+            guard let image = loadImageFromDiskWith(fileName: fileName) else { return }
             
             self.delegate?.showAllFilter(for: image)
         }
@@ -873,6 +877,16 @@ extension DesignViewController {
         }
 
         editingVC.setupNavigationBar()
+        
+        if let imageView = viewToBeEdit as? ALImageView {
+            
+            if let image = imageView.originImage {
+                
+                editingVC.delegate?.showAllFilter(for: image)
+                
+            }
+          
+        }
 
         editingVC.editingView = viewToBeEdit
         
@@ -904,6 +918,8 @@ extension DesignViewController {
     
             newImage.imageFileName = fileName
             
+            newImage.originImage = image
+            
             designView.addSubview(newImage)
             
             goToEditingVC(with: newImage, navigationBarForImage: true)
@@ -915,6 +931,8 @@ extension DesignViewController {
             DispatchQueue.main.async { [ weak self ] in
                 
                 self?.designView.image = image
+                
+                self?.designView.filterName = nil
                 
                 self?.delegate?.showAllFilter(for: image)
             }

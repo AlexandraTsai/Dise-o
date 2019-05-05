@@ -25,6 +25,18 @@ extension Design {
         
         designView.screenshotName = screeshot
         
+        if let filter = self.filter {
+            
+            for type in FilterType.allCases {
+                
+                if type.rawValue == filter {
+                    
+                    designView.filterName = type
+                }
+            }
+            
+        }
+        
         if self.backgroundColor != nil {
             
             guard let color = self.backgroundColor as? UIColor else { return }
