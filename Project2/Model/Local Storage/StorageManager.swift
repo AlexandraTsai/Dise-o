@@ -102,6 +102,8 @@ class StorageManager {
 
         design.designName = newDesign.designName
         
+        design.filter = newDesign.filterName?.rawValue
+        
         guard let screenshot = newDesign.screenshotName else { return }
         
         design.screenshot = screenshot
@@ -164,6 +166,7 @@ class StorageManager {
                 object.setValue(design.imageFileName, forKey: "backgroundImage")
                 object.setValue(design.screenshotName, forKey: "screenshot")
                 object.setValue(design.designName, forKey: "designName")
+                object.setValue(design.filterName?.rawValue, forKey: "filter")
                
                 let images = NSSet(array:
 

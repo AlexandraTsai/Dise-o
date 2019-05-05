@@ -411,15 +411,22 @@ extension HomeViewController {
         
         //Design View
         designVC.designView.backgroundColor = selectedDesign.backgroundColor
-        
-        designVC.designView.image = selectedDesign.image
-        
+       
         designVC.designView.imageFileName = selectedDesign.imageFileName
         
         designVC.designView.createTime = selectedDesign.createTime
         
         designVC.designView.designName = selectedDesign.designName
         
+        if let filter = selectedDesign.filterName {
+            
+            designVC.designView.image = selectedDesign.image?.addFilter(filter: filter)
+
+        } else {
+            
+            designVC.designView.image = selectedDesign.image
+        }
+       
         for subView in selectedDesign.subviews {
 
             designVC.designView.addSubview(subView)
