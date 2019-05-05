@@ -143,7 +143,7 @@ class EditingViewController: BaseViewController {
 
                 guard let view = editingView as? ALShapeView else {
                     
-                    guard let view = editingView as? UIImageView else { return }
+                    guard let view = editingView as? ALImageView else { return }
                     
                     imageContainerVC?.cameraRollBtn.alpha = 1
                     imageContainerVC?.cameraUnderLine.alpha = 1
@@ -163,7 +163,7 @@ class EditingViewController: BaseViewController {
                     imageContainerVC?.slider.value = Float(alpha*100)
                     imageContainerVC?.transparencyLabel.text = "\(Int(Float(alpha*100)))"
                     
-                    if let image = view.image {
+                    if let image = view.originImage {
                         
                         delegate?.showAllFilter(for: image)
                     }
@@ -550,8 +550,9 @@ extension EditingViewController {
     }
 
     @objc func didTapDoneButton(sender: AnyObject) {
-
+        
         helperView.removeFromSuperview()
+        
         
         /*Notification*/
         let notificationName = Notification.Name(NotiName.updateImage.rawValue)
@@ -600,22 +601,6 @@ extension EditingViewController {
         default:
             designView.insertSubview(editingView, at: index-1)
         }
-        
-        //Navigationbar for ALTextView/ShapeView
-//        guard (editingView as? ALTextView) != nil || (editingView as? ALShapeView) != nil else {
-//
-//            if index == 1 {
-//                self.navigationItem.rightBarButtonItems?[2].isEnabled = false
-//
-//            }
-//
-//            if index == designView.subviews.count-2 {
-//
-//              self.navigationItem.rightBarButtonItems?[3].isEnabled = true
-//            }
-//
-//            return
-//        }
         
         //Navigationbar for UIImageView
         if index == 1 {
@@ -1793,10 +1778,12 @@ extension EditingViewController: ImageEditContainerViewControllerProtocol {
         if let filter = filter {
             
             imageView.image = originImage?.addFilter(filter: filter)
+            imageView.filterName = filter
             
         } else {
           
             imageView.image = originImage
+            imageView.filterName = nil
             
         }
         

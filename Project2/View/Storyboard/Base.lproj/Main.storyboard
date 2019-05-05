@@ -1209,7 +1209,7 @@
                                 <rect key="frame" x="0.0" y="49" width="375" height="159"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="G1c-7m-3SW">
-                                        <rect key="frame" x="10" y="0.0" width="750" height="159"/>
+                                        <rect key="frame" x="10" y="0.0" width="937.5" height="159"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iSW-XO-pe2">
                                             <size key="itemSize" width="50" height="50"/>
@@ -1226,7 +1226,7 @@
                                     <constraint firstItem="G1c-7m-3SW" firstAttribute="top" secondItem="pEy-Nu-eil" secondAttribute="top" id="cgu-aI-Cub"/>
                                     <constraint firstItem="G1c-7m-3SW" firstAttribute="leading" secondItem="pEy-Nu-eil" secondAttribute="leading" constant="10" id="f4F-aS-qb2"/>
                                     <constraint firstAttribute="bottom" secondItem="G1c-7m-3SW" secondAttribute="bottom" id="jhc-e4-bkq"/>
-                                    <constraint firstItem="G1c-7m-3SW" firstAttribute="width" secondItem="pEy-Nu-eil" secondAttribute="width" multiplier="2:1" id="or7-sS-Sa5"/>
+                                    <constraint firstItem="G1c-7m-3SW" firstAttribute="width" secondItem="pEy-Nu-eil" secondAttribute="width" multiplier="5:2" id="or7-sS-Sa5"/>
                                     <constraint firstAttribute="trailing" secondItem="G1c-7m-3SW" secondAttribute="trailing" constant="-10" id="zJT-gd-4j2"/>
                                 </constraints>
                             </scrollView>

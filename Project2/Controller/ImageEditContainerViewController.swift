@@ -18,7 +18,7 @@ protocol ImageEditContainerViewControllerProtocol: AnyObject {
     
 }
 
-class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate{
+class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate {
     
     var imageToBeEdit: UIImage?
     

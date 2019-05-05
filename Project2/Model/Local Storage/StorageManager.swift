@@ -358,6 +358,11 @@ extension Image: LayerProtocol {
             image = imageToSave
         }
         
+        if object.filterName != nil {
+            
+            filter = object.filterName?.rawValue
+        }
+        
         transform = object.transform as NSObject
         
         object.transform = CGAffineTransform(rotationAngle: 0)
