@@ -1641,6 +1641,8 @@ extension EditingViewController: FusumaDelegate {
         imageView.image = image
         
         imageView.imageFileName = fileName
+        
+        self.delegate?.showAllFilter(for: image)
 //        imageView.backgroundColor = UIColor.red
  
         let notificationName = Notification.Name(NotiName.didChangeImage.rawValue)
@@ -1776,6 +1778,28 @@ extension EditingViewController: ImageEditContainerViewControllerProtocol {
         openCameraAlert.alpha = 1
         openCameraAlert.addOn(self.view)
         openCameraAlert.titleLabel.text = "To use the Camera, pleace allow permission for Diseño in Settings."
+    }
+    
+    func changeImageWith(filter: FilterType?) {
+        
+        guard let imageView = editingView as? ALImageView else {
+            return
+        }
+        
+        guard let fileName = imageView.imageFileName else { return }
+        
+        let originImage = loadImageFromDiskWith(fileName: fileName)
+        
+        if let filter = filter {
+            
+            imageView.image = originImage?.addFilter(filter: filter)
+            
+        } else {
+          
+            imageView.image = originImage
+            
+        }
+        
     }
 }
 

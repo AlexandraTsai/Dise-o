@@ -14,6 +14,7 @@ protocol ImageEditContainerViewControllerProtocol: AnyObject {
     
     func showPhotoLibrayAlert()
     func showCameraAlert()
+    func changeImageWith(filter: FilterType?)
     
 }
 
@@ -162,7 +163,8 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate{
         transparencyBtn.tintColor = UIColor.DSColor.lightGreen
         transparencyView.isHidden = true
         photoView.isHidden = false
-        
+        filterView.isHidden = true
+
         cameraUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
         colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         transparencyUnderLine.backgroundColor = UIColor.DSColor.lightGreen
@@ -180,6 +182,8 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate{
         
         transparencyView.isHidden = true
         photoView.isHidden = true
+        filterView.isHidden = true
+
     }
     
     @IBAction func filterBtnTapped(_ sender: Any) {
@@ -216,7 +220,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate{
         
         transparencyView.isHidden = false
         photoView.isHidden = true
-        
+        filterView.isHidden = true
     }
     
     @IBAction func photoLibraryBtnTapped(_ sender: UIButton) {
@@ -363,7 +367,7 @@ class ImageEditContainerViewController: UIViewController, PhotoManagerDelegate{
 extension ImageEditContainerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return FilterType.allCases.count
+        return FilterType.allCases.count+1
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -377,9 +381,30 @@ extension ImageEditContainerViewController: UICollectionViewDelegate, UICollecti
         guard let filterCell = cell as? FilterCollectionViewCell,
             let image = imageToBeEdit else { return cell }
         
-        filterCell.filteredImage.image = image.addFilter(filter: FilterType.allCases[indexPath.item])
+        if indexPath.item == 0 {
+         
+            filterCell.filteredImage.image = image
+            
+        } else {
+            
+            filterCell.filteredImage.image = image.addFilter(filter: FilterType.allCases[indexPath.item-1])
+        }
 
         return filterCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if indexPath.item == 0 {
+            
+            delegate?.changeImageWith(filter: nil)
+            
+        } else {
+            
+            delegate?.changeImageWith(filter: FilterType.allCases[indexPath.item-1])
+            
+        }
+        
     }
 
 }
@@ -401,8 +426,6 @@ extension ImageEditContainerViewController {
 
         flowLayout.minimumLineSpacing = 0
 
-//        flowLayout.headerReferenceSize = CGSize(width: imageCollectionView.frame.width, height: 40) // header zone
-
         filterCollectionView.collectionViewLayout = flowLayout
     }
 }
@@ -412,6 +435,8 @@ extension ImageEditContainerViewController: BaseViewControllerDelegate {
     func showAllFilter(for image: UIImage) {
         
         imageToBeEdit = image
+        
+        filterCollectionView.reloadData()
     }
 }
 
@@ -425,11 +450,7 @@ extension ImageEditContainerViewController {
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(changeImage(noti:)), name: notificationName, object: nil)
-        
-//        let notificationName2 = Notification.Name(NotiName.paletteColor.rawValue)
-        
-//        NotificationCenter.default.addObserver(self, selector:
-//            #selector(changePaletteColor(noti:)), name: notificationName2, object: nil)
+
     }
     
     // 收到通知後要執行的動作
@@ -438,9 +459,7 @@ extension ImageEditContainerViewController {
             let mode = userInfo[NotificationInfo.didChangeImage] as? Bool {
             
             if mode == true {
-//               filterBtn.isSelected = true
-//                cameraRollBtn.isSelected = false
-                
+
                 cameraRollBtn.tintColor = UIColor.DSColor.lightGreen
                 
             }

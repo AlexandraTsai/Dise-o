@@ -115,7 +115,8 @@ extension UIImage {
         
         // convert UIImage to CIImage and set as input
         let ciInput = CIImage(image: self)
-        filter?.setValue(ciInput, forKey: "inputImage")
+        
+        filter?.setValue(ciInput, forKey: kCIInputImageKey)
         
         // get output CIImage, render as CGImage first to retain proper UIImage scale
         guard let ciOutput = filter?.outputImage else { return self }

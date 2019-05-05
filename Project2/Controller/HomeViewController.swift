@@ -11,7 +11,7 @@ import CoreData
 import Crashlytics
 
 // swiftlint:disable file_length
-class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class HomeViewController: BaseViewController, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView! {
         
@@ -427,29 +427,6 @@ extension HomeViewController {
             designVC.addAllGesture(to: subView)
         }
 
-    }
-    
-    func loadImageFromDiskWith(fileName: String) -> UIImage? {
-        
-        let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
-        
-        let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
-        
-        let paths = NSSearchPathForDirectoriesInDomains(documentDirectory,
-                                                        userDomainMask,
-                                                        true)
-        
-        if let dirPath = paths.first {
-            
-            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(fileName)
-
-            let image = UIImage(contentsOfFile: imageUrl.path)
-            
-            return image
-            
-        }
-        
-        return nil
     }
    
     @objc func closeBtnTapped(sender: UIButton) {

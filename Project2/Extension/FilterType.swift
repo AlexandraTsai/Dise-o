@@ -8,15 +8,17 @@
 
 import Foundation
 
-enum FilterType : String, CaseIterable {
+enum FilterType: String, CaseIterable {
     
     case chrome = "CIPhotoEffectChrome"
     case fade = "CIPhotoEffectFade"
+    case tone = "CISepiaTone"
     case instant = "CIPhotoEffectInstant"
     case mono = "CIPhotoEffectMono"
     case noir = "CIPhotoEffectNoir"
     case process = "CIPhotoEffectProcess"
     case tonal = "CIPhotoEffectTonal"
     case transfer =  "CIPhotoEffectTransfer"
+    case colorControl = "CIFalseColor"
     
 }
