@@ -128,4 +128,22 @@ extension UIImage {
         //Return the image
         return UIImage(cgImage: cgImage)
     }
+    
+    func createASetOfImage() -> [UIImage] {
+        
+        var imageSet = [UIImage]()
+        
+        imageSet.append(self)
+        
+        for type in FilterType.allCases {
+            
+            let newImage = self.addFilter(filter: type)
+            
+            imageSet.append(newImage)
+            
+        }
+        
+        return imageSet
+        
+    }
 }

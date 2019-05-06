@@ -45,6 +45,8 @@ class HomeViewController: BaseViewController, UITextFieldDelegate, UICollectionV
     var newDesignView = NewDeign()
     
     let selectionView = SelectionView()
+    
+    let deleteView = DeleteView()
    
     var layerArray: [LayerProtocol] = []
     
@@ -101,6 +103,7 @@ class HomeViewController: BaseViewController, UITextFieldDelegate, UICollectionV
         selectionView.alpha = 0
         renameView.alpha = 0
         selectionView.isHidden = true
+        deleteView.alpha = 0
     }
 
     override func viewDidLoad() {
@@ -120,12 +123,13 @@ class HomeViewController: BaseViewController, UITextFieldDelegate, UICollectionV
         setupCollectionViewLayout()
         
         selectionView.addOn(self.view)
+        deleteView.addOn(self.view)
         
         selectionView.closeButton.addTarget(self, action: #selector(self.closeBtnTapped(sender:)), for: .touchUpInside)
         
         selectionView.cancelButton.addTarget(self, action: #selector(closeBtnTapped(sender:)), for: .touchUpInside)
         
-        selectionView.deleteButton.addTarget(self, action: #selector(deleteBtnTapped(sender:)), for: .touchUpInside)
+        selectionView.deleteButton.addTarget(self, action: #selector(showDeleteView(sender:)), for: .touchUpInside)
         
         selectionView.openButton.addTarget(self, action: #selector(openBtnTapped(sender:)), for: .touchUpInside)
         
@@ -138,6 +142,10 @@ class HomeViewController: BaseViewController, UITextFieldDelegate, UICollectionV
         renameView.saveButton.addTarget(self, action: #selector(saveNameBtnTapped(sender:)), for: .touchUpInside)
         
         renameView.cancelButton.addTarget(self, action: #selector(cancelRename(sender:)), for: .touchUpInside)
+        
+        deleteView.deleteButton.addTarget(self, action: #selector(deleteBtnTapped(sender:)), for: .touchUpInside)
+        
+        deleteView.cancelButton.addTarget(self, action: #selector(closeBtnTapped(sender:)), for: .touchUpInside)
         
     }
    
@@ -444,9 +452,21 @@ extension HomeViewController {
             
             self?.selectionView.alpha = 0
             
+            self?.deleteView.alpha = 0
+            
             self?.addDesignButton.alpha = 1
             
         })
+    }
+    
+    @objc func showDeleteView(sender: UIButton) {
+        
+        selectionView.alpha = 0
+        addDesignButton.alpha = 1
+        
+//        addDesignButton.alpha = 1
+        
+        deleteView.alpha = 1
     }
     
     @objc func deleteBtnTapped(sender: UIButton) {
@@ -460,8 +480,6 @@ extension HomeViewController {
                                                 
                                             case .success:
                                                 
-//                                                designs.remove(at: index)
-                                                
                                                 fetchData()
                                                 
                                                 collectionView.reloadData()
@@ -473,12 +491,9 @@ extension HomeViewController {
                                             }
             
         })
-    
-        selectionView.alpha = 0
-        addDesignButton.alpha = 1
         
-        addDesignButton.alpha = 1
-        
+        deleteView.alpha = 0
+      
     }
     
     @objc func openBtnTapped(sender: UIButton) {
