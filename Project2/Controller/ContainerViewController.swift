@@ -113,9 +113,7 @@ class ContainerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        colorButton.isSelected = true
-
+      
         createNotification()
  
         filterCollectionView.al_registerCellWithNib(identifier: String(describing: FilterCollectionViewCell.self),
@@ -271,7 +269,7 @@ class ContainerViewController: UIViewController {
 }
 
 extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDataSource, BaseViewControllerDelegate {
-   
+ 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
         return FilterType.allCases.count+1
@@ -293,7 +291,7 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
         if indexPath.item == 0 {
             
             filterCell.filteredImage.image = imageToBeEdit
-            
+
         } else {
             
             let filter = FilterType.allCases[indexPath.item-1]
@@ -325,14 +323,12 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
         
         filterCollectionView.reloadData()
         
-        editImageMode()
     }
     
     func editImageMode() {
         
         filterView.isHidden = false
         filterCollectionView.isHidden = false
-//        filterButton.isEnabled = true
         
         filterButton.tintColor = UIColor.DSColor.heavyGreen
         filterUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
@@ -349,7 +345,7 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
         
         filterView.isHidden = true
         filterCollectionView.isHidden = true
-//        filterButton.isEnabled = false
+
         photoView.isHidden = true
         
         filterButton.tintColor = UIColor.DSColor.lightGreen
@@ -360,6 +356,21 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
         
         colorButton.tintColor = UIColor.DSColor.heavyGreen
         colorUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
+        
+    }
+    func pickImageMode() {
+        
+        filterView.isHidden = true
+        photoView.isHidden = false
+        
+        filterButton.tintColor = UIColor.DSColor.lightGreen
+        filterUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        
+        cameraRollButton.tintColor = UIColor.DSColor.heavyGreen
+        cameraUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
+        
+        colorButton.tintColor = UIColor.DSColor.lightGreen
+        colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         
     }
 

@@ -68,6 +68,7 @@ class DesignViewController: BaseViewController, UITextViewDelegate, FusumaDelega
 
     var editingView: UIView?
     var addingNewImage = false
+    var showFilter = true
 
     let fusumaAlbum = FusumaViewController()
     let fusumaCamera = FusumaViewController()
@@ -109,6 +110,12 @@ class DesignViewController: BaseViewController, UITextViewDelegate, FusumaDelega
             guard let image = loadImageFromDiskWith(fileName: fileName) else { return }
             
             self.delegate?.showAllFilter(for: image)
+            
+            if showFilter {
+                self.delegate?.editImageMode()
+            } else {
+                self.delegate?.pickImageMode()
+            }
         }
      
     }
@@ -883,6 +890,7 @@ extension DesignViewController {
             if let image = imageView.originImage {
                 
                 editingVC.delegate?.showAllFilter(for: image)
+                editingVC.delegate?.editImageMode()
                 
             }
           
@@ -899,6 +907,8 @@ extension DesignViewController {
 
     // Return the image which is selected from camera roll or is taken via the camera.
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
+        
+        showFilter = true
         
         let fileName = String(Date().timeIntervalSince1970)
         
@@ -935,6 +945,8 @@ extension DesignViewController {
                 self?.designView.filterName = nil
                 
                 self?.delegate?.showAllFilter(for: image)
+                
+                self?.delegate?.editImageMode()
             }
             
             designView.imageFileName = fileName
@@ -974,6 +986,14 @@ extension DesignViewController {
     // Return an image and the detailed information.
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode, metaData: ImageMetadata) {
      
+    }
+    
+    func fusumaClosed() {
+        
+        showFilter = false
+        
+        delegate?.pickImageMode()
+        
     }
     
     func setupImagePicker() {
