@@ -1600,9 +1600,10 @@ extension EditingViewController: FusumaDelegate {
         }
         
         imageView.imageFileName = fileName
+        imageView.originImage = image
         
         self.delegate?.showAllFilter(for: image)
-//        imageView.backgroundColor = UIColor.red
+        self.delegate?.editImageMode()
  
         let notificationName = Notification.Name(NotiName.didChangeImage.rawValue)
         NotificationCenter.default.post(

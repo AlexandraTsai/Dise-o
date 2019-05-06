@@ -17,6 +17,8 @@ protocol BaseViewControllerDelegate: AnyObject {
     func editShapeMode()
     
     func noImageMode()
+    
+    func pickImageMode()
 }
 
 extension BaseViewControllerDelegate {
@@ -26,6 +28,10 @@ extension BaseViewControllerDelegate {
     }
     
     func noImageMode() {
+        
+    }
+    
+    func pickImageMode(){
         
     }
     
