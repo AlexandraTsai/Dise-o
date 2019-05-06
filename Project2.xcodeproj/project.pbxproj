@@ -19,6 +19,7 @@
 		A8242DBC227DBC8E006143CB /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DBB227DBC8E006143CB /* FilterType.swift */; };
 		A8242DBF227DC641006143CB /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DBD227DC641006143CB /* FilterCollectionViewCell.swift */; };
 		A8242DC0227DC641006143CB /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8242DBE227DC641006143CB /* FilterCollectionViewCell.xib */; };
+		A8242DC4227FEA8F006143CB /* DeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DC3227FEA8E006143CB /* DeleteView.swift */; };
 		A82B5F332268A2270093671D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F322268A2270093671D /* HomeViewController.swift */; };
 		A82B5F352268A4930093671D /* NewDeign.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F342268A4930093671D /* NewDeign.swift */; };
 		A82B5F372268C8090093671D /* HelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F362268C8090093671D /* HelperView.swift */; };
@@ -101,6 +102,7 @@
 		A8242DBB227DBC8E006143CB /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
 		A8242DBD227DC641006143CB /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		A8242DBE227DC641006143CB /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
+		A8242DC3227FEA8E006143CB /* DeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteView.swift; sourceTree = "<group>"; };
 		A82B5F322268A2270093671D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A82B5F342268A4930093671D /* NewDeign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeign.swift; sourceTree = "<group>"; };
 		A82B5F362268C8090093671D /* HelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperView.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				A82B5F342268A4930093671D /* NewDeign.swift */,
 				A84880CA226F26D200F308AC /* SelectionView.swift */,
 				A84880CE22704A8900F308AC /* RenameView.swift */,
+				A8242DC3227FEA8E006143CB /* DeleteView.swift */,
 				A8AF2A5222781CBF00C2B118 /* GoSettingAlertView.swift */,
 				A8AF2A542278290A00C2B118 /* SavedImageAlert.swift */,
 				A84880CC227036A200F308AC /* SaveSuccessLabel.swift */,
@@ -572,6 +575,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8242DC4227FEA8F006143CB /* DeleteView.swift in Sources */,
 				A86824C422603BC500BDCCD8 /* CGAffineTransform+Extension.swift in Sources */,
 				A8DEBBAA2255A8A50081A694 /* ALCustomView.swift in Sources */,
 				A8242DB0227C0C51006143CB /* Float+Extension.swift in Sources */,

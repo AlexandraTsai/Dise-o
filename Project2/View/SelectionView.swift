@@ -136,10 +136,10 @@ class SelectionView: UIView {
         cancelButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 13)
         
         openButton.setTitleColor(UIColor.white, for: .normal)
-        saveButton.setTitleColor(UIColor.white, for: .normal)
-        shareButton.setTitleColor(UIColor.white, for: .normal)
+        saveButton.setTitleColor(UIColor.black, for: .normal)
+        shareButton.setTitleColor(UIColor.black, for: .normal)
 
-        renameButton.setTitleColor(UIColor.white, for: .normal)
+        renameButton.setTitleColor(UIColor.black, for: .normal)
         deleteButton.setTitleColor(UIColor.white, for: .normal)
         cancelButton.setTitleColor(UIColor.black, for: .normal)
         
@@ -147,16 +147,18 @@ class SelectionView: UIView {
     
     func setupButtonColor() {
         
-        openButton.backgroundColor = UIColor.DSColor.yellow
-        saveButton.backgroundColor = UIColor.DSColor.heavyGreen
-        shareButton.backgroundColor = UIColor.DSColor.heavyGreen
-        renameButton.backgroundColor = UIColor.DSColor.lightGreen
+        openButton.backgroundColor = UIColor.DSColor.heavyGreen
+        saveButton.layer.borderColor = UIColor.DSColor.heavyGreen.cgColor
+        saveButton.layer.borderWidth = 1
+        shareButton.layer.borderColor = UIColor.DSColor.heavyGreen.cgColor
+        shareButton.layer.borderWidth = 1
+        renameButton.layer.borderColor = UIColor.DSColor.heavyGreen.cgColor
+        renameButton.layer.borderWidth = 1
+        
         deleteButton.backgroundColor = UIColor.DSColor.red
-        cancelButton.backgroundColor = UIColor.white
-        
-        cancelButton.layer.borderColor = UIColor.DSColor.heavyGreen.cgColor
-        cancelButton.layer.borderWidth = 1
-        
+        cancelButton.backgroundColor = UIColor.DSColor.lightGray
+        cancelButton.alpha = 0.6
+
         openButton.layer.cornerRadius = 17
         saveButton.layer.cornerRadius = 17
         shareButton.layer.cornerRadius = 17

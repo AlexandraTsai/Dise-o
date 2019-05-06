@@ -20,7 +20,7 @@ protocol ContainerViewControllerProtocol: AnyObject {
 
 class ContainerViewController: UIViewController {
     
-    var imageToBeEdit: UIImage?
+    var imageToBeEdit: [UIImage]?
 
     @IBOutlet weak var colorSquarePicker: ColorSquarePicker!
     @IBOutlet weak var colorIndicatorView: ColorIndicatorView!
@@ -287,16 +287,22 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
         guard let filterCell = cell as? FilterCollectionViewCell else {
             return cell
         }
+//
+//        if indexPath.item == 0 {
+//
+//            filterCell.filteredImage.image = imageToBeEdit
+//
+//        } else {
+//
+//            let filter = FilterType.allCases[indexPath.item-1]
+//
+//            filterCell.filteredImage.image = imageToBeEdit?.addFilter(filter: filter)
+//
+//        }
         
-        if indexPath.item == 0 {
-            
-            filterCell.filteredImage.image = imageToBeEdit
-
-        } else {
-            
-            let filter = FilterType.allCases[indexPath.item-1]
-            
-            filterCell.filteredImage.image = imageToBeEdit?.addFilter(filter: filter)
+       if let imageToBeEdit = imageToBeEdit {
+        
+            filterCell.filteredImage.image = imageToBeEdit[indexPath.item]
             
         }
         
@@ -319,7 +325,7 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func showAllFilter(for image: UIImage) {
         
-        imageToBeEdit = image
+        imageToBeEdit = image.createASetOfImage()
         
         filterCollectionView.reloadData()
         

@@ -774,9 +774,7 @@ extension EditingViewController {
 
         if sender.state == .began || sender.state == .changed {
 
-            guard let rotateValue = sender.view?.transform.rotated(by: sender.rotation) else {
-                return
-            }
+            guard let rotateValue = sender.view?.transform.rotated(by: sender.rotation) else { return }
             
             sender.view?.transform = rotateValue
         
@@ -812,14 +810,14 @@ extension EditingViewController {
 
                 return
             }
-
+          
             sender.view?.transform = transform
     
             guard let center = sender.view?.convert(helperView.editingFrame.center, to: designView) else { return }
             editingView?.center = center
             
             editingView?.transform = transform
-   
+            
             sender.scale = 1
             
             return
@@ -1787,17 +1785,11 @@ extension EditingViewController: TextContainerProtocol {
         helperView.hideAllHelper()
         
     }
-    
-//    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-//
-//        helperView.showAllHelper()
-//
-//    }
-//
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//
-//        helperView.showAllHelper()
-//    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+
+        helperView.showAllHelper()
+    }
     
     func showHelper(after gesture: UIGestureRecognizer) {
         
