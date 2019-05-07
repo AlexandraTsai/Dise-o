@@ -18,25 +18,13 @@ protocol ContainerViewControllerProtocol: AnyObject {
     
 }
 
-class ContainerViewController: UIViewController {
-    
-    var imageToBeEdit: [UIImage]?
+class ContainerViewController: BaseContainerViewController {
 
     @IBOutlet weak var colorSquarePicker: ColorSquarePicker!
     @IBOutlet weak var colorIndicatorView: ColorIndicatorView!
     
     @IBOutlet weak var photoView: UIView!
-    @IBOutlet weak var filterView: UIView!
-    @IBOutlet weak var filterCollectionView: UICollectionView! {
-        
-        didSet {
-            
-            filterCollectionView.delegate = self
-            filterCollectionView.dataSource = self
-            
-        }
-    }
-    
+
     deinit {
         print("ContainerVC is deinit")
     }
@@ -115,9 +103,6 @@ class ContainerViewController: UIViewController {
         super.viewDidLoad()
       
         createNotification()
- 
-        filterCollectionView.al_registerCellWithNib(identifier: String(describing: FilterCollectionViewCell.self),
-                                                    bundle: nil)
 
         setupCollectionViewLayout()
     }
@@ -266,72 +251,8 @@ class ContainerViewController: UIViewController {
             
         }
     }
-}
-
-extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDataSource, BaseViewControllerDelegate {
- 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
-        return FilterType.allCases.count+1
-
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath)
-    -> UICollectionViewCell {
-
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: FilterCollectionViewCell.self),
-            for: indexPath)
-        
-        guard let filterCell = cell as? FilterCollectionViewCell else {
-            return cell
-        }
-//
-//        if indexPath.item == 0 {
-//
-//            filterCell.filteredImage.image = imageToBeEdit
-//
-//        } else {
-//
-//            let filter = FilterType.allCases[indexPath.item-1]
-//
-//            filterCell.filteredImage.image = imageToBeEdit?.addFilter(filter: filter)
-//
-//        }
-        
-       if let imageToBeEdit = imageToBeEdit {
-        
-            filterCell.filteredImage.image = imageToBeEdit[indexPath.item]
-            
-        }
-        
-        return filterCell
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        if indexPath.item == 0 {
-            
-            delegate?.changeImageWith(filter: nil)
-            
-        } else {
-            
-            delegate?.changeImageWith(filter: FilterType.allCases[indexPath.item-1])
-            
-        }
-        
-    }
     
-    func showAllFilter(for image: UIImage) {
-        
-        imageToBeEdit = image.createASetOfImage()
-        
-        filterCollectionView.reloadData()
-        
-    }
-    
-    func editImageMode() {
+    override func editImageMode() {
         
         filterView.isHidden = false
         filterCollectionView.isHidden = false
@@ -344,6 +265,23 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
         
         colorButton.tintColor = UIColor.DSColor.lightGreen
         colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
+        
+    }
+}
+
+extension ContainerViewController {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        if indexPath.item == 0 {
+            
+            delegate?.changeImageWith(filter: nil)
+            
+        } else {
+            
+            delegate?.changeImageWith(filter: FilterType.allCases[indexPath.item-1])
+            
+        }
         
     }
    

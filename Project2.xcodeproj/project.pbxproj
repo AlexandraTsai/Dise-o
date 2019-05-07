@@ -43,7 +43,6 @@
 		A8AD7465226C004E00BDE3A7 /* ALImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD7464226C004E00BDE3A7 /* ALImageView.swift */; };
 		A8AD7468226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD7466226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift */; };
 		A8AD7469226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AD7467226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib */; };
-		A8AF2A512276CDBD00C2B118 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AF2A502276CDBD00C2B118 /* GoogleService-Info.plist */; };
 		A8AF2A5322781CC000C2B118 /* GoSettingAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AF2A5222781CBF00C2B118 /* GoSettingAlertView.swift */; };
 		A8AF2A552278290A00C2B118 /* SavedImageAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AF2A542278290A00C2B118 /* SavedImageAlert.swift */; };
 		A8B5E4F7226D91D800514A75 /* ALTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B5E4F6226D91D800514A75 /* ALTextView.swift */; };
@@ -57,6 +56,8 @@
 		A8BFF77A2259E1960010E56B /* UIButton+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF7792259E1960010E56B /* UIButton+Extenstion.swift */; };
 		A8BFF780225A4AC00010E56B /* ImageEditContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF77F225A4AC00010E56B /* ImageEditContainerViewController.swift */; };
 		A8BFF782225A4B6B0010E56B /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF781225A4B6B0010E56B /* PhotoManager.swift */; };
+		A8C123A12281B46100B14B92 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8C123A02281B46100B14B92 /* GoogleService-Info.plist */; };
+		A8C123A32281B69A00B14B92 /* BaseContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C123A22281B69A00B14B92 /* BaseContainerViewController.swift */; };
 		A8D2C450225219020085AD24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C44F225219020085AD24 /* AppDelegate.swift */; };
 		A8D2C452225219020085AD24 /* DesignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C451225219020085AD24 /* DesignViewController.swift */; };
 		A8D2C455225219030085AD24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8D2C453225219030085AD24 /* Main.storyboard */; };
@@ -126,7 +127,6 @@
 		A8AD7464226C004E00BDE3A7 /* ALImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALImageView.swift; sourceTree = "<group>"; };
 		A8AD7466226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCollectionViewCell.swift; sourceTree = "<group>"; };
 		A8AD7467226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioCollectionViewCell.xib; sourceTree = "<group>"; };
-		A8AF2A502276CDBD00C2B118 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A8AF2A5222781CBF00C2B118 /* GoSettingAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoSettingAlertView.swift; sourceTree = "<group>"; };
 		A8AF2A542278290A00C2B118 /* SavedImageAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedImageAlert.swift; sourceTree = "<group>"; };
 		A8B5E4F6226D91D800514A75 /* ALTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALTextView.swift; sourceTree = "<group>"; };
@@ -140,6 +140,8 @@
 		A8BFF7792259E1960010E56B /* UIButton+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extenstion.swift"; sourceTree = "<group>"; };
 		A8BFF77F225A4AC00010E56B /* ImageEditContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditContainerViewController.swift; sourceTree = "<group>"; };
 		A8BFF781225A4B6B0010E56B /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		A8C123A02281B46100B14B92 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A8C123A22281B69A00B14B92 /* BaseContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseContainerViewController.swift; sourceTree = "<group>"; };
 		A8D2C44C225219020085AD24 /* Project2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D2C44F225219020085AD24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8D2C451225219020085AD24 /* DesignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignViewController.swift; sourceTree = "<group>"; };
@@ -285,7 +287,7 @@
 				A8D2C465225222850085AD24 /* Controller */,
 				A8D2C464225222790085AD24 /* View */,
 				A8DEBBB3225713770081A694 /* Assets.xcassets */,
-				A8AF2A502276CDBD00C2B118 /* GoogleService-Info.plist */,
+				A8C123A02281B46100B14B92 /* GoogleService-Info.plist */,
 				A8D2C45E225219080085AD24 /* Info.plist */,
 				A8D2C456225219030085AD24 /* Desiging.xcdatamodeld */,
 			);
@@ -327,9 +329,10 @@
 			isa = PBXGroup;
 			children = (
 				A82B5F322268A2270093671D /* HomeViewController.swift */,
+				A8242DB1227D3F29006143CB /* BaseViewController.swift */,
 				A8D2C451225219020085AD24 /* DesignViewController.swift */,
 				A8D2C480225268000085AD24 /* EditingViewController.swift */,
-				A8242DB1227D3F29006143CB /* BaseViewController.swift */,
+				A8C123A22281B69A00B14B92 /* BaseContainerViewController.swift */,
 				A8D2C4712252270C0085AD24 /* ContainerViewController.swift */,
 				A8BFF77F225A4AC00010E56B /* ImageEditContainerViewController.swift */,
 				A8D2C4832252F9FF0085AD24 /* ImageContainerViewController.swift */,
@@ -459,11 +462,11 @@
 			files = (
 				A8BFF76F22586E5C0010E56B /* FontTableViewCell.xib in Resources */,
 				A8242DC0227DC641006143CB /* FilterCollectionViewCell.xib in Resources */,
+				A8C123A12281B46100B14B92 /* GoogleService-Info.plist in Resources */,
 				A8E306402263009D00DA03A7 /* ShapeCollectionViewCell.xib in Resources */,
 				A8BFF7782258D1970010E56B /* FontSizeTableViewCell.xib in Resources */,
 				A8D2C45D225219080085AD24 /* LaunchScreen.storyboard in Resources */,
 				A8D2C47F22523A490085AD24 /* PhotoCollectionViewCell.xib in Resources */,
-				A8AF2A512276CDBD00C2B118 /* GoogleService-Info.plist in Resources */,
 				A8AD7469226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib in Resources */,
 				A8DEBBB0225621B30081A694 /* PaletteCollectionViewCell.xib in Resources */,
 				A8BFF77422588EA90010E56B /* SpacingTableViewCell.xib in Resources */,
@@ -586,6 +589,7 @@
 				A8AD7465226C004E00BDE3A7 /* ALImageView.swift in Sources */,
 				A82B5F332268A2270093671D /* HomeViewController.swift in Sources */,
 				A82B5F352268A4930093671D /* NewDeign.swift in Sources */,
+				A8C123A32281B69A00B14B92 /* BaseContainerViewController.swift in Sources */,
 				A80F296B22660BED009C13F5 /* TextContainerViewController.swift in Sources */,
 				A84880D922706ABE00F308AC /* Design+Extension.swift in Sources */,
 				A8DEBB9822543DBF0081A694 /* border.swift in Sources */,
