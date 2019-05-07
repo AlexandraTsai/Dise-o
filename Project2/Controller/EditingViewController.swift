@@ -187,10 +187,10 @@ class EditingViewController: BaseViewController {
             
         }
     }
-
-    let fusumaAlbum = FusumaViewController()
-    let fusumaCamera = FusumaViewController()
-    
+//
+//    let fusumaAlbum = FusumaViewController()
+//    let fusumaCamera = FusumaViewController()
+//
     var tableViewIndex: Int = 0
     var originalText = ""
     
@@ -219,8 +219,8 @@ class EditingViewController: BaseViewController {
         fontTableView.al_registerCellWithNib(identifier: String(describing: SpacingTableViewCell.self), bundle: nil)
         fontTableView.al_registerCellWithNib(identifier: String(describing: FontSizeTableViewCell.self), bundle: nil)
 
-        setupImagePicker()
-        setupCamera()
+//        setupImagePicker()
+//        setupCamera()
         createNotification()
         selectFontView.isHidden = true
         
@@ -445,6 +445,36 @@ class EditingViewController: BaseViewController {
         
         editingView?.alpha = CGFloat(sender.value/100)
     }
+    
+    override func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
+        
+        guard let imageView = editingView as? ALImageView else {
+            return
+        }
+        
+        let fileName = String(Date().timeIntervalSince1970)
+        
+        saveImage(fileName: fileName, image: image)
+        
+        DispatchQueue.main.async { [weak imageView] in
+            
+            imageView?.image = image
+            
+        }
+        
+        imageView.imageFileName = fileName
+        imageView.originImage = image
+        
+        self.delegate?.showAllFilter(for: image)
+        self.delegate?.editImageMode()
+        
+        let notificationName = Notification.Name(NotiName.didChangeImage.rawValue)
+        NotificationCenter.default.post(
+            name: notificationName,
+            object: nil,
+            userInfo: [NotificationInfo.didChangeImage: true])
+    }
+
 
 }
 
@@ -522,7 +552,6 @@ extension EditingViewController {
     @objc func didTapDoneButton(sender: AnyObject) {
         
         helperView.removeFromSuperview()
-        
         
         /*Notification*/
         let notificationName = Notification.Name(NotiName.updateImage.rawValue)
@@ -1061,13 +1090,7 @@ extension EditingViewController {
         let distance = CGPointDistance(from: editingView.center, to: location)
         
         let reduce = editingView.bounds.height-distance
-        
-//        if sender.state == UITapGestureRecognizer.State.began {
-//
-//            reduce = editingView.bounds.height/2-distance
-//
-//        }
-        
+
         let oldCenter = editingView.center
             
         let angle = editingView.transform.angle
@@ -1252,16 +1275,6 @@ extension EditingViewController: UITextViewDelegate {
 
 extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
             SpacingTableViewCellDelegate, FontSizeTableViewCellDelegate {
-    
-//    func scrollToRow(at index: IndexPath, with: UITableView.ScrollPosition, animated: Bool) {
-//
-//        DispatchQueue.main.async {
-//            let index = IndexPath(row: index.row, section: 0)
-//
-//            fontTableView.scrollToRow(at: index,at: .middle, animated: true) //here .middle is the scroll position can change it as per your need
-//        }
-//
-//    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
@@ -1310,6 +1323,7 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
             spacingCell.delegate = self
 
             return spacingCell
+            
         default:
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: FontSizeTableViewCell.self),
@@ -1422,7 +1436,7 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
 }
 
 // MARK: - Fusuma image picker
-extension EditingViewController: FusumaDelegate {
+extension EditingViewController {
     
     //Notification for image picked
     func createNotification() {
@@ -1540,103 +1554,48 @@ extension EditingViewController: FusumaDelegate {
         }
     }
     
-    func setupImagePicker() {
-        
-        fusumaAlbum.delegate = self
-        fusumaAlbum.availableModes = [FusumaMode.library]
-        // Add .video capturing mode to the default .library and .camera modes
-        fusumaAlbum.cropHeightRatio = 1
-        // Height-to-width ratio. The default value is 1, which means a squared-size photo.
-        fusumaAlbum.allowMultipleSelection = false
-        // You can select multiple photos from the camera roll. The default value is false.
-        
-        fusumaSavesImage = true
-        
-        fusumaTitleFont = UIFont(name: FontName.copperplate.boldStyle(), size: 18)
-        
-        fusumaBackgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
-        
-        fusumaCameraRollTitle = "Camera Roll"
-        
-        fusumaTintColor = UIColor(red: 244/255, green: 200/255, blue: 88/255, alpha: 1)
-        
-        fusumaCameraTitle = "Camera"
-        fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+//    func setupImagePicker() {
+//        
+//        fusumaAlbum.delegate = self
+//        fusumaAlbum.availableModes = [FusumaMode.library]
+//        // Add .video capturing mode to the default .library and .camera modes
+//        fusumaAlbum.cropHeightRatio = 1
+//        // Height-to-width ratio. The default value is 1, which means a squared-size photo.
+//        fusumaAlbum.allowMultipleSelection = false
+//        // You can select multiple photos from the camera roll. The default value is false.
+//        
+//        fusumaSavesImage = true
+//        
+//        fusumaTitleFont = UIFont(name: FontName.copperplate.boldStyle(), size: 18)
+//        
+//        fusumaBackgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
+//        
+//        fusumaCameraRollTitle = "Camera Roll"
+//        
+//        fusumaTintColor = UIColor(red: 244/255, green: 200/255, blue: 88/255, alpha: 1)
+//        
+//        fusumaCameraTitle = "Camera"
+//        fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+//    
+//    }
+//    
+//    func setupCamera() {
+//        
+//        fusumaCamera.delegate = self
+//        fusumaCamera.availableModes = [FusumaMode.camera]
+//        
+//        fusumaSavesImage = true
+//        
+//        fusumaTitleFont = UIFont(name: FontName.copperplate.boldStyle(), size: 18)
+//        
+//        fusumaBackgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
+//        
+//        fusumaCameraTitle = "Camera"
+//        fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+//        
+//    }
     
-    }
-    
-    func setupCamera() {
-        
-        fusumaCamera.delegate = self
-        fusumaCamera.availableModes = [FusumaMode.camera]
-        
-        fusumaSavesImage = true
-        
-        fusumaTitleFont = UIFont(name: FontName.copperplate.boldStyle(), size: 18)
-        
-        fusumaBackgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
-        
-        fusumaCameraTitle = "Camera"
-        fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-        
-    }
-    
-    func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
-        
-        guard let imageView = editingView as? ALImageView else {
-            return
-        }
-        
-        let fileName = String(Date().timeIntervalSince1970)
-        
-        saveImage(fileName: fileName, image: image)
-        
-        DispatchQueue.main.async { [weak imageView] in
-            
-            imageView?.image = image
-            
-        }
-        
-        imageView.imageFileName = fileName
-        imageView.originImage = image
-        
-        self.delegate?.showAllFilter(for: image)
-        self.delegate?.editImageMode()
- 
-        let notificationName = Notification.Name(NotiName.didChangeImage.rawValue)
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.didChangeImage: true])
-    }
 
-    // Return the image but called after is dismissed.
-    private func fusumaDismissedWithImage(image: UIImage, source: FusumaMode) {
-       
-        print("dismiss")
-    }
-    
-    func fusumaVideoCompleted(withFileURL fileURL: URL) {
-        
-        print("Called just after a video has been selected.")
-    }
-    
-    // When camera roll is not authorized, this method is called.
-    func fusumaCameraRollUnauthorized() {
-        
-        print("Camera roll unauthorized")
-    }
-    
-    // Return selected images when you allow to select multiple photos.
-    func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {
-        
-        print("Multiple images are selected.")
-    }
-    
-    // Return an image and the detailed information.
-    func fusumaImageSelected(_ image: UIImage, source: FusumaMode, metaData: ImageMetadata) {
-        
-    }
 }
 // MARK: EditingVC extension
 extension EditingViewController {

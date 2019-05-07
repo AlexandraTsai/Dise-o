@@ -12,7 +12,7 @@ import Photos
 import Fusuma
 
 // swiftlint:disable file_length
-class DesignViewController: BaseViewController, UITextViewDelegate, FusumaDelegate {
+class DesignViewController: BaseViewController, UITextViewDelegate{
 
     @IBOutlet weak var designView: ALDesignView! {
         
@@ -70,8 +70,8 @@ class DesignViewController: BaseViewController, UITextViewDelegate, FusumaDelega
     var addingNewImage = false
     var showFilter = true
 
-    let fusumaAlbum = FusumaViewController()
-    let fusumaCamera = FusumaViewController()
+//    let fusumaAlbum = FusumaViewController()
+//    let fusumaCamera = FusumaViewController()
   
     let saveImageAlert = GoSettingAlertView()
   
@@ -129,9 +129,9 @@ class DesignViewController: BaseViewController, UITextViewDelegate, FusumaDelega
 
         setupNavigationBar()
 
-        setupImagePicker()
-        
-        setupCamera()
+//        setupImagePicker()
+//
+//        setupCamera()
         
         scrollView.isHidden = true
 
@@ -143,11 +143,76 @@ class DesignViewController: BaseViewController, UITextViewDelegate, FusumaDelega
         openCameraAlert.alpha = 0
         
     }
+    
+    override func fusumaClosed() {
+        
+        showFilter = false
+        
+        delegate?.pickImageMode()
+        
+    }
+    
+    override func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
+        
+        showFilter = true
+        
+        let fileName = String(Date().timeIntervalSince1970)
+        
+        saveImage(fileName: fileName, image: image)
+        
+        if addingNewImage == true {
+            
+            let newImage = ALImageView(frame: CGRect(x: designView.frame.width/2-75,
+                                                     y: designView.frame.height/2-75,
+                                                     width: 150,
+                                                     height: 150))
+            
+            DispatchQueue.main.async { [ weak newImage ] in
+                
+                newImage?.image = image
+            }
+            
+            newImage.imageFileName = fileName
+            
+            newImage.originImage = image
+            
+            designView.addSubview(newImage)
+            
+            goToEditingVC(with: newImage, navigationBarForImage: true)
+            
+            addingNewImage = false
+            
+        } else {
+            
+            DispatchQueue.main.async { [ weak self ] in
+                
+                self?.designView.image = image
+                
+                self?.designView.filterName = nil
+                
+                self?.delegate?.showAllFilter(for: image)
+                
+                self?.delegate?.editImageMode()
+            }
+            
+            designView.imageFileName = fileName
+            
+            let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
+            
+            NotificationCenter.default.post(name: notificationName,
+                                            object: nil,
+                                            userInfo: [NotificationInfo.backgroundIsImage: true])
+        }
+        
+    }
 
     // MARK: - Add image to Library
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         
         if error != nil {
+            
+            saveImageAlert.alpha = 1
+            saveImageAlert.addOn(self.view)
    
         } else {
             
@@ -786,6 +851,7 @@ extension DesignViewController {
         let status = PHPhotoLibrary.authorizationStatus()
         
         switch status {
+            
         case PHAuthorizationStatus.authorized, PHAuthorizationStatus.notDetermined:
             
             UIImageWriteToSavedPhotosAlbum(imageWithLabel,
@@ -906,139 +972,50 @@ extension DesignViewController {
 extension DesignViewController {
 
     // Return the image which is selected from camera roll or is taken via the camera.
-    func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
-        
-        showFilter = true
-        
-        let fileName = String(Date().timeIntervalSince1970)
-        
-        saveImage(fileName: fileName, image: image)
-        
-        if addingNewImage == true {
- 
-            let newImage = ALImageView(frame: CGRect(x: designView.frame.width/2-75,
-                                                     y: designView.frame.height/2-75,
-                                                     width: 150,
-                                                     height: 150))
-            
-            DispatchQueue.main.async { [ weak newImage ] in
-                
-                newImage?.image = image
-            }
     
-            newImage.imageFileName = fileName
-            
-            newImage.originImage = image
-            
-            designView.addSubview(newImage)
-            
-            goToEditingVC(with: newImage, navigationBarForImage: true)
-            
-            addingNewImage = false
-            
-        } else {
-            
-            DispatchQueue.main.async { [ weak self ] in
-                
-                self?.designView.image = image
-                
-                self?.designView.filterName = nil
-                
-                self?.delegate?.showAllFilter(for: image)
-                
-                self?.delegate?.editImageMode()
-            }
-            
-            designView.imageFileName = fileName
-            
-            let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
-            
-            NotificationCenter.default.post(name: notificationName,
-                                            object: nil,
-                                            userInfo: [NotificationInfo.backgroundIsImage: true])
-        }
-    
-    }
-
-    // Return the image but called after is dismissed.
-    func fusumaDismissedWithImage(image: UIImage, source: FusumaMode) {
-
-        print("Called just after FusumaViewController is dismissed.")
-    }
-
-    func fusumaVideoCompleted(withFileURL fileURL: URL) {
-
-        print("Called just after a video has been selected.")
-    }
-
-    // When camera roll is not authorized, this method is called.
-    func fusumaCameraRollUnauthorized() {
-
-        print("Camera roll unauthorized")
-    }
-
-    // Return selected images when you allow to select multiple photos.
-    func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {
-
-        print("Multiple images are selected.")
-    }
-
-    // Return an image and the detailed information.
-    func fusumaImageSelected(_ image: UIImage, source: FusumaMode, metaData: ImageMetadata) {
-     
-    }
-    
-    func fusumaClosed() {
-        
-        showFilter = false
-        
-        delegate?.pickImageMode()
-        
-    }
-    
-    func setupImagePicker() {
-
-        fusumaAlbum.delegate = self
-        fusumaAlbum.availableModes = [FusumaMode.library]
-        
-        // FusumaMode.camera
-        
-        // Add .video capturing mode to the default .library and .camera modes
-        fusumaAlbum.cropHeightRatio = 1
-        // Height-to-width ratio. The default value is 1, which means a squared-size photo.
-        fusumaAlbum.allowMultipleSelection = false
-        // You can select multiple photos from the camera roll. The default value is false.
-
-        fusumaSavesImage = true
-
-        fusumaTitleFont = UIFont(name: FontName.copperplate.boldStyle(), size: 18)
-
-        fusumaBackgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
-
-        fusumaCameraRollTitle = "Camera Roll"
-
-        fusumaTintColor = UIColor(red: 244/255, green: 200/255, blue: 88/255, alpha: 1)
-
-        fusumaCameraTitle = "Camera"
-        fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-        
-    }
-    
-    func setupCamera() {
-        
-        fusumaCamera.delegate = self
-        fusumaCamera.availableModes = [FusumaMode.camera]
- 
-        fusumaSavesImage = true
-        
-        fusumaTitleFont = UIFont(name: FontName.copperplate.boldStyle(), size: 18)
-        
-        fusumaBackgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
-   
-        fusumaCameraTitle = "Camera"
-        fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-        
-    }
+//    func setupImagePicker() {
+//
+//        fusumaAlbum.delegate = self
+//        fusumaAlbum.availableModes = [FusumaMode.library]
+//
+//        // FusumaMode.camera
+//
+//        // Add .video capturing mode to the default .library and .camera modes
+//        fusumaAlbum.cropHeightRatio = 1
+//        // Height-to-width ratio. The default value is 1, which means a squared-size photo.
+//        fusumaAlbum.allowMultipleSelection = false
+//        // You can select multiple photos from the camera roll. The default value is false.
+//
+//        fusumaSavesImage = true
+//
+//        fusumaTitleFont = UIFont(name: FontName.copperplate.boldStyle(), size: 18)
+//
+//        fusumaBackgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
+//
+//        fusumaCameraRollTitle = "Camera Roll"
+//
+//        fusumaTintColor = UIColor(red: 244/255, green: 200/255, blue: 88/255, alpha: 1)
+//
+//        fusumaCameraTitle = "Camera"
+//        fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+//
+//    }
+//
+//    func setupCamera() {
+//
+//        fusumaCamera.delegate = self
+//        fusumaCamera.availableModes = [FusumaMode.camera]
+//
+//        fusumaSavesImage = true
+//
+//        fusumaTitleFont = UIFont(name: FontName.copperplate.boldStyle(), size: 18)
+//
+//        fusumaBackgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
+//
+//        fusumaCameraTitle = "Camera"
+//        fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+//
+//    }
     
 }
 
