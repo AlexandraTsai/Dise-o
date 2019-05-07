@@ -1249,14 +1249,14 @@
                         <viewLayoutGuide key="safeArea" id="BVZ-XK-vg7"/>
                     </view>
                     <connections>
-                        <outlet property="cameraRollBtn" destination="0Df-jh-1M5" id="07m-xv-gDZ"/>
+                        <outlet property="cameraRollButton" destination="0Df-jh-1M5" id="rIP-il-IHV"/>
                         <outlet property="cameraUnderLine" destination="Zfj-LQ-Iht" id="4Pj-Nh-xu0"/>
                         <outlet property="colorBarPicker" destination="Ur6-DU-mut" id="Bzr-yS-g8U"/>
-                        <outlet property="colorBtn" destination="Rbk-G1-1Gi" id="UNy-KP-q8z"/>
+                        <outlet property="colorButton" destination="Rbk-G1-1Gi" id="RLu-Ce-ccK"/>
                         <outlet property="colorSquarePicker" destination="5l4-nD-QNE" id="RUf-gI-rMV"/>
                         <outlet property="colorUnderLine" destination="sal-q4-nnf" id="fkV-le-oCI"/>
                         <outlet property="defaultColorView" destination="hcr-h6-7bz" id="9df-rO-THE"/>
-                        <outlet property="filterBtn" destination="Qg1-By-fpr" id="v19-vY-hTY"/>
+                        <outlet property="filterButton" destination="Qg1-By-fpr" id="xGu-Cf-vhL"/>
                         <outlet property="filterCollectionView" destination="G1c-7m-3SW" id="ddT-Vv-7UL"/>
                         <outlet property="filterUnderLine" destination="p4Y-gg-AnQ" id="PfT-tM-2ay"/>
                         <outlet property="filterView" destination="pEy-Nu-eil" id="5Sb-fP-809"/>

@@ -11,7 +11,8 @@ import CoreData
 import Crashlytics
 
 // swiftlint:disable file_length
-class HomeViewController: BaseViewController, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class HomeViewController: BaseViewController, UITextFieldDelegate,
+                        UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView! {
         

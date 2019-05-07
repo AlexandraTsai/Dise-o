@@ -475,7 +475,6 @@ class EditingViewController: BaseViewController {
             userInfo: [NotificationInfo.didChangeImage: true])
     }
 
-
 }
 
 //Setup Navigation Bar
@@ -1594,8 +1593,7 @@ extension EditingViewController {
 //        fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
 //        
 //    }
-    
-
+ 
 }
 // MARK: EditingVC extension
 extension EditingViewController {
@@ -1681,7 +1679,7 @@ extension EditingViewController {
     
 }
 
-extension EditingViewController: ImageEditContainerViewControllerProtocol {
+extension EditingViewController: BaseContainerViewControllerProtocol {
     
     func showPhotoLibrayAlert() {
         

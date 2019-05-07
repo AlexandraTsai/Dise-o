@@ -28,15 +28,12 @@ extension Image {
         
         if let filter = self.filter {
             
-            for type in FilterType.allCases {
+            for type in FilterType.allCases where type.rawValue == filter {
                 
-                if type.rawValue == filter {
+                imageView.image = image?.addFilter(filter: type)
                     
-                    imageView.image = image?.addFilter(filter: type)
-                    
-                    imageView.filterName = type
-                    
-                }
+                imageView.filterName = type
+               
             }
             
         } else {

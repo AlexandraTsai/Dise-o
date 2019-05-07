@@ -10,90 +10,15 @@ import UIKit
 import Photos
 import HueKit
 
-protocol ContainerViewControllerProtocol: AnyObject {
-    
-    func showPhotoLibrayAlert()
-    func showCameraAlert()
-    func changeImageWith(filter: FilterType?)
-    
-}
-
 class ContainerViewController: BaseContainerViewController {
 
     @IBOutlet weak var colorSquarePicker: ColorSquarePicker!
     @IBOutlet weak var colorIndicatorView: ColorIndicatorView!
-    
-    @IBOutlet weak var photoView: UIView!
 
     deinit {
         print("ContainerVC is deinit")
     }
     
-    @IBOutlet weak var cameraRollButton: UIButton! {
-        
-        didSet {
-            
-            cameraRollButton.setImage(ImageAsset.Icon_image.imageTemplate, for: .normal)
-            
-            cameraRollButton.tintColor = UIColor.DSColor.heavyGreen
-            
-        }
-    }
-    
-    @IBOutlet weak var cameraUnderLine: UIView! {
-        
-        didSet {
-            
-            cameraUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
-            
-        }
-        
-    }
-    
-    @IBOutlet weak var filterButton: UIButton! {
-        
-        didSet {
-            
-            filterButton.setImage(ImageAsset.Icon_filter.imageTemplate, for: .normal)
-            
-            filterButton.tintColor = UIColor.DSColor.heavyGreen
-            
-        }
-        
-    }
-    
-    @IBOutlet weak var filterUnderLine: UIView! {
-        
-        didSet {
-            
-            filterUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
-        }
-
-    }
-    
-    @IBOutlet weak var colorButton: UIButton! {
-        
-        didSet {
-            
-            colorButton.setImage(ImageAsset.Icon_color.imageTemplate, for: .normal)
-            
-            colorButton.tintColor = UIColor.DSColor.lightGreen
-            
-        }
-    }
-    
-    @IBOutlet weak var colorUnderLine: UIView! {
-        
-        didSet {
-            
-            colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
-            
-        }
-        
-    }
-
-    weak var delegate: ContainerViewControllerProtocol?
-
     let photoManager = PhotoManager()
     var imageArray: [UIImage] = []
 
@@ -104,7 +29,6 @@ class ContainerViewController: BaseContainerViewController {
       
         createNotification()
 
-        setupCollectionViewLayout()
     }
 
     @IBAction func cameraRollBtnTapped(_ sender: Any) {
@@ -254,6 +178,8 @@ class ContainerViewController: BaseContainerViewController {
     
     override func editImageMode() {
         
+        super.editImageMode()
+        
         filterView.isHidden = false
         filterCollectionView.isHidden = false
         
@@ -270,20 +196,6 @@ class ContainerViewController: BaseContainerViewController {
 }
 
 extension ContainerViewController {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        if indexPath.item == 0 {
-            
-            delegate?.changeImageWith(filter: nil)
-            
-        } else {
-            
-            delegate?.changeImageWith(filter: FilterType.allCases[indexPath.item-1])
-            
-        }
-        
-    }
    
     func noImageMode() {
         
@@ -318,27 +230,6 @@ extension ContainerViewController {
         
     }
 
-}
-
-extension ContainerViewController {
-
-    private func setupCollectionViewLayout() {
-
-        let flowLayout = UICollectionViewFlowLayout()
-        
-        flowLayout.itemSize = CGSize(
-            width: UIScreen.main.bounds.width/5,
-            height: UIScreen.main.bounds.width/5
-        )
-        
-        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
-        flowLayout.minimumInteritemSpacing = 5
-        
-        flowLayout.minimumLineSpacing = 0
-        
-        filterCollectionView.collectionViewLayout = flowLayout
-    }
 }
 
 extension ContainerViewController {

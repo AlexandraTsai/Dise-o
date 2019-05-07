@@ -24,7 +24,6 @@ class SelectionView: UIView {
         
         setup()
         
-        setupLayout()
         setupButtonTitles()
         setupButtonColor()
      
@@ -34,8 +33,7 @@ class SelectionView: UIView {
         super.init(coder: aDecoder)
         
         setup()
-        
-        setupLayout()
+       
         setupButtonTitles()
         setupButtonColor()
      
@@ -51,9 +49,6 @@ class SelectionView: UIView {
         self.layer.shadowOffset = CGSize(width: -1, height: 1)
         self.layer.shadowRadius = 12
         self.layer.shadowOpacity = 1
-    }
-    
-    func setupLayout() {
         
         //Add sub views
         self.addSubview(saveButton)
@@ -64,8 +59,12 @@ class SelectionView: UIView {
         self.addSubview(cancelButton)
         self.addSubview(closeButton)
         
+        setupLayout()
+    }
+    
+    func setupLayout() {
+        
         //Auto layout
- 
         //Open Button
         openButton.translatesAutoresizingMaskIntoConstraints = false
         openButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 40).isActive = true

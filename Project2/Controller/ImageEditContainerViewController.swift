@@ -10,61 +10,14 @@ import UIKit
 import HueKit
 import Photos
 
-protocol ImageEditContainerViewControllerProtocol: AnyObject {
-    
-    func showPhotoLibrayAlert()
-    func showCameraAlert()
-    func changeImageWith(filter: FilterType?)
-    
-}
+class ImageEditContainerViewController: BaseContainerViewController {
 
-class ImageEditContainerViewController: BaseContainerViewController, PhotoManagerDelegate {
-    
-    weak var delegate: ImageEditContainerViewControllerProtocol?
-    
-    @IBOutlet weak var cameraUnderLine: UIView!
-    @IBOutlet weak var colorUnderLine: UIView!
     @IBOutlet weak var transparencyUnderLine: UIView!
-    @IBOutlet weak var filterUnderLine: UIView!
-    
-    @IBOutlet weak var photoView: UIView!
-    
+
     deinit {
         print("ImageEditContainer is deinit")
     }
-    
-    @IBOutlet weak var cameraRollBtn: UIButton! {
-        
-        didSet {
-            
-            cameraRollBtn.setImage(ImageAsset.Icon_image.imageTemplate, for: .normal)
-            
-        }
-        
-    }
-    
-    @IBOutlet weak var colorBtn: UIButton! {
-        
-        didSet {
-            
-            colorBtn.setImage(ImageAsset.Icon_color.imageTemplate, for: .normal)
-            colorBtn.tintColor = UIColor.DSColor.heavyGreen
-            
-        }
-        
-    }
-    
-    @IBOutlet weak var filterBtn: UIButton! {
-        
-        didSet {
-            
-            filterBtn.setImage(ImageAsset.Icon_filter.imageTemplate, for: .normal)
-            filterBtn.tintColor = UIColor.DSColor.lightGreen
-            
-        }
-        
-    }
-    
+ 
     @IBOutlet weak var transparencyBtn: UIButton! {
         
         didSet {
@@ -97,26 +50,10 @@ class ImageEditContainerViewController: BaseContainerViewController, PhotoManage
         }
         
     }
-    
-    @IBOutlet weak var imageCollectionView: UICollectionView! {
-
-        didSet {
-            imageCollectionView.delegate = self
-            imageCollectionView.dataSource = self
-        }
-    }
-
-    let photoManager = PhotoManager()
-    var imageArray = [UIImage]()
-    var imageURL = [URL]()
    
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-        
-//        paletteView.isHidden = true
-//        transparencyView.isHidden = true
-//        filterView.isHidden = true
         
     }
 
@@ -126,23 +63,17 @@ class ImageEditContainerViewController: BaseContainerViewController, PhotoManage
 
         filterCollectionView.al_registerCellWithNib(identifier: String(describing: FilterCollectionViewCell.self),
                                                     bundle: nil)
-
-        setupCollectionViewLayout()
         
         createNotification()
 
     }
     
-    func setupImage() {
-        imageCollectionView.reloadData()
-    }
-    
     @IBAction func cameraRollBtnTapped(_ sender: Any) {
         
-        cameraRollBtn.tintColor = UIColor.DSColor.heavyGreen
-        colorBtn.tintColor = UIColor.DSColor.lightGreen
+        cameraRollButton.tintColor = UIColor.DSColor.heavyGreen
+        colorButton.tintColor = UIColor.DSColor.lightGreen
         transparencyBtn.tintColor = UIColor.DSColor.lightGreen
-        filterBtn.tintColor = UIColor.DSColor.lightGreen
+        filterView.tintColor = UIColor.DSColor.lightGreen
         
         photoView.isHidden = false
         transparencyView.isHidden = true
@@ -156,12 +87,13 @@ class ImageEditContainerViewController: BaseContainerViewController, PhotoManage
         filterUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         
     }
+    
     @IBAction func colorsBtnTapped(_ sender: Any) {
         
-        cameraRollBtn.tintColor = UIColor.DSColor.lightGreen
-        colorBtn.tintColor = UIColor.DSColor.heavyGreen
+        cameraRollButton.tintColor = UIColor.DSColor.lightGreen
+        colorButton.tintColor = UIColor.DSColor.heavyGreen
         transparencyBtn.tintColor = UIColor.DSColor.lightGreen
-        filterBtn.tintColor = UIColor.DSColor.lightGreen
+        filterButton.tintColor = UIColor.DSColor.lightGreen
         
         cameraUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         colorUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
@@ -179,10 +111,10 @@ class ImageEditContainerViewController: BaseContainerViewController, PhotoManage
         
         filterView.isHidden = false
         
-        cameraRollBtn.tintColor = UIColor.DSColor.lightGreen
-        colorBtn.tintColor = UIColor.DSColor.lightGreen
+        cameraRollButton.tintColor = UIColor.DSColor.lightGreen
+        colorButton.tintColor = UIColor.DSColor.lightGreen
         transparencyBtn.tintColor = UIColor.DSColor.lightGreen
-        filterBtn.tintColor = UIColor.DSColor.heavyGreen
+        filterButton.tintColor = UIColor.DSColor.heavyGreen
         
         cameraUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
@@ -199,8 +131,8 @@ class ImageEditContainerViewController: BaseContainerViewController, PhotoManage
 
     @IBAction func transparencyBtnTapped(_ sender: Any) {
 
-        cameraRollBtn.tintColor = UIColor.DSColor.lightGreen
-        colorBtn.tintColor = UIColor.DSColor.lightGreen
+        cameraRollButton.tintColor = UIColor.DSColor.lightGreen
+        colorButton.tintColor = UIColor.DSColor.lightGreen
         transparencyBtn.tintColor = UIColor.DSColor.heavyGreen
         
         cameraUnderLine.backgroundColor = UIColor.DSColor.lightGreen
@@ -359,6 +291,8 @@ class ImageEditContainerViewController: BaseContainerViewController, PhotoManage
     
     override func editImageMode() {
         
+        super.editImageMode()
+        
         filterView.isHidden = false
         
         photoView.isHidden = true
@@ -366,62 +300,23 @@ class ImageEditContainerViewController: BaseContainerViewController, PhotoManage
         defaultColorView.isHidden = true
         paletteView.isHidden = true
         
-        cameraRollBtn.isHidden = false
+        cameraRollButton.isHidden = false
         cameraUnderLine.isHidden = false
-        filterBtn.isHidden = false
+        filterButton.isHidden = false
         filterUnderLine.isHidden = false
         
-        cameraRollBtn.tintColor = UIColor.DSColor.lightGreen
+        cameraRollButton.tintColor = UIColor.DSColor.lightGreen
         cameraUnderLine.backgroundColor = UIColor.DSColor.lightGreen
-        colorBtn.tintColor = UIColor.DSColor.lightGreen
+        colorButton.tintColor = UIColor.DSColor.lightGreen
         colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         transparencyBtn.tintColor = UIColor.DSColor.lightGreen
         transparencyUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         
-        filterBtn.tintColor = UIColor.DSColor.heavyGreen
+        filterButton.tintColor = UIColor.DSColor.heavyGreen
         filterUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
         
     }
    
-}
-
-extension ImageEditContainerViewController {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if indexPath.item == 0 {
-            
-            delegate?.changeImageWith(filter: nil)
-            
-        } else {
-            
-            delegate?.changeImageWith(filter: FilterType.allCases[indexPath.item-1])
-            
-        }
-        
-    }
-
-}
-
-extension ImageEditContainerViewController {
-
-    private func setupCollectionViewLayout() {
-
-        let flowLayout = UICollectionViewFlowLayout()
-
-        flowLayout.itemSize = CGSize(
-            width: UIScreen.main.bounds.width/5,
-            height: UIScreen.main.bounds.width/5
-        )
-
-        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-
-        flowLayout.minimumInteritemSpacing = 5
-
-        flowLayout.minimumLineSpacing = 0
-
-        filterCollectionView.collectionViewLayout = flowLayout
-    }
 }
 
 extension ImageEditContainerViewController {
@@ -434,12 +329,12 @@ extension ImageEditContainerViewController {
         defaultColorView.isHidden = false
         paletteView.isHidden = true
         
-        cameraRollBtn.isHidden = true
+        cameraRollButton.isHidden = true
         cameraUnderLine.isHidden = true
-        filterBtn.isHidden = true
+        filterButton.isHidden = true
         filterUnderLine.isHidden = true
         
-        colorBtn.tintColor = UIColor.DSColor.heavyGreen
+        colorButton.tintColor = UIColor.DSColor.heavyGreen
         colorUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
         
         transparencyBtn.tintColor = UIColor.DSColor.lightGreen
@@ -468,7 +363,7 @@ extension ImageEditContainerViewController {
             
             if mode == true {
 
-                cameraRollBtn.tintColor = UIColor.DSColor.lightGreen
+                cameraRollButton.tintColor = UIColor.DSColor.lightGreen
                 
             }
         }

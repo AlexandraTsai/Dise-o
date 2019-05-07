@@ -32,7 +32,7 @@ extension BaseViewControllerDelegate {
         
     }
     
-    func pickImageMode(){
+    func pickImageMode() {
         
     }
     
@@ -186,7 +186,6 @@ class BaseViewController: UIViewController, FusumaDelegate {
         fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         
     }
-    
     
 }
   

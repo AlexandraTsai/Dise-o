@@ -12,7 +12,7 @@ import Photos
 import Fusuma
 
 // swiftlint:disable file_length
-class DesignViewController: BaseViewController, UITextViewDelegate{
+class DesignViewController: BaseViewController, UITextViewDelegate {
 
     @IBOutlet weak var designView: ALDesignView! {
         
@@ -1052,7 +1052,7 @@ extension DesignViewController {
     
 }
 
-extension DesignViewController: ContainerViewControllerProtocol {
+extension DesignViewController: BaseContainerViewControllerProtocol {
     
     func showPhotoLibrayAlert() {
         

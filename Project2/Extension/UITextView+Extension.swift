@@ -78,9 +78,7 @@ extension UITextView {
         let expectSize = self.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat(MAXFLOAT)))
 
         var expectFont = self.font
-        
-        var oldFont = self.font
-
+     
         if expectSize.height > textViewSize.height {
 
             while self.sizeThatFits(CGSize(width: fixedWidth,

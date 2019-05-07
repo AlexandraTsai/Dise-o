@@ -109,7 +109,7 @@ enum ShapeAsset: String, CaseIterable {
 
 extension UIImage {
     
-    func addFilter(filter : FilterType) -> UIImage {
+    func addFilter(filter: FilterType) -> UIImage {
         
         let filter = CIFilter(name: filter.rawValue)
         
