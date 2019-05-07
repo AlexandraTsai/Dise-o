@@ -237,7 +237,6 @@
                         <outlet property="shadowView" destination="veZ-hA-1Od" id="ur1-3O-vdV"/>
                         <outlet property="textView" destination="VJC-L0-vuv" id="ja5-hr-iWR"/>
                         <segue destination="mFr-ri-311" kind="show" identifier="imageEditSwgue" id="h0P-ds-aVT"/>
-                        <segue destination="yOG-yq-5Gn" kind="show" identifier="textEditSegue" id="dE9-Tv-trn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -783,27 +782,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hru-rT-4va" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1808.8" y="8.995502248875562"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Eyq-Ma-FeX">
-            <objects>
-                <viewController id="yOG-yq-5Gn" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UJb-8G-0aM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y6h-uN-DDe">
-                                <rect key="frame" x="57" y="99" width="261" height="261"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="8GO-ZZ-l54"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tzn-dz-Wnn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2650" y="331"/>
         </scene>
         <!--Image Edit Container View Controller-->
         <scene sceneID="STs-Lf-zk0">
