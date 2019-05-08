@@ -800,7 +800,6 @@ extension EditingViewController {
             sender.view?.transform = rotateValue
         
             //Get the center of editingFrame from helperView to designView
-            
             guard let view = sender.view else { return }
             
             let center = view.convert(helperView.editingFrame.center, to: designView)
@@ -835,6 +834,7 @@ extension EditingViewController {
             sender.view?.transform = transform
     
             guard let center = sender.view?.convert(helperView.editingFrame.center, to: designView) else { return }
+            
             editingView?.center = center
             
             editingView?.transform = transform
@@ -944,15 +944,16 @@ extension EditingViewController {
  
     }
     
-    @objc func handleLeftHelper(sender: UIPanGestureRecognizer) {
+    @objc func handleSizeHelper(sender: UIPanGestureRecognizer) {
         
         let location = sender.location(in: designView)
         
-        guard let editingView = editingView else { return }
+        guard let editingView = editingView,
+            let helper = sender.view as? SizeHelperView else { return }
         
         let distance = CGPointDistance(from: editingView.center, to: location)
         
-        let reduce = editingView.bounds.width-distance
+        var reduce = editingView.bounds.width-distance
         
         let oldCenter =  editingView.center
         
@@ -962,12 +963,36 @@ extension EditingViewController {
 
         editingView.transform = CGAffineTransform(rotationAngle: 0)
         
-        editingView.frame = CGRect(x: editingView.frame.origin.x+reduce,
-                                   y: editingView.frame.origin.y,
-                                   width: editingView.frame.width-reduce,
-                                   height: editingView.frame.height)
+        switch helper.direct {
+        case .top?:
+            
+            reduce = editingView.bounds.height-distance
+            
+            editingView.frame = CGRect(x: editingView.frame.origin.x,
+                                       y: editingView.frame.origin.y+reduce,
+                                       width: editingView.frame.width,
+                                       height: editingView.frame.height-reduce)
+        case .bottom?:
+            
+            reduce = editingView.bounds.height-distance
+            editingView.frame = CGRect(x: editingView.frame.origin.x,
+                                       y: editingView.frame.origin.y,
+                                       width: editingView.frame.width,
+                                       height: editingView.frame.height-reduce)
+        case .left?:
+            editingView.frame = CGRect(x: editingView.frame.origin.x+reduce,
+                                       y: editingView.frame.origin.y,
+                                       width: editingView.frame.width-reduce,
+                                       height: editingView.frame.height)
+        case .right?:
+            editingView.frame = CGRect(x: editingView.frame.origin.x,
+                                       y: editingView.frame.origin.y,
+                                       width: editingView.frame.width-reduce,
+                                       height: editingView.frame.height)
+        default: break
+        }
         
-        editingView.center = rotatePoint(target: editingView.center, aroundOrigin: oldCenter, byDegree: angle)
+        editingView.center = movePoint(target: editingView.center, aroundOrigin: oldCenter, byDegree: angle)
         
         editingView.transform = transform
         
@@ -980,173 +1005,6 @@ extension EditingViewController {
         helperView.resize(accordingTo: editingView)
         
         showHelper(after: sender)
-        
-    }
-    
-    @objc func handleRightHelper(sender: UIPanGestureRecognizer) {
-        
-        let location = sender.location(in: designView)
-        
-        guard let editingView = editingView else { return }
-        
-        let distance = CGPointDistance(from: editingView.center, to: location)
-        
-        let reduce = editingView.bounds.width-distance
-        
-        let oldCenter =  editingView.center
-        
-        let angle = editingView.transform.angle
-        
-        let transform = editingView.transform
-        
-        editingView.transform = CGAffineTransform(rotationAngle: 0)
-        
-        editingView.frame = CGRect(x: editingView.frame.origin.x,
-                                   y: editingView.frame.origin.y,
-                                   width: editingView.frame.width-reduce,
-                                   height: editingView.frame.height)
-        
-        editingView.center = rotatePoint(target: editingView.center, aroundOrigin: oldCenter, byDegree: angle)
-        
-        editingView.transform = transform
-        
-        if let textView = editingView as? UITextView {
-    
-            textView.resize()
-            
-        }
-        
-        helperView.resize(accordingTo: editingView)
-        
-        showHelper(after: sender)
-        
-    }
-    
-    @objc func handleTopHelper(sender: UIPanGestureRecognizer) {
-        
-        let location = sender.location(in: designView)
-        
-        guard let editingView = editingView else { return }
-        
-        let distance = CGPointDistance(from: editingView.center, to: location)
-        
-        let reduce = editingView.bounds.height-distance
-        
-        let oldCenter =  editingView.center
-        
-        let angle = editingView.transform.angle
-        
-        let transform = editingView.transform
-        
-        editingView.transform = CGAffineTransform(rotationAngle: 0)
-        
-        editingView.frame = CGRect(x: editingView.frame.origin.x,
-                                   y: editingView.frame.origin.y+reduce,
-                                   width: editingView.frame.width,
-                                   height: editingView.frame.height-reduce)
-        
-        editingView.center = rotatePoint(target: editingView.center, aroundOrigin: oldCenter, byDegree: angle)
-        
-        editingView.transform = transform
-        
-        helperView.resize(accordingTo: editingView)
-        
-        showHelper(after: sender)
-        
-    }
-    
-    @objc func handleBottomHelper(sender: UIPanGestureRecognizer) {
-        
-        let location = sender.location(in: designView)
-    
-        guard let editingView = editingView else { return }
-       
-        let distance = CGPointDistance(from: editingView.center, to: location)
-        
-        let reduce = editingView.bounds.height-distance
-
-        let oldCenter = editingView.center
-            
-        let angle = editingView.transform.angle
-            
-        let transform = editingView.transform
-            
-        editingView.transform = CGAffineTransform(rotationAngle: 0)
-            
-        editingView.frame = CGRect(x: editingView.frame.origin.x,
-                                   y: editingView.frame.origin.y,
-                                   width: editingView.frame.width,
-                                   height: editingView.frame.height-reduce)
-            
-        editingView.center = rotatePoint(target: editingView.center,
-                                         aroundOrigin: oldCenter,
-                                         byDegree: angle)
-            
-        editingView.transform = transform
-      
-        helperView.resize(accordingTo: editingView)
-        
-        showHelper(after: sender)
-        
-    }
-    
-    func isClockwise(from oldPoint: CGPoint,
-                     to newPoint: CGPoint,
-                     center: CGPoint) -> Bool {
-        
-        let oldC = CGPointDistance(from: oldPoint, to: CGPoint(x: center.x, y: center.y+10))
-        
-        let newC = CGPointDistance(from: newPoint, to: CGPoint(x: center.x, y: center.y+10))
-        
-        let distance = CGPointDistance(from: oldPoint, to: center)
-        
-        let distance2 = CGPointDistance(from: newPoint, to: center)
-        
-        let oldAngle = acos((distance*distance+10*10-oldC*oldC)/(2*distance*10))
-        
-        let newAngle = acos((distance2*distance2+10*10-newC*newC)/(2*distance2*10))
-        
-        switch oldPoint.x - center.x {
-       
-        //Quadrant one & four
-        case let value where value > 0 :
-           
-            if newAngle < oldAngle { return true } else { return false }
-            
-        case let value where value == 0 :
-          
-            if oldPoint.y > center.y {
-                
-                if newPoint.x > oldPoint.x { return true } else { return false }
-                
-            } else {
-                
-                if newPoint.x < oldPoint.x { return true } else { return false }
-            }
-            
-        //Quadrant two & three
-        default:
-          
-            if oldAngle < newAngle { return true } else { return false }
-        }
-        
-    }
-    
-    
-    func rotatePoint(target: CGPoint, aroundOrigin origin: CGPoint, byDegree: CGFloat) -> CGPoint {
-        
-        let distanceX = target.x - origin.x
-        let distanceY = target.y - origin.y
-        
-        let radius = sqrt(distanceX*distanceX+distanceY*distanceY)
-        
-        let azimuth = atan2(distanceY, distanceX)
-        let newAzimuth = azimuth + byDegree*CGFloat.pi/180.0
-        
-        let newX = origin.x + radius*cos(newAzimuth)
-        let newY = origin.y + radius*sin(newAzimuth)
-        
-        return CGPoint(x: newX, y: newY)
         
     }
 }
@@ -1498,22 +1356,22 @@ extension EditingViewController {
         
         //Handle to tapped
         let pan = UIPanGestureRecognizer(target: self,
-                                         action: #selector(handleLeftHelper(sender:)))
+                                         action: #selector(handleSizeHelper(sender:)))
         
         helperView.leftHelper.addGestureRecognizer(pan)
         
         let pan2 = UIPanGestureRecognizer(target: self,
-                                          action: #selector(handleRightHelper(sender:)))
+                                          action: #selector(handleSizeHelper(sender:)))
         
         helperView.rightHelper.addGestureRecognizer(pan2)
         
         let pan3 = UIPanGestureRecognizer(target: self,
-                                          action: #selector(handleTopHelper(sender:)))
+                                          action: #selector(handleSizeHelper(sender:)))
         
         helperView.topHelper.addGestureRecognizer(pan3)
         
         let pan4 = UIPanGestureRecognizer(target: self,
-                                          action: #selector(handleBottomHelper(sender:)))
+                                          action: #selector(handleSizeHelper(sender:)))
         
         helperView.bottomHelper.addGestureRecognizer(pan4)
         

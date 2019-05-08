@@ -9,9 +9,7 @@
 import UIKit
 
 class HelperView: UIView {
-    
-//    let editingVC = EditingViewController()
-    
+   
     var leftHelper = SizeHelperView()
     var rightHelper = SizeHelperView()
     var topHelper = SizeHelperView()
@@ -140,6 +138,11 @@ class HelperView: UIView {
         
         setupShadow()
         
+        leftHelper.direct = Direction.left
+        rightHelper.direct = Direction.right
+        topHelper.direct = Direction.top
+        bottomHelper.direct = Direction.bottom
+        
     }
     
     func setupCornerHelper() {
@@ -266,7 +269,7 @@ class HelperView: UIView {
     }
     
     func showAllHelper() {
-        
+
         rightHelper.alpha = 1
         leftHelper.alpha = 1
         topHelper.alpha = 1
@@ -332,37 +335,5 @@ class HelperView: UIView {
         layoutIfNeeded()
         
     }
-    
-//    func setupGestureToHelper(){
-//
-//        //Handle to tapped
-//        let pan = UIPanGestureRecognizer(target: self,
-//                                         action: #selector(EditingViewController.handleLeftHelper(sender:)))
-//
-//        let pan2 = UIPanGestureRecognizer(target: self,
-//                                          action: #selector(EditingViewController.handleRightHelper(sender:)))
-//
-//        let pan3 = UIPanGestureRecognizer(target: self,
-//                                          action: #selector(EditingViewController.handleTopHelper(sender:)))
-//
-//        let pan4 = UIPanGestureRecognizer(target: self,
-//                                          action: #selector(EditingViewController.handleBottomHelper(sender:)))
-//
-//        let pan5 = UIPanGestureRecognizer(target: EditingViewController.self,
-//                                          action: #selector(EditingViewController.handleCircleGesture))
-//        let pan6 = UIPanGestureRecognizer(target: self,
-//                                         action: #selector(EditingViewController.handleDragged(_:)))
-//
-//
-//        leftHelper.addGestureRecognizer(pan)
-//        rightHelper.addGestureRecognizer(pan2)
-//        topHelper.addGestureRecognizer(pan3)
-//        bottomHelper.addGestureRecognizer(pan4)
-
-//        rotateHelper.isUserInteractionEnabled = true
-//        positionHelper.isUserInteractionEnabled = true
-//        rotateHelper.addGestureRecognizer(pan5)
-//        positionHelper.addGestureRecognizer(pan6)
-
-//    }
+ 
 }
