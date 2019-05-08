@@ -64,7 +64,7 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
     }
     @IBOutlet weak var textView: ALTextView!
     
-    weak var delegate: BaseViewControllerDelegate?
+    weak var delegate: BaseViewControllerProtocol?
 
     var editingView: UIView?
     var addingNewImage = false
@@ -227,7 +227,7 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
             }, completion: { done in
                     
                 if done {
-                     
+             
                     UIView.animate(withDuration: 0.5,
                                        delay: 1.2,
                                        animations: {[weak self] in
@@ -379,19 +379,23 @@ extension DesignViewController {
         if designView.image == nil {
 
             //只顯示 Camera Roll, Colors(Default)
-            NotificationCenter.default.post(name: notificationName,
-                                            object: nil,
-                                            userInfo: [NotificationInfo.backgroundIsImage: false])
+//            NotificationCenter.default.post(name: notificationName,
+//                                            object: nil,
+//                                            userInfo: [NotificationInfo.backgroundIsImage: false])
             addShapeContainerView.isHidden = true
+            
+            delegate?.noImageMode()
 
         } else {
+           
+            delegate?.pickImageMode()
 
-            //只顯示 Camera Roll, Filter(Default), Colors
-            NotificationCenter.default.post(
-                name: notificationName,
-                object: nil,
-                userInfo: [NotificationInfo.backgroundIsImage: true])
-            addShapeContainerView.isHidden = true
+//            //只顯示 Camera Roll, Filter(Default), Colors
+//            NotificationCenter.default.post(
+//                name: notificationName,
+//                object: nil,
+//                userInfo: [NotificationInfo.backgroundIsImage: true])
+//            addShapeContainerView.isHidden = true
         }
 
     }

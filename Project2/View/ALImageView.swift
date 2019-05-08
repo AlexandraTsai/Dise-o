@@ -17,4 +17,27 @@ class ALImageView: UIImageView {
     
     var originImage: UIImage?
     
+    func makeACopy(from originView: ALImageView) {
+        
+        let originRotation =  originView.transform
+        
+        //Transform the origin image view
+        originView.transform = CGAffineTransform(rotationAngle: 0)
+        
+        self.frame = originView.frame
+        
+        self.transform = originRotation
+        self.image = originView.image
+        self.alpha = originView.alpha
+        
+        originView.transform = originRotation
+        
+        self.filterName = originView.filterName
+        
+        self.originImage = originView.originImage
+        
+        self.imageFileName = originView.imageFileName
+        
+    }
+    
 }

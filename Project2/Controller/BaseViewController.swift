@@ -9,7 +9,7 @@
 import UIKit
 import Fusuma
 
-protocol BaseViewControllerDelegate: AnyObject {
+protocol BaseViewControllerProtocol: AnyObject {
     
     func showAllFilter(for image: UIImage)
     
@@ -22,21 +22,15 @@ protocol BaseViewControllerDelegate: AnyObject {
     func pickImageMode()
 }
 
-extension BaseViewControllerDelegate {
-    
-    func editShapeMode() {
-        
-    }
-    
-    func noImageMode() {
-        
-    }
-    
-    func pickImageMode() {
-        
-    }
-    
-}
+//extension BaseViewControllerProtocol {
+//
+//    func editShapeMode() {}
+//
+//    func noImageMode() {}
+//
+//    func pickImageMode() {}
+//
+//}
 
 class BaseViewController: UIViewController, FusumaDelegate {
     

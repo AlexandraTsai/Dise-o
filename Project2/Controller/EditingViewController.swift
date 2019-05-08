@@ -194,7 +194,7 @@ class EditingViewController: BaseViewController {
     var tableViewIndex: Int = 0
     var originalText = ""
     
-    weak var delegate: BaseViewControllerDelegate?
+    weak var delegate: BaseViewControllerProtocol?
     
     @IBOutlet weak var designView: ALDesignView!
  
@@ -645,7 +645,7 @@ extension EditingViewController {
 
         guard let tappedView = (editingView as? ALTextView) else {
 
-            guard let tappedView = (editingView as? UIImageView)else {
+            guard let tappedView = (editingView as? ALImageView)else {
                 
                 guard let tappedView = (editingView as? ALShapeView) else { return }
                 
@@ -661,10 +661,10 @@ extension EditingViewController {
                 
             }
 
-            let newView = UIImageView()
+            let newView = ALImageView()
 
             newView.makeACopy(from: tappedView)
-
+            
             addTapGesture(to: newView)
             
             designView.addSubview(newView)

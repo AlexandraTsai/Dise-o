@@ -33,8 +33,6 @@ class ImageEditContainerViewController: BaseContainerViewController {
     @IBOutlet weak var defaultColorView: UIView!
     @IBOutlet weak var transparencyView: UIView!
     
-    @IBOutlet weak var colorSquarePicker: ColorSquarePicker!
-    @IBOutlet weak var colorBarPicker: ColorBarPicker!
     @IBOutlet weak var usedColorButton: UIButton!
     @IBOutlet weak var slider: UISlider! 
 
@@ -316,12 +314,8 @@ class ImageEditContainerViewController: BaseContainerViewController {
         filterUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
         
     }
-   
-}
-
-extension ImageEditContainerViewController {
-
-    func editShapeMode() {
+    
+    override func editShapeMode() {
         
         photoView.isHidden = true
         filterView.isHidden = true
@@ -341,6 +335,7 @@ extension ImageEditContainerViewController {
         transparencyUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         
     }
+   
 }
 
 extension ImageEditContainerViewController {

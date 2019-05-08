@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HueKit
 
 protocol BaseContainerViewControllerProtocol: AnyObject {
     
@@ -17,13 +18,16 @@ protocol BaseContainerViewControllerProtocol: AnyObject {
 }
 
 class BaseContainerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,
-    BaseViewControllerDelegate {
+BaseViewControllerProtocol {
     
     weak var delegate: BaseContainerViewControllerProtocol?
    
     var imageToBeEdit: [UIImage]?
     
     @IBOutlet weak var photoView: UIView!
+    
+    @IBOutlet weak var colorSquarePicker: ColorSquarePicker!
+    @IBOutlet weak var colorBarPicker: ColorBarPicker!
     
     @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var filterCollectionView: UICollectionView! {
@@ -180,4 +184,11 @@ class BaseContainerViewController: UIViewController, UICollectionViewDelegate, U
         filterCollectionView.isHidden = false
         
     }
+    
+    func editShapeMode() {}
+    
+    func noImageMode() {}
+    
+    func pickImageMode() {}
+    
 }

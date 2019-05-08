@@ -12,17 +12,11 @@ import HueKit
 
 class ContainerViewController: BaseContainerViewController {
 
-    @IBOutlet weak var colorSquarePicker: ColorSquarePicker!
     @IBOutlet weak var colorIndicatorView: ColorIndicatorView!
 
     deinit {
         print("ContainerVC is deinit")
     }
-    
-    let photoManager = PhotoManager()
-    var imageArray: [UIImage] = []
-
-    var imageURL: [URL] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -180,6 +174,8 @@ class ContainerViewController: BaseContainerViewController {
         
         super.editImageMode()
         
+//        photoView.isHidden = false
+        
         filterView.isHidden = false
         filterCollectionView.isHidden = false
         
@@ -193,15 +189,12 @@ class ContainerViewController: BaseContainerViewController {
         colorUnderLine.backgroundColor = UIColor.DSColor.lightGreen
         
     }
-}
-
-extension ContainerViewController {
-   
-    func noImageMode() {
+    
+    override func noImageMode() {
         
         filterView.isHidden = true
         filterCollectionView.isHidden = true
-
+        
         photoView.isHidden = true
         
         filterButton.tintColor = UIColor.DSColor.lightGreen
@@ -214,7 +207,8 @@ extension ContainerViewController {
         colorUnderLine.backgroundColor = UIColor.DSColor.heavyGreen
         
     }
-    func pickImageMode() {
+    
+    override func pickImageMode() {
         
         filterView.isHidden = true
         photoView.isHidden = false
