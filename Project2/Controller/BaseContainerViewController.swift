@@ -14,6 +14,7 @@ protocol BaseContainerViewControllerProtocol: AnyObject {
     func showPhotoLibrayAlert()
     func showCameraAlert()
     func changeImageWith(filter: FilterType?)
+    func changeColor(to color: UIColor)
     
 }
 

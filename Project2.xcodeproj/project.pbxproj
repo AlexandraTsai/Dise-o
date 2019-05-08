@@ -20,6 +20,7 @@
 		A8242DBF227DC641006143CB /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DBD227DC641006143CB /* FilterCollectionViewCell.swift */; };
 		A8242DC0227DC641006143CB /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8242DBE227DC641006143CB /* FilterCollectionViewCell.xib */; };
 		A8242DC4227FEA8F006143CB /* DeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DC3227FEA8E006143CB /* DeleteView.swift */; };
+		A82564C72282AE0B00510EAF /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82564C62282AE0B00510EAF /* UIViewController+Extension.swift */; };
 		A82B5F332268A2270093671D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F322268A2270093671D /* HomeViewController.swift */; };
 		A82B5F352268A4930093671D /* NewDeign.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F342268A4930093671D /* NewDeign.swift */; };
 		A82B5F372268C8090093671D /* HelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F362268C8090093671D /* HelperView.swift */; };
@@ -63,7 +64,7 @@
 		A8D2C455225219030085AD24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8D2C453225219030085AD24 /* Main.storyboard */; };
 		A8D2C458225219030085AD24 /* Desiging.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C456225219030085AD24 /* Desiging.xcdatamodeld */; };
 		A8D2C45D225219080085AD24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8D2C45B225219080085AD24 /* LaunchScreen.storyboard */; };
-		A8D2C4722252270C0085AD24 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C4712252270C0085AD24 /* ContainerViewController.swift */; };
+		A8D2C4722252270C0085AD24 /* BackgroundContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C4712252270C0085AD24 /* BackgroundContainerViewController.swift */; };
 		A8D2C475225228130085AD24 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C474225228130085AD24 /* UITableView+Extension.swift */; };
 		A8D2C47B22522A8F0085AD24 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C47A22522A8F0085AD24 /* UICollectionView+Extension.swift */; };
 		A8D2C47E22523A480085AD24 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C47C22523A480085AD24 /* PhotoCollectionViewCell.swift */; };
@@ -104,6 +105,7 @@
 		A8242DBD227DC641006143CB /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		A8242DBE227DC641006143CB /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
 		A8242DC3227FEA8E006143CB /* DeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteView.swift; sourceTree = "<group>"; };
+		A82564C62282AE0B00510EAF /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		A82B5F322268A2270093671D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A82B5F342268A4930093671D /* NewDeign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeign.swift; sourceTree = "<group>"; };
 		A82B5F362268C8090093671D /* HelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperView.swift; sourceTree = "<group>"; };
@@ -149,7 +151,7 @@
 		A8D2C457225219030085AD24 /* Project2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Project2.xcdatamodel; sourceTree = "<group>"; };
 		A8D2C45C225219080085AD24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A8D2C45E225219080085AD24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A8D2C4712252270C0085AD24 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		A8D2C4712252270C0085AD24 /* BackgroundContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundContainerViewController.swift; sourceTree = "<group>"; };
 		A8D2C474225228130085AD24 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		A8D2C47A22522A8F0085AD24 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		A8D2C47C22523A480085AD24 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -333,7 +335,7 @@
 				A8D2C451225219020085AD24 /* DesignViewController.swift */,
 				A8D2C480225268000085AD24 /* EditingViewController.swift */,
 				A8C123A22281B69A00B14B92 /* BaseContainerViewController.swift */,
-				A8D2C4712252270C0085AD24 /* ContainerViewController.swift */,
+				A8D2C4712252270C0085AD24 /* BackgroundContainerViewController.swift */,
 				A8BFF77F225A4AC00010E56B /* ImageEditContainerViewController.swift */,
 				A8D2C4832252F9FF0085AD24 /* ImageContainerViewController.swift */,
 				A8DEBBA1225496D20081A694 /* AddImageContainerViewController.swift */,
@@ -368,9 +370,10 @@
 				A8DEBBA72255A5A90081A694 /* UITextView+Extension.swift */,
 				A8DEBBB1225638070081A694 /* UIImageView+Extension.swift */,
 				A86824C52260461500BDCCD8 /* UIView+Extension.swift */,
-				A8DEBBA92255A8A50081A694 /* ALCustomView.swift */,
 				A8BFF76A22586E3D0010E56B /* UIFont+Extension.swift */,
 				A8BFF7792259E1960010E56B /* UIButton+Extenstion.swift */,
+				A82564C62282AE0B00510EAF /* UIViewController+Extension.swift */,
+				A8DEBBA92255A8A50081A694 /* ALCustomView.swift */,
 				A86824C322603BC500BDCCD8 /* CGAffineTransform+Extension.swift */,
 				A86824C72260838200BDCCD8 /* ALRotationGestureRecognizer.swift */,
 				A816BEB422758CC4004E3896 /* UITextField+Extension.swift */,
@@ -585,6 +588,7 @@
 				A8BFF780225A4AC00010E56B /* ImageEditContainerViewController.swift in Sources */,
 				A8DEBBA2225496D20081A694 /* AddImageContainerViewController.swift in Sources */,
 				A8D2C47B22522A8F0085AD24 /* UICollectionView+Extension.swift in Sources */,
+				A82564C72282AE0B00510EAF /* UIViewController+Extension.swift in Sources */,
 				A816BEB322755860004E3896 /* SizeHelperView.swift in Sources */,
 				A8AD7465226C004E00BDE3A7 /* ALImageView.swift in Sources */,
 				A82B5F332268A2270093671D /* HomeViewController.swift in Sources */,
@@ -628,7 +632,7 @@
 				A8E30643226319FD00DA03A7 /* ALShapeView.swift in Sources */,
 				A84880CF22704A8900F308AC /* RenameView.swift in Sources */,
 				A865976F2269D22F000789A2 /* Result.swift in Sources */,
-				A8D2C4722252270C0085AD24 /* ContainerViewController.swift in Sources */,
+				A8D2C4722252270C0085AD24 /* BackgroundContainerViewController.swift in Sources */,
 				A86824C62260461500BDCCD8 /* UIView+Extension.swift in Sources */,
 				A8242DB8227D536B006143CB /* LaunchScreenViewController.swift in Sources */,
 				A8BFF77A2259E1960010E56B /* UIButton+Extenstion.swift in Sources */,

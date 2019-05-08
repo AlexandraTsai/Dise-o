@@ -187,10 +187,7 @@ class EditingViewController: BaseViewController {
             
         }
     }
-//
-//    let fusumaAlbum = FusumaViewController()
-//    let fusumaCamera = FusumaViewController()
-//
+
     var tableViewIndex: Int = 0
     var originalText = ""
     
@@ -219,8 +216,6 @@ class EditingViewController: BaseViewController {
         fontTableView.al_registerCellWithNib(identifier: String(describing: SpacingTableViewCell.self), bundle: nil)
         fontTableView.al_registerCellWithNib(identifier: String(describing: FontSizeTableViewCell.self), bundle: nil)
 
-//        setupImagePicker()
-//        setupCamera()
         createNotification()
         selectFontView.isHidden = true
         
@@ -728,23 +723,21 @@ extension EditingViewController {
     }
     
     func addCircleGesture(to rotateView: UIView) {
-        
+
         rotateView.isUserInteractionEnabled = true
-        
+
         //Handle to tapped
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handleCircleGesture(sender:)))
-//        tap.numberOfTapsRequired = 1
-//        tap.numberOfTouchesRequired = 1
         rotateView.addGestureRecognizer(pan)
     }
-    
+
     func addPanGesture(to view: UIView) {
         view.isUserInteractionEnabled = true
-        
+
         //Handle to tapped
         let pan = UIPanGestureRecognizer(target: self,
                                          action: #selector(handleDragged(_:)))
-        
+
         view.addGestureRecognizer(pan)
     }
 
@@ -877,7 +870,7 @@ extension EditingViewController {
         
     }
     
-    @objc func handleCircleGesture(sender: UITapGestureRecognizer) {
+    @objc func handleCircleGesture(sender: UIPanGestureRecognizer) {
         
         helperView.rotateHelper.increaseHitInset()
 
@@ -891,31 +884,16 @@ extension EditingViewController {
           
         case .changed:
             
-            if newLocation == nil {
+            if let location = newLocation { originLocation = location }
                 
-                newLocation = sender.location(in: designView)
-                
-            } else {
-                
-                guard let location = newLocation else { return }
-                
-                originLocation = location
-                
-                newLocation = sender.location(in: designView)
-                
-            }
+            newLocation = sender.location(in: designView)
         
             guard let origin = editingView?.center,
                 let newLocation = newLocation else { return }
             
-            let oldDistance = CGPointDistance(from: originLocation, to: origin)
-
-            let newDistance = CGPointDistance(from: newLocation, to: origin)
-            
-            let twoPointDistance = CGPointDistance(from: originLocation,
-                                                   to: newLocation)
-            
-            let newAngle = acos((oldDistance*oldDistance+newDistance*newDistance-twoPointDistance*twoPointDistance)/(2*oldDistance*newDistance))
+            let newAngle = angleBetween(pointA: originLocation,
+                                       pointB: newLocation,
+                                       origin: origin)
             
             var originAngle: CGFloat = 0
 
@@ -936,10 +914,6 @@ extension EditingViewController {
                     
                 }
                 
-                guard let editingView = editingView else { return }
-                
-                helperView.resize(accordingTo: editingView)
-                
             } else {
                 
                 originAngle = (angle/360)*CGFloat.pi*2
@@ -955,10 +929,11 @@ extension EditingViewController {
                     
                 }
                 
-                guard let editingView = editingView else { return }
-                
-                helperView.resize(accordingTo: editingView)
             }
+            
+            guard let editingView = editingView else { return }
+            
+            helperView.resize(accordingTo: editingView)
 
         default:
    
@@ -1119,91 +1094,44 @@ extension EditingViewController {
                      to newPoint: CGPoint,
                      center: CGPoint) -> Bool {
         
+        let oldC = CGPointDistance(from: oldPoint, to: CGPoint(x: center.x, y: center.y+10))
+        
+        let newC = CGPointDistance(from: newPoint, to: CGPoint(x: center.x, y: center.y+10))
+        
+        let distance = CGPointDistance(from: oldPoint, to: center)
+        
+        let distance2 = CGPointDistance(from: newPoint, to: center)
+        
+        let oldAngle = acos((distance*distance+10*10-oldC*oldC)/(2*distance*10))
+        
+        let newAngle = acos((distance2*distance2+10*10-newC*newC)/(2*distance2*10))
+        
         switch oldPoint.x - center.x {
        
         //Quadrant one & four
         case let value where value > 0 :
-          
-            let oldC = CGPointDistance(from: oldPoint, to: CGPoint(x: center.x, y: center.y+10))
-            
-            let newC = CGPointDistance(from: newPoint, to: CGPoint(x: center.x, y: center.y+10))
-            
-            let distance = CGPointDistance(from: oldPoint, to: center)
-            
-            let distance2 = CGPointDistance(from: newPoint, to: center)
-            
-            let oldAngle = acos((distance*distance+10*10-oldC*oldC)/(2*distance*10))
-            
-            let newAngle = acos((distance2*distance2+10*10-newC*newC)/(2*distance2*10))
-            
-            if newAngle < oldAngle {
-                
-                return true
-
-            } else {
-                
-                return false
-            }
+           
+            if newAngle < oldAngle { return true } else { return false }
             
         case let value where value == 0 :
           
             if oldPoint.y > center.y {
                 
-                if newPoint.x > oldPoint.x {
-                    
-                    return true
-                } else {
-                    return false
-                }
+                if newPoint.x > oldPoint.x { return true } else { return false }
                 
             } else {
                 
-                if newPoint.x < oldPoint.x {
-                    
-                    return true
-                    
-                } else {
-                    
-                    return false
-                }
+                if newPoint.x < oldPoint.x { return true } else { return false }
             }
             
         //Quadrant two & three
         default:
           
-            let oldC = CGPointDistance(from: oldPoint, to: CGPoint(x: center.x, y: center.y+10))
-            
-            let newC = CGPointDistance(from: newPoint, to: CGPoint(x: center.x, y: center.y+10))
-            
-            let distance = CGPointDistance(from: oldPoint, to: center)
-            
-            let distance2 = CGPointDistance(from: newPoint, to: center)
-            
-            let oldAngle = acos((distance*distance+10*10-oldC*oldC)/(2*distance*10))
-            
-            let newAngle = acos((distance2*distance2+10*10-newC*newC)/(2*distance2*10))
-          
-            if oldAngle < newAngle {
-                
-                return true
-                
-            } else {
-                
-                return false
-            }
+            if oldAngle < newAngle { return true } else { return false }
         }
         
     }
     
-    // swiftlint:disable identifier_name
-    func CGPointDistance(from: CGPoint, to: CGPoint) -> CGFloat {
-        return sqrt(CGPointDistanceSquared(from: from, to: to))
-    }
-    
-    func CGPointDistanceSquared(from: CGPoint, to: CGPoint) -> CGFloat {
-        return (from.x - to.x) * (from.x - to.x) + (from.y - to.y) * (from.y - to.y)
-    }
-    // swiftlint:enable identifier_name
     
     func rotatePoint(target: CGPoint, aroundOrigin origin: CGPoint, byDegree: CGFloat) -> CGPoint {
         
@@ -1509,14 +1437,6 @@ extension EditingViewController {
                 
                 guard let view = editingView as? ALShapeView else { return }
  
-//                view.shapeColor = color
-//
-//                print(view.path)
-////                view.drawWithShapeType()
-//                view.setNeedsDisplay()
-//
-//                print(view.path)
-
                 view.redrawWith(color)
                 
                 return
@@ -1552,48 +1472,6 @@ extension EditingViewController {
             
         }
     }
-    
-//    func setupImagePicker() {
-//        
-//        fusumaAlbum.delegate = self
-//        fusumaAlbum.availableModes = [FusumaMode.library]
-//        // Add .video capturing mode to the default .library and .camera modes
-//        fusumaAlbum.cropHeightRatio = 1
-//        // Height-to-width ratio. The default value is 1, which means a squared-size photo.
-//        fusumaAlbum.allowMultipleSelection = false
-//        // You can select multiple photos from the camera roll. The default value is false.
-//        
-//        fusumaSavesImage = true
-//        
-//        fusumaTitleFont = UIFont(name: FontName.copperplate.boldStyle(), size: 18)
-//        
-//        fusumaBackgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
-//        
-//        fusumaCameraRollTitle = "Camera Roll"
-//        
-//        fusumaTintColor = UIColor(red: 244/255, green: 200/255, blue: 88/255, alpha: 1)
-//        
-//        fusumaCameraTitle = "Camera"
-//        fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-//    
-//    }
-//    
-//    func setupCamera() {
-//        
-//        fusumaCamera.delegate = self
-//        fusumaCamera.availableModes = [FusumaMode.camera]
-//        
-//        fusumaSavesImage = true
-//        
-//        fusumaTitleFont = UIFont(name: FontName.copperplate.boldStyle(), size: 18)
-//        
-//        fusumaBackgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
-//        
-//        fusumaCameraTitle = "Camera"
-//        fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-//        
-//    }
- 
 }
 // MARK: EditingVC extension
 extension EditingViewController {
@@ -1606,24 +1484,16 @@ extension EditingViewController {
         
         helperView.resize(accordingTo: editingView)
 
-        let center = editingView.center
-        
-        let rect = designView.convert(center, to: helperView)
-        
-        helperView.editingFrame.center = rect
-        helperView.editingFrame.bounds = (editingView.bounds)
-
-        helperView.layoutIfNeeded()
-        editingView.layoutIfNeeded()
-        helperView.rotateHelper.layoutIfNeeded()
-        helperView.positionHelper.layoutIfNeeded()
+        helperView.resizeEditingFrame(accordingTo: editingView)
 
         addAllGesture(to: helperView)
-        
-//        helperView.clipsToBounds = false
+
         helperView.isUserInteractionEnabled = true
         
         addCircleGesture(to: helperView.rotateHelper)
+        
+//        helperView.setupGestureToHelper()
+        
         addPanGesture(to: helperView.positionHelper)
         
         //Handle to tapped
@@ -1680,6 +1550,21 @@ extension EditingViewController {
 }
 
 extension EditingViewController: BaseContainerViewControllerProtocol {
+    
+    func changeColor(to color: UIColor) {
+        
+        guard let view = editingView as? UIImageView else {
+            
+            guard let view = editingView as? ALShapeView else { return }
+            
+            view.redrawWith(color)
+            
+            return
+        }
+        view.image = nil
+        view.backgroundColor = color
+        
+    }
     
     func showPhotoLibrayAlert() {
         

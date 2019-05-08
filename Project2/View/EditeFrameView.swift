@@ -86,4 +86,5 @@ class EditFrameView: UIView {
         verticalLine.alpha = 0
         
     }
+    
 }

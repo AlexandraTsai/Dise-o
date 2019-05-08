@@ -42,7 +42,7 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
         
     }
     
-    @IBOutlet weak var containerView: ContainerViewController!
+    @IBOutlet weak var containerView: BackgroundContainerViewController!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var hintLabel: UILabel!
@@ -375,7 +375,7 @@ extension DesignViewController {
         if segue.identifier
             == "backgroundSegue" {
 
-            guard let containerVC: ContainerViewController = segue.destination as? ContainerViewController
+            guard let containerVC: BackgroundContainerViewController = segue.destination as? BackgroundContainerViewController
                 else { return }
             
             containerVC.loadViewIfNeeded()
@@ -434,11 +434,6 @@ extension DesignViewController {
         NotificationCenter.default.addObserver(self, selector:
             #selector(addShape(noti:)), name: notificationName7, object: nil)
         
-        let notificationName8 = Notification.Name(NotiName.backgroundColor.rawValue)
-        
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(changeBackgroundColor(noti:)), name: notificationName8, object: nil)
-
     }
 
     // 收到通知後要執行的動作
@@ -584,16 +579,13 @@ extension DesignViewController {
         
     }
     
-    @objc func changeBackgroundColor(noti: Notification) {
+    func changeColor(to color: UIColor) {
         
-        if let userInfo = noti.userInfo,
-            let color = userInfo[NotificationInfo.backgroundColor] as? UIColor {
-            
-            designView.image = nil
-            designView.backgroundColor = color
-            
-            delegate?.noImageMode()
-        }
+        designView.image = nil
+        designView.backgroundColor = color
+        
+        delegate?.noImageMode()
+        
     }
     
 }

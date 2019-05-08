@@ -10,7 +10,7 @@ import UIKit
 import Photos
 import HueKit
 
-class ContainerViewController: BaseContainerViewController {
+class BackgroundContainerViewController: BaseContainerViewController {
 
     @IBOutlet weak var colorIndicatorView: ColorIndicatorView!
 
@@ -80,13 +80,9 @@ class ContainerViewController: BaseContainerViewController {
     }
     
     @IBAction func colorSquarePickerValueChanged(_ sender: ColorSquarePicker) {
-        
-        let notificationName = Notification.Name(NotiName.backgroundColor.rawValue)
-        
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.backgroundColor: sender.color])
+    
+        delegate?.changeColor(to: sender.color)
+
     }
     
     @IBAction func photoLibraryBtnTapped(_ sender: UIButton) {

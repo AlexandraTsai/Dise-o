@@ -521,10 +521,10 @@
             </objects>
             <point key="canvasLocation" x="2872.8000000000002" y="-564.46776611694156"/>
         </scene>
-        <!--Container View Controller-->
+        <!--Background Container View Controller-->
         <scene sceneID="gdL-G0-TfH">
             <objects>
-                <viewController id="8WY-QU-6sx" customClass="ContainerViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8WY-QU-6sx" customClass="BackgroundContainerViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Ka-Eh-diH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="248"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

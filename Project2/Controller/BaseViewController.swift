@@ -22,16 +22,6 @@ protocol BaseViewControllerProtocol: AnyObject {
     func pickImageMode()
 }
 
-//extension BaseViewControllerProtocol {
-//
-//    func editShapeMode() {}
-//
-//    func noImageMode() {}
-//
-//    func pickImageMode() {}
-//
-//}
-
 class BaseViewController: UIViewController, FusumaDelegate {
     
     let fusumaAlbum = FusumaViewController()

@@ -260,13 +260,8 @@ class ImageEditContainerViewController: BaseContainerViewController {
     
     @IBAction func colorSquarePickerValueChanged(_ sender: ColorSquarePicker) {
        
-        let notificationName = Notification.Name(NotiName.changeEditingViewColor.rawValue)
-        
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.changeEditingViewColor: sender.color])
-        
+        delegate?.changeColor(to: sender.color)
+
     }
     
     @IBAction func checkBtnTapped(_ sender: Any) {

@@ -10,6 +10,8 @@ import UIKit
 
 class HelperView: UIView {
     
+//    let editingVC = EditingViewController()
+    
     var leftHelper = SizeHelperView()
     var rightHelper = SizeHelperView()
     var topHelper = SizeHelperView()
@@ -101,23 +103,6 @@ class HelperView: UIView {
         positionHelper.layer.cornerRadius = 10
         rotateHelper.layer.cornerRadius = 10
         
-    }
-    
-    func resize(accordingTo view: UIView) {
-        
-        //Record the rotaion of the original view
-        let originRotation =  view.transform
-        
-        //Transform the origin view
-        view.transform = CGAffineTransform(rotationAngle: 0)
-        
-        self.frame = view.frame
-        
-        self.bounds = view.bounds
-        
-        self.transform = originRotation
-        
-        view.transform = originRotation
     }
     
     func setupSizeHelper() {
@@ -316,4 +301,68 @@ class HelperView: UIView {
         self.layer.addSublayer(layer)
         
     }
+    
+    func resize(accordingTo view: UIView) {
+        
+        //Record the rotaion of the original view
+        let originRotation =  view.transform
+        
+        //Transform the origin view
+        view.transform = CGAffineTransform(rotationAngle: 0)
+        
+        self.frame = view.frame
+        
+        self.bounds = view.bounds
+        
+        self.transform = originRotation
+        
+        view.transform = originRotation
+    }
+    
+    func resizeEditingFrame(accordingTo view: UIView) {
+        
+        let center = view.center
+        
+        if let rect = self.superview?.convert(center, to: self) {
+            
+            editingFrame.center = rect
+            editingFrame.bounds = view.bounds
+        }
+        
+        layoutIfNeeded()
+        
+    }
+    
+//    func setupGestureToHelper(){
+//
+//        //Handle to tapped
+//        let pan = UIPanGestureRecognizer(target: self,
+//                                         action: #selector(EditingViewController.handleLeftHelper(sender:)))
+//
+//        let pan2 = UIPanGestureRecognizer(target: self,
+//                                          action: #selector(EditingViewController.handleRightHelper(sender:)))
+//
+//        let pan3 = UIPanGestureRecognizer(target: self,
+//                                          action: #selector(EditingViewController.handleTopHelper(sender:)))
+//
+//        let pan4 = UIPanGestureRecognizer(target: self,
+//                                          action: #selector(EditingViewController.handleBottomHelper(sender:)))
+//
+//        let pan5 = UIPanGestureRecognizer(target: EditingViewController.self,
+//                                          action: #selector(EditingViewController.handleCircleGesture))
+//        let pan6 = UIPanGestureRecognizer(target: self,
+//                                         action: #selector(EditingViewController.handleDragged(_:)))
+//
+//
+//        leftHelper.addGestureRecognizer(pan)
+//        rightHelper.addGestureRecognizer(pan2)
+//        topHelper.addGestureRecognizer(pan3)
+//        bottomHelper.addGestureRecognizer(pan4)
+
+//        rotateHelper.isUserInteractionEnabled = true
+//        positionHelper.isUserInteractionEnabled = true
+//        rotateHelper.addGestureRecognizer(pan5)
+//        positionHelper.addGestureRecognizer(pan6)
+
+//    }
 }
