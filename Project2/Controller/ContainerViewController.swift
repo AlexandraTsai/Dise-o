@@ -18,13 +18,6 @@ class ContainerViewController: BaseContainerViewController {
         print("ContainerVC is deinit")
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      
-        createNotification()
-
-    }
-
     @IBAction func cameraRollBtnTapped(_ sender: Any) {
         
         photoView.isHidden = false
@@ -173,9 +166,7 @@ class ContainerViewController: BaseContainerViewController {
     override func editImageMode() {
         
         super.editImageMode()
-        
-//        photoView.isHidden = false
-        
+
         filterView.isHidden = false
         filterCollectionView.isHidden = false
         
@@ -224,31 +215,4 @@ class ContainerViewController: BaseContainerViewController {
         
     }
 
-}
-
-extension ContainerViewController {
-
-    func createNotification() {
-
-        // 註冊addObserver
-        let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
-
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(changeBackground(noti:)), name: notificationName, object: nil)
-    }
-
-    @objc func changeBackground(noti: Notification) {
-
-        if let userInfo = noti.userInfo,
-            let mode = userInfo[NotificationInfo.backgroundIsImage] as? Bool {
-            if mode == true {
-//                filterButton.isHidden = false
-//                filterButton.isSelected = true
-                colorButton.isSelected = false
-            } else {
-//                filterButton.isHidden = true
-                colorButton.isSelected = true
-            }
-        }
-    }
 }

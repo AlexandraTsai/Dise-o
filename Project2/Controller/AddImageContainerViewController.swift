@@ -131,8 +131,6 @@ extension AddImageContainerViewController {
     // Return the image which is selected from camera roll or is taken via the camera.
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
 
-//        designView.image = image
-
         let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
 
         NotificationCenter.default.post(

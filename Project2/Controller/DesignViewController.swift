@@ -69,9 +69,6 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
     var editingView: UIView?
     var addingNewImage = false
     var showFilter = true
-
-//    let fusumaAlbum = FusumaViewController()
-//    let fusumaCamera = FusumaViewController()
   
     let saveImageAlert = GoSettingAlertView()
   
@@ -129,10 +126,6 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
 
         setupNavigationBar()
 
-//        setupImagePicker()
-//
-//        setupCamera()
-        
         scrollView.isHidden = true
 
         self.view.addSubview(saveSuccessLabel)
@@ -196,12 +189,6 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
             }
             
             designView.imageFileName = fileName
-            
-            let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
-            
-            NotificationCenter.default.post(name: notificationName,
-                                            object: nil,
-                                            userInfo: [NotificationInfo.backgroundIsImage: true])
         }
         
     }
@@ -287,13 +274,6 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
         
     }
 
-//    @IBAction func downBtnTapped(_ sender: Any) {
-//
-//        guard let editingView = editingView  else { return }
-//        designView.sendSubviewToBack(editingView)
-//
-//    }
-
     @IBAction func addImageBtnTapped(_ sender: Any) {
 
         addImageContainerView.isHidden = false
@@ -374,28 +354,16 @@ extension DesignViewController {
             self?.addButton.transform = CGAffineTransform(rotationAngle: 0)
         }
         
-        let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
-
         if designView.image == nil {
 
-            //只顯示 Camera Roll, Colors(Default)
-//            NotificationCenter.default.post(name: notificationName,
-//                                            object: nil,
-//                                            userInfo: [NotificationInfo.backgroundIsImage: false])
             addShapeContainerView.isHidden = true
             
             delegate?.noImageMode()
 
         } else {
            
-            delegate?.pickImageMode()
+            delegate?.editImageMode()
 
-//            //只顯示 Camera Roll, Filter(Default), Colors
-//            NotificationCenter.default.post(
-//                name: notificationName,
-//                object: nil,
-//                userInfo: [NotificationInfo.backgroundIsImage: true])
-//            addShapeContainerView.isHidden = true
         }
 
     }
@@ -508,6 +476,7 @@ extension DesignViewController {
             designView.image = newImage
         }
     }
+    
     @objc func switchToAddingMode(noti: Notification) {
         if let userInfo = noti.userInfo,
             let mode = userInfo[NotificationInfo.addingMode] as? Bool {
@@ -971,56 +940,6 @@ extension DesignViewController {
         show(editingVC, sender: nil)
     }
 
-}
-
-extension DesignViewController {
-
-    // Return the image which is selected from camera roll or is taken via the camera.
-    
-//    func setupImagePicker() {
-//
-//        fusumaAlbum.delegate = self
-//        fusumaAlbum.availableModes = [FusumaMode.library]
-//
-//        // FusumaMode.camera
-//
-//        // Add .video capturing mode to the default .library and .camera modes
-//        fusumaAlbum.cropHeightRatio = 1
-//        // Height-to-width ratio. The default value is 1, which means a squared-size photo.
-//        fusumaAlbum.allowMultipleSelection = false
-//        // You can select multiple photos from the camera roll. The default value is false.
-//
-//        fusumaSavesImage = true
-//
-//        fusumaTitleFont = UIFont(name: FontName.copperplate.boldStyle(), size: 18)
-//
-//        fusumaBackgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
-//
-//        fusumaCameraRollTitle = "Camera Roll"
-//
-//        fusumaTintColor = UIColor(red: 244/255, green: 200/255, blue: 88/255, alpha: 1)
-//
-//        fusumaCameraTitle = "Camera"
-//        fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-//
-//    }
-//
-//    func setupCamera() {
-//
-//        fusumaCamera.delegate = self
-//        fusumaCamera.availableModes = [FusumaMode.camera]
-//
-//        fusumaSavesImage = true
-//
-//        fusumaTitleFont = UIFont(name: FontName.copperplate.boldStyle(), size: 18)
-//
-//        fusumaBackgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
-//
-//        fusumaCameraTitle = "Camera"
-//        fusumaBaseTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-//
-//    }
-    
 }
 
 extension DesignViewController {
