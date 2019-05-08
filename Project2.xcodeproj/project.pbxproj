@@ -22,6 +22,8 @@
 		A8242DC4227FEA8F006143CB /* DeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8242DC3227FEA8E006143CB /* DeleteView.swift */; };
 		A82564C72282AE0B00510EAF /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82564C62282AE0B00510EAF /* UIViewController+Extension.swift */; };
 		A82564C92282B90700510EAF /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82564C82282B90700510EAF /* Direction.swift */; };
+		A82564CB2282C53800510EAF /* AlertTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82564CA2282C53800510EAF /* AlertTitle.swift */; };
+		A82564CD2282C94100510EAF /* ALSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82564CC2282C94100510EAF /* ALSegue.swift */; };
 		A82B5F332268A2270093671D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F322268A2270093671D /* HomeViewController.swift */; };
 		A82B5F352268A4930093671D /* NewDeign.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F342268A4930093671D /* NewDeign.swift */; };
 		A82B5F372268C8090093671D /* HelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F362268C8090093671D /* HelperView.swift */; };
@@ -32,7 +34,6 @@
 		A84880D32270687500F308AC /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84880D22270687500F308AC /* Text+Extension.swift */; };
 		A84880D52270688400F308AC /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84880D42270688400F308AC /* Image+Extension.swift */; };
 		A84880D922706ABE00F308AC /* Design+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84880D822706ABE00F308AC /* Design+Extension.swift */; };
-		A848811D2273E5BC00F308AC /* animation-w930-h950.json in Resources */ = {isa = PBXBuildFile; fileRef = A848811C2273E5BC00F308AC /* animation-w930-h950.json */; };
 		A848811F2273FAC200F308AC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A848811E2273FAC200F308AC /* UIColor+Extension.swift */; };
 		A85B04052279C0F000853841 /* CornerHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85B04042279C0F000853841 /* CornerHelperView.swift */; };
 		A865976C2269CB43000789A2 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A865976B2269CB43000789A2 /* StorageManager.swift */; };
@@ -108,6 +109,8 @@
 		A8242DC3227FEA8E006143CB /* DeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteView.swift; sourceTree = "<group>"; };
 		A82564C62282AE0B00510EAF /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		A82564C82282B90700510EAF /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		A82564CA2282C53800510EAF /* AlertTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTitle.swift; sourceTree = "<group>"; };
+		A82564CC2282C94100510EAF /* ALSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALSegue.swift; sourceTree = "<group>"; };
 		A82B5F322268A2270093671D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A82B5F342268A4930093671D /* NewDeign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeign.swift; sourceTree = "<group>"; };
 		A82B5F362268C8090093671D /* HelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperView.swift; sourceTree = "<group>"; };
@@ -118,7 +121,6 @@
 		A84880D22270687500F308AC /* Text+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
 		A84880D42270688400F308AC /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
 		A84880D822706ABE00F308AC /* Design+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Design+Extension.swift"; sourceTree = "<group>"; };
-		A848811C2273E5BC00F308AC /* animation-w930-h950.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "animation-w930-h950.json"; sourceTree = "<group>"; };
 		A848811E2273FAC200F308AC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		A85B04042279C0F000853841 /* CornerHelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerHelperView.swift; sourceTree = "<group>"; };
 		A865976B2269CB43000789A2 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
@@ -364,7 +366,6 @@
 			isa = PBXGroup;
 			children = (
 				A84880D62270688700F308AC /* Core Data */,
-				A848811C2273E5BC00F308AC /* animation-w930-h950.json */,
 				A8DEBB9722543DBF0081A694 /* border.swift */,
 				A848811E2273FAC200F308AC /* UIColor+Extension.swift */,
 				A8D2C474225228130085AD24 /* UITableView+Extension.swift */,
@@ -382,6 +383,8 @@
 				A816BEB422758CC4004E3896 /* UITextField+Extension.swift */,
 				A8242DAF227C0C51006143CB /* Float+Extension.swift */,
 				A8242DBB227DBC8E006143CB /* FilterType.swift */,
+				A82564CA2282C53800510EAF /* AlertTitle.swift */,
+				A82564CC2282C94100510EAF /* ALSegue.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -477,7 +480,6 @@
 				A8DEBBB0225621B30081A694 /* PaletteCollectionViewCell.xib in Resources */,
 				A8BFF77422588EA90010E56B /* SpacingTableViewCell.xib in Resources */,
 				A8DEBBA622549DC30081A694 /* ImageCollectionReusableView.xib in Resources */,
-				A848811D2273E5BC00F308AC /* animation-w930-h950.json in Resources */,
 				A8DEBBB4225713770081A694 /* Assets.xcassets in Resources */,
 				A8DEBB9C22545B8F0081A694 /* CollectionReusableView.xib in Resources */,
 				A8D2C455225219030085AD24 /* Main.storyboard in Resources */,
@@ -592,6 +594,7 @@
 				A8DEBBA2225496D20081A694 /* AddImageContainerViewController.swift in Sources */,
 				A8D2C47B22522A8F0085AD24 /* UICollectionView+Extension.swift in Sources */,
 				A82564C72282AE0B00510EAF /* UIViewController+Extension.swift in Sources */,
+				A82564CD2282C94100510EAF /* ALSegue.swift in Sources */,
 				A816BEB322755860004E3896 /* SizeHelperView.swift in Sources */,
 				A8AD7465226C004E00BDE3A7 /* ALImageView.swift in Sources */,
 				A82B5F332268A2270093671D /* HomeViewController.swift in Sources */,
@@ -615,6 +618,7 @@
 				A8AD7463226AF82200BDE3A7 /* ALDesignView.swift in Sources */,
 				A848811F2273FAC200F308AC /* UIColor+Extension.swift in Sources */,
 				A8AD7468226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift in Sources */,
+				A82564CB2282C53800510EAF /* AlertTitle.swift in Sources */,
 				A816BEB522758CC4004E3896 /* UITextField+Extension.swift in Sources */,
 				A8BFF782225A4B6B0010E56B /* PhotoManager.swift in Sources */,
 				A8AF2A5322781CC000C2B118 /* GoSettingAlertView.swift in Sources */,

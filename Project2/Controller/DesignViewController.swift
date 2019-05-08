@@ -373,9 +373,10 @@ extension DesignViewController {
         super.prepare(for: segue, sender: sender)
         
         if segue.identifier
-            == "backgroundSegue" {
+            == ALSegue.backgroundSegue.rawValue {
 
-            guard let containerVC: BackgroundContainerViewController = segue.destination as? BackgroundContainerViewController
+            guard let containerVC: BackgroundContainerViewController = segue
+                .destination as? BackgroundContainerViewController
                 else { return }
             
             containerVC.loadViewIfNeeded()
@@ -385,7 +386,7 @@ extension DesignViewController {
             self.delegate = containerVC
             
         } else if segue
-            .identifier == "shapeSegue" {
+            .identifier == ALSegue.shapeSegue.rawValue {
             
             guard let containerVC: ShapeContainerViewController = segue.destination as? ShapeContainerViewController
                 else { return }

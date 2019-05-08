@@ -421,13 +421,13 @@ class EditingViewController: BaseViewController {
         
         super.prepare(for: segue, sender: sender)
         
-        if segue.identifier == "textSegue" {
+        if segue.identifier == ALSegue.textSegue.rawValue {
             
             textContainerVC = segue.destination as? TextContainerViewController
             
             textContainerVC?.delegate = self
             
-        } else if segue.identifier == "imageSegue" {
+        } else if segue.identifier == ALSegue.imageSegue.rawValue {
             
             imageContainerVC = segue.destination as? ImageEditContainerViewController
             imageContainerVC?.delegate = self
@@ -749,7 +749,7 @@ extension EditingViewController {
         
         textView.becomeFirstResponder()
         
-        showHelper(after: sender)
+        helperView.showHelper(after: sender)
         
     }
     
@@ -769,7 +769,7 @@ extension EditingViewController {
                 
                 self?.helperView.alpha = 1
                 
-                self?.showHelper(after: sender)
+                self?.helperView.showHelper(after: sender)
             }
             
         }
@@ -782,7 +782,7 @@ extension EditingViewController {
         
         editingView = sender.view
         
-        showHelper(after: sender)
+        helperView.showHelper(after: sender)
 
     }
 
@@ -813,7 +813,7 @@ extension EditingViewController {
             
         }
         
-        showHelper(after: sender)
+        helperView.showHelper(after: sender)
 
     }
 
@@ -845,7 +845,7 @@ extension EditingViewController {
             
         }
         
-        showHelper(after: sender)
+        helperView.showHelper(after: sender)
     }
 
     @objc func handleDragged( _ gesture: UIPanGestureRecognizer) {
@@ -866,7 +866,7 @@ extension EditingViewController {
         view?.center = CGPoint(x: xCenter2+translation.x, y: yCenter2+translation.y)
         gesture.setTranslation(CGPoint.zero, in: view)
         
-        showHelper(after: gesture)
+        helperView.showHelper(after: gesture)
         
     }
     
@@ -939,7 +939,7 @@ extension EditingViewController {
    
             helperView.rotateHelper.decreaseHitInset()
             
-            showHelper(after: sender)
+            helperView.showHelper(after: sender)
         }
  
     }
@@ -1004,7 +1004,7 @@ extension EditingViewController {
 
         helperView.resize(accordingTo: editingView)
         
-        showHelper(after: sender)
+        helperView.showHelper(after: sender)
         
     }
 }
@@ -1350,8 +1350,6 @@ extension EditingViewController {
         
         addCircleGesture(to: helperView.rotateHelper)
         
-//        helperView.setupGestureToHelper()
-        
         addPanGesture(to: helperView.positionHelper)
         
         //Handle to tapped
@@ -1428,14 +1426,14 @@ extension EditingViewController: BaseContainerViewControllerProtocol {
         
         openLibraryAlert.alpha = 1
         openLibraryAlert.addOn(self.view)
-        openLibraryAlert.titleLabel.text = "To use your own photos, please allow access to your camera roll."
+        openLibraryAlert.titleLabel.text = AlertTitle.openPhotoLibrary.rawValue
     }
     
     func showCameraAlert() {
         
         openCameraAlert.alpha = 1
         openCameraAlert.addOn(self.view)
-        openCameraAlert.titleLabel.text = "To use the Camera, pleace allow permission for Diseño in Settings."
+        openCameraAlert.titleLabel.text = AlertTitle.openCamera.rawValue
     }
     
     func changeImageWith(filter: FilterType?) {
@@ -1479,27 +1477,7 @@ extension EditingViewController: TextContainerProtocol {
         
         textEditView.isHidden = false
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        helperView.hideAllHelper()
-        
-    }
-
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-
-        helperView.showAllHelper()
-    }
-    
-    func showHelper(after gesture: UIGestureRecognizer) {
-        
-        if gesture.state == UIGestureRecognizer.State.ended {
-            
-            helperView.showAllHelper()
-        }
-        
-    }
-    
+      
     @objc func handleCornerResize(gesture: UIPanGestureRecognizer) {
         
         let location = gesture.location(in: designView)
@@ -1550,7 +1528,7 @@ extension EditingViewController: TextContainerProtocol {
             
             helperView.resize(accordingTo: editingView!)
 
-            showHelper(after: gesture)
+            helperView.showHelper(after: gesture)
             
         }
        

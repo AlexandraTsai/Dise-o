@@ -335,5 +335,25 @@ class HelperView: UIView {
         layoutIfNeeded()
         
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.hideAllHelper()
+        
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.showAllHelper()
+    }
+    
+    func showHelper(after gesture: UIGestureRecognizer) {
+        
+        if gesture.state == UIGestureRecognizer.State.ended {
+            
+            self.showAllHelper()
+        }
+        
+    }
  
 }
