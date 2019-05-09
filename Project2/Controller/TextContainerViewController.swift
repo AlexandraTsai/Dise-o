@@ -229,6 +229,59 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
         
     }
     
+    @IBAction func italicButtonTapped(_ sender: Any) {
+        
+        guard let size = currentFont?.pointSize else { return }
+        
+        switch italicButton.currentTitleColor {
+            
+        case UIColor.DSColor.yellow:
+            
+            italicButton.setTitleColor(UIColor.white, for: .normal)
+            
+            switch boldButton.currentTitleColor {
+            case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
+                
+                if let font = UIFont(name: currentFontName.boldStyle(), size: size) {
+                    
+                    delegate?.changeFont(to: font)
+                }
+              
+            default:
+                
+                if let font = UIFont(name: currentFontName.rawValue, size: size) {
+                    
+                    delegate?.changeFont(to: font)
+                }
+               
+            }
+            
+        default:
+            
+            italicButton.setTitleColor(UIColor.DSColor.yellow, for: .normal)
+            
+            switch boldButton.currentTitleColor {
+            case UIColor.DSColor.yellow:
+                
+                if let font = UIFont(name: currentFontName.boldItalicStyle(), size: size) {
+                    
+                    delegate?.changeFont(to: font)
+                }
+              
+            default:
+                
+                if let font = UIFont(name: currentFontName.italicStyle(), size: size) {
+                    
+                    delegate?.changeFont(to: font)
+                }
+               
+            }
+            
+        }
+        
+    }
+
+    
     @IBAction func spacingButtonTapped(_ sender: UIButton) {
         
         tableViewIndex = .spacingCell

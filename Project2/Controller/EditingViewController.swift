@@ -203,79 +203,79 @@ class EditingViewController: BaseViewController {
 //
 //    }
   
-    @IBAction func boldButtonTapped(_ sender: Any) {
-
-        guard let view =  editingView as? ALTextView else { return }
-
-        switch boldbutton.currentTitleColor {
-
-        case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
-
-            switch italicButton.currentTitleColor {
-            case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
-
-                view.font = UIFont(name: currentFontName.italicStyle(), size: (view.font?.pointSize)!)
-
-            default:
-                view.font = UIFont(name: currentFontName.rawValue, size: (view.font?.pointSize)!)
-
-            }
-
-            boldbutton.setTitleColor(UIColor.white, for: .normal)
-        default:
-
-            switch italicButton.currentTitleColor {
-            case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
-
-                view.font = UIFont(name: currentFontName.boldItalicStyle(), size: (view.font?.pointSize)!)
-
-            default:
-                view.font = UIFont(name: currentFontName.boldStyle(), size: (view.font?.pointSize)!)
-            }
-
-            boldbutton.setTitleColor(UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1), for: .normal)
-
-        }
-
-    }
-
-    @IBAction func italicButtonTapped(_ sender: Any) {
-
-        guard let view =  editingView as? ALTextView else { return }
-
-        switch italicButton.currentTitleColor {
-
-        case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
-
-            switch boldbutton.currentTitleColor {
-            case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
-
-                view.font = UIFont(name: currentFontName.boldStyle(), size: (view.font?.pointSize)!)
-
-            default:
-
-                view.font = UIFont(name: currentFontName.rawValue, size: (view.font?.pointSize)!)
-
-            }
-
-            italicButton.setTitleColor(UIColor.white, for: .normal)
-
-        default:
-
-            switch boldbutton.currentTitleColor {
-            case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
-
-                view.font = UIFont(name: currentFontName.boldItalicStyle(), size: (view.font?.pointSize)!)
-            default:
-
-                view.font = UIFont(name: currentFontName.italicStyle(), size: (view.font?.pointSize)!)
-            }
-
-            italicButton.setTitleColor(UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1), for: .normal)
-
-        }
-
-    }
+//    @IBAction func boldButtonTapped(_ sender: Any) {
+//
+//        guard let view =  editingView as? ALTextView else { return }
+//
+//        switch boldbutton.currentTitleColor {
+//
+//        case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
+//
+//            switch italicButton.currentTitleColor {
+//            case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
+//
+//                view.font = UIFont(name: currentFontName.italicStyle(), size: (view.font?.pointSize)!)
+//
+//            default:
+//                view.font = UIFont(name: currentFontName.rawValue, size: (view.font?.pointSize)!)
+//
+//            }
+//
+//            boldbutton.setTitleColor(UIColor.white, for: .normal)
+//        default:
+//
+//            switch italicButton.currentTitleColor {
+//            case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
+//
+//                view.font = UIFont(name: currentFontName.boldItalicStyle(), size: (view.font?.pointSize)!)
+//
+//            default:
+//                view.font = UIFont(name: currentFontName.boldStyle(), size: (view.font?.pointSize)!)
+//            }
+//
+//            boldbutton.setTitleColor(UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1), for: .normal)
+//
+//        }
+//
+//    }
+//
+//    @IBAction func italicButtonTapped(_ sender: Any) {
+//
+//        guard let view =  editingView as? ALTextView else { return }
+//
+//        switch italicButton.currentTitleColor {
+//
+//        case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
+//
+//            switch boldbutton.currentTitleColor {
+//            case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
+//
+//                view.font = UIFont(name: currentFontName.boldStyle(), size: (view.font?.pointSize)!)
+//
+//            default:
+//
+//                view.font = UIFont(name: currentFontName.rawValue, size: (view.font?.pointSize)!)
+//
+//            }
+//
+//            italicButton.setTitleColor(UIColor.white, for: .normal)
+//
+//        default:
+//
+//            switch boldbutton.currentTitleColor {
+//            case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
+//
+//                view.font = UIFont(name: currentFontName.boldItalicStyle(), size: (view.font?.pointSize)!)
+//            default:
+//
+//                view.font = UIFont(name: currentFontName.italicStyle(), size: (view.font?.pointSize)!)
+//            }
+//
+//            italicButton.setTitleColor(UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1), for: .normal)
+//
+//        }
+//
+//    }
 
     @IBAction func letterCaseBtnTapped(_ sender: Any) {
         
@@ -1155,8 +1155,6 @@ extension EditingViewController {
                 
         }
     }
-    
- 
 }
 // MARK: EditingVC extension
 extension EditingViewController {

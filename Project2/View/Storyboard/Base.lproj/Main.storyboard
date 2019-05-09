@@ -1474,6 +1474,9 @@
                                                 <state key="normal" title="I">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="italicButtonTapped:" destination="igD-yW-FCX" eventType="touchUpInside" id="xHE-zP-6bq"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vy0-On-0M1">
                                                 <rect key="frame" x="143" y="7" width="30" height="30"/>
