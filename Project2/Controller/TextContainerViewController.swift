@@ -16,6 +16,9 @@ protocol TextContainerProtocol: AnyObject {
     func beBold()
     func textColorChange(to color: UIColor)
     func textTransparency(value: CGFloat)
+    func changeFont(to font: FontName)
+    func changeFont(to size: Int)
+    func changeTextWith(lineHeight: Float, letterSpacing: Float)
     
 }
 
@@ -23,6 +26,16 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
     
     weak var delegate: TextContainerProtocol?
    
+    var currentFont: UIFont? {
+        
+        didSet {
+            
+            fontSizeButton.setTitle(String(describing: currentFont?.pointSize), for: .normal)
+            fontTableView.reloadData()
+        }
+        
+    }
+    
     var currentFontName: FontName = FontName.helveticaNeue
 
     var textAlignment: NSTextAlignment?
@@ -49,7 +62,12 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var boldButton: UIButton!
     @IBOutlet weak var fontSizeButton: UIButton! {
         
-        didSet { setupShadow(for: fontSizeButton) }
+        didSet {
+            
+            fontSizeButton.setTitle(String(describing: currentFont?.pointSize), for: .normal)
+            setupShadow(for: fontSizeButton)
+            
+        }
         
     }
     
@@ -144,14 +162,18 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
         case .center?:
             delegate?.alignmentChange(to: .right)
             alignmentButton.setImage(UIImage(named: ImageAsset.Icon_AlignRight.rawValue), for: .normal)
+            textAlignment = .right
             
         case .right?:
             delegate?.alignmentChange(to: .left)
             alignmentButton.setImage(UIImage(named: ImageAsset.Icon_AlignLeft.rawValue), for: .normal)
+            textAlignment = .left
             
         default:
             delegate?.alignmentChange(to: .center)
             alignmentButton.setImage(UIImage(named: ImageAsset.Icon_AlignCenter.rawValue), for: .normal)
+            textAlignment = .center
+
         }
         
     }
@@ -229,6 +251,7 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch tableViewIndex {
+            
         case .fontCell?:
             
             return FontName.allCases.count
@@ -243,6 +266,7 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch tableViewIndex {
+            
         case .fontCell?:
            
             let cell = tableView.dequeueReusableCell(
@@ -272,7 +296,7 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
             
             guard let spacingCell = cell as? SpacingTableViewCell else { return cell }
             
-//            spacingCell.delegate = self
+            spacingCell.delegate = self
             
             return spacingCell
             
@@ -282,15 +306,35 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
                 for: indexPath)
             
             guard let fontSizeCell = cell as? FontSizeTableViewCell else { return cell }
+        
+            guard let fontSize = currentFont?.pointSize else {return cell}
             
-//            guard let view = editingView as? ALTextView else { return cell }
-//            guard let fontSize = view.font?.pointSize else {return cell}
+            fontSizeCell.delegate = self
             
-//            fontSizeCell.delegate = self
+            fontSizeCell.slider.value = Float(fontSize)
+            fontSizeCell.fontSizeLabel.text = "\(Int(fontSize))"
             
-//            fontSizeCell.fontSizeLabel.text = "\(Int(fontSize))"
             return fontSizeCell
             
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if tableViewIndex == .fontCell {
+            
+            let font = FontName.allCases[indexPath.row]
+            
+            currentFontName = font
+            currentFontButton.setTitle(font.rawValue, for: .normal)
+            currentFontButton.titleLabel?.font = UIFont(name: font.rawValue, size: 20)
+            
+            tableView.reloadData()
+            
+            delegate?.changeFont(to: font)
+            
+            //Setup Bold and Italic Buttons
+            setupTool(with: FontName.allCases[indexPath.row])
         }
     }
     
@@ -303,6 +347,48 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
         button.layer.shadowOffset = CGSize(width: 0, height: 0)
         button.layer.shadowColor = UIColor.DSColor.heavyGray.cgColor
         
+    }
+    
+    func setupTool(with font: FontName){
+        
+        let number = font.fontStyle()
+        
+        switch number {
+        case 0:
+            boldButton.disableMode()
+            italicButton.disableMode()
+        case 1:
+            boldButton.enableMode()
+            italicButton.disableMode()
+        case 2:
+            boldButton.disableMode()
+            italicButton.enableMode()
+        case 3, 4:
+            boldButton.enableMode()
+            italicButton.enableMode()
+            
+        default:
+            break
+        }
+        
+    }
+    
+}
+
+extension TextContainerViewController: SpacingTableViewCellDelegate, FontSizeTableViewCellDelegate {
+    
+    func changeTextAttributeWith(lineHeight: Float, letterSpacing: Float) {
+        
+        delegate?.changeTextWith(lineHeight: lineHeight, letterSpacing: letterSpacing)
+        
+    }
+    
+    func changeFontSize(to size: Int) {
+        
+        guard let fontName = currentFont?.fontName else { return }
+        currentFont = UIFont(name: fontName, size: CGFloat(size))
+        
+        delegate?.changeFont(to: size)
     }
     
 }

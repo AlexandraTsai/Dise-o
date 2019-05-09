@@ -25,44 +25,9 @@ class EditingViewController: BaseViewController {
     
     @IBOutlet weak var alignmentButton: UIButton!
     @IBOutlet weak var letterCaseButton: UIButton!
-    @IBOutlet weak var fontTableView: UITableView! {
-
-        didSet {
-            fontTableView.delegate = self
-            fontTableView.dataSource = self
-        }
-    }
     
     @IBOutlet weak var italicButton: UIButton!
     @IBOutlet weak var boldbutton: UIButton!
-//    @IBOutlet weak var fontSizeBtn: UIButton! {
-//
-//        didSet {
-//
-//            fontSizeBtn.layer.cornerRadius = 8
-//
-//            fontSizeBtn.layer.shadowOpacity = 1
-//            fontSizeBtn.layer.shadowRadius = 2
-//            fontSizeBtn.layer.shadowOffset = CGSize(width: 0, height: 0)
-//            fontSizeBtn.layer.shadowColor = UIColor.DSColor.heavyGray.cgColor
-//
-//        }
-//
-//    }
-//    @IBOutlet weak var colorButton: UIButton! {
-//
-//        didSet {
-//
-//            colorButton.layer.cornerRadius = 8
-//
-//            colorButton.layer.shadowOpacity = 1
-//            colorButton.layer.shadowRadius = 2
-//            colorButton.layer.shadowOffset = CGSize(width: 0, height: 0)
-//            colorButton.layer.shadowColor = UIColor.DSColor.heavyGray.cgColor
-//
-//        }
-//
-//    }
     
     @IBOutlet weak var textEditView: UIView!
     
@@ -82,6 +47,8 @@ class EditingViewController: BaseViewController {
     }
     
     @IBOutlet weak var imageEditContainerView: UIView!
+    @IBOutlet weak var textEditContainterView: UIView!
+    
     @IBOutlet weak var selectFontView: UIView!
    
     @IBOutlet weak var addElementButton: UIButton! {
@@ -133,8 +100,10 @@ class EditingViewController: BaseViewController {
             
             guard let textView = editingView as? ALTextView else {
 
-               textEditView.isHidden = true
-               imageEditContainerView.isHidden = false
+//               textEditView.isHidden = true
+            
+                textEditContainterView.isHidden = true
+                imageEditContainerView.isHidden = false
 
                 guard let view = editingView as? ALShapeView else {
                     
@@ -177,10 +146,11 @@ class EditingViewController: BaseViewController {
             guard let alpha = textView.textColor?.cgColor.alpha else { return }
             textContainerVC?.slider.value = Float(alpha*100)
             textContainerVC?.textAlignment = textView.textAlignment
+            textContainerVC?.currentFont = textView.font
             textContainerVC?.colorButton.backgroundColor = textView.textColor?.withAlphaComponent(1)
         
-//            textContainerVC.isHidden = false
             imageEditContainerView.isHidden = true
+            textEditContainterView.isHidden = false
             
         }
     }
@@ -207,12 +177,7 @@ class EditingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        fontTableView.al_registerCellWithNib(identifier: String(describing: FontTableViewCell.self), bundle: nil)
-//        fontTableView.al_registerCellWithNib(identifier: String(describing: SpacingTableViewCell.self), bundle: nil)
-//        fontTableView.al_registerCellWithNib(identifier: String(describing: FontSizeTableViewCell.self), bundle: nil)
-
         createNotification()
-//        selectFontView.isHidden = true
         
         imageContainerVC?.slider.addTarget(self,
                                            action: #selector(editImageTransparency(sender:)),
@@ -223,35 +188,9 @@ class EditingViewController: BaseViewController {
       
         openLibraryAlert.alpha = 0
         openCameraAlert.alpha = 0
+        
     }
 
-//    @IBAction func fontButtonTapped(_ sender: Any) {
-//
-//        tableViewIndex = 0
-//
-//        fontTableView.isScrollEnabled = true
-//        fontTableView.isScrollEnabled = true
-//        fontTableView.reloadData()
-//        selectFontView.isHidden = false
-//
-//    }
-
-//    @IBAction func colorButtonTapped(_ sender: Any) {
-//
-//        selectFontView.isHidden = true
-//        textEditView.isHidden = true
-//
-//    }
-    
-//    @IBAction func fontSizeButtonTapped(_ sender: Any) {
-//
-//        tableViewIndex = 2
-//        fontTableView.reloadData()
-//        fontTableView.isScrollEnabled = false
-//        selectFontView.isHidden = false
-//
-//    }
-    
     func alignmentChange(to type: NSTextAlignment) {
         
         guard let view =  editingView as? ALTextView else { return }
@@ -1060,22 +999,8 @@ extension EditingViewController: UITextViewDelegate {
     }
 }
 
-extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
-            SpacingTableViewCellDelegate, FontSizeTableViewCellDelegate {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        switch tableViewIndex {
-        case 0:
-
-            return FontName.allCases.count
-        default:
-
-            return 1
-        }
-
-    }
-
+extension EditingViewController {
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         switch tableViewIndex {
@@ -1107,7 +1032,7 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
 
             guard let spacingCell = cell as? SpacingTableViewCell else { return cell }
 
-            spacingCell.delegate = self
+//            spacingCell.delegate = self
 
             return spacingCell
             
@@ -1121,7 +1046,7 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
             guard let view = editingView as? ALTextView else { return cell }
             guard let fontSize = view.font?.pointSize else {return cell}
 
-            fontSizeCell.delegate = self
+//            fontSizeCell.delegate = self
 
             fontSizeCell.fontSizeLabel.text = "\(Int(fontSize))"
             return fontSizeCell
@@ -1129,66 +1054,17 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
         }
 
     }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        switch tableViewIndex {
-        case 0:
-            guard let view = editingView as? ALTextView,
-                let fontSize = view.font?.pointSize else { return }
-
-            let fontName = FontName.allCases[indexPath.row].rawValue
-
-            guard let newFont = UIFont(name: fontName, size: fontSize) else {
-                return
-            }
-
-            view.font = newFont
-            
-            view.resize()
-
-            currentFontName = FontName.allCases[indexPath.row]
-
-            currentFontBtn.setTitle(fontName, for: .normal)
-            currentFontBtn.titleLabel?.font = UIFont(name: fontName, size: 20)
-            
-            tableView.reloadData()
-
-            //Setup rBold and Italic Buttons
-            switch FontName.allCases[indexPath.row].fontStyle() {
-            case 0:
-                boldbutton.disableMode()
-                italicButton.disableMode()
-            case 1:
-                boldbutton.enableMode()
-                italicButton.disableMode()
-            case 2:
-                boldbutton.disableMode()
-                italicButton.enableMode()
-            case 3, 4:
-                boldbutton.enableMode()
-                italicButton.enableMode()
-
-            default:
-                break
-            }
-
-        default:
-            break
-        }
-
-    }
-
-    func changeTextAttributeWith(lineHeight: Float, letterSpacing: Float) {
-
+    
+    func changeTextWith(lineHeight: Float, letterSpacing: Float) {
+        
         self.lineHeight = lineHeight
         self.letterSpacing = letterSpacing
-
+        
         guard let view = editingView as? ALTextView,
             let fontName = view.font?.fontName,
             let fontSize = view.font?.pointSize,
             let textColor = view.textColor else { return }
-
+        
         view.keepAttributeWith(lineHeight: lineHeight,
                                letterSpacing: letterSpacing,
                                fontName: fontName,
@@ -1197,9 +1073,10 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
         view.resize()
         
         helperView.resize(accordingTo: view)
+
     }
 
-    func changeFontSize(to size: Int) {
+    func changeFont(to size: Int) {
         
         guard let view = editingView as? ALTextView,
             let fontName = view.font?.fontName,
@@ -1307,31 +1184,7 @@ extension EditingViewController {
         }
     }
     
-    //Text Attribute
-//    @objc func changeTextColor(noti: Notification) {
-//        if let userInfo = noti.userInfo,
-//            let color = userInfo[NotificationInfo.textColor] as? UIColor {
-//
-//            guard let textView = editingView as? ALTextView else { return }
-//
-//            guard let alpha = textView.textColor?.cgColor.alpha else { return }
-//
-//            textView.textColor = color.withAlphaComponent(alpha)
-////            colorButton.backgroundColor = color
-//        }
-//    }
-//    @objc func changeTextTransparency(noti: Notification) {
-//        if let userInfo = noti.userInfo,
-//            let transparency = userInfo[NotificationInfo.textTransparency] as? CGFloat {
-//
-//            guard let textView = editingView as? ALTextView else { return }
-//
-//            let color = textView.textColor
-//
-//            textView.textColor = color?.withAlphaComponent(transparency)
-//
-//        }
-//    }
+ 
 }
 // MARK: EditingVC extension
 extension EditingViewController {
@@ -1474,6 +1327,16 @@ extension EditingViewController: BaseContainerViewControllerProtocol {
 }
 
 extension EditingViewController: TextContainerProtocol {
+    
+    func changeFont(to font: FontName) {
+        
+        guard let view = editingView as? ALTextView,
+            let fontSize = view.font?.pointSize else { return }
+        
+        view.font = UIFont(name: font.rawValue, size: fontSize)
+        
+        view.resize()
+    }
     
     func beBold() {
         

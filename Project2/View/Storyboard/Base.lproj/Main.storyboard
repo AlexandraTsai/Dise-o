@@ -300,6 +300,7 @@
                         <outlet property="designView" destination="G2c-KZ-Yq1" id="Bz7-jI-hKY"/>
                         <outlet property="imageEditContainerView" destination="eE4-nX-key" id="1L3-L3-zrS"/>
                         <outlet property="shadowView" destination="4wF-LV-luz" id="czh-vq-QGY"/>
+                        <outlet property="textEditContainterView" destination="6Xu-MZ-AX6" id="Ecr-db-4Mb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o7i-A8-mCb" userLabel="First Responder" sceneMemberID="firstResponder"/>
