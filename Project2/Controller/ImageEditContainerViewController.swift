@@ -14,10 +14,6 @@ class ImageEditContainerViewController: BaseContainerViewController {
 
     @IBOutlet weak var transparencyUnderLine: UIView!
 
-    deinit {
-        print("ImageEditContainer is deinit")
-    }
- 
     @IBOutlet weak var transparencyBtn: UIButton! {
         
         didSet {

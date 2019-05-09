@@ -14,10 +14,6 @@ class BackgroundContainerViewController: BaseContainerViewController {
 
     @IBOutlet weak var colorIndicatorView: ColorIndicatorView!
 
-    deinit {
-        print("ContainerVC is deinit")
-    }
-
     @IBAction func cameraRollBtnTapped(_ sender: Any) {
         
         photoView.isHidden = false

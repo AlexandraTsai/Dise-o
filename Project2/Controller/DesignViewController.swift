@@ -64,9 +64,7 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
     }
     @IBOutlet weak var textView: ALTextView!
     
-    weak var delegate: BaseViewControllerProtocol?
-
-    var editingView: UIView?
+//    var editingView: UIView?
     var addingNewImage = false
     var showFilter = true
   
@@ -77,10 +75,6 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
     let openLibraryAlert = GoSettingAlertView()
 
     let openCameraAlert = GoSettingAlertView()
-    
-    deinit {
-        print("DesignViewController deinit \(self)")
-    }
 
     override func viewWillAppear(_ animated: Bool) {
         
@@ -96,25 +90,8 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
         
         self.tabBarController?.tabBar.barTintColor = UIColor.clear
         
-        if designView.image == nil {
-            
-            self.delegate?.noImageMode()
-            
-        } else {
-            
-            guard let fileName = designView.imageFileName else { return }
-            
-            guard let image = loadImageFromDiskWith(fileName: fileName) else { return }
-            
-            self.delegate?.showAllFilter(for: image)
-            
-            if showFilter {
-                self.delegate?.editImageMode()
-            } else {
-                self.delegate?.pickImageMode()
-            }
-        }
-     
+        changeSelector()
+        
     }
 
     override func viewDidLoad() {
@@ -131,6 +108,7 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
         self.view.addSubview(saveSuccessLabel)
         self.view.addSubview(openLibraryAlert)
         self.view.addSubview(openCameraAlert)
+        
         saveSuccessLabel.alpha = 0
         openLibraryAlert.alpha = 0
         openCameraAlert.alpha = 0
@@ -1009,6 +987,32 @@ extension DesignViewController: BaseContainerViewControllerProtocol {
             }
            
             designView.filterName = nil
+        }
+       
+    }
+    
+    func changeSelector() {
+        
+        if designView.image == nil {
+            
+            self.delegate?.noImageMode()
+            
+        } else {
+            
+            guard let fileName = designView.imageFileName else { return }
+            
+            guard let image = loadImageFromDiskWith(fileName: fileName) else { return }
+            
+            self.delegate?.showAllFilter(for: image)
+            
+            if showFilter {
+                
+                self.delegate?.editImageMode()
+                
+            } else {
+                
+                self.delegate?.pickImageMode()
+            }
         }
        
     }

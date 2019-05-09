@@ -102,10 +102,6 @@ class EditingViewController: BaseViewController {
     
     let openCameraAlert = GoSettingAlertView()
     
-    deinit {
-        print("EditingViewController deinit \(self)")
-    }
-    
     var textContainerVC: TextContainerViewController?
     var imageContainerVC: ImageEditContainerViewController?
     var lineHeight: Float = 0
@@ -190,8 +186,6 @@ class EditingViewController: BaseViewController {
 
     var tableViewIndex: Int = 0
     var originalText = ""
-    
-    weak var delegate: BaseViewControllerProtocol?
     
     @IBOutlet weak var designView: ALDesignView!
  

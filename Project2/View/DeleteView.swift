@@ -14,10 +14,6 @@ class DeleteView: UIView {
     let cancelButton = UIButton()
     let deleteButton = UIButton()
     
-    deinit {
-        print("new design view is deinit")
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

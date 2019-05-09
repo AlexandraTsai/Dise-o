@@ -23,10 +23,6 @@ class AddImageContainerViewController: UIViewController, PhotoManagerDelegate, F
         }
     }
     
-    deinit {
-        print("AddImageContainer is deinit")
-    }
-
     let photoManager = PhotoManager()
     var imageArray = [UIImage]()
     var imageURL = [URL]()

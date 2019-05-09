@@ -22,7 +22,9 @@ protocol BaseViewControllerProtocol: AnyObject {
     func pickImageMode()
 }
 
-class BaseViewController: UIViewController, FusumaDelegate {
+class BaseViewController: UIViewController, FusumaDelegate {    
+    
+    weak var delegate: BaseViewControllerProtocol?
     
     let fusumaAlbum = FusumaViewController()
     let fusumaCamera = FusumaViewController()
