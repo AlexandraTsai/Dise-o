@@ -35,34 +35,34 @@ class EditingViewController: BaseViewController {
     
     @IBOutlet weak var italicButton: UIButton!
     @IBOutlet weak var boldbutton: UIButton!
-    @IBOutlet weak var fontSizeBtn: UIButton! {
-        
-        didSet {
-            
-            fontSizeBtn.layer.cornerRadius = 8
-            
-            fontSizeBtn.layer.shadowOpacity = 1
-            fontSizeBtn.layer.shadowRadius = 2
-            fontSizeBtn.layer.shadowOffset = CGSize(width: 0, height: 0)
-            fontSizeBtn.layer.shadowColor = UIColor.DSColor.heavyGray.cgColor
-            
-        }
-        
-    }
-    @IBOutlet weak var colorButton: UIButton! {
-        
-        didSet {
-            
-            colorButton.layer.cornerRadius = 8
-            
-            colorButton.layer.shadowOpacity = 1
-            colorButton.layer.shadowRadius = 2
-            colorButton.layer.shadowOffset = CGSize(width: 0, height: 0)
-            colorButton.layer.shadowColor = UIColor.DSColor.heavyGray.cgColor
-            
-        }
-        
-    }
+//    @IBOutlet weak var fontSizeBtn: UIButton! {
+//
+//        didSet {
+//
+//            fontSizeBtn.layer.cornerRadius = 8
+//
+//            fontSizeBtn.layer.shadowOpacity = 1
+//            fontSizeBtn.layer.shadowRadius = 2
+//            fontSizeBtn.layer.shadowOffset = CGSize(width: 0, height: 0)
+//            fontSizeBtn.layer.shadowColor = UIColor.DSColor.heavyGray.cgColor
+//
+//        }
+//
+//    }
+//    @IBOutlet weak var colorButton: UIButton! {
+//
+//        didSet {
+//
+//            colorButton.layer.cornerRadius = 8
+//
+//            colorButton.layer.shadowOpacity = 1
+//            colorButton.layer.shadowRadius = 2
+//            colorButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+//            colorButton.layer.shadowColor = UIColor.DSColor.heavyGray.cgColor
+//
+//        }
+//
+//    }
     
     @IBOutlet weak var textEditView: UIView!
     
@@ -176,9 +176,10 @@ class EditingViewController: BaseViewController {
             
             guard let alpha = textView.textColor?.cgColor.alpha else { return }
             textContainerVC?.slider.value = Float(alpha*100)
-            colorButton.backgroundColor = textView.textColor?.withAlphaComponent(1)
+            textContainerVC?.textAlignment = textView.textAlignment
+            textContainerVC?.colorButton.backgroundColor = textView.textColor?.withAlphaComponent(1)
         
-            textEditView.isHidden = false
+//            textContainerVC.isHidden = false
             imageEditContainerView.isHidden = true
             
         }
@@ -206,12 +207,12 @@ class EditingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fontTableView.al_registerCellWithNib(identifier: String(describing: FontTableViewCell.self), bundle: nil)
-        fontTableView.al_registerCellWithNib(identifier: String(describing: SpacingTableViewCell.self), bundle: nil)
-        fontTableView.al_registerCellWithNib(identifier: String(describing: FontSizeTableViewCell.self), bundle: nil)
+//        fontTableView.al_registerCellWithNib(identifier: String(describing: FontTableViewCell.self), bundle: nil)
+//        fontTableView.al_registerCellWithNib(identifier: String(describing: SpacingTableViewCell.self), bundle: nil)
+//        fontTableView.al_registerCellWithNib(identifier: String(describing: FontSizeTableViewCell.self), bundle: nil)
 
         createNotification()
-        selectFontView.isHidden = true
+//        selectFontView.isHidden = true
         
         imageContainerVC?.slider.addTarget(self,
                                            action: #selector(editImageTransparency(sender:)),
@@ -224,50 +225,57 @@ class EditingViewController: BaseViewController {
         openCameraAlert.alpha = 0
     }
 
-    @IBAction func fontButtonTapped(_ sender: Any) {
+//    @IBAction func fontButtonTapped(_ sender: Any) {
+//
+//        tableViewIndex = 0
+//
+//        fontTableView.isScrollEnabled = true
+//        fontTableView.isScrollEnabled = true
+//        fontTableView.reloadData()
+//        selectFontView.isHidden = false
+//
+//    }
 
-        tableViewIndex = 0
-
-        fontTableView.isScrollEnabled = true
-        fontTableView.isScrollEnabled = true
-        fontTableView.reloadData()
-        selectFontView.isHidden = false
-
-    }
-
-    @IBAction func colorButtonTapped(_ sender: Any) {
-
-        selectFontView.isHidden = true
-        textEditView.isHidden = true
+//    @IBAction func colorButtonTapped(_ sender: Any) {
+//
+//        selectFontView.isHidden = true
+//        textEditView.isHidden = true
+//
+//    }
+    
+//    @IBAction func fontSizeButtonTapped(_ sender: Any) {
+//
+//        tableViewIndex = 2
+//        fontTableView.reloadData()
+//        fontTableView.isScrollEnabled = false
+//        selectFontView.isHidden = false
+//
+//    }
+    
+    func alignmentChange(to type: NSTextAlignment) {
+        
+        guard let view =  editingView as? ALTextView else { return }
+        view.textAlignment = type
         
     }
-    
-    @IBAction func fontSizeButtonTapped(_ sender: Any) {
 
-        tableViewIndex = 2
-        fontTableView.reloadData()
-        fontTableView.isScrollEnabled = false
-        selectFontView.isHidden = false
-
-    }
-
-    @IBAction func alignmentButtonTapped(_ sender: Any) {
-
-        guard let view =  editingView as? ALTextView else { return }
-
-        switch view.textAlignment {
-        case .center:
-            view.textAlignment = .right
-            alignmentButton.setImage(UIImage(named: ImageAsset.Icon_AlignRight.rawValue), for: .normal)
-        case .right:
-            view.textAlignment = .left
-             alignmentButton.setImage(UIImage(named: ImageAsset.Icon_AlignLeft.rawValue), for: .normal)
-        default:
-            view.textAlignment = .center
-            alignmentButton.setImage(UIImage(named: ImageAsset.Icon_AlignCenter.rawValue), for: .normal)
-        }
-
-    }
+//    @IBAction func alignmentButtonTapped(_ sender: Any) {
+//
+//        guard let view =  editingView as? ALTextView else { return }
+//
+//        switch view.textAlignment {
+//        case .center:
+//            view.textAlignment = .right
+//            alignmentButton.setImage(UIImage(named: ImageAsset.Icon_AlignRight.rawValue), for: .normal)
+//        case .right:
+//            view.textAlignment = .left
+//             alignmentButton.setImage(UIImage(named: ImageAsset.Icon_AlignLeft.rawValue), for: .normal)
+//        default:
+//            view.textAlignment = .center
+//            alignmentButton.setImage(UIImage(named: ImageAsset.Icon_AlignCenter.rawValue), for: .normal)
+//        }
+//
+//    }
 
     @IBAction func finishEdit(_ sender: Any) {
         selectFontView.isHidden = true
@@ -1023,7 +1031,7 @@ extension EditingViewController: UITextViewDelegate {
 
                 for _ in  1...count {
 
-                    originalText.removeLast()
+                    textContainerVC?.originalText.removeLast()
                 }
 
                 return
@@ -1037,13 +1045,13 @@ extension EditingViewController: UITextViewDelegate {
 
             }
 
-            originalText.append(newText)
+            textContainerVC?.originalText.append(newText)
 
             textView.text = textView.text.uppercased()
 
         default:
 
-            originalText = textView.text
+            textContainerVC?.originalText = textView.text
 
         }
         
@@ -1209,7 +1217,7 @@ extension EditingViewController: UITableViewDelegate, UITableViewDataSource,
         
         createEditingHelper(for: view)
         
-        fontSizeBtn.setTitle(String(size), for: .normal)
+        textContainerVC?.fontSizeButton.setTitle(String(size), for: .normal)
     }
     
 }
@@ -1236,15 +1244,15 @@ extension EditingViewController {
         NotificationCenter.default.addObserver(self, selector:
             #selector(changeEditingViewColor(noti:)), name: notificationName2, object: nil)
        
-        let notificationName3 = Notification.Name(NotiName.textTransparency.rawValue)
-        
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(changeTextTransparency(noti:)), name: notificationName3, object: nil)
-        
-        let notificationName4 = Notification.Name(NotiName.textColor.rawValue)
-        
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(changeTextColor(noti:)), name: notificationName4, object: nil)
+//        let notificationName3 = Notification.Name(NotiName.textTransparency.rawValue)
+//
+//        NotificationCenter.default.addObserver(self, selector:
+//            #selector(changeTextTransparency(noti:)), name: notificationName3, object: nil)
+//
+//        let notificationName4 = Notification.Name(NotiName.textColor.rawValue)
+//        
+//        NotificationCenter.default.addObserver(self, selector:
+//            #selector(changeTextColor(noti:)), name: notificationName4, object: nil)
     }
     
     // 收到通知後要執行的動作
@@ -1300,30 +1308,30 @@ extension EditingViewController {
     }
     
     //Text Attribute
-    @objc func changeTextColor(noti: Notification) {
-        if let userInfo = noti.userInfo,
-            let color = userInfo[NotificationInfo.textColor] as? UIColor {
-            
-            guard let textView = editingView as? ALTextView else { return }
-            
-            guard let alpha = textView.textColor?.cgColor.alpha else { return }
-            
-            textView.textColor = color.withAlphaComponent(alpha)
-            colorButton.backgroundColor = color
-        }
-    }
-    @objc func changeTextTransparency(noti: Notification) {
-        if let userInfo = noti.userInfo,
-            let transparency = userInfo[NotificationInfo.textTransparency] as? CGFloat {
-            
-            guard let textView = editingView as? ALTextView else { return }
-            
-            let color = textView.textColor
-            
-            textView.textColor = color?.withAlphaComponent(transparency)
-            
-        }
-    }
+//    @objc func changeTextColor(noti: Notification) {
+//        if let userInfo = noti.userInfo,
+//            let color = userInfo[NotificationInfo.textColor] as? UIColor {
+//
+//            guard let textView = editingView as? ALTextView else { return }
+//
+//            guard let alpha = textView.textColor?.cgColor.alpha else { return }
+//
+//            textView.textColor = color.withAlphaComponent(alpha)
+////            colorButton.backgroundColor = color
+//        }
+//    }
+//    @objc func changeTextTransparency(noti: Notification) {
+//        if let userInfo = noti.userInfo,
+//            let transparency = userInfo[NotificationInfo.textTransparency] as? CGFloat {
+//
+//            guard let textView = editingView as? ALTextView else { return }
+//
+//            let color = textView.textColor
+//
+//            textView.textColor = color?.withAlphaComponent(transparency)
+//
+//        }
+//    }
 }
 // MARK: EditingVC extension
 extension EditingViewController {
@@ -1467,11 +1475,35 @@ extension EditingViewController: BaseContainerViewControllerProtocol {
 
 extension EditingViewController: TextContainerProtocol {
     
-    func hideColorPicker() {
+    func beBold() {
         
-        textEditView.isHidden = false
     }
-      
+    
+    func textTransparency(value: CGFloat) {
+        
+        guard let textView = editingView as? ALTextView else { return }
+        
+        let color = textView.textColor
+        
+        textView.textColor = color?.withAlphaComponent(value)
+        
+    }
+    
+    func textColorChange(to color: UIColor) {
+        
+        guard let textView = editingView as? ALTextView else { return }
+        
+        guard let alpha = textView.textColor?.cgColor.alpha else { return }
+        
+        textView.textColor = color.withAlphaComponent(alpha)
+        
+    }
+    
+//    func hideColorPicker() {
+//
+//        textEditView.isHidden = false
+//    }
+    
     @objc func handleCornerResize(gesture: UIPanGestureRecognizer) {
         
         let location = gesture.location(in: designView)

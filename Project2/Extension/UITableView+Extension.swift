@@ -8,6 +8,14 @@
 
 import UIKit
 
+enum TableViewCellType: String {
+    
+    case spacingCell
+    case fontCell
+    case fontSizeCell
+    
+}
+
 extension UITableView {
 
     func al_registerCellWithNib(identifier: String, bundle: Bundle?) {

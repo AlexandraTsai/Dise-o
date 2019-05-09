@@ -24,6 +24,8 @@
 		A82564C92282B90700510EAF /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82564C82282B90700510EAF /* Direction.swift */; };
 		A82564CB2282C53800510EAF /* AlertTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82564CA2282C53800510EAF /* AlertTitle.swift */; };
 		A82564CD2282C94100510EAF /* ALSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82564CC2282C94100510EAF /* ALSegue.swift */; };
+		A82564CF2283CB5700510EAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A82564CE2283CB5700510EAF /* GoogleService-Info.plist */; };
+		A82564D02283CF1E00510EAF /* ALShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E30642226319FD00DA03A7 /* ALShapeView.swift */; };
 		A82B5F332268A2270093671D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F322268A2270093671D /* HomeViewController.swift */; };
 		A82B5F352268A4930093671D /* NewDeign.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F342268A4930093671D /* NewDeign.swift */; };
 		A82B5F372268C8090093671D /* HelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F362268C8090093671D /* HelperView.swift */; };
@@ -59,7 +61,6 @@
 		A8BFF77A2259E1960010E56B /* UIButton+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF7792259E1960010E56B /* UIButton+Extenstion.swift */; };
 		A8BFF780225A4AC00010E56B /* ImageEditContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF77F225A4AC00010E56B /* ImageEditContainerViewController.swift */; };
 		A8BFF782225A4B6B0010E56B /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF781225A4B6B0010E56B /* PhotoManager.swift */; };
-		A8C123A12281B46100B14B92 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8C123A02281B46100B14B92 /* GoogleService-Info.plist */; };
 		A8C123A32281B69A00B14B92 /* BaseContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C123A22281B69A00B14B92 /* BaseContainerViewController.swift */; };
 		A8D2C450225219020085AD24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C44F225219020085AD24 /* AppDelegate.swift */; };
 		A8D2C452225219020085AD24 /* DesignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C451225219020085AD24 /* DesignViewController.swift */; };
@@ -89,7 +90,6 @@
 		A8E3063C2262FE0000DA03A7 /* ShapeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E3063B2262FE0000DA03A7 /* ShapeContainerViewController.swift */; };
 		A8E3063F2263009C00DA03A7 /* ShapeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E3063D2263009C00DA03A7 /* ShapeCollectionViewCell.swift */; };
 		A8E306402263009D00DA03A7 /* ShapeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8E3063E2263009C00DA03A7 /* ShapeCollectionViewCell.xib */; };
-		A8E30643226319FD00DA03A7 /* ALShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E30642226319FD00DA03A7 /* ALShapeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +111,7 @@
 		A82564C82282B90700510EAF /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		A82564CA2282C53800510EAF /* AlertTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTitle.swift; sourceTree = "<group>"; };
 		A82564CC2282C94100510EAF /* ALSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALSegue.swift; sourceTree = "<group>"; };
+		A82564CE2283CB5700510EAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A82B5F322268A2270093671D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A82B5F342268A4930093671D /* NewDeign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeign.swift; sourceTree = "<group>"; };
 		A82B5F362268C8090093671D /* HelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperView.swift; sourceTree = "<group>"; };
@@ -146,7 +147,6 @@
 		A8BFF7792259E1960010E56B /* UIButton+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extenstion.swift"; sourceTree = "<group>"; };
 		A8BFF77F225A4AC00010E56B /* ImageEditContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditContainerViewController.swift; sourceTree = "<group>"; };
 		A8BFF781225A4B6B0010E56B /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
-		A8C123A02281B46100B14B92 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A8C123A22281B69A00B14B92 /* BaseContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseContainerViewController.swift; sourceTree = "<group>"; };
 		A8D2C44C225219020085AD24 /* Project2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D2C44F225219020085AD24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -294,7 +294,7 @@
 				A8D2C465225222850085AD24 /* Controller */,
 				A8D2C464225222790085AD24 /* View */,
 				A8DEBBB3225713770081A694 /* Assets.xcassets */,
-				A8C123A02281B46100B14B92 /* GoogleService-Info.plist */,
+				A82564CE2283CB5700510EAF /* GoogleService-Info.plist */,
 				A8D2C45E225219080085AD24 /* Info.plist */,
 				A8D2C456225219030085AD24 /* Desiging.xcdatamodeld */,
 			);
@@ -342,10 +342,10 @@
 				A8C123A22281B69A00B14B92 /* BaseContainerViewController.swift */,
 				A8D2C4712252270C0085AD24 /* BackgroundContainerViewController.swift */,
 				A8BFF77F225A4AC00010E56B /* ImageEditContainerViewController.swift */,
+				A80F296A22660BED009C13F5 /* TextContainerViewController.swift */,
 				A8D2C4832252F9FF0085AD24 /* ImageContainerViewController.swift */,
 				A8DEBBA1225496D20081A694 /* AddImageContainerViewController.swift */,
 				A8E3063B2262FE0000DA03A7 /* ShapeContainerViewController.swift */,
-				A80F296A22660BED009C13F5 /* TextContainerViewController.swift */,
 				A8242DB7227D536B006143CB /* LaunchScreenViewController.swift */,
 			);
 			path = Controller;
@@ -471,7 +471,6 @@
 			files = (
 				A8BFF76F22586E5C0010E56B /* FontTableViewCell.xib in Resources */,
 				A8242DC0227DC641006143CB /* FilterCollectionViewCell.xib in Resources */,
-				A8C123A12281B46100B14B92 /* GoogleService-Info.plist in Resources */,
 				A8E306402263009D00DA03A7 /* ShapeCollectionViewCell.xib in Resources */,
 				A8BFF7782258D1970010E56B /* FontSizeTableViewCell.xib in Resources */,
 				A8D2C45D225219080085AD24 /* LaunchScreen.storyboard in Resources */,
@@ -483,6 +482,7 @@
 				A8DEBBB4225713770081A694 /* Assets.xcassets in Resources */,
 				A8DEBB9C22545B8F0081A694 /* CollectionReusableView.xib in Resources */,
 				A8D2C455225219030085AD24 /* Main.storyboard in Resources */,
+				A82564CF2283CB5700510EAF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,7 +637,6 @@
 				A8242DB2227D3F29006143CB /* BaseViewController.swift in Sources */,
 				A86824C2225CCF4000BDCCD8 /* Notification.swift in Sources */,
 				A8242DBF227DC641006143CB /* FilterCollectionViewCell.swift in Sources */,
-				A8E30643226319FD00DA03A7 /* ALShapeView.swift in Sources */,
 				A84880CF22704A8900F308AC /* RenameView.swift in Sources */,
 				A865976F2269D22F000789A2 /* Result.swift in Sources */,
 				A8D2C4722252270C0085AD24 /* BackgroundContainerViewController.swift in Sources */,
@@ -648,6 +647,7 @@
 				A8DEBBB2225638070081A694 /* UIImageView+Extension.swift in Sources */,
 				A80804EB226882720042E4FF /* EditeFrameView.swift in Sources */,
 				A8D2C458225219030085AD24 /* Desiging.xcdatamodeld in Sources */,
+				A82564D02283CF1E00510EAF /* ALShapeView.swift in Sources */,
 				A8BFF76E22586E5C0010E56B /* FontTableViewCell.swift in Sources */,
 				A8E3063C2262FE0000DA03A7 /* ShapeContainerViewController.swift in Sources */,
 				A8BFF76B22586E3D0010E56B /* UIFont+Extension.swift in Sources */,
