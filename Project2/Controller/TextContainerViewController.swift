@@ -29,19 +29,7 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
     var tableViewIndex: TableViewCellType?
     var originalText = ""
     
-    @IBOutlet weak var textToolView: UIView! {
-            
-        didSet {
-                
-            textToolView.layer.cornerRadius = 6
-            textToolView.layer.shadowColor = UIColor.DSColor.heavyGray.cgColor
-            textToolView.layer.shadowOffset = CGSize(width: 0, height: 0)
-            textToolView.layer.shadowRadius = 6
-            textToolView.layer.shadowOpacity = 1
-                
-        }
-    }
-    
+    @IBOutlet weak var textToolView: UIView!
     @IBOutlet weak var colorToolView: UIView!
     @IBOutlet weak var fontToolView: UIView!
     
@@ -69,6 +57,19 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
         
         didSet { setupShadow(for: colorButton) }
         
+    }
+    
+    @IBOutlet weak var toolView: UIView! {
+        
+        didSet {
+            
+            toolView.layer.cornerRadius = 6
+            toolView.layer.shadowColor = UIColor.DSColor.heavyGray.cgColor
+            toolView.layer.shadowOffset = CGSize(width: 0, height: 0)
+            toolView.layer.shadowRadius = 6
+            toolView.layer.shadowOpacity = 1
+            
+        }
     }
     
     //Font Tool
@@ -113,7 +114,8 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
     @IBAction func fontButtonTapped(_ sender: UIButton) {
         
         tableViewIndex = .fontCell
-        
+        textToolView.isHidden = true
+
         fontTableView.isScrollEnabled = true
         fontTableView.reloadData()
 //        selectFontView.isHidden = false
@@ -122,10 +124,14 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func colorButtonTapped(_ sender: UIButton) {
         
+        textToolView.isHidden = true
+        fontToolView.isHidden = true
     }
     
     @IBAction func fontSizeButtonTapped(_ sender: UIButton) {
     
+        textToolView.isHidden = true
+
         tableViewIndex = .fontSizeCell
         fontTableView.reloadData()
         fontTableView.isScrollEnabled = false
@@ -150,21 +156,27 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
         
     }
     
-    @IBAction func endupEdit(_ sender: UIButton) {
+    @IBAction func spacingButtonTapped(_ sender: UIButton) {
+        
+        tableViewIndex = .spacingCell
+        
+        fontTableView.isScrollEnabled = false
+        fontTableView.reloadData()
+        fontTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        
+        textToolView.isHidden = true
+        fontToolView.isHidden = false
         
     }
+    
+    @IBAction func endupEdit(_ sender: UIButton) {
+        
+        textToolView.isHidden = false
+    }
    
-    //
     @IBAction func sliderDidSlide(_ sender: UISlider) {
         
         let transparency = CGFloat(sender.value/100)
-        
-//        let notificationName = Notification.Name(NotiName.textTransparency.rawValue)
-//
-//        NotificationCenter.default.post(
-//            name: notificationName,
-//            object: nil,
-//            userInfo: [NotificationInfo.textTransparency: transparency])
         
         delegate?.textTransparency(value: transparency)
         
@@ -175,6 +187,7 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
         if colorPickerView.isHidden {
         
             textToolView.isHidden = false
+            fontToolView.isHidden = false
             
         } else {
             
@@ -191,13 +204,7 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func defaultColorBtnTapped(_ sender: UIButton) {
         
-//        let notificationName = Notification.Name(NotiName.textColor.rawValue)
-//
         guard let color = sender.backgroundColor else { return }
-//
-//        NotificationCenter.default.post(name: notificationName,
-//                                        object: nil,
-//                                        userInfo: [NotificationInfo.textColor: color])
 
         delegate?.textColorChange(to: color)
         colorButton.backgroundColor = color
@@ -205,13 +212,6 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     @IBAction func colorSquarePickerValueChanged(_ sender: ColorSquarePicker) {
-        
-//        let notificationName = Notification.Name(NotiName.textColor.rawValue)
-//
-//        NotificationCenter.default.post(name: notificationName,
-//                                        object: nil,
-//                                        userInfo: [NotificationInfo.textColor: colorSquarePicker.color])
-//
         
         delegate?.textColorChange(to: colorSquarePicker.color)
         colorButton.backgroundColor = colorSquarePicker.color
@@ -221,11 +221,8 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
         
         colorSquarePicker.hue = sender.hue
         
-        let notificationName = Notification.Name(NotiName.textColor.rawValue)
-        
-        NotificationCenter.default.post(name: notificationName,
-                                        object: nil,
-                                        userInfo: [NotificationInfo.textColor: colorSquarePicker.color])
+        delegate?.textColorChange(to: colorSquarePicker.color)
+        colorButton.backgroundColor = colorSquarePicker.color
       
     }
     

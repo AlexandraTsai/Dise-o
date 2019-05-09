@@ -393,16 +393,16 @@ class EditingViewController: BaseViewController {
         }
 
     }
-    @IBAction func spacingBtnTapped(_ sender: Any) {
-
-        tableViewIndex = 1
-
-        fontTableView.isScrollEnabled = false
-        fontTableView.reloadData()
-        fontTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-
-        selectFontView.isHidden = false
-    }
+//    @IBAction func spacingBtnTapped(_ sender: Any) {
+//
+//        tableViewIndex = 1
+//
+//        fontTableView.isScrollEnabled = false
+//        fontTableView.reloadData()
+//        fontTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+//
+//        selectFontView.isHidden = false
+//    }
 
     override func viewWillAppear(_ animated: Bool) {
         

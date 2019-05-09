@@ -1379,6 +1379,48 @@
                                     <constraint firstItem="niI-cr-B9K" firstAttribute="leading" secondItem="jdW-rE-rl3" secondAttribute="trailing" constant="10" id="xRV-7G-3ty"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQZ-O1-dTN">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NMo-az-GLl">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="182"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LIw-gq-zfZ">
+                                        <rect key="frame" x="325" y="190" width="30" height="30"/>
+                                        <state key="normal" title="Button" image="noun_Check"/>
+                                        <connections>
+                                            <action selector="endupEdit:" destination="igD-yW-FCX" eventType="touchUpInside" id="Qpx-Rs-rYH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPd-kg-JWx">
+                                        <rect key="frame" x="20" y="190" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="R77-q7-Ed6"/>
+                                            <constraint firstAttribute="width" secondItem="HPd-kg-JWx" secondAttribute="height" multiplier="1:1" id="j9R-4M-EWi"/>
+                                        </constraints>
+                                        <state key="normal" image="noun_Cancel"/>
+                                        <connections>
+                                            <action selector="endupEdit:" destination="igD-yW-FCX" eventType="touchUpInside" id="HCM-uK-5ee"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="LIw-gq-zfZ" secondAttribute="bottom" constant="8" id="DIL-hs-Rbv"/>
+                                    <constraint firstItem="LIw-gq-zfZ" firstAttribute="centerY" secondItem="HPd-kg-JWx" secondAttribute="centerY" id="FRe-AQ-ih0"/>
+                                    <constraint firstAttribute="trailing" secondItem="NMo-az-GLl" secondAttribute="trailing" id="IgD-Rl-CxI"/>
+                                    <constraint firstItem="NMo-az-GLl" firstAttribute="leading" secondItem="MQZ-O1-dTN" secondAttribute="leading" id="My7-Da-c9L"/>
+                                    <constraint firstAttribute="trailing" secondItem="LIw-gq-zfZ" secondAttribute="trailing" constant="20" id="Poi-M6-kmg"/>
+                                    <constraint firstItem="LIw-gq-zfZ" firstAttribute="width" secondItem="HPd-kg-JWx" secondAttribute="height" multiplier="1:1" id="QbJ-d3-wEb"/>
+                                    <constraint firstAttribute="bottom" secondItem="HPd-kg-JWx" secondAttribute="bottom" constant="8" id="RyF-Da-bvO"/>
+                                    <constraint firstAttribute="trailing" secondItem="LIw-gq-zfZ" secondAttribute="trailing" constant="20" id="Tb3-Cy-Xff"/>
+                                    <constraint firstItem="HPd-kg-JWx" firstAttribute="leading" secondItem="MQZ-O1-dTN" secondAttribute="leading" constant="20" id="dVv-8D-vfx"/>
+                                    <constraint firstItem="HPd-kg-JWx" firstAttribute="top" secondItem="NMo-az-GLl" secondAttribute="bottom" constant="8" id="dea-AA-h5z"/>
+                                    <constraint firstItem="NMo-az-GLl" firstAttribute="top" secondItem="MQZ-O1-dTN" secondAttribute="top" id="jFg-5b-r5o"/>
+                                    <constraint firstItem="LIw-gq-zfZ" firstAttribute="width" secondItem="HPd-kg-JWx" secondAttribute="width" id="tuO-5X-FLP"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bmh-7E-hIn">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
                                 <subviews>
@@ -1442,6 +1484,9 @@
                                                 <state key="normal" title="Spacing">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="spacingButtonTapped:" destination="igD-yW-FCX" eventType="touchUpInside" id="tVF-ye-sEV"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.43529411759999997" green="0.47843137250000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1521,48 +1566,6 @@
                                     <constraint firstItem="mxE-2U-lxx" firstAttribute="trailing" secondItem="jrT-ag-3Wr" secondAttribute="trailing" id="z89-Fa-oCP"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQZ-O1-dTN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
-                                <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NMo-az-GLl">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="182"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LIw-gq-zfZ">
-                                        <rect key="frame" x="325" y="190" width="30" height="30"/>
-                                        <state key="normal" title="Button" image="noun_Check"/>
-                                        <connections>
-                                            <action selector="endupEdit:" destination="igD-yW-FCX" eventType="touchUpInside" id="Qpx-Rs-rYH"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPd-kg-JWx">
-                                        <rect key="frame" x="20" y="190" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="R77-q7-Ed6"/>
-                                            <constraint firstAttribute="width" secondItem="HPd-kg-JWx" secondAttribute="height" multiplier="1:1" id="j9R-4M-EWi"/>
-                                        </constraints>
-                                        <state key="normal" image="noun_Cancel"/>
-                                        <connections>
-                                            <action selector="endupEdit:" destination="igD-yW-FCX" eventType="touchUpInside" id="HCM-uK-5ee"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="LIw-gq-zfZ" secondAttribute="bottom" constant="8" id="DIL-hs-Rbv"/>
-                                    <constraint firstItem="LIw-gq-zfZ" firstAttribute="centerY" secondItem="HPd-kg-JWx" secondAttribute="centerY" id="FRe-AQ-ih0"/>
-                                    <constraint firstAttribute="trailing" secondItem="NMo-az-GLl" secondAttribute="trailing" id="IgD-Rl-CxI"/>
-                                    <constraint firstItem="NMo-az-GLl" firstAttribute="leading" secondItem="MQZ-O1-dTN" secondAttribute="leading" id="My7-Da-c9L"/>
-                                    <constraint firstAttribute="trailing" secondItem="LIw-gq-zfZ" secondAttribute="trailing" constant="20" id="Poi-M6-kmg"/>
-                                    <constraint firstItem="LIw-gq-zfZ" firstAttribute="width" secondItem="HPd-kg-JWx" secondAttribute="height" multiplier="1:1" id="QbJ-d3-wEb"/>
-                                    <constraint firstAttribute="bottom" secondItem="HPd-kg-JWx" secondAttribute="bottom" constant="8" id="RyF-Da-bvO"/>
-                                    <constraint firstAttribute="trailing" secondItem="LIw-gq-zfZ" secondAttribute="trailing" constant="20" id="Tb3-Cy-Xff"/>
-                                    <constraint firstItem="HPd-kg-JWx" firstAttribute="leading" secondItem="MQZ-O1-dTN" secondAttribute="leading" constant="20" id="dVv-8D-vfx"/>
-                                    <constraint firstItem="HPd-kg-JWx" firstAttribute="top" secondItem="NMo-az-GLl" secondAttribute="bottom" constant="8" id="dea-AA-h5z"/>
-                                    <constraint firstItem="NMo-az-GLl" firstAttribute="top" secondItem="MQZ-O1-dTN" secondAttribute="top" id="jFg-5b-r5o"/>
-                                    <constraint firstItem="LIw-gq-zfZ" firstAttribute="width" secondItem="HPd-kg-JWx" secondAttribute="width" id="tuO-5X-FLP"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1597,6 +1600,7 @@
                         <outlet property="letterCaseButton" destination="Vy0-On-0M1" id="VRr-B4-owk"/>
                         <outlet property="slider" destination="jdW-rE-rl3" id="hHP-Qe-AnC"/>
                         <outlet property="textToolView" destination="Bmh-7E-hIn" id="SQU-CW-dLk"/>
+                        <outlet property="toolView" destination="jrT-ag-3Wr" id="Ioi-w6-Ocx"/>
                         <outlet property="usedColorButton" destination="K4u-ec-zuI" id="R7C-T5-nun"/>
                         <outlet property="whiteColorButton" destination="C6o-A1-sFU" id="oxe-Ox-FR5"/>
                     </connections>
