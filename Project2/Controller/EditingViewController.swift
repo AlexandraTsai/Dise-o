@@ -197,29 +197,11 @@ class EditingViewController: BaseViewController {
         view.textAlignment = type
         
     }
-
-//    @IBAction func alignmentButtonTapped(_ sender: Any) {
-//
-//        guard let view =  editingView as? ALTextView else { return }
-//
-//        switch view.textAlignment {
-//        case .center:
-//            view.textAlignment = .right
-//            alignmentButton.setImage(UIImage(named: ImageAsset.Icon_AlignRight.rawValue), for: .normal)
-//        case .right:
-//            view.textAlignment = .left
-//             alignmentButton.setImage(UIImage(named: ImageAsset.Icon_AlignLeft.rawValue), for: .normal)
-//        default:
-//            view.textAlignment = .center
-//            alignmentButton.setImage(UIImage(named: ImageAsset.Icon_AlignCenter.rawValue), for: .normal)
-//        }
+    
+//    @IBAction func finishEdit(_ sender: Any) {
+//        selectFontView.isHidden = true
 //
 //    }
-
-    @IBAction func finishEdit(_ sender: Any) {
-        selectFontView.isHidden = true
-
-    }
   
     @IBAction func boldButtonTapped(_ sender: Any) {
 
@@ -332,16 +314,6 @@ class EditingViewController: BaseViewController {
         }
 
     }
-//    @IBAction func spacingBtnTapped(_ sender: Any) {
-//
-//        tableViewIndex = 1
-//
-//        fontTableView.isScrollEnabled = false
-//        fontTableView.reloadData()
-//        fontTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-//
-//        selectFontView.isHidden = false
-//    }
 
     override func viewWillAppear(_ animated: Bool) {
         
@@ -1328,12 +1300,21 @@ extension EditingViewController: BaseContainerViewControllerProtocol {
 
 extension EditingViewController: TextContainerProtocol {
     
-    func changeFont(to font: FontName) {
+    func changeFont(to font: UIFont) {
+        
+        guard let textView = editingView as? UITextView else { return }
+        
+        textView.font = font
+//        textView.resize()
+        
+    }
+    
+    func changeFont(to fontName: FontName) {
         
         guard let view = editingView as? ALTextView,
             let fontSize = view.font?.pointSize else { return }
         
-        view.font = UIFont(name: font.rawValue, size: fontSize)
+        view.font = UIFont(name: fontName.rawValue, size: fontSize)
         
         view.resize()
     }

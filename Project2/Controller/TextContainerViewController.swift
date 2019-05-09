@@ -16,7 +16,8 @@ protocol TextContainerProtocol: AnyObject {
     func beBold()
     func textColorChange(to color: UIColor)
     func textTransparency(value: CGFloat)
-    func changeFont(to font: FontName)
+    func changeFont(to fontName: FontName)
+    func changeFont(to font: UIFont)
     func changeFont(to size: Int)
     func changeTextWith(lineHeight: Float, letterSpacing: Float)
     
@@ -136,7 +137,6 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
 
         fontTableView.isScrollEnabled = true
         fontTableView.reloadData()
-//        selectFontView.isHidden = false
 
     }
     
@@ -174,6 +174,57 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
             alignmentButton.setImage(UIImage(named: ImageAsset.Icon_AlignCenter.rawValue), for: .normal)
             textAlignment = .center
 
+        }
+        
+    }
+    
+    @IBAction func boldButtonTapped(_ sender: UIButton) {
+        
+        guard let size = currentFont?.pointSize else { return }
+        
+        switch boldButton.currentTitleColor {
+        case UIColor.DSColor.yellow:
+            
+            boldButton.setTitleColor(UIColor.white, for: .normal)
+            
+            switch italicButton.currentTitleColor {
+            case UIColor.DSColor.yellow:
+                
+                if let font = UIFont(name: currentFontName.italicStyle(), size: size) {
+                    
+                    delegate?.changeFont(to: font)
+                }
+               
+            default:
+                
+                if let font = UIFont(name: currentFontName.rawValue, size: size) {
+                    
+                    delegate?.changeFont(to: font)
+                
+                }
+                
+            }
+            
+        default:
+            
+            switch italicButton.currentTitleColor {
+            case UIColor.DSColor.yellow:
+                
+                if let font = UIFont(name: currentFontName.boldItalicStyle(), size: size) {
+                    
+                    delegate?.changeFont(to: font)
+                }
+               
+            default:
+                
+                if let font = UIFont(name: currentFontName.boldStyle(), size: size) {
+                    
+                    delegate?.changeFont(to: font)
+                }
+               
+            }
+
+            boldButton.setTitleColor(UIColor.DSColor.yellow, for: .normal)
         }
         
     }
@@ -289,7 +340,9 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
             }
             
             return fontCell
+            
         case .spacingCell?:
+            
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: SpacingTableViewCell.self),
                 for: indexPath)
@@ -349,7 +402,7 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
         
     }
     
-    func setupTool(with font: FontName){
+    func setupTool(with font: FontName) {
         
         let number = font.fontStyle()
         
