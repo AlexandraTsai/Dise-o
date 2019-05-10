@@ -277,43 +277,43 @@ class EditingViewController: BaseViewController {
 //
 //    }
 
-    @IBAction func letterCaseBtnTapped(_ sender: Any) {
-        
-        guard let view =  editingView as? ALTextView,
-            let fontName = view.font?.fontName,
-            let fontSize = view.font?.pointSize,
-            let textColor = view.textColor else { return }
-      
-        switch letterCaseButton.titleLabel?.text {
-
-        case "Aa":
-
-            originalText = view.text
-
-            view.text = view.text.uppercased()
-        
-            letterCaseButton.setTitle("AA", for: .normal)
-            
-            view.keepAttributeWith(lineHeight: self.lineHeight,
-                                   letterSpacing: self.letterSpacing,
-                                   fontName: fontName,
-                                   fontSize: fontSize,
-                                   textColor: textColor)
-
-        default:
-
-            letterCaseButton.setTitle("Aa", for: .normal)
-            view.text = originalText
-            
-            view.keepAttributeWith(lineHeight: self.lineHeight,
-                                   letterSpacing: self.letterSpacing,
-                                   fontName: fontName,
-                                   fontSize: fontSize,
-                                   textColor: textColor)
-            
-        }
-
-    }
+//    @IBAction func letterCaseBtnTapped(_ sender: Any) {
+//        
+//        guard let view =  editingView as? ALTextView,
+//            let fontName = view.font?.fontName,
+//            let fontSize = view.font?.pointSize,
+//            let textColor = view.textColor else { return }
+//      
+//        switch letterCaseButton.titleLabel?.text {
+//
+//        case "Aa":
+//
+//            originalText = view.text
+//
+//            view.text = view.text.uppercased()
+//        
+//            letterCaseButton.setTitle("AA", for: .normal)
+//            
+//            view.keepAttributeWith(lineHeight: self.lineHeight,
+//                                   letterSpacing: self.letterSpacing,
+//                                   fontName: fontName,
+//                                   fontSize: fontSize,
+//                                   textColor: textColor)
+//
+//        default:
+//
+//            letterCaseButton.setTitle("Aa", for: .normal)
+//            view.text = originalText
+//            
+//            view.keepAttributeWith(lineHeight: self.lineHeight,
+//                                   letterSpacing: self.letterSpacing,
+//                                   fontName: fontName,
+//                                   fontSize: fontSize,
+//                                   textColor: textColor)
+//            
+//        }
+//
+//    }
 
     override func viewWillAppear(_ animated: Bool) {
         
@@ -925,6 +925,8 @@ extension EditingViewController {
 extension EditingViewController: UITextViewDelegate {
 
     func textViewDidChange(_ textView: UITextView) {
+        
+        guard let textView = textView as? ALTextView else { return }
  
         textView.resize()
 
@@ -935,34 +937,38 @@ extension EditingViewController: UITextViewDelegate {
             newText.append(textView.text)
 
             guard newText.count > 0  else { return }
-
-            guard newText.count > originalText.count else {
-
-                let count = originalText.count - newText.count
-
-                for _ in  1...count {
-
-                    textContainerVC?.originalText.removeLast()
+            
+            guard let originalText = textView.originalText else { return }
+            
+            if newText.count > originalText.count {
+                
+                //Remove the text that original text already has
+                for _ in 1...originalText.count {
+                    
+                    newText.removeFirst()
+                    
                 }
-
-                return
-
+                
+//                textContainerVC?.originalText.append(newText)
+                textView.originalText?.append(newText)
+                textView.text = textView.text.uppercased()
+                
+            } else {
+                
+                let count = originalText.count - newText.count
+                
+                for _ in  1...count {
+                    
+//                    textContainerVC?.originalText.removeLast()
+                    textView.originalText?.removeLast()
+                }
+                
             }
-
-            //Remove the text that original text already has
-            for _ in 1...originalText.count {
-
-                newText.removeFirst()
-
-            }
-
-            textContainerVC?.originalText.append(newText)
-
-            textView.text = textView.text.uppercased()
 
         default:
 
-            textContainerVC?.originalText = textView.text
+//            textContainerVC?.originalText = textView.text
+            textView.originalText?.append(textView.text)
 
         }
         
@@ -1298,6 +1304,30 @@ extension EditingViewController: BaseContainerViewControllerProtocol {
 
 extension EditingViewController: TextContainerProtocol {
     
+    func changeLetterTo(upperCase: Bool) {
+        
+        guard let view =  editingView as? ALTextView,
+            let fontName = view.font?.fontName,
+            let fontSize = view.font?.pointSize,
+            let textColor = view.textColor else { return }
+        
+        if upperCase {
+            
+            view.text = view.originalText?.uppercased()
+            
+        } else {
+            
+            view.text = view.originalText
+        }
+        
+        view.keepAttributeWith(lineHeight: self.lineHeight,
+                               letterSpacing: self.letterSpacing,
+                               fontName: fontName,
+                               fontSize: fontSize,
+                               textColor: textColor)
+        view.resize()
+    }
+    
     func changeFont(to font: UIFont) {
         
         guard let textView = editingView as? UITextView else { return }
@@ -1315,10 +1345,6 @@ extension EditingViewController: TextContainerProtocol {
         view.font = UIFont(name: fontName.rawValue, size: fontSize)
         
         view.resize()
-    }
-    
-    func beBold() {
-        
     }
     
     func textTransparency(value: CGFloat) {
@@ -1340,11 +1366,6 @@ extension EditingViewController: TextContainerProtocol {
         textView.textColor = color.withAlphaComponent(alpha)
         
     }
-    
-//    func hideColorPicker() {
-//
-//        textEditView.isHidden = false
-//    }
     
     @objc func handleCornerResize(gesture: UIPanGestureRecognizer) {
         

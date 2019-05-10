@@ -513,8 +513,7 @@ extension DesignViewController {
                     print(imageView.filterName)
                     
                 }
-
-                designView.addSubview(newImage[count])
+ designView.addSubview(newImage[count])
                 addAllGesture(to: newImage[count])
 
             }
@@ -823,7 +822,6 @@ extension DesignViewController {
         textView.becomeFirstResponder()
 
         textView.text = "Enter your text"
-
         textView.delegate = self
 
         textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.endOfDocument)
@@ -838,7 +836,7 @@ extension DesignViewController {
     func textViewDidEndEditing(_ textView: UITextView) {
 
         let newText = addTextView()
-
+        
         notEditingMode()
 
         goToEditingVC(with: newText, navigationBarForImage: false)
@@ -856,6 +854,7 @@ extension DesignViewController {
                           height: contentSize.height))
         
         newText.text = textView.text
+        newText.originalText = newText.text
         newText.font = textView.font
         newText.backgroundColor = UIColor.clear
         newText.textAlignment = textView.textAlignment

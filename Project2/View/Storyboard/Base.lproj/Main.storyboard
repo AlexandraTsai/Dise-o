@@ -1484,6 +1484,9 @@
                                                 <state key="normal" title="Aa">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="letterCaseBtnTapped:" destination="igD-yW-FCX" eventType="touchUpInside" id="y3K-pu-fr5"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRH-jt-X0c">
                                                 <rect key="frame" x="188" y="4" width="137" height="36"/>

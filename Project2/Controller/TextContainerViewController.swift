@@ -13,17 +13,18 @@ protocol TextContainerProtocol: AnyObject {
     
 //    func hideColorPicker()
     func alignmentChange(to type: NSTextAlignment)
-    func beBold()
     func textColorChange(to color: UIColor)
     func textTransparency(value: CGFloat)
     func changeFont(to fontName: FontName)
     func changeFont(to font: UIFont)
     func changeFont(to size: Int)
     func changeTextWith(lineHeight: Float, letterSpacing: Float)
+    func changeLetterTo(upperCase: Bool)
     
 }
 
-class TextContainerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TextContainerViewController: UIViewController,
+    UITableViewDelegate, UITableViewDataSource {
     
     weak var delegate: TextContainerProtocol?
    
@@ -38,10 +39,10 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     var currentFontName: FontName = FontName.helveticaNeue
-
     var textAlignment: NSTextAlignment?
     var tableViewIndex: TableViewCellType?
     var originalText = ""
+    var upperCase: Bool = false
     
     @IBOutlet weak var textToolView: UIView!
     @IBOutlet weak var colorToolView: UIView!
@@ -280,7 +281,25 @@ class TextContainerViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
     }
+    
+    @IBAction func letterCaseBtnTapped(_ sender: UIButton) {
+        
+        switch letterCaseButton.titleLabel?.text {
+            
+        case "Aa":
+            
+            letterCaseButton.setTitle("AA", for: .normal)
 
+            delegate?.changeLetterTo(upperCase: true)
+            
+        default:
+            
+            letterCaseButton.setTitle("Aa", for: .normal)
+            delegate?.changeLetterTo(upperCase: false)
+
+        }
+        
+    }
     
     @IBAction func spacingButtonTapped(_ sender: UIButton) {
         

@@ -11,4 +11,10 @@ import UIKit
 class ALTextView: UITextView {
     
     var index: Int?
+    
+    var originalText: String? = ""
+    
+    override func awakeFromNib() {
+        originalText = self.text
+    }
 }
