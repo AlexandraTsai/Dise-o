@@ -197,124 +197,7 @@ class EditingViewController: BaseViewController {
         view.textAlignment = type
         
     }
-    
-//    @IBAction func finishEdit(_ sender: Any) {
-//        selectFontView.isHidden = true
-//
-//    }
-  
-//    @IBAction func boldButtonTapped(_ sender: Any) {
-//
-//        guard let view =  editingView as? ALTextView else { return }
-//
-//        switch boldbutton.currentTitleColor {
-//
-//        case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
-//
-//            switch italicButton.currentTitleColor {
-//            case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
-//
-//                view.font = UIFont(name: currentFontName.italicStyle(), size: (view.font?.pointSize)!)
-//
-//            default:
-//                view.font = UIFont(name: currentFontName.rawValue, size: (view.font?.pointSize)!)
-//
-//            }
-//
-//            boldbutton.setTitleColor(UIColor.white, for: .normal)
-//        default:
-//
-//            switch italicButton.currentTitleColor {
-//            case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
-//
-//                view.font = UIFont(name: currentFontName.boldItalicStyle(), size: (view.font?.pointSize)!)
-//
-//            default:
-//                view.font = UIFont(name: currentFontName.boldStyle(), size: (view.font?.pointSize)!)
-//            }
-//
-//            boldbutton.setTitleColor(UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1), for: .normal)
-//
-//        }
-//
-//    }
-//
-//    @IBAction func italicButtonTapped(_ sender: Any) {
-//
-//        guard let view =  editingView as? ALTextView else { return }
-//
-//        switch italicButton.currentTitleColor {
-//
-//        case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
-//
-//            switch boldbutton.currentTitleColor {
-//            case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
-//
-//                view.font = UIFont(name: currentFontName.boldStyle(), size: (view.font?.pointSize)!)
-//
-//            default:
-//
-//                view.font = UIFont(name: currentFontName.rawValue, size: (view.font?.pointSize)!)
-//
-//            }
-//
-//            italicButton.setTitleColor(UIColor.white, for: .normal)
-//
-//        default:
-//
-//            switch boldbutton.currentTitleColor {
-//            case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
-//
-//                view.font = UIFont(name: currentFontName.boldItalicStyle(), size: (view.font?.pointSize)!)
-//            default:
-//
-//                view.font = UIFont(name: currentFontName.italicStyle(), size: (view.font?.pointSize)!)
-//            }
-//
-//            italicButton.setTitleColor(UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1), for: .normal)
-//
-//        }
-//
-//    }
-
-//    @IBAction func letterCaseBtnTapped(_ sender: Any) {
-//        
-//        guard let view =  editingView as? ALTextView,
-//            let fontName = view.font?.fontName,
-//            let fontSize = view.font?.pointSize,
-//            let textColor = view.textColor else { return }
-//      
-//        switch letterCaseButton.titleLabel?.text {
-//
-//        case "Aa":
-//
-//            originalText = view.text
-//
-//            view.text = view.text.uppercased()
-//        
-//            letterCaseButton.setTitle("AA", for: .normal)
-//            
-//            view.keepAttributeWith(lineHeight: self.lineHeight,
-//                                   letterSpacing: self.letterSpacing,
-//                                   fontName: fontName,
-//                                   fontSize: fontSize,
-//                                   textColor: textColor)
-//
-//        default:
-//
-//            letterCaseButton.setTitle("Aa", for: .normal)
-//            view.text = originalText
-//            
-//            view.keepAttributeWith(lineHeight: self.lineHeight,
-//                                   letterSpacing: self.letterSpacing,
-//                                   fontName: fontName,
-//                                   fontSize: fontSize,
-//                                   textColor: textColor)
-//            
-//        }
-//
-//    }
-
+ 
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
@@ -927,15 +810,12 @@ extension EditingViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         
         guard let textView = textView as? ALTextView else { return }
- 
-        textView.resize()
-
-        switch letterCaseButton.titleLabel?.text {
-        case "AA":
-
+        
+        if textView.upperCase {
+            
             var newText = ""
             newText.append(textView.text)
-
+            
             guard newText.count > 0  else { return }
             
             guard let originalText = textView.originalText else { return }
@@ -949,7 +829,6 @@ extension EditingViewController: UITextViewDelegate {
                     
                 }
                 
-//                textContainerVC?.originalText.append(newText)
                 textView.originalText?.append(newText)
                 textView.text = textView.text.uppercased()
                 
@@ -958,20 +837,18 @@ extension EditingViewController: UITextViewDelegate {
                 let count = originalText.count - newText.count
                 
                 for _ in  1...count {
-                    
-//                    textContainerVC?.originalText.removeLast()
+
                     textView.originalText?.removeLast()
                 }
                 
             }
-
-        default:
-
-//            textContainerVC?.originalText = textView.text
+        } else {
+            
             textView.originalText?.append(textView.text)
 
         }
         
+        textView.resize()
         helperView.resize(accordingTo: textView)
 
     }
@@ -1010,8 +887,6 @@ extension EditingViewController {
 
             guard let spacingCell = cell as? SpacingTableViewCell else { return cell }
 
-//            spacingCell.delegate = self
-
             return spacingCell
             
         default:
@@ -1023,8 +898,6 @@ extension EditingViewController {
 
             guard let view = editingView as? ALTextView else { return cell }
             guard let fontSize = view.font?.pointSize else {return cell}
-
-//            fontSizeCell.delegate = self
 
             fontSizeCell.fontSizeLabel.text = "\(Int(fontSize))"
             return fontSizeCell
@@ -1099,16 +972,7 @@ extension EditingViewController {
         NotificationCenter.default.addObserver(self, selector:
             #selector(changeEditingViewColor(noti:)), name: notificationName2, object: nil)
        
-//        let notificationName3 = Notification.Name(NotiName.textTransparency.rawValue)
-//
-//        NotificationCenter.default.addObserver(self, selector:
-//            #selector(changeTextTransparency(noti:)), name: notificationName3, object: nil)
-//
-//        let notificationName4 = Notification.Name(NotiName.textColor.rawValue)
-//        
-//        NotificationCenter.default.addObserver(self, selector:
-//            #selector(changeTextColor(noti:)), name: notificationName4, object: nil)
-    }
+  }
     
     // 收到通知後要執行的動作
     @objc func pickAnotherImage(noti: Notification) {
@@ -1314,10 +1178,12 @@ extension EditingViewController: TextContainerProtocol {
         if upperCase {
             
             view.text = view.originalText?.uppercased()
+            view.upperCase = true
             
         } else {
             
             view.text = view.originalText
+            view.upperCase = false
         }
         
         view.keepAttributeWith(lineHeight: self.lineHeight,

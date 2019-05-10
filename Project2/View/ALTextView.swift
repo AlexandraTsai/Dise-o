@@ -14,7 +14,25 @@ class ALTextView: UITextView {
     
     var originalText: String? = ""
     
-    override func awakeFromNib() {
-        originalText = self.text
+    var upperCase: Bool = false
+    
+    func makeACopy(from oldView: ALTextView) {
+       
+        self.inputView = oldView.inputView
+        self.textContainer.size = oldView.textContainer.size
+        self.frame = oldView.frame
+        self.transform = oldView.transform
+        
+        self.backgroundColor = oldView.backgroundColor
+        self.alpha = oldView.alpha
+        
+        self.text = oldView.text
+        self.font = oldView.font
+        self.textColor = oldView.textColor
+        self.textAlignment = oldView.textAlignment
+        
+        self.originalText = oldView.originalText
+        self.upperCase = oldView.upperCase
     }
+   
 }
