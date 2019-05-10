@@ -11,7 +11,7 @@ import Fusuma
 import CoreGraphics
 
 // swiftlint:disable file_length
-class EditingViewController: BaseViewController {
+class EditingViewController: BaseViewController, UITextViewDelegate {
 
     @IBOutlet weak var currentFontBtn: UIButton! {
         
@@ -147,6 +147,7 @@ class EditingViewController: BaseViewController {
             textContainerVC?.slider.value = Float(alpha*100)
             textContainerVC?.textAlignment = textView.textAlignment
             textContainerVC?.currentFont = textView.font
+            textContainerVC?.textIs(upperCase: textView.upperCase)
             textContainerVC?.colorButton.backgroundColor = textView.textColor?.withAlphaComponent(1)
         
             imageEditContainerView.isHidden = true
@@ -803,54 +804,15 @@ extension EditingViewController {
         helperView.showHelper(after: sender)
         
     }
-}
-
-extension EditingViewController: UITextViewDelegate {
-
+    
     func textViewDidChange(_ textView: UITextView) {
         
         guard let textView = textView as? ALTextView else { return }
         
-        if textView.upperCase {
-            
-            var newText = ""
-            newText.append(textView.text)
-            
-            guard newText.count > 0  else { return }
-            
-            guard let originalText = textView.originalText else { return }
-            
-            if newText.count > originalText.count {
-                
-                //Remove the text that original text already has
-                for _ in 1...originalText.count {
-                    
-                    newText.removeFirst()
-                    
-                }
-                
-                textView.originalText?.append(newText)
-                textView.text = textView.text.uppercased()
-                
-            } else {
-                
-                let count = originalText.count - newText.count
-                
-                for _ in  1...count {
-
-                    textView.originalText?.removeLast()
-                }
-                
-            }
-        } else {
-            
-            textView.originalText?.append(textView.text)
-
-        }
+        textView.changeText()
         
-        textView.resize()
         helperView.resize(accordingTo: textView)
-
+        
     }
 }
 
@@ -1199,8 +1161,7 @@ extension EditingViewController: TextContainerProtocol {
         guard let textView = editingView as? UITextView else { return }
         
         textView.font = font
-//        textView.resize()
-        
+
     }
     
     func changeFont(to fontName: FontName) {

@@ -34,5 +34,53 @@ class ALTextView: UITextView {
         self.originalText = oldView.originalText
         self.upperCase = oldView.upperCase
     }
-   
+    
+    func changeText(){
+        
+        var newText = ""
+        newText.append(self.text)
+        
+        guard let originalText = originalText else { return }
+            
+        if newText.count > 0 {
+                
+            switch newText.count > (originalText.count) {
+            
+            case true:
+                    
+            //Remove the text that original text already has
+                if originalText.count != 0 {
+                        
+                for _ in 1...originalText.count {
+                            
+                    newText.removeFirst()
+                            
+                }
+            }
+                    
+                self.originalText?.append(newText)
+                    
+            default:
+                    
+                let count = originalText.count - newText.count
+                    
+                for _ in  1...count {
+                        
+                    self.originalText?.removeLast()
+                }
+            }
+        }
+
+        if upperCase {
+            
+            self.text = self.originalText?.uppercased()
+            
+        } else {
+            
+            self.text = self.originalText
+        }
+        
+        self.resize()
+        
+    }
 }

@@ -516,4 +516,13 @@ extension TextContainerViewController: SpacingTableViewCellDelegate, FontSizeTab
         delegate?.changeFont(to: size)
     }
     
+    func textIs(upperCase: Bool) {
+        
+        if upperCase {
+            letterCaseButton.setTitle("AA", for: .normal)
+        } else {
+            
+            letterCaseButton.setTitle("Aa", for: .normal)
+        }
+    }
 }
