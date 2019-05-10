@@ -9,6 +9,10 @@
 import CoreData
 import UIKit
 
+protocol LayerProtocol {
+    var index: Int16 { get set }
+}
+
 extension Shape {
     
     func transformShape(for designView: ALDesignView) {
@@ -30,5 +34,24 @@ extension Shape {
         designView.subShapes.append(shapeView)
         
         designView.addSubview(shapeView)
+    }
+}
+
+extension Shape: LayerProtocol {
+    
+    func mapping(_ object: ALShapeView) {
+        
+        shapView = object
+        
+        shapeType = object.shapeType
+        
+        shapeColor = object.shapeColor
+        
+        stroke = object.stroke
+        
+        guard let objectIndex = object.index else { return }
+        
+        index = Int16(objectIndex)
+        
     }
 }

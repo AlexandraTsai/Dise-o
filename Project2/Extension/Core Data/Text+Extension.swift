@@ -25,6 +25,10 @@ extension Text {
         
         textView.attributedText = attributedText
         
+        textView.originalText = originalText
+        
+        textView.upperCase = upperCase
+        
         textView.backgroundColor = UIColor.clear
         
         textView.index = Int(self.index)
@@ -34,4 +38,33 @@ extension Text {
         designView.addSubview(textView)
     }
    
+}
+
+extension Text: LayerProtocol {
+    
+    func mapping(_ object: ALTextView) {
+        
+        if object.text != nil {
+            
+            guard let textToSave = object.attributedText else { return }
+            
+            attributedText = textToSave as NSObject
+        }
+        
+        originalText = object.originalText
+        
+        upperCase = object.upperCase
+        
+        textContainerSize = object.textContainer.size as NSObject
+        
+        transform = object.transform as NSObject
+        
+        object.transform = CGAffineTransform(rotationAngle: 0)
+        
+        frame = object.frame as NSObject
+        
+        guard let objectIndex = object.index else { return }
+        
+        index = Int16(objectIndex)
+    }
 }
