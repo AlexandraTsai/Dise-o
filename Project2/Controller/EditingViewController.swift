@@ -13,57 +13,8 @@ import CoreGraphics
 // swiftlint:disable file_length
 class EditingViewController: BaseViewController, UITextViewDelegate {
 
-    @IBOutlet weak var currentFontBtn: UIButton! {
-        
-        didSet {
-            
-            currentFontBtn.titleLabel?.adjustsFontSizeToFitWidth = true
-            
-        }
-      
-    }
-    
-    @IBOutlet weak var alignmentButton: UIButton!
-    @IBOutlet weak var letterCaseButton: UIButton!
-    
-    @IBOutlet weak var italicButton: UIButton!
-    @IBOutlet weak var boldbutton: UIButton!
-    
-    @IBOutlet weak var textEditView: UIView!
-    
-    @IBOutlet weak var textToolView: UIView! {
-        
-        didSet {
-            
-            textToolView.layer.cornerRadius = 6
-            
-            textToolView.layer.shadowColor = UIColor.DSColor.heavyGray.cgColor
-            textToolView.layer.shadowOffset = CGSize(width: 0, height: 0)
-            textToolView.layer.shadowRadius = 6
-            textToolView.layer.shadowOpacity = 1
-            
-        }
-        
-    }
-    
     @IBOutlet weak var imageEditContainerView: UIView!
     @IBOutlet weak var textEditContainterView: UIView!
-    
-    @IBOutlet weak var selectFontView: UIView!
-   
-    @IBOutlet weak var addElementButton: UIButton! {
-        
-        didSet {
-            
-            addElementButton.layer.cornerRadius = addElementButton.frame.width/2
-            addElementButton.clipsToBounds = true
-            addElementButton.setImage(ImageAsset.Icon_add_button.imageTemplate, for: .normal)
-            addElementButton.tintColor = UIColor.DSColor.yellow
-            addElementButton.backgroundColor = UIColor.white
-            
-        }
-        
-    }
     
     let openLibraryAlert = GoSettingAlertView()
     
@@ -71,8 +22,7 @@ class EditingViewController: BaseViewController, UITextViewDelegate {
     
     var textContainerVC: TextContainerViewController?
     var imageContainerVC: ImageEditContainerViewController?
-    var lineHeight: Float = 0
-    var letterSpacing: Float = 0
+    
     var currentFontName: FontName = FontName.helveticaNeue
     
     var helperView = HelperView()
@@ -84,6 +34,9 @@ class EditingViewController: BaseViewController, UITextViewDelegate {
     var originLocation = CGPoint(x: 0, y: 0)
     
     var originSize = CGSize(width: 0, height: 0)
+    
+    var tableViewIndex: Int = 0
+//    var originalText = ""
     
     var editingView: UIView? {
 
@@ -98,67 +51,11 @@ class EditingViewController: BaseViewController, UITextViewDelegate {
             
             createEditingHelper(for: editingView)
             
-            guard let textView = editingView as? ALTextView else {
-
-//               textEditView.isHidden = true
-            
-                textEditContainterView.isHidden = true
-                imageEditContainerView.isHidden = false
-
-                guard let view = editingView as? ALShapeView else {
-                    
-                    guard let view = editingView as? ALImageView else { return }
-          
-                    imageContainerVC?.editImageMode()
-                    
-                    let alpha = view.alpha
-                   
-                    imageContainerVC?.slider.value = Float(alpha*100)
-                    imageContainerVC?.transparencyLabel.text = "\(Int(Float(alpha*100)))"
-                    
-                    if let image = view.originImage {
-                        
-                        delegate?.showAllFilter(for: image)
-                    }
-                    
-                    return
-                    
-                }
-                
-                let alpha = view.alpha
-                
-                imageContainerVC?.slider.value = Float(alpha*100)
-                
-                imageContainerVC?.editShapeMode()
-
-                let notificationName = Notification.Name(NotiName.paletteColor.rawValue)
-                
-                NotificationCenter.default.post(name: notificationName,
-                                                object: nil,
-                                                userInfo: [NotificationInfo.paletteColor: view.shapeColor])
-                
-               return
-
-            }
-        
-            textView.delegate = self
-            
-            guard let alpha = textView.textColor?.cgColor.alpha else { return }
-            textContainerVC?.slider.value = Float(alpha*100)
-            textContainerVC?.textAlignment = textView.textAlignment
-            textContainerVC?.currentFont = textView.font
-            textContainerVC?.textIs(upperCase: textView.upperCase)
-            textContainerVC?.colorButton.backgroundColor = textView.textColor?.withAlphaComponent(1)
-        
-            imageEditContainerView.isHidden = true
-            textEditContainterView.isHidden = false
+            changeEditingMode()
             
         }
     }
 
-    var tableViewIndex: Int = 0
-    var originalText = ""
-    
     @IBOutlet weak var designView: ALDesignView!
  
     @IBOutlet weak var shadowView: UIView! {
@@ -192,13 +89,6 @@ class EditingViewController: BaseViewController, UITextViewDelegate {
         
     }
 
-    func alignmentChange(to type: NSTextAlignment) {
-        
-        guard let view =  editingView as? ALTextView else { return }
-        view.textAlignment = type
-        
-    }
- 
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
@@ -228,6 +118,7 @@ class EditingViewController: BaseViewController, UITextViewDelegate {
             
             imageContainerVC = segue.destination as? ImageEditContainerViewController
             imageContainerVC?.delegate = self
+            imageContainerVC?.editingDelegate = self
             self.delegate = imageContainerVC
            
         }
@@ -809,7 +700,7 @@ extension EditingViewController {
         
         guard let textView = textView as? ALTextView else { return }
         
-        textView.changeText()
+        textView.fixOriginalText()
         
         helperView.resize(accordingTo: textView)
         
@@ -870,13 +761,16 @@ extension EditingViewController {
     
     func changeTextWith(lineHeight: Float, letterSpacing: Float) {
         
-        self.lineHeight = lineHeight
-        self.letterSpacing = letterSpacing
-        
+//        self.lineHeight = lineHeight
+//        self.letterSpacing = letterSpacing
+
         guard let view = editingView as? ALTextView,
             let fontName = view.font?.fontName,
             let fontSize = view.font?.pointSize,
             let textColor = view.textColor else { return }
+        
+        view.lineHeight = lineHeight
+        view.letterSpacing = letterSpacing
         
         view.keepAttributeWith(lineHeight: lineHeight,
                                letterSpacing: letterSpacing,
@@ -895,8 +789,8 @@ extension EditingViewController {
             let fontName = view.font?.fontName,
             let textColor = view.textColor else { return }
 
-        view.keepAttributeWith(lineHeight: self.lineHeight,
-                               letterSpacing: self.letterSpacing,
+        view.keepAttributeWith(lineHeight: view.lineHeight,
+                               letterSpacing: view.letterSpacing,
                                fontName: fontName,
                                fontSize: CGFloat(size),
                                textColor: textColor)
@@ -928,12 +822,7 @@ extension EditingViewController {
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(changeImageWithCamera(noti:)), name: notificationName1, object: nil)
-        
-        let notificationName2 = Notification.Name(NotiName.changeEditingViewColor.rawValue)
-        
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(changeEditingViewColor(noti:)), name: notificationName2, object: nil)
-       
+    
   }
     
     // 收到通知後要執行的動作
@@ -969,24 +858,6 @@ extension EditingViewController {
         }
     }
     
-    @objc func changeEditingViewColor(noti: Notification) {
-        
-        if let userInfo =  noti.userInfo,
-            let color = userInfo[NotificationInfo.changeEditingViewColor] as? UIColor {
-            
-            guard let view = editingView as? UIImageView else {
-                
-                guard let view = editingView as? ALShapeView else { return }
- 
-                view.redrawWith(color)
-                
-                return
-            }
-            view.image = nil
-            view.backgroundColor = color
-                
-        }
-    }
 }
 // MARK: EditingVC extension
 extension EditingViewController {
@@ -1060,9 +931,91 @@ extension EditingViewController {
         
     }
     
+    func changeEditingMode() {
+        
+        if let textView = editingView as? ALTextView {
+            
+            editTextMode()
+            
+            textView.delegate = self
+            
+            guard let alpha = textView.textColor?.cgColor.alpha,
+                let font = textView.font,
+                let color = textView.textColor else { return }
+            
+            textContainerVC?.setupAllTool(alignment: textView.textAlignment,
+                                          font: font,
+                                          upperCase: textView.upperCase,
+                                          alpha: alpha,
+                                          textColor: color)
+            
+        } else if let view = editingView as? ALShapeView {
+            
+            editNonTextMode()
+            
+            let alpha = view.alpha
+            
+            imageContainerVC?.setupAllTool(with: alpha, forImage: false)
+            
+            //            let notificationName = Notification.Name(NotiName.paletteColor.rawValue)
+            //
+            //            NotificationCenter.default.post(name: notificationName,
+            //                                            object: nil,
+            //                                            userInfo: [NotificationInfo.paletteColor: view.shapeColor])
+            
+        } else if let view = editingView as? ALImageView {
+            
+            editNonTextMode()
+            
+            imageContainerVC?.editImageMode()
+            
+            let alpha = view.alpha
+            
+            imageContainerVC?.setupAllTool(with: alpha, forImage: true)
+            
+            if let image = view.originImage {
+                
+                delegate?.showAllFilter(for: image)
+            }
+            
+        }
+        
+    }
+    
+    func editTextMode() {
+        
+        imageEditContainerView.isHidden = true
+        textEditContainterView.isHidden = false
+        
+    }
+    
+    func editNonTextMode() {
+        
+        textEditContainterView.isHidden = true
+        imageEditContainerView.isHidden = false
+        
+    }
+    
 }
 
-extension EditingViewController: BaseContainerViewControllerProtocol {
+extension EditingViewController: ImageEditContainerVCDelegate {
+    
+    func changeEditingViewColor(with color: UIColor) {
+        
+        if let view = editingView as? UIImageView {
+            
+            view.image = nil
+            view.backgroundColor = color
+            
+        } else if let view = editingView as? ALShapeView {
+            
+            view.redrawWith(color)
+        }
+
+    }
+}
+
+extension EditingViewController: BaseContainerViewControllerDelegate {
     
     func changeColor(to color: UIColor) {
         
@@ -1128,7 +1081,14 @@ extension EditingViewController: BaseContainerViewControllerProtocol {
     }
 }
 
-extension EditingViewController: TextContainerProtocol {
+extension EditingViewController: TextContainerDelegate {
+    
+    func alignmentChange(to type: NSTextAlignment) {
+        
+        guard let view =  editingView as? ALTextView else { return }
+        view.textAlignment = type
+        
+    }
     
     func changeLetterTo(upperCase: Bool) {
         
@@ -1148,8 +1108,8 @@ extension EditingViewController: TextContainerProtocol {
             view.upperCase = false
         }
         
-        view.keepAttributeWith(lineHeight: self.lineHeight,
-                               letterSpacing: self.letterSpacing,
+        view.keepAttributeWith(lineHeight: view.lineHeight,
+                               letterSpacing: view.letterSpacing,
                                fontName: fontName,
                                fontSize: fontSize,
                                textColor: textColor)
@@ -1249,6 +1209,6 @@ extension EditingViewController: TextContainerProtocol {
         }
        
     }
-    
+
 }
  // swiftlint:enable file_length

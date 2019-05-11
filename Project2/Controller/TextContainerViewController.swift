@@ -9,7 +9,7 @@
 import UIKit
 import HueKit
 
-protocol TextContainerProtocol: AnyObject {
+protocol TextContainerDelegate: AnyObject {
     
 //    func hideColorPicker()
     func alignmentChange(to type: NSTextAlignment)
@@ -26,7 +26,7 @@ protocol TextContainerProtocol: AnyObject {
 class TextContainerViewController: UIViewController,
     UITableViewDelegate, UITableViewDataSource {
     
-    weak var delegate: TextContainerProtocol?
+    weak var delegate: TextContainerDelegate?
    
     var currentFont: UIFont? {
         
@@ -524,5 +524,14 @@ extension TextContainerViewController: SpacingTableViewCellDelegate, FontSizeTab
             
             letterCaseButton.setTitle("Aa", for: .normal)
         }
+    }
+    
+    func setupAllTool(alignment: NSTextAlignment, font: UIFont, upperCase: Bool, alpha: CGFloat, textColor: UIColor) {
+        slider.value = Float(alpha*100)
+        textAlignment = alignment
+        currentFont = font
+        textIs(upperCase: upperCase)
+        colorButton.backgroundColor = textColor.withAlphaComponent(1)
+        
     }
 }

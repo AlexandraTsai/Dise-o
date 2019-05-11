@@ -9,7 +9,7 @@
 import UIKit
 import Fusuma
 
-protocol BaseViewControllerProtocol: AnyObject {
+protocol BaseViewControllerDelegate: AnyObject {
     
     func showAllFilter(for image: UIImage)
     
@@ -24,7 +24,7 @@ protocol BaseViewControllerProtocol: AnyObject {
 
 class BaseViewController: UIViewController, FusumaDelegate {    
     
-    weak var delegate: BaseViewControllerProtocol?
+    weak var delegate: BaseViewControllerDelegate?
     
     let fusumaAlbum = FusumaViewController()
     let fusumaCamera = FusumaViewController()

@@ -16,6 +16,10 @@ class ALTextView: UITextView {
     
     var upperCase: Bool = false
     
+    var lineHeight: Float = 0
+    
+    var letterSpacing: Float = 0
+    
     func makeACopy(from oldView: ALTextView) {
        
         self.inputView = oldView.inputView
@@ -35,12 +39,9 @@ class ALTextView: UITextView {
         self.upperCase = oldView.upperCase
     }
     
-    func changeText() {
+    func fixOriginalText() {
         
-        var newText = ""
-        newText.append(self.text)
-        
-        guard let originalText = originalText else { return }
+        guard let originalText = originalText, let newText = self.text else { return }
             
         if newText.count > 0 {
                 
@@ -48,76 +49,91 @@ class ALTextView: UITextView {
             
             case true:
             
-                var number = 1
+                insertCharacter(to: originalText, accordingTo: newText)
                 
-                for character in newText {
-                    
-                    let index = originalText.index(originalText.startIndex, offsetBy: number-1)
-                    
-                    if number > originalText.count {
-                        
-                        self.originalText?.append(character)
-
-                    } else {
-                        
-                        let oldChar = originalText[index]
-                    
-                        if character != oldChar {
-                            
-                            self.originalText?.insert(character, at: index)
-                            
-                        } else {
-                            
-                            number += 1
-                        }
-                       
-                    }
-                }
-
             case false:
                 
-                var number = 1
-                
-                for character in originalText {
-                    
-                    let index = newText.index(originalText.startIndex, offsetBy: number-1)
-                    
-                    if number > newText.count {
-                        
-                        self.originalText?.removeLast()
-                        
-                    } else {
-                        
-                        let newChar = newText[index]
-                        
-                        if character != newChar {
-                            
-                            self.originalText?.remove(at: index)
-                            
-                        } else {
-                            
-                            if number < originalText.count {
-                                number += 1
-                            }
-                            
-                        }
-                    }
-                    
-                }
-
+                removeCharacter(of: originalText, accordingTo: newText)
             }
-        }
+            
+        } else { self.originalText = "" }
 
+        changeText()
+        
+        self.resize()
+        
+    }
+    
+    func changeText() {
+        
         if upperCase {
             
-            self.text = self.text?.uppercased()
+            self.text = self.originalText?.uppercased()
             
         } else {
             
             self.text = self.originalText
         }
         
-        self.resize()
+    }
+    
+    func insertCharacter(to originalText: String, accordingTo newText: String) {
         
+        var number = 1
+        
+        for character in newText {
+            
+            if number > originalText.count {
+                
+                self.originalText?.append(character)
+                
+            } else {
+                
+                let index = originalText.index(originalText.startIndex, offsetBy: number-1)
+                
+                let oldCharacter = originalText[index]
+                
+                if character != oldCharacter {
+                    
+                    self.originalText?.insert(character, at: index)
+                    
+                } else {
+                    
+                    number += 1
+                }
+            }
+        }
+   
+    }
+    
+    func removeCharacter(of originalText: String, accordingTo newText: String) {
+        var number = 1
+        
+        for character in originalText {
+            
+            if number > newText.count {
+                
+                self.originalText?.removeLast()
+                
+            } else {
+                
+                let index = newText.index(originalText.startIndex, offsetBy: number-1)
+                
+                let newChar = newText[index]
+                
+                if character != newChar {
+                    
+                    self.originalText?.remove(at: index)
+                    
+                } else {
+                    
+                    if number < originalText.count {
+                        number += 1
+                    }
+                    
+                }
+            }
+            
+        }
     }
 }

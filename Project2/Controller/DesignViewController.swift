@@ -945,7 +945,7 @@ extension DesignViewController {
     
 }
 
-extension DesignViewController: BaseContainerViewControllerProtocol {
+extension DesignViewController: BaseContainerViewControllerDelegate {
     
     func showPhotoLibrayAlert() {
         

@@ -9,7 +9,7 @@
 import UIKit
 import HueKit
 
-protocol BaseContainerViewControllerProtocol: AnyObject {
+protocol BaseContainerViewControllerDelegate: AnyObject {
     
     func showPhotoLibrayAlert()
     func showCameraAlert()
@@ -19,9 +19,9 @@ protocol BaseContainerViewControllerProtocol: AnyObject {
 }
 
 class BaseContainerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,
-BaseViewControllerProtocol {
+BaseViewControllerDelegate {
     
-    weak var delegate: BaseContainerViewControllerProtocol?
+    weak var delegate: BaseContainerViewControllerDelegate?
    
     var imageToBeEdit: [UIImage]?
     

@@ -10,7 +10,15 @@ import UIKit
 import HueKit
 import Photos
 
+protocol ImageEditContainerVCDelegate: AnyObject {
+    
+    func changeEditingViewColor(with color: UIColor)
+    
+}
+
 class ImageEditContainerViewController: BaseContainerViewController {
+    
+    weak var editingDelegate: ImageEditContainerVCDelegate?
 
     @IBOutlet weak var transparencyUnderLine: UIView!
 
@@ -232,12 +240,7 @@ class ImageEditContainerViewController: BaseContainerViewController {
         
         guard let color = sender.backgroundColor else { return }
         
-        let notificationName = Notification.Name(NotiName.changeEditingViewColor.rawValue)
-        
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.changeEditingViewColor: color])
+        editingDelegate?.changeEditingViewColor(with: color)
    
     }
     
@@ -245,13 +248,8 @@ class ImageEditContainerViewController: BaseContainerViewController {
         
         colorSquarePicker.hue = sender.hue
         
-        let notificationName = Notification.Name(NotiName.changeEditingViewColor.rawValue)
-        
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.changeEditingViewColor: colorSquarePicker.color])
-       
+        editingDelegate?.changeEditingViewColor(with: colorSquarePicker.color)
+
     }
     
     @IBAction func colorSquarePickerValueChanged(_ sender: ColorSquarePicker) {
@@ -353,5 +351,15 @@ extension ImageEditContainerViewController {
                 
             }
         }
+    }
+    
+    func setupAllTool(with alpha: CGFloat, forImage: Bool) {
+        
+        slider.value = Float(alpha*100)
+        
+        transparencyLabel.text = "\(Int(Float(alpha*100)))"
+        
+        if forImage { editImageMode() } else { editShapeMode() }
+        
     }
 }
