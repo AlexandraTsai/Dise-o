@@ -75,8 +75,6 @@ class EditingViewController: BaseViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        createNotification()
-        
         imageContainerVC?.slider.addTarget(self,
                                            action: #selector(editImageTransparency(sender:)),
                                            for: .valueChanged)
@@ -806,59 +804,6 @@ extension EditingViewController {
     
 }
 
-// MARK: - Fusuma image picker
-extension EditingViewController {
-    
-    //Notification for image picked
-    func createNotification() {
-        
-        // 註冊addObserver
-        let notificationName = Notification.Name(NotiName.changeImageWithAlbum.rawValue)
-        
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(pickAnotherImage(noti:)), name: notificationName, object: nil)
-        
-        let notificationName1 = Notification.Name(NotiName.changeImageByCamera.rawValue)
-        
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(changeImageWithCamera(noti:)), name: notificationName1, object: nil)
-    
-  }
-    
-    // 收到通知後要執行的動作
-    @objc func pickAnotherImage(noti: Notification) {
-        if let userInfo = noti.userInfo,
-            let mode = userInfo[NotificationInfo.changeImageWithAlbum] as? Bool {
-            
-            if mode == true {
-                
-                DispatchQueue.main.async { [weak self, fusumaAlbum] in
-                    
-                    self?.present(fusumaAlbum, animated: true, completion: nil)
-                }
-                
-            }
-        }
-    }
-    
-    @objc func changeImageWithCamera(noti: Notification) {
-        
-        if let userInfo = noti.userInfo,
-            let mode = userInfo[NotificationInfo.changeImageByCamera] as? Bool {
-            
-            if mode == true {
-                
-                DispatchQueue.main.async { [weak self, fusumaCamera] in
-                    
-                    self?.present(fusumaCamera, animated: true, completion: nil)
-                    
-                }
-                
-            }
-        }
-    }
-    
-}
 // MARK: EditingVC extension
 extension EditingViewController {
     
@@ -1011,6 +956,18 @@ extension EditingViewController: ImageEditContainerVCDelegate {
             
             view.redrawWith(color)
         }
+
+    }
+    
+    func changeImageWithAlbum() {
+        
+        self.present(fusumaAlbum, animated: true, completion: nil)
+
+    }
+    
+    func changeImageWithCamera() {
+        
+        self.present(fusumaCamera, animated: true, completion: nil)
 
     }
 }

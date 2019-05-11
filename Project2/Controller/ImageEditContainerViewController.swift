@@ -13,6 +13,8 @@ import Photos
 protocol ImageEditContainerVCDelegate: AnyObject {
     
     func changeEditingViewColor(with color: UIColor)
+    func changeImageWithAlbum()
+    func changeImageWithCamera()
     
 }
 
@@ -157,24 +159,16 @@ class ImageEditContainerViewController: BaseContainerViewController {
             
         case PHAuthorizationStatus.authorized:
             
-            let notificationName = Notification.Name(NotiName.changeImageWithAlbum.rawValue)
-            NotificationCenter.default.post(
-                name: notificationName,
-                object: nil,
-                userInfo: [NotificationInfo.changeImageWithAlbum: true])
-            
+            editingDelegate?.changeImageWithAlbum()
+ 
         case PHAuthorizationStatus.notDetermined:
             
-            PHPhotoLibrary.requestAuthorization({ status in
+            PHPhotoLibrary.requestAuthorization({ [weak self] status in
                 
                 if status == .authorized {
                     
-                    let notificationName = Notification.Name(NotiName.changeImageWithAlbum.rawValue)
-                    NotificationCenter.default.post(
-                        name: notificationName,
-                        object: nil,
-                        userInfo: [NotificationInfo.changeImageWithAlbum: true])
-                }
+                    self?.editingDelegate?.changeImageWithAlbum()
+               }
                 
             })
             
@@ -194,24 +188,16 @@ class ImageEditContainerViewController: BaseContainerViewController {
             
         case AVAuthorizationStatus.authorized:
             
-            let notificationName = Notification.Name(NotiName.changeImageByCamera.rawValue)
-            NotificationCenter.default.post(
-                name: notificationName,
-                object: nil,
-                userInfo: [NotificationInfo.changeImageWithAlbum: true])
-            
+           editingDelegate?.changeImageWithCamera()
+
         case AVAuthorizationStatus.notDetermined:
             
-            AVCaptureDevice.requestAccess(for: AVMediaType.video) { (granted) in
+            AVCaptureDevice.requestAccess(for: AVMediaType.video) { [weak self] granted in
                 
                 if granted {
                     
-                    let notificationName = Notification.Name(NotiName.changeImageByCamera.rawValue)
-                    NotificationCenter.default.post(
-                        name: notificationName,
-                        object: nil,
-                        userInfo: [NotificationInfo.changeImageWithAlbum: true])
-                    
+                    self?.editingDelegate?.changeImageWithCamera()
+
                 }
                 
             }
