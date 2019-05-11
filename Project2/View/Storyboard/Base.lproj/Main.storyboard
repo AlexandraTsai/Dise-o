@@ -141,7 +141,6 @@
                                     <constraint firstItem="VFw-QO-WIb" firstAttribute="height" secondItem="cHR-CU-4QF" secondAttribute="height" id="hPW-5X-rvP"/>
                                     <constraint firstItem="VFw-QO-WIb" firstAttribute="bottom" secondItem="POg-3j-AJ4" secondAttribute="top" constant="10" id="iGv-w1-YrE"/>
                                     <constraint firstItem="cHR-CU-4QF" firstAttribute="centerY" secondItem="Cau-ql-3Op" secondAttribute="centerY" id="m83-eb-3qy"/>
-                                    <constraint firstAttribute="bottom" secondItem="POg-3j-AJ4" secondAttribute="bottom" constant="50" id="mCc-Mi-NHc"/>
                                     <constraint firstItem="POg-3j-AJ4" firstAttribute="centerX" secondItem="i3D-7M-9tP" secondAttribute="centerX" id="nA5-gp-fe2"/>
                                     <constraint firstItem="jHo-S0-vsR" firstAttribute="centerY" secondItem="VFw-QO-WIb" secondAttribute="centerY" id="z8j-cU-69a"/>
                                 </constraints>
@@ -178,6 +177,7 @@
                         <constraints>
                             <constraint firstItem="DZf-mM-usS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="0S2-aV-HPz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MPz-Hy-TZc" secondAttribute="bottom" id="0cR-1U-udo"/>
+                            <constraint firstItem="ic4-BR-cwQ" firstAttribute="top" secondItem="VFw-QO-WIb" secondAttribute="bottom" constant="30" id="5H5-xG-7tk"/>
                             <constraint firstItem="veZ-hA-1Od" firstAttribute="top" secondItem="DZf-mM-usS" secondAttribute="top" id="98y-Gs-tQk"/>
                             <constraint firstItem="qfP-Fw-Eth" firstAttribute="bottom" secondItem="k2Y-E1-iHA" secondAttribute="bottom" id="Am6-S6-wth"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ic4-BR-cwQ" secondAttribute="bottom" constant="20" id="Ass-xM-9Rv"/>

@@ -169,6 +169,8 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
             
             saveSuccessLabel.setupLabel(on: self, with: "Saved to camera roll")
             
+            self.navigationController?.navigationBar.alpha = 0.1
+            
             UIView.animate(withDuration: 0.3,
                            delay: 0,
                            animations: {[weak self] in
@@ -178,14 +180,18 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
             }, completion: { done in
                     
                 if done {
-             
+                
                     UIView.animate(withDuration: 0.5,
                                        delay: 1.2,
                                        animations: {[weak self] in
                                         
                                         self?.saveSuccessLabel.alpha = 0
                                         
-                    }, completion: nil)
+                    }, completion: { [weak self ]done in
+                    
+                        self?.navigationController?.navigationBar.alpha = 1
+                    
+                    })
                 }
 
             })
