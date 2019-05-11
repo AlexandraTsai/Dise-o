@@ -30,7 +30,7 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
     
     @IBOutlet weak var containerView: BackgroundContainerViewController!
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var addElementView: UIView!
     @IBOutlet weak var hintLabel: UILabel!
     @IBOutlet weak var hintView: UIView!
 
@@ -71,7 +71,7 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
         addImageContainerView.isHidden = true
         addShapeContainerView.isHidden = true
         
-        scrollView.isHidden = true
+        addElementView.isHidden = true
         addButton.transform = CGAffineTransform(rotationAngle: 0)
         
         self.tabBarController?.tabBar.barTintColor = UIColor.clear
@@ -89,7 +89,7 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
 
         setupNavigationBar()
 
-        scrollView.isHidden = true
+        addElementView.isHidden = true
 
         self.view.addSubview(saveSuccessLabel)
         self.view.addSubview(openLibraryAlert)
@@ -195,7 +195,7 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
 
     @IBAction func addBtnTapped(_ sender: Any) {
         
-        if scrollView.isHidden == true {
+        if addElementView.isHidden == true {
             
             UIView.animate(withDuration: 0.3, animations: { [weak self] in
                 
@@ -205,7 +205,7 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
                 
                 if done {
                     
-                    self?.scrollView.isHidden = false
+                    self?.addElementView.isHidden = false
                     
                     self?.hintView.isHidden = false
                     
@@ -224,7 +224,7 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
                     
                     if done {
                         
-                        self?.scrollView.isHidden = true
+                        self?.addElementView.isHidden = true
                         
                         self?.hintView.isHidden = false
                         
@@ -282,7 +282,7 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
         
          addShapeContainerView.isHidden = false
          hintView.isHidden = true
-         scrollView.isHidden = true
+         addElementView.isHidden = true
     }
 }
 
@@ -298,7 +298,7 @@ extension DesignViewController {
     @objc func endEditing(_ sender: UITapGestureRecognizer) {
         
         hintView.isHidden = false
-        scrollView.isHidden = true
+        addElementView.isHidden = true
         
         UIView.animate(withDuration: 0.3) { [weak self] in
             
@@ -310,7 +310,7 @@ extension DesignViewController {
 
     @objc func designViewClicked(_ sender: UITapGestureRecognizer) {
       
-        scrollView.isHidden = true
+        addElementView.isHidden = true
         hintView.isHidden = !hintView.isHidden
         
         UIView.animate(withDuration: 0.3) { [weak self] in
@@ -451,7 +451,7 @@ extension DesignViewController {
                         
                         if done {
                             
-                            self?.scrollView.isHidden = false
+                            self?.addElementView.isHidden = false
                             
                             self?.hintView.isHidden = false
                             
@@ -461,7 +461,7 @@ extension DesignViewController {
                
             } else {
                 
-                scrollView.isHidden = true
+                addElementView.isHidden = true
                 
                 hintView.isHidden = false
             }

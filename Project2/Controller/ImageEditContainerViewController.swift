@@ -72,8 +72,6 @@ class ImageEditContainerViewController: BaseContainerViewController {
         filterCollectionView.al_registerCellWithNib(identifier: String(describing: FilterCollectionViewCell.self),
                                                     bundle: nil)
         
-        createNotification()
-
     }
     
     @IBAction func cameraRollBtnTapped(_ sender: Any) {
@@ -318,30 +316,6 @@ class ImageEditContainerViewController: BaseContainerViewController {
 }
 
 extension ImageEditContainerViewController {
-    
-    //Notification for image picked
-    func createNotification() {
-        
-        // 註冊addObserver
-        let notificationName = Notification.Name(NotiName.didChangeImage.rawValue)
-        
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(changeImage(noti:)), name: notificationName, object: nil)
-
-    }
-    
-    // 收到通知後要執行的動作
-    @objc func changeImage(noti: Notification) {
-        if let userInfo = noti.userInfo,
-            let mode = userInfo[NotificationInfo.didChangeImage] as? Bool {
-            
-            if mode == true {
-
-                cameraRollButton.tintColor = UIColor.DSColor.lightGreen
-                
-            }
-        }
-    }
     
     func setupAllTool(with alpha: CGFloat, forImage: Bool) {
         

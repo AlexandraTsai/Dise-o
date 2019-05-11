@@ -102,23 +102,12 @@ class EditingViewController: BaseViewController, UITextViewDelegate {
         
         saveImage(fileName: fileName, image: image)
         
-        DispatchQueue.main.async { [weak imageView] in
-            
-            imageView?.image = image
-            
-        }
-        
         imageView.imageFileName = fileName
         imageView.originImage = image
+        imageView.image = image
         
         self.delegate?.showAllFilter(for: image)
         self.delegate?.editImageMode()
-        
-        let notificationName = Notification.Name(NotiName.didChangeImage.rawValue)
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.didChangeImage: true])
     }
 
 }
