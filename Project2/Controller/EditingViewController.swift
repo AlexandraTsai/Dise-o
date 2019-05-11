@@ -45,9 +45,8 @@ class EditingViewController: BaseViewController, UITextViewDelegate {
             guard let editingView = editingView else {
                 return
             }
-            disableNavigationButton()
             
-            helperView = HelperView()
+            disableNavigationButton()
             
             createEditingHelper(for: editingView)
             
@@ -57,33 +56,11 @@ class EditingViewController: BaseViewController, UITextViewDelegate {
     }
 
     @IBOutlet weak var designView: ALDesignView!
- 
-    @IBOutlet weak var shadowView: UIView! {
-        
-        didSet {
-            
-            shadowView.clipsToBounds = false
-            shadowView.layer.shadowColor = UIColor.DSColor.mediumGray.cgColor
-            shadowView.layer.shadowOffset = CGSize(width: 0, height: 0)
-            shadowView.layer.shadowRadius = 10
-            shadowView.layer.shadowOpacity = 0.6
-            
-        }
-        
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        imageContainerVC?.slider.addTarget(self,
-                                           action: #selector(editImageTransparency(sender:)),
-                                           for: .valueChanged)
-        
-        self.view.addSubview(openLibraryAlert)
-        self.view.addSubview(openCameraAlert)
-      
-        openLibraryAlert.alpha = 0
-        openCameraAlert.alpha = 0
+        setupAlert()
         
     }
 
@@ -91,15 +68,7 @@ class EditingViewController: BaseViewController, UITextViewDelegate {
         
         super.viewWillAppear(animated)
 
-        guard designView.subviews.count > 0 else { return }
-
-        for count in 0...designView.subviews.count-1
-            where designView.subviews[count] != helperView {
-            
-                addTapGesture(to: designView.subviews[count])
-            
-        }
-        
+        addGestureToAllSubview()
     }
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -115,16 +84,12 @@ class EditingViewController: BaseViewController, UITextViewDelegate {
         } else if segue.identifier == ALSegue.imageSegue.rawValue {
             
             imageContainerVC = segue.destination as? ImageEditContainerViewController
+            
             imageContainerVC?.delegate = self
             imageContainerVC?.editingDelegate = self
             self.delegate = imageContainerVC
            
         }
-    }
-    
-    @objc func editImageTransparency(sender: UISlider) {
-        
-        editingView?.alpha = CGFloat(sender.value/100)
     }
     
     override func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
@@ -158,8 +123,18 @@ class EditingViewController: BaseViewController, UITextViewDelegate {
 
 }
 
-//Setup Navigation Bar
+//Setup Navigation Bar & Alert
 extension EditingViewController {
+    
+    func setupAlert() {
+        
+        self.view.addSubview(openLibraryAlert)
+        self.view.addSubview(openCameraAlert)
+        
+        openLibraryAlert.alpha = 0
+        openCameraAlert.alpha = 0
+        
+    }
 
     func setupNavigationBar() {
 
@@ -275,14 +250,16 @@ extension EditingViewController {
         guard let index = designView.subviews.firstIndex(of: editingView) else { return }
         
         switch index {
-        case 0:
-            print("You are the last one.")
+            
+        case 0: break
+            
         default:
             designView.insertSubview(editingView, at: index-1)
         }
         
         //Navigationbar for UIImageView
         if index == 1 {
+            
             self.navigationItem.rightBarButtonItems?[1].isEnabled = false
         }
         
@@ -323,48 +300,29 @@ extension EditingViewController {
     @objc func didTapCopyButton(sender: AnyObject) {
         
         helperView.removeFromSuperview()
-
-        guard let tappedView = (editingView as? ALTextView) else {
-
-            guard let tappedView = (editingView as? ALImageView)else {
-                
-                guard let tappedView = (editingView as? ALShapeView) else { return }
-                
-                let newView = tappedView.makeACopyShape()
-
-                addTapGesture(to: newView)
-                
-                designView.addSubview(newView)
-                
-                editingView = newView
-               
-                return
-                
-            }
-
-            let newView = ALImageView()
-
-            newView.makeACopy(from: tappedView)
+        
+        var newView = UIView()
+        
+        if let tappedView = editingView as? ALTextView {
             
-            addTapGesture(to: newView)
+            newView = tappedView.makeACopy()
             
-            designView.addSubview(newView)
+        } else if let tappedView = editingView as? ALImageView {
             
-            editingView = newView
-
-            return
+            newView = tappedView.makeACopy()
+            
+        } else if let tappedView = (editingView as? ALShapeView) {
+            
+            newView = tappedView.makeACopyShape()
+            
         }
-
-        let newView = ALTextView()
-
-        newView.makeACopy(from: tappedView)
-
+        
         addTapGesture(to: newView)
         
         designView.addSubview(newView)
         
         editingView = newView
-
+        
     }
 }
 
@@ -809,6 +767,8 @@ extension EditingViewController {
     
     func createEditingHelper(for view: UIView) {
         
+        helperView = HelperView()
+        
         designView.addSubview(helperView)
         
         guard let editingView = editingView else { return }
@@ -873,6 +833,20 @@ extension EditingViewController {
                                           action: #selector(handleCornerResize(gesture:)))
         
         cornerHelper.addGestureRecognizer(pan)
+        
+    }
+    
+    func addGestureToAllSubview() {
+        
+        guard designView.subviews.count > 0 else { return }
+        
+        for count in 0...designView.subviews.count-1
+            
+            where designView.subviews[count] != helperView {
+                
+                addTapGesture(to: designView.subviews[count])
+                
+        }
         
     }
     
@@ -944,6 +918,12 @@ extension EditingViewController {
 }
 
 extension EditingViewController: ImageEditContainerVCDelegate {
+    
+    func transparencyChange(to alpha: CGFloat) {
+        
+        editingView?.alpha = alpha
+        
+    }
     
     func changeEditingViewColor(with color: UIColor) {
         

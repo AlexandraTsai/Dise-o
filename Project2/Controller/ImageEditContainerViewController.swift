@@ -15,6 +15,7 @@ protocol ImageEditContainerVCDelegate: AnyObject {
     func changeEditingViewColor(with color: UIColor)
     func changeImageWithAlbum()
     func changeImageWithCamera()
+    func transparencyChange(to alpha: CGFloat)
     
 }
 
@@ -40,7 +41,8 @@ class ImageEditContainerViewController: BaseContainerViewController {
     @IBOutlet weak var transparencyView: UIView!
     
     @IBOutlet weak var usedColorButton: UIButton!
-    @IBOutlet weak var slider: UISlider! 
+    
+    @IBOutlet weak var slider: UISlider!
 
     @IBOutlet weak var transparencyLabel: UILabel!
     
@@ -58,6 +60,8 @@ class ImageEditContainerViewController: BaseContainerViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        
+        slider.addTarget(self, action: #selector(changeTransparency(_:)), for: .valueChanged)
         
     }
 
@@ -347,5 +351,11 @@ extension ImageEditContainerViewController {
         
         if forImage { editImageMode() } else { editShapeMode() }
         
+    }
+    
+    @objc func changeTransparency(_ sender: UISlider) {
+    
+        editingDelegate?.transparencyChange(to: CGFloat(sender.value/100))
+
     }
 }

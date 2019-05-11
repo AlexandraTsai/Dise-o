@@ -20,23 +20,27 @@ class ALTextView: UITextView {
     
     var letterSpacing: Float = 0
     
-    func makeACopy(from oldView: ALTextView) {
+    func makeACopy() -> ALTextView {
+        
+        let newView = ALTextView()
        
-        self.inputView = oldView.inputView
-        self.textContainer.size = oldView.textContainer.size
-        self.frame = oldView.frame
-        self.transform = oldView.transform
+        newView.inputView = self.inputView
+        newView.textContainer.size = self.textContainer.size
+        newView.frame = self.frame
+        newView.transform = self.transform
         
-        self.backgroundColor = oldView.backgroundColor
-        self.alpha = oldView.alpha
+        newView.backgroundColor = self.backgroundColor
+        newView.alpha = self.alpha
         
-        self.text = oldView.text
-        self.font = oldView.font
-        self.textColor = oldView.textColor
-        self.textAlignment = oldView.textAlignment
+        newView.text = self.text
+        newView.font = self.font
+        newView.textColor = self.textColor
+        newView.textAlignment = self.textAlignment
         
-        self.originalText = oldView.originalText
-        self.upperCase = oldView.upperCase
+        newView.originalText = self.originalText
+        newView.upperCase = self.upperCase
+        
+        return newView
     }
     
     func fixOriginalText() {

@@ -26,6 +26,20 @@ class BaseViewController: UIViewController, FusumaDelegate {
     
     weak var delegate: BaseViewControllerDelegate?
     
+    @IBOutlet weak var shadowView: UIView! {
+        
+        didSet {
+            
+            shadowView.clipsToBounds = false
+            shadowView.layer.shadowColor = UIColor.DSColor.mediumGray.cgColor
+            shadowView.layer.shadowOffset = CGSize(width: 0, height: 0)
+            shadowView.layer.shadowRadius = 10
+            shadowView.layer.shadowOpacity = 0.6
+            
+        }
+        
+    }
+    
     let fusumaAlbum = FusumaViewController()
     let fusumaCamera = FusumaViewController()
 
@@ -60,7 +74,6 @@ class BaseViewController: UIViewController, FusumaDelegate {
         do {
             
             try data.write(to: fileURL)
-            print(fileURL)
             
         } catch let error {
             
