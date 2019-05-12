@@ -10,11 +10,15 @@ import UIKit
 import Fusuma
 import CoreGraphics
 
+protocol EditingVCDelegate: AnyObject {
+    
+    func finishEdit(with subViews: [UIView])
+}
+
 // swiftlint:disable file_length
 class EditingViewController: BaseViewController, UITextViewDelegate {
-
-    @IBOutlet weak var imageEditContainerView: UIView!
-    @IBOutlet weak var textEditContainterView: UIView!
+    
+    weak var finishEditDelegate: EditingVCDelegate?
     
     let openLibraryAlert = GoSettingAlertView()
     let openCameraAlert = GoSettingAlertView()
@@ -23,7 +27,7 @@ class EditingViewController: BaseViewController, UITextViewDelegate {
     var imageContainerVC: ImageEditContainerViewController?
     
     var helperView = HelperView()
-
+    
     var oldLocation: CGPoint?
     
     var newLocation: CGPoint?
@@ -35,9 +39,9 @@ class EditingViewController: BaseViewController, UITextViewDelegate {
     var tableViewIndex: Int = 0
     
     var editingView: UIView? {
-
+        
         didSet {
-           
+            
             guard let editingView = editingView else {
                 return
             }
@@ -51,6 +55,10 @@ class EditingViewController: BaseViewController, UITextViewDelegate {
         }
     }
 
+
+    @IBOutlet weak var imageEditContainerView: UIView!
+    @IBOutlet weak var textEditContainterView: UIView!
+    
     @IBOutlet weak var designView: ALDesignView!
 
     override func viewDidLoad() {
@@ -184,8 +192,7 @@ extension EditingViewController {
           
             self.navigationItem.rightBarButtonItems?[2].isEnabled = false
         
-        default:
-            break
+        default: break
         }
     }
 
@@ -193,21 +200,10 @@ extension EditingViewController {
         
         helperView.removeFromSuperview()
         
-        /*Notification*/
-        let notificationName = Notification.Name(NotiName.updateImage.rawValue)
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.editedImage: designView.subviews])
-
+        finishEditDelegate?.finishEdit(with: designView.subviews)
+ 
         self.navigationController?.popViewController(animated: true)
-        
-        let notificationName2 = Notification.Name(NotiName.addingMode.rawValue)
-        NotificationCenter.default.post(
-            name: notificationName2,
-            object: nil,
-            userInfo: [NotificationInfo.addingMode: false])
-        
+         
     }
 
     @objc func didTapDeleteButton(sender: AnyObject) {
@@ -216,16 +212,7 @@ extension EditingViewController {
         editingView.removeFromSuperview()
         
         helperView.removeFromSuperview()
-        
-        /*Notification*/
-        let notificationName = Notification.Name(NotiName.updateImage.rawValue)
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.editedImage: designView.subviews])
-        
-        self.navigationController?.popViewController(animated: false)
-
+     
     }
 
     @objc func didTapDownButton(sender: AnyObject) {

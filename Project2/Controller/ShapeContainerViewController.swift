@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol ShapeContainerVCDelegate: AnyObject {
+    
+    func addShape(with shapeType: String)
+}
+
 class ShapeContainerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    weak var delegate: ShapeContainerVCDelegate?
     
     @IBOutlet weak var bottomView: UIView! {
         
@@ -80,12 +87,7 @@ class ShapeContainerViewController: UIViewController, UICollectionViewDelegate, 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let notificationName = Notification.Name(NotiName.addShape.rawValue)
-        
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.addShape: ShapeAsset.allCases[indexPath.item].rawValue])
+        delegate?.addShape(with: ShapeAsset.allCases[indexPath.item].rawValue)
 
     }
     

@@ -74,7 +74,6 @@
 		A8D2C47E22523A480085AD24 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C47C22523A480085AD24 /* PhotoCollectionViewCell.swift */; };
 		A8D2C47F22523A490085AD24 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D2C47D22523A480085AD24 /* PhotoCollectionViewCell.xib */; };
 		A8D2C481225268000085AD24 /* EditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C480225268000085AD24 /* EditingViewController.swift */; };
-		A8D2C4842252F9FF0085AD24 /* ImageContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C4832252F9FF0085AD24 /* ImageContainerViewController.swift */; };
 		A8DEBB9822543DBF0081A694 /* border.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DEBB9722543DBF0081A694 /* border.swift */; };
 		A8DEBB9B22545B8F0081A694 /* CollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DEBB9922545B8F0081A694 /* CollectionReusableView.swift */; };
 		A8DEBB9C22545B8F0081A694 /* CollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DEBB9A22545B8F0081A694 /* CollectionReusableView.xib */; };
@@ -175,7 +174,6 @@
 		A8D2C47C22523A480085AD24 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A8D2C47D22523A480085AD24 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		A8D2C480225268000085AD24 /* EditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingViewController.swift; sourceTree = "<group>"; };
-		A8D2C4832252F9FF0085AD24 /* ImageContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainerViewController.swift; sourceTree = "<group>"; };
 		A8DEBB9722543DBF0081A694 /* border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = border.swift; sourceTree = "<group>"; };
 		A8DEBB9922545B8F0081A694 /* CollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionReusableView.swift; sourceTree = "<group>"; };
 		A8DEBB9A22545B8F0081A694 /* CollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionReusableView.xib; sourceTree = "<group>"; };
@@ -375,10 +373,9 @@
 				A8D2C4712252270C0085AD24 /* BackgroundContainerViewController.swift */,
 				A8BFF77F225A4AC00010E56B /* ImageEditContainerViewController.swift */,
 				A80F296A22660BED009C13F5 /* TextContainerViewController.swift */,
-				A8D2C4832252F9FF0085AD24 /* ImageContainerViewController.swift */,
-				A8DEBBA1225496D20081A694 /* AddImageContainerViewController.swift */,
 				A8E3063B2262FE0000DA03A7 /* ShapeContainerViewController.swift */,
 				A8242DB7227D536B006143CB /* LaunchScreenViewController.swift */,
+				A8DEBBA1225496D20081A694 /* AddImageContainerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -692,7 +689,6 @@
 				A816BEB522758CC4004E3896 /* UITextField+Extension.swift in Sources */,
 				A8BFF782225A4B6B0010E56B /* PhotoManager.swift in Sources */,
 				A8AF2A5322781CC000C2B118 /* GoSettingAlertView.swift in Sources */,
-				A8D2C4842252F9FF0085AD24 /* ImageContainerViewController.swift in Sources */,
 				A8D2C481225268000085AD24 /* EditingViewController.swift in Sources */,
 				A84880D12270672100F308AC /* Shape+Extension.swift in Sources */,
 				A8DEBB9B22545B8F0081A694 /* CollectionReusableView.swift in Sources */,

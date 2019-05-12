@@ -51,6 +51,7 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
     @IBOutlet weak var textView: ALTextView!
     
 //    var editingView: UIView?
+    
     var addingNewImage = false
     var showFilter = true
   
@@ -362,6 +363,7 @@ extension DesignViewController {
                 else { return }
             
             containerVC.loadViewIfNeeded()
+            containerVC.delegate = self
             
         }
     }
@@ -375,21 +377,6 @@ extension DesignViewController {
         NotificationCenter.default.addObserver(self, selector:
             #selector(changeImage(noti:)), name: notificationName, object: nil)
 
-        let notificationName2 = Notification.Name(NotiName.addImage.rawValue)
-
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(addImage(noti:)), name: notificationName2, object: nil)
-
-        let notificationName3 = Notification.Name(NotiName.updateImage.rawValue)
-
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(updateImage(noti:)), name: notificationName3, object: nil)
-
-        let notificationName4 = Notification.Name(NotiName.addingMode.rawValue)
-
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(switchToAddingMode(noti:)), name: notificationName4, object: nil)
-
         let notificationName5 = Notification.Name(NotiName.pickingPhotoMode.rawValue)
 
         NotificationCenter.default.addObserver(self, selector:
@@ -399,11 +386,6 @@ extension DesignViewController {
         
         NotificationCenter.default.addObserver(self, selector:
             #selector(showCameraVC(noti:)), name: notificationName6, object: nil)
-        
-        let notificationName7 = Notification.Name(NotiName.addShape.rawValue)
-        
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(addShape(noti:)), name: notificationName7, object: nil)
         
     }
 
@@ -441,112 +423,6 @@ extension DesignViewController {
             let newImage = userInfo[NotificationInfo.newImage] as? UIImage {
             designView.image = newImage
         }
-    }
-    
-    @objc func switchToAddingMode(noti: Notification) {
-        if let userInfo = noti.userInfo,
-            let mode = userInfo[NotificationInfo.addingMode] as? Bool {
-            
-            if mode == true {
-               
-                UIView.animate(withDuration: 0.3, animations: { [weak self] in
-                    
-                    self?.addButton.transform = CGAffineTransform.init(rotationAngle: -(CGFloat.pi*7/4))
-                    
-                    }, completion: {  [weak self] done in
-                        
-                        if done {
-                            
-                            self?.addElementView.isHidden = false
-                            
-                            self?.hintView.isHidden = false
-                            
-                        }
-                        
-                })
-               
-            } else {
-                
-                addElementView.isHidden = true
-                
-                hintView.isHidden = false
-            }
-        }
-    }
-
-    @objc func addImage(noti: Notification) {
-
-        guard let userInfo = noti.userInfo,
-            let addImage = userInfo[NotificationInfo.addImage] as? UIImage
-            else { return }
-
-        let newImage = ALImageView(frame: CGRect(x: designView.center.x-100,
-                                                 y: designView.center.y-100,
-                                                 width: 200,
-                                                 height: 200))
-        newImage.image = addImage
-
-        designView.addSubview(newImage)
-
-        goToEditingVC(with: newImage, navigationBarForImage: true)
-
-    }
-
-    @objc func updateImage(noti: Notification) {
-        if let userInfo = noti.userInfo,
-            let newImage = userInfo[NotificationInfo.editedImage] as? [UIView] {
-
-            guard newImage.count != 0 else { return }
-
-            for count in 0...newImage.count-1 {
-                
-                if let imageView = newImage[count] as? ALImageView {
-                    
-                    print(imageView.filterName)
-                    
-                }
- designView.addSubview(newImage[count])
-                addAllGesture(to: newImage[count])
-
-            }
-        }
-    }
-    
-    @objc func addShape(noti: Notification) {
-        
-        guard let userInfo = noti.userInfo,
-            let shapeType = userInfo[NotificationInfo.addShape] as? String
-            else { return }
-        
-        let newShape = ALShapeView(frame: CGRect(x: designView.frame.width/2-75,
-                                               y: designView.frame.height/2-75,
-                                               width: 150,
-                                               height: 150))
-        
-        newShape.shapeType = shapeType
-        
-        for shape in ShapeAsset.allCases where shape.rawValue == shapeType {
-                
-            let border = shape.shapeBorderOnly()
-                
-            if border {
-                    
-                newShape.stroke =  true
-                    
-            } else {
-                    
-                if designView.image == nil && designView.backgroundColor == UIColor.white {
-                        
-                    newShape.shapeColor = UIColor.init(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
-                }
-            }
-        }
-        
-        designView.addSubview(newShape)
-        addAllGesture(to: newShape)
-     
-        goToEditingVC(with: newShape, navigationBarForImage: false)
-        
     }
     
     func changeColor(to color: UIColor) {
@@ -872,6 +748,7 @@ extension DesignViewController {
 
         editingVC.loadViewIfNeeded()
 
+        editingVC.finishEditDelegate = self
         editingVC.designView.backgroundColor = designView.backgroundColor
         editingVC.designView.image = designView.image
 
@@ -933,6 +810,27 @@ extension DesignViewController {
                 designView.subShapes.append(shapeView)
             }
         }
+    }
+    
+}
+
+extension DesignViewController: EditingVCDelegate {
+ 
+    func finishEdit(with subViews: [UIView]) {
+        
+        guard subViews.count != 0 else { return }
+        
+        for count in 0...subViews.count-1 {
+            
+            designView.addSubview(subViews[count])
+            addAllGesture(to: subViews[count])
+            
+        }
+        
+        addElementView.isHidden = true
+        
+        hintView.isHidden = false
+
     }
     
 }
@@ -1007,5 +905,42 @@ extension DesignViewController: BaseContainerViewControllerDelegate {
         }
        
     }
+}
+
+extension DesignViewController: ShapeContainerVCDelegate {
+    
+    func addShape(with shapeType: String) {
+        
+        let newShape = ALShapeView(frame: CGRect(x: designView.frame.width/2-75,
+                                                 y: designView.frame.height/2-75,
+                                                 width: 150,
+                                                 height: 150))
+        
+        newShape.shapeType = shapeType
+        
+        for shape in ShapeAsset.allCases where shape.rawValue == shapeType {
+            
+            let border = shape.shapeBorderOnly()
+            
+            if border {
+                
+                newShape.stroke =  true
+                
+            } else {
+                
+                if designView.image == nil && designView.backgroundColor == UIColor.white {
+                    
+                    newShape.shapeColor = UIColor.init(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
+                }
+            }
+        }
+        
+        designView.addSubview(newShape)
+        addAllGesture(to: newShape)
+        
+        goToEditingVC(with: newShape, navigationBarForImage: false)
+        
+    }
+    
 }
 // swiftlint:enable file_length
