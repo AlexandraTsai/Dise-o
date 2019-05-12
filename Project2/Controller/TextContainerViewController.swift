@@ -11,7 +11,6 @@ import HueKit
 
 protocol TextContainerDelegate: AnyObject {
     
-//    func hideColorPicker()
     func alignmentChange(to type: NSTextAlignment)
     func textColorChange(to color: UIColor)
     func textTransparency(value: CGFloat)

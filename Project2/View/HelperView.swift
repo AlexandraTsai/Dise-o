@@ -10,18 +10,18 @@ import UIKit
 
 class HelperView: UIView {
    
-    var leftHelper = SizeHelperView()
-    var rightHelper = SizeHelperView()
-    var topHelper = SizeHelperView()
-    var bottomHelper = SizeHelperView()
+    let leftHelper = SizeHelperView()
+    let rightHelper = SizeHelperView()
+    let topHelper = SizeHelperView()
+    let bottomHelper = SizeHelperView()
     
     let leftTopHelper = CornerHelperView()
     let leftBottomHelper = CornerHelperView()
     let rightTopHelper = CornerHelperView()
     let rightBottomHelper = CornerHelperView()
     
-    var rotateHelper = RotateHelperView()
-    var positionHelper  =  UIImageView()
+    let rotateHelper = RotateHelperView()
+    let positionHelper  =  UIImageView()
     var editingFrame = EditFrameView()
     
     override func draw(_ rect: CGRect) {
@@ -39,7 +39,6 @@ class HelperView: UIView {
         setupSizeHelper()
         enableUserInteractive()
         setupCornerHelper()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -52,6 +51,12 @@ class HelperView: UIView {
         
     }
     
+    override func draw(_ layer: CALayer, in ctx: CGContext) {
+        
+        super.draw(layer, in: ctx)
+        
+    }
+
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         
         super.hitTest(point, with: event)
@@ -136,8 +141,6 @@ class HelperView: UIView {
         bottomHelper.widthAnchor.constraint(equalTo: topHelper.widthAnchor).isActive = true
         bottomHelper.heightAnchor.constraint(equalTo: topHelper.heightAnchor).isActive = true
         
-        setupShadow()
-        
         leftHelper.direct = Direction.left
         rightHelper.direct = Direction.right
         topHelper.direct = Direction.top
@@ -182,54 +185,6 @@ class HelperView: UIView {
 
     }
 
-    func setupShadow() {
-        
-        leftHelper.backgroundColor = UIColor.white
-        leftHelper.layer.cornerRadius = 4
-        
-        rightHelper.backgroundColor = UIColor.white
-        rightHelper.layer.cornerRadius = 4
-        
-        topHelper.backgroundColor = UIColor.white
-        topHelper.layer.cornerRadius = 4
-        
-        bottomHelper.backgroundColor = UIColor.white
-        bottomHelper.layer.cornerRadius = 4
-        
-        //Shadow
-        leftHelper.layer.shadowColor = UIColor.black.cgColor
-        leftHelper.layer.shadowOffset = CGSize(width: 0, height: 0)
-        leftHelper.layer.shadowRadius = 3
-        leftHelper.layer.shadowOpacity = 1
-        
-        rightHelper.layer.shadowColor = UIColor.black.cgColor
-        rightHelper.layer.shadowOffset = CGSize(width: 0, height: 0)
-        rightHelper.layer.shadowRadius = 3
-        rightHelper.layer.shadowOpacity = 1
-        
-        topHelper.layer.shadowColor = UIColor.black.cgColor
-        topHelper.layer.shadowOffset = CGSize(width: 0, height: 0)
-        topHelper.layer.shadowRadius = 3
-        topHelper.layer.shadowOpacity = 1
-        
-        bottomHelper.layer.shadowColor = UIColor.black.cgColor
-        bottomHelper.layer.shadowOffset = CGSize(width: 0, height: 0)
-        bottomHelper.layer.shadowRadius = 3
-        bottomHelper.layer.shadowOpacity = 1
-        
-        editingFrame.layer.shadowColor = UIColor.black.cgColor
-        editingFrame.layer.shadowOffset = CGSize(width: 0, height: 0)
-        editingFrame.layer.shadowRadius = 3
-        editingFrame.layer.shadowOpacity = 1
-    }
-    
-    func enableUserInteractive() {
-        
-        rightHelper.isUserInteractionEnabled = true
-        leftHelper.isUserInteractionEnabled = true
-        
-    }
-   
     func withoutResizeHelper() {
         
         rightHelper.isHidden = true
@@ -281,27 +236,51 @@ class HelperView: UIView {
         rightBottomHelper.alpha = 1
     }
     
-    override func draw(_ layer: CALayer, in ctx: CGContext) {
+    func enableUserInteractive() {
         
-        super.draw(layer, in: ctx)
-    
+        self.isUserInteractionEnabled = true
+        
+        for subView in self.subviews {
+            
+            subView.isUserInteractionEnabled = true
+        }
+        
     }
     
-    func setupAlignmentLine() {
+    func rotateHelperAddGesture(target: Any?, action: Selector) {
         
-        let layer = CAShapeLayer.init()
-        let path = UIBezierPath()
-        path.move(to: CGPoint(x: self.frame.width/2, y: 0))
-        path.addLine(to: CGPoint(x: self.frame.width/2, y: self.frame.height))
-        layer.path = path.cgPath
+        addPanGesture(to: rotateHelper, target: target, action: action)
         
-        layer.lineWidth = 1
+    }
+    
+    func positionHelperAddGesture(target: Any?, action: Selector) {
         
-        layer.strokeColor = UIColor.red.cgColor
-        layer.lineDashPattern = [1, 1]// Here you set line length
-        layer.backgroundColor = UIColor.clear.cgColor
-        layer.fillColor = UIColor.clear.cgColor
-        self.layer.addSublayer(layer)
+        addPanGesture(to: positionHelper, target: target, action: action)
+        
+    }
+    
+    func sizeHelperAddGesture(target: Any?, action: Selector) {
+        
+        addPanGesture(to: topHelper, target: target, action: action)
+        addPanGesture(to: leftHelper, target: target, action: action)
+        addPanGesture(to: bottomHelper, target: target, action: action)
+        addPanGesture(to: rightHelper, target: target, action: action)
+        
+    }
+    
+    func cornerHelperAddGesture(target: Any?, action: Selector) {
+        
+        addPanGesture(to: leftTopHelper, target: target, action: action)
+        addPanGesture(to: rightTopHelper, target: target, action: action)
+        addPanGesture(to: leftBottomHelper, target: target, action: action)
+        addPanGesture(to: rightBottomHelper, target: target, action: action)
+
+    }
+    
+    func addPanGesture(to view: UIView, target: Any?, action: Selector) {
+        
+        let pan = UIPanGestureRecognizer(target: target, action: action)
+        view.addGestureRecognizer(pan)
         
     }
     
@@ -320,6 +299,8 @@ class HelperView: UIView {
         self.transform = originRotation
         
         view.transform = originRotation
+        
+        resizeEditingFrame(accordingTo: view)
     }
     
     func resizeEditingFrame(accordingTo view: UIView) {
@@ -336,6 +317,15 @@ class HelperView: UIView {
         
     }
     
+    func showHelper(after gesture: UIGestureRecognizer) {
+        
+        if gesture.state == UIGestureRecognizer.State.ended {
+            
+            self.showAllHelper()
+        }
+        
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         self.hideAllHelper()
@@ -346,14 +336,5 @@ class HelperView: UIView {
         
         self.showAllHelper()
     }
-    
-    func showHelper(after gesture: UIGestureRecognizer) {
-        
-        if gesture.state == UIGestureRecognizer.State.ended {
-            
-            self.showAllHelper()
-        }
-        
-    }
- 
+
 }

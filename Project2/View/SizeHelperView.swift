@@ -30,4 +30,29 @@ class SizeHelperView: UIView {
 
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setupShadow()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setupShadow()
+    }
+    
+    func setupShadow() {
+        
+        self.backgroundColor = UIColor.white
+        self.layer.cornerRadius = 4
+        
+        //Shadow
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.layer.shadowRadius = 3
+        self.layer.shadowOpacity = 1
+    
+    }
+    
 }

@@ -10,16 +10,17 @@ import UIKit
 
 class EditFrameView: UIView {
     
-    let verticalLine = UIView()
-    let horizontalLine = UIView()
-    
     override init(frame: CGRect) {
+        
         super.init(frame: frame)
+        setupShadow()
     
     }
     
     required init?(coder aDecoder: NSCoder) {
+        
         super.init(coder: aDecoder)
+        setupShadow()
         
     }
     
@@ -52,39 +53,12 @@ class EditFrameView: UIView {
         
     }
     
-    func setupAlignment() {
+    func setupShadow() {
         
-        self.addSubview(horizontalLine)
-        self.addSubview(verticalLine)
-        
-        horizontalLine.translatesAutoresizingMaskIntoConstraints = false
-        verticalLine.translatesAutoresizingMaskIntoConstraints = false
-        
-        horizontalLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        horizontalLine.widthAnchor.constraint(equalToConstant: self.bounds.width).isActive = true
-        horizontalLine.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        horizontalLine.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        
-        verticalLine.heightAnchor.constraint(equalToConstant: self.bounds.height).isActive = true
-        verticalLine.widthAnchor.constraint(equalToConstant: 1).isActive = true
-        verticalLine.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        verticalLine.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        
-        verticalLine.backgroundColor = UIColor.red
-        horizontalLine.backgroundColor = UIColor.red
-    }
-    
-    func showAlignment() {
-        
-        horizontalLine.alpha = 1
-        verticalLine.alpha = 1
-    }
-    
-    func hideAlignment() {
-        
-        horizontalLine.alpha = 0
-        verticalLine.alpha = 0
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.layer.shadowRadius = 3
+        self.layer.shadowOpacity = 1
         
     }
-    
 }

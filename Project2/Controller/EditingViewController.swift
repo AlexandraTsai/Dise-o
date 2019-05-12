@@ -17,13 +17,10 @@ class EditingViewController: BaseViewController, UITextViewDelegate {
     @IBOutlet weak var textEditContainterView: UIView!
     
     let openLibraryAlert = GoSettingAlertView()
-    
     let openCameraAlert = GoSettingAlertView()
     
     var textContainerVC: TextContainerViewController?
     var imageContainerVC: ImageEditContainerViewController?
-    
-    var currentFontName: FontName = FontName.helveticaNeue
     
     var helperView = HelperView()
 
@@ -36,7 +33,6 @@ class EditingViewController: BaseViewController, UITextViewDelegate {
     var originSize = CGSize(width: 0, height: 0)
     
     var tableViewIndex: Int = 0
-//    var originalText = ""
     
     var editingView: UIView? {
 
@@ -364,16 +360,6 @@ extension EditingViewController {
         rotateView.addGestureRecognizer(pan)
     }
 
-    func addPanGesture(to view: UIView) {
-        view.isUserInteractionEnabled = true
-
-        //Handle to tapped
-        let pan = UIPanGestureRecognizer(target: self,
-                                         action: #selector(handleDragged(_:)))
-
-        view.addGestureRecognizer(pan)
-    }
-
     @objc func handleDoubleTap(sender: UITapGestureRecognizer) {
       
         guard let textView = editingView as? ALTextView else { return }
@@ -654,61 +640,8 @@ extension EditingViewController {
 
 extension EditingViewController {
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        switch tableViewIndex {
-        case 0:
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: String(describing: FontTableViewCell.self),
-                for: indexPath)
-
-            guard let fontCell = cell as? FontTableViewCell else { return cell }
-
-            fontCell.fontLabel.text = FontName.allCases[indexPath.row].rawValue
-            fontCell.fontLabel.font = UIFont(name: FontName.allCases[indexPath.row].rawValue, size: 18)
-      
-            if currentFontName == FontName.allCases[indexPath.row] {
-                
-                fontCell.fontLabel.textColor = UIColor.DSColor.yellow
-                
-            } else {
-                
-                fontCell.fontLabel.textColor = UIColor.black
-                
-            }
-        
-            return fontCell
-        case 1:
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: String(describing: SpacingTableViewCell.self),
-                for: indexPath)
-
-            guard let spacingCell = cell as? SpacingTableViewCell else { return cell }
-
-            return spacingCell
-            
-        default:
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: String(describing: FontSizeTableViewCell.self),
-                for: indexPath)
-
-            guard let fontSizeCell = cell as? FontSizeTableViewCell else { return cell }
-
-            guard let view = editingView as? ALTextView else { return cell }
-            guard let fontSize = view.font?.pointSize else {return cell}
-
-            fontSizeCell.fontSizeLabel.text = "\(Int(fontSize))"
-            return fontSizeCell
-
-        }
-
-    }
-    
     func changeTextWith(lineHeight: Float, letterSpacing: Float) {
-        
-//        self.lineHeight = lineHeight
-//        self.letterSpacing = letterSpacing
-
+ 
         guard let view = editingView as? ALTextView,
             let fontName = view.font?.fontName,
             let fontSize = view.font?.pointSize,
@@ -763,37 +696,13 @@ extension EditingViewController {
         guard let editingView = editingView else { return }
         
         helperView.resize(accordingTo: editingView)
-
-        helperView.resizeEditingFrame(accordingTo: editingView)
-
-        addAllGesture(to: helperView)
-
-        helperView.isUserInteractionEnabled = true
-        
-        addCircleGesture(to: helperView.rotateHelper)
-        
-        addPanGesture(to: helperView.positionHelper)
         
         //Handle to tapped
-        let pan = UIPanGestureRecognizer(target: self,
-                                         action: #selector(handleSizeHelper(sender:)))
-        
-        helperView.leftHelper.addGestureRecognizer(pan)
-        
-        let pan2 = UIPanGestureRecognizer(target: self,
-                                          action: #selector(handleSizeHelper(sender:)))
-        
-        helperView.rightHelper.addGestureRecognizer(pan2)
-        
-        let pan3 = UIPanGestureRecognizer(target: self,
-                                          action: #selector(handleSizeHelper(sender:)))
-        
-        helperView.topHelper.addGestureRecognizer(pan3)
-        
-        let pan4 = UIPanGestureRecognizer(target: self,
-                                          action: #selector(handleSizeHelper(sender:)))
-        
-        helperView.bottomHelper.addGestureRecognizer(pan4)
+        addAllGesture(to: helperView)
+        helperView.positionHelperAddGesture(target: self, action: #selector(handleDragged(_:)))
+        helperView.rotateHelperAddGesture(target: self, action: #selector(handleCircleGesture(sender:)))
+        helperView.sizeHelperAddGesture(target: self, action: #selector(handleSizeHelper(sender:)))
+        helperView.cornerHelperAddGesture(target: self, action: #selector(handleCornerResize(gesture:)))
         
         if editingView is UIImageView {
             
@@ -808,23 +717,9 @@ extension EditingViewController {
             helperView.withResizeHelper()
             
         }
-        
-        addGestureTo(helperView.leftTopHelper)
-        addGestureTo(helperView.leftBottomHelper)
-        addGestureTo(helperView.rightTopHelper)
-        addGestureTo(helperView.rightBottomHelper)
       
     }
-    
-    func addGestureTo(_ cornerHelper: CornerHelperView) {
-        
-        let pan = UIPanGestureRecognizer(target: self,
-                                          action: #selector(handleCornerResize(gesture:)))
-        
-        cornerHelper.addGestureRecognizer(pan)
-        
-    }
-    
+
     func addGestureToAllSubview() {
         
         guard designView.subviews.count > 0 else { return }
@@ -864,12 +759,6 @@ extension EditingViewController {
             let alpha = view.alpha
             
             imageContainerVC?.setupAllTool(with: alpha, forImage: false)
-            
-            //            let notificationName = Notification.Name(NotiName.paletteColor.rawValue)
-            //
-            //            NotificationCenter.default.post(name: notificationName,
-            //                                            object: nil,
-            //                                            userInfo: [NotificationInfo.paletteColor: view.shapeColor])
             
         } else if let view = editingView as? ALImageView {
             
