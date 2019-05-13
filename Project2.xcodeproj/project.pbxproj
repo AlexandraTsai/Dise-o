@@ -40,6 +40,13 @@
 		A84BBE7222892D0B0083F53B /* EditingVC+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84BBE7122892D0B0083F53B /* EditingVC+Gesture.swift */; };
 		A84BBE7422893B350083F53B /* EditingVC+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84BBE7322893B350083F53B /* EditingVC+Helper.swift */; };
 		A84BBE7622893C2B0083F53B /* EditingVC+TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84BBE7522893C2B0083F53B /* EditingVC+TextView.swift */; };
+		A84BBE792289402A0083F53B /* DesignVC+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84BBE782289402A0083F53B /* DesignVC+Gesture.swift */; };
+		A84BBE7B228940A00083F53B /* DesignVC+NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84BBE7A228940A00083F53B /* DesignVC+NavigationBar.swift */; };
+		A84BBE7D2289416E0083F53B /* DesignVC+AddText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84BBE7C2289416E0083F53B /* DesignVC+AddText.swift */; };
+		A84BBE7F228942740083F53B /* DesignVC+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84BBE7E228942740083F53B /* DesignVC+Background.swift */; };
+		A84BBE81228944470083F53B /* DesignVC+AddShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84BBE80228944470083F53B /* DesignVC+AddShape.swift */; };
+		A84BBE83228945300083F53B /* DesignVC+passData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84BBE82228945300083F53B /* DesignVC+passData.swift */; };
+		A84BBE852289456B0083F53B /* DesignVC+SaveDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84BBE842289456B0083F53B /* DesignVC+SaveDesign.swift */; };
 		A85B04052279C0F000853841 /* CornerHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85B04042279C0F000853841 /* CornerHelperView.swift */; };
 		A865976C2269CB43000789A2 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A865976B2269CB43000789A2 /* StorageManager.swift */; };
 		A865976F2269D22F000789A2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A865976E2269D22F000789A2 /* Result.swift */; };
@@ -81,7 +88,6 @@
 		A8DEBB9B22545B8F0081A694 /* CollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DEBB9922545B8F0081A694 /* CollectionReusableView.swift */; };
 		A8DEBB9C22545B8F0081A694 /* CollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DEBB9A22545B8F0081A694 /* CollectionReusableView.xib */; };
 		A8DEBB9E2254803B0081A694 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DEBB9D2254803B0081A694 /* UIImage+Extension.swift */; };
-		A8DEBBA2225496D20081A694 /* AddImageContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DEBBA1225496D20081A694 /* AddImageContainerViewController.swift */; };
 		A8DEBBA522549DC30081A694 /* ImageCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DEBBA322549DC30081A694 /* ImageCollectionReusableView.swift */; };
 		A8DEBBA622549DC30081A694 /* ImageCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DEBBA422549DC30081A694 /* ImageCollectionReusableView.xib */; };
 		A8DEBBA82255A5A90081A694 /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DEBBA72255A5A90081A694 /* UITextView+Extension.swift */; };
@@ -139,6 +145,13 @@
 		A84BBE7122892D0B0083F53B /* EditingVC+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditingVC+Gesture.swift"; sourceTree = "<group>"; };
 		A84BBE7322893B350083F53B /* EditingVC+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditingVC+Helper.swift"; sourceTree = "<group>"; };
 		A84BBE7522893C2B0083F53B /* EditingVC+TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditingVC+TextView.swift"; sourceTree = "<group>"; };
+		A84BBE782289402A0083F53B /* DesignVC+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignVC+Gesture.swift"; sourceTree = "<group>"; };
+		A84BBE7A228940A00083F53B /* DesignVC+NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignVC+NavigationBar.swift"; sourceTree = "<group>"; };
+		A84BBE7C2289416E0083F53B /* DesignVC+AddText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignVC+AddText.swift"; sourceTree = "<group>"; };
+		A84BBE7E228942740083F53B /* DesignVC+Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignVC+Background.swift"; sourceTree = "<group>"; };
+		A84BBE80228944470083F53B /* DesignVC+AddShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignVC+AddShape.swift"; sourceTree = "<group>"; };
+		A84BBE82228945300083F53B /* DesignVC+passData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignVC+passData.swift"; sourceTree = "<group>"; };
+		A84BBE842289456B0083F53B /* DesignVC+SaveDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignVC+SaveDesign.swift"; sourceTree = "<group>"; };
 		A85B04042279C0F000853841 /* CornerHelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerHelperView.swift; sourceTree = "<group>"; };
 		A865976B2269CB43000789A2 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		A865976E2269D22F000789A2 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -184,7 +197,6 @@
 		A8DEBB9922545B8F0081A694 /* CollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionReusableView.swift; sourceTree = "<group>"; };
 		A8DEBB9A22545B8F0081A694 /* CollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionReusableView.xib; sourceTree = "<group>"; };
 		A8DEBB9D2254803B0081A694 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
-		A8DEBBA1225496D20081A694 /* AddImageContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageContainerViewController.swift; sourceTree = "<group>"; };
 		A8DEBBA322549DC30081A694 /* ImageCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionReusableView.swift; sourceTree = "<group>"; };
 		A8DEBBA422549DC30081A694 /* ImageCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionReusableView.xib; sourceTree = "<group>"; };
 		A8DEBBA72255A5A90081A694 /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
@@ -256,6 +268,20 @@
 				A84BBE7522893C2B0083F53B /* EditingVC+TextView.swift */,
 			);
 			path = "EditingViewController+ Extension";
+			sourceTree = "<group>";
+		};
+		A84BBE7722893FFA0083F53B /* DesignViewController+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A84BBE782289402A0083F53B /* DesignVC+Gesture.swift */,
+				A84BBE7A228940A00083F53B /* DesignVC+NavigationBar.swift */,
+				A84BBE7C2289416E0083F53B /* DesignVC+AddText.swift */,
+				A84BBE80228944470083F53B /* DesignVC+AddShape.swift */,
+				A84BBE7E228942740083F53B /* DesignVC+Background.swift */,
+				A84BBE82228945300083F53B /* DesignVC+passData.swift */,
+				A84BBE842289456B0083F53B /* DesignVC+SaveDesign.swift */,
+			);
+			path = "DesignViewController+Extension";
 			sourceTree = "<group>";
 		};
 		A865976D2269CB4D000789A2 /* Local Storage */ = {
@@ -385,6 +411,7 @@
 				A8242DB1227D3F29006143CB /* BaseViewController.swift */,
 				A8D2C451225219020085AD24 /* DesignViewController.swift */,
 				A8D2C480225268000085AD24 /* EditingViewController.swift */,
+				A84BBE7722893FFA0083F53B /* DesignViewController+Extension */,
 				A84BBE7022892C9F0083F53B /* EditingViewController+ Extension */,
 				A8C123A22281B69A00B14B92 /* BaseContainerViewController.swift */,
 				A8D2C4712252270C0085AD24 /* BackgroundContainerViewController.swift */,
@@ -392,7 +419,6 @@
 				A80F296A22660BED009C13F5 /* TextContainerViewController.swift */,
 				A8E3063B2262FE0000DA03A7 /* ShapeContainerViewController.swift */,
 				A8242DB7227D536B006143CB /* LaunchScreenViewController.swift */,
-				A8DEBBA1225496D20081A694 /* AddImageContainerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -675,7 +701,6 @@
 				A8DEBBAA2255A8A50081A694 /* ALCustomView.swift in Sources */,
 				A8242DB0227C0C51006143CB /* Float+Extension.swift in Sources */,
 				A8BFF780225A4AC00010E56B /* ImageEditContainerViewController.swift in Sources */,
-				A8DEBBA2225496D20081A694 /* AddImageContainerViewController.swift in Sources */,
 				A8D2C47B22522A8F0085AD24 /* UICollectionView+Extension.swift in Sources */,
 				A82564C72282AE0B00510EAF /* UIViewController+Extension.swift in Sources */,
 				A82564CD2282C94100510EAF /* ALSegue.swift in Sources */,
@@ -685,6 +710,7 @@
 				A82B5F352268A4930093671D /* NewDeign.swift in Sources */,
 				A8C123A32281B69A00B14B92 /* BaseContainerViewController.swift in Sources */,
 				A80F296B22660BED009C13F5 /* TextContainerViewController.swift in Sources */,
+				A84BBE7B228940A00083F53B /* DesignVC+NavigationBar.swift in Sources */,
 				A84BBE7222892D0B0083F53B /* EditingVC+Gesture.swift in Sources */,
 				A84880D922706ABE00F308AC /* Design+Extension.swift in Sources */,
 				A8DEBB9822543DBF0081A694 /* border.swift in Sources */,
@@ -699,17 +725,21 @@
 				A84880CD227036A200F308AC /* SaveSuccessLabel.swift in Sources */,
 				A8DEBB9E2254803B0081A694 /* UIImage+Extension.swift in Sources */,
 				A8242DAE227BC91B006143CB /* RotateHelperView.swift in Sources */,
+				A84BBE792289402A0083F53B /* DesignVC+Gesture.swift in Sources */,
 				A8DEBBA522549DC30081A694 /* ImageCollectionReusableView.swift in Sources */,
 				A8AD7463226AF82200BDE3A7 /* ALDesignView.swift in Sources */,
+				A84BBE83228945300083F53B /* DesignVC+passData.swift in Sources */,
 				A848811F2273FAC200F308AC /* UIColor+Extension.swift in Sources */,
 				A8AD7468226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift in Sources */,
 				A82564CB2282C53800510EAF /* AlertTitle.swift in Sources */,
 				A816BEB522758CC4004E3896 /* UITextField+Extension.swift in Sources */,
+				A84BBE81228944470083F53B /* DesignVC+AddShape.swift in Sources */,
 				A8BFF782225A4B6B0010E56B /* PhotoManager.swift in Sources */,
 				A8AF2A5322781CC000C2B118 /* GoSettingAlertView.swift in Sources */,
 				A8D2C481225268000085AD24 /* EditingViewController.swift in Sources */,
 				A84880D12270672100F308AC /* Shape+Extension.swift in Sources */,
 				A8DEBB9B22545B8F0081A694 /* CollectionReusableView.swift in Sources */,
+				A84BBE852289456B0083F53B /* DesignVC+SaveDesign.swift in Sources */,
 				A8D2C475225228130085AD24 /* UITableView+Extension.swift in Sources */,
 				A86824C82260838200BDCCD8 /* ALRotationGestureRecognizer.swift in Sources */,
 				A8DEBBAF225621B30081A694 /* PaletteCollectionViewCell.swift in Sources */,
@@ -721,6 +751,7 @@
 				A8BFF7772258D1970010E56B /* FontSizeTableViewCell.swift in Sources */,
 				A8242DB2227D3F29006143CB /* BaseViewController.swift in Sources */,
 				A86824C2225CCF4000BDCCD8 /* Notification.swift in Sources */,
+				A84BBE7F228942740083F53B /* DesignVC+Background.swift in Sources */,
 				A8242DBF227DC641006143CB /* FilterCollectionViewCell.swift in Sources */,
 				A84880CF22704A8900F308AC /* RenameView.swift in Sources */,
 				A865976F2269D22F000789A2 /* Result.swift in Sources */,
@@ -730,6 +761,7 @@
 				A8BFF77A2259E1960010E56B /* UIButton+Extenstion.swift in Sources */,
 				A8242DBC227DBC8E006143CB /* FilterType.swift in Sources */,
 				A8DEBBB2225638070081A694 /* UIImageView+Extension.swift in Sources */,
+				A84BBE7D2289416E0083F53B /* DesignVC+AddText.swift in Sources */,
 				A80804EB226882720042E4FF /* EditeFrameView.swift in Sources */,
 				A8D2C458225219030085AD24 /* Desiging.xcdatamodeld in Sources */,
 				A82564D02283CF1E00510EAF /* ALShapeView.swift in Sources */,

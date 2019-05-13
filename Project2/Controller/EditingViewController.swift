@@ -15,7 +15,6 @@ protocol EditingVCDelegate: AnyObject {
     func finishEdit(with subViews: [UIView])
 }
 
-// swiftlint:disable file_length
 class EditingViewController: BaseViewController, UITextViewDelegate {
     
     weak var finishEditDelegate: EditingVCDelegate?
@@ -296,4 +295,3 @@ extension EditingViewController {
         
     }
 }
- // swiftlint:enable file_length
