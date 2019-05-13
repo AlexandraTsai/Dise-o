@@ -86,7 +86,7 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
 
         addGesture(to: designView, action: #selector(designViewClicked(_:)))
 
-        createNotification()
+//        createNotification()
 
         setupNavigationBar()
 
@@ -369,61 +369,22 @@ extension DesignViewController {
     }
 
     //Notification for image picked
-    func createNotification() {
+//    func createNotification() {
+//
+//        // 註冊addObserver
+//        let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
+//
+//        NotificationCenter.default.addObserver(self, selector:
+//            #selector(changeImage(noti:)), name: notificationName, object: nil)
+//
+//    }
 
-        // 註冊addObserver
-        let notificationName = Notification.Name(NotiName.changeBackground.rawValue)
-
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(changeImage(noti:)), name: notificationName, object: nil)
-
-        let notificationName5 = Notification.Name(NotiName.pickingPhotoMode.rawValue)
-
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(showPickPhotoVC(noti:)), name: notificationName5, object: nil)
-
-        let notificationName6 = Notification.Name(NotiName.takePhotoMode.rawValue)
-        
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(showCameraVC(noti:)), name: notificationName6, object: nil)
-        
-    }
-
-    // 收到通知後要執行的動作
-    @objc func showPickPhotoVC(noti: Notification) {
-        if let userInfo = noti.userInfo,
-            let mode = userInfo[NotificationInfo.pickingPhotoMode] as? Bool {
-            if mode == true {
-                
-                DispatchQueue.main.async { [weak self, fusumaAlbum] in
-                    
-                    self?.present(fusumaAlbum, animated: true, completion: nil)
-                }
-                
-            }
-        }
-    }
-    
-    @objc func showCameraVC(noti: Notification) {
-        if let userInfo = noti.userInfo,
-            let mode = userInfo[NotificationInfo.takePhotoMode] as? Bool {
-            if mode == true {
-                
-                DispatchQueue.main.async { [weak self, fusumaCamera] in
-                    
-                    self?.present(fusumaCamera, animated: true, completion: nil)
-                }
-                
-            }
-        }
-    }
-
-    @objc func changeImage(noti: Notification) {
-        if let userInfo = noti.userInfo,
-            let newImage = userInfo[NotificationInfo.newImage] as? UIImage {
-            designView.image = newImage
-        }
-    }
+//    @objc func changeImage(noti: Notification) {
+//        if let userInfo = noti.userInfo,
+//            let newImage = userInfo[NotificationInfo.newImage] as? UIImage {
+//            designView.image = newImage
+//        }
+//    }
     
     func changeColor(to color: UIColor) {
         
@@ -836,6 +797,24 @@ extension DesignViewController: EditingVCDelegate {
 }
 
 extension DesignViewController: BaseContainerViewControllerDelegate {
+    
+    func pickImageWithAlbum() {
+
+        DispatchQueue.main.async { [weak self, fusumaAlbum] in
+            
+            self?.present(fusumaAlbum, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func pickImageWithCamera() {
+        
+        DispatchQueue.main.async { [weak self, fusumaCamera] in
+            
+            self?.present(fusumaCamera, animated: true, completion: nil)
+        }
+        
+    }
     
     func showPhotoLibrayAlert() {
         

@@ -13,8 +13,6 @@ import Photos
 protocol ImageEditContainerVCDelegate: AnyObject {
     
     func changeEditingViewColor(with color: UIColor)
-    func changeImageWithAlbum()
-    func changeImageWithCamera()
     func transparencyChange(to alpha: CGFloat)
     
 }
@@ -161,15 +159,14 @@ class ImageEditContainerViewController: BaseContainerViewController {
             
         case PHAuthorizationStatus.authorized:
             
-            editingDelegate?.changeImageWithAlbum()
- 
+            delegate?.pickImageWithAlbum()
         case PHAuthorizationStatus.notDetermined:
             
             PHPhotoLibrary.requestAuthorization({ [weak self] status in
                 
                 if status == .authorized {
                     
-                    self?.editingDelegate?.changeImageWithAlbum()
+                    self?.delegate?.pickImageWithAlbum()
                }
                 
             })
@@ -190,7 +187,7 @@ class ImageEditContainerViewController: BaseContainerViewController {
             
         case AVAuthorizationStatus.authorized:
             
-           editingDelegate?.changeImageWithCamera()
+           delegate?.pickImageWithCamera()
 
         case AVAuthorizationStatus.notDetermined:
             
@@ -198,7 +195,7 @@ class ImageEditContainerViewController: BaseContainerViewController {
                 
                 if granted {
                     
-                    self?.editingDelegate?.changeImageWithCamera()
+                    self?.delegate?.pickImageWithCamera()
 
                 }
                 

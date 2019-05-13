@@ -11,7 +11,7 @@ import Photos
 import HueKit
 
 class BackgroundContainerViewController: BaseContainerViewController {
-
+    
     @IBOutlet weak var colorIndicatorView: ColorIndicatorView!
 
     @IBAction func cameraRollBtnTapped(_ sender: Any) {
@@ -89,25 +89,29 @@ class BackgroundContainerViewController: BaseContainerViewController {
         
         case PHAuthorizationStatus.authorized:
             
-            let notificationName = Notification.Name(NotiName.pickingPhotoMode.rawValue)
+            delegate?.pickImageWithAlbum()
             
-            NotificationCenter.default.post(
-                name: notificationName,
-                object: nil,
-                userInfo: [NotificationInfo.pickingPhotoMode: true])
-            
+//            let notificationName = Notification.Name(NotiName.pickingPhotoMode.rawValue)
+//
+//            NotificationCenter.default.post(
+//                name: notificationName,
+//                object: nil,
+//                userInfo: [NotificationInfo.pickingPhotoMode: true])
+//
         case PHAuthorizationStatus.notDetermined:
             
-            PHPhotoLibrary.requestAuthorization({ status in
+            PHPhotoLibrary.requestAuthorization({[weak self] status in
                 
                 if status == .authorized {
                     
-                    let notificationName = Notification.Name(NotiName.pickingPhotoMode.rawValue)
+                    self?.delegate?.pickImageWithAlbum()
                     
-                    NotificationCenter.default.post(
-                        name: notificationName,
-                        object: nil,
-                        userInfo: [NotificationInfo.pickingPhotoMode: true])
+//                    let notificationName = Notification.Name(NotiName.pickingPhotoMode.rawValue)
+//
+//                    NotificationCenter.default.post(
+//                        name: notificationName,
+//                        object: nil,
+//                        userInfo: [NotificationInfo.pickingPhotoMode: true])
                 }
                 
             })
@@ -126,24 +130,14 @@ class BackgroundContainerViewController: BaseContainerViewController {
         switch status {
         case AVAuthorizationStatus.authorized:
             
-            let notificationName = Notification.Name(NotiName.takePhotoMode.rawValue)
-            
-            NotificationCenter.default.post(
-                name: notificationName,
-                object: nil,
-                userInfo: [NotificationInfo.takePhotoMode: true])
-           
+            delegate?.pickImageWithCamera()
+  
         case AVAuthorizationStatus.notDetermined:
 
-            AVCaptureDevice.requestAccess(for: AVMediaType.video) { granted in
+            AVCaptureDevice.requestAccess(for: AVMediaType.video) {[weak self] granted in
                 if granted {
                     
-                    let notificationName = Notification.Name(NotiName.takePhotoMode.rawValue)
-                    
-                    NotificationCenter.default.post(
-                        name: notificationName,
-                        object: nil,
-                        userInfo: [NotificationInfo.takePhotoMode: true])
+                    self?.delegate?.pickImageWithCamera()
                     
                 }
             }
