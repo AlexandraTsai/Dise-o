@@ -187,10 +187,14 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
                                         
                                         self?.saveSuccessLabel.alpha = 0
                                         
-                    }, completion: { [weak self ]done in
-                    
-                        self?.navigationController?.navigationBar.alpha = 1
-                    
+                    }, completion: { [weak self] done in
+                        
+                        if done {
+                            
+                            self?.navigationController?.navigationBar.alpha = 1
+
+                        }
+                        
                     })
                 }
 

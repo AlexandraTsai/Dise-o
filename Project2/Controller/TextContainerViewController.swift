@@ -182,6 +182,8 @@ class TextContainerViewController: UIViewController,
         
         guard let size = currentFont?.pointSize else { return }
         
+        var font: UIFont?
+        
         switch boldButton.currentTitleColor {
         case UIColor.DSColor.yellow:
             
@@ -190,18 +192,11 @@ class TextContainerViewController: UIViewController,
             switch italicButton.currentTitleColor {
             case UIColor.DSColor.yellow:
                 
-                if let font = UIFont(name: currentFontName.italicStyle(), size: size) {
-                    
-                    delegate?.changeFont(to: font)
-                }
-               
+                font = UIFont(name: currentFontName.italicStyle(), size: size)
+                
             default:
                 
-                if let font = UIFont(name: currentFontName.rawValue, size: size) {
-                    
-                    delegate?.changeFont(to: font)
-                
-                }
+                font = UIFont(name: currentFontName.rawValue, size: size) 
                 
             }
             
@@ -210,21 +205,21 @@ class TextContainerViewController: UIViewController,
             switch italicButton.currentTitleColor {
             case UIColor.DSColor.yellow:
                 
-                if let font = UIFont(name: currentFontName.boldItalicStyle(), size: size) {
-                    
-                    delegate?.changeFont(to: font)
-                }
+                font = UIFont(name: currentFontName.boldItalicStyle(), size: size)
                
             default:
                 
-                if let font = UIFont(name: currentFontName.boldStyle(), size: size) {
-                    
-                    delegate?.changeFont(to: font)
-                }
+                font = UIFont(name: currentFontName.boldStyle(), size: size)
                
             }
 
             boldButton.setTitleColor(UIColor.DSColor.yellow, for: .normal)
+        }
+        
+        if let font = font {
+        
+            delegate?.changeFont(to: font)
+
         }
         
     }
@@ -233,6 +228,8 @@ class TextContainerViewController: UIViewController,
         
         guard let size = currentFont?.pointSize else { return }
         
+        var font: UIFont? = UIFont()
+        
         switch italicButton.currentTitleColor {
             
         case UIColor.DSColor.yellow:
@@ -240,19 +237,14 @@ class TextContainerViewController: UIViewController,
             italicButton.setTitleColor(UIColor.white, for: .normal)
             
             switch boldButton.currentTitleColor {
-            case UIColor(red: 234/255, green: 183/255, blue: 31/255, alpha: 1):
                 
-                if let font = UIFont(name: currentFontName.boldStyle(), size: size) {
-                    
-                    delegate?.changeFont(to: font)
-                }
-              
+            case UIColor.DSColor.yellow:
+                
+                font = UIFont(name: currentFontName.boldStyle(), size: size)
+                
             default:
                 
-                if let font = UIFont(name: currentFontName.rawValue, size: size) {
-                    
-                    delegate?.changeFont(to: font)
-                }
+                font = UIFont(name: currentFontName.rawValue, size: size)
                
             }
             
@@ -261,22 +253,21 @@ class TextContainerViewController: UIViewController,
             italicButton.setTitleColor(UIColor.DSColor.yellow, for: .normal)
             
             switch boldButton.currentTitleColor {
+                
             case UIColor.DSColor.yellow:
                 
-                if let font = UIFont(name: currentFontName.boldItalicStyle(), size: size) {
-                    
-                    delegate?.changeFont(to: font)
-                }
+                font = UIFont(name: currentFontName.boldItalicStyle(), size: size)
               
             default:
                 
-                if let font = UIFont(name: currentFontName.italicStyle(), size: size) {
-                    
-                    delegate?.changeFont(to: font)
-                }
-               
+                font = UIFont(name: currentFontName.italicStyle(), size: size)
             }
             
+        }
+        
+        if let font = font {
+            
+            delegate?.changeFont(to: font)
         }
         
     }
