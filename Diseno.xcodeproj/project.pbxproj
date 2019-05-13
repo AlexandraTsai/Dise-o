@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		732E4A17C4EE4240C0412462 /* Pods_Project2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF328FB228DDA472B389400 /* Pods_Project2.framework */; };
+		A3B3B86876AA058175D6DC9B /* Pods_Diseno.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CCD55552499474B19FF560F /* Pods_Diseno.framework */; };
 		A80804EB226882720042E4FF /* EditeFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80804EA226882720042E4FF /* EditeFrameView.swift */; };
 		A80F296B22660BED009C13F5 /* TextContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F296A22660BED009C13F5 /* TextContainerViewController.swift */; };
 		A816BEB322755860004E3896 /* SizeHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A816BEB222755860004E3896 /* SizeHelperView.swift */; };
@@ -112,8 +112,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A4535C55BDE62BE2C7C16DD /* Pods-Diseno.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diseno.release.xcconfig"; path = "Target Support Files/Pods-Diseno/Pods-Diseno.release.xcconfig"; sourceTree = "<group>"; };
+		2CCD55552499474B19FF560F /* Pods_Diseno.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diseno.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		43712D0B0B461B12E1F346AA /* Pods-Diseno.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diseno.debug.xcconfig"; path = "Target Support Files/Pods-Diseno/Pods-Diseno.debug.xcconfig"; sourceTree = "<group>"; };
 		8BF328FB228DDA472B389400 /* Pods_Project2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		97709A67B679D68A1DBDCC55 /* Pods-Project2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.debug.xcconfig"; path = "Target Support Files/Pods-Project2/Pods-Project2.debug.xcconfig"; sourceTree = "<group>"; };
 		A80804EA226882720042E4FF /* EditeFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditeFrameView.swift; sourceTree = "<group>"; };
 		A80F296A22660BED009C13F5 /* TextContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextContainerViewController.swift; sourceTree = "<group>"; };
 		A816BEB222755860004E3896 /* SizeHelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeHelperView.swift; sourceTree = "<group>"; };
@@ -177,10 +179,10 @@
 		A8BFF77F225A4AC00010E56B /* ImageEditContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditContainerViewController.swift; sourceTree = "<group>"; };
 		A8BFF781225A4B6B0010E56B /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		A8C123A22281B69A00B14B92 /* BaseContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseContainerViewController.swift; sourceTree = "<group>"; };
-		A8C6FD5522856B0C0047B614 /* Project2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8C6FD5522856B0C0047B614 /* DisenoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DisenoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8C6FD5722856B0C0047B614 /* Project2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project2Tests.swift; sourceTree = "<group>"; };
 		A8C6FD5922856B0C0047B614 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A8D2C44C225219020085AD24 /* Project2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8D2C44C225219020085AD24 /* Diseno.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diseno.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D2C44F225219020085AD24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8D2C451225219020085AD24 /* DesignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignViewController.swift; sourceTree = "<group>"; };
 		A8D2C454225219030085AD24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -209,7 +211,6 @@
 		A8E3063D2263009C00DA03A7 /* ShapeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCollectionViewCell.swift; sourceTree = "<group>"; };
 		A8E3063E2263009C00DA03A7 /* ShapeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShapeCollectionViewCell.xib; sourceTree = "<group>"; };
 		A8E30642226319FD00DA03A7 /* ALShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALShapeView.swift; sourceTree = "<group>"; };
-		E0D502422CADB0A6DB80DCEF /* Pods-Project2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project2.release.xcconfig"; path = "Target Support Files/Pods-Project2/Pods-Project2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,7 +225,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				732E4A17C4EE4240C0412462 /* Pods_Project2.framework in Frameworks */,
+				A3B3B86876AA058175D6DC9B /* Pods_Diseno.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				8BF328FB228DDA472B389400 /* Pods_Project2.framework */,
+				2CCD55552499474B19FF560F /* Pods_Diseno.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -242,8 +244,8 @@
 		A54ACED8D436B4D98730791E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				97709A67B679D68A1DBDCC55 /* Pods-Project2.debug.xcconfig */,
-				E0D502422CADB0A6DB80DCEF /* Pods-Project2.release.xcconfig */,
+				43712D0B0B461B12E1F346AA /* Pods-Diseno.debug.xcconfig */,
+				2A4535C55BDE62BE2C7C16DD /* Pods-Diseno.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -329,20 +331,20 @@
 			path = Image;
 			sourceTree = "<group>";
 		};
-		A8C6FD5622856B0C0047B614 /* Project2Tests */ = {
+		A8C6FD5622856B0C0047B614 /* DisenoTests */ = {
 			isa = PBXGroup;
 			children = (
 				A8C6FD5722856B0C0047B614 /* Project2Tests.swift */,
 				A8C6FD5922856B0C0047B614 /* Info.plist */,
 			);
-			path = Project2Tests;
+			path = DisenoTests;
 			sourceTree = "<group>";
 		};
 		A8D2C443225219020085AD24 = {
 			isa = PBXGroup;
 			children = (
-				A8D2C44E225219020085AD24 /* Project2 */,
-				A8C6FD5622856B0C0047B614 /* Project2Tests */,
+				A8D2C44E225219020085AD24 /* Diseno */,
+				A8C6FD5622856B0C0047B614 /* DisenoTests */,
 				A8D2C44D225219020085AD24 /* Products */,
 				A54ACED8D436B4D98730791E /* Pods */,
 				4CE4A419FB11F73042C51905 /* Frameworks */,
@@ -352,13 +354,13 @@
 		A8D2C44D225219020085AD24 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A8D2C44C225219020085AD24 /* Project2.app */,
-				A8C6FD5522856B0C0047B614 /* Project2Tests.xctest */,
+				A8D2C44C225219020085AD24 /* Diseno.app */,
+				A8C6FD5522856B0C0047B614 /* DisenoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A8D2C44E225219020085AD24 /* Project2 */ = {
+		A8D2C44E225219020085AD24 /* Diseno */ = {
 			isa = PBXGroup;
 			children = (
 				A8D2C473225227F60085AD24 /* Extension */,
@@ -370,7 +372,7 @@
 				A8D2C45E225219080085AD24 /* Info.plist */,
 				A8D2C456225219030085AD24 /* Desiging.xcdatamodeld */,
 			);
-			path = Project2;
+			path = Diseno;
 			sourceTree = "<group>";
 		};
 		A8D2C464225222790085AD24 /* View */ = {
@@ -482,9 +484,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A8C6FD5422856B0C0047B614 /* Project2Tests */ = {
+		A8C6FD5422856B0C0047B614 /* DisenoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A8C6FD5E22856B0D0047B614 /* Build configuration list for PBXNativeTarget "Project2Tests" */;
+			buildConfigurationList = A8C6FD5E22856B0D0047B614 /* Build configuration list for PBXNativeTarget "DisenoTests" */;
 			buildPhases = (
 				A8C6FD5122856B0C0047B614 /* Sources */,
 				A8C6FD5222856B0C0047B614 /* Frameworks */,
@@ -495,14 +497,14 @@
 			dependencies = (
 				A8C6FD5B22856B0C0047B614 /* PBXTargetDependency */,
 			);
-			name = Project2Tests;
+			name = DisenoTests;
 			productName = Project2Tests;
-			productReference = A8C6FD5522856B0C0047B614 /* Project2Tests.xctest */;
+			productReference = A8C6FD5522856B0C0047B614 /* DisenoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A8D2C44B225219020085AD24 /* Project2 */ = {
+		A8D2C44B225219020085AD24 /* Diseno */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A8D2C461225219080085AD24 /* Build configuration list for PBXNativeTarget "Project2" */;
+			buildConfigurationList = A8D2C461225219080085AD24 /* Build configuration list for PBXNativeTarget "Diseno" */;
 			buildPhases = (
 				031F6A6E9698140A18753760 /* [CP] Check Pods Manifest.lock */,
 				A8D2C448225219020085AD24 /* Sources */,
@@ -516,9 +518,9 @@
 			);
 			dependencies = (
 			);
-			name = Project2;
+			name = Diseno;
 			productName = Project2;
-			productReference = A8D2C44C225219020085AD24 /* Project2.app */;
+			productReference = A8D2C44C225219020085AD24 /* Diseno.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -540,7 +542,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A8D2C447225219020085AD24 /* Build configuration list for PBXProject "Project2" */;
+			buildConfigurationList = A8D2C447225219020085AD24 /* Build configuration list for PBXProject "Diseno" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -553,8 +555,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A8D2C44B225219020085AD24 /* Project2 */,
-				A8C6FD5422856B0C0047B614 /* Project2Tests */,
+				A8D2C44B225219020085AD24 /* Diseno */,
+				A8C6FD5422856B0C0047B614 /* DisenoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -606,7 +608,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Project2-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Diseno-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -621,7 +623,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Project2/Pods-Project2-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Diseno/Pods-Diseno-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ChromaColorPicker/ChromaColorPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/Fusuma/Fusuma.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -642,7 +644,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Project2/Pods-Project2-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Diseno/Pods-Diseno-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A86824C0225C993900BDCCD8 /* SwiftLint */ = {
@@ -780,7 +782,7 @@
 /* Begin PBXTargetDependency section */
 		A8C6FD5B22856B0C0047B614 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A8D2C44B225219020085AD24 /* Project2 */;
+			target = A8D2C44B225219020085AD24 /* Diseno */;
 			targetProxy = A8C6FD5A22856B0C0047B614 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -811,7 +813,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z4WPZJJ6S4;
-				INFOPLIST_FILE = Project2Tests/Info.plist;
+				INFOPLIST_FILE = DisenoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -821,7 +823,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project2.app/Project2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Diseno.app/Diseno";
 			};
 			name = Debug;
 		};
@@ -831,7 +833,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z4WPZJJ6S4;
-				INFOPLIST_FILE = Project2Tests/Info.plist;
+				INFOPLIST_FILE = DisenoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -841,7 +843,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project2.app/Project2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Diseno.app/Diseno";
 			};
 			name = Release;
 		};
@@ -963,12 +965,12 @@
 		};
 		A8D2C462225219080085AD24 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97709A67B679D68A1DBDCC55 /* Pods-Project2.debug.xcconfig */;
+			baseConfigurationReference = 43712D0B0B461B12E1F346AA /* Pods-Diseno.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z4WPZJJ6S4;
-				INFOPLIST_FILE = Project2/Info.plist;
+				INFOPLIST_FILE = Diseno/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -983,12 +985,12 @@
 		};
 		A8D2C463225219080085AD24 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E0D502422CADB0A6DB80DCEF /* Pods-Project2.release.xcconfig */;
+			baseConfigurationReference = 2A4535C55BDE62BE2C7C16DD /* Pods-Diseno.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z4WPZJJ6S4;
-				INFOPLIST_FILE = Project2/Info.plist;
+				INFOPLIST_FILE = Diseno/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1004,7 +1006,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A8C6FD5E22856B0D0047B614 /* Build configuration list for PBXNativeTarget "Project2Tests" */ = {
+		A8C6FD5E22856B0D0047B614 /* Build configuration list for PBXNativeTarget "DisenoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A8C6FD5C22856B0C0047B614 /* Debug */,
@@ -1013,7 +1015,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A8D2C447225219020085AD24 /* Build configuration list for PBXProject "Project2" */ = {
+		A8D2C447225219020085AD24 /* Build configuration list for PBXProject "Diseno" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A8D2C45F225219080085AD24 /* Debug */,
@@ -1022,7 +1024,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A8D2C461225219080085AD24 /* Build configuration list for PBXNativeTarget "Project2" */ = {
+		A8D2C461225219080085AD24 /* Build configuration list for PBXNativeTarget "Diseno" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A8D2C462225219080085AD24 /* Debug */,
