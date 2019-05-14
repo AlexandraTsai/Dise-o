@@ -3,6 +3,8 @@ PODS:
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Fabric (1.9.0)
+  - Firebase (5.19.0):
+    - Firebase/Core (= 5.19.0)
   - Firebase/Core (5.19.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.8.0)
@@ -62,6 +64,7 @@ DEPENDENCIES:
   - ChromaColorPicker
   - Crashlytics
   - Fabric
+  - Firebase
   - Firebase/Core
   - Fusuma
   - HueKit (~> 1.0)
@@ -101,6 +104,6 @@ SPEC CHECKSUMS:
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   UIFontComplete: 5b0f59a83308816c610164b79a2540b3520f9b72
 
-PODFILE CHECKSUM: 8c7e5557db4fd9e15af136806a12e0777c979630
+PODFILE CHECKSUM: f40e4aa84539c4e1179b57652f86b6fd0424742f
 
 COCOAPODS: 1.6.0

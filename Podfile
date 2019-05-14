@@ -15,4 +15,9 @@ target 'Diseno' do
   pod 'Crashlytics'
   pod 'Firebase/Core'
 
+    target 'DisenoTests' do
+        inherit! :search_paths
+        pod 'Firebase'
+    end
+
 end

@@ -35,11 +35,15 @@ class StorageManager {
     
     static let shared = StorageManager()
     
-    private init() {
+    init(container: NSPersistentContainer = StorageManager.persistanceContainer) {
         print("Core data file path: \(NSPersistentContainer.defaultDirectoryURL())")
+        
+        persistanceContainer = container
     }
     
-    lazy var persistanceContainer: NSPersistentContainer = {
+    let persistanceContainer: NSPersistentContainer
+    
+    static let persistanceContainer: NSPersistentContainer = {
         
         let container = NSPersistentContainer(name: "Desiging")
         

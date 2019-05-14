@@ -62,7 +62,6 @@ extension EditingViewController: TextContainerDelegate {
         textContainerVC?.fontSizeButton.setTitle(String(size), for: .normal)
     }
     
-    
     func alignmentChange(to type: NSTextAlignment) {
         
         guard let view =  editingView as? ALTextView else { return }

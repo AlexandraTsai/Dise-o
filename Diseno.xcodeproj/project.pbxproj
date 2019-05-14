@@ -72,7 +72,7 @@
 		A8BFF780225A4AC00010E56B /* ImageEditContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF77F225A4AC00010E56B /* ImageEditContainerViewController.swift */; };
 		A8BFF782225A4B6B0010E56B /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFF781225A4B6B0010E56B /* PhotoManager.swift */; };
 		A8C123A32281B69A00B14B92 /* BaseContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C123A22281B69A00B14B92 /* BaseContainerViewController.swift */; };
-		A8C6FD5822856B0C0047B614 /* Project2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C6FD5722856B0C0047B614 /* Project2Tests.swift */; };
+		A8C6FD5822856B0C0047B614 /* DisenoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C6FD5722856B0C0047B614 /* DisenoTests.swift */; };
 		A8D2C450225219020085AD24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C44F225219020085AD24 /* AppDelegate.swift */; };
 		A8D2C452225219020085AD24 /* DesignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C451225219020085AD24 /* DesignViewController.swift */; };
 		A8D2C455225219030085AD24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8D2C453225219030085AD24 /* Main.storyboard */; };
@@ -99,6 +99,7 @@
 		A8E3063C2262FE0000DA03A7 /* ShapeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E3063B2262FE0000DA03A7 /* ShapeContainerViewController.swift */; };
 		A8E3063F2263009C00DA03A7 /* ShapeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E3063D2263009C00DA03A7 /* ShapeCollectionViewCell.swift */; };
 		A8E306402263009D00DA03A7 /* ShapeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8E3063E2263009C00DA03A7 /* ShapeCollectionViewCell.xib */; };
+		B9C33360DCE62F03A130A958 /* Pods_DisenoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A163FD5D840C28F2BCF47B /* Pods_DisenoTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,9 +113,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27A163FD5D840C28F2BCF47B /* Pods_DisenoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DisenoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A4535C55BDE62BE2C7C16DD /* Pods-Diseno.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diseno.release.xcconfig"; path = "Target Support Files/Pods-Diseno/Pods-Diseno.release.xcconfig"; sourceTree = "<group>"; };
 		2CCD55552499474B19FF560F /* Pods_Diseno.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diseno.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		37E13557C28ED3FB3AE45DE7 /* Pods-DisenoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DisenoTests.release.xcconfig"; path = "Target Support Files/Pods-DisenoTests/Pods-DisenoTests.release.xcconfig"; sourceTree = "<group>"; };
 		43712D0B0B461B12E1F346AA /* Pods-Diseno.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diseno.debug.xcconfig"; path = "Target Support Files/Pods-Diseno/Pods-Diseno.debug.xcconfig"; sourceTree = "<group>"; };
+		4B99B65AA2FA817368B84FA9 /* Pods-DisenoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DisenoTests.debug.xcconfig"; path = "Target Support Files/Pods-DisenoTests/Pods-DisenoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8BF328FB228DDA472B389400 /* Pods_Project2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A80804EA226882720042E4FF /* EditeFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditeFrameView.swift; sourceTree = "<group>"; };
 		A80F296A22660BED009C13F5 /* TextContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextContainerViewController.swift; sourceTree = "<group>"; };
@@ -180,7 +184,7 @@
 		A8BFF781225A4B6B0010E56B /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		A8C123A22281B69A00B14B92 /* BaseContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseContainerViewController.swift; sourceTree = "<group>"; };
 		A8C6FD5522856B0C0047B614 /* DisenoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DisenoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A8C6FD5722856B0C0047B614 /* Project2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project2Tests.swift; sourceTree = "<group>"; };
+		A8C6FD5722856B0C0047B614 /* DisenoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisenoTests.swift; sourceTree = "<group>"; };
 		A8C6FD5922856B0C0047B614 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8D2C44C225219020085AD24 /* Diseno.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diseno.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D2C44F225219020085AD24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9C33360DCE62F03A130A958 /* Pods_DisenoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +242,7 @@
 			children = (
 				8BF328FB228DDA472B389400 /* Pods_Project2.framework */,
 				2CCD55552499474B19FF560F /* Pods_Diseno.framework */,
+				27A163FD5D840C28F2BCF47B /* Pods_DisenoTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -246,20 +252,21 @@
 			children = (
 				43712D0B0B461B12E1F346AA /* Pods-Diseno.debug.xcconfig */,
 				2A4535C55BDE62BE2C7C16DD /* Pods-Diseno.release.xcconfig */,
+				4B99B65AA2FA817368B84FA9 /* Pods-DisenoTests.debug.xcconfig */,
+				37E13557C28ED3FB3AE45DE7 /* Pods-DisenoTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		A84880D62270688700F308AC /* Core Data */ = {
+		A84880D62270688700F308AC /* CoreData+Extension */ = {
 			isa = PBXGroup;
 			children = (
 				A84880D02270672100F308AC /* Shape+Extension.swift */,
 				A84880D22270687500F308AC /* Text+Extension.swift */,
 				A84880D42270688400F308AC /* Image+Extension.swift */,
 				A84880D822706ABE00F308AC /* Design+Extension.swift */,
-				A82564C82282B90700510EAF /* Direction.swift */,
 			);
-			path = "Core Data";
+			path = "CoreData+Extension";
 			sourceTree = "<group>";
 		};
 		A84BBE7022892C9F0083F53B /* EditingViewController+ Extension */ = {
@@ -334,7 +341,7 @@
 		A8C6FD5622856B0C0047B614 /* DisenoTests */ = {
 			isa = PBXGroup;
 			children = (
-				A8C6FD5722856B0C0047B614 /* Project2Tests.swift */,
+				A8C6FD5722856B0C0047B614 /* DisenoTests.swift */,
 				A8C6FD5922856B0C0047B614 /* Info.plist */,
 			);
 			path = DisenoTests;
@@ -428,9 +435,10 @@
 		A8D2C4662252228D0085AD24 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A84880D62270688700F308AC /* Core Data */,
+				A84880D62270688700F308AC /* CoreData+Extension */,
 				A865976D2269CB4D000789A2 /* Local Storage */,
 				A8BFF781225A4B6B0010E56B /* PhotoManager.swift */,
+				A82564C82282B90700510EAF /* Direction.swift */,
 				A86824C1225CCF4000BDCCD8 /* Notification.swift */,
 				A865976E2269D22F000789A2 /* Result.swift */,
 			);
@@ -488,9 +496,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A8C6FD5E22856B0D0047B614 /* Build configuration list for PBXNativeTarget "DisenoTests" */;
 			buildPhases = (
+				A4C178597EA3FE45C9D3A596 /* [CP] Check Pods Manifest.lock */,
 				A8C6FD5122856B0C0047B614 /* Sources */,
 				A8C6FD5222856B0C0047B614 /* Frameworks */,
 				A8C6FD5322856B0C0047B614 /* Resources */,
+				53A4A7AFAE2CCE7EBA23B668 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -647,6 +657,52 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Diseno/Pods-Diseno-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		53A4A7AFAE2CCE7EBA23B668 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DisenoTests/Pods-DisenoTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DisenoTests/Pods-DisenoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4C178597EA3FE45C9D3A596 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DisenoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A86824C0225C993900BDCCD8 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -690,7 +746,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8C6FD5822856B0C0047B614 /* Project2Tests.swift in Sources */,
+				A8C6FD5822856B0C0047B614 /* DisenoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -809,6 +865,7 @@
 /* Begin XCBuildConfiguration section */
 		A8C6FD5C22856B0C0047B614 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B99B65AA2FA817368B84FA9 /* Pods-DisenoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -829,6 +886,7 @@
 		};
 		A8C6FD5D22856B0C0047B614 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37E13557C28ED3FB3AE45DE7 /* Pods-DisenoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
