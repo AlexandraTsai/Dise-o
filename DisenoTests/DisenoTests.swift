@@ -7,19 +7,57 @@
 //
 
 import XCTest
+import UIKit
 import CoreData
+
 @testable import Diseno
 
 class DisenoTests: XCTestCase {
     
-//    var sut: StorageManager!
-
+    var sut: StorageManager!
+    
+    lazy var manageObjectModel: NSManagedObjectModel = {
+        
+        let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle.main])!
+        
+        return managedObjectModel
+    }()
+    
+    lazy var mockPersistantContainer: NSPersistentContainer = {
+       
+        let container = NSPersistentContainer(name: "Desiging", managedObjectModel: self.manageObjectModel)
+        let description = NSPersistentStoreDescription()
+        description.type = NSInMemoryStoreType
+        description.shouldAddStoreAsynchronously = false
+        
+        container.persistentStoreDescriptions = [description]
+        container.loadPersistentStores { (description, error) in
+            precondition(description.type == NSInMemoryStoreType)
+            
+            //Check if creating container wrong
+            if let error = error {
+                
+                fatalError("Create an in-mem coordinator failed \(error)")
+                
+            }
+        }
+        
+        return container
+        
+    }()
+    
     override func setUp() {
+        
+        super.setUp()
+        sut = StorageManager(container: mockPersistantContainer)
         
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDown() {
+        
+        flushData()
+        super.tearDown()
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
@@ -51,38 +89,263 @@ class DisenoTests: XCTestCase {
         
     }
     
-    func test_create_person() {
+    func test_save_design_success() {
         
+        //Arrange:
+        let newDesign = ALDesignView()
+        let createTime = Int64(9223372036854775000)
+        var countBeforeSave = 0
         
+        sut.fetchDesigns(completion: { (result) in
+            
+            switch result {
+                
+            case .success(let design):
+                
+                countBeforeSave = design.count
+                
+            case .failure: print("Fail to fetch")
+            }
+        })
         
+        //Action:
+        let expectation = self.expectation(description: "Saving")
+        var countAfterSave = 0
         
+        sut.saveDesign(newDesign: newDesign, createTime: createTime, completion: { result in
+            
+            switch result {
+            
+            case .success:
+                
+                sut.fetchDesigns(completion: { (result) in
+                
+                switch result {
+                    
+                case .success(let design):
+                    
+                    countAfterSave = design.count
+                    
+                    expectation.fulfill()
+                   
+                case .failure: print("Fail to fetch")
+                }
+            })
+                
+            case .failure: print("Fail to save design")
+            }
+            
+        })
+        
+        waitForExpectations(timeout: 10, handler: nil)
+        
+        //Assert:
+        
+        print(countAfterSave)
+        XCTAssertEqual(countBeforeSave+1, countAfterSave)
         
     }
     
-    func testAlexandra() {
-        print("heeeeeeeeeee")
+    func test_fetch_all_design_success() {
         
-        //3A 原則 - Arrange, Action, Assert
+        //Arrange: Given a storage with two designs
+        initStubs()
         
-        //        Arrange:
-        let aaaa = 10
-        let bbbb = 20
-        let expectedResult = aaaa + bbbb
+        //Action: fetch
+        var count = 0
         
-        //        Action:
-        let actualResult = add(aaaa: aaaa, bbbb: bbbb)
+        sut.fetchDesigns( completion: { result in
+            
+            switch result {
+                
+            case .success(let designs):
+                
+               count = designs.count
+               
+            case .failure:
+                
+                print("讀取資料發生錯誤")
+            }
+        })
         
-        //        Assert:
-        XCTAssertEqual(expectedResult, actualResult)
+        //Assert:
+        XCTAssertEqual(2, count)
         
     }
     
-    func add(aaaa: Int, bbbb: Int) -> Int {
+    func test_fetch_all_design_fail() {
         
-        return 30
+        //Arrange: Given a storage with two designs
+        initStubs()
+        
+        mockPersistantContainer = NSPersistentContainer()
+        
+        //Action: fetch
+        var count = 0
+        
+        sut.fetchDesigns( completion: { result in
+            
+            switch result {
+                
+            case .success(let designs):
+                
+                count = designs.count
+                
+            case .failure:
+                
+                print("讀取資料發生錯誤")
+            }
+        })
+        
+        //Assert:
+        XCTAssertEqual(0, count)
+        
+    }
+    
+    func test_update_design_success() {
+    
+        //Arrange
+        insertDesigns(designName: "Test1", screenshot: "screenshot1")
+        let alDesign = ALDesignView()
+        
+        sut.fetchDesigns { (result) in
+            
+            switch result {
+            case .success(let design):
+                
+                let designs = design as [Design]
+                let originDesign = designs[0]
+                
+                originDesign.transformDesign(for: alDesign)
+                alDesign.designName = "ChangeName"
+                alDesign.createTime = Int64(9223372036854775001)
+                
+            case .failure: print("Fail to fetch design")
+            }
+            
+            //Action
+            var updatedDesign = Design()
+            
+            sut.updateDesign(design: alDesign,
+                             createTime: alDesign.createTime!, completion: { (result) in
+                                
+                                switch result {
+                                case .success:
+                                    
+                                    sut.fetchDesigns(completion: { (result) in
+                                        
+                                        switch result {
+                                        case .success(let design):
+                                            
+                                            let designs = design as [Design]
+                                            updatedDesign = designs[0]
+                                            
+                                        case .failure: print("Fail to fetch design")
+                                        }
+                                        
+                                    })
+                                    
+                                case .failure: print("Fail to update design")
+                                    
+                                }
+                                
+                                //Assert:
+                                XCTAssertEqual(updatedDesign.designName, "ChangeName")
+                                XCTAssertEqual(updatedDesign.createTime, Int64(9223372036854775001))
+                                
+            })
+            
+        }
+        
+    }
+    
+    func test_remove_design_success() {
+        
+        //Arrange
+        insertDesigns(designName: "Test1", screenshot: "screenshot1")
+        insertDesigns(designName: "Test2", screenshot: "screenshot2")
+        
+        sut.fetchDesigns { (result) in
+            
+            switch result {
+            case .success(let designs):
+                
+                let numberOfCount = designs.count
+                
+                //Action
+                sut.deleteDesign(designs[0], completion: { (result) in
+                    
+                    switch result {
+                    case .success:
+                        
+                        XCTAssertEqual(numberOfItemsInPersistentStore(), numberOfCount-1)
+                        
+                    case .failure: print("Failure to delete")
+                    }
+                    
+                })
+                
+            case .failure: print("Failure to fetch")
+            }
+        }
+        
     }
     
 }
 
-
-
+extension DisenoTests {
+    
+    func initStubs() {
+        
+        insertDesigns(designName: "Test1", screenshot: "screenShot1")
+        
+        insertDesigns(designName: "Test2", screenshot: "screenShot2")
+        
+        do {
+            try mockPersistantContainer.viewContext.save()
+        } catch {
+            print("create fakes error \(error)")
+        
+        }
+        
+    }
+    
+    func insertDesigns(designName: String, screenshot: String) {
+        
+        let obj = NSEntityDescription.insertNewObject(forEntityName: String(describing: Design.self),
+                                                      into: mockPersistantContainer.viewContext)
+        
+        obj.setValue("Test1", forKey: "designName")
+        obj.setValue("screenshot1", forKey: "screenshot")
+        
+    }
+    
+    // swiftlint:disable force_try
+    func flushData() {
+        
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: Design.self))
+        
+        let objs = try! mockPersistantContainer.viewContext.fetch(fetchRequest)
+        
+        for case let obj as NSManagedObject in objs {
+            mockPersistantContainer.viewContext.delete(obj)
+        }
+        
+        do {
+            try mockPersistantContainer.viewContext.save()
+            
+        } catch {
+            
+        }
+        
+    }
+    
+    func numberOfItemsInPersistentStore() -> Int {
+        let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Design")
+        let results = try! mockPersistantContainer.viewContext.fetch(request)
+        return results.count
+    }
+    
+    // swiftlint:enable force_try
+    
+}

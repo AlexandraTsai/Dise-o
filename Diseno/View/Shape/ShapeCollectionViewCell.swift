@@ -16,5 +16,4 @@ class ShapeCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
 }
