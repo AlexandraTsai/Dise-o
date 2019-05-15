@@ -38,4 +38,11 @@ class FontSizeTableViewCell: UITableViewCell {
         fontSizeLabel.text = String(fontSize)
         delegate?.changeFontSize(to: fontSize)
     }
+    
+    func setupCell(with fontSize: CGFloat) {
+        
+        slider.value = Float(fontSize)
+        fontSizeLabel.text = "\(Int(fontSize))"
+        
+    }
 }

@@ -108,9 +108,11 @@ class StorageManager {
         
         design.filter = newDesign.filterName?.rawValue
         
-        guard let screenshot = newDesign.screenshotName else { return }
-        
-        design.screenshot = screenshot
+        if let screenshot = newDesign.screenshotName {
+            
+            design.screenshot = screenshot
+            
+        }
         
         if newDesign.backgroundColor == nil {
 

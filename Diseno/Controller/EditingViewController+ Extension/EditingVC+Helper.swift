@@ -12,6 +12,8 @@ extension EditingViewController {
     
     func createEditingHelper(for view: UIView) {
         
+        helperView.removeFromSuperview()
+        
         helperView = HelperView()
         
         designView.addSubview(helperView)

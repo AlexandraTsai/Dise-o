@@ -416,6 +416,7 @@ class TextContainerViewController: UIViewController,
             return spacingCell
             
         default:
+            
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: FontSizeTableViewCell.self),
                 for: indexPath)
@@ -425,6 +426,8 @@ class TextContainerViewController: UIViewController,
             guard let fontSize = currentFont?.pointSize else {return cell}
             
             fontSizeCell.delegate = self
+            
+//            fontSizeCell.setupCell(with: fontSize)
             
             fontSizeCell.slider.value = Float(fontSize)
             fontSizeCell.fontSizeLabel.text = "\(Int(fontSize))"

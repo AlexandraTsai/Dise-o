@@ -72,42 +72,12 @@ class DisenoTests: XCTestCase {
         }
     }
     
-    func test_init_coreDataManager() {
-        
-        let instance = StorageManager.shared
-        XCTAssertNotNil(instance)
-        
-    }
-    
-    func test_coreDataStackInitialization() {
-        
-        //Arrange
-        let coreDataStack = StorageManager.shared.persistanceContainer
-        
-        //Assert
-        XCTAssertNotNil(coreDataStack)
-        
-    }
-    
     func test_save_design_success() {
         
         //Arrange:
         let newDesign = ALDesignView()
         let createTime = Int64(9223372036854775000)
-        var countBeforeSave = 0
-        
-        sut.fetchDesigns(completion: { (result) in
-            
-            switch result {
-                
-            case .success(let design):
-                
-                countBeforeSave = design.count
-                
-            case .failure: print("Fail to fetch")
-            }
-        })
-        
+
         //Action:
         let expectation = self.expectation(description: "Saving")
         var countAfterSave = 0
@@ -133,16 +103,15 @@ class DisenoTests: XCTestCase {
             })
                 
             case .failure: print("Fail to save design")
+
             }
             
         })
         
-        waitForExpectations(timeout: 10, handler: nil)
-        
+        waitForExpectations(timeout: 5, handler: nil)
+    
         //Assert:
-        
-        print(countAfterSave)
-        XCTAssertEqual(countBeforeSave+1, countAfterSave)
+        XCTAssertEqual(countAfterSave, 1)
         
     }
     
@@ -150,6 +119,7 @@ class DisenoTests: XCTestCase {
         
         //Arrange: Given a storage with two designs
         initStubs()
+        let expectation = self.expectation(description: "Fetch")
         
         //Action: fetch
         var count = 0
@@ -162,50 +132,26 @@ class DisenoTests: XCTestCase {
                 
                count = designs.count
                
+               expectation.fulfill()
+               
             case .failure:
                 
                 print("讀取資料發生錯誤")
             }
         })
         
-        //Assert:
-        XCTAssertEqual(2, count)
-        
-    }
-    
-    func test_fetch_all_design_fail() {
-        
-        //Arrange: Given a storage with two designs
-        initStubs()
-        
-        mockPersistantContainer = NSPersistentContainer()
-        
-        //Action: fetch
-        var count = 0
-        
-        sut.fetchDesigns( completion: { result in
-            
-            switch result {
-                
-            case .success(let designs):
-                
-                count = designs.count
-                
-            case .failure:
-                
-                print("讀取資料發生錯誤")
-            }
-        })
+        waitForExpectations(timeout: 5)
         
         //Assert:
-        XCTAssertEqual(0, count)
+        XCTAssertEqual(count, 2)
         
     }
     
     func test_update_design_success() {
     
         //Arrange
-        insertDesigns(designName: "Test1", screenshot: "screenshot1")
+        let createTime = Int64(9223372036854775001)
+        insertDesigns(designName: "Test1", screenshot: "screenshot1", createTime: createTime)
         let alDesign = ALDesignView()
         
         sut.fetchDesigns { (result) in
@@ -218,12 +164,13 @@ class DisenoTests: XCTestCase {
                 
                 originDesign.transformDesign(for: alDesign)
                 alDesign.designName = "ChangeName"
-                alDesign.createTime = Int64(9223372036854775001)
+                alDesign.createTime = originDesign.createTime
                 
             case .failure: print("Fail to fetch design")
             }
             
             //Action
+            let expectation = self.expectation(description: "Updating")
             var updatedDesign = Design()
             
             sut.updateDesign(design: alDesign,
@@ -239,6 +186,7 @@ class DisenoTests: XCTestCase {
                                             
                                             let designs = design as [Design]
                                             updatedDesign = designs[0]
+                                            expectation.fulfill()
                                             
                                         case .failure: print("Fail to fetch design")
                                         }
@@ -249,12 +197,11 @@ class DisenoTests: XCTestCase {
                                     
                                 }
                                 
-                                //Assert:
-                                XCTAssertEqual(updatedDesign.designName, "ChangeName")
-                                XCTAssertEqual(updatedDesign.createTime, Int64(9223372036854775001))
-                                
             })
             
+            waitForExpectations(timeout: 5)
+            //Assert:
+            XCTAssertEqual(updatedDesign.designName, "ChangeName")
         }
         
     }
@@ -262,8 +209,8 @@ class DisenoTests: XCTestCase {
     func test_remove_design_success() {
         
         //Arrange
-        insertDesigns(designName: "Test1", screenshot: "screenshot1")
-        insertDesigns(designName: "Test2", screenshot: "screenshot2")
+        insertDesigns(designName: "Test1", screenshot: "screenshot1", createTime: Int64(9223372036854775000))
+        insertDesigns(designName: "Test2", screenshot: "screenshot2", createTime: Int64(9223372036854775001))
         
         sut.fetchDesigns { (result) in
             
@@ -273,17 +220,23 @@ class DisenoTests: XCTestCase {
                 let numberOfCount = designs.count
                 
                 //Action
+                let expectation = self.expectation(description: "Delete")
+                
                 sut.deleteDesign(designs[0], completion: { (result) in
                     
                     switch result {
                     case .success:
                         
-                        XCTAssertEqual(numberOfItemsInPersistentStore(), numberOfCount-1)
+                        expectation.fulfill()
                         
                     case .failure: print("Failure to delete")
                     }
                     
                 })
+                
+                waitForExpectations(timeout: 5)
+                
+                XCTAssertEqual(numberOfItemsInPersistentStore(), numberOfCount-1)
                 
             case .failure: print("Failure to fetch")
             }
@@ -297,9 +250,9 @@ extension DisenoTests {
     
     func initStubs() {
         
-        insertDesigns(designName: "Test1", screenshot: "screenShot1")
+        insertDesigns(designName: "Test1", screenshot: "screenShot1", createTime: Int64(9223372036854775001))
         
-        insertDesigns(designName: "Test2", screenshot: "screenShot2")
+        insertDesigns(designName: "Test2", screenshot: "screenShot2", createTime: Int64(9223372036854775002))
         
         do {
             try mockPersistantContainer.viewContext.save()
@@ -310,13 +263,14 @@ extension DisenoTests {
         
     }
     
-    func insertDesigns(designName: String, screenshot: String) {
+    func insertDesigns(designName: String, screenshot: String, createTime: Int64) {
         
         let obj = NSEntityDescription.insertNewObject(forEntityName: String(describing: Design.self),
                                                       into: mockPersistantContainer.viewContext)
         
-        obj.setValue("Test1", forKey: "designName")
-        obj.setValue("screenshot1", forKey: "screenshot")
+        obj.setValue(designName, forKey: "designName")
+        obj.setValue(screenshot, forKey: "screenshot")
+        obj.setValue(createTime, forKey: "createTime")
         
     }
     
