@@ -7,6 +7,7 @@
 //
 
 import UIKit
+@testable import Diseno
 
 extension UIViewController {
     
@@ -62,21 +63,24 @@ extension UIViewController {
             
             if newAngle < oldAngle { return true } else { return false }
             
+        //Y axis
         case let value where value == 0 :
             
+            /*oldPoint is below origin*/
             if oldPoint.y > center.y {
                 
-                if newPoint.x > oldPoint.x { return true } else { return false }
-                
+                if newPoint.x < oldPoint.x { return true } else { return false }
+             
+            /*oldPoint is above origin*/
             } else {
                 
-                if newPoint.x < oldPoint.x { return true } else { return false }
+                if newPoint.x > oldPoint.x { return true } else { return false }
             }
             
         //Quadrant two & three
         default:
-            
-            if oldAngle < newAngle { return true } else { return false }
+      
+            if newAngle > oldAngle { return true } else { return false }
         }
         
     }

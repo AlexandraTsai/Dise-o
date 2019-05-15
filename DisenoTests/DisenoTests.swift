@@ -200,6 +200,7 @@ class DisenoTests: XCTestCase {
             })
             
             waitForExpectations(timeout: 5)
+            
             //Assert:
             XCTAssertEqual(updatedDesign.designName, "ChangeName")
         }

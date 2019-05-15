@@ -388,16 +388,15 @@ class TextContainerViewController: UIViewController,
             
             guard let fontCell = cell as? FontTableViewCell else { return cell }
             
-            fontCell.fontLabel.text = FontName.allCases[indexPath.row].rawValue
-            fontCell.fontLabel.font = UIFont(name: FontName.allCases[indexPath.row].rawValue, size: 18)
-            
             if currentFontName == FontName.allCases[indexPath.row] {
                 
-                fontCell.fontLabel.textColor = UIColor.DSColor.yellow
+                fontCell.setupCell(with: FontName.allCases[indexPath.row].rawValue,
+                                   color: UIColor.DSColor.yellow)
                 
             } else {
                 
-                fontCell.fontLabel.textColor = UIColor.black
+                fontCell.setupCell(with: FontName.allCases[indexPath.row].rawValue,
+                                   color: UIColor.black)
                 
             }
             
@@ -421,16 +420,12 @@ class TextContainerViewController: UIViewController,
                 withIdentifier: String(describing: FontSizeTableViewCell.self),
                 for: indexPath)
             
-            guard let fontSizeCell = cell as? FontSizeTableViewCell else { return cell }
+            guard let fontSizeCell = cell as? FontSizeTableViewCell,
+                let fontSize = currentFont?.pointSize else { return cell }
         
-            guard let fontSize = currentFont?.pointSize else {return cell}
-            
             fontSizeCell.delegate = self
             
-//            fontSizeCell.setupCell(with: fontSize)
-            
-            fontSizeCell.slider.value = Float(fontSize)
-            fontSizeCell.fontSizeLabel.text = "\(Int(fontSize))"
+            fontSizeCell.setupCell(with: fontSize)
             
             return fontSizeCell
             

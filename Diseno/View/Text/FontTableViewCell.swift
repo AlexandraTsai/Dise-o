@@ -23,4 +23,11 @@ class FontTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func setupCell(with fontStyle: String, color: UIColor) {
+        
+        fontLabel.text = fontStyle
+        fontLabel.font = UIFont(name: fontStyle, size: 18)
+        fontLabel.textColor = color
+        
+    }
 }
