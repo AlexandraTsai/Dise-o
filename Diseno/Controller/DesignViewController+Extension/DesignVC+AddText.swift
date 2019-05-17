@@ -26,6 +26,7 @@ extension DesignViewController {
     func notAddingTextMode() {
         
         navigationController?.navigationBar.isHidden = false
+        
         textView.isHidden = true
     }
     

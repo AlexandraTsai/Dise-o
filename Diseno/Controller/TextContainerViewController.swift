@@ -285,6 +285,7 @@ class TextContainerViewController: UIViewController,
         default:
             
             letterCaseButton.setTitle("Aa", for: .normal)
+            
             delegate?.changeLetterTo(upperCase: false)
 
         }

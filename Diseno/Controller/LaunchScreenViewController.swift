@@ -133,7 +133,7 @@ class LaunchScreenViewController: UIViewController {
         self.view.addSubview(circleView)
         self.view.addSubview(nameView)
         
-        UIView.animate(withDuration: 0.5, delay: 2.5, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.5, delay: 2.6, options: .curveEaseIn, animations: {
             
             circleView.alpha = 1
             

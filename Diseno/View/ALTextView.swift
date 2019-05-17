@@ -42,7 +42,7 @@ class ALTextView: UITextView {
         
         return newView
     }
-    
+
     func fixOriginalText() {
         
         guard let originalText = originalText, let newText = self.text else { return }
@@ -53,6 +53,7 @@ class ALTextView: UITextView {
             
             case true:
             
+                print(originalText)
                 insertCharacter(to: originalText, accordingTo: newText)
                 
             case false:
@@ -60,7 +61,11 @@ class ALTextView: UITextView {
                 removeCharacter(of: originalText, accordingTo: newText)
             }
             
-        } else { self.originalText = "" }
+        } else {
+            
+            self.originalText = ""
+            
+        }
 
         changeText()
         
@@ -73,7 +78,7 @@ class ALTextView: UITextView {
         if upperCase {
             
             self.text = self.originalText?.uppercased()
-            
+           
         } else {
             
             self.text = self.originalText
@@ -96,8 +101,9 @@ class ALTextView: UITextView {
                 let index = originalText.index(originalText.startIndex, offsetBy: number-1)
                 
                 let oldCharacter = originalText[index]
+                let oldCharacter2 = originalText.uppercased()[index]
                 
-                if character != oldCharacter {
+                if character != oldCharacter && character != oldCharacter2 {
                     
                     self.originalText?.insert(character, at: index)
                     
@@ -111,9 +117,10 @@ class ALTextView: UITextView {
     }
     
     func removeCharacter(of originalText: String, accordingTo newText: String) {
+        
         var number = 1
         
-        for character in originalText {
+        for _ in originalText {
             
             if number > newText.count {
                 
@@ -123,9 +130,11 @@ class ALTextView: UITextView {
                 
                 let index = newText.index(originalText.startIndex, offsetBy: number-1)
                 
-                let newChar = newText[index]
+                let oldCharacter = originalText.uppercased()[index]
                 
-                if character != newChar {
+                let newCharacter2 = newText.uppercased()[index]
+                
+                if oldCharacter != newCharacter2 {
                     
                     self.originalText?.remove(at: index)
                     

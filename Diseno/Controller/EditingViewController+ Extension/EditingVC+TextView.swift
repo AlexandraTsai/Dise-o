@@ -75,7 +75,7 @@ extension EditingViewController: TextContainerDelegate {
             let fontName = view.font?.fontName,
             let fontSize = view.font?.pointSize,
             let textColor = view.textColor else { return }
-        
+
         if upperCase {
             
             view.text = view.originalText?.uppercased()

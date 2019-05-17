@@ -13,7 +13,7 @@
         <!--Design View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="DesignViewController" id="BYZ-38-t0r" customClass="DesignViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DesignViewController" id="BYZ-38-t0r" customClass="DesignViewController" customModule="Diseno" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,7 +51,7 @@
                                 <rect key="frame" x="20" y="74" width="335" height="335"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DZf-mM-usS" customClass="ALDesignView" customModule="Project2" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DZf-mM-usS" customClass="ALDesignView" customModule="Diseno" customModuleProvider="target">
                                 <rect key="frame" x="20" y="74" width="335" height="335"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
@@ -65,7 +65,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggr-WL-8o8">
                                 <rect key="frame" x="0.0" y="459" width="375" height="208"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFw-QO-WIb" customClass="ALCustomView" customModule="Project2" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFw-QO-WIb" customClass="ALCustomView" customModule="Diseno" customModuleProvider="target">
                                         <rect key="frame" x="157.5" y="48" width="60" height="60"/>
                                         <color key="backgroundColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <userDefinedRuntimeAttributes>
@@ -81,7 +81,7 @@
                                             <action selector="addImageBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sXQ-Ot-bsX"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="POg-3j-AJ4" customClass="ALCustomView" customModule="Project2" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="POg-3j-AJ4" customClass="ALCustomView" customModule="Diseno" customModuleProvider="target">
                                         <rect key="frame" x="227.5" y="98" width="60" height="60"/>
                                         <color key="backgroundColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <userDefinedRuntimeAttributes>
@@ -97,7 +97,7 @@
                                             <action selector="addShapeBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8KX-Kr-M6Q"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHR-CU-4QF" customClass="ALCustomView" customModule="Project2" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHR-CU-4QF" customClass="ALCustomView" customModule="Diseno" customModuleProvider="target">
                                         <rect key="frame" x="87.5" y="98" width="60" height="60"/>
                                         <color key="backgroundColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -232,7 +232,7 @@
         <!--Editing View Controller-->
         <scene sceneID="FsX-3J-Muj">
             <objects>
-                <viewController storyboardIdentifier="EditingViewController" id="mFr-ri-311" customClass="EditingViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditingViewController" id="mFr-ri-311" customClass="EditingViewController" customModule="Diseno" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5m0-ak-QCl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -241,7 +241,7 @@
                                 <rect key="frame" x="20" y="74" width="335" height="335"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G2c-KZ-Yq1" customClass="ALDesignView" customModule="Project2" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G2c-KZ-Yq1" customClass="ALDesignView" customModule="Diseno" customModuleProvider="target">
                                 <rect key="frame" x="20" y="74" width="335" height="335"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -296,7 +296,7 @@
         <!--Background Container View Controller-->
         <scene sceneID="gdL-G0-TfH">
             <objects>
-                <viewController id="8WY-QU-6sx" customClass="BackgroundContainerViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8WY-QU-6sx" customClass="BackgroundContainerViewController" customModule="Diseno" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Ka-Eh-diH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="248"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -304,7 +304,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JeK-gH-KLU">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exC-Ci-gla" customClass="ALCustomView" customModule="Project2" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exC-Ci-gla" customClass="ALCustomView" customModule="Diseno" customModuleProvider="target">
                                         <rect key="frame" x="110.5" y="45" width="50" height="3"/>
                                         <color key="backgroundColor" red="0.43529411759999997" green="0.47843137250000001" blue="0.46666666670000001" alpha="0.54331656678082196" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -333,7 +333,7 @@
                                             <action selector="cameraRollBtnTapped:" destination="8WY-QU-6sx" eventType="touchUpInside" id="123-kJ-uRe"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W8Z-Kt-UaJ" customClass="ALCustomView" customModule="Project2" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W8Z-Kt-UaJ" customClass="ALCustomView" customModule="Diseno" customModuleProvider="target">
                                         <rect key="frame" x="162.5" y="45" width="50" height="3"/>
                                         <color key="backgroundColor" red="0.30588235294117649" green="0.47450980392156861" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -366,7 +366,7 @@
                                             <action selector="filterBtnTapped:" destination="8WY-QU-6sx" eventType="touchUpInside" id="Csy-2Q-XwH"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7E-Z0-vzb" customClass="ALCustomView" customModule="Project2" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7E-Z0-vzb" customClass="ALCustomView" customModule="Diseno" customModuleProvider="target">
                                         <rect key="frame" x="214.5" y="45" width="50" height="3"/>
                                         <color key="backgroundColor" red="0.43529411759999997" green="0.47843137250000001" blue="0.46666666670000001" alpha="0.54331656679999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -558,7 +558,7 @@
         <!--Image Edit Container View Controller-->
         <scene sceneID="STs-Lf-zk0">
             <objects>
-                <viewController id="WfK-Wl-JPr" customClass="ImageEditContainerViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WfK-Wl-JPr" customClass="ImageEditContainerViewController" customModule="Diseno" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Vu-MO-3I2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -751,7 +751,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QNq-1C-Azg">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zfj-LQ-Iht" customClass="ALCustomView" customModule="Project2" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zfj-LQ-Iht" customClass="ALCustomView" customModule="Diseno" customModuleProvider="target">
                                                 <rect key="frame" x="87.5" y="35" width="50" height="3"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.47843137250000001" blue="0.46666666670000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -777,7 +777,7 @@
                                                     <action selector="cameraRollBtnTapped:" destination="WfK-Wl-JPr" eventType="touchUpInside" id="lB3-7y-Utm"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sal-q4-nnf" customClass="ALCustomView" customModule="Project2" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sal-q4-nnf" customClass="ALCustomView" customModule="Diseno" customModuleProvider="target">
                                                 <rect key="frame" x="137.5" y="35" width="50" height="3"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.47843137250000001" blue="0.46666666670000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -789,7 +789,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ym-DS-Qpc" customClass="ALCustomView" customModule="Project2" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ym-DS-Qpc" customClass="ALCustomView" customModule="Diseno" customModuleProvider="target">
                                                 <rect key="frame" x="187.5" y="35" width="50" height="3"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.47843137250000001" blue="0.46666666670000001" alpha="0.50995291095890416" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -838,7 +838,7 @@
                                                     <action selector="filterBtnTapped:" destination="WfK-Wl-JPr" eventType="touchUpInside" id="BQ2-5x-ts9"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4Y-gg-AnQ" customClass="ALCustomView" customModule="Project2" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4Y-gg-AnQ" customClass="ALCustomView" customModule="Diseno" customModuleProvider="target">
                                                 <rect key="frame" x="237.5" y="35" width="50" height="3"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.47843137250000001" blue="0.46666666670000001" alpha="0.50995291099999995" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -1050,7 +1050,7 @@
         <!--Home View Controller-->
         <scene sceneID="Rlf-hJ-w15">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="Qv9-9e-YnF" customClass="HomeViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="Qv9-9e-YnF" customClass="HomeViewController" customModule="Diseno" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Foe-Wy-frM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1125,12 +1125,12 @@
         <!--Shape Container View Controller-->
         <scene sceneID="A8E-I5-KUy">
             <objects>
-                <viewController id="qFV-y9-D1b" customClass="ShapeContainerViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qFV-y9-D1b" customClass="ShapeContainerViewController" customModule="Diseno" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HyH-qW-Txo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="248"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHl-Qz-MR5" customClass="ALCustomView" customModule="Project2" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHl-Qz-MR5" customClass="ALCustomView" customModule="Diseno" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="278"/>
                                 <color key="backgroundColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
@@ -1181,7 +1181,7 @@
         <!--Text Container View Controller-->
         <scene sceneID="lkj-zP-sEU">
             <objects>
-                <viewController id="igD-yW-FCX" customClass="TextContainerViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="igD-yW-FCX" customClass="TextContainerViewController" customModule="Diseno" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="arG-83-L2Y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1608,7 +1608,7 @@
         <!--Launch Screen View Controller-->
         <scene sceneID="3n1-8G-2NB">
             <objects>
-                <viewController id="30f-wG-BAv" customClass="LaunchScreenViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="30f-wG-BAv" customClass="LaunchScreenViewController" customModule="Diseno" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Jh-0y-JnP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1640,6 +1640,19 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zdX-fU-vJ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="87" y="-564"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ORp-m1-Kqx">
+            <objects>
+                <viewController id="07V-Vz-M3a" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mwd-W9-dPd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ibG-RQ-dMi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>
