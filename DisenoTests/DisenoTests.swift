@@ -257,7 +257,9 @@ extension DisenoTests {
         
         do {
             try mockPersistantContainer.viewContext.save()
+            
         } catch {
+            
             print("create fakes error \(error)")
         
         }
@@ -278,7 +280,8 @@ extension DisenoTests {
     // swiftlint:disable force_try
     func flushData() {
         
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: Design.self))
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName:
+            String(describing: Design.self))
         
         let objs = try! mockPersistantContainer.viewContext.fetch(fetchRequest)
         

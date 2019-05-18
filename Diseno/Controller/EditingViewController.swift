@@ -162,10 +162,11 @@ extension EditingViewController {
             target: self,
             action: #selector(didTapDoneButton(sender:)))
         
+        guard let font = UIFont(name: FontName.futura.rawValue,
+                                size: 17.0) else { return }
+        
         leftButton.setTitleTextAttributes([
-            NSAttributedString.Key.font: UIFont(name: FontName.futura.rawValue,
-                                                size: 17.0)
-            ], for: .normal)
+            NSAttributedString.Key.font: font], for: .normal)
         
         self.navigationItem.leftBarButtonItem  = leftButton
     }

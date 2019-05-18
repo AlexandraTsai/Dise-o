@@ -70,8 +70,8 @@ class CalculateMethodTest: XCTestCase {
     func test_isClockWise_true() {
         
         //Arrange
-        let pointA = CGPoint(x: 0, y: 20)
-        let pointB = CGPoint(x: 10, y: 20)
+        let pointA = CGPoint(x: 10, y: 20)
+        let pointB = CGPoint(x: 0, y: 20)
         let origin = CGPoint(x: 0, y: 0)
         
         let testVC = UIViewController()

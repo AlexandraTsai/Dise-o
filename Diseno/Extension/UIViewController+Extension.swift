@@ -7,7 +7,6 @@
 //
 
 import UIKit
-@testable import Diseno
 
 extension UIViewController {
     

@@ -113,24 +113,20 @@ class BaseViewController: UIViewController, FusumaDelegate {
     // Return the image but called after is dismissed.
     func fusumaDismissedWithImage(image: UIImage, source: FusumaMode) {
         
-        print("Called just after FusumaViewController is dismissed.")
     }
     
     func fusumaVideoCompleted(withFileURL fileURL: URL) {
         
-        print("Called just after a video has been selected.")
     }
     
     // When camera roll is not authorized, this method is called.
     func fusumaCameraRollUnauthorized() {
         
-        print("Camera roll unauthorized")
     }
     
     // Return selected images when you allow to select multiple photos.
     func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {
         
-        print("Multiple images are selected.")
     }
     
     // Return an image and the detailed information.

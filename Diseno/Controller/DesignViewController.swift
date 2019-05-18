@@ -48,9 +48,7 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
         }
     }
     @IBOutlet weak var textView: ALTextView!
-    
-//    var editingView: UIView?
-    
+        
     var addingNewImage = false
     var showFilter = true
   

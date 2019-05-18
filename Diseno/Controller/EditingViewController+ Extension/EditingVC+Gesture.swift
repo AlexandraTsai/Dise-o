@@ -210,8 +210,6 @@ extension EditingViewController {
             
         case .began:
             
-            
-            print("===========START==============")
             originLocation = sender.location(in: designView)
             
         case .changed:

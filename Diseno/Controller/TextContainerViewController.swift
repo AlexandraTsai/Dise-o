@@ -31,7 +31,9 @@ class TextContainerViewController: UIViewController,
         
         didSet {
             
-            fontSizeButton.setTitle(String(describing: currentFont?.pointSize), for: .normal)
+            guard let fontSize = currentFont?.pointSize else { return }
+            
+            fontSizeButton.setTitle(String(describing: Int(fontSize)), for: .normal)
             fontTableView.reloadData()
         }
         
@@ -63,12 +65,7 @@ class TextContainerViewController: UIViewController,
     @IBOutlet weak var boldButton: UIButton!
     @IBOutlet weak var fontSizeButton: UIButton! {
         
-        didSet {
-            
-            fontSizeButton.setTitle(String(describing: currentFont?.pointSize), for: .normal)
-            setupShadow(for: fontSizeButton)
-            
-        }
+        didSet { setupShadow(for: fontSizeButton) }
         
     }
     
@@ -500,6 +497,7 @@ extension TextContainerViewController: SpacingTableViewCellDelegate, FontSizeTab
     func changeFontSize(to size: Int) {
         
         guard let fontName = currentFont?.fontName else { return }
+        
         currentFont = UIFont(name: fontName, size: CGFloat(size))
         
         delegate?.changeFont(to: size)
