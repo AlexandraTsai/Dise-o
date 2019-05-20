@@ -1,5 +1,5 @@
 # Diseño 
-Easily combine pictures, texts, and geomtries to create a new design.
+Easily combine pictures, texts, and geometric shapes to create a new design.
 
 - Easily edit the width/height of geometries.
 - Able to copy all the elements. 
@@ -13,5 +13,12 @@ Easily combine pictures, texts, and geomtries to create a new design.
 - Choose background image/color
   -  Background image: Pick image from your photo library, or take a picture. And after that, choose a filter for your background image.
   - Background color: Besides background image, you can also select a color for your background.
+<img src="https://i.imgur.com/kktOqEy.png" width="200"><img src="https://i.imgur.com/rS4QxhH.jpg" width="200"><img src="https://i.imgur.com/lUSZjCb.png" width="200">
 
-<img src="https://i.imgur.com/slpcFvb.png" width="200"><img src="https://i.imgur.com/hVvYV1Q.jpg" width="200"><img src="https://i.imgur.com/10KUci7.png" width="200"><img src="https://i.imgur.com/WlReqil.png" width="200">
+- Add element on your canva
+  -  Add images: Pick image from your photo library, or take a picture. And after that, choose a filter for your background image.
+  -  Add texts: Text something, and then select the font, color, font size, letter spacing, line height for your text.
+  -  Add geometric shapes: Pick a geometric shapes. Setup the color, and transparency for the shape. You can also edit the size, height, or width of the shape.
+  
+  All the element can be scale up/down
+<img src="https://i.imgur.com/UEfoZYd.png" width="200">
