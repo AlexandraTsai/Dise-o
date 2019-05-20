@@ -65,6 +65,8 @@ class BackgroundContainerViewController: BaseContainerViewController {
     @IBAction func colorBarPickerValueChnaged(_ sender: ColorBarPicker) {
        
         colorSquarePicker.hue = sender.hue
+        
+        delegate?.changeColor(to: colorSquarePicker.color)
       
         let notificationName = Notification.Name(NotiName.backgroundColor.rawValue)
         
