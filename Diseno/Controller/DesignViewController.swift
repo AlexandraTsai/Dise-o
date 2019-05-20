@@ -59,7 +59,7 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
     let openLibraryAlert = GoSettingAlertView()
 
     let openCameraAlert = GoSettingAlertView()
-
+    
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)

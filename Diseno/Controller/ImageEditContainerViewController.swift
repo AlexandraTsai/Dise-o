@@ -247,12 +247,8 @@ class ImageEditContainerViewController: BaseContainerViewController {
         
         paletteView.isHidden = true
         
-        let notificationName = Notification.Name(NotiName.addElementButton.rawValue)
-        
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.addElementButton: true])
+        defaultColorView.isHidden = false
+
     }
     
     @IBAction func sliderDidSlide(_ sender: UISlider) {
