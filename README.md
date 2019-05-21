@@ -22,4 +22,5 @@ Easily combine pictures, texts, and geometric shapes to create a new design.
   
   All the element can be scale up/down
 <img src="https://i.imgur.com/UwG2lpl.gif" width="200">
-<img src="" width="250">
+<img src="https://i.imgur.com/UwG2lpl.gif" width="250">
+<a><img src="https://i.imgur.com/UwG2lpl.gif" width="250"></a>
