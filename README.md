@@ -17,19 +17,18 @@ Easily combine pictures, texts, and geometric shapes to create a new design.
   
 <img src="https://github.com/AlexandraTsai/Dise-o/blob/test/READMEgif/AddNewDesign.gif" width="200">
 
-<img src="https://i.imgur.com/kktOqEy.png" width="200"><img src="https://i.imgur.com/lUSZjCb.png" width="200"><img src="https://i.imgur.com/rS4QxhH.jpg" width="200">
-
 - Add element on your canva
   -  Add images: Pick image from your photo library, or take a picture. And after that, choose a filter for your background image.
   -  Add texts: Text something, and then select the font, color, font size, letter spacing, line height for your text.
   -  Add geometric shapes: Pick a geometric shapes. Setup the color, and transparency for the shape. You can also edit the size, height, or width of the shape.
   
-<img src="https://i.imgur.com/KiSgyzc.png" width="200"><img src="https://github.com/AlexandraTsai/Dise-o/blob/test/READMEgif/Shape.gif" width="200"><img src="https://github.com/AlexandraTsai/Dise-o/blob/test/READMEgif/Text-2.gif" width="200">
+<img src="https://github.com/AlexandraTsai/Dise-o/blob/test/READMEgif/Shape.gif" width="200"><img src="https://github.com/AlexandraTsai/Dise-o/blob/test/READMEgif/Text-2.gif" width="200">
   
 - All the element can be scale up/down, rotated, copied, or deleted. Also, the layer of each element is changeable.
 <img src="https://github.com/AlexandraTsai/Dise-o/blob/test/READMEgif/Scapeup_down.gif" width="200">
 
 - You can save or share your design.
+<img src="https://github.com/AlexandraTsai/Dise-o/blob/test/READMEgif/Share_save.gif" width="200">
 
 - Porforlios
 Your porforlios are saved at homepage. You can redeign, save, share, rename whenever you want. You can also delete it.
