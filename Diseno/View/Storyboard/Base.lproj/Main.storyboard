@@ -414,7 +414,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dGw-3T-aI8" customClass="ColorSquarePicker" customModule="HueKit">
-                                <rect key="frame" x="10" y="45" width="355" height="124"/>
+                                <rect key="frame" x="10" y="45" width="355" height="121"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="750" constant="150" id="iMc-ig-KdB"/>
@@ -546,7 +546,7 @@
                             <constraint firstItem="GWu-x6-JAE" firstAttribute="bottom" secondItem="gFc-SB-6Im" secondAttribute="bottom" id="qVw-JQ-7tF"/>
                             <constraint firstItem="r8O-34-aXt" firstAttribute="leading" secondItem="dGw-3T-aI8" secondAttribute="leading" id="wXk-8I-jjt"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="r8O-34-aXt" secondAttribute="bottom" constant="75" id="xa5-yi-ebr"/>
-                            <constraint firstItem="r8O-34-aXt" firstAttribute="top" secondItem="dGw-3T-aI8" secondAttribute="bottom" constant="-3" id="xh3-q4-y79"/>
+                            <constraint firstItem="r8O-34-aXt" firstAttribute="top" secondItem="dGw-3T-aI8" secondAttribute="bottom" id="xh3-q4-y79"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GWu-x6-JAE"/>
                     </view>
@@ -1661,6 +1661,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Xba-Ju-5CO"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ibG-RQ-dMi" userLabel="First Responder" sceneMemberID="firstResponder"/>
