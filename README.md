@@ -22,14 +22,16 @@ Easily combine pictures, texts, and geometric shapes to create a new design.
   -  Add images: Pick image from your photo library, or take a picture. And after that, choose a filter for your background image.
   -  Add texts: Text something, and then select the font, color, font size, letter spacing, line height for your text.
   -  Add geometric shapes: Pick a geometric shapes. Setup the color, and transparency for the shape. You can also edit the size, height, or width of the shape.
-  <img src="https://github.com/AlexandraTsai/Dise-o/blob/test/READMEgif/AddImage.gif" width="200"><img src="https://github.com/AlexandraTsai/Dise-o/blob/test/READMEgif/Shape.gif" width="200"><img src="https://github.com/AlexandraTsai/Dise-o/blob/test/READMEgif/Text.gif" width="200">
+
+<img src="https://github.com/AlexandraTsai/Dise-o/blob/test/READMEgif/AddImage.gif" width="200"><img src="https://github.com/AlexandraTsai/Dise-o/blob/test/READMEgif/Shape.gif" width="200"><img src="https://github.com/AlexandraTsai/Dise-o/blob/test/READMEgif/Text.gif" width="200">
   
 - All the element can be scale up/down, rotated, copied, or deleted. Also, the layer of each element is changeable.
   <img src="https://github.com/AlexandraTsai/Dise-o/blob/test/READMEgif/Scapeup_down.gif" width="200"><img src="https://github.com/AlexandraTsai/Dise-o/blob/test/READMEgif/Copy_Delete.gif" width="200">
 
 - Save and share
 You can save your design to photo library or share with your friends.
-  <img src="https://github.com/AlexandraTsai/Dise-o/blob/test/READMEgif/Share_save.gif" width="200">
+
+<img src="https://github.com/AlexandraTsai/Dise-o/blob/test/READMEgif/Share_save.gif" width="200">
 
 - Porforlios
 Your porforlios are saved at homepage. 
