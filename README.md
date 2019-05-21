@@ -21,4 +21,5 @@ Easily combine pictures, texts, and geometric shapes to create a new design.
   -  Add geometric shapes: Pick a geometric shapes. Setup the color, and transparency for the shape. You can also edit the size, height, or width of the shape.
   
   All the element can be scale up/down
-<img src="https://i.imgur.com/UEfoZYd.png" width="200">
+<img src="https://i.imgur.com/UwG2lpl.gif" width="200">
+<img src="" width="250">
