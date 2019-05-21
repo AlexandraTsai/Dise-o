@@ -24,7 +24,7 @@ Easily combine pictures, texts, and geometric shapes to create a new design.
   
 <img src="https://i.imgur.com/KiSgyzc.png" width="200"><img src="https://i.imgur.com/fIRIzs4.png" width="200"><img src="https://i.imgur.com/OAR5sU3.png" width="200">
   
-- All the element can be scale up/down
+- All the element can be scale up/down, rotated, copied, or deleted. Also, the layer of each element is changeable.
 <img src="https://i.imgur.com/ah4VBzB.png" width="200">
 
 - You can save or share your design.
