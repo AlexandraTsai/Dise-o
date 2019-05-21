@@ -29,7 +29,27 @@ Easily combine pictures, texts, and geometric shapes to create a new design.
 
 - You can save or share your design.
 
-- Redesign
-Your porforlios are at homepage, you can redeign, save, share, rename whenever you want. You can also delete it.
+- Porforlios
+Your porforlios are saved at homepage. You can redeign, save, share, rename whenever you want. You can also delete it.
 
-<img src="https://i.imgur.com/U1ti14E.png" width="200"><img src="https://i.imgur.com/nAOb3l8.png" width="200"><img src="https://i.imgur.com/Yi5Mm8z.png" width="200">
+<img src="https://i.imgur.com/nAOb3l8.png" width="200"><img src="https://i.imgur.com/U1ti14E.png" width="200"><img src="https://i.imgur.com/Yi5Mm8z.png" width="200">
+
+# Library
+
+- SwiftLint
+- Fabric
+- Crashlytics
+- lottie-ios
+- Firebase/Core
+- HueKit
+- Fusuma
+
+# Requirement
+
+- iOS 11.0+
+- XCode 10.1
+
+# Contacts
+
+Chia Hsuan Tsai
+b02105034@gmail.com
