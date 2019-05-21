@@ -10,7 +10,9 @@ Easily combine pictures, texts, and geometric shapes to create a new design.
 <a href="https://testflight.apple.com/join/w0qkD8LH"><img src="https://i.imgur.com/Pc1KdHw.png" width="150"></a>
 
 # Feature 
-- Choose background image/color
+- Tap pluss-button to create a new design. 
+
+- Choose a image for the background or setup background color.
   -  Background image: Pick image from your photo library, or take a picture. And after that, choose a filter for your background image.
   - Background color: Besides background image, you can also select a color for your background.
 <img src="https://i.imgur.com/kktOqEy.png" width="200"><img src="https://i.imgur.com/lUSZjCb.png" width="200"><img src="https://i.imgur.com/rS4QxhH.jpg" width="200">
@@ -29,4 +31,5 @@ Easily combine pictures, texts, and geometric shapes to create a new design.
 
 - Redesign
 Your porforlios are at homepage, you can redeign, save, share, rename whenever you want. You can also delete it.
-<img src="https://i.imgur.com/U1ti14E.png" width="200"><img src="https://i.imgur.com/nAOb3l8.png" width="200">
+
+<img src="https://i.imgur.com/U1ti14E.png" width="200"><img src="https://i.imgur.com/nAOb3l8.png" width="200"><img src="https://i.imgur.com/Yi5Mm8z.png" width="200">
