@@ -11,10 +11,12 @@ Easily combine pictures, texts, and geometric shapes to create a new design.
 
 # Feature 
 - Tap pluss-button to create a new design. 
-
 - Choose a image for the background or setup background color.
   -  Background image: Pick image from your photo library, or take a picture. And after that, choose a filter for your background image.
   - Background color: Besides background image, you can also select a color for your background.
+  
+<a><img src="https://github.com/AlexandraTsai/Dise-o/blob/master/Diseno1-2.gif" width="250"></a>
+
 <img src="https://i.imgur.com/kktOqEy.png" width="200"><img src="https://i.imgur.com/lUSZjCb.png" width="200"><img src="https://i.imgur.com/rS4QxhH.jpg" width="200">
 
 - Add element on your canva
@@ -53,3 +55,5 @@ Your porforlios are saved at homepage. You can redeign, save, share, rename when
 
 Chia Hsuan Tsai
 b02105034@gmail.com
+
+
