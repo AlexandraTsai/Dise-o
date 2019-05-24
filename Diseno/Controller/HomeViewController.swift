@@ -149,10 +149,10 @@ class HomeViewController: BaseViewController, UITextFieldDelegate,
         deleteView.cancelButton.addTarget(self, action: #selector(closeBtnTapped(sender:)), for: .touchUpInside)
         
     }
-   
+    
     @IBAction func addButtonTapped(_ sender: UIButton) {
         
-        self.setupInputView()
+        self.setupInputView() 
         newDesignView.alpha = 0
         newDesignView.textField.text = ""
         
