@@ -93,13 +93,6 @@ class BackgroundContainerViewController: BaseContainerViewController {
             
             delegate?.pickImageWithAlbum()
             
-//            let notificationName = Notification.Name(NotiName.pickingPhotoMode.rawValue)
-//
-//            NotificationCenter.default.post(
-//                name: notificationName,
-//                object: nil,
-//                userInfo: [NotificationInfo.pickingPhotoMode: true])
-//
         case PHAuthorizationStatus.notDetermined:
             
             PHPhotoLibrary.requestAuthorization({[weak self] status in
@@ -108,12 +101,6 @@ class BackgroundContainerViewController: BaseContainerViewController {
                     
                     self?.delegate?.pickImageWithAlbum()
                     
-//                    let notificationName = Notification.Name(NotiName.pickingPhotoMode.rawValue)
-//
-//                    NotificationCenter.default.post(
-//                        name: notificationName,
-//                        object: nil,
-//                        userInfo: [NotificationInfo.pickingPhotoMode: true])
                 }
                 
             })
