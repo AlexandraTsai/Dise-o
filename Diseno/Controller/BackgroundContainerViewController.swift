@@ -67,13 +67,6 @@ class BackgroundContainerViewController: BaseContainerViewController {
         colorSquarePicker.hue = sender.hue
         
         delegate?.changeColor(to: colorSquarePicker.color)
-      
-        let notificationName = Notification.Name(NotiName.backgroundColor.rawValue)
-        
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.backgroundColor: colorSquarePicker.color])
         
     }
     

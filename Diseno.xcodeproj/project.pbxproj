@@ -49,7 +49,6 @@
 		A85B04052279C0F000853841 /* CornerHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85B04042279C0F000853841 /* CornerHelperView.swift */; };
 		A865976C2269CB43000789A2 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A865976B2269CB43000789A2 /* StorageManager.swift */; };
 		A865976F2269D22F000789A2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A865976E2269D22F000789A2 /* Result.swift */; };
-		A86824C2225CCF4000BDCCD8 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86824C1225CCF4000BDCCD8 /* Notification.swift */; };
 		A86824C422603BC500BDCCD8 /* CGAffineTransform+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86824C322603BC500BDCCD8 /* CGAffineTransform+Extension.swift */; };
 		A86824C62260461500BDCCD8 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86824C52260461500BDCCD8 /* UIView+Extension.swift */; };
 		A86824C82260838200BDCCD8 /* ALRotationGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86824C72260838200BDCCD8 /* ALRotationGestureRecognizer.swift */; };
@@ -162,7 +161,6 @@
 		A85B04042279C0F000853841 /* CornerHelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerHelperView.swift; sourceTree = "<group>"; };
 		A865976B2269CB43000789A2 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		A865976E2269D22F000789A2 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		A86824C1225CCF4000BDCCD8 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		A86824C322603BC500BDCCD8 /* CGAffineTransform+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGAffineTransform+Extension.swift"; sourceTree = "<group>"; };
 		A86824C52260461500BDCCD8 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		A86824C72260838200BDCCD8 /* ALRotationGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALRotationGestureRecognizer.swift; sourceTree = "<group>"; };
@@ -445,7 +443,6 @@
 				A865976D2269CB4D000789A2 /* Local Storage */,
 				A8BFF781225A4B6B0010E56B /* PhotoManager.swift */,
 				A82564C82282B90700510EAF /* Direction.swift */,
-				A86824C1225CCF4000BDCCD8 /* Notification.swift */,
 				A865976E2269D22F000789A2 /* Result.swift */,
 			);
 			path = Model;
@@ -591,7 +588,6 @@
 			files = (
 				A8BFF76F22586E5C0010E56B /* FontTableViewCell.xib in Resources */,
 				A8242DC0227DC641006143CB /* FilterCollectionViewCell.xib in Resources */,
-				A88E56E12289606D0062760F /* GoogleService-Info.plist in Resources */,
 				A8E306402263009D00DA03A7 /* ShapeCollectionViewCell.xib in Resources */,
 				A8BFF7782258D1970010E56B /* FontSizeTableViewCell.xib in Resources */,
 				A8D2C45D225219080085AD24 /* LaunchScreen.storyboard in Resources */,
@@ -817,7 +813,6 @@
 				A8D2C450225219020085AD24 /* AppDelegate.swift in Sources */,
 				A8BFF7772258D1970010E56B /* FontSizeTableViewCell.swift in Sources */,
 				A8242DB2227D3F29006143CB /* BaseViewController.swift in Sources */,
-				A86824C2225CCF4000BDCCD8 /* Notification.swift in Sources */,
 				A84BBE7F228942740083F53B /* DesignVC+Background.swift in Sources */,
 				A8242DBF227DC641006143CB /* FilterCollectionViewCell.swift in Sources */,
 				A84880CF22704A8900F308AC /* RenameView.swift in Sources */,

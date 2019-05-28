@@ -83,8 +83,6 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
 
         addGesture(to: designView, action: #selector(designViewClicked(_:)))
 
-//        createNotification()
-
         setupNavigationBar()
 
         addElementView.isHidden = true

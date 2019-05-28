@@ -212,13 +212,6 @@ class ImageEditContainerViewController: BaseContainerViewController {
         paletteView.isHidden = false
         defaultColorView.isHidden = true
         
-        let notificationName = Notification.Name(NotiName.addElementButton.rawValue)
-        
-        NotificationCenter.default.post(
-            name: notificationName,
-            object: nil,
-            userInfo: [NotificationInfo.addElementButton: false])
-        
     }
     
     @IBAction func defaultColorBtnTapped(_ sender: UIButton) {
