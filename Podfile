@@ -1,11 +1,11 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'Project2' do
+target 'Diseno' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for Project2
+  # Pods for Diseno
   pod 'UIFontComplete'
   pod 'Fusuma'
   pod 'SwiftLint'
@@ -14,5 +14,10 @@ target 'Project2' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'Firebase/Core'
+
+    target 'DisenoTests' do
+        inherit! :search_paths
+        pod 'Firebase'
+    end
 
 end
