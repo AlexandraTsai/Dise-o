@@ -609,6 +609,8 @@ extension HomeViewController {
         
         self.view.endEditing(true)
         
+        addDesignButton.alpha = 1
+        
         guard let index = selectedCell,
             let newName = renameView.textField.text else { return }
         
@@ -640,6 +642,7 @@ extension HomeViewController {
     @objc func cancelRename(sender: UIButton) {
         
         renameView.alpha = 0
+        addDesignButton.alpha = 1
         
         self.view.endEditing(true)
     }

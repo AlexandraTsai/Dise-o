@@ -30,11 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func applicationWillTerminate(_ application: UIApplication) {
-       
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        
         self.saveContext()
+        
     }
-
+   
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {
