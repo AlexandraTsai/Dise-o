@@ -39,6 +39,7 @@ class StorageManager {
         print("Core data file path: \(NSPersistentContainer.defaultDirectoryURL())")
         
         persistanceContainer = container
+        
     }
     
     let persistanceContainer: NSPersistentContainer

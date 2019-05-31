@@ -552,6 +552,11 @@
 					};
 					A8D2C44B225219020085AD24 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};

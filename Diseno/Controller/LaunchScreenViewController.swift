@@ -108,6 +108,7 @@ class LaunchScreenViewController: UIViewController {
         shapeLayer3.add(animation3, forKey: "drawLineAnimation")
         
         self.view.layer.addSublayer(shapeLayer3)
+      
     }
     
     func showCircle() {

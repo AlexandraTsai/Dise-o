@@ -404,20 +404,20 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r8O-34-aXt" customClass="ColorBarPicker" customModule="HueKit">
-                                <rect key="frame" x="10" y="166" width="355" height="7"/>
+                                <rect key="frame" x="10" y="157" width="355" height="13"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="7" id="UEQ-RR-bzZ"/>
+                                    <constraint firstAttribute="height" constant="13" id="UEQ-RR-bzZ"/>
                                 </constraints>
                                 <connections>
                                     <action selector="colorBarPickerValueChnaged:" destination="8WY-QU-6sx" eventType="valueChanged" id="TUD-SJ-CqW"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dGw-3T-aI8" customClass="ColorSquarePicker" customModule="HueKit">
-                                <rect key="frame" x="10" y="45" width="355" height="121"/>
+                                <rect key="frame" x="10" y="45" width="355" height="112"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" priority="750" constant="150" id="iMc-ig-KdB"/>
+                                    <constraint firstAttribute="height" priority="750" constant="140" id="iMc-ig-KdB"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="point" keyPath="value">
@@ -545,7 +545,7 @@
                             <constraint firstItem="JeK-gH-KLU" firstAttribute="trailing" secondItem="GWu-x6-JAE" secondAttribute="trailing" id="pbk-CZ-uX3"/>
                             <constraint firstItem="GWu-x6-JAE" firstAttribute="bottom" secondItem="gFc-SB-6Im" secondAttribute="bottom" id="qVw-JQ-7tF"/>
                             <constraint firstItem="r8O-34-aXt" firstAttribute="leading" secondItem="dGw-3T-aI8" secondAttribute="leading" id="wXk-8I-jjt"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="r8O-34-aXt" secondAttribute="bottom" constant="75" id="xa5-yi-ebr"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="r8O-34-aXt" secondAttribute="bottom" constant="78" id="xa5-yi-ebr"/>
                             <constraint firstItem="r8O-34-aXt" firstAttribute="top" secondItem="dGw-3T-aI8" secondAttribute="bottom" id="xh3-q4-y79"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GWu-x6-JAE"/>
@@ -1317,7 +1317,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="188.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wjf-fc-z1m" customClass="ColorSquarePicker" customModule="HueKit">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="158.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="155.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="point" keyPath="value">
@@ -1331,10 +1331,10 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXG-zw-gdD" customClass="ColorBarPicker" customModule="HueKit">
-                                                <rect key="frame" x="10" y="158.5" width="355" height="10"/>
+                                                <rect key="frame" x="10" y="155.5" width="355" height="13"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="10" id="GjB-c7-xTU"/>
+                                                    <constraint firstAttribute="height" constant="13" id="GjB-c7-xTU"/>
                                                 </constraints>
                                                 <connections>
                                                     <action selector="colorBarPickerValueChanged:" destination="igD-yW-FCX" eventType="valueChanged" id="FS2-3K-0b4"/>
