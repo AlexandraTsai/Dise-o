@@ -13,7 +13,7 @@ extension DesignViewController: BaseContainerViewControllerDelegate {
     func pickImageWithAlbum() {
         
         DispatchQueue.main.async { [weak self, fusumaAlbum] in
-            
+        
             self?.present(fusumaAlbum, animated: true, completion: nil)
         }
         
@@ -22,7 +22,7 @@ extension DesignViewController: BaseContainerViewControllerDelegate {
     func pickImageWithCamera() {
         
         DispatchQueue.main.async { [weak self, fusumaCamera] in
-            
+        
             self?.present(fusumaCamera, animated: true, completion: nil)
         }
         

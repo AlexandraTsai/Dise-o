@@ -184,7 +184,6 @@ class HomeViewController: BaseViewController, UITextFieldDelegate,
         newDesignView.topAnchor.constraint(equalTo: self.view.topAnchor,
                                            constant: topConstant).isActive = true
         
-//        newDesignView.textField.delegate = self
  
         newDesignView.cancelButton.addTarget(self,
                                              action: #selector(cancelButtonTapped(sender:)),
@@ -327,6 +326,21 @@ class HomeViewController: BaseViewController, UITextFieldDelegate,
             
         }
     }
+    
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        
+        let maxLength = 20
+        
+        let currentString: NSString = textField.text! as NSString
+        
+        let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+        
+        return newString.length <= maxLength
+        
+    }
+    
     // swiftlint:enable cyclomatic_complexity
 }
 
@@ -464,9 +478,7 @@ extension HomeViewController {
         
         selectionView.alpha = 0
         addDesignButton.alpha = 1
-        
-//        addDesignButton.alpha = 1
-        
+                
         deleteView.alpha = 1
     }
     
