@@ -7,7 +7,7 @@ Easily combine pictures, texts, and geometric shapes to create a new design.
 - Able to share the design or save it to photo library.
 - Record your portfolio. You can reopen, redesign, rename, or delete your designs. 
 
-<a href="https://testflight.apple.com/join/w0qkD8LH"><img src="https://i.imgur.com/Pc1KdHw.png" width="150"></a>
+<a href="https://apps.apple.com/app/id1461737343"><img src="https://i.imgur.com/Pc1KdHw.png" width="150"></a>
 
 # Feature 
 
