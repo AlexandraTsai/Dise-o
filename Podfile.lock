@@ -1,5 +1,4 @@
 PODS:
-  - ChromaColorPicker (1.7.2)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Fabric (1.9.0)
@@ -61,7 +60,6 @@ PODS:
   - UIFontComplete (3.0.0)
 
 DEPENDENCIES:
-  - ChromaColorPicker
   - Crashlytics
   - Fabric
   - Firebase
@@ -72,8 +70,7 @@ DEPENDENCIES:
   - UIFontComplete
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - ChromaColorPicker
+  https://github.com/CocoaPods/Specs.git:
     - Crashlytics
     - Fabric
     - Firebase
@@ -89,7 +86,6 @@ SPEC REPOS:
     - UIFontComplete
 
 SPEC CHECKSUMS:
-  ChromaColorPicker: 78194fbae9f342d3781ac178c4d92c7652197d18
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   Firebase: c60d49e9c2630875a96207d15e2affb8364996d1
@@ -104,6 +100,6 @@ SPEC CHECKSUMS:
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   UIFontComplete: 5b0f59a83308816c610164b79a2540b3520f9b72
 
-PODFILE CHECKSUM: f40e4aa84539c4e1179b57652f86b6fd0424742f
+PODFILE CHECKSUM: dcb0f0b3be6d1b40a1597edd6aec6d6aa290a3f2
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.9.3

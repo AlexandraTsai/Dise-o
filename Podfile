@@ -9,7 +9,6 @@ target 'Diseno' do
   pod 'UIFontComplete'
   pod 'Fusuma'
   pod 'SwiftLint'
-  pod 'ChromaColorPicker'
   pod 'HueKit', '~> 1.0'
   pod 'Fabric'
   pod 'Crashlytics'
