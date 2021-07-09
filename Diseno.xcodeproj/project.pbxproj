@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -52,6 +52,7 @@
 		A86824C422603BC500BDCCD8 /* CGAffineTransform+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86824C322603BC500BDCCD8 /* CGAffineTransform+Extension.swift */; };
 		A86824C62260461500BDCCD8 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86824C52260461500BDCCD8 /* UIView+Extension.swift */; };
 		A86824C82260838200BDCCD8 /* ALRotationGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86824C72260838200BDCCD8 /* ALRotationGestureRecognizer.swift */; };
+		A87F7926269898FE00F6B7FF /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F7925269898FE00F6B7FF /* UIScreen+Extension.swift */; };
 		A88E56E5228BFFBC0062760F /* TextTableViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88E56E4228BFFBC0062760F /* TextTableViewTest.swift */; };
 		A88E56E7228C08170062760F /* CalculateMethodTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88E56E6228C08170062760F /* CalculateMethodTest.swift */; };
 		A89D975622979D1E0056285D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A89D975522979D1E0056285D /* GoogleService-Info.plist */; };
@@ -164,6 +165,7 @@
 		A86824C322603BC500BDCCD8 /* CGAffineTransform+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGAffineTransform+Extension.swift"; sourceTree = "<group>"; };
 		A86824C52260461500BDCCD8 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		A86824C72260838200BDCCD8 /* ALRotationGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALRotationGestureRecognizer.swift; sourceTree = "<group>"; };
+		A87F7925269898FE00F6B7FF /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		A88E56E4228BFFBC0062760F /* TextTableViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewTest.swift; sourceTree = "<group>"; };
 		A88E56E6228C08170062760F /* CalculateMethodTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateMethodTest.swift; sourceTree = "<group>"; };
 		A89D975522979D1E0056285D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 				A8DEBBA92255A8A50081A694 /* ALCustomView.swift */,
 				A82564CC2282C94100510EAF /* ALSegue.swift */,
 				A86824C72260838200BDCCD8 /* ALRotationGestureRecognizer.swift */,
+				A87F7925269898FE00F6B7FF /* UIScreen+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -815,6 +818,7 @@
 				A84BBE7422893B350083F53B /* EditingVC+Helper.swift in Sources */,
 				A8BFF76B22586E3D0010E56B /* UIFont+Extension.swift in Sources */,
 				A82B5F372268C8090093671D /* HelperView.swift in Sources */,
+				A87F7926269898FE00F6B7FF /* UIScreen+Extension.swift in Sources */,
 				A8E3063F2263009C00DA03A7 /* ShapeCollectionViewCell.swift in Sources */,
 				A84880CB226F26D200F308AC /* SelectionView.swift in Sources */,
 			);
@@ -1017,7 +1021,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = Z4WPZJJ6S4;
 				INFOPLIST_FILE = Diseno/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1037,7 +1041,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z4WPZJJ6S4;
 				INFOPLIST_FILE = Diseno/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -56,6 +56,13 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - RxCocoa (6.2.0):
+    - RxRelay (= 6.2.0)
+    - RxSwift (= 6.2.0)
+  - RxRelay (6.2.0):
+    - RxSwift (= 6.2.0)
+  - RxSwift (6.2.0)
+  - SnapKit (5.0.1)
   - SwiftLint (0.31.0)
   - UIFontComplete (3.0.0)
 
@@ -66,6 +73,9 @@ DEPENDENCIES:
   - Firebase/Core
   - Fusuma
   - HueKit (~> 1.0)
+  - RxCocoa
+  - RxSwift
+  - SnapKit
   - SwiftLint
   - UIFontComplete
 
@@ -84,6 +94,11 @@ SPEC REPOS:
     - nanopb
     - SwiftLint
     - UIFontComplete
+  trunk:
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SnapKit
 
 SPEC CHECKSUMS:
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
@@ -97,9 +112,13 @@ SPEC CHECKSUMS:
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
   HueKit: a255770053f7028907db3e84d5cdecc7837197e4
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
+  RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
+  RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   UIFontComplete: 5b0f59a83308816c610164b79a2540b3520f9b72
 
-PODFILE CHECKSUM: dcb0f0b3be6d1b40a1597edd6aec6d6aa290a3f2
+PODFILE CHECKSUM: 2d6a104fe25c908fc97dab2178eb15709fe9aa01
 
 COCOAPODS: 1.9.3

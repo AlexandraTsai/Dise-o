@@ -13,6 +13,9 @@ target 'Diseno' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'Firebase/Core'
+  pod 'SnapKit'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
     target 'DisenoTests' do
         inherit! :search_paths

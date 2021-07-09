@@ -2,5 +2,9 @@ ${PODS_ROOT}/Target Support Files/Pods-Diseno/Pods-Diseno-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Fusuma/Fusuma.framework
 ${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework
 ${BUILT_PRODUCTS_DIR}/HueKit/HueKit.framework
+${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework
+${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework
+${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
+${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
 ${BUILT_PRODUCTS_DIR}/UIFontComplete/UIFontComplete.framework
 ${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework
