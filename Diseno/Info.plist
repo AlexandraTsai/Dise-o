@@ -32,8 +32,6 @@
 	<string>To use your own photos, please allow access to your camera roll.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>Main</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

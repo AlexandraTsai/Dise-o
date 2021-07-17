@@ -9,9 +9,9 @@
 import UIKit
 
 class LaunchScreenViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         drawSquare(with: .init(x: width / 2 - 10, y: height / 2 - 10),
                    strokeColor: .DSColor.yellow)
         drawSquare(with: .init(x: width / 2, y: height / 2 - 20),
@@ -89,12 +89,10 @@ private extension LaunchScreenViewController {
 
 private extension LaunchScreenViewController {
     func goToHomePage() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let homeVC = storyboard
-            .instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
-        let navController = UINavigationController(rootViewController: homeVC)
-        navController.modalPresentationStyle = .fullScreen
-        self.present(navController, animated: false, completion: nil)
+        let homeVC = HomePageViewController()
+        let nav = UINavigationController(rootViewController: homeVC)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
     }
 }
 
