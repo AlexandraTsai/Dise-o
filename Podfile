@@ -16,6 +16,7 @@ target 'Diseno' do
   pod 'SnapKit'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxKeyboard'
 
     target 'DisenoTests' do
         inherit! :search_paths

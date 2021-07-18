@@ -9,107 +9,82 @@
 import UIKit
 
 class NewDeign: UIView {
-    
-    let titleLabel = UILabel()
-    let textField = UITextField()
+    let textField = UITextField() --> {
+        $0.placeholder = "Name your design"
+        $0.font = UIFont(name: FontName.futura.rawValue, size: 13)
+        $0.backgroundColor = UIColor.white
+        $0.layer.shadowColor = UIColor.gray.cgColor
+        $0.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        $0.layer.shadowRadius = 0.0
+        $0.layer.shadowOpacity = 1.0
+    }
     let cancelButton = UIButton()
     let confirmButton = UIButton()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setup()
-        
-        setupLayout()
-        settingForTitleLabel()
-        settingForTextField()
-       
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
         setup()
-        
-        setupLayout()
-        settingForTitleLabel()
-        settingForTextField()
     }
-    
-    func setup() {
 
-        self.backgroundColor = UIColor.white
-        self.layer.cornerRadius = 20
+    func reset() {
+        textField.text = nil
+    }
+   
+    private let titleLabel = UILabel() --> {
+        $0.text = "New Design"
+        $0.font = .fontMedium(ofSize: 20)
+    }
+}
+
+private extension NewDeign {
+    func setup() {
+        backgroundColor = UIColor.white
+        layer.cornerRadius = 20
         
         //Shadow
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOffset = CGSize(width: -1, height: 1)
-        self.layer.shadowRadius = 12
-        self.layer.shadowOpacity = 1
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: -1, height: 1)
+        layer.shadowRadius = 12
+        layer.shadowOpacity = 1
+        
+        setupLayout()
     }
     
     func setupLayout() {
-        
         //Add sub views
-        self.addSubview(titleLabel)
-        self.addSubview(textField)
-        self.addSubview(cancelButton)
-        self.addSubview(confirmButton)
+        [titleLabel, textField, cancelButton, confirmButton].forEach { addSubview($0) }
         
         //Auto layout
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30).isActive = true
-        let centerConstraint = textField.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-        centerConstraint.priority = UILayoutPriority(rawValue: 750)
-        centerConstraint.isActive = true
+        titleLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview().inset(20)
+            $0.height.equalTo(50)
+        }
+        cancelButton.snp.makeConstraints {
+            $0.centerY.equalTo(titleLabel)
+            $0.right.equalToSuperview().inset(20)
+            $0.height.width.equalTo(20)
+        }
+        textField.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
+            $0.left.right.equalToSuperview().inset(30)
+        }
+        confirmButton.snp.makeConstraints {
+            $0.top.equalTo(textField.snp.bottom).offset(25)
+            $0.left.right.equalToSuperview().inset(50)
+            $0.height.equalTo(40)
+            $0.bottom.equalToSuperview().inset(20)
+        }
         
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
-        
-        cancelButton.translatesAutoresizingMaskIntoConstraints = false
-        cancelButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
-        cancelButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
-        cancelButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        cancelButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
         cancelButton.setImage(#imageLiteral(resourceName: "noun_Cancel"), for: .normal)
-        
-        confirmButton.translatesAutoresizingMaskIntoConstraints = false
-        confirmButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 25).isActive = true
-        confirmButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50).isActive = true
-        confirmButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        let centerConstraint2 = confirmButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-        centerConstraint2.priority = UILayoutPriority(rawValue: 750)
-        centerConstraint2.isActive = true
-        
         confirmButton.layer.cornerRadius = 20
         confirmButton.setTitle("CREATE", for: .normal)
         confirmButton.titleLabel?.font = UIFont(name: FontName.futura.rawValue, size: 16)
         confirmButton.backgroundColor = UIColor.black
-        
     }
-    
-    func settingForTitleLabel() {
-        //Title
-        titleLabel.text = "New Design"
-        titleLabel.font = UIFont(name: FontName.futura.rawValue, size: 20)
-        
-    }
-    
-    func settingForTextField() {
-        
-        textField.placeholder = "Name your design"
-        textField.font = UIFont(name: FontName.futura.rawValue, size: 13)
-        
-        textField.backgroundColor = UIColor.white
-
-        textField.layer.shadowColor = UIColor.gray.cgColor
-        textField.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        textField.layer.shadowRadius = 0.0
-        textField.layer.shadowOpacity = 1.0
-        
-    }
-   
 }

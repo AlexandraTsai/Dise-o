@@ -9,48 +9,37 @@
 import UIKit
 
 class PortfolioCollectionViewCell: UICollectionViewCell {
-
     @IBOutlet weak var designView: UIImageView! {
-        
         didSet {
-            
             designView.layer.cornerRadius = 20
-            
             designView.layer.borderWidth = 1
-            
             designView.layer.borderColor = UIColor.DSColor.lightGreen.cgColor
-            
             designView.clipsToBounds = true
         }
-        
     }
     
-    @IBOutlet weak var showMoreButton: UIButton!
-    @IBOutlet weak var designNameLabel: UILabel! {
-        
+    @IBOutlet weak var showMoreButton: UIButton! {
         didSet {
-            
+            showMoreButton.setImage(ImageAsset.Icon_show_more.imageTemplate, for: .normal)
+            showMoreButton.tintColor = UIColor.white
+            showMoreButton.layer.cornerRadius = 8
+        }
+    }
+
+    @IBOutlet weak var designNameLabel: UILabel! {
+        didSet {
             designNameLabel.font = UIFont(name: FontName.futura.rawValue, size: 16)
         }
     }
     
     var btnTapAction: (() -> Void)?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        
-        showMoreButton.setImage(ImageAsset.Icon_show_more.imageTemplate, for: .normal)
-        
-        showMoreButton.tintColor = UIColor.white
-        showMoreButton.layer.cornerRadius = 8
-        
+
+    func config(viewModel: PortfolioCellViewModel) {
+        designView.image = viewModel.portfolio.image
+        designNameLabel.text = viewModel.portfolio.name
     }
 
     @IBAction func showMoreBtnTapped(_ sender: Any) {
-        
         btnTapAction?()
-        
     }
-    
 }

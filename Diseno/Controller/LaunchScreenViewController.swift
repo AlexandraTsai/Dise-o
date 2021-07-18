@@ -9,6 +9,15 @@
 import UIKit
 
 class LaunchScreenViewController: UIViewController {
+    init(coordinator: AppCoordinatorPrototype) {
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -20,6 +29,8 @@ class LaunchScreenViewController: UIViewController {
                    strokeColor: .DSColor.heavyGreen)
         showCircle()
     }
+
+    private let coordinator: AppCoordinatorPrototype
 }
 
 // MARK: Drawing
@@ -81,18 +92,9 @@ private extension LaunchScreenViewController {
                 })
             }, completion: { _ in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { [weak self] in
-                     self?.goToHomePage()
+                    self?.coordinator.goToHomePage()
                 })
             })
-    }
-}
-
-private extension LaunchScreenViewController {
-    func goToHomePage() {
-        let homeVC = HomePageViewController()
-        let nav = UINavigationController(rootViewController: homeVC)
-        nav.modalPresentationStyle = .fullScreen
-        present(nav, animated: true)
     }
 }
 

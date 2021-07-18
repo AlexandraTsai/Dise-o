@@ -18,9 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = LaunchScreenViewController()
-        window?.makeKeyAndVisible()
+        setWindow()
+        appCoordinator = AppCoordinator(window: window!)
+        appCoordinator?.start()
         
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         print(urls[urls.count-1] as URL)
@@ -32,5 +32,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         DesignManager.shared.saveContext()
+    }
+    
+    private var appCoordinator: AppCoordinator?
+}
+
+private extension AppDelegate {
+    func setWindow() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
     }
 }

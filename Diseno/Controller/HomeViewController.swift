@@ -184,7 +184,6 @@ class HomeViewController: BaseViewController, UITextFieldDelegate,
         newDesignView.topAnchor.constraint(equalTo: self.view.topAnchor,
                                            constant: topConstant).isActive = true
         
- 
         newDesignView.cancelButton.addTarget(self,
                                              action: #selector(cancelButtonTapped(sender:)),
                                              for: .touchUpInside)
