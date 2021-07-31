@@ -45,7 +45,7 @@ class HomeViewController: BaseViewController, UITextFieldDelegate,
     
     var newDesignView = NewDeign()
     
-    let selectionView = SelectionView()
+    let selectionView = ManagePortfolioView()
     
     let deleteView = DeleteView()
    
@@ -123,7 +123,7 @@ class HomeViewController: BaseViewController, UITextFieldDelegate,
         
         setupCollectionViewLayout()
         
-        selectionView.addOn(self.view)
+//        selectionView.addOn(self.view)
         deleteView.addOn(self.view)
         
         selectionView.closeButton.addTarget(self, action: #selector(self.closeBtnTapped(sender:)), for: .touchUpInside)
@@ -370,21 +370,21 @@ extension HomeViewController {
             
         portfolioCell.designNameLabel.text = design.designName
             
-        portfolioCell.btnTapAction = { [weak self] in
-            
-            self?.selectedCell = indexPath.item
-            
-            self?.selectionView.isHidden = false
-            
-            self?.addDesignButton.alpha = 0
-            
-            UIView.animate(withDuration: 0.7, animations: { [weak self] in
-                
-                self?.selectionView.alpha = 1
-
-            })
-            
-        }
+//        portfolioCell.btnTapAction = { [weak self] in
+//
+//            self?.selectedCell = indexPath.item
+//
+//            self?.selectionView.isHidden = false
+//
+//            self?.addDesignButton.alpha = 0
+//
+//            UIView.animate(withDuration: 0.7, animations: { [weak self] in
+//
+//                self?.selectionView.alpha = 1
+//
+//            })
+//
+//        }
 
         return portfolioCell
     }

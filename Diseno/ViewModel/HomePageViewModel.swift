@@ -2,7 +2,7 @@
 //  HomePageViewModel.swift
 //  Diseno
 //
-//  Created by 蔡佳宣 on 2021/7/18.
+//  Created by 蔡佳宣 on 2021/7/27.
 //  Copyright © 2021 蔡佳宣. All rights reserved.
 //
 
@@ -10,14 +10,16 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-protocol HomePageViewModelInput {
+protocol HomePageViewModelInput: AnyObject {
     var newDesignName: BehaviorRelay<String?> { get }
-    
+
     func createNewDesign()
+    func showPortfoliAction(for design: Design)
 }
 
-protocol HomePageViewModelOutput {
+protocol HomePageViewModelOutput: AnyObject {
     var designs: BehaviorRelay<[PortfolioCellViewModel]> { get }
+    var showManageView: PublishRelay<PortfolioManageViewModel> { get }
 }
 
 typealias HomePageViewModelPrototype = HomePageViewModelInput & HomePageViewModelOutput
@@ -25,6 +27,7 @@ typealias HomePageViewModelPrototype = HomePageViewModelInput & HomePageViewMode
 class HomePageViewModel: HomePageViewModelPrototype {
     // MARK: Output
     let designs = BehaviorRelay<[PortfolioCellViewModel]>(value: [])
+    let showManageView = PublishRelay<PortfolioManageViewModel>()
 
     // MARK: HomePageViewModelInput
     let newDesignName = BehaviorRelay<String?>(value: nil)
@@ -32,7 +35,11 @@ class HomePageViewModel: HomePageViewModelPrototype {
     func createNewDesign() {
         coordinator.goDesignPage()
     }
-    
+
+    func showPortfoliAction(for design: Design) {
+        showManageView.accept(PortfolioManageViewModel())
+    }
+
     init(coordinator: AppCoordinatorPrototype) {
         self.coordinator = coordinator
         fetchDesign()
@@ -49,7 +56,7 @@ private extension HomePageViewModel {
                 print("fetch design failed")
                 return
             }
-            self.designs.accept(design.map { PortfolioCellViewModel(design: $0) })
+            self.designs.accept(design.map { PortfolioCellViewModel(design: $0, parent: self) })
         })
     }
 }

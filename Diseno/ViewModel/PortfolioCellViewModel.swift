@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 struct Portfolio {
     var image: UIImage?
@@ -17,15 +19,34 @@ protocol PortfolioCellViewModelOutput {
     var portfolio: Portfolio { get }
 }
 
-class PortfolioCellViewModel: PortfolioCellViewModelOutput {
+protocol PortfolioCellViewModelInput {
+    var showPortfolioAction: PublishRelay<Void> { get }
+}
+
+typealias PortfolioCellViewModelPrototype = PortfolioCellViewModelOutput & PortfolioCellViewModelInput
+
+class PortfolioCellViewModel: PortfolioCellViewModelPrototype {
+    // MARK: PortfolioCellViewModelOutput
     var portfolio = Portfolio(image: nil, name: "")
 
-    init(design: Design) {
+    // MARK: PortfolioCellViewModelInput
+    let showPortfolioAction = PublishRelay<Void>()
+
+    init(design: Design, parent: HomePageViewModelInput) {
         self.design = design
+        self.parent = parent
+
         guard let designName = design.designName,
               let screeshot = design.screenshot else { return }
         portfolio = Portfolio(image: FileManager.loadImageFromDisk(fileName: screeshot), name: designName)
+
+        showPortfolioAction
+            .bind {
+                parent.showPortfoliAction(for: design)
+            }.disposed(by: disposeBag)
     }
 
     private let design: Design
+    private weak var parent: HomePageViewModelInput?
+    private let disposeBag = DisposeBag()
 }

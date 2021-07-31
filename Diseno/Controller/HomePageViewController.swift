@@ -133,6 +133,18 @@ private extension HomePageViewController {
                 collectionView?.isHidden = noDesign
                 hintButton?.isHidden = !noDesign
             }).disposed(by: disposeBag)
+
+        viewModel.showManageView
+            .subscribe(onNext: { [weak self] vm in
+                guard let self = self else { return }
+                let selectionView = ManagePortfolioView()
+                self.view.addSubview(selectionView)
+                selectionView.snp.makeConstraints {
+                    $0.height.equalTo(340)
+                    $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(30)
+                    $0.left.right.equalToSuperview().inset(20)
+                }
+            }).disposed(by: disposeBag)
     }
 }
 

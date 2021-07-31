@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class PortfolioCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var designView: UIImageView! {
@@ -31,15 +33,25 @@ class PortfolioCollectionViewCell: UICollectionViewCell {
             designNameLabel.font = UIFont(name: FontName.futura.rawValue, size: 16)
         }
     }
-    
-    var btnTapAction: (() -> Void)?
 
     func config(viewModel: PortfolioCellViewModel) {
-        designView.image = viewModel.portfolio.image
-        designNameLabel.text = viewModel.portfolio.name
+        bind(viewModel)
     }
 
-    @IBAction func showMoreBtnTapped(_ sender: Any) {
-        btnTapAction?()
+    private weak var viewModel: PortfolioCellViewModel?
+    private var disposeBag = DisposeBag()
+}
+
+private extension PortfolioCollectionViewCell {
+    func bind(_ viewModel: PortfolioCellViewModel) {
+        disposeBag = DisposeBag()
+        self.viewModel = viewModel
+
+        designView.image = viewModel.portfolio.image
+        designNameLabel.text = viewModel.portfolio.name
+
+        showMoreButton.rx.tap
+            .bind(to: viewModel.showPortfolioAction)
+            .disposed(by: disposeBag)
     }
 }

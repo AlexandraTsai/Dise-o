@@ -28,7 +28,7 @@
 		A82B5F332268A2270093671D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F322268A2270093671D /* HomeViewController.swift */; };
 		A82B5F352268A4930093671D /* NewDeign.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F342268A4930093671D /* NewDeign.swift */; };
 		A82B5F372268C8090093671D /* HelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F362268C8090093671D /* HelperView.swift */; };
-		A84880CB226F26D200F308AC /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84880CA226F26D200F308AC /* SelectionView.swift */; };
+		A84880CB226F26D200F308AC /* ManagePortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84880CA226F26D200F308AC /* ManagePortfolioView.swift */; };
 		A84880CD227036A200F308AC /* SaveSuccessLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84880CC227036A200F308AC /* SaveSuccessLabel.swift */; };
 		A84880CF22704A8900F308AC /* RenameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84880CE22704A8900F308AC /* RenameView.swift */; };
 		A84880D12270672100F308AC /* Shape+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84880D02270672100F308AC /* Shape+Extension.swift */; };
@@ -62,6 +62,7 @@
 		A87F793726A415D100F6B7FF /* PortfolioCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F793626A415D100F6B7FF /* PortfolioCellViewModel.swift */; };
 		A87F793926A4591A00F6B7FF /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F793826A4591A00F6B7FF /* FileManager+Extension.swift */; };
 		A87F793B26A45BF700F6B7FF /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F793A26A45BF700F6B7FF /* NSObject+Extension.swift */; };
+		A87F794426B0524200F6B7FF /* PortfolioManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F794326B0524200F6B7FF /* PortfolioManageViewModel.swift */; };
 		A88E56E5228BFFBC0062760F /* TextTableViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88E56E4228BFFBC0062760F /* TextTableViewTest.swift */; };
 		A88E56E7228C08170062760F /* CalculateMethodTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88E56E6228C08170062760F /* CalculateMethodTest.swift */; };
 		A89D975622979D1E0056285D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A89D975522979D1E0056285D /* GoogleService-Info.plist */; };
@@ -150,7 +151,7 @@
 		A82B5F322268A2270093671D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A82B5F342268A4930093671D /* NewDeign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeign.swift; sourceTree = "<group>"; };
 		A82B5F362268C8090093671D /* HelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperView.swift; sourceTree = "<group>"; };
-		A84880CA226F26D200F308AC /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
+		A84880CA226F26D200F308AC /* ManagePortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePortfolioView.swift; sourceTree = "<group>"; };
 		A84880CC227036A200F308AC /* SaveSuccessLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSuccessLabel.swift; sourceTree = "<group>"; };
 		A84880CE22704A8900F308AC /* RenameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameView.swift; sourceTree = "<group>"; };
 		A84880D02270672100F308AC /* Shape+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shape+Extension.swift"; sourceTree = "<group>"; };
@@ -184,6 +185,7 @@
 		A87F793626A415D100F6B7FF /* PortfolioCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCellViewModel.swift; sourceTree = "<group>"; };
 		A87F793826A4591A00F6B7FF /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		A87F793A26A45BF700F6B7FF /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		A87F794326B0524200F6B7FF /* PortfolioManageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioManageViewModel.swift; sourceTree = "<group>"; };
 		A88E56E4228BFFBC0062760F /* TextTableViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewTest.swift; sourceTree = "<group>"; };
 		A88E56E6228C08170062760F /* CalculateMethodTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateMethodTest.swift; sourceTree = "<group>"; };
 		A89D975522979D1E0056285D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 			children = (
 				A87F793426A4085100F6B7FF /* HomePageViewModel.swift */,
 				A87F793626A415D100F6B7FF /* PortfolioCellViewModel.swift */,
+				A87F794326B0524200F6B7FF /* PortfolioManageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -444,7 +447,7 @@
 				A816BEB222755860004E3896 /* SizeHelperView.swift */,
 				A85B04042279C0F000853841 /* CornerHelperView.swift */,
 				A82B5F342268A4930093671D /* NewDeign.swift */,
-				A84880CA226F26D200F308AC /* SelectionView.swift */,
+				A84880CA226F26D200F308AC /* ManagePortfolioView.swift */,
 				A84880CE22704A8900F308AC /* RenameView.swift */,
 				A8242DC3227FEA8E006143CB /* DeleteView.swift */,
 				A8AF2A5222781CBF00C2B118 /* GoSettingAlertView.swift */,
@@ -814,6 +817,7 @@
 				A8C123A32281B69A00B14B92 /* BaseContainerViewController.swift in Sources */,
 				A80F296B22660BED009C13F5 /* TextContainerViewController.swift in Sources */,
 				A84BBE7B228940A00083F53B /* DesignVC+NavigationBar.swift in Sources */,
+				A87F794426B0524200F6B7FF /* PortfolioManageViewModel.swift in Sources */,
 				A84BBE7222892D0B0083F53B /* EditingVC+Gesture.swift in Sources */,
 				A87F792926A2B51200F6B7FF /* DesignManager.swift in Sources */,
 				A84880D922706ABE00F308AC /* Design+Extension.swift in Sources */,
@@ -880,7 +884,7 @@
 				A87F7926269898FE00F6B7FF /* UIScreen+Extension.swift in Sources */,
 				A8E3063F2263009C00DA03A7 /* ShapeCollectionViewCell.swift in Sources */,
 				A87F792D26A2E5BB00F6B7FF /* Swift+Extension.swift in Sources */,
-				A84880CB226F26D200F308AC /* SelectionView.swift in Sources */,
+				A84880CB226F26D200F308AC /* ManagePortfolioView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
