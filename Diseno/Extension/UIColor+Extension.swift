@@ -9,67 +9,54 @@
 import UIKit
 
 extension UIColor {
- 
     struct DSColor {
-        
-        //FFC325
-        static var yellow: UIColor { return UIColor(red: 252/255, green: 195/255, blue: 37/255, alpha: 1)
-        }
-        
-        static var lightYellow: UIColor { return UIColor(red: 241/255,
-                                                    green: 219/255,
-                                                    blue: 155/255,
-                                                    alpha: 1)
-        }
-        
-        //D7D7D7
-        static var lightGray: UIColor { return UIColor(red: 215/255,
-                                                         green: 215/255,
-                                                         blue: 215/255,
-                                                         alpha: 1)
-        }
-        
-        //9DA3AA
-        static var mediumGray: UIColor { return UIColor(red: 157/255,
-                                                       green: 163/255,
-                                                       blue: 170/255,
-                                                       alpha: 1)
-        }
-        
-        static var heavyGray: UIColor { return UIColor(red: 137/255,
-                                                        green: 137/255,
-                                                        blue: 138/255,
-                                                        alpha: 1)
-        }
-        
-        static var lightGreen: UIColor { return UIColor(red: 111/255,
-                                                        green: 122/255,
-                                                        blue: 119/255,
-                                                        alpha: 0.5)
-            
-        }
-        
-        //4E7977
-        static var heavyGreen: UIColor { return UIColor(red: 78/255,
-                                                        green: 121/255,
-                                                        blue: 119/255,
-                                                        alpha: 1)
-            
-        }
-        
-        static var logoC2: UIColor { return UIColor(red: 133/255,
-                                                green: 162/255,
-                                                blue: 160/255,
-                                                alpha: 1)
-            
-        }
-        
-        static var red: UIColor { return UIColor(red: 236/255,
-                                                    green: 135/255,
-                                                    blue: 127/255,
-                                                    alpha: 1)
-            
+        /// FFC325
+        static var yellow = UIColor(hex: "FFC325")
+        /// F1DB9B
+        static var lightYellow = UIColor(hex: "F1DB9B")
+        /// D7D7D7
+        static var lightGray = UIColor(hex: "D7D7D7")
+        /// 9DA3AA
+        static var mediumGray = UIColor(hex: "9DA3AA")
+        /// 89898A
+        static var heavyGray = UIColor(hex: "89898A")
+        /// 6F7A77
+        static var lightGreen = UIColor(hex: "6F7A77")
+        /// 4E7977
+        static var heavyGreen = UIColor(hex: "4E7977")
+        /// 85A2A0
+        static var logoC2 = UIColor(hex: "85A2A0")
+        /// EC877F
+        static var red = UIColor(hex: "EC877F")
+        /// FD9648
+        static var waring = UIColor(hex: "FD9648")
+        /// FF5F46
+        static var error = UIColor(hex: "FF5F46")
+        /// 0892FC
+        static var info = UIColor(hex: "0892FC")
+    }
+}
+
+extension UIColor {
+    convenience init (hex: String) {
+        var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+
+        if cString.hasPrefix("#") {
+            cString.remove(at: cString.startIndex)
         }
 
+        if (cString.count) > 6 {
+            self.init(red: 0, green: 0, blue: 0, alpha: 1)
+            return
+        }
+        var rgbValue: UInt64 = 0
+        Scanner(string: cString).scanHexInt64(&rgbValue)
+
+        self.init(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
 }

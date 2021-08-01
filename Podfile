@@ -6,17 +6,17 @@ target 'Diseno' do
   use_frameworks!
 
   # Pods for Diseno
-  pod 'UIFontComplete'
-  pod 'Fusuma'
-  pod 'SwiftLint'
-  pod 'HueKit', '~> 1.0'
-  pod 'Fabric'
   pod 'Crashlytics'
+  pod 'Fabric'
   pod 'Firebase/Core'
-  pod 'SnapKit'
+  pod 'Fusuma'
+  pod 'HueKit', '~> 1.0'
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxKeyboard'
+  pod 'SwiftLint'
+  pod 'SnapKit'
+  pod 'UIFontComplete'
 
     target 'DisenoTests' do
         inherit! :search_paths

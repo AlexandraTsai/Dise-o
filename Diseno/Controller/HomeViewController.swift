@@ -45,7 +45,7 @@ class HomeViewController: BaseViewController, UITextFieldDelegate,
     
     var newDesignView = NewDeign()
     
-    let selectionView = ManagePortfolioView()
+//    let selectionView = ManagePortfolioView(viewModel: HomePageViewModel(coordinator: nil))
     
     let deleteView = DeleteView()
    
@@ -101,9 +101,9 @@ class HomeViewController: BaseViewController, UITextFieldDelegate,
         }
         
         addDesignButton.alpha = 1
-        selectionView.alpha = 0
+//        selectionView.alpha = 0
         renameView.alpha = 0
-        selectionView.isHidden = true
+//        selectionView.isHidden = true
         deleteView.alpha = 0
     }
 
@@ -126,19 +126,19 @@ class HomeViewController: BaseViewController, UITextFieldDelegate,
 //        selectionView.addOn(self.view)
         deleteView.addOn(self.view)
         
-        selectionView.closeButton.addTarget(self, action: #selector(self.closeBtnTapped(sender:)), for: .touchUpInside)
-        
-        selectionView.cancelButton.addTarget(self, action: #selector(closeBtnTapped(sender:)), for: .touchUpInside)
-        
-        selectionView.deleteButton.addTarget(self, action: #selector(showDeleteView(sender:)), for: .touchUpInside)
-        
-        selectionView.openButton.addTarget(self, action: #selector(openBtnTapped(sender:)), for: .touchUpInside)
-        
-        selectionView.saveButton.addTarget(self, action: #selector(saveImageBtnTapped(sender:)), for: .touchUpInside)
-        
-        selectionView.shareButton.addTarget(self, action: #selector(shareBtnTapped(sender:)), for: .touchUpInside)
-        
-        selectionView.renameButton.addTarget(self, action: #selector(renameBtnTapped(sender:)), for: .touchUpInside)
+//        selectionView.closeButton.addTarget(self, action: #selector(self.closeBtnTapped(sender:)), for: .touchUpInside)
+//        
+//        selectionView.cancelButton.addTarget(self, action: #selector(closeBtnTapped(sender:)), for: .touchUpInside)
+//        
+//        selectionView.deleteButton.addTarget(self, action: #selector(showDeleteView(sender:)), for: .touchUpInside)
+//        
+//        selectionView.openButton.addTarget(self, action: #selector(openBtnTapped(sender:)), for: .touchUpInside)
+//        
+//        selectionView.saveButton.addTarget(self, action: #selector(saveImageBtnTapped(sender:)), for: .touchUpInside)
+//        
+//        selectionView.shareButton.addTarget(self, action: #selector(shareBtnTapped(sender:)), for: .touchUpInside)
+//        
+//        selectionView.renameButton.addTarget(self, action: #selector(renameBtnTapped(sender:)), for: .touchUpInside)
         
         renameView.saveButton.addTarget(self, action: #selector(saveNameBtnTapped(sender:)), for: .touchUpInside)
         
@@ -464,7 +464,7 @@ extension HomeViewController {
         
         UIView.animate(withDuration: 0.4, animations: { [weak self] in
             
-            self?.selectionView.alpha = 0
+//            self?.selectionView.alpha = 0
             
             self?.deleteView.alpha = 0
             
@@ -475,7 +475,7 @@ extension HomeViewController {
     
     @objc func showDeleteView(sender: UIButton) {
         
-        selectionView.alpha = 0
+//        selectionView.alpha = 0
         addDesignButton.alpha = 1
                 
         deleteView.alpha = 1
@@ -528,7 +528,7 @@ extension HomeViewController {
         
         UIView.animate(withDuration: 0.3) { [weak self] in
             
-            self?.selectionView.alpha = 0
+//            self?.selectionView.alpha = 0
             self?.addDesignButton.alpha = 1
             
         }
@@ -613,7 +613,7 @@ extension HomeViewController {
             self?.renameView.textField.delegate = self
         }
       
-        selectionView.alpha = 0
+//        selectionView.alpha = 0
     }
     
     @objc func saveNameBtnTapped(sender: UIButton) {

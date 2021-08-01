@@ -135,15 +135,32 @@ private extension HomePageViewController {
             }).disposed(by: disposeBag)
 
         viewModel.showManageView
-            .subscribe(onNext: { [weak self] vm in
-                guard let self = self else { return }
-                let selectionView = ManagePortfolioView()
-                self.view.addSubview(selectionView)
+            .subscribe(onNext: { [weak view] manageVM in
+                guard let view = view else { return }
+                let selectionView = ManagePortfolioView(viewModel: manageVM)
+                selectionView.doneHandler = {
+                    selectionView.removeFromSuperview()
+                }
+                view.addSubview(selectionView)
                 selectionView.snp.makeConstraints {
                     $0.height.equalTo(340)
-                    $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(30)
+                    $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(30)
                     $0.left.right.equalToSuperview().inset(20)
                 }
+            }).disposed(by: disposeBag)
+
+        viewModel.showNotification
+            .subscribe(onNext: { text in
+                let banner = NotificationBanner(title: text, style: .success)
+                banner.applyStyling(alignment: .center)
+                banner.show()
+            }).disposed(by: disposeBag)
+
+        viewModel.showError
+            .subscribe(onNext: { text in
+                let banner = NotificationBanner(title: text, style: .fail)
+                banner.applyStyling(alignment: .center)
+                banner.show()
             }).disposed(by: disposeBag)
     }
 }
