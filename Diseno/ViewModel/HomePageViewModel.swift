@@ -15,6 +15,7 @@ protocol HomePageViewModelInput: AnyObject {
 
     func createNewDesign()
     func showPortfoliAction(for design: Design)
+    func didSelect(at indexPath: IndexPath)
 }
 
 protocol HomePageViewModelOutput: AnyObject {
@@ -40,7 +41,7 @@ class HomePageViewModel: HomePageViewModelPrototype {
     let newDesignName = BehaviorRelay<String?>(value: nil)
 
     func createNewDesign() {
-        coordinator.goDesignPage()
+        coordinator.goDesignPage(with: nil)
     }
 
     func showPortfoliAction(for design: Design) {
@@ -48,11 +49,15 @@ class HomePageViewModel: HomePageViewModelPrototype {
         showManageView.accept(self)
     }
 
+    func didSelect(at indexPath: IndexPath) {
+        coordinator.goDesignPage(with: designs.value[indexPath.row].design)
+    }
+
     func receiveAction(_ actionType: PortfolioManageType) {
         guard let onFocueDesign = onFocueDesign else { return }
         switch actionType {
         case .open:
-            break
+            coordinator.goDesignPage(with: onFocueDesign)
         case .download:
             guard let screenshot = onFocueDesign.screenshot,
                     let image = DSFileManager.loadImageFromDiskWith(fileName: screenshot) else {

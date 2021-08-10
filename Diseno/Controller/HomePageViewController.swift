@@ -28,6 +28,7 @@ class HomePageViewController: UIViewController {
         setupUI()
         keyboardObserve()
         binding()
+        bindCollectionView()
     }
 
     private let flowLayout = UICollectionViewFlowLayout() --> {
@@ -39,6 +40,7 @@ class HomePageViewController: UIViewController {
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout) --> {
         $0.register(PortfolioCollectionViewCell.nib,
                     forCellWithReuseIdentifier: PortfolioCollectionViewCell.nameOfClass)
+        $0.contentInset = .init(top: 20, left: 20, bottom: 0, right: 20)
 
     }
     private let addDesignButton = UIButton()
@@ -67,7 +69,7 @@ private extension HomePageViewController {
         [collectionView, addDesignButton, hintButton].forEach { view.addSubview($0) }
         collectionView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(15)
-            $0.left.right.equalToSuperview().inset(20)
+            $0.left.right.equalToSuperview()
         }
         addDesignButton.snp.makeConstraints {
             $0.width.height.equalTo(50)
@@ -121,13 +123,6 @@ private extension HomePageViewController {
 
     func binding() {
         viewModel.designs
-            .bind(to: collectionView.rx.items(cellIdentifier: PortfolioCollectionViewCell.nameOfClass,
-                                              cellType: PortfolioCollectionViewCell.self)) { _, viewModel, cell in
-                cell.config(viewModel: viewModel)
-            }
-            .disposed(by: disposeBag)
-
-        viewModel.designs
             .map { $0.isEmpty }
             .subscribe(onNext: { [weak collectionView, weak hintButton] noDesign in
                 collectionView?.isHidden = noDesign
@@ -163,6 +158,20 @@ private extension HomePageViewController {
                 banner.show()
             }).disposed(by: disposeBag)
     }
+
+    func bindCollectionView() {
+        viewModel.designs
+            .bind(to: collectionView.rx.items(cellIdentifier: PortfolioCollectionViewCell.nameOfClass,
+                                              cellType: PortfolioCollectionViewCell.self)) { _, viewModel, cell in
+                cell.config(viewModel: viewModel)
+            }
+            .disposed(by: disposeBag)
+
+        collectionView.rx.itemSelected
+            .bind { [weak viewModel] indexPath in
+                viewModel?.didSelect(at: indexPath)
+            }.disposed(by: disposeBag)
+    }
 }
 
 // MARK: UI Event
@@ -184,7 +193,12 @@ private extension HomePageViewController {
     func keyboardObserve() {
         RxKeyboard.instance.visibleHeight.asObservable()
             .subscribe(onNext: { [weak self] height  in
-                self?.popBottomConstraints.forEach { $0.update(inset: height + 5)}
+                guard let self = self else { return }
+                guard height != 0 else {
+                    self.popBottomConstraints.forEach { $0.update(inset: self.view.frame.height / 3) }
+                    return
+                }
+                self.popBottomConstraints.forEach { $0.update(inset: height + 5)}
             }).disposed(by: disposeBag)
     }
 }

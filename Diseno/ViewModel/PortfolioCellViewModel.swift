@@ -16,6 +16,7 @@ struct Portfolio {
 }
 
 protocol PortfolioCellViewModelOutput {
+    var design: Design { get }
     var portfolio: Portfolio { get }
 }
 
@@ -27,6 +28,7 @@ typealias PortfolioCellViewModelPrototype = PortfolioCellViewModelOutput & Portf
 
 class PortfolioCellViewModel: PortfolioCellViewModelPrototype {
     // MARK: PortfolioCellViewModelOutput
+    let design: Design
     var portfolio = Portfolio(image: nil, name: "")
 
     // MARK: PortfolioCellViewModelInput
@@ -46,7 +48,6 @@ class PortfolioCellViewModel: PortfolioCellViewModelPrototype {
             }.disposed(by: disposeBag)
     }
 
-    private let design: Design
     private weak var parent: HomePageViewModelInput?
     private let disposeBag = DisposeBag()
 }

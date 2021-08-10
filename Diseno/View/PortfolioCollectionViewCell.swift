@@ -11,11 +11,10 @@ import RxCocoa
 import RxSwift
 
 class PortfolioCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var designView: UIImageView! {
         didSet {
-            designView.layer.cornerRadius = 20
-            designView.layer.borderWidth = 1
-            designView.layer.borderColor = UIColor.DSColor.lightGreen.cgColor
+            designView.layer.cornerRadius = cornerRadius
             designView.clipsToBounds = true
         }
     }
@@ -34,10 +33,17 @@ class PortfolioCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    func config(viewModel: PortfolioCellViewModel) {
-        bind(viewModel)
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        clipsToBounds = false
     }
 
+    func config(viewModel: PortfolioCellViewModel) {
+        bind(viewModel)
+        addShadow()
+    }
+
+    private let cornerRadius: CGFloat = 20
     private weak var viewModel: PortfolioCellViewModel?
     private var disposeBag = DisposeBag()
 }
@@ -53,5 +59,13 @@ private extension PortfolioCollectionViewCell {
         showMoreButton.rx.tap
             .bind(to: viewModel.showPortfolioAction)
             .disposed(by: disposeBag)
+    }
+
+    func addShadow() {
+        shadowView.layer.shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: cornerRadius).cgPath
+        shadowView.layer.cornerRadius = 20
+        shadowView.layer.shadowColor = UIColor.gray.cgColor
+        shadowView.layer.shadowRadius = 15.0
+        shadowView.layer.shadowOpacity = 0.3
     }
 }

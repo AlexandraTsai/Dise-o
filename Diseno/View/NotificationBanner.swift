@@ -153,7 +153,7 @@ private extension NotificationBanner {
     }
 
     func prepareStartFrame() {
-        startFrame = CGRect(origin: .init(x: 0,  y: -bannerHeight),
+        startFrame = CGRect(origin: .init(x: 0, y: -bannerHeight),
                             size: endFrame.size)
     }
 }

@@ -16,7 +16,7 @@ protocol Coordinator: AnyObject {
 
 protocol AppCoordinatorProtocol {
     func goToHomePage()
-    func goDesignPage()
+    func goDesignPage(with design: Design?)
 }
 
 typealias AppCoordinatorPrototype = Coordinator & AppCoordinatorProtocol
@@ -37,10 +37,13 @@ class AppCoordinator: AppCoordinatorPrototype {
         homePageViewController = HomePageViewController(viewModel: homeViewModel!)
         let nav = UINavigationController(rootViewController: homePageViewController!)
         nav.modalPresentationStyle = .fullScreen
+        nav.navigationBar.tintColor = UIColor.black
+        nav.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        nav.navigationBar.shadowImage = UIImage()
         rootViewController?.present(nav, animated: true)
     }
 
-    func goDesignPage() {
+    func goDesignPage(with design: Design?) {
         guard let designVC = UIStoryboard(
             name: "Main",
             bundle: nil).instantiateViewController(
