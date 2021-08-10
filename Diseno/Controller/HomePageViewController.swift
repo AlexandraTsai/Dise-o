@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import RxCocoa
+import RxGesture
 import RxSwift
 import RxKeyboard
 
@@ -51,6 +52,8 @@ class HomePageViewController: UIViewController {
         $0.titleLabel?.numberOfLines = 0
         $0.titleLabel?.textAlignment = .center
     }
+    /// Handle dismissing the popup view when tapping on this view.
+    private let touchToDismissView = UIView()
     private let createDesignView = NewDeign()
     private var popBottomConstraints = [Constraint]()
     private let viewModel: HomePageViewModelPrototype
@@ -90,8 +93,25 @@ private extension HomePageViewController {
             .bind { [weak self] _ in
                 self?.popCreateNewDesign()
             }.disposed(by: disposeBag)
-        
+
+        setupTouchToDismissView()
         setupPopup()
+    }
+
+    func setupTouchToDismissView() {
+        view.addSubview(touchToDismissView)
+        touchToDismissView.snp.makeConstraints { $0.edges.equalToSuperview() }
+        touchToDismissView.backgroundColor = .clear
+        touchToDismissView.isHidden = true
+        touchToDismissView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak view, weak touchToDismissView] _ in
+                guard let popup = view?.subviews.last as? PopupView else {
+                    return
+                }
+                popup.removeFromSuperview()
+                touchToDismissView?.isHidden = true
+            }).disposed(by: disposeBag)
     }
         
     func setupPopup() {
@@ -130,7 +150,7 @@ private extension HomePageViewController {
             }).disposed(by: disposeBag)
 
         viewModel.showManageView
-            .subscribe(onNext: { [weak view] manageVM in
+            .subscribe(onNext: { [weak view, weak touchToDismissView] manageVM in
                 guard let view = view else { return }
                 let selectionView = ManagePortfolioView(viewModel: manageVM)
                 selectionView.doneHandler = {
@@ -142,6 +162,7 @@ private extension HomePageViewController {
                     $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(30)
                     $0.left.right.equalToSuperview().inset(20)
                 }
+                touchToDismissView?.isHidden = false
             }).disposed(by: disposeBag)
 
         viewModel.showNotification

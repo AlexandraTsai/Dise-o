@@ -13,6 +13,7 @@ target 'Diseno' do
   pod 'HueKit', '~> 1.0'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxGesture'
   pod 'RxKeyboard'
   pod 'SwiftLint'
   pod 'SnapKit'

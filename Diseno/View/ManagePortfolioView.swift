@@ -9,7 +9,13 @@
 import UIKit
 import RxSwift
 
-class ManagePortfolioView: UIView {
+protocol Popup {
+    var doneHandler: (() -> Void)? { get }
+}
+
+typealias PopupView = Popup & UIView
+
+class ManagePortfolioView: PopupView {
     var doneHandler: (() -> Void)?
 
     init(viewModel: ManagePortfolioViewModelPrototype,

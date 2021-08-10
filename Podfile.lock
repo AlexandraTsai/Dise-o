@@ -59,6 +59,9 @@ PODS:
   - RxCocoa (6.2.0):
     - RxRelay (= 6.2.0)
     - RxSwift (= 6.2.0)
+  - RxGesture (4.0.2):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
   - RxKeyboard (2.0.0):
     - RxCocoa (~> 6.0)
     - RxSwift (~> 6.0)
@@ -77,6 +80,7 @@ DEPENDENCIES:
   - Fusuma
   - HueKit (~> 1.0)
   - RxCocoa
+  - RxGesture
   - RxKeyboard
   - RxSwift
   - SnapKit
@@ -100,6 +104,7 @@ SPEC REPOS:
     - UIFontComplete
   trunk:
     - RxCocoa
+    - RxGesture
     - RxKeyboard
     - RxRelay
     - RxSwift
@@ -118,6 +123,7 @@ SPEC CHECKSUMS:
   HueKit: a255770053f7028907db3e84d5cdecc7837197e4
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
+  RxGesture: f059f2aeef966fb17dad56ee440e76410f10e55f
   RxKeyboard: 4f5863f43b4ff0cbb2a20b94688d6b80c8a43c14
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
@@ -125,6 +131,6 @@ SPEC CHECKSUMS:
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   UIFontComplete: 5b0f59a83308816c610164b79a2540b3520f9b72
 
-PODFILE CHECKSUM: 5e48ef0978808c4af61eda99ee29290d418fd09d
+PODFILE CHECKSUM: 899619f8d678960a3d1556ff427a646c5aae5c75
 
 COCOAPODS: 1.9.3
