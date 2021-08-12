@@ -150,19 +150,15 @@ private extension HomePageViewController {
             }).disposed(by: disposeBag)
 
         viewModel.showManageView
-            .subscribe(onNext: { [weak view, weak touchToDismissView] manageVM in
-                guard let view = view else { return }
+            .subscribe(onNext: { [weak self] manageVM in
                 let selectionView = ManagePortfolioView(viewModel: manageVM)
-                selectionView.doneHandler = {
-                    selectionView.removeFromSuperview()
-                }
-                view.addSubview(selectionView)
-                selectionView.snp.makeConstraints {
-                    $0.height.equalTo(340)
-                    $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(30)
-                    $0.left.right.equalToSuperview().inset(20)
-                }
-                touchToDismissView?.isHidden = false
+                self?.showPopupView(selectionView)
+            }).disposed(by: disposeBag)
+
+        viewModel.showRenameInput
+            .subscribe(onNext: { [weak self] viewModel in
+                let renameView = RenameView(viewModel: viewModel)
+                self?.showPopupView(renameView)
             }).disposed(by: disposeBag)
 
         viewModel.showNotification
@@ -206,6 +202,19 @@ private extension HomePageViewController {
             animations: { [weak createDesignView] in
                 createDesignView?.alpha = 1
             })
+    }
+
+    func showPopupView(_ popup: PopupView) {
+        view.addSubview(popup)
+        popup.snp.makeConstraints {
+            popBottomConstraints.append($0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(30).constraint)
+            $0.left.right.equalToSuperview().inset(20)
+        }
+        popup.doneHandler = { [weak self] in
+            popup.removeFromSuperview()
+            self?.touchToDismissView.isHidden = true
+        }
+        touchToDismissView.isHidden = false
     }
 }
 

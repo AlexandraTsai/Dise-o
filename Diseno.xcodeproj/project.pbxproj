@@ -69,6 +69,8 @@
 		A87F794D26B5901300F6B7FF /* NotificationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F794C26B5901300F6B7FF /* NotificationBanner.swift */; };
 		A87F794F26B6567600F6B7FF /* IPhoneUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F794E26B6567600F6B7FF /* IPhoneUtility.swift */; };
 		A87F795126B6626400F6B7FF /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F795026B6626400F6B7FF /* UIWindow+Extension.swift */; };
+		A87F795326C2805100F6B7FF /* DesignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F795226C2805100F6B7FF /* DesignViewModel.swift */; };
+		A87F795526C2A42500F6B7FF /* RenameDesignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F795426C2A42500F6B7FF /* RenameDesignViewModel.swift */; };
 		A88E56E5228BFFBC0062760F /* TextTableViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88E56E4228BFFBC0062760F /* TextTableViewTest.swift */; };
 		A88E56E7228C08170062760F /* CalculateMethodTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88E56E6228C08170062760F /* CalculateMethodTest.swift */; };
 		A89D975622979D1E0056285D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A89D975522979D1E0056285D /* GoogleService-Info.plist */; };
@@ -198,6 +200,8 @@
 		A87F794C26B5901300F6B7FF /* NotificationBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBanner.swift; sourceTree = "<group>"; };
 		A87F794E26B6567600F6B7FF /* IPhoneUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPhoneUtility.swift; sourceTree = "<group>"; };
 		A87F795026B6626400F6B7FF /* UIWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
+		A87F795226C2805100F6B7FF /* DesignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignViewModel.swift; sourceTree = "<group>"; };
+		A87F795426C2A42500F6B7FF /* RenameDesignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameDesignViewModel.swift; sourceTree = "<group>"; };
 		A88E56E4228BFFBC0062760F /* TextTableViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewTest.swift; sourceTree = "<group>"; };
 		A88E56E6228C08170062760F /* CalculateMethodTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateMethodTest.swift; sourceTree = "<group>"; };
 		A89D975522979D1E0056285D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -363,6 +367,8 @@
 				A87F793426A4085100F6B7FF /* HomePageViewModel.swift */,
 				A87F793626A415D100F6B7FF /* PortfolioCellViewModel.swift */,
 				A87F794326B0524200F6B7FF /* ManagePortfolioViewModel.swift */,
+				A87F795226C2805100F6B7FF /* DesignViewModel.swift */,
+				A87F795426C2A42500F6B7FF /* RenameDesignViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -857,6 +863,7 @@
 				A8B5E4F7226D91D800514A75 /* ALTextView.swift in Sources */,
 				A8BFF77322588EA90010E56B /* SpacingTableViewCell.swift in Sources */,
 				A84880D52270688400F308AC /* Image+Extension.swift in Sources */,
+				A87F795526C2A42500F6B7FF /* RenameDesignViewModel.swift in Sources */,
 				A8D2C47E22523A480085AD24 /* PhotoCollectionViewCell.swift in Sources */,
 				A87F793B26A45BF700F6B7FF /* NSObject+Extension.swift in Sources */,
 				A87F793726A415D100F6B7FF /* PortfolioCellViewModel.swift in Sources */,
@@ -900,6 +907,7 @@
 				A8D2C4722252270C0085AD24 /* BackgroundContainerViewController.swift in Sources */,
 				A86824C62260461500BDCCD8 /* UIView+Extension.swift in Sources */,
 				A87F794626B4F90B00F6B7FF /* DSFileManager.swift in Sources */,
+				A87F795326C2805100F6B7FF /* DesignViewModel.swift in Sources */,
 				A8242DB8227D536B006143CB /* LaunchScreenViewController.swift in Sources */,
 				A8BFF77A2259E1960010E56B /* UIButton+Extenstion.swift in Sources */,
 				A8242DBC227DBC8E006143CB /* FilterType.swift in Sources */,

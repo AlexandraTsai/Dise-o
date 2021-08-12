@@ -41,7 +41,7 @@ class HomeViewController: BaseViewController, UITextFieldDelegate,
     
     let alertLabel = SaveSuccessLabel()
     
-    let renameView = RenameView()
+//    let renameView = RenameView()
     
     var newDesignView = NewDeign()
     
@@ -102,7 +102,7 @@ class HomeViewController: BaseViewController, UITextFieldDelegate,
         
         addDesignButton.alpha = 1
 //        selectionView.alpha = 0
-        renameView.alpha = 0
+//        renameView.alpha = 0
 //        selectionView.isHidden = true
         deleteView.alpha = 0
     }
@@ -110,10 +110,10 @@ class HomeViewController: BaseViewController, UITextFieldDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        renameView.addOn(self.view)
+//        renameView.addOn(self.view)
         self.view.addSubview(newDesignView)
         self.view.addSubview(alertLabel)
-        self.view.addSubview(renameView)
+//        self.view.addSubview(renameView)
         newDesignView.isHidden = true
         alertLabel.alpha = 0
         
@@ -140,9 +140,9 @@ class HomeViewController: BaseViewController, UITextFieldDelegate,
 //        
 //        selectionView.renameButton.addTarget(self, action: #selector(renameBtnTapped(sender:)), for: .touchUpInside)
         
-        renameView.saveButton.addTarget(self, action: #selector(saveNameBtnTapped(sender:)), for: .touchUpInside)
+//        renameView.saveButton.addTarget(self, action: #selector(saveNameBtnTapped(sender:)), for: .touchUpInside)
         
-        renameView.cancelButton.addTarget(self, action: #selector(cancelRename(sender:)), for: .touchUpInside)
+//        renameView.cancelButton.addTarget(self, action: #selector(cancelRename(sender:)), for: .touchUpInside)
         
         deleteView.deleteButton.addTarget(self, action: #selector(deleteBtnTapped(sender:)), for: .touchUpInside)
         
@@ -602,16 +602,16 @@ extension HomeViewController {
         
         let oldName = alDesignArray[index].designName
         
-        renameView.textField.text = oldName
-        
-        UIView.animate(withDuration: 0.5) { [weak self] in
-        
-            self?.renameView.alpha = 1
-            
-            self?.renameView.textField.becomeFirstResponder()
-            
-            self?.renameView.textField.delegate = self
-        }
+//        renameView.textField.text = oldName
+//
+//        UIView.animate(withDuration: 0.5) { [weak self] in
+//
+//            self?.renameView.alpha = 1
+//
+//            self?.renameView.textField.becomeFirstResponder()
+//
+//            self?.renameView.textField.delegate = self
+//        }
       
 //        selectionView.alpha = 0
     }
@@ -622,37 +622,37 @@ extension HomeViewController {
         
         addDesignButton.alpha = 1
         
-        guard let index = selectedCell,
-            let newName = renameView.textField.text else { return }
-        
-        let design = alDesignArray[index]
-        
-        design.designName = newName
-
-        guard let createTime = design.createTime else { return }
-        
-        StorageManager.shared.updateDesign(design: design,
-                                           createTime: createTime,
-                                           completion: { result in
-            
-            switch result {
-                
-            case .success:
-                
-                fetchData()
-                collectionView.reloadData()
-                renameView.alpha = 0
-                
-            case .failure:
-                
-                print("Fail to rename")
-            }
-        })
+//        guard let index = selectedCell,
+//            let newName = renameView.textField.text else { return }
+//
+//        let design = alDesignArray[index]
+//
+//        design.designName = newName
+//
+//        guard let createTime = design.createTime else { return }
+//
+//        StorageManager.shared.updateDesign(design: design,
+//                                           createTime: createTime,
+//                                           completion: { result in
+//
+//            switch result {
+//
+//            case .success:
+//
+//                fetchData()
+//                collectionView.reloadData()
+//                renameView.alpha = 0
+//
+//            case .failure:
+//
+//                print("Fail to rename")
+//            }
+//        })
     }
     
     @objc func cancelRename(sender: UIButton) {
         
-        renameView.alpha = 0
+//        renameView.alpha = 0
         addDesignButton.alpha = 1
         
         self.view.endEditing(true)

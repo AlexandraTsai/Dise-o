@@ -9,8 +9,8 @@
 import UIKit
 import RxSwift
 
-protocol Popup {
-    var doneHandler: (() -> Void)? { get }
+protocol Popup: AnyObject {
+    var doneHandler: (() -> Void)? { get set }
 }
 
 typealias PopupView = Popup & UIView

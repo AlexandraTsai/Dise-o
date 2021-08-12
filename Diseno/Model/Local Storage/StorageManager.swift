@@ -14,143 +14,117 @@ typealias ALDesignResults = (Result<[Design]>) -> Void
 typealias ALDesignResult = (Result<Design>) -> Void
 
 class StorageManager {
-    
     private enum Entity: String, CaseIterable {
-        
         case design = "Design"
-        
         case image = "Image"
-        
         case text = "Text"
-        
         case shape = "Shape"
-        
     }
     
     private struct ALDesign {
-        
         static let createTime = "createTime"
-        
     }
     
     static let shared = StorageManager()
     
     init(container: NSPersistentContainer = StorageManager.persistanceContainer) {
         print("Core data file path: \(NSPersistentContainer.defaultDirectoryURL())")
-        
         persistanceContainer = container
-        
     }
     
-    let persistanceContainer: NSPersistentContainer
+    private let persistanceContainer: NSPersistentContainer
     
     static let persistanceContainer: NSPersistentContainer = {
-        
         let container = NSPersistentContainer(name: "Desiging")
-        
         container.loadPersistentStores(completionHandler: {(_, error) in
-            
-                if let error = error {
-                    fatalError("Unresolved error \(error)")
-                }
+            if let error = error {
+                fatalError("Unresolved error \(error)")
+            }
         })
         return container
     }()
     
     var viewContext: NSManagedObjectContext {
-        
         return persistanceContainer.viewContext
     }
     
     func fetchDesigns(completion: ALDesignResults) {
-        
         let request = NSFetchRequest<Design>(entityName: Entity.design.rawValue)
-        
         request.sortDescriptors = [NSSortDescriptor(key: ALDesign.createTime, ascending: false)]
-        
         do {
-            
             let orders = try viewContext.fetch(request)
-            
             completion(Result.success(orders))
-            
         } catch {
-            
             completion(Result.failure(error))
         }
     }
     
     func saveAll(completion: (Result<Void>) -> Void) {
-        
         do {
             try viewContext.save()
             completion(Result.success(()))
-            
         } catch {
-            
             completion(Result.failure(error))
         }
     }
     
-    func saveDesign (
-        newDesign: ALDesignView,
-        createTime: Int64,
-        completion: (Result<Void>) -> Void) {
-        
+    func saveDesign(newDesign: ALDesignView,
+                    createTime: Int64,
+                    completion: (Result<Void>) -> Void) {
         let design = Design(context: viewContext)
-        
         design.mapping(newDesign)
-
         design.frame = newDesign.frame as NSObject
-        
         design.createTime = createTime
-
         design.designName = newDesign.designName
-        
         design.filter = newDesign.filterName?.rawValue
         
         if let screenshot = newDesign.screenshotName {
-            
             design.screenshot = screenshot
-            
         }
         
         if newDesign.backgroundColor == nil {
-
             design.backgroundColor = nil
-          
         } else {
-            
             guard let color = newDesign.backgroundColor else { return }
-            
             design.backgroundColor = color as NSObject
         }
        
-        if  newDesign.image == nil {
-            
+        if newDesign.image == nil {
             design.backgroundImage = nil
-            
         } else {
-            
             guard let image = newDesign.imageFileName else { return }
-            
             design.backgroundImage = image
-            
         }
         
         do {
-            
             try viewContext.save()
-            
             completion(Result.success(()))
-            
         } catch {
-            
             completion(Result.failure(error))
         }
-        
     }
-    
+
+    func renameDesign(design: Design,
+                      name: String,
+                      createTime: Int64,
+                      completion: (Result<Void>) -> Void) {
+        let request = NSFetchRequest<Design>(entityName: Entity.design.rawValue)
+        request.predicate = NSPredicate(format: "createTime == %lld", createTime)
+        do {
+            guard let design = try viewContext.fetch(request).first else { return }
+            let updateTime = Int64(Date().timeIntervalSince1970)
+            design.setValue(updateTime, forKey: "createTime")
+            design.setValue(design.designName, forKey: "designName")
+
+            try viewContext.save()
+            completion(Result.success(()))
+        }
+        catch {
+            completion(Result.failure(error))
+
+        }
+    }
+
     func updateDesign(
         design: ALDesignView,
         createTime: Int64,

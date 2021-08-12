@@ -10,72 +10,44 @@ import UIKit
 import CoreData
 
 extension Design {
-    
     func transformDesign(for designView: ALDesignView) {
-        
-        guard let frame = self.frame as? CGRect,
-            let designName = self.designName,
-            let screeshot = self.screenshot else { return }
+        guard let frame = frame as? CGRect,
+            let designName = designName,
+            let screeshot = screenshot else { return }
         
         designView.frame = frame
-        
-        designView.createTime = self.createTime
-        
+        designView.createTime = createTime
         designView.designName = designName
-        
         designView.screenshotName = screeshot
         
-        if let filter = self.filter {
-            
+        if let filter = filter {
             for type in FilterType.allCases where type.rawValue == filter {
-                
                 designView.filterName = type
-               
             }
-            
         }
         
-        if self.backgroundColor != nil {
-            
-            guard let color = self.backgroundColor as? UIColor else { return }
-            
+        if let color = backgroundColor as? UIColor {
             designView.backgroundColor = color
-            
         }
         
-        if self.backgroundImage != nil {
-            
-            guard let fileName = self.backgroundImage else { return }
-            
-            let backgroundImage = loadImageFromDiskWith(fileName: fileName)
-            
+        if let bgImageName = backgroundImage {
+            let backgroundImage = loadImageFromDiskWith(fileName: bgImageName)
             designView.image = backgroundImage
-            
-            designView.imageFileName = fileName
-            
+            designView.imageFileName = bgImageName
         }
     }
     
     func loadImageFromDiskWith(fileName: String) -> UIImage? {
-        
         let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
-        
         let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
-        
         let paths = NSSearchPathForDirectoriesInDomains(documentDirectory,
                                                         userDomainMask,
                                                         true)
-        
-        if let dirPath = paths.first {
-            
-            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(fileName)
-            
-            let image = UIImage(contentsOfFile: imageUrl.path)
-            
-            return image
-            
+        guard let dirPath = paths.first else {
+            return nil
         }
-        
-        return nil
+        let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(fileName)
+        let image = UIImage(contentsOfFile: imageUrl.path)
+        return image
     }
 }

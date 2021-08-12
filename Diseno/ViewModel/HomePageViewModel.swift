@@ -16,12 +16,14 @@ protocol HomePageViewModelInput: AnyObject {
     func createNewDesign()
     func showPortfoliAction(for design: Design)
     func didSelect(at indexPath: IndexPath)
+    func updateDesign()
 }
 
 protocol HomePageViewModelOutput: AnyObject {
     var designs: BehaviorRelay<[PortfolioCellViewModel]> { get }
     var showManageView: PublishRelay<ManagePortfolioViewModelPrototype> { get }
     var showNotification: PublishRelay<String> { get }
+    var showRenameInput: PublishRelay<RenameDesignViewModelPrototype> { get }
     var showError: PublishRelay<String> { get }
 }
 
@@ -35,6 +37,7 @@ class HomePageViewModel: HomePageViewModelPrototype {
     let designs = BehaviorRelay<[PortfolioCellViewModel]>(value: [])
     let showManageView = PublishRelay<ManagePortfolioViewModelPrototype>()
     let showNotification = PublishRelay<String>()
+    let showRenameInput = PublishRelay<RenameDesignViewModelPrototype>()
     let showError = PublishRelay<String>()
 
     // MARK: HomePageViewModelInput
@@ -58,6 +61,8 @@ class HomePageViewModel: HomePageViewModelPrototype {
         switch actionType {
         case .open:
             coordinator.goDesignPage(with: onFocueDesign)
+        case .rename:
+            showRenameInput.accept(RenameDesignViewModel(design: onFocueDesign, storeManager: storageManager, parent: self))
         case .download:
             guard let screenshot = onFocueDesign.screenshot,
                     let image = DSFileManager.loadImageFromDiskWith(fileName: screenshot) else {
@@ -69,6 +74,10 @@ class HomePageViewModel: HomePageViewModelPrototype {
         default:
             break
         }
+    }
+
+    func updateDesign() {
+        fetchDesign()
     }
 
     init(coordinator: AppCoordinatorPrototype) {
