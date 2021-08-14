@@ -35,6 +35,29 @@ extension Design {
             designView.image = backgroundImage
             designView.imageFileName = bgImageName
         }
+
+        // Subview: Images, TextView, ShapeView
+        var layer = [LayerProtocol]()
+
+        [images, texts, shapes].forEach {
+            guard let set = $0, let arr = Array(set) as? [LayerProtocol] else { return }
+            layer.append(contentsOf: arr)
+        }
+
+        layer.sort { $0.index < $1.index }
+
+        layer.forEach {
+            switch $0 {
+            case is Image:
+                ($0 as! Image).transformImage(for: designView)
+            case is Text:
+                ($0 as! Text).transformText(for: designView)
+            case is Shape:
+                ($0 as! Shape).transformShape(for: designView)
+            default:
+                break
+            }
+        }
     }
     
     func loadImageFromDiskWith(fileName: String) -> UIImage? {

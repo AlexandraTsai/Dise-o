@@ -33,7 +33,7 @@ class AppCoordinator: AppCoordinatorPrototype {
 
     // MARK: AppCoordinatorProtocol
     func goToHomePage() {
-        homeViewModel = HomePageViewModel(coordinator: self)
+        homeViewModel = HomePageViewModel(coordinator: self, storageManager: storageManager)
         homePageViewController = HomePageViewController(viewModel: homeViewModel!)
         let nav = UINavigationController(rootViewController: homePageViewController!)
         nav.modalPresentationStyle = .fullScreen
@@ -41,6 +41,7 @@ class AppCoordinator: AppCoordinatorPrototype {
         nav.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         nav.navigationBar.shadowImage = UIImage()
         rootViewController?.present(nav, animated: true)
+        navigation = nav
     }
 
     func goDesignPage(with design: Design?) {
@@ -49,18 +50,28 @@ class AppCoordinator: AppCoordinatorPrototype {
             bundle: nil).instantiateViewController(
                 withIdentifier: String(describing: DesignViewController.self)) as? DesignViewController
             else { return }
-
-        designVC.loadViewIfNeeded()
-
-        designVC.designView.designName = homeViewModel?.newDesignName.value ?? ""
+        designVC.viewModel = DesignViewModel(entry: design != nil ?
+                                                .editing(design!) :
+                                                .new,
+                                             coordinator: self)
         homePageViewController?.show(designVC, sender: nil)
     }
 
-    init(window: UIWindow) {
+    init(window: UIWindow, storageManager: StorageManager) {
         self.window = window
+        self.storageManager = storageManager
     }
 
     private var homePageViewController: HomePageViewController?
     private var homeViewModel: HomePageViewModelPrototype?
+    private var navigation: UINavigationController?
+    private let storageManager: StorageManager
     private let window: UIWindow
+}
+
+extension AppCoordinator: DesignCoordinator {
+    func designDone() {
+        homeViewModel?.updateDesign()
+        navigation?.popViewController(animated: true)
+    }
 }

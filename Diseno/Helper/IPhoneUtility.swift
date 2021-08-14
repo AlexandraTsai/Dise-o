@@ -11,7 +11,7 @@ import UIKit
 class IPhoneUtility: NSObject {
     static func isNotchFeaturedIPhone() -> Bool {
         if #available(iOS 11, *) {
-            if UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0 > CGFloat(0) {
+            if UIApplication.shared.appWindow?.safeAreaInsets.bottom ?? 0 > CGFloat(0) {
                 return true
             } else {
                 return false

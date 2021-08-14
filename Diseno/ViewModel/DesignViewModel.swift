@@ -8,10 +8,38 @@
 
 import Foundation
 
-class DesignViewModel {
-    init(design: Design) {
-        self.design = design
+protocol DesignCoordinator: AnyObject {
+    func designDone()
+}
+
+protocol DesignViewModelInput {
+    func finishDesign()
+}
+
+protocol DesignViewModelOutput {
+    var entry: DesignEntry { get }
+}
+
+typealias DesignViewModelProtocol = DesignViewModelInput & DesignViewModelOutput
+
+enum DesignEntry {
+    case new
+    case editing(Design)
+}
+
+class DesignViewModel: DesignViewModelProtocol {
+    // MARK: DesignViewModelOutput
+    let entry: DesignEntry
+
+    // MARK: DesignViewModelInput
+    func finishDesign() {
+        coordinator?.designDone()
     }
 
-    private let design: Design
+    init(entry: DesignEntry, coordinator: DesignCoordinator?) {
+        self.entry = entry
+        self.coordinator = coordinator
+    }
+
+    private weak var coordinator: DesignCoordinator?
 }

@@ -71,6 +71,7 @@
 		A87F795126B6626400F6B7FF /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F795026B6626400F6B7FF /* UIWindow+Extension.swift */; };
 		A87F795326C2805100F6B7FF /* DesignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F795226C2805100F6B7FF /* DesignViewModel.swift */; };
 		A87F795526C2A42500F6B7FF /* RenameDesignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F795426C2A42500F6B7FF /* RenameDesignViewModel.swift */; };
+		A87F795726C78CF000F6B7FF /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F795626C78CF000F6B7FF /* UIApplication+Extension.swift */; };
 		A88E56E5228BFFBC0062760F /* TextTableViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88E56E4228BFFBC0062760F /* TextTableViewTest.swift */; };
 		A88E56E7228C08170062760F /* CalculateMethodTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88E56E6228C08170062760F /* CalculateMethodTest.swift */; };
 		A89D975622979D1E0056285D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A89D975522979D1E0056285D /* GoogleService-Info.plist */; };
@@ -202,6 +203,7 @@
 		A87F795026B6626400F6B7FF /* UIWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
 		A87F795226C2805100F6B7FF /* DesignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignViewModel.swift; sourceTree = "<group>"; };
 		A87F795426C2A42500F6B7FF /* RenameDesignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameDesignViewModel.swift; sourceTree = "<group>"; };
+		A87F795626C78CF000F6B7FF /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		A88E56E4228BFFBC0062760F /* TextTableViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewTest.swift; sourceTree = "<group>"; };
 		A88E56E6228C08170062760F /* CalculateMethodTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateMethodTest.swift; sourceTree = "<group>"; };
 		A89D975522979D1E0056285D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -559,6 +561,7 @@
 				A87F793826A4591A00F6B7FF /* FileManager+Extension.swift */,
 				A87F793A26A45BF700F6B7FF /* NSObject+Extension.swift */,
 				A87F795026B6626400F6B7FF /* UIWindow+Extension.swift */,
+				A87F795626C78CF000F6B7FF /* UIApplication+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -844,6 +847,7 @@
 				A82564C72282AE0B00510EAF /* UIViewController+Extension.swift in Sources */,
 				A82564CD2282C94100510EAF /* ALSegue.swift in Sources */,
 				A816BEB322755860004E3896 /* SizeHelperView.swift in Sources */,
+				A87F795726C78CF000F6B7FF /* UIApplication+Extension.swift in Sources */,
 				A8AD7465226C004E00BDE3A7 /* ALImageView.swift in Sources */,
 				A82B5F332268A2270093671D /* HomeViewController.swift in Sources */,
 				A82B5F352268A4930093671D /* NewDeign.swift in Sources */,

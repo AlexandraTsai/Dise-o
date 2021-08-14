@@ -116,8 +116,7 @@ extension DesignViewController {
                     }
             })
         }
-        
-        self.navigationController?.popViewController(animated: true)
+        viewModel?.finishDesign()
     }
     // swiftlint:enable cyclomatic_complexity
     

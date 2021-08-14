@@ -48,6 +48,8 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
         }
     }
     @IBOutlet weak var textView: ALTextView!
+
+    var viewModel: DesignViewModel?
         
     var addingNewImage = false
     var showFilter = true
@@ -94,7 +96,8 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
         saveSuccessLabel.alpha = 0
         openLibraryAlert.alpha = 0
         openCameraAlert.alpha = 0
-        
+
+        bindViewModel()
     }
     
     override func fusumaClosed() {
@@ -320,4 +323,19 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
         }
     }
 
+}
+
+private extension DesignViewController {
+    func bindViewModel() {
+        guard let viewModel = viewModel else { return }
+        switch viewModel.entry {
+        case .new:
+            break
+        case let .editing(design):
+            design.transformDesign(for: designView)
+            designView.subviews.forEach {
+                addAllGesture(to: $0)
+            }
+        }
+    }
 }

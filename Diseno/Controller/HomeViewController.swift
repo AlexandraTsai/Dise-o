@@ -598,9 +598,9 @@ extension HomeViewController {
    
     @objc func renameBtnTapped(sender: UIButton) {
         
-        guard let index = selectedCell else { return }
+//        guard let index = selectedCell else { return }
         
-        let oldName = alDesignArray[index].designName
+//        let oldName = alDesignArray[index].designName
         
 //        renameView.textField.text = oldName
 //

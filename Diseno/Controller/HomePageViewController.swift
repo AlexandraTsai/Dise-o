@@ -174,6 +174,15 @@ private extension HomePageViewController {
                 banner.applyStyling(alignment: .center)
                 banner.show()
             }).disposed(by: disposeBag)
+
+        viewModel.imageToShare
+            .subscribe(onNext: { [weak self] image in
+                guard let self = self else { return }
+                let activityController = UIActivityViewController(activityItems: [image],
+                                                                  applicationActivities: nil)
+                activityController.popoverPresentationController?.sourceView = self.view
+                self.present(activityController, animated: true)
+            }).disposed(by: disposeBag)
     }
 
     func bindCollectionView() {

@@ -25,6 +25,7 @@ protocol HomePageViewModelOutput: AnyObject {
     var showNotification: PublishRelay<String> { get }
     var showRenameInput: PublishRelay<RenameDesignViewModelPrototype> { get }
     var showError: PublishRelay<String> { get }
+    var imageToShare: PublishRelay<UIImage> { get }
 }
 
 typealias HomePageViewModelPrototype =
@@ -39,6 +40,7 @@ class HomePageViewModel: HomePageViewModelPrototype {
     let showNotification = PublishRelay<String>()
     let showRenameInput = PublishRelay<RenameDesignViewModelPrototype>()
     let showError = PublishRelay<String>()
+    let imageToShare = PublishRelay<UIImage>()
 
     // MARK: HomePageViewModelInput
     let newDesignName = BehaviorRelay<String?>(value: nil)
@@ -61,8 +63,6 @@ class HomePageViewModel: HomePageViewModelPrototype {
         switch actionType {
         case .open:
             coordinator.goDesignPage(with: onFocueDesign)
-        case .rename:
-            showRenameInput.accept(RenameDesignViewModel(design: onFocueDesign, storeManager: storageManager, parent: self))
         case .download:
             guard let screenshot = onFocueDesign.screenshot,
                     let image = DSFileManager.loadImageFromDiskWith(fileName: screenshot) else {
@@ -71,8 +71,23 @@ class HomePageViewModel: HomePageViewModelPrototype {
             DispatchQueue.main.async {
                 self.imageSaver?.writeToPhotoAlbum(image: image)
             }
-        default:
-            break
+        case .share:
+            guard let screenshot = onFocueDesign.screenshot,
+                  let image = DSFileManager.loadImageFromDiskWith(fileName: screenshot) else { return }
+            imageToShare.accept(image)
+        case .rename:
+            showRenameInput.accept(RenameDesignViewModel(design: onFocueDesign,
+                                                         storeManager: storageManager,
+                                                         parent: self))
+        case .delete:
+            storageManager.deleteDesign(onFocueDesign, completion: { result in
+                switch result {
+                case .success:
+                    fetchDesign()
+                case .failure:
+                    print("Fail to delete.")
+                }
+            })
         }
     }
 
@@ -80,8 +95,9 @@ class HomePageViewModel: HomePageViewModelPrototype {
         fetchDesign()
     }
 
-    init(coordinator: AppCoordinatorPrototype) {
+    init(coordinator: AppCoordinatorPrototype, storageManager: StorageManager) {
         self.coordinator = coordinator
+        self.storageManager = storageManager
         imageSaver = ImageSaver(
             successHandler: {
                 self.showNotification.accept("Saved to camera roll")
@@ -94,7 +110,7 @@ class HomePageViewModel: HomePageViewModelPrototype {
 
     private var onFocueDesign: Design?
     private var imageSaver: ImageSaver?
-    private let storageManager = StorageManager.shared
+    private let storageManager: StorageManager
     private let coordinator: AppCoordinatorPrototype
 }
 
