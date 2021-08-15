@@ -19,7 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setWindow()
-        appCoordinator = AppCoordinator(window: window!, storageManager: StorageManager.shared)
+        appCoordinator = AppCoordinator(window: window!,
+                                        storageManager: StorageManager.shared,
+                                        fileManager: DSFileManager.shared)
         appCoordinator?.start()
         
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

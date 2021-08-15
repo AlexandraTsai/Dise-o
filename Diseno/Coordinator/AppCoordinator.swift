@@ -33,7 +33,9 @@ class AppCoordinator: AppCoordinatorPrototype {
 
     // MARK: AppCoordinatorProtocol
     func goToHomePage() {
-        homeViewModel = HomePageViewModel(coordinator: self, storageManager: storageManager)
+        homeViewModel = HomePageViewModel(coordinator: self,
+                                          storageManager: storageManager,
+                                          fileManager: fileManager)
         homePageViewController = HomePageViewController(viewModel: homeViewModel!)
         let nav = UINavigationController(rootViewController: homePageViewController!)
         nav.modalPresentationStyle = .fullScreen
@@ -53,19 +55,25 @@ class AppCoordinator: AppCoordinatorPrototype {
         designVC.viewModel = DesignViewModel(entry: design != nil ?
                                                 .editing(design!) :
                                                 .new,
+                                             fileManager: fileManager,
+                                             storageManager: storageManager,
                                              coordinator: self)
         homePageViewController?.show(designVC, sender: nil)
     }
 
-    init(window: UIWindow, storageManager: StorageManager) {
+    init(window: UIWindow,
+         storageManager: StorageManager,
+         fileManager: DSFileManager) {
         self.window = window
         self.storageManager = storageManager
+        self.fileManager = fileManager
     }
 
     private var homePageViewController: HomePageViewController?
     private var homeViewModel: HomePageViewModelPrototype?
     private var navigation: UINavigationController?
     private let storageManager: StorageManager
+    private let fileManager: DSFileManager
     private let window: UIWindow
 }
 

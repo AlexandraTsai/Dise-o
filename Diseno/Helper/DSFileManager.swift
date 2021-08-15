@@ -8,9 +8,10 @@
 
 import UIKit
 
-
 class DSFileManager {
-    static func loadImageFromDiskWith(fileName: String) -> UIImage? {
+    static let shared = DSFileManager()
+
+    func loadImageFromDiskWith(fileName: String) -> UIImage? {
         let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
         let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
         let paths = NSSearchPathForDirectoriesInDomains(documentDirectory,
@@ -22,5 +23,29 @@ class DSFileManager {
             return image
         }
         return nil
+    }
+
+    func saveImage(fileName: String, image: UIImage) {
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory,
+                                                                in: .userDomainMask).first else {
+            return
+        }
+        let fileURL = documentsDirectory.appendingPathComponent(fileName)
+        guard let data = image.jpegData(compressionQuality: 1) else { return }
+
+        if FileManager.default.fileExists(atPath: fileURL.path) {
+            do {
+                try FileManager.default.removeItem(atPath: fileURL.path)
+                print("Removed old image")
+            } catch let removeError {
+                print("Couldn't remove file at path", removeError)
+            }
+        }
+
+        do {
+            try data.write(to: fileURL)
+        } catch let error {
+            print("error saving file with error", error)
+        }
     }
 }

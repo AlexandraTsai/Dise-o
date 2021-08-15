@@ -65,7 +65,7 @@ class HomePageViewModel: HomePageViewModelPrototype {
             coordinator.goDesignPage(with: onFocueDesign)
         case .download:
             guard let screenshot = onFocueDesign.screenshot,
-                    let image = DSFileManager.loadImageFromDiskWith(fileName: screenshot) else {
+                    let image = fileManager.loadImageFromDiskWith(fileName: screenshot) else {
                 return
             }
             DispatchQueue.main.async {
@@ -73,7 +73,7 @@ class HomePageViewModel: HomePageViewModelPrototype {
             }
         case .share:
             guard let screenshot = onFocueDesign.screenshot,
-                  let image = DSFileManager.loadImageFromDiskWith(fileName: screenshot) else { return }
+                  let image = fileManager.loadImageFromDiskWith(fileName: screenshot) else { return }
             imageToShare.accept(image)
         case .rename:
             showRenameInput.accept(RenameDesignViewModel(design: onFocueDesign,
@@ -95,9 +95,13 @@ class HomePageViewModel: HomePageViewModelPrototype {
         fetchDesign()
     }
 
-    init(coordinator: AppCoordinatorPrototype, storageManager: StorageManager) {
+    init(coordinator: AppCoordinatorPrototype,
+         storageManager: StorageManager,
+         fileManager: DSFileManager) {
         self.coordinator = coordinator
         self.storageManager = storageManager
+        self.fileManager = fileManager
+
         imageSaver = ImageSaver(
             successHandler: {
                 self.showNotification.accept("Saved to camera roll")
@@ -111,6 +115,7 @@ class HomePageViewModel: HomePageViewModelPrototype {
     private var onFocueDesign: Design?
     private var imageSaver: ImageSaver?
     private let storageManager: StorageManager
+    private let fileManager: DSFileManager
     private let coordinator: AppCoordinatorPrototype
 }
 

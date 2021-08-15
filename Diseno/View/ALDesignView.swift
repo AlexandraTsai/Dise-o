@@ -30,4 +30,34 @@ class ALDesignView: UIImageView {
         }
         return UIImage()
     }
+
+    func mapping(_ design: Design) {
+        design.frame = frame as NSObject
+        design.designName = designName
+        design.filter = filterName?.rawValue
+
+        if let screenshot = screenshotName {
+            design.screenshot = screenshot
+        }
+        design.backgroundColor = backgroundColor
+        design.backgroundImage = imageFileName
+
+        design.images = NSSet(array:
+            subImages.map {
+                $0.mapping(Image(context: StorageManager.shared.viewContext))
+            }
+        )
+
+        design.texts = NSSet(array:
+            subTexts.map {
+                $0.mapping(Text(context: StorageManager.shared.viewContext))
+            }
+        )
+
+        design.shapes = NSSet(array:
+            subShapes.map {
+                $0.mapping(Shape(context: StorageManager.shared.viewContext))
+            }
+        )
+    }
 }

@@ -10,9 +10,7 @@ import UIKit
 import Photos
 
 extension DesignViewController {
-    
     func setupNavigationBar() {
-        
         //Right Buttons
         let button1 = UIBarButtonItem(
             image: UIImage(named: ImageAsset.Icon_Share.rawValue),
@@ -35,88 +33,14 @@ extension DesignViewController {
             target: self,
             action: #selector(tapHomeBtn(sender:)))
         self.navigationItem.leftBarButtonItem  = leftButton
-        
     }
     
     // swiftlint:disable cyclomatic_complexity
     @objc func tapHomeBtn(sender: AnyObject) {
-        
-        let date = String(Date().timeIntervalSince1970)
-        
-        let fileName = "Screenshot_\(date)"
-        
-        let screenshot = designView.takeScreenshot()
-        
-        designView.screenshotName = fileName
-        
-        saveImage(fileName: fileName, image: screenshot)
-        
         if designView.subviews.count > 0 {
-            
             prepareForSaving()
         }
-        
-        if designView.createTime == nil {
-            
-            designView.createTime = Int64(Date().timeIntervalSince1970)
-            
-            guard let createTime = designView.createTime else { return }
-            
-            StorageManager.shared.saveDesign(
-                newDesign: designView,
-                createTime: createTime,
-                completion: { result in
-                    
-                    switch result {
-                    case .success:
-                        
-                        print("Save success.")
-                        
-                    case .failure:
-                        
-                        print("Fail to save")
-                    }
-            })
-            
-        } else {
-            
-            guard let createTime = designView.createTime else { return }
-            
-            if designView.image == nil {
-                
-                designView.imageFileName = nil
-            }
-            
-            StorageManager.shared.updateDesign(
-                design: designView,
-                createTime: createTime,
-                completion: { result in
-                    
-                    switch result {
-                        
-                    case .success:
-                        
-                        StorageManager.shared.deleteSubElement(completion: { result in
-                            
-                            switch result {
-                                
-                            case .success:
-                                
-                                print("Success to delete unused data")
-                                
-                            case .failure:
-                                
-                                print("Fail to delete unused data")
-                            }
-                        })
-                        
-                    case .failure:
-                        
-                        print("Fail to save")
-                    }
-            })
-        }
-        viewModel?.finishDesign()
+        viewModel?.saveDesign(designView)
     }
     // swiftlint:enable cyclomatic_complexity
     

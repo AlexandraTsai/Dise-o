@@ -72,29 +72,8 @@ class StorageManager {
                     createTime: Int64,
                     completion: (Result<Void>) -> Void) {
         let design = Design(context: viewContext)
-        design.mapping(newDesign)
-        design.frame = newDesign.frame as NSObject
         design.createTime = createTime
-        design.designName = newDesign.designName
-        design.filter = newDesign.filterName?.rawValue
-        
-        if let screenshot = newDesign.screenshotName {
-            design.screenshot = screenshot
-        }
-        
-        if newDesign.backgroundColor == nil {
-            design.backgroundColor = nil
-        } else {
-            guard let color = newDesign.backgroundColor else { return }
-            design.backgroundColor = color as NSObject
-        }
-       
-        if newDesign.image == nil {
-            design.backgroundImage = nil
-        } else {
-            guard let image = newDesign.imageFileName else { return }
-            design.backgroundImage = image
-        }
+        newDesign.mapping(design)
         
         do {
             try viewContext.save()

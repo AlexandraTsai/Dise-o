@@ -9,21 +9,17 @@
 import UIKit
 
 class ALShapeView: UIView {
-    
     var index: Int?
-
     var path = UIBezierPath()
     var shapeType: String = ""
-    
+
     var hue: CGFloat = 0.0
     var shapeColor: UIColor = UIColor.init(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
     var stroke: Bool = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        self.backgroundColor = UIColor.clear
-
+        backgroundColor = UIColor.clear
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,51 +28,32 @@ class ALShapeView: UIView {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        
-        let originTransform = self.transform
-        
-        self.transform = CGAffineTransform(rotationAngle: 0)
-        
+        let originTransform = transform
+        transform = CGAffineTransform(rotationAngle: 0)
         drawWithShapeType()
-        
         if stroke == true {
-
             shapeColor.setStroke()
             path.stroke()
-
         } else {
-
             shapeColor.setFill()
             path.fill()
         }
-        
-        self.transform = originTransform
-    
+        transform = originTransform
     }
     
     func drawWithShapeType() {
-        switch shapeType {
-        case ShapeAsset.circle.rawValue:
-            self.createCircle()
-        case ShapeAsset.circleBorder.rawValue:
-            self.createThinCircleBorder()
-        case ShapeAsset.square.rawValue:
-            self.createSquare()
-        case ShapeAsset.rectangle.rawValue:
-            self.createRectangle()
-        case ShapeAsset.equilateralTriangle.rawValue:
-            self.createEquilateralTriangle()
-        case ShapeAsset.triangle.rawValue:
-            self.createTriangle()
-        case ShapeAsset.thinLine.rawValue:
-            self.createThinLine()
-        case ShapeAsset.thickLine.rawValue:
-            self.createThickLine()
-        case ShapeAsset.thickCircleBorder.rawValue:
-            self.createThickCircleBorder()
-    
-        default:
-            break
+        let type = ShapeAsset(rawValue: shapeType)
+        switch type {
+        case .circle:             createCircle()
+        case .circleBorder:       createThinCircleBorder()
+        case .square:             createSquare()
+        case .rectangle:          createRectangle()
+        case .equilateralTriangle:createEquilateralTriangle()
+        case .triangle:           createTriangle()
+        case .thinLine:           createThinLine()
+        case .thickLine:          createThickLine()
+        case .thickCircleBorder:  createThickCircleBorder()
+        default: break
         }
     }
     
@@ -85,9 +62,9 @@ class ALShapeView: UIView {
         // Specify the point that the path should start get drawn.
         path.move(to: CGPoint(x: 0.0, y: 0.0))
         
-        path.addLine(to: CGPoint(x: 0.0, y: self.frame.size.height))
-        path.addLine(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height))
-        path.addLine(to: CGPoint(x: self.frame.size.width, y: 0.0))
+        path.addLine(to: CGPoint(x: 0.0, y: frame.size.height))
+        path.addLine(to: CGPoint(x: frame.size.width, y: frame.size.height))
+        path.addLine(to: CGPoint(x: frame.size.width, y: 0.0))
         path.close()
     }
     
@@ -96,9 +73,9 @@ class ALShapeView: UIView {
         // Specify the point that the path should start get drawn.
         path.move(to: CGPoint(x: 0.0, y: 20))
         
-        path.addLine(to: CGPoint(x: self.frame.size.width, y: 20))
-        path.addLine(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height-20))
-        path.addLine(to: CGPoint(x: 0.0, y: self.frame.size.height-20))
+        path.addLine(to: CGPoint(x: frame.size.width, y: 20))
+        path.addLine(to: CGPoint(x: frame.size.width, y: frame.size.height-20))
+        path.addLine(to: CGPoint(x: 0.0, y: frame.size.height-20))
         path.close()
     }
     
@@ -106,32 +83,32 @@ class ALShapeView: UIView {
        
 //       let fillLayer = CAShapeLayer()
     
-       self.path = UIBezierPath(ovalIn: CGRect(x: 0,
+       path = UIBezierPath(ovalIn: CGRect(x: 0,
                                                y: 0,
-                                               width: self.frame.size.height,
-                                               height: self.frame.size.height))
+                                               width: frame.size.height,
+                                               height: frame.size.height))
         
-//        fillLayer.path = self.path.cgPath
+//        fillLayer.path = path.cgPath
 //        fillLayer.fillColor = UIColor.red.cgColor
-//        self.layer.addSublayer(fillLayer)
+//        layer.addSublayer(fillLayer)
     }
     
     func createThinCircleBorder() {
     
-        self.path = UIBezierPath(ovalIn: CGRect(x: 10,
+        path = UIBezierPath(ovalIn: CGRect(x: 10,
                                                 y: 10,
-                                                width: self.frame.size.height-20,
-                                                height: self.frame.size.height-20))
+                                                width: frame.size.height-20,
+                                                height: frame.size.height-20))
         
          path.lineWidth = 3
     }
     
     func createThickCircleBorder() {
         
-        self.path = UIBezierPath(ovalIn: CGRect(x: 19.5,
+        path = UIBezierPath(ovalIn: CGRect(x: 19.5,
                                                 y: 19.5,
-                                                width: self.frame.size.height-39,
-                                                height: self.frame.size.height-39))
+                                                width: frame.size.height-39,
+                                                height: frame.size.height-39))
         
         path.lineWidth = 39
     }
@@ -139,35 +116,35 @@ class ALShapeView: UIView {
     //正三角形
     func createEquilateralTriangle() {
 
-        path.move(to: CGPoint(x: self.frame.width/2, y: 0.0))
-        path.addLine(to: CGPoint(x: 0.0, y: self.frame.size.height))
-        path.addLine(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height))
+        path.move(to: CGPoint(x: frame.width/2, y: 0.0))
+        path.addLine(to: CGPoint(x: 0.0, y: frame.size.height))
+        path.addLine(to: CGPoint(x: frame.size.width, y: frame.size.height))
         path.close()
     }
     
     func createTriangle() {
 
-        path.move(to: CGPoint(x: self.frame.width, y: 0.0))
-        path.addLine(to: CGPoint(x: 0.0, y: self.frame.size.height))
-        path.addLine(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height))
+        path.move(to: CGPoint(x: frame.width, y: 0.0))
+        path.addLine(to: CGPoint(x: 0.0, y: frame.size.height))
+        path.addLine(to: CGPoint(x: frame.size.width, y: frame.size.height))
         path.close()
     }
     
     func createThinLine() {
         
-        path.move(to: CGPoint(x: 0.0, y: self.frame.height/2-1))
-        path.addLine(to: CGPoint(x: self.frame.width, y: self.frame.size.height/2-1))
-        path.addLine(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height/2+1))
-        path.addLine(to: CGPoint(x: 0.0, y: self.frame.size.height/2+1))
+        path.move(to: CGPoint(x: 0.0, y: frame.height/2-1))
+        path.addLine(to: CGPoint(x: frame.width, y: frame.size.height/2-1))
+        path.addLine(to: CGPoint(x: frame.size.width, y: frame.size.height/2+1))
+        path.addLine(to: CGPoint(x: 0.0, y: frame.size.height/2+1))
         path.close()
     }
     
     func createThickLine() {
         
-        path.move(to: CGPoint(x: 0.0, y: self.frame.height/2-3))
-        path.addLine(to: CGPoint(x: self.frame.width, y: self.frame.size.height/2-3))
-        path.addLine(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height/2+3))
-        path.addLine(to: CGPoint(x: 0.0, y: self.frame.size.height/2+3))
+        path.move(to: CGPoint(x: 0.0, y: frame.height/2-3))
+        path.addLine(to: CGPoint(x: frame.width, y: frame.size.height/2-3))
+        path.addLine(to: CGPoint(x: frame.size.width, y: frame.size.height/2+3))
+        path.addLine(to: CGPoint(x: 0.0, y: frame.size.height/2+3))
         path.close()
     }
     
@@ -176,25 +153,25 @@ class ALShapeView: UIView {
         
         let newShape = ALShapeView()
         
-        let originTransform = self.transform
+        let originTransform = transform
         
-        self.transform = CGAffineTransform(rotationAngle: 0)
+        transform = CGAffineTransform(rotationAngle: 0)
         
-        newShape.frame = self.frame
+        newShape.frame = frame
         
-        newShape.bounds = self.bounds
+        newShape.bounds = bounds
         
-        newShape.shapeType = self.shapeType
+        newShape.shapeType = shapeType
         
-        newShape.alpha  = self.alpha
+        newShape.alpha  = alpha
         
-        if self.path.lineWidth > 1.0 {
+        if path.lineWidth > 1.0 {
           
-            newShape.path.cgPath = self.path.cgPath.copy(strokingWithWidth: self.path.lineWidth,
-                                                        lineCap: self.path.lineCapStyle,
-                                                        lineJoin: self.path.lineJoinStyle,
-                                                        miterLimit: self.path.miterLimit,
-                                                        transform: self.transform)
+            newShape.path.cgPath = path.cgPath.copy(strokingWithWidth: path.lineWidth,
+                                                        lineCap: path.lineCapStyle,
+                                                        lineJoin: path.lineJoinStyle,
+                                                        miterLimit: path.miterLimit,
+                                                        transform: transform)
             
         } else {
  
@@ -202,13 +179,13 @@ class ALShapeView: UIView {
 
         }
         
-        let color = UIColor(cgColor: self.shapeColor.cgColor)
+        let color = UIColor(cgColor: shapeColor.cgColor)
         
         newShape.shapeColor = color
         
         newShape.transform = originTransform
         
-        self.transform = originTransform
+        transform = originTransform
 
         return newShape
         
@@ -216,19 +193,29 @@ class ALShapeView: UIView {
     
     func redrawWith(_ newColor: UIColor) {
         
-        self.path = UIBezierPath()
+        path = UIBezierPath()
         
-        self.shapeColor = newColor
+        shapeColor = newColor
         
-//        let originTransform = self.transform
+//        let originTransform = transform
 //
-//        self.transform = CGAffineTransform(rotationAngle: 0)
+//        transform = CGAffineTransform(rotationAngle: 0)
        
-//        self.drawWithShapeType()
+//        drawWithShapeType()
 
-        self.setNeedsDisplay()
+        setNeedsDisplay()
         
-//        self.transform = originTransform
+//        transform = originTransform
         
+    }
+
+    func mapping(_ shapeObject: Shape) {
+        shapeObject.shapView = self
+        shapeObject.shapeType = shapeType
+        shapeObject.shapeColor = shapeColor
+        shapeObject.stroke = stroke
+        if let index = index {
+            shapeObject.index = Int16(index)
+        }
     }
 }

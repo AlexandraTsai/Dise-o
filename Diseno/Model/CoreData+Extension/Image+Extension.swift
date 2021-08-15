@@ -80,32 +80,20 @@ extension Image {
 }
 
 extension Image: LayerProtocol {
-    
     func mapping(_ object: ALImageView) {
-        
         if object.image != nil {
-            
             guard let imageToSave = object.imageFileName else { return }
-            
             image = imageToSave
         }
-        
+
         if object.filterName != nil {
-            
             filter = object.filterName?.rawValue
         }
-        
         alpha = object.alpha as NSObject
-        
         transform = object.transform as NSObject
-        
         object.transform = CGAffineTransform(rotationAngle: 0)
-        
         frame = object.frame as NSObject
-        
         guard let objectIndex = object.index else { return }
-        
         index = Int16(objectIndex)
     }
-    
 }
