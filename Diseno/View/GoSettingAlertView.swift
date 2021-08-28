@@ -97,7 +97,7 @@ class GoSettingAlertView: UIView {
         settingButton.layer.cornerRadius = 13
         cancelButton.layer.cornerRadius = 13
         
-        settingButton.backgroundColor = UIColor.DSColor.yellow
+        settingButton.backgroundColor = UIColor.Primary.highLight
         cancelButton.backgroundColor = UIColor.gray
         
     }

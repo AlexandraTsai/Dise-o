@@ -72,6 +72,9 @@
 		A87F795326C2805100F6B7FF /* DesignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F795226C2805100F6B7FF /* DesignViewModel.swift */; };
 		A87F795526C2A42500F6B7FF /* RenameDesignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F795426C2A42500F6B7FF /* RenameDesignViewModel.swift */; };
 		A87F795726C78CF000F6B7FF /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F795626C78CF000F6B7FF /* UIApplication+Extension.swift */; };
+		A87F795E26DA314400F6B7FF /* DesignBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F795D26DA314400F6B7FF /* DesignBoardViewController.swift */; };
+		A87F796026DA42D900F6B7FF /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F795F26DA42D900F6B7FF /* Constant.swift */; };
+		A87F796226DA57F100F6B7FF /* DesignBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F796126DA57F100F6B7FF /* DesignBoardViewModel.swift */; };
 		A88E56E5228BFFBC0062760F /* TextTableViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88E56E4228BFFBC0062760F /* TextTableViewTest.swift */; };
 		A88E56E7228C08170062760F /* CalculateMethodTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88E56E6228C08170062760F /* CalculateMethodTest.swift */; };
 		A89D975622979D1E0056285D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A89D975522979D1E0056285D /* GoogleService-Info.plist */; };
@@ -204,6 +207,9 @@
 		A87F795226C2805100F6B7FF /* DesignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignViewModel.swift; sourceTree = "<group>"; };
 		A87F795426C2A42500F6B7FF /* RenameDesignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameDesignViewModel.swift; sourceTree = "<group>"; };
 		A87F795626C78CF000F6B7FF /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		A87F795D26DA314400F6B7FF /* DesignBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignBoardViewController.swift; sourceTree = "<group>"; };
+		A87F795F26DA42D900F6B7FF /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		A87F796126DA57F100F6B7FF /* DesignBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignBoardViewModel.swift; sourceTree = "<group>"; };
 		A88E56E4228BFFBC0062760F /* TextTableViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewTest.swift; sourceTree = "<group>"; };
 		A88E56E6228C08170062760F /* CalculateMethodTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateMethodTest.swift; sourceTree = "<group>"; };
 		A89D975522979D1E0056285D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -351,6 +357,7 @@
 				A87F794526B4F90B00F6B7FF /* DSFileManager.swift */,
 				A87F794726B4FB3A00F6B7FF /* ImageSaver.swift */,
 				A87F794E26B6567600F6B7FF /* IPhoneUtility.swift */,
+				A87F795F26DA42D900F6B7FF /* Constant.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -371,6 +378,7 @@
 				A87F794326B0524200F6B7FF /* ManagePortfolioViewModel.swift */,
 				A87F795226C2805100F6B7FF /* DesignViewModel.swift */,
 				A87F795426C2A42500F6B7FF /* RenameDesignViewModel.swift */,
+				A87F796126DA57F100F6B7FF /* DesignBoardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -517,6 +525,7 @@
 				A8E3063B2262FE0000DA03A7 /* ShapeContainerViewController.swift */,
 				A8242DB7227D536B006143CB /* LaunchScreenViewController.swift */,
 				A87F792A26A2B6CB00F6B7FF /* HomePageViewController.swift */,
+				A87F795D26DA314400F6B7FF /* DesignBoardViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -861,6 +870,7 @@
 				A8DEBB9822543DBF0081A694 /* border.swift in Sources */,
 				A865976C2269CB43000789A2 /* StorageManager.swift in Sources */,
 				A87F794B26B535FE00F6B7FF /* DSError.swift in Sources */,
+				A87F795E26DA314400F6B7FF /* DesignBoardViewController.swift in Sources */,
 				A87F792B26A2B6CB00F6B7FF /* HomePageViewController.swift in Sources */,
 				A82564C92282B90700510EAF /* Direction.swift in Sources */,
 				A8DEBBA82255A5A90081A694 /* UITextView+Extension.swift in Sources */,
@@ -868,6 +878,7 @@
 				A8BFF77322588EA90010E56B /* SpacingTableViewCell.swift in Sources */,
 				A84880D52270688400F308AC /* Image+Extension.swift in Sources */,
 				A87F795526C2A42500F6B7FF /* RenameDesignViewModel.swift in Sources */,
+				A87F796226DA57F100F6B7FF /* DesignBoardViewModel.swift in Sources */,
 				A8D2C47E22523A480085AD24 /* PhotoCollectionViewCell.swift in Sources */,
 				A87F793B26A45BF700F6B7FF /* NSObject+Extension.swift in Sources */,
 				A87F793726A415D100F6B7FF /* PortfolioCellViewModel.swift in Sources */,
@@ -898,6 +909,7 @@
 				A87F794F26B6567600F6B7FF /* IPhoneUtility.swift in Sources */,
 				A84880D32270687500F308AC /* Text+Extension.swift in Sources */,
 				A87F795126B6626400F6B7FF /* UIWindow+Extension.swift in Sources */,
+				A87F796026DA42D900F6B7FF /* Constant.swift in Sources */,
 				A8D2C452225219020085AD24 /* DesignViewController.swift in Sources */,
 				A84BBE7622893C2B0083F53B /* EditingVC+TextView.swift in Sources */,
 				A85B04052279C0F000853841 /* CornerHelperView.swift in Sources */,

@@ -42,7 +42,7 @@ class DesignViewController: BaseViewController, UITextViewDelegate {
             addButton.layer.cornerRadius = addButton.frame.width/2
             addButton.clipsToBounds = true
             addButton.setImage(ImageAsset.Icon_add_button.imageTemplate, for: .normal)
-            addButton.tintColor = UIColor.DSColor.yellow
+            addButton.tintColor = UIColor.Primary.highLight
             addButton.backgroundColor = UIColor.white
             
         }

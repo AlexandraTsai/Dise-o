@@ -159,7 +159,7 @@ extension NotificationBanner {
 
         var color: UIColor {
             switch self {
-            case .success: return UIColor.DSColor.yellow
+            case .success: return UIColor.Primary.highLight
             case .fail:    return UIColor.DSColor.error
             }
         }

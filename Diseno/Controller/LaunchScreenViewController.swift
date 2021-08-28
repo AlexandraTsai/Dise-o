@@ -22,7 +22,7 @@ class LaunchScreenViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         drawSquare(with: .init(x: width / 2 - 10, y: height / 2 - 10),
-                   strokeColor: .DSColor.yellow)
+                   strokeColor: UIColor.Primary.highLight)
         drawSquare(with: .init(x: width / 2, y: height / 2 - 20),
                    strokeColor: .DSColor.logoC2)
         drawSquare(with: .init(x: width / 2 + 10, y: height / 2 - 30),

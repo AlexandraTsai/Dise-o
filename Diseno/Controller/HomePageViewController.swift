@@ -44,7 +44,11 @@ class HomePageViewController: UIViewController {
         $0.contentInset = .init(top: 20, left: 20, bottom: 0, right: 20)
 
     }
-    private let addDesignButton = UIButton()
+    private let addDesignButton = UIButton() --> {
+        $0.backgroundColor = UIColor.Primary.background
+        $0.setImage(#imageLiteral(resourceName: "Icon_add_button").tinted(color: UIColor.Primary.highLight), for: .normal)
+        $0.clipsToBounds = true
+    }
     private let hintButton = UIButton() --> {
         $0.setTitle("TAP + \nTo CREATE YOUR FIRST DESIGN", for: .normal)
         $0.titleLabel?.font = UIFont.fontMedium(ofSize: 17)
@@ -69,6 +73,7 @@ private extension HomePageViewController {
     }
     
     func setupUI() {
+        view.backgroundColor = UIColor.Primary.background
         [collectionView, addDesignButton, hintButton].forEach { view.addSubview($0) }
         collectionView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(15)
@@ -86,8 +91,7 @@ private extension HomePageViewController {
         }
         view.backgroundColor = .white
         collectionView.backgroundColor = .white
-        addDesignButton.setImage(#imageLiteral(resourceName: "Icon_add_button"), for: .normal)
-        
+
         Observable.of(addDesignButton.rx.tap, hintButton.rx.tap)
             .merge()
             .bind { [weak self] _ in

@@ -182,12 +182,12 @@ class TextContainerViewController: UIViewController,
         var font: UIFont?
         
         switch boldButton.currentTitleColor {
-        case UIColor.DSColor.yellow:
+        case UIColor.Primary.highLight:
             
             boldButton.setTitleColor(UIColor.white, for: .normal)
             
             switch italicButton.currentTitleColor {
-            case UIColor.DSColor.yellow:
+            case UIColor.Primary.highLight:
                 
                 font = UIFont(name: currentFontName.italicStyle(), size: size)
                 
@@ -200,7 +200,7 @@ class TextContainerViewController: UIViewController,
         default:
             
             switch italicButton.currentTitleColor {
-            case UIColor.DSColor.yellow:
+            case UIColor.Primary.highLight:
                 
                 font = UIFont(name: currentFontName.boldItalicStyle(), size: size)
                
@@ -210,7 +210,7 @@ class TextContainerViewController: UIViewController,
                
             }
 
-            boldButton.setTitleColor(UIColor.DSColor.yellow, for: .normal)
+            boldButton.setTitleColor(UIColor.Primary.highLight, for: .normal)
         }
         
         if let font = font {
@@ -229,13 +229,13 @@ class TextContainerViewController: UIViewController,
         
         switch italicButton.currentTitleColor {
             
-        case UIColor.DSColor.yellow:
+        case UIColor.Primary.highLight:
             
             italicButton.setTitleColor(UIColor.white, for: .normal)
             
             switch boldButton.currentTitleColor {
                 
-            case UIColor.DSColor.yellow:
+            case UIColor.Primary.highLight:
                 
                 font = UIFont(name: currentFontName.boldStyle(), size: size)
                 
@@ -247,11 +247,11 @@ class TextContainerViewController: UIViewController,
             
         default:
             
-            italicButton.setTitleColor(UIColor.DSColor.yellow, for: .normal)
+            italicButton.setTitleColor(UIColor.Primary.highLight, for: .normal)
             
             switch boldButton.currentTitleColor {
                 
-            case UIColor.DSColor.yellow:
+            case UIColor.Primary.highLight:
                 
                 font = UIFont(name: currentFontName.boldItalicStyle(), size: size)
               
@@ -389,7 +389,7 @@ class TextContainerViewController: UIViewController,
             if currentFontName == FontName.allCases[indexPath.row] {
                 
                 fontCell.setupCell(with: FontName.allCases[indexPath.row].rawValue,
-                                   color: UIColor.DSColor.yellow)
+                                   color: UIColor.Primary.highLight)
                 
             } else {
                 

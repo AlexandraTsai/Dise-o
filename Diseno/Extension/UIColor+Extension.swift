@@ -10,8 +10,6 @@ import UIKit
 
 extension UIColor {
     struct DSColor {
-        /// FFC325
-        static var yellow = UIColor(hex: "FFC325")
         /// F1DB9B
         static var lightYellow = UIColor(hex: "F1DB9B")
         /// D7D7D7
@@ -34,6 +32,13 @@ extension UIColor {
         static var error = UIColor(hex: "FF5F46")
         /// 0892FC
         static var info = UIColor(hex: "0892FC")
+    }
+
+    enum Primary {
+        /// F2F2F2
+        static var background = UIColor(hex: "F2F2F2")
+        /// FFC325
+        static var highLight = UIColor(hex: "FFC325")
     }
 }
 

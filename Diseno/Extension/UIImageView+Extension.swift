@@ -9,7 +9,6 @@
 import UIKit
 
 extension UIImageView {
-
     func makeACopy(from originView: UIImageView) {
 
         //Record the rotaion of the original image view
@@ -26,5 +25,20 @@ extension UIImageView {
 
         originView.transform = originRotation
 
+    }
+}
+
+extension UIImage {
+    func tinted(color: UIColor) -> UIImage {
+        let newImage = withRenderingMode(.alwaysTemplate)
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        color.set()
+        newImage.draw(in: CGRect(origin: .zero,
+                                 size: size))
+
+        return UIGraphicsGetImageFromCurrentImageContext() ?? self
     }
 }

@@ -45,7 +45,7 @@ class SavedImageAlert: UIView {
     
     func setup() {
         
-        self.backgroundColor = UIColor.DSColor.yellow
+        self.backgroundColor = UIColor.Primary.highLight
 
         self.layer.cornerRadius = 20
         
@@ -85,7 +85,7 @@ class SavedImageAlert: UIView {
         confirmButton.layer.cornerRadius = 13
         confirmButton.layer.cornerRadius = 13
         
-        contentLabel.backgroundColor = UIColor.DSColor.yellow
+        contentLabel.backgroundColor = UIColor.Primary.highLight
         confirmButton.backgroundColor = UIColor.gray
         
     }

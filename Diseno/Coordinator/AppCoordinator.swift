@@ -47,18 +47,20 @@ class AppCoordinator: AppCoordinatorPrototype {
     }
 
     func goDesignPage(with design: Design?) {
-        guard let designVC = UIStoryboard(
-            name: "Main",
-            bundle: nil).instantiateViewController(
-                withIdentifier: String(describing: DesignViewController.self)) as? DesignViewController
-            else { return }
-        designVC.viewModel = DesignViewModel(entry: design != nil ?
-                                                .editing(design!) :
-                                                .new,
-                                             fileManager: fileManager,
-                                             storageManager: storageManager,
-                                             coordinator: self)
-        homePageViewController?.show(designVC, sender: nil)
+        designViewModel = DesignBoardViewModel()
+        let vc = DesignBoardViewController(viewModel: designViewModel)
+//        guard let designVC = UIStoryboard(
+//            name: "Main",
+//            bundle: nil).instantiateViewController(
+//                withIdentifier: String(describing: DesignViewController.self)) as? DesignViewController
+//            else { return }
+//        designVC.viewModel = DesignViewModel(entry: design != nil ?
+//                                                .editing(design!) :
+//                                                .new,
+//                                             fileManager: fileManager,
+//                                             storageManager: storageManager,
+//                                             coordinator: self)
+        homePageViewController?.show(vc, sender: nil)
     }
 
     init(window: UIWindow,
@@ -71,6 +73,7 @@ class AppCoordinator: AppCoordinatorPrototype {
 
     private var homePageViewController: HomePageViewController?
     private var homeViewModel: HomePageViewModelPrototype?
+    private var designViewModel: DesignBoardViewModel?
     private var navigation: UINavigationController?
     private let storageManager: StorageManager
     private let fileManager: DSFileManager

@@ -28,7 +28,7 @@ extension UITextField {
         
         doneToolbar.barStyle = .default
         
-        doneToolbar.tintColor = UIColor.DSColor.yellow
+        doneToolbar.tintColor = UIColor.Primary.highLight
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
                                         target: nil, action: nil)
