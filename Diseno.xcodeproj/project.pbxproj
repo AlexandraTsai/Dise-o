@@ -75,6 +75,8 @@
 		A87F795E26DA314400F6B7FF /* DesignBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F795D26DA314400F6B7FF /* DesignBoardViewController.swift */; };
 		A87F796026DA42D900F6B7FF /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F795F26DA42D900F6B7FF /* Constant.swift */; };
 		A87F796226DA57F100F6B7FF /* DesignBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F796126DA57F100F6B7FF /* DesignBoardViewModel.swift */; };
+		A87F796526DA627900F6B7FF /* ToolCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F796426DA627900F6B7FF /* ToolCollectionViewCell.swift */; };
+		A87F796726DB1D2F00F6B7FF /* PlusMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F796626DB1D2F00F6B7FF /* PlusMenuViewController.swift */; };
 		A88E56E5228BFFBC0062760F /* TextTableViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88E56E4228BFFBC0062760F /* TextTableViewTest.swift */; };
 		A88E56E7228C08170062760F /* CalculateMethodTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88E56E6228C08170062760F /* CalculateMethodTest.swift */; };
 		A89D975622979D1E0056285D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A89D975522979D1E0056285D /* GoogleService-Info.plist */; };
@@ -210,6 +212,8 @@
 		A87F795D26DA314400F6B7FF /* DesignBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignBoardViewController.swift; sourceTree = "<group>"; };
 		A87F795F26DA42D900F6B7FF /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A87F796126DA57F100F6B7FF /* DesignBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignBoardViewModel.swift; sourceTree = "<group>"; };
+		A87F796426DA627900F6B7FF /* ToolCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolCollectionViewCell.swift; sourceTree = "<group>"; };
+		A87F796626DB1D2F00F6B7FF /* PlusMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusMenuViewController.swift; sourceTree = "<group>"; };
 		A88E56E4228BFFBC0062760F /* TextTableViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewTest.swift; sourceTree = "<group>"; };
 		A88E56E6228C08170062760F /* CalculateMethodTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateMethodTest.swift; sourceTree = "<group>"; };
 		A89D975522979D1E0056285D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -391,6 +395,14 @@
 			path = DSError;
 			sourceTree = "<group>";
 		};
+		A87F796326DA626800F6B7FF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A87F796426DA627900F6B7FF /* ToolCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		A8BFF77022588E890010E56B /* Text */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,6 +474,7 @@
 		A8D2C44E225219020085AD24 /* Diseno */ = {
 			isa = PBXGroup;
 			children = (
+				A87F796326DA626800F6B7FF /* Cell */,
 				A87F793326A4084600F6B7FF /* ViewModel */,
 				A87F793026A3EDBB00F6B7FF /* Coordinator */,
 				A87F792726A2B4FC00F6B7FF /* Helper */,
@@ -526,6 +539,7 @@
 				A8242DB7227D536B006143CB /* LaunchScreenViewController.swift */,
 				A87F792A26A2B6CB00F6B7FF /* HomePageViewController.swift */,
 				A87F795D26DA314400F6B7FF /* DesignBoardViewController.swift */,
+				A87F796626DB1D2F00F6B7FF /* PlusMenuViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -849,6 +863,7 @@
 				A8DEBBAA2255A8A50081A694 /* ALCustomView.swift in Sources */,
 				A8242DB0227C0C51006143CB /* Float+Extension.swift in Sources */,
 				A87F793926A4591A00F6B7FF /* FileManager+Extension.swift in Sources */,
+				A87F796526DA627900F6B7FF /* ToolCollectionViewCell.swift in Sources */,
 				A8BFF780225A4AC00010E56B /* ImageEditContainerViewController.swift in Sources */,
 				A87F794826B4FB3A00F6B7FF /* ImageSaver.swift in Sources */,
 				A8D2C47B22522A8F0085AD24 /* UICollectionView+Extension.swift in Sources */,
@@ -889,6 +904,7 @@
 				A8242DAE227BC91B006143CB /* RotateHelperView.swift in Sources */,
 				A84BBE792289402A0083F53B /* DesignVC+Gesture.swift in Sources */,
 				A8DEBBA522549DC30081A694 /* ImageCollectionReusableView.swift in Sources */,
+				A87F796726DB1D2F00F6B7FF /* PlusMenuViewController.swift in Sources */,
 				A8AD7463226AF82200BDE3A7 /* ALDesignView.swift in Sources */,
 				A84BBE83228945300083F53B /* DesignVC+passData.swift in Sources */,
 				A848811F2273FAC200F308AC /* UIColor+Extension.swift in Sources */,

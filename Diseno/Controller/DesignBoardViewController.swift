@@ -96,6 +96,13 @@ private extension DesignBoardViewController {
                 self?.viewModel?.onFucus(.container)
                 self?.onFocusView = self?.designContainerView
             }).disposed(by: disposeBag)
+
+        plusButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                let vc = PlusMenuViewController()
+                vc.modalPresentationStyle = .overFullScreen
+                self?.present(vc, animated: false)
+            }).disposed(by: disposeBag)
     }
 
     func binding() {
@@ -114,28 +121,4 @@ private extension DesignBoardViewController {
         onFocusView.layer.borderWidth = 1
         onFocusView.layer.borderColor = UIColor.Primary.highLight.cgColor
     }
-}
-
-class ToolCollectionViewCell: UICollectionViewCell {
-    func config(image: UIImage) {
-        icon.image = image
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    private func setup() {
-        addSubview(icon)
-        icon.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-    }
-
-    private let icon = UIImageView()
 }

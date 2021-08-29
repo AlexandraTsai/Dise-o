@@ -1,6 +1,9 @@
 disabled_rules:
   - trailing_whitespace
   - force_cast
+  - type_name
+  - line_length
+  - identifier_name
 
 identifier_name:
   min_length: # only min_length

@@ -97,8 +97,7 @@ class StorageManager {
 
             try viewContext.save()
             completion(Result.success(()))
-        }
-        catch {
+        } catch {
             completion(Result.failure(error))
 
         }
