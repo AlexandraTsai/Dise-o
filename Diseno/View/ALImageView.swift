@@ -46,3 +46,59 @@ class ALImageView: UIImageView {
         imageObject.frame = frame as NSObject
     }
 }
+
+protocol Element {
+    var index: Int { get }
+    var transform: CGAffineTransform { get }
+    var frame: CGRect { get }
+    var alpha: CGFloat { get }
+}
+
+class DSImage: Element {
+    var index: Int = 0
+    var transform: CGAffineTransform = .identity
+    var frame: CGRect = Constant.imageDefualtFrame
+    var alpha: CGFloat = 1
+
+    var imageFileName: String?
+    var filterName: FilterType?
+    var originImage: UIImage?
+
+    init(_ image: UIImage) {
+        originImage = image
+    }
+}
+
+class DSText: Element {
+    var index: Int = 0
+    var transform: CGAffineTransform = .identity
+    var frame: CGRect = .zero
+    var alpha: CGFloat = 1
+}
+
+class DSShape: Element {
+    var index: Int = 0
+    var transform: CGAffineTransform = .identity
+    var frame: CGRect = .zero
+    var alpha: CGFloat = 1
+}
+
+enum ElementConvertor {
+    static func convert(elements: Element) -> UIView {
+        switch elements {
+        case let image as DSImage:
+            return convert(dsImage: image)
+        default:
+            return UIView()
+        }
+    }
+
+    private static func convert(dsImage: DSImage) -> UIImageView {
+        let v = UIImageView(frame: dsImage.frame)
+        v.frame = dsImage.frame
+        v.transform = dsImage.transform
+        v.alpha = dsImage.alpha
+        v.image = dsImage.originImage
+        return v
+    }
+}

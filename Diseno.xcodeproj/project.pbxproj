@@ -28,6 +28,7 @@
 		A82B5F332268A2270093671D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F322268A2270093671D /* HomeViewController.swift */; };
 		A82B5F352268A4930093671D /* NewDeign.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F342268A4930093671D /* NewDeign.swift */; };
 		A82B5F372268C8090093671D /* HelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82B5F362268C8090093671D /* HelperView.swift */; };
+		A8338074272CF5BB002F9B92 /* ToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8338073272CF5BB002F9B92 /* ToolView.swift */; };
 		A84880CB226F26D200F308AC /* ManagePortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84880CA226F26D200F308AC /* ManagePortfolioView.swift */; };
 		A84880CD227036A200F308AC /* SaveSuccessLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84880CC227036A200F308AC /* SaveSuccessLabel.swift */; };
 		A84880CF22704A8900F308AC /* RenameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84880CE22704A8900F308AC /* RenameView.swift */; };
@@ -110,6 +111,12 @@
 		A8D2C47E22523A480085AD24 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C47C22523A480085AD24 /* PhotoCollectionViewCell.swift */; };
 		A8D2C47F22523A490085AD24 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D2C47D22523A480085AD24 /* PhotoCollectionViewCell.xib */; };
 		A8D2C481225268000085AD24 /* EditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2C480225268000085AD24 /* EditingViewController.swift */; };
+		A8D50EA5273BD753005AEC64 /* PhotoAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D50EA4273BD753005AEC64 /* PhotoAuthManager.swift */; };
+		A8D50EA7273BD960005AEC64 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D50EA6273BD960005AEC64 /* PhotoLibraryViewController.swift */; };
+		A8D50EA9273CAD8D005AEC64 /* AssetImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D50EA8273CAD8D005AEC64 /* AssetImageCollectionViewCell.swift */; };
+		A8D50EAD273CADE2005AEC64 /* PhotoLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D50EAC273CADE2005AEC64 /* PhotoLibraryViewModel.swift */; };
+		A8D50EB0273CC88A005AEC64 /* UIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D50EAF273CC88A005AEC64 /* UIConstant.swift */; };
+		A8D50EB2273CF7C9005AEC64 /* AccessAlertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D50EB1273CF7C9005AEC64 /* AccessAlertHandler.swift */; };
 		A8DEBB9822543DBF0081A694 /* border.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DEBB9722543DBF0081A694 /* border.swift */; };
 		A8DEBB9B22545B8F0081A694 /* CollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DEBB9922545B8F0081A694 /* CollectionReusableView.swift */; };
 		A8DEBB9C22545B8F0081A694 /* CollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DEBB9A22545B8F0081A694 /* CollectionReusableView.xib */; };
@@ -165,6 +172,7 @@
 		A82B5F322268A2270093671D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A82B5F342268A4930093671D /* NewDeign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeign.swift; sourceTree = "<group>"; };
 		A82B5F362268C8090093671D /* HelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperView.swift; sourceTree = "<group>"; };
+		A8338073272CF5BB002F9B92 /* ToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolView.swift; sourceTree = "<group>"; };
 		A84880CA226F26D200F308AC /* ManagePortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePortfolioView.swift; sourceTree = "<group>"; };
 		A84880CC227036A200F308AC /* SaveSuccessLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSuccessLabel.swift; sourceTree = "<group>"; };
 		A84880CE22704A8900F308AC /* RenameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameView.swift; sourceTree = "<group>"; };
@@ -251,6 +259,12 @@
 		A8D2C47C22523A480085AD24 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A8D2C47D22523A480085AD24 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		A8D2C480225268000085AD24 /* EditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingViewController.swift; sourceTree = "<group>"; };
+		A8D50EA4273BD753005AEC64 /* PhotoAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAuthManager.swift; sourceTree = "<group>"; };
+		A8D50EA6273BD960005AEC64 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
+		A8D50EA8273CAD8D005AEC64 /* AssetImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		A8D50EAC273CADE2005AEC64 /* PhotoLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewModel.swift; sourceTree = "<group>"; };
+		A8D50EAF273CC88A005AEC64 /* UIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstant.swift; sourceTree = "<group>"; };
+		A8D50EB1273CF7C9005AEC64 /* AccessAlertHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAlertHandler.swift; sourceTree = "<group>"; };
 		A8DEBB9722543DBF0081A694 /* border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = border.swift; sourceTree = "<group>"; };
 		A8DEBB9922545B8F0081A694 /* CollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionReusableView.swift; sourceTree = "<group>"; };
 		A8DEBB9A22545B8F0081A694 /* CollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionReusableView.xib; sourceTree = "<group>"; };
@@ -362,6 +376,8 @@
 				A87F794726B4FB3A00F6B7FF /* ImageSaver.swift */,
 				A87F794E26B6567600F6B7FF /* IPhoneUtility.swift */,
 				A87F795F26DA42D900F6B7FF /* Constant.swift */,
+				A8D50EA4273BD753005AEC64 /* PhotoAuthManager.swift */,
+				A8D50EB1273CF7C9005AEC64 /* AccessAlertHandler.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -474,6 +490,8 @@
 		A8D2C44E225219020085AD24 /* Diseno */ = {
 			isa = PBXGroup;
 			children = (
+				A8D50EAE273CC876005AEC64 /* Constants */,
+				A8D50EAA273CADC1005AEC64 /* DesignBoard */,
 				A87F796326DA626800F6B7FF /* Cell */,
 				A87F793326A4084600F6B7FF /* ViewModel */,
 				A87F793026A3EDBB00F6B7FF /* Coordinator */,
@@ -518,6 +536,8 @@
 				A8AD7466226C78CC00BDE3A7 /* PortfolioCollectionViewCell.swift */,
 				A8AD7467226C78CC00BDE3A7 /* PortfolioCollectionViewCell.xib */,
 				A8D2C44F225219020085AD24 /* AppDelegate.swift */,
+				A8338073272CF5BB002F9B92 /* ToolView.swift */,
+				A8D50EA8273CAD8D005AEC64 /* AssetImageCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -540,6 +560,7 @@
 				A87F792A26A2B6CB00F6B7FF /* HomePageViewController.swift */,
 				A87F795D26DA314400F6B7FF /* DesignBoardViewController.swift */,
 				A87F796626DB1D2F00F6B7FF /* PlusMenuViewController.swift */,
+				A8D50EA6273BD960005AEC64 /* PhotoLibraryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -596,6 +617,30 @@
 				A8D2C45B225219080085AD24 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		A8D50EAA273CADC1005AEC64 /* DesignBoard */ = {
+			isa = PBXGroup;
+			children = (
+				A8D50EAB273CADCA005AEC64 /* ViewModel */,
+			);
+			path = DesignBoard;
+			sourceTree = "<group>";
+		};
+		A8D50EAB273CADCA005AEC64 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A8D50EAC273CADE2005AEC64 /* PhotoLibraryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A8D50EAE273CC876005AEC64 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A8D50EAF273CC88A005AEC64 /* UIConstant.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		A8E30641226300A800DA03A7 /* Shape */ = {
@@ -871,6 +916,7 @@
 				A82564C72282AE0B00510EAF /* UIViewController+Extension.swift in Sources */,
 				A82564CD2282C94100510EAF /* ALSegue.swift in Sources */,
 				A816BEB322755860004E3896 /* SizeHelperView.swift in Sources */,
+				A8338074272CF5BB002F9B92 /* ToolView.swift in Sources */,
 				A87F795726C78CF000F6B7FF /* UIApplication+Extension.swift in Sources */,
 				A8AD7465226C004E00BDE3A7 /* ALImageView.swift in Sources */,
 				A82B5F332268A2270093671D /* HomeViewController.swift in Sources */,
@@ -891,15 +937,18 @@
 				A8DEBBA82255A5A90081A694 /* UITextView+Extension.swift in Sources */,
 				A8B5E4F7226D91D800514A75 /* ALTextView.swift in Sources */,
 				A8BFF77322588EA90010E56B /* SpacingTableViewCell.swift in Sources */,
+				A8D50EA9273CAD8D005AEC64 /* AssetImageCollectionViewCell.swift in Sources */,
 				A84880D52270688400F308AC /* Image+Extension.swift in Sources */,
 				A87F795526C2A42500F6B7FF /* RenameDesignViewModel.swift in Sources */,
 				A87F796226DA57F100F6B7FF /* DesignBoardViewModel.swift in Sources */,
 				A8D2C47E22523A480085AD24 /* PhotoCollectionViewCell.swift in Sources */,
 				A87F793B26A45BF700F6B7FF /* NSObject+Extension.swift in Sources */,
+				A8D50EB0273CC88A005AEC64 /* UIConstant.swift in Sources */,
 				A87F793726A415D100F6B7FF /* PortfolioCellViewModel.swift in Sources */,
 				A8AF2A552278290A00C2B118 /* SavedImageAlert.swift in Sources */,
 				A84880CD227036A200F308AC /* SaveSuccessLabel.swift in Sources */,
 				A8DEBB9E2254803B0081A694 /* UIImage+Extension.swift in Sources */,
+				A8D50EAD273CADE2005AEC64 /* PhotoLibraryViewModel.swift in Sources */,
 				A87F792F26A2EAED00F6B7FF /* FontManager.swift in Sources */,
 				A8242DAE227BC91B006143CB /* RotateHelperView.swift in Sources */,
 				A84BBE792289402A0083F53B /* DesignVC+Gesture.swift in Sources */,
@@ -940,6 +989,7 @@
 				A86824C62260461500BDCCD8 /* UIView+Extension.swift in Sources */,
 				A87F794626B4F90B00F6B7FF /* DSFileManager.swift in Sources */,
 				A87F795326C2805100F6B7FF /* DesignViewModel.swift in Sources */,
+				A8D50EA7273BD960005AEC64 /* PhotoLibraryViewController.swift in Sources */,
 				A8242DB8227D536B006143CB /* LaunchScreenViewController.swift in Sources */,
 				A8BFF77A2259E1960010E56B /* UIButton+Extenstion.swift in Sources */,
 				A8242DBC227DBC8E006143CB /* FilterType.swift in Sources */,
@@ -948,8 +998,10 @@
 				A80804EB226882720042E4FF /* EditeFrameView.swift in Sources */,
 				A8D2C458225219030085AD24 /* Desiging.xcdatamodeld in Sources */,
 				A82564D02283CF1E00510EAF /* ALShapeView.swift in Sources */,
+				A8D50EB2273CF7C9005AEC64 /* AccessAlertHandler.swift in Sources */,
 				A8BFF76E22586E5C0010E56B /* FontTableViewCell.swift in Sources */,
 				A8E3063C2262FE0000DA03A7 /* ShapeContainerViewController.swift in Sources */,
+				A8D50EA5273BD753005AEC64 /* PhotoAuthManager.swift in Sources */,
 				A84BBE7422893B350083F53B /* EditingVC+Helper.swift in Sources */,
 				A8BFF76B22586E3D0010E56B /* UIFont+Extension.swift in Sources */,
 				A82B5F372268C8090093671D /* HelperView.swift in Sources */,

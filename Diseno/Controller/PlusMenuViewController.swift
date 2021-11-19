@@ -22,9 +22,13 @@ enum PlusMenuType: CaseIterable {
     }
 }
 
+protocol PlusMenuHandler: AnyObject {
+    func didSelectMenu(at index: Int)
+}
+
 class PlusMenuViewController: UIViewController {
-    init() {
-//        self.viewModel = viewModel
+    init(viewModel: PlusMenuHandler) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -58,6 +62,7 @@ class PlusMenuViewController: UIViewController {
         $0.contentInset = .init(top: 0, left: LC.collectionViewLRInset, bottom: 0, right: LC.collectionViewLRInset)
         $0.register(ToolCollectionViewCell.self, forCellWithReuseIdentifier: ToolCollectionViewCell.nameOfClass)
     }
+    private let viewModel: PlusMenuHandler
 }
 
 // MARK: - Setup UI
@@ -214,10 +219,28 @@ extension PlusMenuViewController: UICollectionViewDataSource {
                                                             for: indexPath) as? ToolCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.config(image: PlusMenuType.allCases[indexPath.row].image, imageInset: 20)
+        cell.config(image: PlusMenuType.allCases[indexPath.row].image)
         cell.backgroundColor = .white
         cell.layer.cornerRadius = 20
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch PlusMenuType.allCases[indexPath.row] {
+        case .image:
+            let sheet = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+            let photoAction = UIAlertAction(title: "Photo", style: .default) {_ in
+                
+            }
+            let cameraAction = UIAlertAction(title: "Camera", style: .default) { _ in
+
+            }
+            sheet.addAction(photoAction)
+            sheet.addAction(cameraAction)
+            present(sheet, animated: true)
+        case .text: break
+        case .shape: break
+        }
     }
 }
 

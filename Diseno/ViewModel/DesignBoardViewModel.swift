@@ -48,18 +48,37 @@ enum Tool {
 
 protocol DesignBoardViewModelInput: AnyObject {
     func onFucus(_ type: FocusType)
+    func didAddImage(_ image: UIImage)
 }
 
 protocol DesignBoardViewModelOutput: AnyObject {
     var focusType: BehaviorRelay<FocusType> { get }
+    var elements: BehaviorRelay<[Element]> { get }
 }
 
-typealias DesignBoardViewModelProtocol = DesignBoardViewModelInput & DesignBoardViewModelOutput
+typealias DesignBoardViewModelProtocol =
+    DesignBoardViewModelInput &
+    DesignBoardViewModelOutput &
+    PhotoLibrarySelectHandler
 
 class DesignBoardViewModel: DesignBoardViewModelProtocol {
+    // MARK: DesignBoardViewModelOutput
     let focusType = BehaviorRelay<FocusType>(value: .none)
+    let elements = BehaviorRelay<[Element]>(value: [])
 
+    // MARK: DesignBoardViewModelInput
     func onFucus(_ type: FocusType) {
         focusType.accept(type)
+    }
+
+    func didAddImage(_ image: UIImage) {
+        elements.accept(elements.value + [DSImage(image)])
+    }
+}
+
+// MARK: - PhotoLibrarySelectHandler
+extension DesignBoardViewModel {
+    func addImages(_ images: [UIImage]) {
+        elements.accept(elements.value + images.map { DSImage($0) })
     }
 }

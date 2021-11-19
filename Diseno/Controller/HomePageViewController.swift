@@ -45,7 +45,6 @@ class HomePageViewController: UIViewController {
 
     }
     private let addDesignButton = UIButton() --> {
-        $0.backgroundColor = UIColor.Primary.background
         $0.setImage(#imageLiteral(resourceName: "Icon_add_button").tinted(color: UIColor.Primary.highLight), for: .normal)
         $0.clipsToBounds = true
     }
